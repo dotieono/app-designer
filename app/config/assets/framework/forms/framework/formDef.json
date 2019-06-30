@@ -47,11 +47,11 @@
         "_row_num": 7
       },
       {
-        "branch_label": "form_id_here",
+        "branch_label": "sarampo",
         "_row_num": 8
       },
       {
-        "url": "'?' + odkSurvey.getHashString('form_id_here')",
+        "url": "'?' + odkSurvey.getHashString('sarampo')",
         "type": "external_link",
         "display": {
           "prompt": {
@@ -132,10 +132,10 @@
     "choices": [
       {
         "choice_list_name": "test_forms",
-        "data_value": "form_id_here",
+        "data_value": "sarampo",
         "display": {
           "title": {
-            "text": "form_title_here"
+            "text": "Sarampo"
           }
         },
         "_row_num": 2
@@ -670,10 +670,10 @@
       "test_forms": [
         {
           "choice_list_name": "test_forms",
-          "data_value": "form_id_here",
+          "data_value": "sarampo",
           "display": {
             "title": {
-              "text": "form_title_here"
+              "text": "Sarampo"
             }
           },
           "_row_num": 2
@@ -1263,7 +1263,7 @@
             "promptIdx": 1
           },
           {
-            "url": "'?' + odkSurvey.getHashString('form_id_here')",
+            "url": "'?' + odkSurvey.getHashString('sarampo')",
             "type": "external_link",
             "display": {
               "prompt": {
@@ -1373,7 +1373,7 @@
           "_else4": 4,
           "_screen5": 4,
           "_endif6": 5,
-          "form_id_here": 6,
+          "sarampo": 6,
           "_screen9": 6,
           "_contents": 9,
           "_screen11": 9
