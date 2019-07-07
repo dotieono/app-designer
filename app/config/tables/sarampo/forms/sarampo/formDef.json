@@ -2,6 +2,10 @@
   "xlsx": {
     "survey": [
       {
+        "branch_label": "begin  screen",
+        "_row_num": 3
+      },
+      {
         "type": "date",
         "name": "obsdate",
         "display": {
@@ -31,19 +35,8 @@
             "text": "Área sanitária"
           }
         },
+        "choice_filter": "choice_item.region === data('region')",
         "_row_num": 6
-      },
-      {
-        "type": "select_one",
-        "values_list": "zona_csv",
-        "name": "zona",
-        "display": {
-          "prompt": {
-            "text": "Zona"
-          }
-        },
-        "choice_filter": "choice_item.region === data('region') && choice_item.sector===data('sector')",
-        "_row_num": 7
       },
       {
         "type": "select_one",
@@ -54,8 +47,8 @@
             "text": "Nome do Conglomerado"
           }
         },
-        "choice_filter": "choice_item.region === data('region') && choice_item.sector===data('sector') && choice_item.zona===data('zona')",
-        "_row_num": 8
+        "choice_filter": "choice_item.region === data('region') && choice_item.sector===data('sector')",
+        "_row_num": 7
       },
       {
         "type": "integer",
@@ -65,7 +58,41 @@
             "text": "Nº de AF"
           }
         },
+        "_row_num": 8
+      },
+      {
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "consent",
+        "display": {
+          "prompt": {
+            "text": "Aceita participar neste trabalho?"
+          }
+        },
         "_row_num": 9
+      },
+      {
+        "branch_label": "end screen",
+        "_row_num": 10
+      },
+      {
+        "clause": "if",
+        "condition": "selected(data('consent'),'2')",
+        "_row_num": 11
+      },
+      {
+        "type": "string",
+        "name": "razao",
+        "display": {
+          "prompt": {
+            "text": "Razão"
+          }
+        },
+        "_row_num": 12
+      },
+      {
+        "clause": "else",
+        "_row_num": 13
       },
       {
         "type": "select_one",
@@ -76,12 +103,12 @@
             "text": "Idade ou data nasc."
           }
         },
-        "_row_num": 12
+        "_row_num": 14
       },
       {
         "clause": "if",
-        "condition": "data('dob_or_age')===1",
-        "_row_num": 13
+        "condition": "selected(data('dob_or_age'),'1')",
+        "_row_num": 15
       },
       {
         "type": "date",
@@ -91,11 +118,11 @@
             "text": "Data nasc."
           }
         },
-        "_row_num": 14
+        "_row_num": 16
       },
       {
         "clause": "else",
-        "_row_num": 15
+        "_row_num": 17
       },
       {
         "type": "integer",
@@ -105,7 +132,7 @@
             "text": "Idade (anos)"
           }
         },
-        "_row_num": 16
+        "_row_num": 18
       },
       {
         "type": "integer",
@@ -115,14 +142,14 @@
             "text": "Idade (meses)"
           }
         },
-        "_row_num": 17
+        "_row_num": 19
       },
       {
         "clause": "end if",
-        "_row_num": 18
+        "_row_num": 20
       },
       {
-        "type": "select_one",
+        "type": "select_one_integer",
         "values_list": "sexo",
         "name": "sexo",
         "display": {
@@ -130,10 +157,10 @@
             "text": "Sexo"
           }
         },
-        "_row_num": 21
+        "_row_num": 22
       },
       {
-        "type": "select_one",
+        "type": "select_one_integer",
         "values_list": "informador",
         "name": "infor",
         "display": {
@@ -141,20 +168,20 @@
             "text": "Informador"
           }
         },
-        "_row_num": 23
+        "_row_num": 24
       },
       {
-        "type": "text",
+        "type": "string",
         "name": "esp_infor",
         "display": {
           "prompt": {
             "text": "Especifica o outro informador"
           }
         },
-        "_row_num": 24
+        "_row_num": 25
       },
       {
-        "type": "select_one",
+        "type": "select_one_integer",
         "values_list": "vivecom",
         "name": "vivendo_com",
         "display": {
@@ -162,7 +189,7 @@
             "text": "Com quem vive a criança"
           }
         },
-        "_row_num": 25
+        "_row_num": 26
       },
       {
         "type": "text",
@@ -172,7 +199,7 @@
             "text": "Especifica com quem vive a criança"
           }
         },
-        "_row_num": 26
+        "_row_num": 27
       },
       {
         "type": "select_one",
@@ -183,7 +210,7 @@
             "text": "Etnia"
           }
         },
-        "_row_num": 27
+        "_row_num": 28
       },
       {
         "type": "text",
@@ -193,7 +220,7 @@
             "text": "Especifica a outra Etnia"
           }
         },
-        "_row_num": 28
+        "_row_num": 29
       },
       {
         "type": "select_one",
@@ -204,7 +231,7 @@
             "text": "Nationalidade"
           }
         },
-        "_row_num": 29
+        "_row_num": 30
       },
       {
         "type": "text",
@@ -214,7 +241,7 @@
             "text": "Especifica a outra nacionalidade"
           }
         },
-        "_row_num": 30
+        "_row_num": 31
       },
       {
         "type": "integer",
@@ -224,7 +251,7 @@
             "text": "Escolaridade mãe/com quem vive: Foi à escola?"
           }
         },
-        "_row_num": 31
+        "_row_num": 32
       },
       {
         "type": "select_one",
@@ -235,7 +262,7 @@
             "text": "Fez algum curso"
           }
         },
-        "_row_num": 32
+        "_row_num": 33
       },
       {
         "type": "select_one",
@@ -246,7 +273,7 @@
             "text": "Profissão ou principal ocupação da mãe?"
           }
         },
-        "_row_num": 33
+        "_row_num": 34
       },
       {
         "type": "text",
@@ -256,14 +283,268 @@
             "text": "Especifica a ocupação"
           }
         },
-        "_row_num": 34
+        "_row_num": 35
+      },
+      {
+        "type": "select_one",
+        "values_list": "yesnodk",
+        "name": "participa",
+        "display": {
+          "prompt": {
+            "text": "Tomou vacina de sarampo nesta campanha?"
+          }
+        },
+        "_row_num": 37
+      },
+      {
+        "type": "select_one",
+        "values_list": "campanha",
+        "name": "vi_cartao",
+        "display": {
+          "prompt": {
+            "text": "Viu o cartão da Campanha"
+          }
+        },
+        "_row_num": 42
+      },
+      {
+        "type": "select_one",
+        "values_list": "dados",
+        "name": "noutro_cartao",
+        "display": {
+          "prompt": {
+            "text": "Viu os dados da campanha de Maio de 2019 noutro cartão?"
+          }
+        },
+        "_row_num": 43
+      },
+      {
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "tem_data",
+        "display": {
+          "prompt": {
+            "text": "O cartão tem data?"
+          }
+        },
+        "_row_num": 44
+      },
+      {
+        "type": "date",
+        "name": "data_vacina",
+        "display": {
+          "prompt": {
+            "text": "Data no Cartão"
+          }
+        },
+        "_row_num": 45
+      },
+      {
+        "type": "integer",
+        "name": "lote",
+        "display": {
+          "prompt": {
+            "text": "Lote Nº"
+          }
+        },
+        "_row_num": 46
+      },
+      {
+        "type": "select_one",
+        "values_list": "yesnodk",
+        "name": "teve_mapi",
+        "display": {
+          "prompt": {
+            "text": "Após a vacina de Sarampo, a criança teve algum problema ligado a vacina?"
+          }
+        },
+        "_row_num": 52
+      },
+      {
+        "type": "select_multiple",
+        "values_list": "mapi",
+        "name": "mapi",
+        "display": {
+          "prompt": {
+            "text": "Se sim, quais são?"
+          }
+        },
+        "_row_num": 53
+      },
+      {
+        "type": "text",
+        "name": "esp_mapi",
+        "display": {
+          "prompt": {
+            "text": "Especifica"
+          }
+        },
+        "_row_num": 54
+      },
+      {
+        "type": "select_one",
+        "values_list": "razao",
+        "name": "razao",
+        "display": {
+          "prompt": {
+            "text": "Razões de não participação na campanha de Maio de 2019"
+          }
+        },
+        "_row_num": 56
+      },
+      {
+        "type": "text",
+        "name": "esp_razao",
+        "display": {
+          "prompt": {
+            "text": "Especificar qual ${razao}?"
+          }
+        },
+        "_row_num": 57
+      },
+      {
+        "type": "select_one",
+        "values_list": "contra",
+        "name": "contra",
+        "display": {
+          "prompt": {
+            "text": "Se sim, qual?"
+          }
+        },
+        "_row_num": 58
+      },
+      {
+        "type": "text",
+        "name": "esp_contra",
+        "display": {
+          "prompt": {
+            "text": "Especifica"
+          }
+        },
+        "_row_num": 59
+      },
+      {
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "saber",
+        "display": {
+          "prompt": {
+            "text": "Soube da campanha?"
+          }
+        },
+        "_row_num": 61
+      },
+      {
+        "type": "select_one",
+        "values_list": "tempo",
+        "name": "quando",
+        "display": {
+          "prompt": {
+            "text": "Quando soube?"
+          }
+        },
+        "_row_num": 62
+      },
+      {
+        "type": "select_multiple",
+        "values_list": "info",
+        "name": "como",
+        "display": {
+          "prompt": {
+            "text": "Como soube/ouviu?"
+          }
+        },
+        "_row_num": 63
+      },
+      {
+        "type": "text",
+        "name": "esp_como",
+        "display": {
+          "prompt": {
+            "text": "Especifica"
+          }
+        },
+        "_row_num": 64
+      },
+      {
+        "type": "select_one",
+        "values_list": "rotina",
+        "name": "rotina",
+        "display": {
+          "prompt": {
+            "text": "Vacinas  de rotina"
+          }
+        },
+        "_row_num": 66
+      },
+      {
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "viu_data_sar",
+        "display": {
+          "prompt": {
+            "text": "Se viu, o cartão tem data"
+          }
+        },
+        "_row_num": 67
+      },
+      {
+        "type": "date",
+        "name": "sarampo",
+        "display": {
+          "prompt": {
+            "text": "Data da vacina do Sarampo"
+          }
+        },
+        "_row_num": 68
+      },
+      {
+        "type": "select_one",
+        "values_list": "yesnodk",
+        "name": "toma_vacina",
+        "display": {
+          "prompt": {
+            "text": "Tomou alguma vacina?"
+          }
+        },
+        "_row_num": 69
+      },
+      {
+        "clause": "end if",
+        "_row_num": 71
+      },
+      {
+        "type": "select_one",
+        "values_list": "inq",
+        "name": "inquiridor",
+        "display": {
+          "prompt": {
+            "text": "Iniciais do inquiridor"
+          }
+        },
+        "_row_num": 73
+      },
+      {
+        "type": "text",
+        "name": "comments",
+        "display": {
+          "prompt": {
+            "text": "Outro comentários"
+          }
+        },
+        "_row_num": 75
       }
     ],
     "calculates": [
       {
         "calculation_name": "dia",
-        "calculation": "max((data('mes')*30+data('ano')*365),(date('2019-05-27')-data('DOB')))",
+        "calculation": "(selected(data('dob_or_age'),'1'))\n? (new Date('2019-05-27') - new Date(data('DOB'))) / 86400000\n:  data('mes')*30 + data('ano')*365.2425",
         "_row_num": 2
+      },
+      {
+        "calculation_name": "diauu",
+        "calculation": "data('mes')*30 + data('ano')*365.2425",
+        "_row_num": 3
       }
     ],
     "choices": [
@@ -1572,30 +1853,23 @@
       {
         "query_name": "region_csv",
         "query_type": "csv",
-        "uri": "\"itemsets.csv\"",
+        "uri": "\"tabancas.csv\"",
         "callback": "_.chain(context).pluck('region').uniq().map(function(region){\nreturn {data_value:region, display:{title: {text: region} } };\n}).value()",
         "_row_num": 2
       },
       {
         "query_name": "sector_csv",
         "query_type": "csv",
-        "uri": "\"itemsets.csv\"",
-        "callback": "_.chain(context)\n.uniqBy(\"sector\")\n.map(function(place){\n    return {\n        data_value:place.sector, \n        region: place.region,\n        display:{title: {text: place.sector} }\n    } \n    })\n.value()",
+        "uri": "\"tabancas.csv\"",
+        "callback": "_.chain(context)\n.uniq(function(x){return x.sector;})\n.map(function(place){\n    return {\n        data_value:place.sector, \n        region: place.region,\n        display:{title: {text: place.sector} }\n    } \n    })\n.value()",
         "_row_num": 3
-      },
-      {
-        "query_name": "zona_csv",
-        "query_type": "csv",
-        "uri": "\"itemsets.csv\"",
-        "callback": "_.map(context, function(place){place.data_value = place.zona;\nplace.display = {title: {text:place.zona} };\nreturn place;\n})",
-        "_row_num": 4
       },
       {
         "query_name": "local_csv",
         "query_type": "csv",
-        "uri": "\"itemsets.csv\"",
-        "callback": "_.map(context, function(place){place.data_value = place.local;\nplace.display = {title: {text:place.local} };\nreturn place;\n})",
-        "_row_num": 5
+        "uri": "\"tabancas.csv\"",
+        "callback": "_.chain(context)\n.uniq(function(y){return y.local;})\n.map(function(place){\n    return {\n        data_value:place.local, \n        region: place.region,\n        sector: place.sector,\n        display:{title: {text: place.local} }\n    } \n    })\n.value()",
+        "_row_num": 4
       }
     ],
     "settings": [
@@ -3044,37 +3318,35 @@
       "region_csv": {
         "query_name": "region_csv",
         "query_type": "csv",
-        "uri": "\"itemsets.csv\"",
+        "uri": "\"tabancas.csv\"",
         "callback": "_.chain(context).pluck('region').uniq().map(function(region){\nreturn {data_value:region, display:{title: {text: region} } };\n}).value()",
         "_row_num": 2
       },
       "sector_csv": {
         "query_name": "sector_csv",
         "query_type": "csv",
-        "uri": "\"itemsets.csv\"",
-        "callback": "_.chain(context)\n.uniqBy(\"sector\")\n.map(function(place){\n    return {\n        data_value:place.sector, \n        region: place.region,\n        display:{title: {text: place.sector} }\n    } \n    })\n.value()",
+        "uri": "\"tabancas.csv\"",
+        "callback": "_.chain(context)\n.uniq(function(x){return x.sector;})\n.map(function(place){\n    return {\n        data_value:place.sector, \n        region: place.region,\n        display:{title: {text: place.sector} }\n    } \n    })\n.value()",
         "_row_num": 3
-      },
-      "zona_csv": {
-        "query_name": "zona_csv",
-        "query_type": "csv",
-        "uri": "\"itemsets.csv\"",
-        "callback": "_.map(context, function(place){place.data_value = place.zona;\nplace.display = {title: {text:place.zona} };\nreturn place;\n})",
-        "_row_num": 4
       },
       "local_csv": {
         "query_name": "local_csv",
         "query_type": "csv",
-        "uri": "\"itemsets.csv\"",
-        "callback": "_.map(context, function(place){place.data_value = place.local;\nplace.display = {title: {text:place.local} };\nreturn place;\n})",
-        "_row_num": 5
+        "uri": "\"tabancas.csv\"",
+        "callback": "_.chain(context)\n.uniq(function(y){return y.local;})\n.map(function(place){\n    return {\n        data_value:place.local, \n        region: place.region,\n        sector: place.sector,\n        display:{title: {text: place.local} }\n    } \n    })\n.value()",
+        "_row_num": 4
       }
     },
     "calculates": {
       "dia": {
         "calculation_name": "dia",
-        "calculation": "max((data('mes')*30+data('ano')*365),(date('2019-05-27')-data('DOB')))",
+        "calculation": "(selected(data('dob_or_age'),'1'))\n? (new Date('2019-05-27') - new Date(data('DOB'))) / 86400000\n:  data('mes')*30 + data('ano')*365.2425",
         "_row_num": 2
+      },
+      "diauu": {
+        "calculation_name": "diauu",
+        "calculation": "data('mes')*30 + data('ano')*365.2425",
+        "_row_num": 3
       }
     },
     "model": {
@@ -3111,21 +3383,10 @@
         "valuesList": "sector_csv",
         "elementKey": "sector"
       },
-      "zona": {
-        "_defn": [
-          {
-            "_row_num": 7,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "zona_csv",
-        "elementKey": "zona"
-      },
       "local": {
         "_defn": [
           {
-            "_row_num": 8,
+            "_row_num": 7,
             "section_name": "survey"
           }
         ],
@@ -3136,17 +3397,43 @@
       "af": {
         "_defn": [
           {
-            "_row_num": 9,
+            "_row_num": 8,
             "section_name": "survey"
           }
         ],
         "type": "integer",
         "elementKey": "af"
       },
-      "dob_or_age": {
+      "consent": {
+        "_defn": [
+          {
+            "_row_num": 9,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "consent"
+      },
+      "razao": {
+        "type": "string",
+        "valuesList": "razao",
         "_defn": [
           {
             "_row_num": 12,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 56,
+            "section_name": "survey"
+          }
+        ],
+        "elementKey": "razao"
+      },
+      "dob_or_age": {
+        "_defn": [
+          {
+            "_row_num": 14,
             "section_name": "survey"
           }
         ],
@@ -3157,7 +3444,7 @@
       "DOB": {
         "_defn": [
           {
-            "_row_num": 14,
+            "_row_num": 16,
             "section_name": "survey"
           }
         ],
@@ -3168,7 +3455,7 @@
       "ano": {
         "_defn": [
           {
-            "_row_num": 16,
+            "_row_num": 18,
             "section_name": "survey"
           }
         ],
@@ -3178,7 +3465,7 @@
       "mes": {
         "_defn": [
           {
-            "_row_num": 17,
+            "_row_num": 19,
             "section_name": "survey"
           }
         ],
@@ -3188,29 +3475,29 @@
       "sexo": {
         "_defn": [
           {
-            "_row_num": 21,
+            "_row_num": 22,
             "section_name": "survey"
           }
         ],
-        "type": "string",
+        "type": "integer",
         "valuesList": "sexo",
         "elementKey": "sexo"
       },
       "infor": {
         "_defn": [
           {
-            "_row_num": 23,
+            "_row_num": 24,
             "section_name": "survey"
           }
         ],
-        "type": "string",
+        "type": "integer",
         "valuesList": "informador",
         "elementKey": "infor"
       },
       "esp_infor": {
         "_defn": [
           {
-            "_row_num": 24,
+            "_row_num": 25,
             "section_name": "survey"
           }
         ],
@@ -3220,18 +3507,18 @@
       "vivendo_com": {
         "_defn": [
           {
-            "_row_num": 25,
+            "_row_num": 26,
             "section_name": "survey"
           }
         ],
-        "type": "string",
+        "type": "integer",
         "valuesList": "vivecom",
         "elementKey": "vivendo_com"
       },
       "esp_vivecom": {
         "_defn": [
           {
-            "_row_num": 26,
+            "_row_num": 27,
             "section_name": "survey"
           }
         ],
@@ -3241,7 +3528,7 @@
       "etnia": {
         "_defn": [
           {
-            "_row_num": 27,
+            "_row_num": 28,
             "section_name": "survey"
           }
         ],
@@ -3252,7 +3539,7 @@
       "esp_etnia": {
         "_defn": [
           {
-            "_row_num": 28,
+            "_row_num": 29,
             "section_name": "survey"
           }
         ],
@@ -3262,7 +3549,7 @@
       "nacionalidade": {
         "_defn": [
           {
-            "_row_num": 29,
+            "_row_num": 30,
             "section_name": "survey"
           }
         ],
@@ -3273,7 +3560,7 @@
       "esp_naciona": {
         "_defn": [
           {
-            "_row_num": 30,
+            "_row_num": 31,
             "section_name": "survey"
           }
         ],
@@ -3283,7 +3570,7 @@
       "escolaridade": {
         "_defn": [
           {
-            "_row_num": 31,
+            "_row_num": 32,
             "section_name": "survey"
           }
         ],
@@ -3293,7 +3580,7 @@
       "curso": {
         "_defn": [
           {
-            "_row_num": 32,
+            "_row_num": 33,
             "section_name": "survey"
           }
         ],
@@ -3304,7 +3591,7 @@
       "ocupacao": {
         "_defn": [
           {
-            "_row_num": 33,
+            "_row_num": 34,
             "section_name": "survey"
           }
         ],
@@ -3315,12 +3602,256 @@
       "esp_ocupa": {
         "_defn": [
           {
-            "_row_num": 34,
+            "_row_num": 35,
             "section_name": "survey"
           }
         ],
         "type": "string",
         "elementKey": "esp_ocupa"
+      },
+      "participa": {
+        "_defn": [
+          {
+            "_row_num": 37,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesnodk",
+        "elementKey": "participa"
+      },
+      "vi_cartao": {
+        "_defn": [
+          {
+            "_row_num": 42,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "campanha",
+        "elementKey": "vi_cartao"
+      },
+      "noutro_cartao": {
+        "_defn": [
+          {
+            "_row_num": 43,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "dados",
+        "elementKey": "noutro_cartao"
+      },
+      "tem_data": {
+        "_defn": [
+          {
+            "_row_num": 44,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "tem_data"
+      },
+      "data_vacina": {
+        "_defn": [
+          {
+            "_row_num": 45,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementType": "date",
+        "elementKey": "data_vacina"
+      },
+      "lote": {
+        "_defn": [
+          {
+            "_row_num": 46,
+            "section_name": "survey"
+          }
+        ],
+        "type": "integer",
+        "elementKey": "lote"
+      },
+      "teve_mapi": {
+        "_defn": [
+          {
+            "_row_num": 52,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesnodk",
+        "elementKey": "teve_mapi"
+      },
+      "mapi": {
+        "_defn": [
+          {
+            "_row_num": 53,
+            "section_name": "survey"
+          }
+        ],
+        "type": "array",
+        "items": {
+          "type": "string",
+          "elementKey": "mapi_items"
+        },
+        "valuesList": "mapi",
+        "elementKey": "mapi"
+      },
+      "esp_mapi": {
+        "_defn": [
+          {
+            "_row_num": 54,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "esp_mapi"
+      },
+      "esp_razao": {
+        "_defn": [
+          {
+            "_row_num": 57,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "esp_razao"
+      },
+      "contra": {
+        "_defn": [
+          {
+            "_row_num": 58,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "contra",
+        "elementKey": "contra"
+      },
+      "esp_contra": {
+        "_defn": [
+          {
+            "_row_num": 59,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "esp_contra"
+      },
+      "saber": {
+        "_defn": [
+          {
+            "_row_num": 61,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "saber"
+      },
+      "quando": {
+        "_defn": [
+          {
+            "_row_num": 62,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "tempo",
+        "elementKey": "quando"
+      },
+      "como": {
+        "_defn": [
+          {
+            "_row_num": 63,
+            "section_name": "survey"
+          }
+        ],
+        "type": "array",
+        "items": {
+          "type": "string",
+          "elementKey": "como_items"
+        },
+        "valuesList": "info",
+        "elementKey": "como"
+      },
+      "esp_como": {
+        "_defn": [
+          {
+            "_row_num": 64,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "esp_como"
+      },
+      "rotina": {
+        "_defn": [
+          {
+            "_row_num": 66,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "rotina",
+        "elementKey": "rotina"
+      },
+      "viu_data_sar": {
+        "_defn": [
+          {
+            "_row_num": 67,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "viu_data_sar"
+      },
+      "sarampo": {
+        "_defn": [
+          {
+            "_row_num": 68,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementType": "date",
+        "elementKey": "sarampo"
+      },
+      "toma_vacina": {
+        "_defn": [
+          {
+            "_row_num": 69,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesnodk",
+        "elementKey": "toma_vacina"
+      },
+      "inquiridor": {
+        "_defn": [
+          {
+            "_row_num": 73,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "inq",
+        "elementKey": "inquiridor"
+      },
+      "comments": {
+        "_defn": [
+          {
+            "_row_num": 75,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "comments"
       }
     },
     "section_names": [
@@ -3373,6 +3904,7 @@
                 "text": "Área sanitária"
               }
             },
+            "choice_filter": "choice_item.region === data('region')",
             "_row_num": 6,
             "__rowNum__": 5,
             "_token_type": "prompt",
@@ -3382,11 +3914,11 @@
           },
           {
             "type": "select_one",
-            "values_list": "zona_csv",
-            "name": "zona",
+            "values_list": "local_csv",
+            "name": "local",
             "display": {
               "prompt": {
-                "text": "Zona"
+                "text": "Nome do Conglomerado"
               }
             },
             "choice_filter": "choice_item.region === data('region') && choice_item.sector===data('sector')",
@@ -3398,23 +3930,6 @@
             "promptIdx": 3
           },
           {
-            "type": "select_one",
-            "values_list": "local_csv",
-            "name": "local",
-            "display": {
-              "prompt": {
-                "text": "Nome do Conglomerado"
-              }
-            },
-            "choice_filter": "choice_item.region === data('region') && choice_item.sector===data('sector') && choice_item.zona===data('zona')",
-            "_row_num": 8,
-            "__rowNum__": 7,
-            "_token_type": "prompt",
-            "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen8",
-            "promptIdx": 4
-          },
-          {
             "type": "integer",
             "name": "af",
             "display": {
@@ -3422,12 +3937,43 @@
                 "text": "Nº de AF"
               }
             },
+            "_row_num": 8,
+            "__rowNum__": 7,
+            "_token_type": "prompt",
+            "_type": "integer",
+            "_branch_label_enclosing_screen": "survey/_screen8",
+            "promptIdx": 4
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "consent",
+            "display": {
+              "prompt": {
+                "text": "Aceita participar neste trabalho?"
+              }
+            },
             "_row_num": 9,
             "__rowNum__": 8,
             "_token_type": "prompt",
-            "_type": "integer",
+            "_type": "select_one",
             "_branch_label_enclosing_screen": "survey/_screen9",
             "promptIdx": 5
+          },
+          {
+            "type": "string",
+            "name": "razao",
+            "display": {
+              "prompt": {
+                "text": "Razão"
+              }
+            },
+            "_row_num": 12,
+            "__rowNum__": 11,
+            "_token_type": "prompt",
+            "_type": "string",
+            "_branch_label_enclosing_screen": "survey/_screen12",
+            "promptIdx": 6
           },
           {
             "type": "select_one",
@@ -3438,12 +3984,12 @@
                 "text": "Idade ou data nasc."
               }
             },
-            "_row_num": 12,
-            "__rowNum__": 11,
+            "_row_num": 14,
+            "__rowNum__": 13,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen12",
-            "promptIdx": 6
+            "_branch_label_enclosing_screen": "survey/_screen14",
+            "promptIdx": 7
           },
           {
             "type": "date",
@@ -3453,12 +3999,12 @@
                 "text": "Data nasc."
               }
             },
-            "_row_num": 14,
-            "__rowNum__": 13,
+            "_row_num": 16,
+            "__rowNum__": 15,
             "_token_type": "prompt",
             "_type": "date",
-            "_branch_label_enclosing_screen": "survey/_screen14",
-            "promptIdx": 7
+            "_branch_label_enclosing_screen": "survey/_screen16",
+            "promptIdx": 8
           },
           {
             "type": "integer",
@@ -3468,12 +4014,12 @@
                 "text": "Idade (anos)"
               }
             },
-            "_row_num": 16,
-            "__rowNum__": 15,
+            "_row_num": 18,
+            "__rowNum__": 17,
             "_token_type": "prompt",
             "_type": "integer",
-            "_branch_label_enclosing_screen": "survey/_screen16",
-            "promptIdx": 8
+            "_branch_label_enclosing_screen": "survey/_screen18",
+            "promptIdx": 9
           },
           {
             "type": "integer",
@@ -3483,15 +4029,15 @@
                 "text": "Idade (meses)"
               }
             },
-            "_row_num": 17,
-            "__rowNum__": 16,
+            "_row_num": 19,
+            "__rowNum__": 18,
             "_token_type": "prompt",
             "_type": "integer",
-            "_branch_label_enclosing_screen": "survey/_screen17",
-            "promptIdx": 9
+            "_branch_label_enclosing_screen": "survey/_screen19",
+            "promptIdx": 10
           },
           {
-            "type": "select_one",
+            "type": "select_one_integer",
             "values_list": "sexo",
             "name": "sexo",
             "display": {
@@ -3499,15 +4045,15 @@
                 "text": "Sexo"
               }
             },
-            "_row_num": 21,
-            "__rowNum__": 20,
+            "_row_num": 22,
+            "__rowNum__": 21,
             "_token_type": "prompt",
-            "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen21",
-            "promptIdx": 10
+            "_type": "select_one_integer",
+            "_branch_label_enclosing_screen": "survey/_screen22",
+            "promptIdx": 11
           },
           {
-            "type": "select_one",
+            "type": "select_one_integer",
             "values_list": "informador",
             "name": "infor",
             "display": {
@@ -3515,30 +4061,30 @@
                 "text": "Informador"
               }
             },
-            "_row_num": 23,
-            "__rowNum__": 22,
+            "_row_num": 24,
+            "__rowNum__": 23,
             "_token_type": "prompt",
-            "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen23",
-            "promptIdx": 11
+            "_type": "select_one_integer",
+            "_branch_label_enclosing_screen": "survey/_screen24",
+            "promptIdx": 12
           },
           {
-            "type": "text",
+            "type": "string",
             "name": "esp_infor",
             "display": {
               "prompt": {
                 "text": "Especifica o outro informador"
               }
             },
-            "_row_num": 24,
-            "__rowNum__": 23,
+            "_row_num": 25,
+            "__rowNum__": 24,
             "_token_type": "prompt",
-            "_type": "text",
-            "_branch_label_enclosing_screen": "survey/_screen24",
-            "promptIdx": 12
+            "_type": "string",
+            "_branch_label_enclosing_screen": "survey/_screen25",
+            "promptIdx": 13
           },
           {
-            "type": "select_one",
+            "type": "select_one_integer",
             "values_list": "vivecom",
             "name": "vivendo_com",
             "display": {
@@ -3546,12 +4092,12 @@
                 "text": "Com quem vive a criança"
               }
             },
-            "_row_num": 25,
-            "__rowNum__": 24,
+            "_row_num": 26,
+            "__rowNum__": 25,
             "_token_type": "prompt",
-            "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen25",
-            "promptIdx": 13
+            "_type": "select_one_integer",
+            "_branch_label_enclosing_screen": "survey/_screen26",
+            "promptIdx": 14
           },
           {
             "type": "text",
@@ -3561,12 +4107,12 @@
                 "text": "Especifica com quem vive a criança"
               }
             },
-            "_row_num": 26,
-            "__rowNum__": 25,
+            "_row_num": 27,
+            "__rowNum__": 26,
             "_token_type": "prompt",
             "_type": "text",
-            "_branch_label_enclosing_screen": "survey/_screen26",
-            "promptIdx": 14
+            "_branch_label_enclosing_screen": "survey/_screen27",
+            "promptIdx": 15
           },
           {
             "type": "select_one",
@@ -3577,12 +4123,12 @@
                 "text": "Etnia"
               }
             },
-            "_row_num": 27,
-            "__rowNum__": 26,
+            "_row_num": 28,
+            "__rowNum__": 27,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen27",
-            "promptIdx": 15
+            "_branch_label_enclosing_screen": "survey/_screen28",
+            "promptIdx": 16
           },
           {
             "type": "text",
@@ -3592,12 +4138,12 @@
                 "text": "Especifica a outra Etnia"
               }
             },
-            "_row_num": 28,
-            "__rowNum__": 27,
+            "_row_num": 29,
+            "__rowNum__": 28,
             "_token_type": "prompt",
             "_type": "text",
-            "_branch_label_enclosing_screen": "survey/_screen28",
-            "promptIdx": 16
+            "_branch_label_enclosing_screen": "survey/_screen29",
+            "promptIdx": 17
           },
           {
             "type": "select_one",
@@ -3608,12 +4154,12 @@
                 "text": "Nationalidade"
               }
             },
-            "_row_num": 29,
-            "__rowNum__": 28,
+            "_row_num": 30,
+            "__rowNum__": 29,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen29",
-            "promptIdx": 17
+            "_branch_label_enclosing_screen": "survey/_screen30",
+            "promptIdx": 18
           },
           {
             "type": "text",
@@ -3623,12 +4169,12 @@
                 "text": "Especifica a outra nacionalidade"
               }
             },
-            "_row_num": 30,
-            "__rowNum__": 29,
+            "_row_num": 31,
+            "__rowNum__": 30,
             "_token_type": "prompt",
             "_type": "text",
-            "_branch_label_enclosing_screen": "survey/_screen30",
-            "promptIdx": 18
+            "_branch_label_enclosing_screen": "survey/_screen31",
+            "promptIdx": 19
           },
           {
             "type": "integer",
@@ -3638,12 +4184,12 @@
                 "text": "Escolaridade mãe/com quem vive: Foi à escola?"
               }
             },
-            "_row_num": 31,
-            "__rowNum__": 30,
+            "_row_num": 32,
+            "__rowNum__": 31,
             "_token_type": "prompt",
             "_type": "integer",
-            "_branch_label_enclosing_screen": "survey/_screen31",
-            "promptIdx": 19
+            "_branch_label_enclosing_screen": "survey/_screen32",
+            "promptIdx": 20
           },
           {
             "type": "select_one",
@@ -3654,12 +4200,12 @@
                 "text": "Fez algum curso"
               }
             },
-            "_row_num": 32,
-            "__rowNum__": 31,
+            "_row_num": 33,
+            "__rowNum__": 32,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen32",
-            "promptIdx": 20
+            "_branch_label_enclosing_screen": "survey/_screen33",
+            "promptIdx": 21
           },
           {
             "type": "select_one",
@@ -3670,12 +4216,12 @@
                 "text": "Profissão ou principal ocupação da mãe?"
               }
             },
-            "_row_num": 33,
-            "__rowNum__": 32,
+            "_row_num": 34,
+            "__rowNum__": 33,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen33",
-            "promptIdx": 21
+            "_branch_label_enclosing_screen": "survey/_screen34",
+            "promptIdx": 22
           },
           {
             "type": "text",
@@ -3685,20 +4231,380 @@
                 "text": "Especifica a ocupação"
               }
             },
-            "_row_num": 34,
-            "__rowNum__": 33,
+            "_row_num": 35,
+            "__rowNum__": 34,
             "_token_type": "prompt",
             "_type": "text",
-            "_branch_label_enclosing_screen": "survey/_screen34",
-            "promptIdx": 22
+            "_branch_label_enclosing_screen": "survey/_screen35",
+            "promptIdx": 23
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesnodk",
+            "name": "participa",
+            "display": {
+              "prompt": {
+                "text": "Tomou vacina de sarampo nesta campanha?"
+              }
+            },
+            "_row_num": 37,
+            "__rowNum__": 36,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen37",
+            "promptIdx": 24
+          },
+          {
+            "type": "select_one",
+            "values_list": "campanha",
+            "name": "vi_cartao",
+            "display": {
+              "prompt": {
+                "text": "Viu o cartão da Campanha"
+              }
+            },
+            "_row_num": 42,
+            "__rowNum__": 41,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen42",
+            "promptIdx": 25
+          },
+          {
+            "type": "select_one",
+            "values_list": "dados",
+            "name": "noutro_cartao",
+            "display": {
+              "prompt": {
+                "text": "Viu os dados da campanha de Maio de 2019 noutro cartão?"
+              }
+            },
+            "_row_num": 43,
+            "__rowNum__": 42,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen43",
+            "promptIdx": 26
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "tem_data",
+            "display": {
+              "prompt": {
+                "text": "O cartão tem data?"
+              }
+            },
+            "_row_num": 44,
+            "__rowNum__": 43,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen44",
+            "promptIdx": 27
+          },
+          {
+            "type": "date",
+            "name": "data_vacina",
+            "display": {
+              "prompt": {
+                "text": "Data no Cartão"
+              }
+            },
+            "_row_num": 45,
+            "__rowNum__": 44,
+            "_token_type": "prompt",
+            "_type": "date",
+            "_branch_label_enclosing_screen": "survey/_screen45",
+            "promptIdx": 28
+          },
+          {
+            "type": "integer",
+            "name": "lote",
+            "display": {
+              "prompt": {
+                "text": "Lote Nº"
+              }
+            },
+            "_row_num": 46,
+            "__rowNum__": 45,
+            "_token_type": "prompt",
+            "_type": "integer",
+            "_branch_label_enclosing_screen": "survey/_screen46",
+            "promptIdx": 29
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesnodk",
+            "name": "teve_mapi",
+            "display": {
+              "prompt": {
+                "text": "Após a vacina de Sarampo, a criança teve algum problema ligado a vacina?"
+              }
+            },
+            "_row_num": 52,
+            "__rowNum__": 51,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen52",
+            "promptIdx": 30
+          },
+          {
+            "type": "select_multiple",
+            "values_list": "mapi",
+            "name": "mapi",
+            "display": {
+              "prompt": {
+                "text": "Se sim, quais são?"
+              }
+            },
+            "_row_num": 53,
+            "__rowNum__": 52,
+            "_token_type": "prompt",
+            "_type": "select_multiple",
+            "_branch_label_enclosing_screen": "survey/_screen53",
+            "promptIdx": 31
+          },
+          {
+            "type": "text",
+            "name": "esp_mapi",
+            "display": {
+              "prompt": {
+                "text": "Especifica"
+              }
+            },
+            "_row_num": 54,
+            "__rowNum__": 53,
+            "_token_type": "prompt",
+            "_type": "text",
+            "_branch_label_enclosing_screen": "survey/_screen54",
+            "promptIdx": 32
+          },
+          {
+            "type": "select_one",
+            "values_list": "razao",
+            "name": "razao",
+            "display": {
+              "prompt": {
+                "text": "Razões de não participação na campanha de Maio de 2019"
+              }
+            },
+            "_row_num": 56,
+            "__rowNum__": 55,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen56",
+            "promptIdx": 33
+          },
+          {
+            "type": "text",
+            "name": "esp_razao",
+            "display": {
+              "prompt": {
+                "text": "Especificar qual ${razao}?"
+              }
+            },
+            "_row_num": 57,
+            "__rowNum__": 56,
+            "_token_type": "prompt",
+            "_type": "text",
+            "_branch_label_enclosing_screen": "survey/_screen57",
+            "promptIdx": 34
+          },
+          {
+            "type": "select_one",
+            "values_list": "contra",
+            "name": "contra",
+            "display": {
+              "prompt": {
+                "text": "Se sim, qual?"
+              }
+            },
+            "_row_num": 58,
+            "__rowNum__": 57,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen58",
+            "promptIdx": 35
+          },
+          {
+            "type": "text",
+            "name": "esp_contra",
+            "display": {
+              "prompt": {
+                "text": "Especifica"
+              }
+            },
+            "_row_num": 59,
+            "__rowNum__": 58,
+            "_token_type": "prompt",
+            "_type": "text",
+            "_branch_label_enclosing_screen": "survey/_screen59",
+            "promptIdx": 36
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "saber",
+            "display": {
+              "prompt": {
+                "text": "Soube da campanha?"
+              }
+            },
+            "_row_num": 61,
+            "__rowNum__": 60,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen61",
+            "promptIdx": 37
+          },
+          {
+            "type": "select_one",
+            "values_list": "tempo",
+            "name": "quando",
+            "display": {
+              "prompt": {
+                "text": "Quando soube?"
+              }
+            },
+            "_row_num": 62,
+            "__rowNum__": 61,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen62",
+            "promptIdx": 38
+          },
+          {
+            "type": "select_multiple",
+            "values_list": "info",
+            "name": "como",
+            "display": {
+              "prompt": {
+                "text": "Como soube/ouviu?"
+              }
+            },
+            "_row_num": 63,
+            "__rowNum__": 62,
+            "_token_type": "prompt",
+            "_type": "select_multiple",
+            "_branch_label_enclosing_screen": "survey/_screen63",
+            "promptIdx": 39
+          },
+          {
+            "type": "text",
+            "name": "esp_como",
+            "display": {
+              "prompt": {
+                "text": "Especifica"
+              }
+            },
+            "_row_num": 64,
+            "__rowNum__": 63,
+            "_token_type": "prompt",
+            "_type": "text",
+            "_branch_label_enclosing_screen": "survey/_screen64",
+            "promptIdx": 40
+          },
+          {
+            "type": "select_one",
+            "values_list": "rotina",
+            "name": "rotina",
+            "display": {
+              "prompt": {
+                "text": "Vacinas  de rotina"
+              }
+            },
+            "_row_num": 66,
+            "__rowNum__": 65,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen66",
+            "promptIdx": 41
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "viu_data_sar",
+            "display": {
+              "prompt": {
+                "text": "Se viu, o cartão tem data"
+              }
+            },
+            "_row_num": 67,
+            "__rowNum__": 66,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen67",
+            "promptIdx": 42
+          },
+          {
+            "type": "date",
+            "name": "sarampo",
+            "display": {
+              "prompt": {
+                "text": "Data da vacina do Sarampo"
+              }
+            },
+            "_row_num": 68,
+            "__rowNum__": 67,
+            "_token_type": "prompt",
+            "_type": "date",
+            "_branch_label_enclosing_screen": "survey/_screen68",
+            "promptIdx": 43
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesnodk",
+            "name": "toma_vacina",
+            "display": {
+              "prompt": {
+                "text": "Tomou alguma vacina?"
+              }
+            },
+            "_row_num": 69,
+            "__rowNum__": 68,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen69",
+            "promptIdx": 44
+          },
+          {
+            "type": "select_one",
+            "values_list": "inq",
+            "name": "inquiridor",
+            "display": {
+              "prompt": {
+                "text": "Iniciais do inquiridor"
+              }
+            },
+            "_row_num": 73,
+            "__rowNum__": 72,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen73",
+            "promptIdx": 45
+          },
+          {
+            "type": "text",
+            "name": "comments",
+            "display": {
+              "prompt": {
+                "text": "Outro comentários"
+              }
+            },
+            "_row_num": 75,
+            "__rowNum__": 74,
+            "_token_type": "prompt",
+            "_type": "text",
+            "_branch_label_enclosing_screen": "survey/_screen75",
+            "promptIdx": 46
           },
           {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 35,
-            "_branch_label_enclosing_screen": "survey/_screen35",
-            "promptIdx": 23
+            "_row_num": 76,
+            "_branch_label_enclosing_screen": "survey/_screen76",
+            "promptIdx": 47
           }
         ],
         "validation_tag_map": {
@@ -3742,181 +4648,377 @@
             "operationIdx": 5
           },
           {
-            "_row_num": 12,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(6);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 6
-          },
-          {
             "clause": "if",
-            "condition": "data('dob_or_age')===1",
-            "_row_num": 13,
-            "__rowNum__": 12,
+            "condition": "selected(data('consent'),'2')",
+            "_row_num": 11,
+            "__rowNum__": 10,
             "_token_type": "goto_label",
-            "_branch_label": "_then13",
-            "operationIdx": 7
+            "_branch_label": "_then11",
+            "operationIdx": 6
           },
           {
             "clause": "else",
             "_token_type": "goto_label",
-            "_branch_label": "_else15",
-            "_row_num": 15,
+            "_branch_label": "_else13",
+            "_row_num": 13,
+            "operationIdx": 7
+          },
+          {
+            "_row_num": 12,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(6);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 8
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif71",
+            "_row_num": 71,
+            "operationIdx": 9
           },
           {
             "_row_num": 14,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(7);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 9
+            "operationIdx": 10
           },
           {
-            "clause": "end if",
+            "clause": "if",
+            "condition": "selected(data('dob_or_age'),'1')",
+            "_row_num": 15,
+            "__rowNum__": 14,
             "_token_type": "goto_label",
-            "_branch_label": "_endif18",
-            "_row_num": 18,
-            "operationIdx": 10
+            "_branch_label": "_then15",
+            "operationIdx": 11
+          },
+          {
+            "clause": "else",
+            "_token_type": "goto_label",
+            "_branch_label": "_else17",
+            "_row_num": 17,
+            "operationIdx": 12
           },
           {
             "_row_num": 16,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(8);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 11
-          },
-          {
-            "_row_num": 17,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(9);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 12
-          },
-          {
-            "_row_num": 21,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(10);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 13
           },
           {
-            "_row_num": 23,
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif20",
+            "_row_num": 20,
+            "operationIdx": 14
+          },
+          {
+            "_row_num": 18,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(9);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 15
+          },
+          {
+            "_row_num": 19,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(10);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 16
+          },
+          {
+            "_row_num": 22,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(11);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 14
+            "operationIdx": 17
           },
           {
             "_row_num": 24,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(12);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 15
+            "operationIdx": 18
           },
           {
             "_row_num": 25,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(13);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 16
+            "operationIdx": 19
           },
           {
             "_row_num": 26,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(14);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 17
+            "operationIdx": 20
           },
           {
             "_row_num": 27,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(15);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 18
+            "operationIdx": 21
           },
           {
             "_row_num": 28,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(16);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 19
+            "operationIdx": 22
           },
           {
             "_row_num": 29,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(17);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 20
+            "operationIdx": 23
           },
           {
             "_row_num": 30,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(18);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 21
+            "operationIdx": 24
           },
           {
             "_row_num": 31,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(19);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 22
+            "operationIdx": 25
           },
           {
             "_row_num": 32,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(20);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 23
+            "operationIdx": 26
           },
           {
             "_row_num": 33,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(21);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 24
+            "operationIdx": 27
           },
           {
             "_row_num": 34,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(22);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 25
-          },
-          {
-            "_token_type": "exit_section",
-            "clause": "exit section",
-            "_row_num": 35,
-            "operationIdx": 26
+            "operationIdx": 28
           },
           {
             "_row_num": 35,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(23);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 29
+          },
+          {
+            "_row_num": 37,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(24);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 30
+          },
+          {
+            "_row_num": 42,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(25);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 31
+          },
+          {
+            "_row_num": 43,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(26);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 32
+          },
+          {
+            "_row_num": 44,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(27);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 33
+          },
+          {
+            "_row_num": 45,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(28);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 34
+          },
+          {
+            "_row_num": 46,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(29);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 35
+          },
+          {
+            "_row_num": 52,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(30);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 36
+          },
+          {
+            "_row_num": 53,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(31);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 37
+          },
+          {
+            "_row_num": 54,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(32);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 38
+          },
+          {
+            "_row_num": 56,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(33);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 39
+          },
+          {
+            "_row_num": 57,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(34);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 40
+          },
+          {
+            "_row_num": 58,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(35);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 41
+          },
+          {
+            "_row_num": 59,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(36);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 42
+          },
+          {
+            "_row_num": 61,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(37);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 43
+          },
+          {
+            "_row_num": 62,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(38);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 44
+          },
+          {
+            "_row_num": 63,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(39);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 45
+          },
+          {
+            "_row_num": 64,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(40);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 46
+          },
+          {
+            "_row_num": 66,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(41);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 47
+          },
+          {
+            "_row_num": 67,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(42);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 48
+          },
+          {
+            "_row_num": 68,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(43);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 49
+          },
+          {
+            "_row_num": 69,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(44);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 50
+          },
+          {
+            "_row_num": 73,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(45);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 51
+          },
+          {
+            "_row_num": 75,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(46);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 52
+          },
+          {
+            "_token_type": "exit_section",
+            "clause": "exit section",
+            "_row_num": 76,
+            "operationIdx": 53
+          },
+          {
+            "_row_num": 76,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(47);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
-            "operationIdx": 27
+            "operationIdx": 54
           },
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 35,
-            "operationIdx": 28
+            "_row_num": 76,
+            "operationIdx": 55
           }
         ],
         "branch_label_map": {
+          "begin  screen": 0,
           "_screen4": 0,
           "_screen5": 1,
           "_screen6": 2,
           "_screen7": 3,
           "_screen8": 4,
           "_screen9": 5,
-          "_screen12": 6,
-          "_then13": 9,
-          "_screen14": 9,
-          "_else15": 11,
-          "_screen16": 11,
-          "_screen17": 12,
-          "_endif18": 13,
-          "_screen21": 13,
-          "_screen23": 14,
-          "_screen24": 15,
-          "_screen25": 16,
-          "_screen26": 17,
-          "_screen27": 18,
-          "_screen28": 19,
-          "_screen29": 20,
-          "_screen30": 21,
-          "_screen31": 22,
-          "_screen32": 23,
-          "_screen33": 24,
-          "_screen34": 25,
-          "_contents": 27,
-          "_screen35": 27
+          "end screen": 6,
+          "_then11": 8,
+          "_screen12": 8,
+          "_else13": 10,
+          "_screen14": 10,
+          "_then15": 13,
+          "_screen16": 13,
+          "_else17": 15,
+          "_screen18": 15,
+          "_screen19": 16,
+          "_endif20": 17,
+          "_screen22": 17,
+          "_screen24": 18,
+          "_screen25": 19,
+          "_screen26": 20,
+          "_screen27": 21,
+          "_screen28": 22,
+          "_screen29": 23,
+          "_screen30": 24,
+          "_screen31": 25,
+          "_screen32": 26,
+          "_screen33": 27,
+          "_screen34": 28,
+          "_screen35": 29,
+          "_screen37": 30,
+          "_screen42": 31,
+          "_screen43": 32,
+          "_screen44": 33,
+          "_screen45": 34,
+          "_screen46": 35,
+          "_screen52": 36,
+          "_screen53": 37,
+          "_screen54": 38,
+          "_screen56": 39,
+          "_screen57": 40,
+          "_screen58": 41,
+          "_screen59": 42,
+          "_screen61": 43,
+          "_screen62": 44,
+          "_screen63": 45,
+          "_screen64": 46,
+          "_screen66": 47,
+          "_screen67": 48,
+          "_screen68": 49,
+          "_screen69": 50,
+          "_endif71": 51,
+          "_screen73": 51,
+          "_screen75": 52,
+          "_contents": 54,
+          "_screen76": 54
         }
       },
       "initial": {
@@ -4140,24 +5242,10 @@
         "elementSet": "data",
         "elementPath": "sector"
       },
-      "zona": {
-        "_defn": [
-          {
-            "_row_num": 7,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "zona_csv",
-        "elementKey": "zona",
-        "elementName": "zona",
-        "elementSet": "data",
-        "elementPath": "zona"
-      },
       "local": {
         "_defn": [
           {
-            "_row_num": 8,
+            "_row_num": 7,
             "section_name": "survey"
           }
         ],
@@ -4171,7 +5259,7 @@
       "af": {
         "_defn": [
           {
-            "_row_num": 9,
+            "_row_num": 8,
             "section_name": "survey"
           }
         ],
@@ -4181,10 +5269,42 @@
         "elementSet": "data",
         "elementPath": "af"
       },
-      "dob_or_age": {
+      "consent": {
+        "_defn": [
+          {
+            "_row_num": 9,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "consent",
+        "elementName": "consent",
+        "elementSet": "data",
+        "elementPath": "consent"
+      },
+      "razao": {
+        "type": "string",
+        "valuesList": "razao",
         "_defn": [
           {
             "_row_num": 12,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 56,
+            "section_name": "survey"
+          }
+        ],
+        "elementKey": "razao",
+        "elementName": "razao",
+        "elementSet": "data",
+        "elementPath": "razao"
+      },
+      "dob_or_age": {
+        "_defn": [
+          {
+            "_row_num": 14,
             "section_name": "survey"
           }
         ],
@@ -4198,7 +5318,7 @@
       "DOB": {
         "_defn": [
           {
-            "_row_num": 14,
+            "_row_num": 16,
             "section_name": "survey"
           }
         ],
@@ -4212,7 +5332,7 @@
       "ano": {
         "_defn": [
           {
-            "_row_num": 16,
+            "_row_num": 18,
             "section_name": "survey"
           }
         ],
@@ -4225,7 +5345,7 @@
       "mes": {
         "_defn": [
           {
-            "_row_num": 17,
+            "_row_num": 19,
             "section_name": "survey"
           }
         ],
@@ -4238,11 +5358,11 @@
       "sexo": {
         "_defn": [
           {
-            "_row_num": 21,
+            "_row_num": 22,
             "section_name": "survey"
           }
         ],
-        "type": "string",
+        "type": "integer",
         "valuesList": "sexo",
         "elementKey": "sexo",
         "elementName": "sexo",
@@ -4252,11 +5372,11 @@
       "infor": {
         "_defn": [
           {
-            "_row_num": 23,
+            "_row_num": 24,
             "section_name": "survey"
           }
         ],
-        "type": "string",
+        "type": "integer",
         "valuesList": "informador",
         "elementKey": "infor",
         "elementName": "infor",
@@ -4266,7 +5386,7 @@
       "esp_infor": {
         "_defn": [
           {
-            "_row_num": 24,
+            "_row_num": 25,
             "section_name": "survey"
           }
         ],
@@ -4279,11 +5399,11 @@
       "vivendo_com": {
         "_defn": [
           {
-            "_row_num": 25,
+            "_row_num": 26,
             "section_name": "survey"
           }
         ],
-        "type": "string",
+        "type": "integer",
         "valuesList": "vivecom",
         "elementKey": "vivendo_com",
         "elementName": "vivendo_com",
@@ -4293,7 +5413,7 @@
       "esp_vivecom": {
         "_defn": [
           {
-            "_row_num": 26,
+            "_row_num": 27,
             "section_name": "survey"
           }
         ],
@@ -4306,7 +5426,7 @@
       "etnia": {
         "_defn": [
           {
-            "_row_num": 27,
+            "_row_num": 28,
             "section_name": "survey"
           }
         ],
@@ -4320,7 +5440,7 @@
       "esp_etnia": {
         "_defn": [
           {
-            "_row_num": 28,
+            "_row_num": 29,
             "section_name": "survey"
           }
         ],
@@ -4333,7 +5453,7 @@
       "nacionalidade": {
         "_defn": [
           {
-            "_row_num": 29,
+            "_row_num": 30,
             "section_name": "survey"
           }
         ],
@@ -4347,7 +5467,7 @@
       "esp_naciona": {
         "_defn": [
           {
-            "_row_num": 30,
+            "_row_num": 31,
             "section_name": "survey"
           }
         ],
@@ -4360,7 +5480,7 @@
       "escolaridade": {
         "_defn": [
           {
-            "_row_num": 31,
+            "_row_num": 32,
             "section_name": "survey"
           }
         ],
@@ -4373,7 +5493,7 @@
       "curso": {
         "_defn": [
           {
-            "_row_num": 32,
+            "_row_num": 33,
             "section_name": "survey"
           }
         ],
@@ -4387,7 +5507,7 @@
       "ocupacao": {
         "_defn": [
           {
-            "_row_num": 33,
+            "_row_num": 34,
             "section_name": "survey"
           }
         ],
@@ -4401,7 +5521,7 @@
       "esp_ocupa": {
         "_defn": [
           {
-            "_row_num": 34,
+            "_row_num": 35,
             "section_name": "survey"
           }
         ],
@@ -4410,6 +5530,346 @@
         "elementName": "esp_ocupa",
         "elementSet": "data",
         "elementPath": "esp_ocupa"
+      },
+      "participa": {
+        "_defn": [
+          {
+            "_row_num": 37,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesnodk",
+        "elementKey": "participa",
+        "elementName": "participa",
+        "elementSet": "data",
+        "elementPath": "participa"
+      },
+      "vi_cartao": {
+        "_defn": [
+          {
+            "_row_num": 42,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "campanha",
+        "elementKey": "vi_cartao",
+        "elementName": "vi_cartao",
+        "elementSet": "data",
+        "elementPath": "vi_cartao"
+      },
+      "noutro_cartao": {
+        "_defn": [
+          {
+            "_row_num": 43,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "dados",
+        "elementKey": "noutro_cartao",
+        "elementName": "noutro_cartao",
+        "elementSet": "data",
+        "elementPath": "noutro_cartao"
+      },
+      "tem_data": {
+        "_defn": [
+          {
+            "_row_num": 44,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "tem_data",
+        "elementName": "tem_data",
+        "elementSet": "data",
+        "elementPath": "tem_data"
+      },
+      "data_vacina": {
+        "_defn": [
+          {
+            "_row_num": 45,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementType": "date",
+        "elementKey": "data_vacina",
+        "elementName": "data_vacina",
+        "elementSet": "data",
+        "elementPath": "data_vacina"
+      },
+      "lote": {
+        "_defn": [
+          {
+            "_row_num": 46,
+            "section_name": "survey"
+          }
+        ],
+        "type": "integer",
+        "elementKey": "lote",
+        "elementName": "lote",
+        "elementSet": "data",
+        "elementPath": "lote"
+      },
+      "teve_mapi": {
+        "_defn": [
+          {
+            "_row_num": 52,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesnodk",
+        "elementKey": "teve_mapi",
+        "elementName": "teve_mapi",
+        "elementSet": "data",
+        "elementPath": "teve_mapi"
+      },
+      "mapi": {
+        "_defn": [
+          {
+            "_row_num": 53,
+            "section_name": "survey"
+          }
+        ],
+        "type": "array",
+        "items": {
+          "type": "string",
+          "elementKey": "mapi_items",
+          "elementName": "items",
+          "elementSet": "data",
+          "elementPath": "mapi.items",
+          "notUnitOfRetention": true
+        },
+        "valuesList": "mapi",
+        "elementKey": "mapi",
+        "elementName": "mapi",
+        "elementSet": "data",
+        "elementPath": "mapi",
+        "listChildElementKeys": [
+          "mapi_items"
+        ]
+      },
+      "esp_mapi": {
+        "_defn": [
+          {
+            "_row_num": 54,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "esp_mapi",
+        "elementName": "esp_mapi",
+        "elementSet": "data",
+        "elementPath": "esp_mapi"
+      },
+      "esp_razao": {
+        "_defn": [
+          {
+            "_row_num": 57,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "esp_razao",
+        "elementName": "esp_razao",
+        "elementSet": "data",
+        "elementPath": "esp_razao"
+      },
+      "contra": {
+        "_defn": [
+          {
+            "_row_num": 58,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "contra",
+        "elementKey": "contra",
+        "elementName": "contra",
+        "elementSet": "data",
+        "elementPath": "contra"
+      },
+      "esp_contra": {
+        "_defn": [
+          {
+            "_row_num": 59,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "esp_contra",
+        "elementName": "esp_contra",
+        "elementSet": "data",
+        "elementPath": "esp_contra"
+      },
+      "saber": {
+        "_defn": [
+          {
+            "_row_num": 61,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "saber",
+        "elementName": "saber",
+        "elementSet": "data",
+        "elementPath": "saber"
+      },
+      "quando": {
+        "_defn": [
+          {
+            "_row_num": 62,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "tempo",
+        "elementKey": "quando",
+        "elementName": "quando",
+        "elementSet": "data",
+        "elementPath": "quando"
+      },
+      "como": {
+        "_defn": [
+          {
+            "_row_num": 63,
+            "section_name": "survey"
+          }
+        ],
+        "type": "array",
+        "items": {
+          "type": "string",
+          "elementKey": "como_items",
+          "elementName": "items",
+          "elementSet": "data",
+          "elementPath": "como.items",
+          "notUnitOfRetention": true
+        },
+        "valuesList": "info",
+        "elementKey": "como",
+        "elementName": "como",
+        "elementSet": "data",
+        "elementPath": "como",
+        "listChildElementKeys": [
+          "como_items"
+        ]
+      },
+      "esp_como": {
+        "_defn": [
+          {
+            "_row_num": 64,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "esp_como",
+        "elementName": "esp_como",
+        "elementSet": "data",
+        "elementPath": "esp_como"
+      },
+      "rotina": {
+        "_defn": [
+          {
+            "_row_num": 66,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "rotina",
+        "elementKey": "rotina",
+        "elementName": "rotina",
+        "elementSet": "data",
+        "elementPath": "rotina"
+      },
+      "viu_data_sar": {
+        "_defn": [
+          {
+            "_row_num": 67,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "viu_data_sar",
+        "elementName": "viu_data_sar",
+        "elementSet": "data",
+        "elementPath": "viu_data_sar"
+      },
+      "sarampo": {
+        "_defn": [
+          {
+            "_row_num": 68,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementType": "date",
+        "elementKey": "sarampo",
+        "elementName": "sarampo",
+        "elementSet": "data",
+        "elementPath": "sarampo"
+      },
+      "toma_vacina": {
+        "_defn": [
+          {
+            "_row_num": 69,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesnodk",
+        "elementKey": "toma_vacina",
+        "elementName": "toma_vacina",
+        "elementSet": "data",
+        "elementPath": "toma_vacina"
+      },
+      "inquiridor": {
+        "_defn": [
+          {
+            "_row_num": 73,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "inq",
+        "elementKey": "inquiridor",
+        "elementName": "inquiridor",
+        "elementSet": "data",
+        "elementPath": "inquiridor"
+      },
+      "comments": {
+        "_defn": [
+          {
+            "_row_num": 75,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "comments",
+        "elementName": "comments",
+        "elementSet": "data",
+        "elementPath": "comments"
+      },
+      "mapi_items": {
+        "type": "string",
+        "elementKey": "mapi_items",
+        "elementName": "items",
+        "elementSet": "data",
+        "elementPath": "mapi.items",
+        "notUnitOfRetention": true
+      },
+      "como_items": {
+        "type": "string",
+        "elementKey": "como_items",
+        "elementName": "items",
+        "elementSet": "data",
+        "elementPath": "como.items",
+        "notUnitOfRetention": true
       },
       "_id": {
         "type": "string",
@@ -4527,6 +5987,27 @@
     "properties": [
       {
         "_partition": "Column",
+        "_aspect": "como",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"info\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Rádio\"}},\"_row_num\":117},{\"choice_list_name\":\"info\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"ASC\"}},\"_row_num\":118},{\"choice_list_name\":\"info\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"SMS MTN/Orange\"}},\"_row_num\":119},{\"choice_list_name\":\"info\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Cartazes\"}},\"_row_num\":120},{\"choice_list_name\":\"info\",\"data_value\":5,\"display\":{\"title\":{\"text\":\"Pessoal de saúde\"}},\"_row_num\":121},{\"choice_list_name\":\"info\",\"data_value\":6,\"display\":{\"title\":{\"text\":\"Familiares/amigos/vizinhos/colegas\"}},\"_row_num\":122},{\"choice_list_name\":\"info\",\"data_value\":7,\"display\":{\"title\":{\"text\":\"Líderes religiosos\"}},\"_row_num\":123},{\"choice_list_name\":\"info\",\"data_value\":8,\"display\":{\"title\":{\"text\":\"Comite/autoridade local\"}},\"_row_num\":124},{\"choice_list_name\":\"info\",\"data_value\":9,\"display\":{\"title\":{\"text\":\"Voluntarios\"}},\"_row_num\":125},{\"choice_list_name\":\"info\",\"data_value\":10,\"display\":{\"title\":{\"text\":\"TV\"}},\"_row_num\":126},{\"choice_list_name\":\"info\",\"data_value\":77,\"display\":{\"title\":{\"text\":\"Outros\"}},\"_row_num\":127}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "consent",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":3},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":4}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "contra",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"contra\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Febre\"}},\"_row_num\":107},{\"choice_list_name\":\"contra\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Diarrea\"}},\"_row_num\":108},{\"choice_list_name\":\"contra\",\"data_value\":77,\"display\":{\"title\":{\"text\":\"Outro\"}},\"_row_num\":109}]"
+      },
+      {
+        "_partition": "Column",
         "_aspect": "curso",
         "_key": "displayChoicesList",
         "_type": "object",
@@ -4555,10 +6036,31 @@
       },
       {
         "_partition": "Column",
+        "_aspect": "inquiridor",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"inq\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Adalgisa F.M.Campal\"}},\"_row_num\":139},{\"choice_list_name\":\"inq\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Agostinho Gomes Betunde\"}},\"_row_num\":140},{\"choice_list_name\":\"inq\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Eduardo Sá\"}},\"_row_num\":141},{\"choice_list_name\":\"inq\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Ernesto Nante\"}},\"_row_num\":142},{\"choice_list_name\":\"inq\",\"data_value\":5,\"display\":{\"title\":{\"text\":\"Ginesio da Silva\"}},\"_row_num\":143},{\"choice_list_name\":\"inq\",\"data_value\":6,\"display\":{\"title\":{\"text\":\"Jenito da Silva\"}},\"_row_num\":144},{\"choice_list_name\":\"inq\",\"data_value\":7,\"display\":{\"title\":{\"text\":\"Joaninha Martins\"}},\"_row_num\":145},{\"choice_list_name\":\"inq\",\"data_value\":8,\"display\":{\"title\":{\"text\":\"João Lucas\"}},\"_row_num\":146},{\"choice_list_name\":\"inq\",\"data_value\":9,\"display\":{\"title\":{\"text\":\"Justino Sá\"}},\"_row_num\":147},{\"choice_list_name\":\"inq\",\"data_value\":10,\"display\":{\"title\":{\"text\":\"Maxiriano\"}},\"_row_num\":148},{\"choice_list_name\":\"inq\",\"data_value\":11,\"display\":{\"title\":{\"text\":\"Nilva Mayara da Silva\"}},\"_row_num\":149},{\"choice_list_name\":\"inq\",\"data_value\":12,\"display\":{\"title\":{\"text\":\"Ronise da Silva\"}},\"_row_num\":150},{\"choice_list_name\":\"inq\",\"data_value\":13,\"display\":{\"title\":{\"text\":\"Rosangela da Silva\"}},\"_row_num\":151},{\"choice_list_name\":\"inq\",\"data_value\":14,\"display\":{\"title\":{\"text\":\"Sam Mendes\"}},\"_row_num\":152},{\"choice_list_name\":\"inq\",\"data_value\":15,\"display\":{\"title\":{\"text\":\"Samantha Ferreira\"}},\"_row_num\":153},{\"choice_list_name\":\"inq\",\"data_value\":16,\"display\":{\"title\":{\"text\":\"Simão\"}},\"_row_num\":154},{\"choice_list_name\":\"inq\",\"data_value\":17,\"display\":{\"title\":{\"text\":\"Usain Carlos Medina\"}},\"_row_num\":155},{\"choice_list_name\":\"inq\",\"data_value\":18,\"display\":{\"title\":{\"text\":\"Wilson da Mata\"}},\"_row_num\":156}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "mapi",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"mapi\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Febre alta\"}},\"_row_num\":80},{\"choice_list_name\":\"mapi\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Abcesso no local da injeção\"}},\"_row_num\":81},{\"choice_list_name\":\"mapi\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Alteração da consciência/desmaiou\"}},\"_row_num\":82},{\"choice_list_name\":\"mapi\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Choque anafiláctico  (comichão urticária-progressivo, erupção cutânea, inchaço da cara e área da boca, sintomas respiratórios)\"}},\"_row_num\":83},{\"choice_list_name\":\"mapi\",\"data_value\":5,\"display\":{\"title\":{\"text\":\"Quaisquer outros eventos graves/incomuns?\"}},\"_row_num\":84},{\"choice_list_name\":\"mapi\",\"data_value\":77,\"display\":{\"title\":{\"text\":\"Outro\"}},\"_row_num\":85}]"
+      },
+      {
+        "_partition": "Column",
         "_aspect": "nacionalidade",
         "_key": "displayChoicesList",
         "_type": "object",
         "_value": "[{\"choice_list_name\":\"nacionalidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Guiné-Bissau\"}},\"_row_num\":58},{\"choice_list_name\":\"nacionalidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Guiné-Conakry\"}},\"_row_num\":59},{\"choice_list_name\":\"nacionalidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Senegal\"}},\"_row_num\":60},{\"choice_list_name\":\"nacionalidade\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Cabo-Verde\"}},\"_row_num\":61},{\"choice_list_name\":\"nacionalidade\",\"data_value\":7,\"display\":{\"title\":{\"text\":\"Outro\"}},\"_row_num\":62}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "noutro_cartao",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"dados\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Cartão de Rotina\"}},\"_row_num\":75},{\"choice_list_name\":\"dados\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Noutro cartão\"}},\"_row_num\":76},{\"choice_list_name\":\"dados\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Num papel\"}},\"_row_num\":77},{\"choice_list_name\":\"dados\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":78}]"
       },
       {
         "_partition": "Column",
@@ -4569,10 +6071,80 @@
       },
       {
         "_partition": "Column",
+        "_aspect": "participa",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesnodk\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":6},{\"choice_list_name\":\"yesnodk\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":7},{\"choice_list_name\":\"yesnodk\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"NS\"}},\"_row_num\":8}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "quando",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"tempo\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Antes da campanha\"}},\"_row_num\":129},{\"choice_list_name\":\"tempo\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"No mesmo dia da campanha\"}},\"_row_num\":130},{\"choice_list_name\":\"tempo\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Só depois da campanha\"}},\"_row_num\":131}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "razao",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"razao\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Desconhecia a necessidade de vacinação\"}},\"_row_num\":88},{\"choice_list_name\":\"razao\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Desconhecia o local e data de vacinação\"}},\"_row_num\":89},{\"choice_list_name\":\"razao\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Receio dos efeitos secundários da vacina\"}},\"_row_num\":90},{\"choice_list_name\":\"razao\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Acham que a criança tinha uma contra-indicação\"}},\"_row_num\":91},{\"choice_list_name\":\"razao\",\"data_value\":5,\"display\":{\"title\":{\"text\":\"Mãe/encarregado ausente\"}},\"_row_num\":92},{\"choice_list_name\":\"razao\",\"data_value\":6,\"display\":{\"title\":{\"text\":\"Falta de confiança na vacinação\"}},\"_row_num\":93},{\"choice_list_name\":\"razao\",\"data_value\":7,\"display\":{\"title\":{\"text\":\"Rumores\"}},\"_row_num\":94},{\"choice_list_name\":\"razao\",\"data_value\":8,\"display\":{\"title\":{\"text\":\"O posto de vacinação muito longe\"}},\"_row_num\":95},{\"choice_list_name\":\"razao\",\"data_value\":9,\"display\":{\"title\":{\"text\":\"Momento inapropriado\"}},\"_row_num\":96},{\"choice_list_name\":\"razao\",\"data_value\":10,\"display\":{\"title\":{\"text\":\"Vacinador ausente\"}},\"_row_num\":97},{\"choice_list_name\":\"razao\",\"data_value\":11,\"display\":{\"title\":{\"text\":\"Não havia disponibilidade de vacina\"}},\"_row_num\":98},{\"choice_list_name\":\"razao\",\"data_value\":12,\"display\":{\"title\":{\"text\":\"Mãe ou responsável muito ocupada\"}},\"_row_num\":99},{\"choice_list_name\":\"razao\",\"data_value\":13,\"display\":{\"title\":{\"text\":\"Problema na família (mãe doente, etc.)\"}},\"_row_num\":100},{\"choice_list_name\":\"razao\",\"data_value\":14,\"display\":{\"title\":{\"text\":\"Criança doente (não podia, impossibilitada)\"}},\"_row_num\":101},{\"choice_list_name\":\"razao\",\"data_value\":15,\"display\":{\"title\":{\"text\":\"Criança doente levada, mas não vacinada\"}},\"_row_num\":102},{\"choice_list_name\":\"razao\",\"data_value\":16,\"display\":{\"title\":{\"text\":\"Tempo de espera muito longo\"}},\"_row_num\":103},{\"choice_list_name\":\"razao\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":104},{\"choice_list_name\":\"razao\",\"data_value\":77,\"display\":{\"title\":{\"text\":\"Outra razão\"}},\"_row_num\":105}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "rotina",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"rotina\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Vi\"}},\"_row_num\":111},{\"choice_list_name\":\"rotina\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não vi\"}},\"_row_num\":112},{\"choice_list_name\":\"rotina\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Nunca teve\"}},\"_row_num\":113},{\"choice_list_name\":\"rotina\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Perdeu\"}},\"_row_num\":114}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "saber",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":3},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":4}]"
+      },
+      {
+        "_partition": "Column",
         "_aspect": "sexo",
         "_key": "displayChoicesList",
         "_type": "object",
         "_value": "[{\"choice_list_name\":\"sexo\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Masculino\"}},\"_row_num\":20},{\"choice_list_name\":\"sexo\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Feminino\"}},\"_row_num\":21}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "tem_data",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":3},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":4}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "teve_mapi",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesnodk\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":6},{\"choice_list_name\":\"yesnodk\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":7},{\"choice_list_name\":\"yesnodk\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"NS\"}},\"_row_num\":8}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "toma_vacina",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesnodk\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":6},{\"choice_list_name\":\"yesnodk\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":7},{\"choice_list_name\":\"yesnodk\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"NS\"}},\"_row_num\":8}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "vi_cartao",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"campanha\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":133},{\"choice_list_name\":\"campanha\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não, porque não recebeu cartão\"}},\"_row_num\":134},{\"choice_list_name\":\"campanha\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Não vi\"}},\"_row_num\":135},{\"choice_list_name\":\"campanha\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Perdeu o cartão\"}},\"_row_num\":136},{\"choice_list_name\":\"campanha\",\"data_value\":5,\"display\":{\"title\":{\"text\":\"Nunca teve\"}},\"_row_num\":137}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "viu_data_sar",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":3},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":4}]"
       },
       {
         "_partition": "Column",
