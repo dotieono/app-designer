@@ -17,7 +17,7 @@
         "values_list": "test_forms",
         "display": {
           "prompt": {
-            "text": "Choose a test form (there are many)"
+            "text": "Escolha o formulário"
           }
         },
         "_row_num": 3
@@ -47,11 +47,11 @@
         "_row_num": 7
       },
       {
-        "branch_label": "sarampo",
+        "branch_label": "QPS",
         "_row_num": 8
       },
       {
-        "url": "'?' + odkSurvey.getHashString('sarampo')",
+        "url": "'?' + odkSurvey.getHashString('QPS')",
         "type": "external_link",
         "display": {
           "prompt": {
@@ -65,22 +65,112 @@
         "_row_num": 10
       },
       {
-        "branch_label": "QPS",
-        "_row_num": 11
+        "branch_label": "inscricao",
+        "_row_num": 12
       },
       {
-        "url": "'?' +  odkSurvey.getHashString('QPS')",
+        "url": "'?' + odkSurvey.getHashString('inscricao')",
         "type": "external_link",
         "display": {
           "prompt": {
             "text": "Open form"
           }
         },
-        "_row_num": 12
+        "_row_num": 13
       },
       {
         "clause": "exit section",
-        "_row_num": 13
+        "_row_num": 14
+      },
+      {
+        "branch_label": "ronda_1",
+        "_row_num": 16
+      },
+      {
+        "url": "'?' + odkSurvey.getHashString('QPS','ronda_1')",
+        "type": "external_link",
+        "display": {
+          "prompt": {
+            "text": "Open form"
+          }
+        },
+        "_row_num": 17
+      },
+      {
+        "clause": "exit section",
+        "_row_num": 18
+      },
+      {
+        "branch_label": "ronda_2",
+        "_row_num": 20
+      },
+      {
+        "url": "'?' + odkSurvey.getHashString('QPS','ronda_2')",
+        "type": "external_link",
+        "display": {
+          "prompt": {
+            "text": "Open form"
+          }
+        },
+        "_row_num": 21
+      },
+      {
+        "clause": "exit section",
+        "_row_num": 22
+      },
+      {
+        "branch_label": "ronda_3",
+        "_row_num": 24
+      },
+      {
+        "url": "'?' + odkSurvey.getHashString('QPS','ronda_3')",
+        "type": "external_link",
+        "display": {
+          "prompt": {
+            "text": "Open form"
+          }
+        },
+        "_row_num": 25
+      },
+      {
+        "clause": "exit section",
+        "_row_num": 26
+      },
+      {
+        "branch_label": "ronda_4",
+        "_row_num": 28
+      },
+      {
+        "url": "'?' + odkSurvey.getHashString('QPS','ronda_4')",
+        "type": "external_link",
+        "display": {
+          "prompt": {
+            "text": "Open form"
+          }
+        },
+        "_row_num": 29
+      },
+      {
+        "clause": "exit section",
+        "_row_num": 30
+      },
+      {
+        "branch_label": "Avaliacao_qps",
+        "_row_num": 32
+      },
+      {
+        "url": "'?' + odkSurvey.getHashString('Avaliacao_qps')",
+        "type": "external_link",
+        "display": {
+          "prompt": {
+            "text": "Open form"
+          }
+        },
+        "_row_num": 33
+      },
+      {
+        "clause": "exit section",
+        "_row_num": 34
       }
     ],
     "settings": [
@@ -107,8 +197,7 @@
           "title": {
             "text": {
               "en": "Common Javascript Framework",
-              "hi": "सामान्य जावास्क्रिप्ट फ़्रेमवर्क",
-              "es": "Marco común de Javascript",
+              "pt": "Quadro Comum de Javascript",
               "default": "Common Javascript Framework"
             }
           }
@@ -123,8 +212,7 @@
           "locale": {
             "text": {
               "en": "English",
-              "hi": "अंग्रेज़ी",
-              "es": "Inglés",
+              "pt": "Inglês",
               "default": "English"
             }
           }
@@ -132,51 +220,40 @@
         "_row_num": 7
       },
       {
-        "setting_name": "hi",
+        "setting_name": "pt",
         "display": {
           "locale": {
             "text": {
-              "en": "Hindi",
-              "hi": "हिंदी",
-              "es": "Hindi",
-              "default": "Hindi"
+              "en": "Portuguese",
+              "pt": "Português",
+              "default": "Portuguese"
             }
           }
         },
         "_row_num": 8
       },
       {
-        "setting_name": "es",
-        "display": {
-          "locale": {
-            "text": {
-              "en": "Spanish",
-              "hi": "स्पेनिश",
-              "es": "Español",
-              "default": "Spanish"
-            }
-          }
-        },
+        "setting_name": "framework_variant",
         "_row_num": 9
       }
     ],
     "choices": [
       {
         "choice_list_name": "test_forms",
-        "data_value": "sarampo",
+        "data_value": "inscricao",
         "display": {
           "title": {
-            "text": "Sarampo"
+            "text": "Incricao"
           }
         },
         "_row_num": 2
       },
       {
         "choice_list_name": "test_forms",
-        "data_value": "inscricao",
+        "data_value": "QPS",
         "display": {
           "title": {
-            "text": "Inscrição"
+            "text": "Quimioprevenção do Paludismo Sazonal"
           }
         },
         "_row_num": 3
@@ -223,10 +300,10 @@
       },
       {
         "choice_list_name": "test_forms",
-        "data_value": "QPS",
+        "data_value": "Avaliacao_qps",
         "display": {
           "title": {
-            "text": "QPS"
+            "text": "Questionário para avaliação da Quimioprofilaxis Sazonal para Prevenção do Paludismo"
           }
         },
         "_row_num": 8
@@ -237,7 +314,7 @@
         "string_token": "constraint_message",
         "text": {
           "default": "Constraint violated.",
-          "es": "Restricción incumplida"
+          "pt": "Restrinção incomprida"
         },
         "_row_num": 2
       },
@@ -245,7 +322,7 @@
         "string_token": "invalid_value_message",
         "text": {
           "default": "Invalid value.",
-          "es": "Valor no válido."
+          "pt": "Valor inválido"
         },
         "_row_num": 3
       },
@@ -253,7 +330,7 @@
         "string_token": "required_message",
         "text": {
           "default": "Required value not provided.",
-          "es": "Dato requerido no proporcionado"
+          "pt": "Dado necessário não proporcionado"
         },
         "_row_num": 4
       },
@@ -261,7 +338,7 @@
         "string_token": "required_exception_message",
         "text": {
           "default": "Exception while evaluating required() expression. See console log.",
-          "es": "Excepción al evaluar la expresión requerido(). Ver consola de registro"
+          "pt": "Excepção ao avaliar a expressão requerido(). Ver consola de"
         },
         "_row_num": 5
       },
@@ -269,7 +346,7 @@
         "string_token": "constraint_exception_message",
         "text": {
           "default": "Exception while evaluating constraint() expression. See console log.",
-          "es": "Excepción al evaluar la expresión restricción(). Ver consola de registro"
+          "pt": "Excepção ao avaliar a expressão restrinçãp(). Ver consola de"
         },
         "_row_num": 6
       },
@@ -277,8 +354,7 @@
         "string_token": "acknLabel",
         "text": {
           "default": "Acknowledge",
-          "hi": "स्वीकार करना",
-          "es": "Admitir"
+          "pt": "Aceitar"
         },
         "_row_num": 7
       },
@@ -286,8 +362,7 @@
         "string_token": "back_button_label",
         "text": {
           "default": "Back",
-          "hi": "लौटना",
-          "es": "Atrás"
+          "pt": "Atrás"
         },
         "_row_num": 8
       },
@@ -295,8 +370,7 @@
         "string_token": "next_button_label",
         "text": {
           "default": "Next",
-          "hi": "आगामी",
-          "es": "Siguiente"
+          "pt": "Seguinte"
         },
         "_row_num": 9
       },
@@ -304,8 +378,7 @@
         "string_token": "continue_button_label",
         "text": {
           "default": "Continue",
-          "hi": "जारी रहना",
-          "es": "Continuar"
+          "pt": "Continuar"
         },
         "_row_num": 10
       },
@@ -313,7 +386,7 @@
         "string_token": "select_one_dropdown_label",
         "text": {
           "default": "Choose Option",
-          "es": "Elige una opción"
+          "pt": "Escolha uma opção"
         },
         "_row_num": 11
       },
@@ -321,7 +394,7 @@
         "string_token": "requiredValueErr",
         "text": {
           "default": "Required value was not provided.",
-          "es": "Dato requerido no proporcionado"
+          "pt": "Dado necessário não proporcionado"
         },
         "_row_num": 12
       },
@@ -329,7 +402,7 @@
         "string_token": "geopoint_button_label",
         "text": {
           "default": "Record Location",
-          "es": "Grabar ubicación"
+          "pt": "Gravar a localização"
         },
         "_row_num": 13
       },
@@ -337,7 +410,7 @@
         "string_token": "geopoint_latitude_component",
         "text": {
           "default": "Latitude: {{value.latitude}}",
-          "es": "Latitud: {{value.latitude}}"
+          "pt": "Latitude: {{value.latitude}}"
         },
         "_row_num": 14
       },
@@ -345,7 +418,7 @@
         "string_token": "geopoint_longitude_component",
         "text": {
           "default": "Longitude: {{value.longitude}}",
-          "es": "Longitud: {{value.longitude}}"
+          "pt": "Longitude: {{value.longitude}}"
         },
         "_row_num": 15
       },
@@ -353,7 +426,7 @@
         "string_token": "geopoint_altitude_component",
         "text": {
           "default": "Altitude: {{value.altitude}}",
-          "es": "Altitud: {{value.altitude}}"
+          "pt": "Altitude: {{value.altitude}}"
         },
         "_row_num": 16
       },
@@ -361,7 +434,7 @@
         "string_token": "geopoint_accuracy_component",
         "text": {
           "default": "Accuracy: {{value.accuracy}}",
-          "es": "Precisión: {{value.accuracy}}"
+          "pt": "Precisão: {{value.accuracy}}"
         },
         "_row_num": 17
       },
@@ -369,7 +442,7 @@
         "string_token": "waiting_text",
         "text": {
           "default": "Please wait…",
-          "es": "Por favor, espere…"
+          "pt": "Por favor, espere"
         },
         "_row_num": 18
       },
@@ -377,7 +450,7 @@
         "string_token": "take_video_button_label",
         "text": {
           "default": "Take Video",
-          "es": "Graba un vídeo"
+          "pt": "Grava vídeo"
         },
         "_row_num": 19
       },
@@ -385,7 +458,7 @@
         "string_token": "choose_video_button_label",
         "text": {
           "default": "Choose Video",
-          "es": "Elige un vídeo"
+          "pt": "Escolha um vídeo"
         },
         "_row_num": 20
       },
@@ -393,7 +466,7 @@
         "string_token": "video_control_not_supported",
         "text": {
           "default": "Video controls are not supported.",
-          "es": "Controles de vídeo no son compatibles."
+          "pt": "Controlos de vídeos nao são compatíveis"
         },
         "_row_num": 21
       },
@@ -401,7 +474,7 @@
         "string_token": "take_audio_button_label",
         "text": {
           "default": "Capture Audio",
-          "es": "Captura audio"
+          "pt": "Grava audio"
         },
         "_row_num": 22
       },
@@ -409,7 +482,7 @@
         "string_token": "choose_audio_button_label",
         "text": {
           "default": "Choose Audio",
-          "es": "Elige audio"
+          "pt": "Escolha audio"
         },
         "_row_num": 23
       },
@@ -417,7 +490,7 @@
         "string_token": "audio_control_not_supported",
         "text": {
           "default": "Audio controls are not supported.",
-          "es": "Controles de audio no son compatibles."
+          "pt": "Controlos de audio não são compatíveis"
         },
         "_row_num": 24
       },
@@ -425,7 +498,7 @@
         "string_token": "confirm_action_no_label",
         "text": {
           "default": "NO",
-          "es": "NO"
+          "pt": "Não"
         },
         "_row_num": 25
       },
@@ -433,7 +506,7 @@
         "string_token": "confirm_action_yes_label",
         "text": {
           "default": "YES",
-          "es": "SI"
+          "pt": "Sim"
         },
         "_row_num": 26
       },
@@ -441,7 +514,7 @@
         "string_token": "external_link_button_label",
         "text": {
           "default": "Follow link",
-          "es": "Sigue el enlace"
+          "pt": "Segue o link"
         },
         "_row_num": 27
       },
@@ -449,7 +522,7 @@
         "string_token": "survey_form_identification",
         "text": {
           "default": "<div><center>ODK Survey</center><hr></div><div><p>Form name: {{localizeText form_title}}</p>{{#if form_version}}<p>Form version: {{form_version}}</p>{{/if}}<hr></div>",
-          "es": "<div><center>ODK Survey</center><hr></div><div><p>Nombre del Formulario: {{localizeText form_title}}</p>{{#if form_version}}<p>Version de Formulario: {{form_version}}</p>{{/if}}<hr></div>"
+          "pt": "<div><center>ODK Survey</center><hr></div><div><p>Nome do Formulario: {{localizeText form_title}}</p>{{#if form_version}}<p>Versao do Formulario: {{form_version}}</p>{{/if}}<hr></div>"
         },
         "_row_num": 28
       },
@@ -457,7 +530,7 @@
         "string_token": "finalize_survey_instance_detail",
         "text": {
           "default": "<p>You are at the end of instance: </p><p>\"{{display_field}}\"</p><hr>",
-          "es": "<p>Está en el final de la instancia: </p><p>\"{{display_field}}\"</p><hr>"
+          "pt": "<p>Está no fim de instance: </p><p>\"{{display_field}}\"</p><hr>"
         },
         "_row_num": 29
       },
@@ -465,7 +538,7 @@
         "string_token": "finalize_survey_button_label",
         "text": {
           "default": "Finalize",
-          "es": "Finalizar"
+          "pt": "Finalizar"
         },
         "_row_num": 30
       },
@@ -473,7 +546,7 @@
         "string_token": "save_as_incomplete_survey_button_label",
         "text": {
           "default": "Incomplete",
-          "es": "Incompleto"
+          "pt": "Incompleto"
         },
         "_row_num": 31
       },
@@ -481,7 +554,7 @@
         "string_token": "take_image_button_label",
         "text": {
           "default": "Take Photo",
-          "es": "Tomé una foto"
+          "pt": "Tira foto"
         },
         "_row_num": 33
       },
@@ -489,7 +562,7 @@
         "string_token": "choose_image_button_label",
         "text": {
           "default": "Choose Image",
-          "es": "Elige una imagen"
+          "pt": "Escolha imagem"
         },
         "_row_num": 34
       },
@@ -497,7 +570,7 @@
         "string_token": "launch_intent_button_label",
         "text": {
           "default": "Launch Intent",
-          "es": "Lanzamiento de intención"
+          "pt": "Intenção de lançamento"
         },
         "_row_num": 35
       },
@@ -505,7 +578,7 @@
         "string_token": "opening_survey_instance_detail",
         "text": {
           "default": "{{#if display_field}}\n        <p>You are at the start of instance: </p>\n        <p>\"{{display_field}}\"</p> \n  {{else}}\n        <p>You are at the start of a new instance.</p>\n  {{/if}}\n        <hr>\n        {{#if last_save_date}}\n            <p>Last saved:</p> \n            <p>{{last_save_date}}</p>\n        {{/if}}\n        <hr>",
-          "es": "{{#if display_field}}\n        <p>estás en el inicio de la instancia: </p>\n        <p>\"{{display_field}}\"</p> \n  {{else}}\n        <p>estás en el inicio de una nueva instancia.</p>\n  {{/if}}\n        <hr>\n        {{#if last_save_date}}\n            <p>guardado por última vez:</p> \n            <p>{{last_save_date}}</p>\n        {{/if}}\n        <hr>"
+          "pt": "{{#if display_field}}\n        <p>Você está no inicio da instância: </p>\n        <p>\"{{display_field}}\"</p> \n  {{else}}\n        <p>Você está no inicio da nova instância.</p>\n  {{/if}}\n        <hr>\n        {{#if last_save_date}}\n            <p>guardado por última vez:</p> \n            <p>{{last_save_date}}</p>\n        {{/if}}\n        <hr>"
         },
         "_row_num": 36
       },
@@ -513,7 +586,7 @@
         "string_token": "opening_survey_next_button_label",
         "text": {
           "default": "Go to next prompt",
-          "es": "Ir al siguiente"
+          "pt": "Ir para seguinte"
         },
         "_row_num": 37
       },
@@ -521,7 +594,7 @@
         "string_token": "options_popup_language_heading",
         "text": {
           "default": "Language",
-          "es": "Idioma"
+          "pt": "Idioma"
         },
         "_row_num": 38
       },
@@ -529,7 +602,7 @@
         "string_token": "options_popup_contents_heading",
         "text": {
           "default": "Contents",
-          "es": "Contenido"
+          "pt": "Conteudo"
         },
         "_row_num": 39
       },
@@ -537,7 +610,7 @@
         "string_token": "options_popup_ignore_changes_heading",
         "text": {
           "default": "Ignore Changes + Exit",
-          "es": "Ignorar cambios y salir"
+          "pt": "Ingnorar alterações + Sair"
         },
         "_row_num": 40
       },
@@ -545,7 +618,7 @@
         "string_token": "options_popup_save_changes_heading",
         "text": {
           "default": "Save Changes + Exit",
-          "es": "Guardar cambios y salir"
+          "pt": "Guardar alterações + Sair"
         },
         "_row_num": 41
       },
@@ -553,7 +626,7 @@
         "string_token": "options_popup_finalize_changes_heading",
         "text": {
           "default": "Finalize Changes + Exit",
-          "es": "Finalizar cambios y salir"
+          "pt": "Finalizar alterações + Sair"
         },
         "_row_num": 42
       },
@@ -561,7 +634,7 @@
         "string_token": "screen_popup_ok_button_label",
         "text": {
           "default": "OK",
-          "es": "Confirmar"
+          "pt": "Confirmar"
         },
         "_row_num": 43
       },
@@ -569,7 +642,7 @@
         "string_token": "select_with_other_other_label",
         "text": {
           "default": "Other:",
-          "es": "Otro:"
+          "pt": "Outro:"
         },
         "_row_num": 44
       },
@@ -577,8 +650,7 @@
         "string_token": "select_deselect_label",
         "text": {
           "default": "Deselect",
-          "hi": "अचयनित",
-          "es": "Deseleccioanr"
+          "pt": "Desmarcar"
         },
         "_row_num": 45
       },
@@ -586,7 +658,7 @@
         "string_token": "take_signature_button_label",
         "text": {
           "default": "Get Signature",
-          "es": "Obtener firma"
+          "pt": "Obter assinatura"
         },
         "_row_num": 46
       },
@@ -594,7 +666,7 @@
         "string_token": "instances_survey_create_button_label",
         "text": {
           "default": "Create new instance",
-          "es": "Crear nueva instancia"
+          "pt": "Criar nova instância"
         },
         "_row_num": 47
       },
@@ -602,7 +674,7 @@
         "string_token": "instances_no_saved_instances_label",
         "text": {
           "default": "No saved instances.",
-          "es": "Instancias no guardadas"
+          "pt": "Instância não guardada"
         },
         "_row_num": 48
       },
@@ -610,7 +682,7 @@
         "string_token": "instances_last_save_date_label",
         "text": {
           "default": "<p><strong>Last Save Date:</strong></p>",
-          "es": "<p><strong>Última fecha guardada:</strong></p>"
+          "pt": "<p><strong>Última data guasdado:</strong></p>"
         },
         "_row_num": 49
       },
@@ -618,7 +690,7 @@
         "string_token": "instances_previously_created_instances_label",
         "text": {
           "default": "<p>Previously created instances:</p>",
-          "es": "<p>Instancias creadas previamente:</p>"
+          "pt": "<p>Instância criadas previamente:</p>"
         },
         "_row_num": 50
       },
@@ -626,7 +698,7 @@
         "string_token": "savepoint_type_finalized_text_label",
         "text": {
           "default": "Finalized",
-          "es": "Finalizado"
+          "pt": "Finalizado"
         },
         "_row_num": 51
       },
@@ -634,7 +706,7 @@
         "string_token": "savepoint_type_incomplete_text_label",
         "text": {
           "default": "Incomplete",
-          "es": "Incompleto"
+          "pt": "Incompleto"
         },
         "_row_num": 52
       },
@@ -642,7 +714,7 @@
         "string_token": "savepoint_type_checkpoint_text_label",
         "text": {
           "default": "Checkpoint",
-          "es": "Cambios no guardados"
+          "pt": "Alterações não guardados"
         },
         "_row_num": 53
       },
@@ -650,7 +722,7 @@
         "string_token": "linked_table_new_instance_label",
         "text": {
           "default": "Create new instance",
-          "es": "Crear nueva instancia"
+          "pt": "Criar nova instância"
         },
         "_row_num": 54
       },
@@ -658,7 +730,7 @@
         "string_token": "barcode_button_label",
         "text": {
           "default": "Scan Barcode",
-          "es": "Escanear Código de Barras"
+          "pt": "Escanear Código de Barras"
         },
         "_row_num": 55
       },
@@ -666,7 +738,7 @@
         "string_token": "invalid_numeric_message",
         "text": {
           "default": "Numeric value expected",
-          "es": "Valor numérico esperado"
+          "pt": "Valor numerico esperado"
         },
         "_row_num": 56
       },
@@ -674,7 +746,7 @@
         "string_token": "invalid_integer_message",
         "text": {
           "default": "Integer value expected",
-          "es": "Valor entero esperado"
+          "pt": "Valor inteiro esperado"
         },
         "_row_num": 57
       },
@@ -682,7 +754,7 @@
         "string_token": "confirm_exit_label",
         "text": {
           "default": "Exit",
-          "es": "Salir"
+          "pt": "Sair"
         },
         "_row_num": 58
       },
@@ -690,7 +762,7 @@
         "string_token": "confirm_cancel_label",
         "text": {
           "default": "Cancel",
-          "es": "Cancelar"
+          "pt": "Cancelar"
         },
         "_row_num": 59
       },
@@ -698,7 +770,7 @@
         "string_token": "confirm_message",
         "text": {
           "default": "Are you sure you want to exit and lose all changes?",
-          "es": "¿Estás seguro de que quieres salir y perder todos los cambios?"
+          "pt": "Você tem certeza que quere sair e perder todas as alterações?"
         },
         "_row_num": 60
       }
@@ -744,8 +816,7 @@
           "title": {
             "text": {
               "en": "Common Javascript Framework",
-              "hi": "सामान्य जावास्क्रिप्ट फ़्रेमवर्क",
-              "es": "Marco común de Javascript",
+              "pt": "Quadro Comum de Javascript",
               "default": "Common Javascript Framework"
             }
           }
@@ -760,40 +831,28 @@
           "locale": {
             "text": {
               "en": "English",
-              "hi": "अंग्रेज़ी",
-              "es": "Inglés",
+              "pt": "Inglês",
               "default": "English"
             }
           }
         },
         "_row_num": 7
       },
-      "hi": {
-        "setting_name": "hi",
+      "pt": {
+        "setting_name": "pt",
         "display": {
           "locale": {
             "text": {
-              "en": "Hindi",
-              "hi": "हिंदी",
-              "es": "Hindi",
-              "default": "Hindi"
+              "en": "Portuguese",
+              "pt": "Português",
+              "default": "Portuguese"
             }
           }
         },
         "_row_num": 8
       },
-      "es": {
-        "setting_name": "es",
-        "display": {
-          "locale": {
-            "text": {
-              "en": "Spanish",
-              "hi": "स्पेनिश",
-              "es": "Español",
-              "default": "Spanish"
-            }
-          }
-        },
+      "framework_variant": {
+        "setting_name": "framework_variant",
         "_row_num": 9
       },
       "_locales": {
@@ -805,8 +864,7 @@
               "locale": {
                 "text": {
                   "en": "English",
-                  "hi": "अंग्रेज़ी",
-                  "es": "Inglés",
+                  "pt": "Inglês",
                   "default": "English"
                 }
               }
@@ -818,29 +876,14 @@
             "display": {
               "locale": {
                 "text": {
-                  "en": "Hindi",
-                  "hi": "हिंदी",
-                  "es": "Hindi",
-                  "default": "Hindi"
+                  "en": "Portuguese",
+                  "pt": "Português",
+                  "default": "Portuguese"
                 }
               }
             },
             "_row_num": 8,
-            "name": "hi"
-          },
-          {
-            "display": {
-              "locale": {
-                "text": {
-                  "en": "Spanish",
-                  "hi": "स्पेनिश",
-                  "es": "Español",
-                  "default": "Spanish"
-                }
-              }
-            },
-            "_row_num": 9,
-            "name": "es"
+            "name": "pt"
           }
         ]
       },
@@ -855,8 +898,7 @@
           "title": {
             "text": {
               "en": "Common Javascript Framework",
-              "hi": "सामान्य जावास्क्रिप्ट फ़्रेमवर्क",
-              "es": "Marco común de Javascript",
+              "pt": "Quadro Comum de Javascript",
               "default": "Common Javascript Framework"
             }
           }
@@ -870,20 +912,20 @@
       "test_forms": [
         {
           "choice_list_name": "test_forms",
-          "data_value": "sarampo",
+          "data_value": "inscricao",
           "display": {
             "title": {
-              "text": "Sarampo"
+              "text": "Incricao"
             }
           },
           "_row_num": 2
         },
         {
           "choice_list_name": "test_forms",
-          "data_value": "inscricao",
+          "data_value": "QPS",
           "display": {
             "title": {
-              "text": "Inscrição"
+              "text": "Quimioprevenção do Paludismo Sazonal"
             }
           },
           "_row_num": 3
@@ -930,10 +972,10 @@
         },
         {
           "choice_list_name": "test_forms",
-          "data_value": "QPS",
+          "data_value": "Avaliacao_qps",
           "display": {
             "title": {
-              "text": "QPS"
+              "text": "Questionário para avaliação da Quimioprofilaxis Sazonal para Prevenção do Paludismo"
             }
           },
           "_row_num": 8
@@ -946,7 +988,7 @@
           "string_token": "constraint_message",
           "text": {
             "default": "Constraint violated.",
-            "es": "Restricción incumplida"
+            "pt": "Restrinção incomprida"
           },
           "_row_num": 2
         },
@@ -954,7 +996,7 @@
           "string_token": "invalid_value_message",
           "text": {
             "default": "Invalid value.",
-            "es": "Valor no válido."
+            "pt": "Valor inválido"
           },
           "_row_num": 3
         },
@@ -962,7 +1004,7 @@
           "string_token": "required_message",
           "text": {
             "default": "Required value not provided.",
-            "es": "Dato requerido no proporcionado"
+            "pt": "Dado necessário não proporcionado"
           },
           "_row_num": 4
         },
@@ -970,7 +1012,7 @@
           "string_token": "required_exception_message",
           "text": {
             "default": "Exception while evaluating required() expression. See console log.",
-            "es": "Excepción al evaluar la expresión requerido(). Ver consola de registro"
+            "pt": "Excepção ao avaliar a expressão requerido(). Ver consola de"
           },
           "_row_num": 5
         },
@@ -978,7 +1020,7 @@
           "string_token": "constraint_exception_message",
           "text": {
             "default": "Exception while evaluating constraint() expression. See console log.",
-            "es": "Excepción al evaluar la expresión restricción(). Ver consola de registro"
+            "pt": "Excepção ao avaliar a expressão restrinçãp(). Ver consola de"
           },
           "_row_num": 6
         },
@@ -986,8 +1028,7 @@
           "string_token": "acknLabel",
           "text": {
             "default": "Acknowledge",
-            "hi": "स्वीकार करना",
-            "es": "Admitir"
+            "pt": "Aceitar"
           },
           "_row_num": 7
         },
@@ -995,8 +1036,7 @@
           "string_token": "back_button_label",
           "text": {
             "default": "Back",
-            "hi": "लौटना",
-            "es": "Atrás"
+            "pt": "Atrás"
           },
           "_row_num": 8
         },
@@ -1004,8 +1044,7 @@
           "string_token": "next_button_label",
           "text": {
             "default": "Next",
-            "hi": "आगामी",
-            "es": "Siguiente"
+            "pt": "Seguinte"
           },
           "_row_num": 9
         },
@@ -1013,8 +1052,7 @@
           "string_token": "continue_button_label",
           "text": {
             "default": "Continue",
-            "hi": "जारी रहना",
-            "es": "Continuar"
+            "pt": "Continuar"
           },
           "_row_num": 10
         },
@@ -1022,7 +1060,7 @@
           "string_token": "select_one_dropdown_label",
           "text": {
             "default": "Choose Option",
-            "es": "Elige una opción"
+            "pt": "Escolha uma opção"
           },
           "_row_num": 11
         },
@@ -1030,7 +1068,7 @@
           "string_token": "requiredValueErr",
           "text": {
             "default": "Required value was not provided.",
-            "es": "Dato requerido no proporcionado"
+            "pt": "Dado necessário não proporcionado"
           },
           "_row_num": 12
         },
@@ -1038,7 +1076,7 @@
           "string_token": "geopoint_button_label",
           "text": {
             "default": "Record Location",
-            "es": "Grabar ubicación"
+            "pt": "Gravar a localização"
           },
           "_row_num": 13
         },
@@ -1046,7 +1084,7 @@
           "string_token": "geopoint_latitude_component",
           "text": {
             "default": "Latitude: {{value.latitude}}",
-            "es": "Latitud: {{value.latitude}}"
+            "pt": "Latitude: {{value.latitude}}"
           },
           "_row_num": 14
         },
@@ -1054,7 +1092,7 @@
           "string_token": "geopoint_longitude_component",
           "text": {
             "default": "Longitude: {{value.longitude}}",
-            "es": "Longitud: {{value.longitude}}"
+            "pt": "Longitude: {{value.longitude}}"
           },
           "_row_num": 15
         },
@@ -1062,7 +1100,7 @@
           "string_token": "geopoint_altitude_component",
           "text": {
             "default": "Altitude: {{value.altitude}}",
-            "es": "Altitud: {{value.altitude}}"
+            "pt": "Altitude: {{value.altitude}}"
           },
           "_row_num": 16
         },
@@ -1070,7 +1108,7 @@
           "string_token": "geopoint_accuracy_component",
           "text": {
             "default": "Accuracy: {{value.accuracy}}",
-            "es": "Precisión: {{value.accuracy}}"
+            "pt": "Precisão: {{value.accuracy}}"
           },
           "_row_num": 17
         },
@@ -1078,7 +1116,7 @@
           "string_token": "waiting_text",
           "text": {
             "default": "Please wait…",
-            "es": "Por favor, espere…"
+            "pt": "Por favor, espere"
           },
           "_row_num": 18
         },
@@ -1086,7 +1124,7 @@
           "string_token": "take_video_button_label",
           "text": {
             "default": "Take Video",
-            "es": "Graba un vídeo"
+            "pt": "Grava vídeo"
           },
           "_row_num": 19
         },
@@ -1094,7 +1132,7 @@
           "string_token": "choose_video_button_label",
           "text": {
             "default": "Choose Video",
-            "es": "Elige un vídeo"
+            "pt": "Escolha um vídeo"
           },
           "_row_num": 20
         },
@@ -1102,7 +1140,7 @@
           "string_token": "video_control_not_supported",
           "text": {
             "default": "Video controls are not supported.",
-            "es": "Controles de vídeo no son compatibles."
+            "pt": "Controlos de vídeos nao são compatíveis"
           },
           "_row_num": 21
         },
@@ -1110,7 +1148,7 @@
           "string_token": "take_audio_button_label",
           "text": {
             "default": "Capture Audio",
-            "es": "Captura audio"
+            "pt": "Grava audio"
           },
           "_row_num": 22
         },
@@ -1118,7 +1156,7 @@
           "string_token": "choose_audio_button_label",
           "text": {
             "default": "Choose Audio",
-            "es": "Elige audio"
+            "pt": "Escolha audio"
           },
           "_row_num": 23
         },
@@ -1126,7 +1164,7 @@
           "string_token": "audio_control_not_supported",
           "text": {
             "default": "Audio controls are not supported.",
-            "es": "Controles de audio no son compatibles."
+            "pt": "Controlos de audio não são compatíveis"
           },
           "_row_num": 24
         },
@@ -1134,7 +1172,7 @@
           "string_token": "confirm_action_no_label",
           "text": {
             "default": "NO",
-            "es": "NO"
+            "pt": "Não"
           },
           "_row_num": 25
         },
@@ -1142,7 +1180,7 @@
           "string_token": "confirm_action_yes_label",
           "text": {
             "default": "YES",
-            "es": "SI"
+            "pt": "Sim"
           },
           "_row_num": 26
         },
@@ -1150,7 +1188,7 @@
           "string_token": "external_link_button_label",
           "text": {
             "default": "Follow link",
-            "es": "Sigue el enlace"
+            "pt": "Segue o link"
           },
           "_row_num": 27
         },
@@ -1158,7 +1196,7 @@
           "string_token": "survey_form_identification",
           "text": {
             "default": "<div><center>ODK Survey</center><hr></div><div><p>Form name: {{localizeText form_title}}</p>{{#if form_version}}<p>Form version: {{form_version}}</p>{{/if}}<hr></div>",
-            "es": "<div><center>ODK Survey</center><hr></div><div><p>Nombre del Formulario: {{localizeText form_title}}</p>{{#if form_version}}<p>Version de Formulario: {{form_version}}</p>{{/if}}<hr></div>"
+            "pt": "<div><center>ODK Survey</center><hr></div><div><p>Nome do Formulario: {{localizeText form_title}}</p>{{#if form_version}}<p>Versao do Formulario: {{form_version}}</p>{{/if}}<hr></div>"
           },
           "_row_num": 28
         },
@@ -1166,7 +1204,7 @@
           "string_token": "finalize_survey_instance_detail",
           "text": {
             "default": "<p>You are at the end of instance: </p><p>\"{{display_field}}\"</p><hr>",
-            "es": "<p>Está en el final de la instancia: </p><p>\"{{display_field}}\"</p><hr>"
+            "pt": "<p>Está no fim de instance: </p><p>\"{{display_field}}\"</p><hr>"
           },
           "_row_num": 29
         },
@@ -1174,7 +1212,7 @@
           "string_token": "finalize_survey_button_label",
           "text": {
             "default": "Finalize",
-            "es": "Finalizar"
+            "pt": "Finalizar"
           },
           "_row_num": 30
         },
@@ -1182,7 +1220,7 @@
           "string_token": "save_as_incomplete_survey_button_label",
           "text": {
             "default": "Incomplete",
-            "es": "Incompleto"
+            "pt": "Incompleto"
           },
           "_row_num": 31
         },
@@ -1190,7 +1228,7 @@
           "string_token": "take_image_button_label",
           "text": {
             "default": "Take Photo",
-            "es": "Tomé una foto"
+            "pt": "Tira foto"
           },
           "_row_num": 33
         },
@@ -1198,7 +1236,7 @@
           "string_token": "choose_image_button_label",
           "text": {
             "default": "Choose Image",
-            "es": "Elige una imagen"
+            "pt": "Escolha imagem"
           },
           "_row_num": 34
         },
@@ -1206,7 +1244,7 @@
           "string_token": "launch_intent_button_label",
           "text": {
             "default": "Launch Intent",
-            "es": "Lanzamiento de intención"
+            "pt": "Intenção de lançamento"
           },
           "_row_num": 35
         },
@@ -1214,7 +1252,7 @@
           "string_token": "opening_survey_instance_detail",
           "text": {
             "default": "{{#if display_field}}\n        <p>You are at the start of instance: </p>\n        <p>\"{{display_field}}\"</p> \n  {{else}}\n        <p>You are at the start of a new instance.</p>\n  {{/if}}\n        <hr>\n        {{#if last_save_date}}\n            <p>Last saved:</p> \n            <p>{{last_save_date}}</p>\n        {{/if}}\n        <hr>",
-            "es": "{{#if display_field}}\n        <p>estás en el inicio de la instancia: </p>\n        <p>\"{{display_field}}\"</p> \n  {{else}}\n        <p>estás en el inicio de una nueva instancia.</p>\n  {{/if}}\n        <hr>\n        {{#if last_save_date}}\n            <p>guardado por última vez:</p> \n            <p>{{last_save_date}}</p>\n        {{/if}}\n        <hr>"
+            "pt": "{{#if display_field}}\n        <p>Você está no inicio da instância: </p>\n        <p>\"{{display_field}}\"</p> \n  {{else}}\n        <p>Você está no inicio da nova instância.</p>\n  {{/if}}\n        <hr>\n        {{#if last_save_date}}\n            <p>guardado por última vez:</p> \n            <p>{{last_save_date}}</p>\n        {{/if}}\n        <hr>"
           },
           "_row_num": 36
         },
@@ -1222,7 +1260,7 @@
           "string_token": "opening_survey_next_button_label",
           "text": {
             "default": "Go to next prompt",
-            "es": "Ir al siguiente"
+            "pt": "Ir para seguinte"
           },
           "_row_num": 37
         },
@@ -1230,7 +1268,7 @@
           "string_token": "options_popup_language_heading",
           "text": {
             "default": "Language",
-            "es": "Idioma"
+            "pt": "Idioma"
           },
           "_row_num": 38
         },
@@ -1238,7 +1276,7 @@
           "string_token": "options_popup_contents_heading",
           "text": {
             "default": "Contents",
-            "es": "Contenido"
+            "pt": "Conteudo"
           },
           "_row_num": 39
         },
@@ -1246,7 +1284,7 @@
           "string_token": "options_popup_ignore_changes_heading",
           "text": {
             "default": "Ignore Changes + Exit",
-            "es": "Ignorar cambios y salir"
+            "pt": "Ingnorar alterações + Sair"
           },
           "_row_num": 40
         },
@@ -1254,7 +1292,7 @@
           "string_token": "options_popup_save_changes_heading",
           "text": {
             "default": "Save Changes + Exit",
-            "es": "Guardar cambios y salir"
+            "pt": "Guardar alterações + Sair"
           },
           "_row_num": 41
         },
@@ -1262,7 +1300,7 @@
           "string_token": "options_popup_finalize_changes_heading",
           "text": {
             "default": "Finalize Changes + Exit",
-            "es": "Finalizar cambios y salir"
+            "pt": "Finalizar alterações + Sair"
           },
           "_row_num": 42
         },
@@ -1270,7 +1308,7 @@
           "string_token": "screen_popup_ok_button_label",
           "text": {
             "default": "OK",
-            "es": "Confirmar"
+            "pt": "Confirmar"
           },
           "_row_num": 43
         },
@@ -1278,7 +1316,7 @@
           "string_token": "select_with_other_other_label",
           "text": {
             "default": "Other:",
-            "es": "Otro:"
+            "pt": "Outro:"
           },
           "_row_num": 44
         },
@@ -1286,8 +1324,7 @@
           "string_token": "select_deselect_label",
           "text": {
             "default": "Deselect",
-            "hi": "अचयनित",
-            "es": "Deseleccioanr"
+            "pt": "Desmarcar"
           },
           "_row_num": 45
         },
@@ -1295,7 +1332,7 @@
           "string_token": "take_signature_button_label",
           "text": {
             "default": "Get Signature",
-            "es": "Obtener firma"
+            "pt": "Obter assinatura"
           },
           "_row_num": 46
         },
@@ -1303,7 +1340,7 @@
           "string_token": "instances_survey_create_button_label",
           "text": {
             "default": "Create new instance",
-            "es": "Crear nueva instancia"
+            "pt": "Criar nova instância"
           },
           "_row_num": 47
         },
@@ -1311,7 +1348,7 @@
           "string_token": "instances_no_saved_instances_label",
           "text": {
             "default": "No saved instances.",
-            "es": "Instancias no guardadas"
+            "pt": "Instância não guardada"
           },
           "_row_num": 48
         },
@@ -1319,7 +1356,7 @@
           "string_token": "instances_last_save_date_label",
           "text": {
             "default": "<p><strong>Last Save Date:</strong></p>",
-            "es": "<p><strong>Última fecha guardada:</strong></p>"
+            "pt": "<p><strong>Última data guasdado:</strong></p>"
           },
           "_row_num": 49
         },
@@ -1327,7 +1364,7 @@
           "string_token": "instances_previously_created_instances_label",
           "text": {
             "default": "<p>Previously created instances:</p>",
-            "es": "<p>Instancias creadas previamente:</p>"
+            "pt": "<p>Instância criadas previamente:</p>"
           },
           "_row_num": 50
         },
@@ -1335,7 +1372,7 @@
           "string_token": "savepoint_type_finalized_text_label",
           "text": {
             "default": "Finalized",
-            "es": "Finalizado"
+            "pt": "Finalizado"
           },
           "_row_num": 51
         },
@@ -1343,7 +1380,7 @@
           "string_token": "savepoint_type_incomplete_text_label",
           "text": {
             "default": "Incomplete",
-            "es": "Incompleto"
+            "pt": "Incompleto"
           },
           "_row_num": 52
         },
@@ -1351,7 +1388,7 @@
           "string_token": "savepoint_type_checkpoint_text_label",
           "text": {
             "default": "Checkpoint",
-            "es": "Cambios no guardados"
+            "pt": "Alterações não guardados"
           },
           "_row_num": 53
         },
@@ -1359,7 +1396,7 @@
           "string_token": "linked_table_new_instance_label",
           "text": {
             "default": "Create new instance",
-            "es": "Crear nueva instancia"
+            "pt": "Criar nova instância"
           },
           "_row_num": 54
         },
@@ -1367,7 +1404,7 @@
           "string_token": "barcode_button_label",
           "text": {
             "default": "Scan Barcode",
-            "es": "Escanear Código de Barras"
+            "pt": "Escanear Código de Barras"
           },
           "_row_num": 55
         },
@@ -1375,7 +1412,7 @@
           "string_token": "invalid_numeric_message",
           "text": {
             "default": "Numeric value expected",
-            "es": "Valor numérico esperado"
+            "pt": "Valor numerico esperado"
           },
           "_row_num": 56
         },
@@ -1383,7 +1420,7 @@
           "string_token": "invalid_integer_message",
           "text": {
             "default": "Integer value expected",
-            "es": "Valor entero esperado"
+            "pt": "Valor inteiro esperado"
           },
           "_row_num": 57
         },
@@ -1391,7 +1428,7 @@
           "string_token": "confirm_exit_label",
           "text": {
             "default": "Exit",
-            "es": "Salir"
+            "pt": "Sair"
           },
           "_row_num": 58
         },
@@ -1399,7 +1436,7 @@
           "string_token": "confirm_cancel_label",
           "text": {
             "default": "Cancel",
-            "es": "Cancelar"
+            "pt": "Cancelar"
           },
           "_row_num": 59
         },
@@ -1407,7 +1444,7 @@
           "string_token": "confirm_message",
           "text": {
             "default": "Are you sure you want to exit and lose all changes?",
-            "es": "¿Estás seguro de que quieres salir y perder todos los cambios?"
+            "pt": "Você tem certeza que quere sair e perder todas as alterações?"
           },
           "_row_num": 60
         }
@@ -1424,8 +1461,7 @@
               "locale": {
                 "text": {
                   "en": "English",
-                  "hi": "अंग्रेज़ी",
-                  "es": "Inglés",
+                  "pt": "Inglês",
                   "default": "English"
                 }
               }
@@ -1437,29 +1473,14 @@
             "display": {
               "locale": {
                 "text": {
-                  "en": "Hindi",
-                  "hi": "हिंदी",
-                  "es": "Hindi",
-                  "default": "Hindi"
+                  "en": "Portuguese",
+                  "pt": "Português",
+                  "default": "Portuguese"
                 }
               }
             },
             "_row_num": 8,
-            "name": "hi"
-          },
-          {
-            "display": {
-              "locale": {
-                "text": {
-                  "en": "Spanish",
-                  "hi": "स्पेनिश",
-                  "es": "Español",
-                  "default": "Spanish"
-                }
-              }
-            },
-            "_row_num": 9,
-            "name": "es"
+            "name": "pt"
           }
         ]
       },
@@ -1498,8 +1519,7 @@
               "title": {
                 "text": {
                   "en": "Common Javascript Framework",
-                  "hi": "सामान्य जावास्क्रिप्ट फ़्रेमवर्क",
-                  "es": "Marco común de Javascript",
+                  "pt": "Quadro Comum de Javascript",
                   "default": "Common Javascript Framework"
                 }
               }
@@ -1591,7 +1611,7 @@
             "values_list": "test_forms",
             "display": {
               "prompt": {
-                "text": "Choose a test form (there are many)"
+                "text": "Escolha o formulário"
               }
             },
             "_row_num": 3,
@@ -1619,7 +1639,7 @@
             "promptIdx": 1
           },
           {
-            "url": "'?' + odkSurvey.getHashString('sarampo')",
+            "url": "'?' + odkSurvey.getHashString('QPS')",
             "type": "external_link",
             "display": {
               "prompt": {
@@ -1634,27 +1654,102 @@
             "promptIdx": 2
           },
           {
-            "url": "'?' +  odkSurvey.getHashString('QPS')",
+            "url": "'?' + odkSurvey.getHashString('inscricao')",
             "type": "external_link",
             "display": {
               "prompt": {
                 "text": "Open form"
               }
             },
-            "_row_num": 12,
-            "__rowNum__": 11,
+            "_row_num": 13,
+            "__rowNum__": 12,
             "_token_type": "prompt",
             "_type": "external_link",
-            "_branch_label_enclosing_screen": "survey/_screen12",
+            "_branch_label_enclosing_screen": "survey/_screen13",
             "promptIdx": 3
+          },
+          {
+            "url": "'?' + odkSurvey.getHashString('QPS','ronda_1')",
+            "type": "external_link",
+            "display": {
+              "prompt": {
+                "text": "Open form"
+              }
+            },
+            "_row_num": 17,
+            "__rowNum__": 16,
+            "_token_type": "prompt",
+            "_type": "external_link",
+            "_branch_label_enclosing_screen": "survey/_screen17",
+            "promptIdx": 4
+          },
+          {
+            "url": "'?' + odkSurvey.getHashString('QPS','ronda_2')",
+            "type": "external_link",
+            "display": {
+              "prompt": {
+                "text": "Open form"
+              }
+            },
+            "_row_num": 21,
+            "__rowNum__": 20,
+            "_token_type": "prompt",
+            "_type": "external_link",
+            "_branch_label_enclosing_screen": "survey/_screen21",
+            "promptIdx": 5
+          },
+          {
+            "url": "'?' + odkSurvey.getHashString('QPS','ronda_3')",
+            "type": "external_link",
+            "display": {
+              "prompt": {
+                "text": "Open form"
+              }
+            },
+            "_row_num": 25,
+            "__rowNum__": 24,
+            "_token_type": "prompt",
+            "_type": "external_link",
+            "_branch_label_enclosing_screen": "survey/_screen25",
+            "promptIdx": 6
+          },
+          {
+            "url": "'?' + odkSurvey.getHashString('QPS','ronda_4')",
+            "type": "external_link",
+            "display": {
+              "prompt": {
+                "text": "Open form"
+              }
+            },
+            "_row_num": 29,
+            "__rowNum__": 28,
+            "_token_type": "prompt",
+            "_type": "external_link",
+            "_branch_label_enclosing_screen": "survey/_screen29",
+            "promptIdx": 7
+          },
+          {
+            "url": "'?' + odkSurvey.getHashString('Avaliacao_qps')",
+            "type": "external_link",
+            "display": {
+              "prompt": {
+                "text": "Open form"
+              }
+            },
+            "_row_num": 33,
+            "__rowNum__": 32,
+            "_token_type": "prompt",
+            "_type": "external_link",
+            "_branch_label_enclosing_screen": "survey/_screen33",
+            "promptIdx": 8
           },
           {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 14,
-            "_branch_label_enclosing_screen": "survey/_screen14",
-            "promptIdx": 4
+            "_row_num": 35,
+            "_branch_label_enclosing_screen": "survey/_screen35",
+            "promptIdx": 9
           }
         ],
         "validation_tag_map": {
@@ -1717,38 +1812,103 @@
             "operationIdx": 7
           },
           {
-            "_row_num": 12,
+            "_row_num": 13,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(3);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 8
           },
           {
             "clause": "exit section",
-            "_row_num": 13,
-            "__rowNum__": 12,
+            "_row_num": 14,
+            "__rowNum__": 13,
             "_token_type": "exit_section",
             "operationIdx": 9
           },
           {
-            "_token_type": "exit_section",
-            "clause": "exit section",
-            "_row_num": 14,
+            "_row_num": 17,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(4);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 10
           },
           {
-            "_row_num": 14,
+            "clause": "exit section",
+            "_row_num": 18,
+            "__rowNum__": 17,
+            "_token_type": "exit_section",
+            "operationIdx": 11
+          },
+          {
+            "_row_num": 21,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(4);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(5);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 12
+          },
+          {
+            "clause": "exit section",
+            "_row_num": 22,
+            "__rowNum__": 21,
+            "_token_type": "exit_section",
+            "operationIdx": 13
+          },
+          {
+            "_row_num": 25,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(6);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 14
+          },
+          {
+            "clause": "exit section",
+            "_row_num": 26,
+            "__rowNum__": 25,
+            "_token_type": "exit_section",
+            "operationIdx": 15
+          },
+          {
+            "_row_num": 29,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(7);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 16
+          },
+          {
+            "clause": "exit section",
+            "_row_num": 30,
+            "__rowNum__": 29,
+            "_token_type": "exit_section",
+            "operationIdx": 17
+          },
+          {
+            "_row_num": 33,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(8);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 18
+          },
+          {
+            "clause": "exit section",
+            "_row_num": 34,
+            "__rowNum__": 33,
+            "_token_type": "exit_section",
+            "operationIdx": 19
+          },
+          {
+            "_token_type": "exit_section",
+            "clause": "exit section",
+            "_row_num": 35,
+            "operationIdx": 20
+          },
+          {
+            "_row_num": 35,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(9);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
-            "operationIdx": 11
+            "operationIdx": 21
           },
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 14,
-            "operationIdx": 12
+            "_row_num": 35,
+            "operationIdx": 22
           }
         ],
         "branch_label_map": {
@@ -1757,12 +1917,22 @@
           "_else4": 4,
           "_screen5": 4,
           "_endif6": 5,
-          "sarampo": 6,
+          "QPS": 6,
           "_screen9": 6,
-          "QPS": 8,
-          "_screen12": 8,
-          "_contents": 11,
-          "_screen14": 11
+          "inscricao": 8,
+          "_screen13": 8,
+          "ronda_1": 10,
+          "_screen17": 10,
+          "ronda_2": 12,
+          "_screen21": 12,
+          "ronda_3": 14,
+          "_screen25": 14,
+          "ronda_4": 16,
+          "_screen29": 16,
+          "Avaliacao_qps": 18,
+          "_screen33": 18,
+          "_contents": 21,
+          "_screen35": 21
         }
       }
     },
@@ -1794,10 +1964,8 @@
         "_aspect": "default",
         "_key": "displayName",
         "_type": "object",
-        "_value": "{\"text\":{\"en\":\"Common Javascript Framework\",\"hi\":\"सामान्य जावास्क्रिप्ट फ़्रेमवर्क\",\"es\":\"Marco común de Javascript\",\"default\":\"Common Javascript Framework\"}}"
+        "_value": "{\"text\":{\"en\":\"Common Javascript Framework\",\"pt\":\"Quadro Comum de Javascript\",\"default\":\"Common Javascript Framework\"}}"
       }
     ]
   }
 }
-could not find setting with name: framework_variant
-could not find setting with name: framework_variant

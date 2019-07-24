@@ -9,7 +9,7 @@ function display() {
 
     var body = $('#main');
     // Set the background to be a picture.
-    body.css('background-image', 'url(img/teaBackground.jpg)');
+    body.css('background-image', 'url(img/logo_republica.jpg)');
 
     var viewHousesButton = $('<button>');
     viewHousesButton.text('View Tea Houses');

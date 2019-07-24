@@ -3,7 +3,7 @@
     "survey": [
       {
         "type": "barcode",
-        "name": "id",
+        "name": "id_paciente",
         "display": {
           "prompt": {
             "text": "Escanea o codigo de barra"
@@ -12,7 +12,7 @@
         "_row_num": 3
       },
       {
-        "type": "date",
+        "type": "custom_date",
         "name": "r3d1",
         "display": {
           "prompt": {
@@ -22,7 +22,7 @@
         "_row_num": 5
       },
       {
-        "type": "date",
+        "type": "custom_date",
         "name": "r3d2",
         "display": {
           "prompt": {
@@ -32,7 +32,7 @@
         "_row_num": 6
       },
       {
-        "type": "date",
+        "type": "custom_date",
         "name": "r3d3",
         "display": {
           "prompt": {
@@ -275,204 +275,218 @@
     ],
     "model": [
       {
-        "type": "date",
-        "name": "data_inscricao",
+        "type": "barcode",
+        "name": "id_paciente",
         "_row_num": 2
+      },
+      {
+        "type": "custom_date",
+        "name": "data_inscricao",
+        "_row_num": 3
       },
       {
         "type": "text",
         "name": "nome",
-        "_row_num": 3
-      },
-      {
-        "type": "select_one",
-        "name": "sexo",
         "_row_num": 4
       },
       {
         "type": "select_one",
-        "name": "Data_ou_idade",
+        "name": "sexo",
         "_row_num": 5
       },
       {
-        "type": "date",
-        "name": "dn",
+        "type": "select_one",
+        "name": "Data_ou_idade",
         "_row_num": 6
       },
       {
-        "type": "integer",
-        "name": "ano",
+        "type": "custom_date",
+        "name": "dn",
         "_row_num": 7
       },
       {
         "type": "integer",
-        "name": "mes",
+        "name": "ano",
         "_row_num": 8
+      },
+      {
+        "type": "integer",
+        "name": "mes",
+        "_row_num": 9
       },
       {
         "type": "text",
         "name": "mae",
-        "_row_num": 9
-      },
-      {
-        "type": "select_one",
-        "name": "region",
         "_row_num": 10
       },
       {
         "type": "select_one",
-        "name": "sector",
+        "name": "region",
         "_row_num": 11
       },
       {
         "type": "select_one",
-        "name": "local",
+        "name": "sector",
         "_row_num": 12
       },
       {
-        "type": "integer",
-        "name": "equipa",
+        "type": "select_one",
+        "name": "local",
         "_row_num": 13
       },
       {
         "type": "integer",
-        "name": "mtn_equi",
+        "name": "equipa",
         "_row_num": 14
       },
       {
         "type": "integer",
-        "name": "orange_equi",
+        "name": "mtn_equi",
         "_row_num": 15
       },
       {
         "type": "integer",
-        "name": "mtn_RAS",
+        "name": "orange_equi",
         "_row_num": 16
       },
       {
         "type": "integer",
-        "name": "orange_RAS",
+        "name": "mtn_RAS",
         "_row_num": 17
       },
       {
-        "type": "date",
-        "name": "r1d1",
-        "_row_num": 19
+        "type": "integer",
+        "name": "orange_RAS",
+        "_row_num": 18
       },
       {
-        "type": "date",
-        "name": "r1d2",
+        "type": "custom_date",
+        "name": "r1d1",
         "_row_num": 20
       },
       {
-        "type": "date",
-        "name": "r1d3",
+        "type": "custom_date",
+        "name": "r1d2",
         "_row_num": 21
+      },
+      {
+        "type": "custom_date",
+        "name": "r1d3",
+        "_row_num": 22
       },
       {
         "type": "select_one",
         "name": "tem_adverso",
-        "_row_num": 22
+        "_row_num": 23
       },
       {
         "type": "select_multiple",
         "name": "ef_adveso_r1",
-        "_row_num": 23
+        "_row_num": 24
       },
       {
         "type": "text",
         "name": "esp_ef_adverso_r1",
-        "_row_num": 24
+        "_row_num": 25
       },
       {
-        "type": "date",
+        "type": "custom_date",
         "name": "r2d1",
-        "_row_num": 26
-      },
-      {
-        "type": "date",
-        "name": "r2d2",
         "_row_num": 27
       },
       {
-        "type": "date",
-        "name": "r2d3",
+        "type": "custom_date",
+        "name": "r2d2",
         "_row_num": 28
+      },
+      {
+        "type": "custom_date",
+        "name": "r2d3",
+        "_row_num": 29
       },
       {
         "type": "select_one",
         "name": "tem_adverso_r2",
-        "_row_num": 29
+        "_row_num": 30
       },
       {
         "type": "select_multiple",
         "name": "ef_adveso_r2",
-        "_row_num": 30
+        "_row_num": 31
       },
       {
         "type": "text",
         "name": "esp_ef_adverso_r2",
-        "_row_num": 31
+        "_row_num": 32
       },
       {
-        "type": "date",
+        "type": "custom_date",
         "name": "r3d1",
-        "_row_num": 34
-      },
-      {
-        "type": "date",
-        "name": "r3d2",
         "_row_num": 35
       },
       {
-        "type": "date",
-        "name": "r3d3",
+        "type": "custom_date",
+        "name": "r3d2",
         "_row_num": 36
+      },
+      {
+        "type": "custom_date",
+        "name": "r3d3",
+        "_row_num": 37
       },
       {
         "type": "select_one",
         "name": "tem_adverso_r3",
-        "_row_num": 37
+        "_row_num": 38
       },
       {
         "type": "select_multiple",
         "name": "ef_adveso_r3",
-        "_row_num": 38
+        "_row_num": 39
       },
       {
         "type": "text",
         "name": "esp_ef_adverso_r3",
-        "_row_num": 39
+        "_row_num": 40
       },
       {
-        "type": "date",
+        "type": "custom_date",
         "name": "r4d1",
-        "_row_num": 42
-      },
-      {
-        "type": "date",
-        "name": "r4d2",
         "_row_num": 43
       },
       {
-        "type": "date",
-        "name": "r4d3",
+        "type": "custom_date",
+        "name": "r4d2",
         "_row_num": 44
+      },
+      {
+        "type": "custom_date",
+        "name": "r4d3",
+        "_row_num": 45
       },
       {
         "type": "select_one",
         "name": "tem_adverso_r4",
-        "_row_num": 45
+        "_row_num": 46
       },
       {
         "type": "select_multiple",
         "name": "ef_adveso_r4",
-        "_row_num": 46
+        "_row_num": 47
       },
       {
         "type": "text",
         "name": "esp_ef_adverso_r4",
-        "_row_num": 47
+        "_row_num": 48
+      }
+    ],
+    "prompt_types": [
+      {
+        "prompt_type_name": "custom_date",
+        "type": "string",
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2
       }
     ]
   },
@@ -711,12 +725,30 @@
     },
     "calculates": {},
     "model": {
-      "data_inscricao": {
+      "id_paciente": {
         "type": "string",
-        "elementType": "date",
         "_defn": [
           {
+            "_row_num": 3,
+            "section_name": "survey"
+          },
+          {
             "_row_num": 2,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "id_paciente"
+      },
+      "data_inscricao": {
+        "prompt_type_name": "custom_date",
+        "type": "string",
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
+        "_defn": [
+          {
+            "_row_num": 3,
             "section_name": "model"
           }
         ],
@@ -726,7 +758,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 3,
+            "_row_num": 4,
             "section_name": "model"
           }
         ],
@@ -736,7 +768,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 4,
+            "_row_num": 5,
             "section_name": "model"
           }
         ],
@@ -746,18 +778,22 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 5,
+            "_row_num": 6,
             "section_name": "model"
           }
         ],
         "elementKey": "Data_ou_idade"
       },
       "dn": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
-            "_row_num": 6,
+            "_row_num": 7,
             "section_name": "model"
           }
         ],
@@ -767,7 +803,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 7,
+            "_row_num": 8,
             "section_name": "model"
           }
         ],
@@ -777,7 +813,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 8,
+            "_row_num": 9,
             "section_name": "model"
           }
         ],
@@ -787,7 +823,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 9,
+            "_row_num": 10,
             "section_name": "model"
           }
         ],
@@ -797,7 +833,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 10,
+            "_row_num": 11,
             "section_name": "model"
           }
         ],
@@ -807,7 +843,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 11,
+            "_row_num": 12,
             "section_name": "model"
           }
         ],
@@ -817,7 +853,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 12,
+            "_row_num": 13,
             "section_name": "model"
           }
         ],
@@ -827,7 +863,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 13,
+            "_row_num": 14,
             "section_name": "model"
           }
         ],
@@ -837,7 +873,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 14,
+            "_row_num": 15,
             "section_name": "model"
           }
         ],
@@ -847,7 +883,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 15,
+            "_row_num": 16,
             "section_name": "model"
           }
         ],
@@ -857,7 +893,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 16,
+            "_row_num": 17,
             "section_name": "model"
           }
         ],
@@ -867,40 +903,52 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 17,
+            "_row_num": 18,
             "section_name": "model"
           }
         ],
         "elementKey": "orange_RAS"
       },
       "r1d1": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
-        "_defn": [
-          {
-            "_row_num": 19,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r1d1"
-      },
-      "r1d2": {
-        "type": "string",
-        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 20,
             "section_name": "model"
           }
         ],
-        "elementKey": "r1d2"
+        "elementKey": "r1d1"
       },
-      "r1d3": {
+      "r1d2": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 21,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "r1d2"
+      },
+      "r1d3": {
+        "prompt_type_name": "custom_date",
+        "type": "string",
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
+        "_defn": [
+          {
+            "_row_num": 22,
             "section_name": "model"
           }
         ],
@@ -910,7 +958,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 22,
+            "_row_num": 23,
             "section_name": "model"
           }
         ],
@@ -924,7 +972,7 @@
         },
         "_defn": [
           {
-            "_row_num": 23,
+            "_row_num": 24,
             "section_name": "model"
           }
         ],
@@ -934,40 +982,52 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 24,
+            "_row_num": 25,
             "section_name": "model"
           }
         ],
         "elementKey": "esp_ef_adverso_r1"
       },
       "r2d1": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
-        "_defn": [
-          {
-            "_row_num": 26,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r2d1"
-      },
-      "r2d2": {
-        "type": "string",
-        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 27,
             "section_name": "model"
           }
         ],
-        "elementKey": "r2d2"
+        "elementKey": "r2d1"
       },
-      "r2d3": {
+      "r2d2": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 28,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "r2d2"
+      },
+      "r2d3": {
+        "prompt_type_name": "custom_date",
+        "type": "string",
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
+        "_defn": [
+          {
+            "_row_num": 29,
             "section_name": "model"
           }
         ],
@@ -977,7 +1037,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 29,
+            "_row_num": 30,
             "section_name": "model"
           }
         ],
@@ -991,7 +1051,7 @@
         },
         "_defn": [
           {
-            "_row_num": 30,
+            "_row_num": 31,
             "section_name": "model"
           }
         ],
@@ -1001,33 +1061,22 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 31,
+            "_row_num": 32,
             "section_name": "model"
           }
         ],
         "elementKey": "esp_ef_adverso_r2"
       },
       "r3d1": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 5,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 34,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r3d1"
-      },
-      "r3d2": {
-        "type": "string",
-        "elementType": "date",
-        "_defn": [
-          {
-            "_row_num": 6,
             "section_name": "survey"
           },
           {
@@ -1035,18 +1084,41 @@
             "section_name": "model"
           }
         ],
+        "elementKey": "r3d1"
+      },
+      "r3d2": {
+        "prompt_type_name": "custom_date",
+        "type": "string",
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
+        "_defn": [
+          {
+            "_row_num": 6,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 36,
+            "section_name": "model"
+          }
+        ],
         "elementKey": "r3d2"
       },
       "r3d3": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 7,
             "section_name": "survey"
           },
           {
-            "_row_num": 36,
+            "_row_num": 37,
             "section_name": "model"
           }
         ],
@@ -1061,7 +1133,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 37,
+            "_row_num": 38,
             "section_name": "model"
           }
         ],
@@ -1080,7 +1152,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 38,
+            "_row_num": 39,
             "section_name": "model"
           }
         ],
@@ -1094,40 +1166,52 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 39,
+            "_row_num": 40,
             "section_name": "model"
           }
         ],
         "elementKey": "esp_ef_adverso_r3"
       },
       "r4d1": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
-        "_defn": [
-          {
-            "_row_num": 42,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r4d1"
-      },
-      "r4d2": {
-        "type": "string",
-        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 43,
             "section_name": "model"
           }
         ],
-        "elementKey": "r4d2"
+        "elementKey": "r4d1"
       },
-      "r4d3": {
+      "r4d2": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 44,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "r4d2"
+      },
+      "r4d3": {
+        "prompt_type_name": "custom_date",
+        "type": "string",
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
+        "_defn": [
+          {
+            "_row_num": 45,
             "section_name": "model"
           }
         ],
@@ -1137,7 +1221,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 45,
+            "_row_num": 46,
             "section_name": "model"
           }
         ],
@@ -1151,7 +1235,7 @@
         },
         "_defn": [
           {
-            "_row_num": 46,
+            "_row_num": 47,
             "section_name": "model"
           }
         ],
@@ -1161,21 +1245,11 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 47,
+            "_row_num": 48,
             "section_name": "model"
           }
         ],
         "elementKey": "esp_ef_adverso_r4"
-      },
-      "id": {
-        "_defn": [
-          {
-            "_row_num": 3,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "id"
       }
     },
     "section_names": [
@@ -1190,7 +1264,7 @@
         "prompts": [
           {
             "type": "barcode",
-            "name": "id",
+            "name": "id_paciente",
             "display": {
               "prompt": {
                 "text": "Escanea o codigo de barra"
@@ -1204,7 +1278,7 @@
             "promptIdx": 0
           },
           {
-            "type": "date",
+            "type": "custom_date",
             "name": "r3d1",
             "display": {
               "prompt": {
@@ -1214,12 +1288,12 @@
             "_row_num": 5,
             "__rowNum__": 4,
             "_token_type": "prompt",
-            "_type": "date",
+            "_type": "custom_date",
             "_branch_label_enclosing_screen": "survey/_screen5",
             "promptIdx": 1
           },
           {
-            "type": "date",
+            "type": "custom_date",
             "name": "r3d2",
             "display": {
               "prompt": {
@@ -1229,12 +1303,12 @@
             "_row_num": 6,
             "__rowNum__": 5,
             "_token_type": "prompt",
-            "_type": "date",
+            "_type": "custom_date",
             "_branch_label_enclosing_screen": "survey/_screen6",
             "promptIdx": 2
           },
           {
-            "type": "date",
+            "type": "custom_date",
             "name": "r3d3",
             "display": {
               "prompt": {
@@ -1244,7 +1318,7 @@
             "_row_num": 7,
             "__rowNum__": 6,
             "_token_type": "prompt",
-            "_type": "date",
+            "_type": "custom_date",
             "_branch_label_enclosing_screen": "survey/_screen7",
             "promptIdx": 3
           },
@@ -1615,12 +1689,33 @@
       }
     },
     "dataTableModel": {
-      "data_inscricao": {
+      "id_paciente": {
         "type": "string",
-        "elementType": "date",
         "_defn": [
           {
+            "_row_num": 3,
+            "section_name": "survey"
+          },
+          {
             "_row_num": 2,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "id_paciente",
+        "elementName": "id_paciente",
+        "elementSet": "data",
+        "elementPath": "id_paciente"
+      },
+      "data_inscricao": {
+        "prompt_type_name": "custom_date",
+        "type": "string",
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
+        "_defn": [
+          {
+            "_row_num": 3,
             "section_name": "model"
           }
         ],
@@ -1633,7 +1728,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 3,
+            "_row_num": 4,
             "section_name": "model"
           }
         ],
@@ -1646,7 +1741,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 4,
+            "_row_num": 5,
             "section_name": "model"
           }
         ],
@@ -1659,7 +1754,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 5,
+            "_row_num": 6,
             "section_name": "model"
           }
         ],
@@ -1669,11 +1764,15 @@
         "elementPath": "Data_ou_idade"
       },
       "dn": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
-            "_row_num": 6,
+            "_row_num": 7,
             "section_name": "model"
           }
         ],
@@ -1686,7 +1785,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 7,
+            "_row_num": 8,
             "section_name": "model"
           }
         ],
@@ -1699,7 +1798,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 8,
+            "_row_num": 9,
             "section_name": "model"
           }
         ],
@@ -1712,7 +1811,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 9,
+            "_row_num": 10,
             "section_name": "model"
           }
         ],
@@ -1725,7 +1824,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 10,
+            "_row_num": 11,
             "section_name": "model"
           }
         ],
@@ -1738,7 +1837,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 11,
+            "_row_num": 12,
             "section_name": "model"
           }
         ],
@@ -1751,7 +1850,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 12,
+            "_row_num": 13,
             "section_name": "model"
           }
         ],
@@ -1764,7 +1863,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 13,
+            "_row_num": 14,
             "section_name": "model"
           }
         ],
@@ -1777,7 +1876,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 14,
+            "_row_num": 15,
             "section_name": "model"
           }
         ],
@@ -1790,7 +1889,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 15,
+            "_row_num": 16,
             "section_name": "model"
           }
         ],
@@ -1803,7 +1902,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 16,
+            "_row_num": 17,
             "section_name": "model"
           }
         ],
@@ -1816,7 +1915,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 17,
+            "_row_num": 18,
             "section_name": "model"
           }
         ],
@@ -1826,11 +1925,15 @@
         "elementPath": "orange_RAS"
       },
       "r1d1": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
-            "_row_num": 19,
+            "_row_num": 20,
             "section_name": "model"
           }
         ],
@@ -1840,11 +1943,15 @@
         "elementPath": "r1d1"
       },
       "r1d2": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
-            "_row_num": 20,
+            "_row_num": 21,
             "section_name": "model"
           }
         ],
@@ -1854,11 +1961,15 @@
         "elementPath": "r1d2"
       },
       "r1d3": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
-            "_row_num": 21,
+            "_row_num": 22,
             "section_name": "model"
           }
         ],
@@ -1871,7 +1982,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 22,
+            "_row_num": 23,
             "section_name": "model"
           }
         ],
@@ -1892,7 +2003,7 @@
         },
         "_defn": [
           {
-            "_row_num": 23,
+            "_row_num": 24,
             "section_name": "model"
           }
         ],
@@ -1908,7 +2019,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 24,
+            "_row_num": 25,
             "section_name": "model"
           }
         ],
@@ -1918,11 +2029,15 @@
         "elementPath": "esp_ef_adverso_r1"
       },
       "r2d1": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
-            "_row_num": 26,
+            "_row_num": 27,
             "section_name": "model"
           }
         ],
@@ -1932,11 +2047,15 @@
         "elementPath": "r2d1"
       },
       "r2d2": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
-            "_row_num": 27,
+            "_row_num": 28,
             "section_name": "model"
           }
         ],
@@ -1946,11 +2065,15 @@
         "elementPath": "r2d2"
       },
       "r2d3": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
-            "_row_num": 28,
+            "_row_num": 29,
             "section_name": "model"
           }
         ],
@@ -1963,7 +2086,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 29,
+            "_row_num": 30,
             "section_name": "model"
           }
         ],
@@ -1984,7 +2107,7 @@
         },
         "_defn": [
           {
-            "_row_num": 30,
+            "_row_num": 31,
             "section_name": "model"
           }
         ],
@@ -2000,7 +2123,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 31,
+            "_row_num": 32,
             "section_name": "model"
           }
         ],
@@ -2010,15 +2133,19 @@
         "elementPath": "esp_ef_adverso_r2"
       },
       "r3d1": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 5,
             "section_name": "survey"
           },
           {
-            "_row_num": 34,
+            "_row_num": 35,
             "section_name": "model"
           }
         ],
@@ -2028,15 +2155,19 @@
         "elementPath": "r3d1"
       },
       "r3d2": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 6,
             "section_name": "survey"
           },
           {
-            "_row_num": 35,
+            "_row_num": 36,
             "section_name": "model"
           }
         ],
@@ -2046,15 +2177,19 @@
         "elementPath": "r3d2"
       },
       "r3d3": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 7,
             "section_name": "survey"
           },
           {
-            "_row_num": 36,
+            "_row_num": 37,
             "section_name": "model"
           }
         ],
@@ -2072,7 +2207,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 37,
+            "_row_num": 38,
             "section_name": "model"
           }
         ],
@@ -2098,7 +2233,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 38,
+            "_row_num": 39,
             "section_name": "model"
           }
         ],
@@ -2118,7 +2253,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 39,
+            "_row_num": 40,
             "section_name": "model"
           }
         ],
@@ -2128,11 +2263,15 @@
         "elementPath": "esp_ef_adverso_r3"
       },
       "r4d1": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
-            "_row_num": 42,
+            "_row_num": 43,
             "section_name": "model"
           }
         ],
@@ -2142,11 +2281,15 @@
         "elementPath": "r4d1"
       },
       "r4d2": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
-            "_row_num": 43,
+            "_row_num": 44,
             "section_name": "model"
           }
         ],
@@ -2156,11 +2299,15 @@
         "elementPath": "r4d2"
       },
       "r4d3": {
+        "prompt_type_name": "custom_date",
         "type": "string",
         "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
-            "_row_num": 44,
+            "_row_num": 45,
             "section_name": "model"
           }
         ],
@@ -2173,7 +2320,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 45,
+            "_row_num": 46,
             "section_name": "model"
           }
         ],
@@ -2194,7 +2341,7 @@
         },
         "_defn": [
           {
-            "_row_num": 46,
+            "_row_num": 47,
             "section_name": "model"
           }
         ],
@@ -2210,7 +2357,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 47,
+            "_row_num": 48,
             "section_name": "model"
           }
         ],
@@ -2218,19 +2365,6 @@
         "elementName": "esp_ef_adverso_r4",
         "elementSet": "data",
         "elementPath": "esp_ef_adverso_r4"
-      },
-      "id": {
-        "_defn": [
-          {
-            "_row_num": 3,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "id",
-        "elementName": "id",
-        "elementSet": "data",
-        "elementPath": "id"
       },
       "ef_adveso_r1_items": {
         "type": "string",

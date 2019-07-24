@@ -9,8 +9,7 @@ window.odkCommonDefinitions = {
           "locale": {
             "text": {
               "en": "English",
-              "hi": "अंग्रेज़ी",
-              "es": "Inglés",
+              "pt": "Inglês",
               "default": "English"
             }
           }
@@ -22,29 +21,14 @@ window.odkCommonDefinitions = {
         "display": {
           "locale": {
             "text": {
-              "en": "Hindi",
-              "hi": "हिंदी",
-              "es": "Hindi",
-              "default": "Hindi"
+              "en": "Portuguese",
+              "pt": "Português",
+              "default": "Portuguese"
             }
           }
         },
         "_row_num": 8,
-        "name": "hi"
-      },
-      {
-        "display": {
-          "locale": {
-            "text": {
-              "en": "Spanish",
-              "hi": "स्पेनिश",
-              "es": "Español",
-              "default": "Spanish"
-            }
-          }
-        },
-        "_row_num": 9,
-        "name": "es"
+        "name": "pt"
       }
     ]
   },

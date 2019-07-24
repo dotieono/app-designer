@@ -40,20 +40,21 @@ function createFormLauncherForAdd(tableId, formId, elementKeyToValueMap, label, 
 function display(result) {
 
     // Details - Client id, age, randomization arm
-    codigoId = result.get('id');
+    codigoId = result.get('id_paciente');
     document.getElementById('title').innerHTML =codigoId;
-    document.getElementById('age').innerHTML = result.get('age');
-    var armText = result.get('randomization');
-    if(armText === '1') {
-        armText = 'HOPE';
-    } else if(armText === '2') {
-        armText = 'odkTables';
-    }
-    document.getElementById('arm').innerHTML = armText;
+    document.getElementById('nome').innerHTML = result.get('nome');
+    document.getElementById('mae').innerHTML = result.get('mae')
+    // var armText = result.get('randomization');
+    // if(armText === '1') {
+    //     armText = 'HOPE';
+    // } else if(armText === '2') {
+    //     armText = 'odkTables';
+    // }
+    // document.getElementById('arm').innerHTML = armText;
 
     // Creates key-to-value map that can be interpreted by the specified
     // Collect form - to prepopulate forms with client id
-    var elementKeyToValueMapMaleId = {client_id: codigoId};
+    var elementKeyToValueMapMaleId = {id_paciente: codigoId};
 
     // Create item that displays links to all female forms when clicked
     var fItem = document.createElement('p');
@@ -95,7 +96,24 @@ function display(result) {
             rowId,
             'Primeira ronda',
             fContainer);
-
+    createFormLauncherForEdit(
+            'QPS',
+            'ronda_2',
+            rowId,
+            'Segunda Ronda',
+            fContainer);
+    createFormLauncherForEdit(
+            'QPS',
+            'ronda_3',
+            rowId,
+            'Terceira Ronda',
+            fContainer);
+    createFormLauncherForEdit(
+            'QPS',
+            'ronda_4',
+            rowId,
+            'Quarta Ronda',
+            fContainer);
     $(fContainer).hide();
     $(fItem).click(function() {
         if ($(this).hasClass('selected')) {
@@ -107,42 +125,42 @@ function display(result) {
     });
 
     // Create item that displays links to all male forms when clicked
-    var mItem = document.createElement('p');
-    mItem.innerHTML = 'Partner Forms';
-    mItem.setAttribute('class', 'heading');
+    // var mItem = document.createElement('p');
+    // mItem.innerHTML = 'Partner Forms';
+    // mItem.setAttribute('class', 'heading');
 
-    var mContainer = document.createElement('div');
-    mContainer.setAttribute('class', 'detail_container');
-    createFormLauncherForAdd(
-            'maleClients',
-            'screenPartner',
-            elementKeyToValueMapMaleId,
-            'Partner Screening',
-            mContainer);
-    // TODO: this should be passing the rowId of the entry in the client table,
-    // as filtered by the clientId.
-    createFormLauncherForEdit(
-            'maleClients',
-            'partner6Month',
-            codigoId,
-            'Six Month Follow-Up',
-            mContainer);
+    // var mContainer = document.createElement('div');
+    // mContainer.setAttribute('class', 'detail_container');
+    // createFormLauncherForAdd(
+    //         'maleClients',
+    //         'screenPartner',
+    //         elementKeyToValueMapMaleId,
+    //         'Partner Screening',
+    //         mContainer);
+    // // TODO: this should be passing the rowId of the entry in the client table,
+    // // as filtered by the clientId.
+    // createFormLauncherForEdit(
+    //         'maleClients',
+    //         'partner6Month',
+    //         codigoId,
+    //         'Six Month Follow-Up',
+    //         mContainer);
 
-    $(mContainer).hide();
-    $(mItem).click(function() {
-        if ($(this).hasClass('selected')) {
-            $(this).removeClass('selected');
-        } else {
-            $(this).addClass('selected');
-        }
-        $(this).next(mContainer).slideToggle('slow');
-    });
+    // $(mContainer).hide();
+    // $(mItem).click(function() {
+    //     if ($(this).hasClass('selected')) {
+    //         $(this).removeClass('selected');
+    //     } else {
+    //         $(this).addClass('selected');
+    //     }
+    //     $(this).next(mContainer).slideToggle('slow');
+    // });
 
     document.getElementById('wrapper').appendChild(fItem);
     document.getElementById('wrapper').appendChild(fContainer);
 
-    document.getElementById('wrapper').appendChild(mItem);
-    document.getElementById('wrapper').appendChild(mContainer);
+    // document.getElementById('wrapper').appendChild(mItem);
+    // document.getElementById('wrapper').appendChild(mContainer);
 
 }
 

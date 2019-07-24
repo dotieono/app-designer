@@ -4,7 +4,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "constraint_message",
       "text": {
         "default": "Constraint violated.",
-        "es": "Restricción incumplida"
+        "pt": "Restrinção incomprida"
       },
       "_row_num": 2
     },
@@ -12,7 +12,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "invalid_value_message",
       "text": {
         "default": "Invalid value.",
-        "es": "Valor no válido."
+        "pt": "Valor inválido"
       },
       "_row_num": 3
     },
@@ -20,7 +20,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "required_message",
       "text": {
         "default": "Required value not provided.",
-        "es": "Dato requerido no proporcionado"
+        "pt": "Dado necessário não proporcionado"
       },
       "_row_num": 4
     },
@@ -28,7 +28,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "required_exception_message",
       "text": {
         "default": "Exception while evaluating required() expression. See console log.",
-        "es": "Excepción al evaluar la expresión requerido(). Ver consola de registro"
+        "pt": "Excepção ao avaliar a expressão requerido(). Ver consola de"
       },
       "_row_num": 5
     },
@@ -36,7 +36,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "constraint_exception_message",
       "text": {
         "default": "Exception while evaluating constraint() expression. See console log.",
-        "es": "Excepción al evaluar la expresión restricción(). Ver consola de registro"
+        "pt": "Excepção ao avaliar a expressão restrinçãp(). Ver consola de"
       },
       "_row_num": 6
     },
@@ -44,8 +44,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "acknLabel",
       "text": {
         "default": "Acknowledge",
-        "hi": "स्वीकार करना",
-        "es": "Admitir"
+        "pt": "Aceitar"
       },
       "_row_num": 7
     },
@@ -53,8 +52,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "back_button_label",
       "text": {
         "default": "Back",
-        "hi": "लौटना",
-        "es": "Atrás"
+        "pt": "Atrás"
       },
       "_row_num": 8
     },
@@ -62,8 +60,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "next_button_label",
       "text": {
         "default": "Next",
-        "hi": "आगामी",
-        "es": "Siguiente"
+        "pt": "Seguinte"
       },
       "_row_num": 9
     },
@@ -71,8 +68,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "continue_button_label",
       "text": {
         "default": "Continue",
-        "hi": "जारी रहना",
-        "es": "Continuar"
+        "pt": "Continuar"
       },
       "_row_num": 10
     },
@@ -80,7 +76,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "select_one_dropdown_label",
       "text": {
         "default": "Choose Option",
-        "es": "Elige una opción"
+        "pt": "Escolha uma opção"
       },
       "_row_num": 11
     },
@@ -88,7 +84,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "requiredValueErr",
       "text": {
         "default": "Required value was not provided.",
-        "es": "Dato requerido no proporcionado"
+        "pt": "Dado necessário não proporcionado"
       },
       "_row_num": 12
     },
@@ -96,7 +92,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "geopoint_button_label",
       "text": {
         "default": "Record Location",
-        "es": "Grabar ubicación"
+        "pt": "Gravar a localização"
       },
       "_row_num": 13
     },
@@ -104,7 +100,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "geopoint_latitude_component",
       "text": {
         "default": "Latitude: {{value.latitude}}",
-        "es": "Latitud: {{value.latitude}}"
+        "pt": "Latitude: {{value.latitude}}"
       },
       "_row_num": 14
     },
@@ -112,7 +108,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "geopoint_longitude_component",
       "text": {
         "default": "Longitude: {{value.longitude}}",
-        "es": "Longitud: {{value.longitude}}"
+        "pt": "Longitude: {{value.longitude}}"
       },
       "_row_num": 15
     },
@@ -120,7 +116,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "geopoint_altitude_component",
       "text": {
         "default": "Altitude: {{value.altitude}}",
-        "es": "Altitud: {{value.altitude}}"
+        "pt": "Altitude: {{value.altitude}}"
       },
       "_row_num": 16
     },
@@ -128,7 +124,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "geopoint_accuracy_component",
       "text": {
         "default": "Accuracy: {{value.accuracy}}",
-        "es": "Precisión: {{value.accuracy}}"
+        "pt": "Precisão: {{value.accuracy}}"
       },
       "_row_num": 17
     },
@@ -136,7 +132,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "waiting_text",
       "text": {
         "default": "Please wait…",
-        "es": "Por favor, espere…"
+        "pt": "Por favor, espere"
       },
       "_row_num": 18
     },
@@ -144,7 +140,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "take_video_button_label",
       "text": {
         "default": "Take Video",
-        "es": "Graba un vídeo"
+        "pt": "Grava vídeo"
       },
       "_row_num": 19
     },
@@ -152,7 +148,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "choose_video_button_label",
       "text": {
         "default": "Choose Video",
-        "es": "Elige un vídeo"
+        "pt": "Escolha um vídeo"
       },
       "_row_num": 20
     },
@@ -160,7 +156,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "video_control_not_supported",
       "text": {
         "default": "Video controls are not supported.",
-        "es": "Controles de vídeo no son compatibles."
+        "pt": "Controlos de vídeos nao são compatíveis"
       },
       "_row_num": 21
     },
@@ -168,7 +164,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "take_audio_button_label",
       "text": {
         "default": "Capture Audio",
-        "es": "Captura audio"
+        "pt": "Grava audio"
       },
       "_row_num": 22
     },
@@ -176,7 +172,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "choose_audio_button_label",
       "text": {
         "default": "Choose Audio",
-        "es": "Elige audio"
+        "pt": "Escolha audio"
       },
       "_row_num": 23
     },
@@ -184,7 +180,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "audio_control_not_supported",
       "text": {
         "default": "Audio controls are not supported.",
-        "es": "Controles de audio no son compatibles."
+        "pt": "Controlos de audio não são compatíveis"
       },
       "_row_num": 24
     },
@@ -192,7 +188,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "confirm_action_no_label",
       "text": {
         "default": "NO",
-        "es": "NO"
+        "pt": "Não"
       },
       "_row_num": 25
     },
@@ -200,7 +196,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "confirm_action_yes_label",
       "text": {
         "default": "YES",
-        "es": "SI"
+        "pt": "Sim"
       },
       "_row_num": 26
     },
@@ -208,7 +204,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "external_link_button_label",
       "text": {
         "default": "Follow link",
-        "es": "Sigue el enlace"
+        "pt": "Segue o link"
       },
       "_row_num": 27
     },
@@ -216,7 +212,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "survey_form_identification",
       "text": {
         "default": "<div><center>ODK Survey</center><hr></div><div><p>Form name: {{localizeText form_title}}</p>{{#if form_version}}<p>Form version: {{form_version}}</p>{{/if}}<hr></div>",
-        "es": "<div><center>ODK Survey</center><hr></div><div><p>Nombre del Formulario: {{localizeText form_title}}</p>{{#if form_version}}<p>Version de Formulario: {{form_version}}</p>{{/if}}<hr></div>"
+        "pt": "<div><center>ODK Survey</center><hr></div><div><p>Nome do Formulario: {{localizeText form_title}}</p>{{#if form_version}}<p>Versao do Formulario: {{form_version}}</p>{{/if}}<hr></div>"
       },
       "_row_num": 28
     },
@@ -224,7 +220,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "finalize_survey_instance_detail",
       "text": {
         "default": "<p>You are at the end of instance: </p><p>\"{{display_field}}\"</p><hr>",
-        "es": "<p>Está en el final de la instancia: </p><p>\"{{display_field}}\"</p><hr>"
+        "pt": "<p>Está no fim de instance: </p><p>\"{{display_field}}\"</p><hr>"
       },
       "_row_num": 29
     },
@@ -232,7 +228,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "finalize_survey_button_label",
       "text": {
         "default": "Finalize",
-        "es": "Finalizar"
+        "pt": "Finalizar"
       },
       "_row_num": 30
     },
@@ -240,7 +236,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "save_as_incomplete_survey_button_label",
       "text": {
         "default": "Incomplete",
-        "es": "Incompleto"
+        "pt": "Incompleto"
       },
       "_row_num": 31
     },
@@ -248,7 +244,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "take_image_button_label",
       "text": {
         "default": "Take Photo",
-        "es": "Tomé una foto"
+        "pt": "Tira foto"
       },
       "_row_num": 33
     },
@@ -256,7 +252,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "choose_image_button_label",
       "text": {
         "default": "Choose Image",
-        "es": "Elige una imagen"
+        "pt": "Escolha imagem"
       },
       "_row_num": 34
     },
@@ -264,7 +260,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "launch_intent_button_label",
       "text": {
         "default": "Launch Intent",
-        "es": "Lanzamiento de intención"
+        "pt": "Intenção de lançamento"
       },
       "_row_num": 35
     },
@@ -272,7 +268,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "opening_survey_instance_detail",
       "text": {
         "default": "{{#if display_field}}\n        <p>You are at the start of instance: </p>\n        <p>\"{{display_field}}\"</p> \n  {{else}}\n        <p>You are at the start of a new instance.</p>\n  {{/if}}\n        <hr>\n        {{#if last_save_date}}\n            <p>Last saved:</p> \n            <p>{{last_save_date}}</p>\n        {{/if}}\n        <hr>",
-        "es": "{{#if display_field}}\n        <p>estás en el inicio de la instancia: </p>\n        <p>\"{{display_field}}\"</p> \n  {{else}}\n        <p>estás en el inicio de una nueva instancia.</p>\n  {{/if}}\n        <hr>\n        {{#if last_save_date}}\n            <p>guardado por última vez:</p> \n            <p>{{last_save_date}}</p>\n        {{/if}}\n        <hr>"
+        "pt": "{{#if display_field}}\n        <p>Você está no inicio da instância: </p>\n        <p>\"{{display_field}}\"</p> \n  {{else}}\n        <p>Você está no inicio da nova instância.</p>\n  {{/if}}\n        <hr>\n        {{#if last_save_date}}\n            <p>guardado por última vez:</p> \n            <p>{{last_save_date}}</p>\n        {{/if}}\n        <hr>"
       },
       "_row_num": 36
     },
@@ -280,7 +276,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "opening_survey_next_button_label",
       "text": {
         "default": "Go to next prompt",
-        "es": "Ir al siguiente"
+        "pt": "Ir para seguinte"
       },
       "_row_num": 37
     },
@@ -288,7 +284,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "options_popup_language_heading",
       "text": {
         "default": "Language",
-        "es": "Idioma"
+        "pt": "Idioma"
       },
       "_row_num": 38
     },
@@ -296,7 +292,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "options_popup_contents_heading",
       "text": {
         "default": "Contents",
-        "es": "Contenido"
+        "pt": "Conteudo"
       },
       "_row_num": 39
     },
@@ -304,7 +300,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "options_popup_ignore_changes_heading",
       "text": {
         "default": "Ignore Changes + Exit",
-        "es": "Ignorar cambios y salir"
+        "pt": "Ingnorar alterações + Sair"
       },
       "_row_num": 40
     },
@@ -312,7 +308,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "options_popup_save_changes_heading",
       "text": {
         "default": "Save Changes + Exit",
-        "es": "Guardar cambios y salir"
+        "pt": "Guardar alterações + Sair"
       },
       "_row_num": 41
     },
@@ -320,7 +316,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "options_popup_finalize_changes_heading",
       "text": {
         "default": "Finalize Changes + Exit",
-        "es": "Finalizar cambios y salir"
+        "pt": "Finalizar alterações + Sair"
       },
       "_row_num": 42
     },
@@ -328,7 +324,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "screen_popup_ok_button_label",
       "text": {
         "default": "OK",
-        "es": "Confirmar"
+        "pt": "Confirmar"
       },
       "_row_num": 43
     },
@@ -336,7 +332,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "select_with_other_other_label",
       "text": {
         "default": "Other:",
-        "es": "Otro:"
+        "pt": "Outro:"
       },
       "_row_num": 44
     },
@@ -344,8 +340,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "select_deselect_label",
       "text": {
         "default": "Deselect",
-        "hi": "अचयनित",
-        "es": "Deseleccioanr"
+        "pt": "Desmarcar"
       },
       "_row_num": 45
     },
@@ -353,7 +348,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "take_signature_button_label",
       "text": {
         "default": "Get Signature",
-        "es": "Obtener firma"
+        "pt": "Obter assinatura"
       },
       "_row_num": 46
     },
@@ -361,7 +356,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "instances_survey_create_button_label",
       "text": {
         "default": "Create new instance",
-        "es": "Crear nueva instancia"
+        "pt": "Criar nova instância"
       },
       "_row_num": 47
     },
@@ -369,7 +364,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "instances_no_saved_instances_label",
       "text": {
         "default": "No saved instances.",
-        "es": "Instancias no guardadas"
+        "pt": "Instância não guardada"
       },
       "_row_num": 48
     },
@@ -377,7 +372,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "instances_last_save_date_label",
       "text": {
         "default": "<p><strong>Last Save Date:</strong></p>",
-        "es": "<p><strong>Última fecha guardada:</strong></p>"
+        "pt": "<p><strong>Última data guasdado:</strong></p>"
       },
       "_row_num": 49
     },
@@ -385,7 +380,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "instances_previously_created_instances_label",
       "text": {
         "default": "<p>Previously created instances:</p>",
-        "es": "<p>Instancias creadas previamente:</p>"
+        "pt": "<p>Instância criadas previamente:</p>"
       },
       "_row_num": 50
     },
@@ -393,7 +388,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "savepoint_type_finalized_text_label",
       "text": {
         "default": "Finalized",
-        "es": "Finalizado"
+        "pt": "Finalizado"
       },
       "_row_num": 51
     },
@@ -401,7 +396,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "savepoint_type_incomplete_text_label",
       "text": {
         "default": "Incomplete",
-        "es": "Incompleto"
+        "pt": "Incompleto"
       },
       "_row_num": 52
     },
@@ -409,7 +404,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "savepoint_type_checkpoint_text_label",
       "text": {
         "default": "Checkpoint",
-        "es": "Cambios no guardados"
+        "pt": "Alterações não guardados"
       },
       "_row_num": 53
     },
@@ -417,7 +412,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "linked_table_new_instance_label",
       "text": {
         "default": "Create new instance",
-        "es": "Crear nueva instancia"
+        "pt": "Criar nova instância"
       },
       "_row_num": 54
     },
@@ -425,7 +420,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "barcode_button_label",
       "text": {
         "default": "Scan Barcode",
-        "es": "Escanear Código de Barras"
+        "pt": "Escanear Código de Barras"
       },
       "_row_num": 55
     },
@@ -433,7 +428,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "invalid_numeric_message",
       "text": {
         "default": "Numeric value expected",
-        "es": "Valor numérico esperado"
+        "pt": "Valor numerico esperado"
       },
       "_row_num": 56
     },
@@ -441,7 +436,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "invalid_integer_message",
       "text": {
         "default": "Integer value expected",
-        "es": "Valor entero esperado"
+        "pt": "Valor inteiro esperado"
       },
       "_row_num": 57
     },
@@ -449,7 +444,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "confirm_exit_label",
       "text": {
         "default": "Exit",
-        "es": "Salir"
+        "pt": "Sair"
       },
       "_row_num": 58
     },
@@ -457,7 +452,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "confirm_cancel_label",
       "text": {
         "default": "Cancel",
-        "es": "Cancelar"
+        "pt": "Cancelar"
       },
       "_row_num": 59
     },
@@ -465,7 +460,7 @@ window.odkFrameworkDefinitions = {
       "string_token": "confirm_message",
       "text": {
         "default": "Are you sure you want to exit and lose all changes?",
-        "es": "¿Estás seguro de que quieres salir y perder todos los cambios?"
+        "pt": "Você tem certeza que quere sair e perder todas as alterações?"
       },
       "_row_num": 60
     }
