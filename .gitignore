@@ -1,5 +1,7 @@
 build/
 *.~lock.*
+~$*.xlsx
+app/config/tables/QPS/forms/inscricao/~$inscricao.xlsx
 app/output/props/*
 tempZipDir
 .idea/*

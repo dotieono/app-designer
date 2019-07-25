@@ -2772,6 +2772,13 @@
         "elementType": "date",
         "comment": "Makes the date widget DD/MM/YYYY",
         "_row_num": 2
+      },
+      {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3
       }
     ]
   },

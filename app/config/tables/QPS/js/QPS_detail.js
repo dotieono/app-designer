@@ -78,7 +78,7 @@ function display(result) {
             'geopoints',
             'id = ?',
             ['' + codigoId],
-            'config/tables/geopoints/html/geopoints_list.html#' + codigoId);
+            'config/tables/QPS/html/QPS_list.html#' + codigoId);
     });
     fContainer.appendChild(homeLocator);
 
@@ -91,29 +91,29 @@ function display(result) {
             'Inscricao QPS',
             fContainer);
     createFormLauncherForEdit(
-            'QPS',
-            'ronda_1',
+            'ronda',
+            'ronda',
             rowId,
-            'Primeira ronda',
+            'Rondas',
             fContainer);
-    createFormLauncherForEdit(
-            'QPS',
-            'ronda_2',
-            rowId,
-            'Segunda Ronda',
-            fContainer);
-    createFormLauncherForEdit(
-            'QPS',
-            'ronda_3',
-            rowId,
-            'Terceira Ronda',
-            fContainer);
-    createFormLauncherForEdit(
-            'QPS',
-            'ronda_4',
-            rowId,
-            'Quarta Ronda',
-            fContainer);
+    // createFormLauncherForEdit(
+    //         'QPS',
+    //         'ronda_2',
+    //         rowId,
+    //         'Segunda Ronda',
+    //         fContainer);
+    // createFormLauncherForEdit(
+    //         'QPS',
+    //         'ronda_3',
+    //         rowId,
+    //         'Terceira Ronda',
+    //         fContainer);
+    // createFormLauncherForEdit(
+    //         'QPS',
+    //         'ronda_4',
+    //         rowId,
+    //         'Quarta Ronda',
+    //         fContainer);
     $(fContainer).hide();
     $(fItem).click(function() {
         if ($(this).hasClass('selected')) {

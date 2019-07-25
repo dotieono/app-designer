@@ -51,10 +51,6 @@ function resumeFunc(state) {
         // set the parameters for the list view
         listViewLogic.setTableId('QPS');
         listViewLogic.setFormId('inscricao');
-        listViewLogic.setFormId('ronda_1');
-        listViewLogic.setFormId('ronda_2');
-        listViewLogic.setFormId('ronda_3');
-        listViewLogic.setFormId('ronda_4');
         listViewLogic.setListQuery(listQuery);
         listViewLogic.setListElement('#list');
         listViewLogic.setSearchTextElement('#search');
@@ -64,9 +60,9 @@ function resumeFunc(state) {
         listViewLogic.showEditAndDeleteButtons(false);
      
         listViewLogic.setColIdsToDisplayInList(null, 'id_paciente',
-        		'Região', 'region', null, 'RELA1NOME', 
-        		'Sector', 'sector', null, 'RELA2NOME',
-        		'Tabanca', 'local', 'Casa', 'af', 'Nome da mae', 'mae');
+        		'Região', 'region', 'Sector', 'sector', 
+        		 //null, 'nome_casa',
+        		'Tabanca', 'local', 'Casa', 'AF', 'Nome da mae', 'mae',null, null, null, null );
     }
 
     listViewLogic.resumeFn(state);

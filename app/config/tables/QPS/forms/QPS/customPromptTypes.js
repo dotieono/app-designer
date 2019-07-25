@@ -18,7 +18,7 @@ var adate = promptTypes.input_type.extend({
     unknownDay: false,
     unknownMonth: false,
     unknownYear: false,
-    templatePath: '../config/tables/QPS/forms/inscricao/templates/adate.handlebars',
+    templatePath: '../config/tables/QPS/forms/QPS/templates/adate.handlebars',
     
     events: {
         "change select": "modification",

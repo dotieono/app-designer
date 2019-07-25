@@ -3,8 +3,9 @@
  * (for use within their formulas).
  */
  //TODO: These functions need unit testing.
-define(['opendatakit','database','jquery','underscore'],
-function(opendatakit,  database,  $,       _) {
+
+define(['opendatakit','database','jquery','underscore','survey/js/adateHelpers'],
+function(opendatakit,  database,  $,       _, adateHelpers) {
     /* global odkCommon */
     verifyLoad('formulaFunctions',
         ['opendatakit','database','jquery','underscore'],
@@ -13,6 +14,7 @@ function(opendatakit,  database,  $,       _) {
         //calculates will be set by the builder
         calculates: {},
         opendatakit: opendatakit,
+        adate: adateHelpers,
 		getCurrentLocale: function() {
             'use strict';
 

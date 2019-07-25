@@ -3,266 +3,371 @@
     "survey": [
       {
         "clause": "begin screen",
-        "_row_num": 2
+        "_row_num": 3
       },
       {
-        "type": "barcode",
-        "name": "id_paciente",
+        "type": "note",
+        "name": "nota",
         "display": {
           "prompt": {
-            "text": "Escanea o codigo de barra"
+            "text": "Está a fazer entrevista com: {{data.nome}} and ID: {{data.id_paciente}}"
           }
         },
         "_row_num": 4
       },
       {
-        "clause": "end screen",
-        "_row_num": 7
+        "type": "barcode",
+        "name": "sticker",
+        "display": {
+          "prompt": {
+            "text": "Escanea o codigo de barra"
+          }
+        },
+        "_row_num": 5
       },
       {
-        "clause": "begin screen",
+        "type": "string",
+        "name": "letra_sticker",
+        "display": {
+          "prompt": {
+            "text": "Letras de códigos"
+          },
+          "hint": {
+            "text": "escrever só as letras em maiuscula e sem espaco ou trassos"
+          }
+        },
+        "_row_num": 8
+      },
+      {
+        "type": "integer",
+        "name": "numero_sticker",
+        "display": {
+          "prompt": {
+            "text": "Números de código"
+          },
+          "hint": {
+            "text": "escrever os números"
+          }
+        },
+        "_row_num": 9
+      },
+      {
+        "clause": "end screen",
         "_row_num": 12
       },
       {
-        "type": "adate",
-        "name": "data_inscricao",
+        "type": "integer",
+        "name": "n_ronda",
         "display": {
           "prompt": {
-            "text": "Data da inscrição da criança"
+            "text": "Numero de Ronda"
           }
         },
-        "_row_num": 13
+        "constraint": "(data('n_ronda')<4)",
+        "_row_num": 14
       },
       {
-        "type": "text",
-        "name": "nome",
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "consentimento",
         "display": {
           "prompt": {
-            "text": "Nome e Apelido"
+            "text": "Os pais e a criança aceitaram a tomar o medicamento"
           }
         },
         "_row_num": 15
       },
       {
-        "type": "string",
-        "name": "nome_casa",
-        "display": {
-          "prompt": {
-            "text": "Nome de Casa"
-          }
-        },
+        "clause": "if",
+        "condition": "data('consentimento')=='2'",
         "_row_num": 16
       },
       {
-        "clause": "end screen",
+        "clause": "goto refuse",
         "_row_num": 17
       },
       {
-        "clause": "begin screen",
+        "clause": "else",
         "_row_num": 18
       },
       {
-        "type": "select_one",
-        "values_list": "sexo",
-        "name": "sexo",
+        "type": "adate",
+        "name": "d1",
         "display": {
           "prompt": {
-            "text": "Sexo"
+            "text": "1º dia - ASC"
           }
         },
         "_row_num": 19
       },
       {
-        "type": "select_one",
-        "values_list": "data_ou_idade",
-        "name": "Data_ou_idade",
+        "type": "adate",
+        "name": "d2",
         "display": {
           "prompt": {
-            "text": "Idade ou data de nascimento?"
+            "text": "2º dia - Mãe"
           }
         },
         "_row_num": 20
       },
       {
-        "clause": "if",
-        "condition": "data('Data_ou_idade')=='1'",
+        "type": "adate",
+        "name": "d3",
+        "display": {
+          "prompt": {
+            "text": "3º dia - Mãe"
+          }
+        },
         "_row_num": 21
       },
       {
-        "type": "adate",
-        "name": "dn",
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "tem_adverso",
         "display": {
           "prompt": {
-            "text": "Data de Nascimento"
+            "text": "Tem algun efeito adverso"
           }
         },
-        "_row_num": 22
-      },
-      {
-        "clause": "else",
         "_row_num": 23
       },
       {
-        "type": "integer",
-        "name": "ano",
-        "display": {
-          "prompt": {
-            "text": "Idades em anos"
-          }
-        },
+        "clause": "if",
+        "condition": "data('tem_adverso')=='1'",
         "_row_num": 24
       },
       {
-        "type": "integer",
-        "name": "mes",
+        "type": "select_multiple",
+        "values_list": "efeito_adverso",
+        "name": "ef_adveso",
         "display": {
           "prompt": {
-            "text": "Idade em meses"
+            "text": "Efeitos Adverso"
           }
         },
         "_row_num": 25
       },
       {
-        "clause": "end if",
+        "clause": "if",
+        "condition": "selected(data('ef_adverso'),'7')",
+        "_row_num": 26
+      },
+      {
+        "type": "text",
+        "name": "esp_ef_adverso",
+        "display": {
+          "prompt": {
+            "text": "Especica o efeito adverso"
+          }
+        },
         "_row_num": 27
       },
       {
-        "clause": "end screen",
-        "_row_num": 28
-      },
-      {
-        "clause": "begin screen",
+        "clause": "end if",
         "_row_num": 29
       },
       {
-        "type": "select_one",
-        "values_list": "region_csv",
-        "name": "region",
-        "display": {
-          "prompt": {
-            "text": "Região"
-          }
-        },
-        "_row_num": 30
-      },
-      {
-        "type": "select_one",
-        "values_list": "sector_csv",
-        "name": "sector",
-        "display": {
-          "prompt": {
-            "text": "Área sanitária"
-          }
-        },
-        "choice_filter": "choice_item.region === data('region')",
-        "_row_num": 31
-      },
-      {
-        "type": "select_one",
-        "values_list": "local_csv",
-        "name": "local",
-        "display": {
-          "prompt": {
-            "text": "Tabanca"
-          }
-        },
-        "choice_filter": "choice_item.region === data('region') && choice_item.sector===data('sector')",
-        "_row_num": 32
-      },
-      {
-        "type": "integer",
-        "name": "AF",
-        "display": {
-          "prompt": {
-            "text": "Nº de Agregado Familiar"
-          }
-        },
+        "clause": "end if",
         "_row_num": 33
       },
       {
-        "clause": "end screen",
+        "clause": "begin screen",
         "_row_num": 34
       },
       {
-        "clause": "begin screen",
+        "type": "note",
+        "name": "dx_tto",
+        "display": {
+          "prompt": {
+            "text": "DIAGNÓSTICO E TRATAMENTO DO PALUDISMO: A QPS é integrado com o diagnóstico e tratamento do paludismo a nível da comunidade pelo ASC. Os resultados serão relatados pelos ASC em seus formulários de relatórios mensais. Qualquer criança que tenha febre com um TDR negativo deve ser transferida para o centro de saúde. \nIndique se Sim nas células das colunas correspondentes relacionadas a suspeita do paludismo, teste e tratamento com ACT."
+          }
+        },
         "_row_num": 35
       },
       {
-        "type": "integer",
-        "name": "equipa",
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "febre",
         "display": {
           "prompt": {
-            "text": "Nº de equipa"
+            "text": "Febre ou história de febre"
           }
         },
         "_row_num": 36
       },
       {
-        "type": "integer",
-        "name": "mtn_equi",
-        "display": {
-          "prompt": {
-            "text": "Telefone Chefe equipa (MTN)"
-          }
-        },
+        "clause": "if",
+        "condition": "data('febre')=='1'",
         "_row_num": 37
       },
       {
-        "type": "integer",
-        "name": "orange_equi",
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "tdr",
         "display": {
           "prompt": {
-            "text": "Telefone Chefe equipa (Orange)"
+            "text": "TDR Realizado"
           }
         },
         "_row_num": 38
       },
       {
-        "type": "integer",
-        "name": "mtn_RAS",
-        "display": {
-          "prompt": {
-            "text": "Telefone RAS: (MTN)"
-          }
-        },
+        "clause": "if",
+        "condition": "data('tdr')=='1'",
         "_row_num": 39
       },
       {
-        "type": "integer",
-        "name": "orange_RAS",
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "TDR_positivo",
         "display": {
           "prompt": {
-            "text": "Telefone RAS: (Orange)"
+            "text": "TDR +"
           }
         },
-        "_row_num": 40
-      },
-      {
-        "clause": "end screen",
-        "_row_num": 41
-      },
-      {
-        "clause": "begin screen",
         "_row_num": 42
       },
       {
-        "type": "note",
-        "name": "abrir_ronda",
-        "display": {
-          "prompt": {
-            "text": "Rondas"
-          }
-        },
+        "clause": "if",
+        "condition": "data('TDR_positivo')=='1'",
         "_row_num": 43
       },
       {
-        "type": "linked_table",
-        "values_list": "ronda",
-        "_row_num": 44
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "tto_ACT",
+        "display": {
+          "prompt": {
+            "text": "Tratamenco com ACT"
+          }
+        },
+        "_row_num": 46
+      },
+      {
+        "clause": "end if",
+        "_row_num": 47
+      },
+      {
+        "clause": "end if",
+        "_row_num": 48
+      },
+      {
+        "clause": "end if",
+        "_row_num": 49
       },
       {
         "clause": "end screen",
-        "_row_num": 45
+        "_row_num": 50
+      },
+      {
+        "clause": "end if",
+        "_row_num": 51
+      },
+      {
+        "branch_label": "tranferencia",
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "tranferencia",
+        "display": {
+          "prompt": {
+            "text": "A criança foi tranferido"
+          }
+        },
+        "_row_num": 54
+      },
+      {
+        "clause": "if",
+        "condition": "data('transferencia')=='1'",
+        "_row_num": 55
+      },
+      {
+        "type": "select_one",
+        "values_list": "transferencia",
+        "name": "motivo",
+        "_row_num": 57
+      },
+      {
+        "clause": "end if",
+        "_row_num": 58
+      },
+      {
+        "clause": "goto ending",
+        "_row_num": 59
+      },
+      {
+        "branch_label": "ineligible",
+        "type": "note",
+        "name": "inelegivel",
+        "display": {
+          "prompt": {
+            "text": "Obrigado pelo seu tempo em responder a estas perguntas. Com base em algumas das respostas que você deu, você é inelegível para fazer parte do estudo. Isso de modo algum afeta o cuidado que você receberá aqui nesta clínica. Posso responder a quaisquer perguntas que você possa ter?"
+          }
+        },
+        "_row_num": 60
+      },
+      {
+        "clause": "goto ending",
+        "_row_num": 61
+      },
+      {
+        "branch_label": "refuse",
+        "type": "select_multiple",
+        "values_list": "razao",
+        "name": "razao",
+        "display": {
+          "prompt": {
+            "text": "Eu entendo que você não quer participar deste estudo. Você poderia me dizer porque você não gostaria de participar? Marque todos que se aplicam:"
+          }
+        },
+        "_row_num": 62
+      },
+      {
+        "clause": "if // ref_reason",
+        "condition": "selected(data('razao'),'4')",
+        "_row_num": 63
+      },
+      {
+        "type": "text",
+        "name": "esp_razao",
+        "display": {
+          "prompt": {
+            "text": "Especifica"
+          }
+        },
+        "_row_num": 64
+      },
+      {
+        "clause": "end if // ref_reason",
+        "_row_num": 65
+      },
+      {
+        "type": "note",
+        "name": "refusal_statement",
+        "display": {
+          "prompt": {
+            "text": "Diga: Obrigado por me informar porque você não quer participar. É importante que saibamos por que as mulheres podem se sentir assim. Isso de modo algum afetará os cuidados que você, seus filhos ou seu parceiro receberão na clínica."
+          }
+        },
+        "_row_num": 66
+      },
+      {
+        "clause": "goto ending",
+        "_row_num": 67
+      },
+      {
+        "clause": "goto ending",
+        "_row_num": 69
+      },
+      {
+        "branch_label": "ending",
+        "type": "note",
+        "name": "survey_complete",
+        "display": {
+          "prompt": {
+            "text": "A exibição agora está completa, por favor, vá para a próxima página para finalizar suas respostas."
+          }
+        },
+        "_row_num": 74
       }
     ],
     "choices": [
@@ -490,77 +595,27 @@
     "settings": [
       {
         "setting_name": "form_id",
-        "value": "inscricao",
+        "value": "ronda",
         "_row_num": 2
       },
       {
         "setting_name": "form_version",
-        "value": 2019072400,
+        "value": 2019072500,
         "_row_num": 3
       },
       {
         "setting_name": "survey",
         "display": {
           "title": {
-            "text": "Inscrição"
+            "text": "Rondas"
           }
         },
         "_row_num": 4
       },
       {
         "setting_name": "table_id",
-        "value": "QPS",
+        "value": "ronda",
         "_row_num": 5
-      }
-    ],
-    "queries": [
-      {
-        "query_name": "region_csv",
-        "query_type": "csv",
-        "uri": "\"tabancas.csv\"",
-        "callback": "_.chain(context).pluck('region').uniq().map(function(region){\nreturn {data_value:region, display:{title: {text: region} } };\n}).value()",
-        "_row_num": 2
-      },
-      {
-        "query_name": "sector_csv",
-        "query_type": "csv",
-        "uri": "\"tabancas.csv\"",
-        "callback": "_.chain(context)\n.uniq(function(x){return x.sector;})\n.map(function(place){\n    return {\n        data_value:place.sector, \n        region: place.region,\n        display:{title: {text: place.sector} }\n    } \n    })\n.value()",
-        "_row_num": 3
-      },
-      {
-        "query_name": "local_csv",
-        "query_type": "csv",
-        "uri": "\"tabancas.csv\"",
-        "callback": "_.chain(context)\n.uniq(function(y){return y.local;})\n.map(function(place){\n    return {\n        data_value:place.local, \n        region: place.region,\n        sector: place.sector,\n               display:{title: {text: place.local} }\n    } \n    })\n.value()",
-        "_row_num": 4
-      },
-      {
-        "query_name": "ronda",
-        "query_type": "linked_table",
-        "linked_form_id": "ronda",
-        "linked_table_id": "ronda",
-        "selection": "id_paciente=?",
-        "selectionArgs": "[data('id_paciente')]",
-        "newRowInitialElementKeyToValueMap": "{id_paciente: data('id_paciente')}",
-        "openRowInitialElementKeyToValueMap": "{}",
-        "_row_num": 5
-      }
-    ],
-    "prompt_types": [
-      {
-        "prompt_type_name": "custom_date",
-        "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2
-      },
-      {
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3
       }
     ],
     "model": [
@@ -570,7 +625,7 @@
         "_row_num": 2
       },
       {
-        "type": "adate",
+        "type": "custom_date",
         "name": "data_inscricao",
         "_row_num": 3
       },
@@ -590,7 +645,7 @@
         "_row_num": 6
       },
       {
-        "type": "adate",
+        "type": "custom_date",
         "name": "dn",
         "_row_num": 7
       },
@@ -650,17 +705,17 @@
         "_row_num": 18
       },
       {
-        "type": "adate",
+        "type": "custom_date",
         "name": "r1d1",
         "_row_num": 20
       },
       {
-        "type": "adate",
+        "type": "custom_date",
         "name": "r1d2",
         "_row_num": 21
       },
       {
-        "type": "adate",
+        "type": "custom_date",
         "name": "r1d3",
         "_row_num": 22
       },
@@ -680,17 +735,17 @@
         "_row_num": 25
       },
       {
-        "type": "adate",
+        "type": "custom_date",
         "name": "r2d1",
         "_row_num": 27
       },
       {
-        "type": "adate",
+        "type": "custom_date",
         "name": "r2d2",
         "_row_num": 28
       },
       {
-        "type": "adate",
+        "type": "custom_date",
         "name": "r2d3",
         "_row_num": 29
       },
@@ -710,17 +765,17 @@
         "_row_num": 32
       },
       {
-        "type": "adate",
+        "type": "custom_date",
         "name": "r3d1",
         "_row_num": 35
       },
       {
-        "type": "adate",
+        "type": "custom_date",
         "name": "r3d2",
         "_row_num": 36
       },
       {
-        "type": "adate",
+        "type": "custom_date",
         "name": "r3d3",
         "_row_num": 37
       },
@@ -740,17 +795,17 @@
         "_row_num": 40
       },
       {
-        "type": "adate",
+        "type": "custom_date",
         "name": "r4d1",
         "_row_num": 43
       },
       {
-        "type": "adate",
+        "type": "custom_date",
         "name": "r4d2",
         "_row_num": 44
       },
       {
-        "type": "adate",
+        "type": "custom_date",
         "name": "r4d3",
         "_row_num": 45
       },
@@ -768,16 +823,22 @@
         "type": "text",
         "name": "esp_ef_adverso_r4",
         "_row_num": 48
-      },
+      }
+    ],
+    "prompt_types": [
       {
-        "type": "integer",
-        "name": "numero_sticker",
-        "_row_num": 50
-      },
-      {
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "name": "nome_casa",
-        "_row_num": 52
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2
+      },
+      {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3
       }
     ]
   },
@@ -800,26 +861,26 @@
     "settings": {
       "form_id": {
         "setting_name": "form_id",
-        "value": "inscricao",
+        "value": "ronda",
         "_row_num": 2
       },
       "form_version": {
         "setting_name": "form_version",
-        "value": 2019072400,
+        "value": 2019072500,
         "_row_num": 3
       },
       "survey": {
         "setting_name": "survey",
         "display": {
           "title": {
-            "text": "Inscrição"
+            "text": "Rondas"
           }
         },
         "_row_num": 4
       },
       "table_id": {
         "setting_name": "table_id",
-        "value": "QPS",
+        "value": "ronda",
         "_row_num": 5
       },
       "_locales": {
@@ -845,7 +906,7 @@
         "setting_name": "survey",
         "display": {
           "title": {
-            "text": "Inscrição"
+            "text": "Rondas"
           }
         },
         "_row_num": 4
@@ -1085,49 +1146,15 @@
         }
       ]
     },
-    "queries": {
-      "region_csv": {
-        "query_name": "region_csv",
-        "query_type": "csv",
-        "uri": "\"tabancas.csv\"",
-        "callback": "_.chain(context).pluck('region').uniq().map(function(region){\nreturn {data_value:region, display:{title: {text: region} } };\n}).value()",
-        "_row_num": 2
-      },
-      "sector_csv": {
-        "query_name": "sector_csv",
-        "query_type": "csv",
-        "uri": "\"tabancas.csv\"",
-        "callback": "_.chain(context)\n.uniq(function(x){return x.sector;})\n.map(function(place){\n    return {\n        data_value:place.sector, \n        region: place.region,\n        display:{title: {text: place.sector} }\n    } \n    })\n.value()",
-        "_row_num": 3
-      },
-      "local_csv": {
-        "query_name": "local_csv",
-        "query_type": "csv",
-        "uri": "\"tabancas.csv\"",
-        "callback": "_.chain(context)\n.uniq(function(y){return y.local;})\n.map(function(place){\n    return {\n        data_value:place.local, \n        region: place.region,\n        sector: place.sector,\n               display:{title: {text: place.local} }\n    } \n    })\n.value()",
-        "_row_num": 4
-      },
-      "ronda": {
-        "query_name": "ronda",
-        "query_type": "linked_table",
-        "linked_form_id": "ronda",
-        "linked_table_id": "ronda",
-        "selection": "id_paciente=?",
-        "selectionArgs": "[data('id_paciente')]",
-        "newRowInitialElementKeyToValueMap": "{id_paciente: data('id_paciente')}",
-        "openRowInitialElementKeyToValueMap": "{}",
-        "_row_num": 5
-      }
+    "table_specific_definitions": {
+      "_tokens": {}
     },
+    "queries": {},
     "calculates": {},
     "model": {
       "id_paciente": {
         "type": "string",
         "_defn": [
-          {
-            "_row_num": 4,
-            "section_name": "survey"
-          },
           {
             "_row_num": 2,
             "section_name": "model"
@@ -1136,17 +1163,13 @@
         "elementKey": "id_paciente"
       },
       "data_inscricao": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
-          {
-            "_row_num": 13,
-            "section_name": "survey"
-          },
           {
             "_row_num": 3,
             "section_name": "model"
@@ -1158,10 +1181,6 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 15,
-            "section_name": "survey"
-          },
-          {
             "_row_num": 4,
             "section_name": "model"
           }
@@ -1170,12 +1189,7 @@
       },
       "sexo": {
         "type": "string",
-        "valuesList": "sexo",
         "_defn": [
-          {
-            "_row_num": 19,
-            "section_name": "survey"
-          },
           {
             "_row_num": 5,
             "section_name": "model"
@@ -1185,12 +1199,7 @@
       },
       "Data_ou_idade": {
         "type": "string",
-        "valuesList": "data_ou_idade",
         "_defn": [
-          {
-            "_row_num": 20,
-            "section_name": "survey"
-          },
           {
             "_row_num": 6,
             "section_name": "model"
@@ -1199,17 +1208,13 @@
         "elementKey": "Data_ou_idade"
       },
       "dn": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
-          {
-            "_row_num": 22,
-            "section_name": "survey"
-          },
           {
             "_row_num": 7,
             "section_name": "model"
@@ -1221,10 +1226,6 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 24,
-            "section_name": "survey"
-          },
-          {
             "_row_num": 8,
             "section_name": "model"
           }
@@ -1234,10 +1235,6 @@
       "mes": {
         "type": "integer",
         "_defn": [
-          {
-            "_row_num": 25,
-            "section_name": "survey"
-          },
           {
             "_row_num": 9,
             "section_name": "model"
@@ -1257,12 +1254,7 @@
       },
       "region": {
         "type": "string",
-        "valuesList": "region_csv",
         "_defn": [
-          {
-            "_row_num": 30,
-            "section_name": "survey"
-          },
           {
             "_row_num": 11,
             "section_name": "model"
@@ -1272,12 +1264,7 @@
       },
       "sector": {
         "type": "string",
-        "valuesList": "sector_csv",
         "_defn": [
-          {
-            "_row_num": 31,
-            "section_name": "survey"
-          },
           {
             "_row_num": 12,
             "section_name": "model"
@@ -1287,12 +1274,7 @@
       },
       "local": {
         "type": "string",
-        "valuesList": "local_csv",
         "_defn": [
-          {
-            "_row_num": 32,
-            "section_name": "survey"
-          },
           {
             "_row_num": 13,
             "section_name": "model"
@@ -1304,10 +1286,6 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 36,
-            "section_name": "survey"
-          },
-          {
             "_row_num": 14,
             "section_name": "model"
           }
@@ -1317,10 +1295,6 @@
       "mtn_equi": {
         "type": "integer",
         "_defn": [
-          {
-            "_row_num": 37,
-            "section_name": "survey"
-          },
           {
             "_row_num": 15,
             "section_name": "model"
@@ -1332,10 +1306,6 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 38,
-            "section_name": "survey"
-          },
-          {
             "_row_num": 16,
             "section_name": "model"
           }
@@ -1345,10 +1315,6 @@
       "mtn_RAS": {
         "type": "integer",
         "_defn": [
-          {
-            "_row_num": 39,
-            "section_name": "survey"
-          },
           {
             "_row_num": 17,
             "section_name": "model"
@@ -1360,10 +1326,6 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 40,
-            "section_name": "survey"
-          },
-          {
             "_row_num": 18,
             "section_name": "model"
           }
@@ -1371,12 +1333,12 @@
         "elementKey": "orange_RAS"
       },
       "r1d1": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 20,
@@ -1386,12 +1348,12 @@
         "elementKey": "r1d1"
       },
       "r1d2": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 21,
@@ -1401,12 +1363,12 @@
         "elementKey": "r1d2"
       },
       "r1d3": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 22,
@@ -1417,7 +1379,12 @@
       },
       "tem_adverso": {
         "type": "string",
+        "valuesList": "yesno",
         "_defn": [
+          {
+            "_row_num": 23,
+            "section_name": "survey"
+          },
           {
             "_row_num": 23,
             "section_name": "model"
@@ -1450,12 +1417,12 @@
         "elementKey": "esp_ef_adverso_r1"
       },
       "r2d1": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 27,
@@ -1465,12 +1432,12 @@
         "elementKey": "r2d1"
       },
       "r2d2": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 28,
@@ -1480,12 +1447,12 @@
         "elementKey": "r2d2"
       },
       "r2d3": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 29,
@@ -1529,12 +1496,12 @@
         "elementKey": "esp_ef_adverso_r2"
       },
       "r3d1": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 35,
@@ -1544,12 +1511,12 @@
         "elementKey": "r3d1"
       },
       "r3d2": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 36,
@@ -1559,12 +1526,12 @@
         "elementKey": "r3d2"
       },
       "r3d3": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 37,
@@ -1608,12 +1575,12 @@
         "elementKey": "esp_ef_adverso_r3"
       },
       "r4d1": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 43,
@@ -1623,12 +1590,12 @@
         "elementKey": "r4d1"
       },
       "r4d2": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 44,
@@ -1638,12 +1605,12 @@
         "elementKey": "r4d2"
       },
       "r4d3": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 45,
@@ -1686,39 +1653,211 @@
         ],
         "elementKey": "esp_ef_adverso_r4"
       },
-      "numero_sticker": {
-        "type": "integer",
+      "sticker": {
         "_defn": [
           {
-            "_row_num": 50,
-            "section_name": "model"
+            "_row_num": 5,
+            "section_name": "survey"
           }
         ],
+        "type": "string",
+        "elementKey": "sticker"
+      },
+      "letra_sticker": {
+        "_defn": [
+          {
+            "_row_num": 8,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "letra_sticker"
+      },
+      "numero_sticker": {
+        "_defn": [
+          {
+            "_row_num": 9,
+            "section_name": "survey"
+          }
+        ],
+        "type": "integer",
         "elementKey": "numero_sticker"
       },
-      "nome_casa": {
-        "type": "string",
+      "n_ronda": {
         "_defn": [
           {
-            "_row_num": 16,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 52,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "nome_casa"
-      },
-      "AF": {
-        "_defn": [
-          {
-            "_row_num": 33,
+            "_row_num": 14,
             "section_name": "survey"
           }
         ],
         "type": "integer",
-        "elementKey": "AF"
+        "elementKey": "n_ronda"
+      },
+      "consentimento": {
+        "_defn": [
+          {
+            "_row_num": 15,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "consentimento"
+      },
+      "d1": {
+        "_defn": [
+          {
+            "_row_num": 19,
+            "section_name": "survey"
+          }
+        ],
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "elementKey": "d1"
+      },
+      "d2": {
+        "_defn": [
+          {
+            "_row_num": 20,
+            "section_name": "survey"
+          }
+        ],
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "elementKey": "d2"
+      },
+      "d3": {
+        "_defn": [
+          {
+            "_row_num": 21,
+            "section_name": "survey"
+          }
+        ],
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "elementKey": "d3"
+      },
+      "ef_adveso": {
+        "_defn": [
+          {
+            "_row_num": 25,
+            "section_name": "survey"
+          }
+        ],
+        "type": "array",
+        "items": {
+          "type": "string",
+          "elementKey": "ef_adveso_items"
+        },
+        "valuesList": "efeito_adverso",
+        "elementKey": "ef_adveso"
+      },
+      "esp_ef_adverso": {
+        "_defn": [
+          {
+            "_row_num": 27,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "esp_ef_adverso"
+      },
+      "febre": {
+        "_defn": [
+          {
+            "_row_num": 36,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "febre"
+      },
+      "tdr": {
+        "_defn": [
+          {
+            "_row_num": 38,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "tdr"
+      },
+      "TDR_positivo": {
+        "_defn": [
+          {
+            "_row_num": 42,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "TDR_positivo"
+      },
+      "tto_ACT": {
+        "_defn": [
+          {
+            "_row_num": 46,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "tto_ACT"
+      },
+      "tranferencia": {
+        "_defn": [
+          {
+            "_row_num": 54,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "tranferencia"
+      },
+      "motivo": {
+        "_defn": [
+          {
+            "_row_num": 57,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "transferencia",
+        "elementKey": "motivo"
+      },
+      "razao": {
+        "_defn": [
+          {
+            "_row_num": 62,
+            "section_name": "survey"
+          }
+        ],
+        "type": "array",
+        "items": {
+          "type": "string",
+          "elementKey": "razao_items"
+        },
+        "valuesList": "razao",
+        "elementKey": "razao"
+      },
+      "esp_razao": {
+        "_defn": [
+          {
+            "_row_num": 64,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "esp_razao"
       }
     },
     "section_names": [
@@ -1732,435 +1871,727 @@
         "reachable_sections": {},
         "prompts": [
           {
-            "type": "barcode",
-            "name": "id_paciente",
+            "type": "note",
+            "name": "nota",
             "display": {
               "prompt": {
-                "text": "Escanea o codigo de barra"
+                "text": "Está a fazer entrevista com: {{data.nome}} and ID: {{data.id_paciente}}"
               }
             },
             "_row_num": 4,
             "__rowNum__": 3,
             "_token_type": "prompt",
-            "_type": "barcode",
-            "_branch_label_enclosing_screen": "survey/_screen2",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen3",
             "promptIdx": 0
           },
           {
-            "type": "adate",
-            "name": "data_inscricao",
+            "type": "barcode",
+            "name": "sticker",
             "display": {
               "prompt": {
-                "text": "Data da inscrição da criança"
+                "text": "Escanea o codigo de barra"
               }
             },
-            "_row_num": 13,
-            "__rowNum__": 12,
+            "_row_num": 5,
+            "__rowNum__": 4,
             "_token_type": "prompt",
-            "_type": "adate",
-            "_branch_label_enclosing_screen": "survey/_screen12",
+            "_type": "barcode",
+            "_branch_label_enclosing_screen": "survey/_screen3",
             "promptIdx": 1
           },
           {
-            "type": "text",
-            "name": "nome",
+            "type": "string",
+            "name": "letra_sticker",
             "display": {
               "prompt": {
-                "text": "Nome e Apelido"
+                "text": "Letras de códigos"
+              },
+              "hint": {
+                "text": "escrever só as letras em maiuscula e sem espaco ou trassos"
+              }
+            },
+            "_row_num": 8,
+            "__rowNum__": 7,
+            "_token_type": "prompt",
+            "_type": "string",
+            "_branch_label_enclosing_screen": "survey/_screen3",
+            "promptIdx": 2
+          },
+          {
+            "type": "integer",
+            "name": "numero_sticker",
+            "display": {
+              "prompt": {
+                "text": "Números de código"
+              },
+              "hint": {
+                "text": "escrever os números"
+              }
+            },
+            "_row_num": 9,
+            "__rowNum__": 8,
+            "_token_type": "prompt",
+            "_type": "integer",
+            "_branch_label_enclosing_screen": "survey/_screen3",
+            "promptIdx": 3
+          },
+          {
+            "type": "integer",
+            "name": "n_ronda",
+            "display": {
+              "prompt": {
+                "text": "Numero de Ronda"
+              }
+            },
+            "constraint": "(data('n_ronda')<4)",
+            "_row_num": 14,
+            "__rowNum__": 13,
+            "_token_type": "prompt",
+            "_type": "integer",
+            "_branch_label_enclosing_screen": "survey/_screen14",
+            "promptIdx": 4
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "consentimento",
+            "display": {
+              "prompt": {
+                "text": "Os pais e a criança aceitaram a tomar o medicamento"
               }
             },
             "_row_num": 15,
             "__rowNum__": 14,
             "_token_type": "prompt",
-            "_type": "text",
-            "_branch_label_enclosing_screen": "survey/_screen12",
-            "promptIdx": 2
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen15",
+            "promptIdx": 5
           },
           {
-            "type": "string",
-            "name": "nome_casa",
+            "type": "adate",
+            "name": "d1",
             "display": {
               "prompt": {
-                "text": "Nome de Casa"
-              }
-            },
-            "_row_num": 16,
-            "__rowNum__": 15,
-            "_token_type": "prompt",
-            "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen12",
-            "promptIdx": 3
-          },
-          {
-            "type": "select_one",
-            "values_list": "sexo",
-            "name": "sexo",
-            "display": {
-              "prompt": {
-                "text": "Sexo"
+                "text": "1º dia - ASC"
               }
             },
             "_row_num": 19,
             "__rowNum__": 18,
             "_token_type": "prompt",
-            "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen18",
-            "promptIdx": 4
+            "_type": "adate",
+            "_branch_label_enclosing_screen": "survey/_screen19",
+            "promptIdx": 6
           },
           {
-            "type": "select_one",
-            "values_list": "data_ou_idade",
-            "name": "Data_ou_idade",
+            "type": "adate",
+            "name": "d2",
             "display": {
               "prompt": {
-                "text": "Idade ou data de nascimento?"
+                "text": "2º dia - Mãe"
               }
             },
             "_row_num": 20,
             "__rowNum__": 19,
             "_token_type": "prompt",
-            "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen18",
-            "promptIdx": 5
-          },
-          {
-            "type": "adate",
-            "name": "dn",
-            "display": {
-              "prompt": {
-                "text": "Data de Nascimento"
-              }
-            },
-            "_row_num": 22,
-            "__rowNum__": 21,
-            "_token_type": "prompt",
             "_type": "adate",
-            "_branch_label_enclosing_screen": "survey/_screen18",
-            "promptIdx": 6
-          },
-          {
-            "type": "integer",
-            "name": "ano",
-            "display": {
-              "prompt": {
-                "text": "Idades em anos"
-              }
-            },
-            "_row_num": 24,
-            "__rowNum__": 23,
-            "_token_type": "prompt",
-            "_type": "integer",
-            "_branch_label_enclosing_screen": "survey/_screen18",
+            "_branch_label_enclosing_screen": "survey/_screen20",
             "promptIdx": 7
           },
           {
-            "type": "integer",
-            "name": "mes",
+            "type": "adate",
+            "name": "d3",
             "display": {
               "prompt": {
-                "text": "Idade em meses"
+                "text": "3º dia - Mãe"
+              }
+            },
+            "_row_num": 21,
+            "__rowNum__": 20,
+            "_token_type": "prompt",
+            "_type": "adate",
+            "_branch_label_enclosing_screen": "survey/_screen21",
+            "promptIdx": 8
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "tem_adverso",
+            "display": {
+              "prompt": {
+                "text": "Tem algun efeito adverso"
+              }
+            },
+            "_row_num": 23,
+            "__rowNum__": 22,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen23",
+            "promptIdx": 9
+          },
+          {
+            "type": "select_multiple",
+            "values_list": "efeito_adverso",
+            "name": "ef_adveso",
+            "display": {
+              "prompt": {
+                "text": "Efeitos Adverso"
               }
             },
             "_row_num": 25,
             "__rowNum__": 24,
             "_token_type": "prompt",
-            "_type": "integer",
-            "_branch_label_enclosing_screen": "survey/_screen18",
-            "promptIdx": 8
-          },
-          {
-            "type": "select_one",
-            "values_list": "region_csv",
-            "name": "region",
-            "display": {
-              "prompt": {
-                "text": "Região"
-              }
-            },
-            "_row_num": 30,
-            "__rowNum__": 29,
-            "_token_type": "prompt",
-            "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen29",
-            "promptIdx": 9
-          },
-          {
-            "type": "select_one",
-            "values_list": "sector_csv",
-            "name": "sector",
-            "display": {
-              "prompt": {
-                "text": "Área sanitária"
-              }
-            },
-            "choice_filter": "choice_item.region === data('region')",
-            "_row_num": 31,
-            "__rowNum__": 30,
-            "_token_type": "prompt",
-            "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen29",
+            "_type": "select_multiple",
+            "_branch_label_enclosing_screen": "survey/_screen25",
             "promptIdx": 10
           },
           {
-            "type": "select_one",
-            "values_list": "local_csv",
-            "name": "local",
+            "type": "text",
+            "name": "esp_ef_adverso",
             "display": {
               "prompt": {
-                "text": "Tabanca"
+                "text": "Especica o efeito adverso"
               }
             },
-            "choice_filter": "choice_item.region === data('region') && choice_item.sector===data('sector')",
-            "_row_num": 32,
-            "__rowNum__": 31,
+            "_row_num": 27,
+            "__rowNum__": 26,
             "_token_type": "prompt",
-            "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen29",
+            "_type": "text",
+            "_branch_label_enclosing_screen": "survey/_screen27",
             "promptIdx": 11
           },
           {
-            "type": "integer",
-            "name": "AF",
+            "type": "note",
+            "name": "dx_tto",
             "display": {
               "prompt": {
-                "text": "Nº de Agregado Familiar"
+                "text": "DIAGNÓSTICO E TRATAMENTO DO PALUDISMO: A QPS é integrado com o diagnóstico e tratamento do paludismo a nível da comunidade pelo ASC. Os resultados serão relatados pelos ASC em seus formulários de relatórios mensais. Qualquer criança que tenha febre com um TDR negativo deve ser transferida para o centro de saúde. \nIndique se Sim nas células das colunas correspondentes relacionadas a suspeita do paludismo, teste e tratamento com ACT."
               }
             },
-            "_row_num": 33,
-            "__rowNum__": 32,
+            "_row_num": 35,
+            "__rowNum__": 34,
             "_token_type": "prompt",
-            "_type": "integer",
-            "_branch_label_enclosing_screen": "survey/_screen29",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen34",
             "promptIdx": 12
           },
           {
-            "type": "integer",
-            "name": "equipa",
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "febre",
             "display": {
               "prompt": {
-                "text": "Nº de equipa"
+                "text": "Febre ou história de febre"
               }
             },
             "_row_num": 36,
             "__rowNum__": 35,
             "_token_type": "prompt",
-            "_type": "integer",
-            "_branch_label_enclosing_screen": "survey/_screen35",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen34",
             "promptIdx": 13
           },
           {
-            "type": "integer",
-            "name": "mtn_equi",
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "tdr",
             "display": {
               "prompt": {
-                "text": "Telefone Chefe equipa (MTN)"
-              }
-            },
-            "_row_num": 37,
-            "__rowNum__": 36,
-            "_token_type": "prompt",
-            "_type": "integer",
-            "_branch_label_enclosing_screen": "survey/_screen35",
-            "promptIdx": 14
-          },
-          {
-            "type": "integer",
-            "name": "orange_equi",
-            "display": {
-              "prompt": {
-                "text": "Telefone Chefe equipa (Orange)"
+                "text": "TDR Realizado"
               }
             },
             "_row_num": 38,
             "__rowNum__": 37,
             "_token_type": "prompt",
-            "_type": "integer",
-            "_branch_label_enclosing_screen": "survey/_screen35",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen34",
+            "promptIdx": 14
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "TDR_positivo",
+            "display": {
+              "prompt": {
+                "text": "TDR +"
+              }
+            },
+            "_row_num": 42,
+            "__rowNum__": 41,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen34",
             "promptIdx": 15
           },
           {
-            "type": "integer",
-            "name": "mtn_RAS",
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "tto_ACT",
             "display": {
               "prompt": {
-                "text": "Telefone RAS: (MTN)"
+                "text": "Tratamenco com ACT"
               }
             },
-            "_row_num": 39,
-            "__rowNum__": 38,
+            "_row_num": 46,
+            "__rowNum__": 45,
             "_token_type": "prompt",
-            "_type": "integer",
-            "_branch_label_enclosing_screen": "survey/_screen35",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen34",
             "promptIdx": 16
           },
           {
-            "type": "integer",
-            "name": "orange_RAS",
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "tranferencia",
             "display": {
               "prompt": {
-                "text": "Telefone RAS: (Orange)"
+                "text": "A criança foi tranferido"
               }
             },
-            "_row_num": 40,
-            "__rowNum__": 39,
+            "_row_num": 54,
+            "__rowNum__": 53,
             "_token_type": "prompt",
-            "_type": "integer",
-            "_branch_label_enclosing_screen": "survey/_screen35",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen54",
             "promptIdx": 17
           },
           {
-            "type": "note",
-            "name": "abrir_ronda",
-            "display": {
-              "prompt": {
-                "text": "Rondas"
-              }
-            },
-            "_row_num": 43,
-            "__rowNum__": 42,
+            "type": "select_one",
+            "values_list": "transferencia",
+            "name": "motivo",
+            "_row_num": 57,
+            "__rowNum__": 56,
             "_token_type": "prompt",
-            "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen42",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen57",
             "promptIdx": 18
           },
           {
-            "type": "linked_table",
-            "values_list": "ronda",
-            "_row_num": 44,
-            "__rowNum__": 43,
+            "type": "note",
+            "name": "inelegivel",
+            "display": {
+              "prompt": {
+                "text": "Obrigado pelo seu tempo em responder a estas perguntas. Com base em algumas das respostas que você deu, você é inelegível para fazer parte do estudo. Isso de modo algum afeta o cuidado que você receberá aqui nesta clínica. Posso responder a quaisquer perguntas que você possa ter?"
+              }
+            },
+            "_row_num": 60,
+            "__rowNum__": 59,
             "_token_type": "prompt",
-            "_type": "linked_table",
-            "_branch_label_enclosing_screen": "survey/_screen42",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen60",
             "promptIdx": 19
+          },
+          {
+            "type": "select_multiple",
+            "values_list": "razao",
+            "name": "razao",
+            "display": {
+              "prompt": {
+                "text": "Eu entendo que você não quer participar deste estudo. Você poderia me dizer porque você não gostaria de participar? Marque todos que se aplicam:"
+              }
+            },
+            "_row_num": 62,
+            "__rowNum__": 61,
+            "_token_type": "prompt",
+            "_type": "select_multiple",
+            "_branch_label_enclosing_screen": "survey/_screen62",
+            "promptIdx": 20
+          },
+          {
+            "type": "text",
+            "name": "esp_razao",
+            "display": {
+              "prompt": {
+                "text": "Especifica"
+              }
+            },
+            "_row_num": 64,
+            "__rowNum__": 63,
+            "_token_type": "prompt",
+            "_type": "text",
+            "_branch_label_enclosing_screen": "survey/_screen64",
+            "promptIdx": 21
+          },
+          {
+            "type": "note",
+            "name": "refusal_statement",
+            "display": {
+              "prompt": {
+                "text": "Diga: Obrigado por me informar porque você não quer participar. É importante que saibamos por que as mulheres podem se sentir assim. Isso de modo algum afetará os cuidados que você, seus filhos ou seu parceiro receberão na clínica."
+              }
+            },
+            "_row_num": 66,
+            "__rowNum__": 65,
+            "_token_type": "prompt",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen66",
+            "promptIdx": 22
+          },
+          {
+            "type": "note",
+            "name": "survey_complete",
+            "display": {
+              "prompt": {
+                "text": "A exibição agora está completa, por favor, vá para a próxima página para finalizar suas respostas."
+              }
+            },
+            "_row_num": 74,
+            "__rowNum__": 73,
+            "_token_type": "prompt",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen74",
+            "promptIdx": 23
           },
           {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 46,
-            "_branch_label_enclosing_screen": "survey/_screen46",
-            "promptIdx": 20
+            "_row_num": 75,
+            "_branch_label_enclosing_screen": "survey/_screen75",
+            "promptIdx": 24
           }
         ],
         "validation_tag_map": {
-          "finalize": []
+          "finalize": [
+            4
+          ]
         },
         "operations": [
           {
             "clause": "begin screen",
-            "_row_num": 2,
-            "__rowNum__": 1,
+            "_row_num": 3,
+            "__rowNum__": 2,
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 7,
-              "__rowNum__": 6,
+              "_row_num": 12,
+              "__rowNum__": 11,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(0);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(0);\nactivePromptIndicies.push(1);\nactivePromptIndicies.push(2);\nactivePromptIndicies.push(3);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 0
           },
           {
-            "clause": "begin screen",
-            "_row_num": 12,
-            "__rowNum__": 11,
+            "_row_num": 14,
             "_token_type": "begin_screen",
-            "_end_screen_clause": {
-              "clause": "end screen",
-              "_row_num": 17,
-              "__rowNum__": 16,
-              "_token_type": "end_screen"
-            },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(1);\nactivePromptIndicies.push(2);\nactivePromptIndicies.push(3);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(4);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 1
           },
           {
-            "clause": "begin screen",
-            "_row_num": 18,
-            "__rowNum__": 17,
+            "_row_num": 15,
             "_token_type": "begin_screen",
-            "_end_screen_clause": {
-              "clause": "end screen",
-              "_row_num": 28,
-              "__rowNum__": 27,
-              "_token_type": "end_screen"
-            },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(4);\nactivePromptIndicies.push(5);\nif (data('Data_ou_idade')=='1') {\nactivePromptIndicies.push(6);\n}\nelse {\nactivePromptIndicies.push(7);\nactivePromptIndicies.push(8);\n}\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(5);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 2
           },
           {
-            "clause": "begin screen",
-            "_row_num": 29,
-            "__rowNum__": 28,
-            "_token_type": "begin_screen",
-            "_end_screen_clause": {
-              "clause": "end screen",
-              "_row_num": 34,
-              "__rowNum__": 33,
-              "_token_type": "end_screen"
-            },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(9);\nactivePromptIndicies.push(10);\nactivePromptIndicies.push(11);\nactivePromptIndicies.push(12);\n\nreturn activePromptIndicies;\n}\n",
+            "clause": "if",
+            "condition": "data('consentimento')=='2'",
+            "_row_num": 16,
+            "__rowNum__": 15,
+            "_token_type": "goto_label",
+            "_branch_label": "_then16",
             "operationIdx": 3
           },
           {
-            "clause": "begin screen",
-            "_row_num": 35,
-            "__rowNum__": 34,
-            "_token_type": "begin_screen",
-            "_end_screen_clause": {
-              "clause": "end screen",
-              "_row_num": 41,
-              "__rowNum__": 40,
-              "_token_type": "end_screen"
-            },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(13);\nactivePromptIndicies.push(14);\nactivePromptIndicies.push(15);\nactivePromptIndicies.push(16);\nactivePromptIndicies.push(17);\n\nreturn activePromptIndicies;\n}\n",
+            "clause": "else",
+            "_token_type": "goto_label",
+            "_branch_label": "_else18",
+            "_row_num": 18,
             "operationIdx": 4
           },
           {
+            "clause": "goto refuse",
+            "_row_num": 17,
+            "__rowNum__": 16,
+            "_token_type": "goto_label",
+            "_branch_label": "refuse",
+            "operationIdx": 5
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif51",
+            "_row_num": 51,
+            "operationIdx": 6
+          },
+          {
+            "_row_num": 19,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(6);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 7
+          },
+          {
+            "_row_num": 20,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(7);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 8
+          },
+          {
+            "_row_num": 21,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(8);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 9
+          },
+          {
+            "_row_num": 23,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(9);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 10
+          },
+          {
+            "clause": "if",
+            "condition": "data('tem_adverso')=='1'",
+            "_row_num": 24,
+            "__rowNum__": 23,
+            "_token_type": "goto_label",
+            "_branch_label": "_then24",
+            "operationIdx": 11
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_else33",
+            "_row_num": 33,
+            "operationIdx": 12
+          },
+          {
+            "_row_num": 25,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(10);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 13
+          },
+          {
+            "clause": "if",
+            "condition": "selected(data('ef_adverso'),'7')",
+            "_row_num": 26,
+            "__rowNum__": 25,
+            "_token_type": "goto_label",
+            "_branch_label": "_then26",
+            "operationIdx": 14
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_else29",
+            "_row_num": 29,
+            "operationIdx": 15
+          },
+          {
+            "_row_num": 27,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(11);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 16
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif29",
+            "_row_num": 29,
+            "operationIdx": 17
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif33",
+            "_row_num": 33,
+            "operationIdx": 18
+          },
+          {
             "clause": "begin screen",
-            "_row_num": 42,
-            "__rowNum__": 41,
+            "_row_num": 34,
+            "__rowNum__": 33,
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 45,
-              "__rowNum__": 44,
+              "_row_num": 50,
+              "__rowNum__": 49,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(18);\nactivePromptIndicies.push(19);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 5
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(12);\nactivePromptIndicies.push(13);\nif (data('febre')=='1') {\nactivePromptIndicies.push(14);\nif (data('tdr')=='1') {\nactivePromptIndicies.push(15);\nif (data('TDR_positivo')=='1') {\nactivePromptIndicies.push(16);\n}\n}\n}\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 19
+          },
+          {
+            "_row_num": 54,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(17);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 20
+          },
+          {
+            "clause": "if",
+            "condition": "data('transferencia')=='1'",
+            "_row_num": 55,
+            "__rowNum__": 54,
+            "_token_type": "goto_label",
+            "_branch_label": "_then55",
+            "operationIdx": 21
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_else58",
+            "_row_num": 58,
+            "operationIdx": 22
+          },
+          {
+            "_row_num": 57,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(18);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 23
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif58",
+            "_row_num": 58,
+            "operationIdx": 24
+          },
+          {
+            "clause": "goto ending",
+            "_row_num": 59,
+            "__rowNum__": 58,
+            "_token_type": "goto_label",
+            "_branch_label": "ending",
+            "operationIdx": 25
+          },
+          {
+            "_row_num": 60,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(19);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 26
+          },
+          {
+            "clause": "goto ending",
+            "_row_num": 61,
+            "__rowNum__": 60,
+            "_token_type": "goto_label",
+            "_branch_label": "ending",
+            "operationIdx": 27
+          },
+          {
+            "_row_num": 62,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(20);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 28
+          },
+          {
+            "clause": "if // ref_reason",
+            "condition": "selected(data('razao'),'4')",
+            "_row_num": 63,
+            "__rowNum__": 62,
+            "_token_type": "goto_label",
+            "_tag_name": "ref_reason",
+            "_branch_label": "_then63",
+            "operationIdx": 29
+          },
+          {
+            "clause": "end if // ref_reason",
+            "_token_type": "goto_label",
+            "_branch_label": "_else65",
+            "_row_num": 65,
+            "operationIdx": 30
+          },
+          {
+            "_row_num": 64,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(21);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 31
+          },
+          {
+            "clause": "end if // ref_reason",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif65",
+            "_row_num": 65,
+            "operationIdx": 32
+          },
+          {
+            "_row_num": 66,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(22);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 33
+          },
+          {
+            "clause": "goto ending",
+            "_row_num": 67,
+            "__rowNum__": 66,
+            "_token_type": "goto_label",
+            "_branch_label": "ending",
+            "operationIdx": 34
+          },
+          {
+            "clause": "goto ending",
+            "_row_num": 69,
+            "__rowNum__": 68,
+            "_token_type": "goto_label",
+            "_branch_label": "ending",
+            "operationIdx": 35
+          },
+          {
+            "_row_num": 74,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(23);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 36
           },
           {
             "_token_type": "exit_section",
             "clause": "exit section",
-            "_row_num": 46,
-            "operationIdx": 6
+            "_row_num": 75,
+            "operationIdx": 37
           },
           {
-            "_row_num": 46,
+            "_row_num": 75,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(20);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(24);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
-            "operationIdx": 7
+            "operationIdx": 38
           },
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 46,
-            "operationIdx": 8
+            "_row_num": 75,
+            "operationIdx": 39
           }
         ],
         "branch_label_map": {
-          "_screen2": 0,
-          "_screen12": 1,
-          "_screen18": 2,
-          "_screen29": 3,
-          "_screen35": 4,
-          "_screen42": 5,
-          "_contents": 7,
-          "_screen46": 7
+          "_screen3": 0,
+          "_screen14": 1,
+          "_screen15": 2,
+          "_then16": 5,
+          "_else18": 7,
+          "_screen19": 7,
+          "_screen20": 8,
+          "_screen21": 9,
+          "_screen23": 10,
+          "_then24": 13,
+          "_screen25": 13,
+          "_then26": 16,
+          "_screen27": 16,
+          "_else29": 18,
+          "_endif29": 18,
+          "_else33": 19,
+          "_endif33": 19,
+          "_screen34": 19,
+          "_endif51": 20,
+          "tranferencia": 20,
+          "_screen54": 20,
+          "_then55": 23,
+          "_screen57": 23,
+          "_else58": 25,
+          "_endif58": 25,
+          "ineligible": 26,
+          "_screen60": 26,
+          "refuse": 28,
+          "_screen62": 28,
+          "_then63": 31,
+          "_screen64": 31,
+          "_else65": 33,
+          "_endif65": 33,
+          "_screen66": 33,
+          "ending": 36,
+          "_screen74": 36,
+          "_contents": 38,
+          "_screen75": 38
         }
       },
       "initial": {
@@ -2192,7 +2623,7 @@
             "promptIdx": 1,
             "display": {
               "title": {
-                "text": "Inscrição"
+                "text": "Rondas"
               }
             },
             "_branch_label_enclosing_screen": "survey/0"
@@ -2346,10 +2777,6 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 4,
-            "section_name": "survey"
-          },
-          {
             "_row_num": 2,
             "section_name": "model"
           }
@@ -2360,17 +2787,13 @@
         "elementPath": "id_paciente"
       },
       "data_inscricao": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
-          {
-            "_row_num": 13,
-            "section_name": "survey"
-          },
           {
             "_row_num": 3,
             "section_name": "model"
@@ -2385,10 +2808,6 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 15,
-            "section_name": "survey"
-          },
-          {
             "_row_num": 4,
             "section_name": "model"
           }
@@ -2400,12 +2819,7 @@
       },
       "sexo": {
         "type": "string",
-        "valuesList": "sexo",
         "_defn": [
-          {
-            "_row_num": 19,
-            "section_name": "survey"
-          },
           {
             "_row_num": 5,
             "section_name": "model"
@@ -2418,12 +2832,7 @@
       },
       "Data_ou_idade": {
         "type": "string",
-        "valuesList": "data_ou_idade",
         "_defn": [
-          {
-            "_row_num": 20,
-            "section_name": "survey"
-          },
           {
             "_row_num": 6,
             "section_name": "model"
@@ -2435,17 +2844,13 @@
         "elementPath": "Data_ou_idade"
       },
       "dn": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
-          {
-            "_row_num": 22,
-            "section_name": "survey"
-          },
           {
             "_row_num": 7,
             "section_name": "model"
@@ -2460,10 +2865,6 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 24,
-            "section_name": "survey"
-          },
-          {
             "_row_num": 8,
             "section_name": "model"
           }
@@ -2476,10 +2877,6 @@
       "mes": {
         "type": "integer",
         "_defn": [
-          {
-            "_row_num": 25,
-            "section_name": "survey"
-          },
           {
             "_row_num": 9,
             "section_name": "model"
@@ -2505,12 +2902,7 @@
       },
       "region": {
         "type": "string",
-        "valuesList": "region_csv",
         "_defn": [
-          {
-            "_row_num": 30,
-            "section_name": "survey"
-          },
           {
             "_row_num": 11,
             "section_name": "model"
@@ -2523,12 +2915,7 @@
       },
       "sector": {
         "type": "string",
-        "valuesList": "sector_csv",
         "_defn": [
-          {
-            "_row_num": 31,
-            "section_name": "survey"
-          },
           {
             "_row_num": 12,
             "section_name": "model"
@@ -2541,12 +2928,7 @@
       },
       "local": {
         "type": "string",
-        "valuesList": "local_csv",
         "_defn": [
-          {
-            "_row_num": 32,
-            "section_name": "survey"
-          },
           {
             "_row_num": 13,
             "section_name": "model"
@@ -2561,10 +2943,6 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 36,
-            "section_name": "survey"
-          },
-          {
             "_row_num": 14,
             "section_name": "model"
           }
@@ -2577,10 +2955,6 @@
       "mtn_equi": {
         "type": "integer",
         "_defn": [
-          {
-            "_row_num": 37,
-            "section_name": "survey"
-          },
           {
             "_row_num": 15,
             "section_name": "model"
@@ -2595,10 +2969,6 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 38,
-            "section_name": "survey"
-          },
-          {
             "_row_num": 16,
             "section_name": "model"
           }
@@ -2611,10 +2981,6 @@
       "mtn_RAS": {
         "type": "integer",
         "_defn": [
-          {
-            "_row_num": 39,
-            "section_name": "survey"
-          },
           {
             "_row_num": 17,
             "section_name": "model"
@@ -2629,10 +2995,6 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 40,
-            "section_name": "survey"
-          },
-          {
             "_row_num": 18,
             "section_name": "model"
           }
@@ -2643,12 +3005,12 @@
         "elementPath": "orange_RAS"
       },
       "r1d1": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 20,
@@ -2661,12 +3023,12 @@
         "elementPath": "r1d1"
       },
       "r1d2": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 21,
@@ -2679,12 +3041,12 @@
         "elementPath": "r1d2"
       },
       "r1d3": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 22,
@@ -2698,7 +3060,12 @@
       },
       "tem_adverso": {
         "type": "string",
+        "valuesList": "yesno",
         "_defn": [
+          {
+            "_row_num": 23,
+            "section_name": "survey"
+          },
           {
             "_row_num": 23,
             "section_name": "model"
@@ -2747,12 +3114,12 @@
         "elementPath": "esp_ef_adverso_r1"
       },
       "r2d1": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 27,
@@ -2765,12 +3132,12 @@
         "elementPath": "r2d1"
       },
       "r2d2": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 28,
@@ -2783,12 +3150,12 @@
         "elementPath": "r2d2"
       },
       "r2d3": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 29,
@@ -2851,12 +3218,12 @@
         "elementPath": "esp_ef_adverso_r2"
       },
       "r3d1": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 35,
@@ -2869,12 +3236,12 @@
         "elementPath": "r3d1"
       },
       "r3d2": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 36,
@@ -2887,12 +3254,12 @@
         "elementPath": "r3d2"
       },
       "r3d3": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 37,
@@ -2955,12 +3322,12 @@
         "elementPath": "esp_ef_adverso_r3"
       },
       "r4d1": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 43,
@@ -2973,12 +3340,12 @@
         "elementPath": "r4d1"
       },
       "r4d2": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 44,
@@ -2991,12 +3358,12 @@
         "elementPath": "r4d2"
       },
       "r4d3": {
-        "prompt_type_name": "adate",
+        "prompt_type_name": "custom_date",
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2,
+        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 45,
@@ -3058,48 +3425,279 @@
         "elementSet": "data",
         "elementPath": "esp_ef_adverso_r4"
       },
-      "numero_sticker": {
-        "type": "integer",
+      "sticker": {
         "_defn": [
           {
-            "_row_num": 50,
-            "section_name": "model"
+            "_row_num": 5,
+            "section_name": "survey"
           }
         ],
+        "type": "string",
+        "elementKey": "sticker",
+        "elementName": "sticker",
+        "elementSet": "data",
+        "elementPath": "sticker"
+      },
+      "letra_sticker": {
+        "_defn": [
+          {
+            "_row_num": 8,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "letra_sticker",
+        "elementName": "letra_sticker",
+        "elementSet": "data",
+        "elementPath": "letra_sticker"
+      },
+      "numero_sticker": {
+        "_defn": [
+          {
+            "_row_num": 9,
+            "section_name": "survey"
+          }
+        ],
+        "type": "integer",
         "elementKey": "numero_sticker",
         "elementName": "numero_sticker",
         "elementSet": "data",
         "elementPath": "numero_sticker"
       },
-      "nome_casa": {
-        "type": "string",
+      "n_ronda": {
         "_defn": [
           {
-            "_row_num": 16,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 52,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "nome_casa",
-        "elementName": "nome_casa",
-        "elementSet": "data",
-        "elementPath": "nome_casa"
-      },
-      "AF": {
-        "_defn": [
-          {
-            "_row_num": 33,
+            "_row_num": 14,
             "section_name": "survey"
           }
         ],
         "type": "integer",
-        "elementKey": "AF",
-        "elementName": "AF",
+        "elementKey": "n_ronda",
+        "elementName": "n_ronda",
         "elementSet": "data",
-        "elementPath": "AF"
+        "elementPath": "n_ronda"
+      },
+      "consentimento": {
+        "_defn": [
+          {
+            "_row_num": 15,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "consentimento",
+        "elementName": "consentimento",
+        "elementSet": "data",
+        "elementPath": "consentimento"
+      },
+      "d1": {
+        "_defn": [
+          {
+            "_row_num": 19,
+            "section_name": "survey"
+          }
+        ],
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "elementKey": "d1",
+        "elementName": "d1",
+        "elementSet": "data",
+        "elementPath": "d1"
+      },
+      "d2": {
+        "_defn": [
+          {
+            "_row_num": 20,
+            "section_name": "survey"
+          }
+        ],
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "elementKey": "d2",
+        "elementName": "d2",
+        "elementSet": "data",
+        "elementPath": "d2"
+      },
+      "d3": {
+        "_defn": [
+          {
+            "_row_num": 21,
+            "section_name": "survey"
+          }
+        ],
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "elementKey": "d3",
+        "elementName": "d3",
+        "elementSet": "data",
+        "elementPath": "d3"
+      },
+      "ef_adveso": {
+        "_defn": [
+          {
+            "_row_num": 25,
+            "section_name": "survey"
+          }
+        ],
+        "type": "array",
+        "items": {
+          "type": "string",
+          "elementKey": "ef_adveso_items",
+          "elementName": "items",
+          "elementSet": "data",
+          "elementPath": "ef_adveso.items",
+          "notUnitOfRetention": true
+        },
+        "valuesList": "efeito_adverso",
+        "elementKey": "ef_adveso",
+        "elementName": "ef_adveso",
+        "elementSet": "data",
+        "elementPath": "ef_adveso",
+        "listChildElementKeys": [
+          "ef_adveso_items"
+        ]
+      },
+      "esp_ef_adverso": {
+        "_defn": [
+          {
+            "_row_num": 27,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "esp_ef_adverso",
+        "elementName": "esp_ef_adverso",
+        "elementSet": "data",
+        "elementPath": "esp_ef_adverso"
+      },
+      "febre": {
+        "_defn": [
+          {
+            "_row_num": 36,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "febre",
+        "elementName": "febre",
+        "elementSet": "data",
+        "elementPath": "febre"
+      },
+      "tdr": {
+        "_defn": [
+          {
+            "_row_num": 38,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "tdr",
+        "elementName": "tdr",
+        "elementSet": "data",
+        "elementPath": "tdr"
+      },
+      "TDR_positivo": {
+        "_defn": [
+          {
+            "_row_num": 42,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "TDR_positivo",
+        "elementName": "TDR_positivo",
+        "elementSet": "data",
+        "elementPath": "TDR_positivo"
+      },
+      "tto_ACT": {
+        "_defn": [
+          {
+            "_row_num": 46,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "tto_ACT",
+        "elementName": "tto_ACT",
+        "elementSet": "data",
+        "elementPath": "tto_ACT"
+      },
+      "tranferencia": {
+        "_defn": [
+          {
+            "_row_num": 54,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "tranferencia",
+        "elementName": "tranferencia",
+        "elementSet": "data",
+        "elementPath": "tranferencia"
+      },
+      "motivo": {
+        "_defn": [
+          {
+            "_row_num": 57,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "transferencia",
+        "elementKey": "motivo",
+        "elementName": "motivo",
+        "elementSet": "data",
+        "elementPath": "motivo"
+      },
+      "razao": {
+        "_defn": [
+          {
+            "_row_num": 62,
+            "section_name": "survey"
+          }
+        ],
+        "type": "array",
+        "items": {
+          "type": "string",
+          "elementKey": "razao_items",
+          "elementName": "items",
+          "elementSet": "data",
+          "elementPath": "razao.items",
+          "notUnitOfRetention": true
+        },
+        "valuesList": "razao",
+        "elementKey": "razao",
+        "elementName": "razao",
+        "elementSet": "data",
+        "elementPath": "razao",
+        "listChildElementKeys": [
+          "razao_items"
+        ]
+      },
+      "esp_razao": {
+        "_defn": [
+          {
+            "_row_num": 64,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "esp_razao",
+        "elementName": "esp_razao",
+        "elementSet": "data",
+        "elementPath": "esp_razao"
       },
       "ef_adveso_r1_items": {
         "type": "string",
@@ -3131,6 +3729,22 @@
         "elementName": "items",
         "elementSet": "data",
         "elementPath": "ef_adveso_r4.items",
+        "notUnitOfRetention": true
+      },
+      "ef_adveso_items": {
+        "type": "string",
+        "elementKey": "ef_adveso_items",
+        "elementName": "items",
+        "elementSet": "data",
+        "elementPath": "ef_adveso.items",
+        "notUnitOfRetention": true
+      },
+      "razao_items": {
+        "type": "string",
+        "elementKey": "razao_items",
+        "elementName": "items",
+        "elementSet": "data",
+        "elementPath": "razao.items",
         "notUnitOfRetention": true
       },
       "_id": {
@@ -3245,6 +3859,106 @@
         "elementSet": "instanceMetadata",
         "elementPath": "_savepoint_creator"
       }
-    }
+    },
+    "properties": [
+      {
+        "_partition": "Column",
+        "_aspect": "TDR_positivo",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "consentimento",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "ef_adveso",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"efeito_adverso\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Vômitos\"}},\"_row_num\":11},{\"choice_list_name\":\"efeito_adverso\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Vômitos repetidos\"}},\"_row_num\":12},{\"choice_list_name\":\"efeito_adverso\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Dor de barriga intensa\"}},\"_row_num\":13},{\"choice_list_name\":\"efeito_adverso\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Diarréia (>= 7)\"}},\"_row_num\":14},{\"choice_list_name\":\"efeito_adverso\",\"data_value\":5,\"display\":{\"title\":{\"text\":\"Convulsões\"}},\"_row_num\":15},{\"choice_list_name\":\"efeito_adverso\",\"data_value\":6,\"display\":{\"title\":{\"text\":\"Erupção cutânea\"}},\"_row_num\":16},{\"choice_list_name\":\"efeito_adverso\",\"data_value\":7,\"display\":{\"title\":{\"text\":\"Outros\"}},\"_row_num\":17}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "febre",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "motivo",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"transferencia\",\"data_value\":8,\"display\":{\"title\":{\"text\":\"Falta de TDR\"}},\"_row_num\":20},{\"choice_list_name\":\"transferencia\",\"data_value\":9,\"display\":{\"title\":{\"text\":\"Efeito adversos\"}},\"_row_num\":21},{\"choice_list_name\":\"transferencia\",\"data_value\":10,\"display\":{\"title\":{\"text\":\"Febre com TDR negativo\"}},\"_row_num\":22},{\"choice_list_name\":\"transferencia\",\"data_value\":11,\"display\":{\"title\":{\"text\":\"Falta de ACT\"}},\"_row_num\":23},{\"choice_list_name\":\"transferencia\",\"data_value\":12,\"display\":{\"title\":{\"text\":\"outros\"}},\"_row_num\":24}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "razao",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"razao\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Esqueceu-se\"}},\"_row_num\":27},{\"choice_list_name\":\"razao\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"A criança teve reação\"}},\"_row_num\":28},{\"choice_list_name\":\"razao\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Não queriam que a criança tomasse\"}},\"_row_num\":29},{\"choice_list_name\":\"razao\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"outra razão\"}},\"_row_num\":30}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "tdr",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "tem_adverso",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "tranferencia",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "tto_ACT",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "FormType",
+        "_aspect": "default",
+        "_key": "FormType.formType",
+        "_type": "string",
+        "_value": "SURVEY"
+      },
+      {
+        "_partition": "SurveyUtil",
+        "_aspect": "default",
+        "_key": "SurveyUtil.formId",
+        "_type": "string",
+        "_value": "ronda"
+      },
+      {
+        "_partition": "Table",
+        "_aspect": "default",
+        "_key": "defaultViewType",
+        "_type": "string",
+        "_value": "SPREADSHEET"
+      },
+      {
+        "_partition": "Table",
+        "_aspect": "default",
+        "_key": "displayName",
+        "_type": "object",
+        "_value": "{\"text\":\"Rondas\"}"
+      }
+    ]
   }
 }

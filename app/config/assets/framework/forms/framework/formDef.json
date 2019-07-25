@@ -69,7 +69,7 @@
         "_row_num": 12
       },
       {
-        "url": "'?' + odkSurvey.getHashString('inscricao')",
+        "url": "'?' + odkSurvey.getHashString('QPS','inscricao')",
         "type": "external_link",
         "display": {
           "prompt": {
@@ -83,11 +83,11 @@
         "_row_num": 14
       },
       {
-        "branch_label": "ronda_1",
+        "branch_label": "ronda",
         "_row_num": 16
       },
       {
-        "url": "'?' + odkSurvey.getHashString('QPS','ronda_1')",
+        "url": "'?' + odkSurvey.getHashString('ronda')",
         "type": "external_link",
         "display": {
           "prompt": {
@@ -101,62 +101,8 @@
         "_row_num": 18
       },
       {
-        "branch_label": "ronda_2",
-        "_row_num": 20
-      },
-      {
-        "url": "'?' + odkSurvey.getHashString('QPS','ronda_2')",
-        "type": "external_link",
-        "display": {
-          "prompt": {
-            "text": "Open form"
-          }
-        },
-        "_row_num": 21
-      },
-      {
-        "clause": "exit section",
-        "_row_num": 22
-      },
-      {
-        "branch_label": "ronda_3",
-        "_row_num": 24
-      },
-      {
-        "url": "'?' + odkSurvey.getHashString('QPS','ronda_3')",
-        "type": "external_link",
-        "display": {
-          "prompt": {
-            "text": "Open form"
-          }
-        },
-        "_row_num": 25
-      },
-      {
-        "clause": "exit section",
-        "_row_num": 26
-      },
-      {
-        "branch_label": "ronda_4",
-        "_row_num": 28
-      },
-      {
-        "url": "'?' + odkSurvey.getHashString('QPS','ronda_4')",
-        "type": "external_link",
-        "display": {
-          "prompt": {
-            "text": "Open form"
-          }
-        },
-        "_row_num": 29
-      },
-      {
-        "clause": "exit section",
-        "_row_num": 30
-      },
-      {
         "branch_label": "Avaliacao_qps",
-        "_row_num": 32
+        "_row_num": 21
       },
       {
         "url": "'?' + odkSurvey.getHashString('Avaliacao_qps')",
@@ -166,11 +112,11 @@
             "text": "Open form"
           }
         },
-        "_row_num": 33
+        "_row_num": 22
       },
       {
         "clause": "exit section",
-        "_row_num": 34
+        "_row_num": 23
       }
     ],
     "settings": [
@@ -243,7 +189,7 @@
         "data_value": "inscricao",
         "display": {
           "title": {
-            "text": "Incricao"
+            "text": "Inscricao"
           }
         },
         "_row_num": 2
@@ -260,43 +206,13 @@
       },
       {
         "choice_list_name": "test_forms",
-        "data_value": "ronda_1",
+        "data_value": "ronda",
         "display": {
           "title": {
-            "text": "1ª Ronda"
+            "text": "Rondas"
           }
         },
         "_row_num": 4
-      },
-      {
-        "choice_list_name": "test_forms",
-        "data_value": "ronda_2",
-        "display": {
-          "title": {
-            "text": "2ª Ronda"
-          }
-        },
-        "_row_num": 5
-      },
-      {
-        "choice_list_name": "test_forms",
-        "data_value": "ronda_3",
-        "display": {
-          "title": {
-            "text": "3ª Ronda"
-          }
-        },
-        "_row_num": 6
-      },
-      {
-        "choice_list_name": "test_forms",
-        "data_value": "ronda_4",
-        "display": {
-          "title": {
-            "text": "4ª Ronda"
-          }
-        },
-        "_row_num": 7
       },
       {
         "choice_list_name": "test_forms",
@@ -306,7 +222,7 @@
             "text": "Questionário para avaliação da Quimioprofilaxis Sazonal para Prevenção do Paludismo"
           }
         },
-        "_row_num": 8
+        "_row_num": 5
       }
     ],
     "framework_translations": [
@@ -915,7 +831,7 @@
           "data_value": "inscricao",
           "display": {
             "title": {
-              "text": "Incricao"
+              "text": "Inscricao"
             }
           },
           "_row_num": 2
@@ -932,43 +848,13 @@
         },
         {
           "choice_list_name": "test_forms",
-          "data_value": "ronda_1",
+          "data_value": "ronda",
           "display": {
             "title": {
-              "text": "1ª Ronda"
+              "text": "Rondas"
             }
           },
           "_row_num": 4
-        },
-        {
-          "choice_list_name": "test_forms",
-          "data_value": "ronda_2",
-          "display": {
-            "title": {
-              "text": "2ª Ronda"
-            }
-          },
-          "_row_num": 5
-        },
-        {
-          "choice_list_name": "test_forms",
-          "data_value": "ronda_3",
-          "display": {
-            "title": {
-              "text": "3ª Ronda"
-            }
-          },
-          "_row_num": 6
-        },
-        {
-          "choice_list_name": "test_forms",
-          "data_value": "ronda_4",
-          "display": {
-            "title": {
-              "text": "4ª Ronda"
-            }
-          },
-          "_row_num": 7
         },
         {
           "choice_list_name": "test_forms",
@@ -978,7 +864,7 @@
               "text": "Questionário para avaliação da Quimioprofilaxis Sazonal para Prevenção do Paludismo"
             }
           },
-          "_row_num": 8
+          "_row_num": 5
         }
       ]
     },
@@ -1654,7 +1540,7 @@
             "promptIdx": 2
           },
           {
-            "url": "'?' + odkSurvey.getHashString('inscricao')",
+            "url": "'?' + odkSurvey.getHashString('QPS','inscricao')",
             "type": "external_link",
             "display": {
               "prompt": {
@@ -1669,7 +1555,7 @@
             "promptIdx": 3
           },
           {
-            "url": "'?' + odkSurvey.getHashString('QPS','ronda_1')",
+            "url": "'?' + odkSurvey.getHashString('ronda')",
             "type": "external_link",
             "display": {
               "prompt": {
@@ -1684,51 +1570,6 @@
             "promptIdx": 4
           },
           {
-            "url": "'?' + odkSurvey.getHashString('QPS','ronda_2')",
-            "type": "external_link",
-            "display": {
-              "prompt": {
-                "text": "Open form"
-              }
-            },
-            "_row_num": 21,
-            "__rowNum__": 20,
-            "_token_type": "prompt",
-            "_type": "external_link",
-            "_branch_label_enclosing_screen": "survey/_screen21",
-            "promptIdx": 5
-          },
-          {
-            "url": "'?' + odkSurvey.getHashString('QPS','ronda_3')",
-            "type": "external_link",
-            "display": {
-              "prompt": {
-                "text": "Open form"
-              }
-            },
-            "_row_num": 25,
-            "__rowNum__": 24,
-            "_token_type": "prompt",
-            "_type": "external_link",
-            "_branch_label_enclosing_screen": "survey/_screen25",
-            "promptIdx": 6
-          },
-          {
-            "url": "'?' + odkSurvey.getHashString('QPS','ronda_4')",
-            "type": "external_link",
-            "display": {
-              "prompt": {
-                "text": "Open form"
-              }
-            },
-            "_row_num": 29,
-            "__rowNum__": 28,
-            "_token_type": "prompt",
-            "_type": "external_link",
-            "_branch_label_enclosing_screen": "survey/_screen29",
-            "promptIdx": 7
-          },
-          {
             "url": "'?' + odkSurvey.getHashString('Avaliacao_qps')",
             "type": "external_link",
             "display": {
@@ -1736,20 +1577,20 @@
                 "text": "Open form"
               }
             },
-            "_row_num": 33,
-            "__rowNum__": 32,
+            "_row_num": 22,
+            "__rowNum__": 21,
             "_token_type": "prompt",
             "_type": "external_link",
-            "_branch_label_enclosing_screen": "survey/_screen33",
-            "promptIdx": 8
+            "_branch_label_enclosing_screen": "survey/_screen22",
+            "promptIdx": 5
           },
           {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 35,
-            "_branch_label_enclosing_screen": "survey/_screen35",
-            "promptIdx": 9
+            "_row_num": 24,
+            "_branch_label_enclosing_screen": "survey/_screen24",
+            "promptIdx": 6
           }
         ],
         "validation_tag_map": {
@@ -1838,77 +1679,38 @@
             "operationIdx": 11
           },
           {
-            "_row_num": 21,
+            "_row_num": 22,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(5);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 12
           },
           {
             "clause": "exit section",
-            "_row_num": 22,
-            "__rowNum__": 21,
+            "_row_num": 23,
+            "__rowNum__": 22,
             "_token_type": "exit_section",
             "operationIdx": 13
           },
           {
-            "_row_num": 25,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(6);\n\nreturn activePromptIndicies;\n}\n",
+            "_token_type": "exit_section",
+            "clause": "exit section",
+            "_row_num": 24,
             "operationIdx": 14
           },
           {
-            "clause": "exit section",
-            "_row_num": 26,
-            "__rowNum__": 25,
-            "_token_type": "exit_section",
-            "operationIdx": 15
-          },
-          {
-            "_row_num": 29,
+            "_row_num": 24,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(7);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 16
-          },
-          {
-            "clause": "exit section",
-            "_row_num": 30,
-            "__rowNum__": 29,
-            "_token_type": "exit_section",
-            "operationIdx": 17
-          },
-          {
-            "_row_num": 33,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(8);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 18
-          },
-          {
-            "clause": "exit section",
-            "_row_num": 34,
-            "__rowNum__": 33,
-            "_token_type": "exit_section",
-            "operationIdx": 19
-          },
-          {
-            "_token_type": "exit_section",
-            "clause": "exit section",
-            "_row_num": 35,
-            "operationIdx": 20
-          },
-          {
-            "_row_num": 35,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(9);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(6);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
-            "operationIdx": 21
+            "operationIdx": 15
           },
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 35,
-            "operationIdx": 22
+            "_row_num": 24,
+            "operationIdx": 16
           }
         ],
         "branch_label_map": {
@@ -1921,18 +1723,12 @@
           "_screen9": 6,
           "inscricao": 8,
           "_screen13": 8,
-          "ronda_1": 10,
+          "ronda": 10,
           "_screen17": 10,
-          "ronda_2": 12,
-          "_screen21": 12,
-          "ronda_3": 14,
-          "_screen25": 14,
-          "ronda_4": 16,
-          "_screen29": 16,
-          "Avaliacao_qps": 18,
-          "_screen33": 18,
-          "_contents": 21,
-          "_screen35": 21
+          "Avaliacao_qps": 12,
+          "_screen22": 12,
+          "_contents": 15,
+          "_screen24": 15
         }
       }
     },

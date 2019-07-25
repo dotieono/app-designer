@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!--link href="ratchet/css/ratchet.css" type="text/css" rel="stylesheet" />
+        <link href="ratchet/css/ratchet-theme-android.css" type="text/css" rel="stylesheet" /-->
+        <link href="../../system/libs/bootstrap-3.3.7-dist/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+        <link href="css/homeScreen.css" type="text/css" rel="stylesheet" />
+        <link href="css/filterFacilityScreen.css" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="commonDefinitions.js"></script>
+        <script type="text/javascript" src="libs/jquery.js"></script>
+        <script type="text/javascript" src="../../system/libs/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../../system/tables/js/odkTables.js"></script>
+        <script type="text/javascript" src="../../system/js/odkCommon.js"></script>
+
+        <script type="text/javascript" src="js/filterRegionTabanca.js"></script>
+        <script type="text/javascript" src="js/util.js"></script>
+        <script type="text/javascript" src="js/list_view_logic.js"></script>
+    </head>
+
+    <body id="main">
+        <div id="wrapper">
+            <h1 id="facility-inventory-by-grid">Faz a lista da visita do AF</h1>
+            <br>
+            <div class="container">
+                <form>
+                    <div class="form-group">
+                        <label id="select-region" class="form-label" for="facility_region">Seleciona a Ragiao:</label>
+                        <select class="form-control" id="facility_region">
+                            <option id="all-regions" selected value="none">Toda Regiao do leste</option>
+                            <option id="bafata" value="North">Bafata</option>
+                            <option id="gabu" value="Central West">Gabu</option>
+                        </select>
+
+                        <label id="select-facility-type" class="form-label" for="facility_type">Seleciona o sector:</label>
+                        <select class="form-control" id="facility_type">
+                            <option id="all-types" selected value="none">All Types</option>
+                            <option id="central-hospital" value="central_hospital">Central Hospital</option>
+                            <option id="community-hospital" value="community_hospital">Community Hospital</option>
+                            <option id="dispensary" value="dispensary">Dispensary</option>
+                            <option id="district-hospital" value="district_hospital">District Hospital</option>
+                            <option id="district-vaccine-store" value="district_vaccine_store">District Vaccine Store</option>
+                            <option id="health-center" value="health_center">Health Center</option>
+                            <option id="health-post" value="health_post">Health Post</option>
+                            <option id="hospital" value="hospital">Hospital</option>
+                            <option id="national-vaccine-store" value="national_vaccine_store">National Vaccine Store</option>
+                            <option id="regional-vaccine-store" value="regional_vaccine_store">Regional Vaccine Store</option>
+                            <option id="rural-hospital" value="rural_hospital">Rural Hospital</option>
+                        </select>
+
+                        <label id="select-power-source" class="form-label" for="power_source">Select Power Source:</label>
+                        <select class="form-control" id="power_source">
+                            <option id="all-power-sources" selected value="none">All Power Sources</option>
+                            <option id="electricity" value="electricity">Electricity</option>
+                            <option id="gas" value="gas">Gas</option>
+                            <option id="kerosene" value="kerosene">Kerosene</option>
+                            <option id="solar" value="solar">Solar</option>
+                            <option id="unknown" value="unknown">Unknown</option>
+                        </select>
+
+                        <button id="filter-facilities-by-region-type" type="submit" class="btn btn-launch btn-filter btn-default">Filter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $(display);
+        </script>
+    </body>
+</html>
