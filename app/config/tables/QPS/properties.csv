@@ -1,6 +1,4 @@
 _partition,_aspect,_key,_type,_value
-Column,Data_ou_idade,displayChoicesList,object,"[{""choice_list_name"":""data_ou_idade"",""data_value"":1,""display"":{""title"":{""text"":""Data de Nascimento""}},""_row_num"":5},{""choice_list_name"":""data_ou_idade"",""data_value"":2,""display"":{""title"":{""text"":""Idade""}},""_row_num"":6}]"
-Column,sexo,displayChoicesList,object,"[{""choice_list_name"":""sexo"",""data_value"":1,""display"":{""title"":{""text"":""Masculino""}},""_row_num"":2},{""choice_list_name"":""sexo"",""data_value"":2,""display"":{""title"":{""text"":""Feminino""}},""_row_num"":3}]"
 FormType,default,FormType.formType,string,SURVEY
 SurveyUtil,default,SurveyUtil.formId,string,QPS
 Table,default,defaultViewType,string,SPREADSHEET

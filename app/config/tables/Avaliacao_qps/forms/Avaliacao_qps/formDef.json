@@ -2,7 +2,7 @@
   "xlsx": {
     "survey": [
       {
-        "type": "custom_date",
+        "type": "adate",
         "name": "obsdate",
         "display": {
           "prompt": {
@@ -183,7 +183,7 @@
         "_row_num": 26
       },
       {
-        "type": "custom_date",
+        "type": "adate",
         "name": "DOB",
         "display": {
           "prompt": {
@@ -427,7 +427,7 @@
         "_row_num": 58
       },
       {
-        "type": "custom_date",
+        "type": "adate",
         "name": "data1",
         "display": {
           "prompt": {
@@ -595,7 +595,7 @@
         "_row_num": 82
       },
       {
-        "type": "custom_date",
+        "type": "adate",
         "name": "data2",
         "display": {
           "prompt": {
@@ -763,7 +763,7 @@
         "_row_num": 106
       },
       {
-        "type": "custom_date",
+        "type": "adate",
         "name": "data3",
         "display": {
           "prompt": {
@@ -931,7 +931,7 @@
         "_row_num": 130
       },
       {
-        "type": "custom_date",
+        "type": "adate",
         "name": "data4",
         "display": {
           "prompt": {
@@ -2724,7 +2724,7 @@
       },
       {
         "setting_name": "form_version",
-        "value": 2019070600,
+        "value": 2019072600,
         "_row_num": 3
       },
       {
@@ -2806,7 +2806,7 @@
       },
       "form_version": {
         "setting_name": "form_version",
-        "value": 2019070600,
+        "value": 2019072600,
         "_row_num": 3
       },
       "survey": {
@@ -4195,10 +4195,10 @@
             "section_name": "survey"
           }
         ],
-        "prompt_type_name": "custom_date",
+        "prompt_type_name": "adate",
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
         "elementKey": "obsdate"
       },
       "region": {
@@ -4365,10 +4365,10 @@
             "section_name": "survey"
           }
         ],
-        "prompt_type_name": "custom_date",
+        "prompt_type_name": "adate",
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
         "elementKey": "DOB"
       },
       "age_years": {
@@ -4511,10 +4511,10 @@
             "section_name": "survey"
           }
         ],
-        "prompt_type_name": "custom_date",
+        "prompt_type_name": "adate",
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
         "elementKey": "data1"
       },
       "m1d2": {
@@ -4619,10 +4619,10 @@
             "section_name": "survey"
           }
         ],
-        "prompt_type_name": "custom_date",
+        "prompt_type_name": "adate",
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
         "elementKey": "data2"
       },
       "m2d2": {
@@ -4727,10 +4727,10 @@
             "section_name": "survey"
           }
         ],
-        "prompt_type_name": "custom_date",
+        "prompt_type_name": "adate",
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
         "elementKey": "data3"
       },
       "m3d2": {
@@ -4835,10 +4835,10 @@
             "section_name": "survey"
           }
         ],
-        "prompt_type_name": "custom_date",
+        "prompt_type_name": "adate",
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
         "elementKey": "data4"
       },
       "m4d2": {
@@ -5237,7 +5237,7 @@
         "reachable_sections": {},
         "prompts": [
           {
-            "type": "custom_date",
+            "type": "adate",
             "name": "obsdate",
             "display": {
               "prompt": {
@@ -5247,7 +5247,7 @@
             "_row_num": 3,
             "__rowNum__": 2,
             "_token_type": "prompt",
-            "_type": "custom_date",
+            "_type": "adate",
             "_branch_label_enclosing_screen": "survey/_screen3",
             "promptIdx": 0
           },
@@ -5457,7 +5457,7 @@
             "promptIdx": 13
           },
           {
-            "type": "custom_date",
+            "type": "adate",
             "name": "DOB",
             "display": {
               "prompt": {
@@ -5467,7 +5467,7 @@
             "_row_num": 27,
             "__rowNum__": 26,
             "_token_type": "prompt",
-            "_type": "custom_date",
+            "_type": "adate",
             "_branch_label_enclosing_screen": "survey/_screen27",
             "promptIdx": 14
           },
@@ -5661,7 +5661,7 @@
             "promptIdx": 26
           },
           {
-            "type": "custom_date",
+            "type": "adate",
             "name": "data1",
             "display": {
               "prompt": {
@@ -5671,7 +5671,7 @@
             "_row_num": 59,
             "__rowNum__": 58,
             "_token_type": "prompt",
-            "_type": "custom_date",
+            "_type": "adate",
             "_branch_label_enclosing_screen": "survey/_screen59",
             "promptIdx": 27
           },
@@ -5816,7 +5816,7 @@
             "promptIdx": 36
           },
           {
-            "type": "custom_date",
+            "type": "adate",
             "name": "data2",
             "display": {
               "prompt": {
@@ -5826,7 +5826,7 @@
             "_row_num": 83,
             "__rowNum__": 82,
             "_token_type": "prompt",
-            "_type": "custom_date",
+            "_type": "adate",
             "_branch_label_enclosing_screen": "survey/_screen83",
             "promptIdx": 37
           },
@@ -5971,7 +5971,7 @@
             "promptIdx": 46
           },
           {
-            "type": "custom_date",
+            "type": "adate",
             "name": "data3",
             "display": {
               "prompt": {
@@ -5981,7 +5981,7 @@
             "_row_num": 107,
             "__rowNum__": 106,
             "_token_type": "prompt",
-            "_type": "custom_date",
+            "_type": "adate",
             "_branch_label_enclosing_screen": "survey/_screen107",
             "promptIdx": 47
           },
@@ -6126,7 +6126,7 @@
             "promptIdx": 56
           },
           {
-            "type": "custom_date",
+            "type": "adate",
             "name": "data4",
             "display": {
               "prompt": {
@@ -6136,7 +6136,7 @@
             "_row_num": 131,
             "__rowNum__": 130,
             "_token_type": "prompt",
-            "_type": "custom_date",
+            "_type": "adate",
             "_branch_label_enclosing_screen": "survey/_screen131",
             "promptIdx": 57
           },
@@ -8712,10 +8712,10 @@
             "section_name": "survey"
           }
         ],
-        "prompt_type_name": "custom_date",
+        "prompt_type_name": "adate",
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
         "elementKey": "obsdate",
         "elementName": "obsdate",
         "elementSet": "data",
@@ -8943,10 +8943,10 @@
             "section_name": "survey"
           }
         ],
-        "prompt_type_name": "custom_date",
+        "prompt_type_name": "adate",
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
         "elementKey": "DOB",
         "elementName": "DOB",
         "elementSet": "data",
@@ -9135,10 +9135,10 @@
             "section_name": "survey"
           }
         ],
-        "prompt_type_name": "custom_date",
+        "prompt_type_name": "adate",
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
         "elementKey": "data1",
         "elementName": "data1",
         "elementSet": "data",
@@ -9273,10 +9273,10 @@
             "section_name": "survey"
           }
         ],
-        "prompt_type_name": "custom_date",
+        "prompt_type_name": "adate",
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
         "elementKey": "data2",
         "elementName": "data2",
         "elementSet": "data",
@@ -9411,10 +9411,10 @@
             "section_name": "survey"
           }
         ],
-        "prompt_type_name": "custom_date",
+        "prompt_type_name": "adate",
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
         "elementKey": "data3",
         "elementName": "data3",
         "elementSet": "data",
@@ -9549,10 +9549,10 @@
             "section_name": "survey"
           }
         ],
-        "prompt_type_name": "custom_date",
+        "prompt_type_name": "adate",
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
         "elementKey": "data4",
         "elementName": "data4",
         "elementSet": "data",
