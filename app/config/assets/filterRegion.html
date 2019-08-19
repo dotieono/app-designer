@@ -20,19 +20,21 @@
 
     <body id="main">
         <div id="wrapper">
-            <h1 id="facility-inventory-by-grid">Faz a lista da visita do AF</h1>
+            <h1 id="facilitar-lista-visita">Faz a lista da visita do AF</h1>
             <br>
             <div class="container">
                 <form>
                     <div class="form-group">
-                        <label id="select-region" class="form-label" for="facility_region">Seleciona a Ragiao:</label>
+                        <label id="select-sector" class="form-label" for="facility_region">Seleciona sector sanitaria:</label>
                         <select class="form-control" id="facility_region">
-                            <option id="all-regions" selected value="none">Toda Regiao do leste</option>
+                            <option id="all-regions" selected value="none">Todos sectores do leste</option>
                             <option id="bafata" value="North">Bafata</option>
                             <option id="gabu" value="Central West">Gabu</option>
                         </select>
 
-                        <label id="select-facility-type" class="form-label" for="facility_type">Seleciona o sector:</label>
+                        <label id="select-sector" class="form-label" for="sector">Sector sanitaria</label>
+
+                        <label id="select-tabanca" class="form-label" for="facility_type">Seleciona a tabanca:</label>
                         <select class="form-control" id="facility_type">
                             <option id="all-types" selected value="none">All Types</option>
                             <option id="central-hospital" value="central_hospital">Central Hospital</option>
@@ -48,7 +50,7 @@
                             <option id="rural-hospital" value="rural_hospital">Rural Hospital</option>
                         </select>
 
-                        <label id="select-power-source" class="form-label" for="power_source">Select Power Source:</label>
+                        <label id="select-af" class="form-label" for="power_source">Numero de AF (Agregado familiar):</label>
                         <select class="form-control" id="power_source">
                             <option id="all-power-sources" selected value="none">All Power Sources</option>
                             <option id="electricity" value="electricity">Electricity</option>
@@ -58,7 +60,7 @@
                             <option id="unknown" value="unknown">Unknown</option>
                         </select>
 
-                        <button id="filter-facilities-by-region-type" type="submit" class="btn btn-launch btn-filter btn-default">Filter</button>
+                        <button id="filter-region-tabanca" type="submit" class="btn btn-launch btn-filter btn-default">Mostrar a lista</button>
                     </div>
                 </form>
             </div>

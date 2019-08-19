@@ -3,7 +3,7 @@
 /* exported display */
 "use strict";
 
-var currentTab = 0;
+var currentTab = 1;
 
 function display() { 
     updateForTab(currentTab);
@@ -16,18 +16,6 @@ function display() {
         currentTab = 1;
         updateForTab(currentTab);
     });
-    // $('#plotterTab').on('click', function() {
-    //     currentTab = 2;
-    //     updateForTab(currentTab);
-    // });
-    // $('#geotaggerTab').on('click', function() {
-    //     currentTab = 3;
-    //     updateForTab(currentTab);
-    // });
-    // $('#jgiTab').on('click', function() {
-    //     currentTab = 4;
-    //     updateForTab(currentTab);
-    // });
 
     $('#launch-button').on(
             'click',

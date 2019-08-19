@@ -14,9 +14,9 @@ function display() {
     body.css('background-image', 'url(img/hallway.jpg)');
 
     var locale = odkCommon.getPreferredLocale();
-    $('#facility-inventory-by-grid').text(odkCommon.localizeText(locale, "facility_inventory_by_grid_power"));
+    $('#facilitar-lista-visita').text(odkCommon.localizeText(locale, "QPS"));
 
-    $('#select-region').text(odkCommon.localizeText(locale, "select_region"));
+    $('#select-sector').text(odkCommon.localizeText(locale, "select_sector"));
     $('#all-regions').text(odkCommon.localizeText(locale, "all_regions"));
     $('#north').text(odkCommon.localizeText(locale, "north"));
     $('#central-west').text(odkCommon.localizeText(locale, "central_west"));
@@ -24,7 +24,7 @@ function display() {
     $('#south-west').text(odkCommon.localizeText(locale, "south_west"));
     $('#south-east').text(odkCommon.localizeText(locale, "south_east"));
 
-    $('#select-facility-type').text(odkCommon.localizeText(locale, "select_facility_type"));
+    $('#select-tabanca').text(odkCommon.localizeText(locale, "select_tabanca"));
     $('#all-types').text(odkCommon.localizeText(locale, "all_types"));  
     $('#central-hospital').text(odkCommon.localizeText(locale, "select_region"));
     $('#community-hospital').text(odkCommon.localizeText(locale, "community_hospital"));
@@ -38,30 +38,30 @@ function display() {
     $('#regional-vaccine-store').text(odkCommon.localizeText(locale, "regional_vaccine_store"));
     $('#rural-hospital').text(odkCommon.localizeText(locale, "rural_hospital"));
 
-    $('#select-power-source').text(odkCommon.localizeText(locale, "select_power_source"));
-    $('#all-power-sources').text(odkCommon.localizeText(locale, "all_power_sources"));
+    $('#select-af').text(odkCommon.localizeText(locale, "select_af"));
+    $('#all-power-sources').text(odkCommon.localizeText(locale, "all_afs"));
     $('#electricity').text(odkCommon.localizeText(locale, "electricity"));
     $('#gas').text(odkCommon.localizeText(locale, "gas"));
     $('#kerosene').text(odkCommon.localizeText(locale, "kerosene"));
     $('#solar').text(odkCommon.localizeText(locale, "solar"));
     $('#unknown').text(odkCommon.localizeText(locale, "unknown"));
 
-    $('#filter-facilities-by-region-type').text(odkCommon.localizeText(locale, "filter"));
+    $('#filter-region-tabanca').text(odkCommon.localizeText(locale, "Mostrar_a_lista"));
 
-    var filterFacilitiesButton = $('#filter-facilities-by-region-type');
+    var filterFacilitiesButton = $('#filter-region-tabanca');
     filterFacilitiesButton.on(
         'click',
         function() {
             // Get the value of the type
-            var facilityType = $("#facility_type").val();
+            var sector = $("#tabanca").val();
 
             // Get the value of the region
-            var facilityRegion = $("#facility_region").val();
+            var tabanca = $("#sector").val();
 
             // Get the value of the region
-            var powerSource = $("#power_source").val();
+            var af = $("#af").val();
 
-            var queryParam = util.getKeysToAppendToColdChainURL(facilityType, facilityRegion, null, powerSource);
+            var queryParam = util.getKeysToAppendToColdChainURL(sector, tabanca, af);
 
             //odkTables.openTableToMapView('health_facility', selection, selectionArgs, 'config/tables/health_facility/html/hFacility_list.html');
             odkTables.launchHTML(null,'config/assets/graphFrigInventoryForAge.html' + queryParam);

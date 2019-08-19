@@ -34,11 +34,8 @@
             followUp.setAttribute("id", "button2");
             followUp.innerHTML = "Rondas";
             followUp.onclick = function() {
-                odkTables.openTableToListView(null,
-                    'QPS',
-                    null,
-                    null,
-                    'config/tables/QPS/html/QPS_list.html');
+                odkTables.launchHTML(null, 
+                'config/assets/selectTabanca.html');
             }
             document.getElementById("wrapper").appendChild(followUp);    
 

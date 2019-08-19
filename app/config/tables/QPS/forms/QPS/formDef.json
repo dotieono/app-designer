@@ -1,5 +1,31 @@
 {
   "xlsx": {
+    "settings": [
+      {
+        "setting_name": "form_id",
+        "value": "QPS",
+        "_row_num": 2
+      },
+      {
+        "setting_name": "form_version",
+        "value": 2019072601,
+        "_row_num": 3
+      },
+      {
+        "setting_name": "survey",
+        "display": {
+          "title": {
+            "text": "Quimioprevenção do Paludismo Sazonal"
+          }
+        },
+        "_row_num": 4
+      },
+      {
+        "setting_name": "table_id",
+        "value": "QPS",
+        "_row_num": 5
+      }
+    ],
     "survey": [
       {
         "type": "linked_table",
@@ -139,32 +165,6 @@
         "_row_num": 17
       }
     ],
-    "settings": [
-      {
-        "setting_name": "form_id",
-        "value": "QPS",
-        "_row_num": 2
-      },
-      {
-        "setting_name": "form_version",
-        "value": 2019070600,
-        "_row_num": 3
-      },
-      {
-        "setting_name": "survey",
-        "display": {
-          "title": {
-            "text": "Quimioprevenção do Paludismo Sazonal"
-          }
-        },
-        "_row_num": 4
-      },
-      {
-        "setting_name": "table_id",
-        "value": "QPS",
-        "_row_num": 5
-      }
-    ],
     "queries": [
       {
         "query_name": "ronda",
@@ -209,214 +209,204 @@
         "_row_num": 2
       },
       {
-        "type": "adate",
-        "name": "data_inscricao",
+        "type": "string",
+        "name": "letra_sticker",
         "_row_num": 3
-      },
-      {
-        "type": "text",
-        "name": "nome",
-        "_row_num": 4
-      },
-      {
-        "type": "select_one",
-        "name": "sexo",
-        "_row_num": 5
-      },
-      {
-        "type": "select_one",
-        "name": "Data_ou_idade",
-        "_row_num": 6
-      },
-      {
-        "type": "adate",
-        "name": "dn",
-        "_row_num": 7
-      },
-      {
-        "type": "integer",
-        "name": "ano",
-        "_row_num": 8
-      },
-      {
-        "type": "integer",
-        "name": "mes",
-        "_row_num": 9
-      },
-      {
-        "type": "text",
-        "name": "mae",
-        "_row_num": 10
-      },
-      {
-        "type": "select_one",
-        "name": "region",
-        "_row_num": 11
-      },
-      {
-        "type": "select_one",
-        "name": "sector",
-        "_row_num": 12
-      },
-      {
-        "type": "select_one",
-        "name": "local",
-        "_row_num": 13
-      },
-      {
-        "type": "integer",
-        "name": "equipa",
-        "_row_num": 14
-      },
-      {
-        "type": "integer",
-        "name": "mtn_equi",
-        "_row_num": 15
-      },
-      {
-        "type": "integer",
-        "name": "orange_equi",
-        "_row_num": 16
-      },
-      {
-        "type": "integer",
-        "name": "mtn_RAS",
-        "_row_num": 17
-      },
-      {
-        "type": "integer",
-        "name": "orange_RAS",
-        "_row_num": 18
-      },
-      {
-        "type": "adate",
-        "name": "r1d1",
-        "_row_num": 20
-      },
-      {
-        "type": "adate",
-        "name": "r1d2",
-        "_row_num": 21
-      },
-      {
-        "type": "adate",
-        "name": "r1d3",
-        "_row_num": 22
-      },
-      {
-        "type": "select_one",
-        "name": "tem_adverso",
-        "_row_num": 23
-      },
-      {
-        "type": "select_multiple",
-        "name": "ef_adveso_r1",
-        "_row_num": 24
-      },
-      {
-        "type": "text",
-        "name": "esp_ef_adverso_r1",
-        "_row_num": 25
-      },
-      {
-        "type": "adate",
-        "name": "r2d1",
-        "_row_num": 27
-      },
-      {
-        "type": "adate",
-        "name": "r2d2",
-        "_row_num": 28
-      },
-      {
-        "type": "adate",
-        "name": "r2d3",
-        "_row_num": 29
-      },
-      {
-        "type": "select_one",
-        "name": "tem_adverso_r2",
-        "_row_num": 30
-      },
-      {
-        "type": "select_multiple",
-        "name": "ef_adveso_r2",
-        "_row_num": 31
-      },
-      {
-        "type": "text",
-        "name": "esp_ef_adverso_r2",
-        "_row_num": 32
-      },
-      {
-        "type": "adate",
-        "name": "r3d1",
-        "_row_num": 35
-      },
-      {
-        "type": "adate",
-        "name": "r3d2",
-        "_row_num": 36
-      },
-      {
-        "type": "adate",
-        "name": "r3d3",
-        "_row_num": 37
-      },
-      {
-        "type": "select_one",
-        "name": "tem_adverso_r3",
-        "_row_num": 38
-      },
-      {
-        "type": "select_multiple",
-        "name": "ef_adveso_r3",
-        "_row_num": 39
-      },
-      {
-        "type": "text",
-        "name": "esp_ef_adverso_r3",
-        "_row_num": 40
-      },
-      {
-        "type": "adate",
-        "name": "r4d1",
-        "_row_num": 43
-      },
-      {
-        "type": "adate",
-        "name": "r4d2",
-        "_row_num": 44
-      },
-      {
-        "type": "adate",
-        "name": "r4d3",
-        "_row_num": 45
-      },
-      {
-        "type": "select_one",
-        "name": "tem_adverso_r4",
-        "_row_num": 46
-      },
-      {
-        "type": "select_multiple",
-        "name": "ef_adveso_r4",
-        "_row_num": 47
-      },
-      {
-        "type": "text",
-        "name": "esp_ef_adverso_r4",
-        "_row_num": 48
       },
       {
         "type": "integer",
         "name": "numero_sticker",
-        "_row_num": 50
+        "_row_num": 4
+      },
+      {
+        "type": "adate",
+        "name": "data_inscricao",
+        "_row_num": 5
+      },
+      {
+        "type": "text",
+        "name": "nome",
+        "_row_num": 6
       },
       {
         "type": "string",
         "name": "nome_casa",
-        "_row_num": 52
+        "_row_num": 7
+      },
+      {
+        "type": "select_one",
+        "name": "sexo",
+        "_row_num": 8
+      },
+      {
+        "type": "select_one",
+        "name": "Data_ou_idade",
+        "_row_num": 9
+      },
+      {
+        "type": "adate",
+        "name": "dn",
+        "_row_num": 10
+      },
+      {
+        "type": "integer",
+        "name": "ano",
+        "_row_num": 11
+      },
+      {
+        "type": "integer",
+        "name": "mes",
+        "_row_num": 12
+      },
+      {
+        "type": "select_one",
+        "name": "region",
+        "_row_num": 13
+      },
+      {
+        "type": "select_one",
+        "name": "sector",
+        "_row_num": 14
+      },
+      {
+        "type": "select_one",
+        "name": "tabanca",
+        "_row_num": 15
+      },
+      {
+        "type": "integer",
+        "name": "AF",
+        "_row_num": 16
+      },
+      {
+        "type": "integer",
+        "name": "equipa",
+        "_row_num": 17
+      },
+      {
+        "type": "integer",
+        "name": "mtn_equi",
+        "_row_num": 18
+      },
+      {
+        "type": "integer",
+        "name": "orange_equi",
+        "_row_num": 19
+      },
+      {
+        "type": "integer",
+        "name": "mtn_RAS",
+        "_row_num": 20
+      },
+      {
+        "type": "integer",
+        "name": "orange_RAS",
+        "_row_num": 21
+      },
+      {
+        "type": "note",
+        "name": "abrir_ronda",
+        "_row_num": 22
+      },
+      {
+        "type": "integer",
+        "name": "n_ronda",
+        "_row_num": 24
+      },
+      {
+        "type": "select_one",
+        "name": "consentimento",
+        "_row_num": 25
+      },
+      {
+        "type": "adate",
+        "name": "d1",
+        "_row_num": 26
+      },
+      {
+        "type": "adate",
+        "name": "d2",
+        "_row_num": 27
+      },
+      {
+        "type": "adate",
+        "name": "d3",
+        "_row_num": 28
+      },
+      {
+        "type": "select_one",
+        "name": "tem_adverso",
+        "_row_num": 29
+      },
+      {
+        "type": "select_multiple",
+        "name": "ef_adveso",
+        "_row_num": 30
+      },
+      {
+        "type": "text",
+        "name": "esp_ef_adverso",
+        "_row_num": 31
+      },
+      {
+        "type": "note",
+        "name": "dx_tto",
+        "_row_num": 32
+      },
+      {
+        "type": "select_one",
+        "name": "febre",
+        "_row_num": 33
+      },
+      {
+        "type": "select_one",
+        "name": "tdr",
+        "_row_num": 34
+      },
+      {
+        "type": "select_one",
+        "name": "TDR_positivo",
+        "_row_num": 35
+      },
+      {
+        "type": "select_one",
+        "name": "tto_ACT",
+        "_row_num": 36
+      },
+      {
+        "type": "select_one",
+        "name": "tranferencia",
+        "_row_num": 37
+      },
+      {
+        "type": "select_one",
+        "name": "motivo",
+        "_row_num": 38
+      },
+      {
+        "type": "note",
+        "name": "inelegivel",
+        "_row_num": 39
+      },
+      {
+        "type": "select_multiple",
+        "name": "razao",
+        "_row_num": 40
+      },
+      {
+        "type": "text",
+        "name": "esp_razao",
+        "_row_num": 41
+      },
+      {
+        "type": "note",
+        "name": "refusal_statement",
+        "_row_num": 42
+      },
+      {
+        "type": "note",
+        "name": "survey_complete",
+        "_row_num": 43
       }
     ],
     "prompt_types": [
@@ -460,7 +450,7 @@
       },
       "form_version": {
         "setting_name": "form_version",
-        "value": 2019070600,
+        "value": 2019072601,
         "_row_num": 3
       },
       "survey": {
@@ -698,6 +688,26 @@
         ],
         "elementKey": "id_paciente"
       },
+      "letra_sticker": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 3,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "letra_sticker"
+      },
+      "numero_sticker": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 4,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "numero_sticker"
+      },
       "data_inscricao": {
         "prompt_type_name": "adate",
         "type": "string",
@@ -707,7 +717,7 @@
         "__rowNum__": 2,
         "_defn": [
           {
-            "_row_num": 3,
+            "_row_num": 5,
             "section_name": "model"
           }
         ],
@@ -717,17 +727,27 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 4,
+            "_row_num": 6,
             "section_name": "model"
           }
         ],
         "elementKey": "nome"
       },
+      "nome_casa": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 7,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "nome_casa"
+      },
       "sexo": {
         "type": "string",
         "_defn": [
           {
-            "_row_num": 5,
+            "_row_num": 8,
             "section_name": "model"
           }
         ],
@@ -737,7 +757,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 6,
+            "_row_num": 9,
             "section_name": "model"
           }
         ],
@@ -752,7 +772,7 @@
         "__rowNum__": 2,
         "_defn": [
           {
-            "_row_num": 7,
+            "_row_num": 10,
             "section_name": "model"
           }
         ],
@@ -762,7 +782,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 8,
+            "_row_num": 11,
             "section_name": "model"
           }
         ],
@@ -772,27 +792,17 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 9,
+            "_row_num": 12,
             "section_name": "model"
           }
         ],
         "elementKey": "mes"
       },
-      "mae": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 10,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "mae"
-      },
       "region": {
         "type": "string",
         "_defn": [
           {
-            "_row_num": 11,
+            "_row_num": 13,
             "section_name": "model"
           }
         ],
@@ -802,27 +812,37 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 12,
+            "_row_num": 14,
             "section_name": "model"
           }
         ],
         "elementKey": "sector"
       },
-      "local": {
+      "tabanca": {
         "type": "string",
         "_defn": [
           {
-            "_row_num": 13,
+            "_row_num": 15,
             "section_name": "model"
           }
         ],
-        "elementKey": "local"
+        "elementKey": "tabanca"
+      },
+      "AF": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 16,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "AF"
       },
       "equipa": {
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 14,
+            "_row_num": 17,
             "section_name": "model"
           }
         ],
@@ -832,7 +852,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 15,
+            "_row_num": 18,
             "section_name": "model"
           }
         ],
@@ -842,7 +862,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 16,
+            "_row_num": 19,
             "section_name": "model"
           }
         ],
@@ -852,7 +872,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 17,
+            "_row_num": 20,
             "section_name": "model"
           }
         ],
@@ -862,82 +882,33 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 18,
+            "_row_num": 21,
             "section_name": "model"
           }
         ],
         "elementKey": "orange_RAS"
       },
-      "r1d1": {
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
-        "_defn": [
-          {
-            "_row_num": 20,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r1d1"
-      },
-      "r1d2": {
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
-        "_defn": [
-          {
-            "_row_num": 21,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r1d2"
-      },
-      "r1d3": {
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+      "abrir_ronda": {
         "_defn": [
           {
             "_row_num": 22,
             "section_name": "model"
           }
         ],
-        "elementKey": "r1d3"
+        "type": "note",
+        "elementKey": "abrir_ronda"
       },
-      "tem_adverso": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 23,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "tem_adverso"
-      },
-      "ef_adveso_r1": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "elementKey": "ef_adveso_r1_items"
-        },
+      "n_ronda": {
+        "type": "integer",
         "_defn": [
           {
             "_row_num": 24,
             "section_name": "model"
           }
         ],
-        "elementKey": "ef_adveso_r1"
+        "elementKey": "n_ronda"
       },
-      "esp_ef_adverso_r1": {
+      "consentimento": {
         "type": "string",
         "_defn": [
           {
@@ -945,9 +916,24 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "esp_ef_adverso_r1"
+        "elementKey": "consentimento"
       },
-      "r2d1": {
+      "d1": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 26,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "d1"
+      },
+      "d2": {
         "prompt_type_name": "adate",
         "type": "string",
         "elementType": "string",
@@ -960,9 +946,9 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "r2d1"
+        "elementKey": "d2"
       },
-      "r2d2": {
+      "d3": {
         "prompt_type_name": "adate",
         "type": "string",
         "elementType": "string",
@@ -975,103 +961,103 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "r2d2"
+        "elementKey": "d3"
       },
-      "r2d3": {
-        "prompt_type_name": "adate",
+      "tem_adverso": {
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
         "_defn": [
           {
             "_row_num": 29,
             "section_name": "model"
           }
         ],
-        "elementKey": "r2d3"
+        "elementKey": "tem_adverso"
       },
-      "tem_adverso_r2": {
-        "type": "string",
+      "ef_adveso": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "elementKey": "ef_adveso_items"
+        },
         "_defn": [
           {
             "_row_num": 30,
             "section_name": "model"
           }
         ],
-        "elementKey": "tem_adverso_r2"
+        "elementKey": "ef_adveso"
       },
-      "ef_adveso_r2": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "elementKey": "ef_adveso_r2_items"
-        },
+      "esp_ef_adverso": {
+        "type": "string",
         "_defn": [
           {
             "_row_num": 31,
             "section_name": "model"
           }
         ],
-        "elementKey": "ef_adveso_r2"
+        "elementKey": "esp_ef_adverso"
       },
-      "esp_ef_adverso_r2": {
-        "type": "string",
+      "dx_tto": {
         "_defn": [
           {
             "_row_num": 32,
             "section_name": "model"
           }
         ],
-        "elementKey": "esp_ef_adverso_r2"
+        "type": "note",
+        "elementKey": "dx_tto"
       },
-      "r3d1": {
-        "prompt_type_name": "adate",
+      "febre": {
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 33,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "febre"
+      },
+      "tdr": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 34,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "tdr"
+      },
+      "TDR_positivo": {
+        "type": "string",
         "_defn": [
           {
             "_row_num": 35,
             "section_name": "model"
           }
         ],
-        "elementKey": "r3d1"
+        "elementKey": "TDR_positivo"
       },
-      "r3d2": {
-        "prompt_type_name": "adate",
+      "tto_ACT": {
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
         "_defn": [
           {
             "_row_num": 36,
             "section_name": "model"
           }
         ],
-        "elementKey": "r3d2"
+        "elementKey": "tto_ACT"
       },
-      "r3d3": {
-        "prompt_type_name": "adate",
+      "tranferencia": {
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
         "_defn": [
           {
             "_row_num": 37,
             "section_name": "model"
           }
         ],
-        "elementKey": "r3d3"
+        "elementKey": "tranferencia"
       },
-      "tem_adverso_r3": {
+      "motivo": {
         "type": "string",
         "_defn": [
           {
@@ -1079,130 +1065,61 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "tem_adverso_r3"
+        "elementKey": "motivo"
       },
-      "ef_adveso_r3": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "elementKey": "ef_adveso_r3_items"
-        },
+      "inelegivel": {
         "_defn": [
           {
             "_row_num": 39,
             "section_name": "model"
           }
         ],
-        "elementKey": "ef_adveso_r3"
+        "type": "note",
+        "elementKey": "inelegivel"
       },
-      "esp_ef_adverso_r3": {
-        "type": "string",
+      "razao": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "elementKey": "razao_items"
+        },
         "_defn": [
           {
             "_row_num": 40,
             "section_name": "model"
           }
         ],
-        "elementKey": "esp_ef_adverso_r3"
+        "elementKey": "razao"
       },
-      "r4d1": {
-        "prompt_type_name": "adate",
+      "esp_razao": {
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 41,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "esp_razao"
+      },
+      "refusal_statement": {
+        "_defn": [
+          {
+            "_row_num": 42,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "refusal_statement"
+      },
+      "survey_complete": {
         "_defn": [
           {
             "_row_num": 43,
             "section_name": "model"
           }
         ],
-        "elementKey": "r4d1"
-      },
-      "r4d2": {
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
-        "_defn": [
-          {
-            "_row_num": 44,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r4d2"
-      },
-      "r4d3": {
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
-        "_defn": [
-          {
-            "_row_num": 45,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r4d3"
-      },
-      "tem_adverso_r4": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 46,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "tem_adverso_r4"
-      },
-      "ef_adveso_r4": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "elementKey": "ef_adveso_r4_items"
-        },
-        "_defn": [
-          {
-            "_row_num": 47,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "ef_adveso_r4"
-      },
-      "esp_ef_adverso_r4": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 48,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "esp_ef_adverso_r4"
-      },
-      "numero_sticker": {
-        "type": "integer",
-        "_defn": [
-          {
-            "_row_num": 50,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "numero_sticker"
-      },
-      "nome_casa": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 52,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "nome_casa"
+        "type": "note",
+        "elementKey": "survey_complete"
       }
     },
     "section_names": [
@@ -1464,6 +1381,32 @@
         "elementSet": "data",
         "elementPath": "id_paciente"
       },
+      "letra_sticker": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 3,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "letra_sticker",
+        "elementName": "letra_sticker",
+        "elementSet": "data",
+        "elementPath": "letra_sticker"
+      },
+      "numero_sticker": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 4,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "numero_sticker",
+        "elementName": "numero_sticker",
+        "elementSet": "data",
+        "elementPath": "numero_sticker"
+      },
       "data_inscricao": {
         "prompt_type_name": "adate",
         "type": "string",
@@ -1473,7 +1416,7 @@
         "__rowNum__": 2,
         "_defn": [
           {
-            "_row_num": 3,
+            "_row_num": 5,
             "section_name": "model"
           }
         ],
@@ -1486,7 +1429,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 4,
+            "_row_num": 6,
             "section_name": "model"
           }
         ],
@@ -1495,11 +1438,24 @@
         "elementSet": "data",
         "elementPath": "nome"
       },
+      "nome_casa": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 7,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "nome_casa",
+        "elementName": "nome_casa",
+        "elementSet": "data",
+        "elementPath": "nome_casa"
+      },
       "sexo": {
         "type": "string",
         "_defn": [
           {
-            "_row_num": 5,
+            "_row_num": 8,
             "section_name": "model"
           }
         ],
@@ -1512,7 +1468,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 6,
+            "_row_num": 9,
             "section_name": "model"
           }
         ],
@@ -1530,7 +1486,7 @@
         "__rowNum__": 2,
         "_defn": [
           {
-            "_row_num": 7,
+            "_row_num": 10,
             "section_name": "model"
           }
         ],
@@ -1543,7 +1499,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 8,
+            "_row_num": 11,
             "section_name": "model"
           }
         ],
@@ -1556,7 +1512,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 9,
+            "_row_num": 12,
             "section_name": "model"
           }
         ],
@@ -1565,24 +1521,11 @@
         "elementSet": "data",
         "elementPath": "mes"
       },
-      "mae": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 10,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "mae",
-        "elementName": "mae",
-        "elementSet": "data",
-        "elementPath": "mae"
-      },
       "region": {
         "type": "string",
         "_defn": [
           {
-            "_row_num": 11,
+            "_row_num": 13,
             "section_name": "model"
           }
         ],
@@ -1595,7 +1538,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 12,
+            "_row_num": 14,
             "section_name": "model"
           }
         ],
@@ -1604,24 +1547,37 @@
         "elementSet": "data",
         "elementPath": "sector"
       },
-      "local": {
+      "tabanca": {
         "type": "string",
         "_defn": [
           {
-            "_row_num": 13,
+            "_row_num": 15,
             "section_name": "model"
           }
         ],
-        "elementKey": "local",
-        "elementName": "local",
+        "elementKey": "tabanca",
+        "elementName": "tabanca",
         "elementSet": "data",
-        "elementPath": "local"
+        "elementPath": "tabanca"
+      },
+      "AF": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 16,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "AF",
+        "elementName": "AF",
+        "elementSet": "data",
+        "elementPath": "AF"
       },
       "equipa": {
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 14,
+            "_row_num": 17,
             "section_name": "model"
           }
         ],
@@ -1634,7 +1590,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 15,
+            "_row_num": 18,
             "section_name": "model"
           }
         ],
@@ -1647,7 +1603,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 16,
+            "_row_num": 19,
             "section_name": "model"
           }
         ],
@@ -1660,7 +1616,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 17,
+            "_row_num": 20,
             "section_name": "model"
           }
         ],
@@ -1673,7 +1629,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 18,
+            "_row_num": 21,
             "section_name": "model"
           }
         ],
@@ -1682,98 +1638,33 @@
         "elementSet": "data",
         "elementPath": "orange_RAS"
       },
-      "r1d1": {
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
-        "_defn": [
-          {
-            "_row_num": 20,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r1d1",
-        "elementName": "r1d1",
-        "elementSet": "data",
-        "elementPath": "r1d1"
-      },
-      "r1d2": {
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
-        "_defn": [
-          {
-            "_row_num": 21,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r1d2",
-        "elementName": "r1d2",
-        "elementSet": "data",
-        "elementPath": "r1d2"
-      },
-      "r1d3": {
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+      "abrir_ronda": {
         "_defn": [
           {
             "_row_num": 22,
             "section_name": "model"
           }
         ],
-        "elementKey": "r1d3",
-        "elementName": "r1d3",
+        "type": "note",
+        "elementKey": "abrir_ronda",
+        "elementName": "abrir_ronda",
         "elementSet": "data",
-        "elementPath": "r1d3"
+        "elementPath": "abrir_ronda"
       },
-      "tem_adverso": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 23,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "tem_adverso",
-        "elementName": "tem_adverso",
-        "elementSet": "data",
-        "elementPath": "tem_adverso"
-      },
-      "ef_adveso_r1": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "elementKey": "ef_adveso_r1_items",
-          "elementName": "items",
-          "elementSet": "data",
-          "elementPath": "ef_adveso_r1.items",
-          "notUnitOfRetention": true
-        },
+      "n_ronda": {
+        "type": "integer",
         "_defn": [
           {
             "_row_num": 24,
             "section_name": "model"
           }
         ],
-        "elementKey": "ef_adveso_r1",
-        "elementName": "ef_adveso_r1",
+        "elementKey": "n_ronda",
+        "elementName": "n_ronda",
         "elementSet": "data",
-        "elementPath": "ef_adveso_r1",
-        "listChildElementKeys": [
-          "ef_adveso_r1_items"
-        ]
+        "elementPath": "n_ronda"
       },
-      "esp_ef_adverso_r1": {
+      "consentimento": {
         "type": "string",
         "_defn": [
           {
@@ -1781,12 +1672,30 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "esp_ef_adverso_r1",
-        "elementName": "esp_ef_adverso_r1",
+        "elementKey": "consentimento",
+        "elementName": "consentimento",
         "elementSet": "data",
-        "elementPath": "esp_ef_adverso_r1"
+        "elementPath": "consentimento"
       },
-      "r2d1": {
+      "d1": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 26,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "d1",
+        "elementName": "d1",
+        "elementSet": "data",
+        "elementPath": "d1"
+      },
+      "d2": {
         "prompt_type_name": "adate",
         "type": "string",
         "elementType": "string",
@@ -1799,12 +1708,12 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "r2d1",
-        "elementName": "r2d1",
+        "elementKey": "d2",
+        "elementName": "d2",
         "elementSet": "data",
-        "elementPath": "r2d1"
+        "elementPath": "d2"
       },
-      "r2d2": {
+      "d3": {
         "prompt_type_name": "adate",
         "type": "string",
         "elementType": "string",
@@ -1817,134 +1726,140 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "r2d2",
-        "elementName": "r2d2",
+        "elementKey": "d3",
+        "elementName": "d3",
         "elementSet": "data",
-        "elementPath": "r2d2"
+        "elementPath": "d3"
       },
-      "r2d3": {
-        "prompt_type_name": "adate",
+      "tem_adverso": {
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
         "_defn": [
           {
             "_row_num": 29,
             "section_name": "model"
           }
         ],
-        "elementKey": "r2d3",
-        "elementName": "r2d3",
+        "elementKey": "tem_adverso",
+        "elementName": "tem_adverso",
         "elementSet": "data",
-        "elementPath": "r2d3"
+        "elementPath": "tem_adverso"
       },
-      "tem_adverso_r2": {
-        "type": "string",
+      "ef_adveso": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "elementKey": "ef_adveso_items",
+          "elementName": "items",
+          "elementSet": "data",
+          "elementPath": "ef_adveso.items",
+          "notUnitOfRetention": true
+        },
         "_defn": [
           {
             "_row_num": 30,
             "section_name": "model"
           }
         ],
-        "elementKey": "tem_adverso_r2",
-        "elementName": "tem_adverso_r2",
+        "elementKey": "ef_adveso",
+        "elementName": "ef_adveso",
         "elementSet": "data",
-        "elementPath": "tem_adverso_r2"
+        "elementPath": "ef_adveso",
+        "listChildElementKeys": [
+          "ef_adveso_items"
+        ]
       },
-      "ef_adveso_r2": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "elementKey": "ef_adveso_r2_items",
-          "elementName": "items",
-          "elementSet": "data",
-          "elementPath": "ef_adveso_r2.items",
-          "notUnitOfRetention": true
-        },
+      "esp_ef_adverso": {
+        "type": "string",
         "_defn": [
           {
             "_row_num": 31,
             "section_name": "model"
           }
         ],
-        "elementKey": "ef_adveso_r2",
-        "elementName": "ef_adveso_r2",
+        "elementKey": "esp_ef_adverso",
+        "elementName": "esp_ef_adverso",
         "elementSet": "data",
-        "elementPath": "ef_adveso_r2",
-        "listChildElementKeys": [
-          "ef_adveso_r2_items"
-        ]
+        "elementPath": "esp_ef_adverso"
       },
-      "esp_ef_adverso_r2": {
-        "type": "string",
+      "dx_tto": {
         "_defn": [
           {
             "_row_num": 32,
             "section_name": "model"
           }
         ],
-        "elementKey": "esp_ef_adverso_r2",
-        "elementName": "esp_ef_adverso_r2",
+        "type": "note",
+        "elementKey": "dx_tto",
+        "elementName": "dx_tto",
         "elementSet": "data",
-        "elementPath": "esp_ef_adverso_r2"
+        "elementPath": "dx_tto"
       },
-      "r3d1": {
-        "prompt_type_name": "adate",
+      "febre": {
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 33,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "febre",
+        "elementName": "febre",
+        "elementSet": "data",
+        "elementPath": "febre"
+      },
+      "tdr": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 34,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "tdr",
+        "elementName": "tdr",
+        "elementSet": "data",
+        "elementPath": "tdr"
+      },
+      "TDR_positivo": {
+        "type": "string",
         "_defn": [
           {
             "_row_num": 35,
             "section_name": "model"
           }
         ],
-        "elementKey": "r3d1",
-        "elementName": "r3d1",
+        "elementKey": "TDR_positivo",
+        "elementName": "TDR_positivo",
         "elementSet": "data",
-        "elementPath": "r3d1"
+        "elementPath": "TDR_positivo"
       },
-      "r3d2": {
-        "prompt_type_name": "adate",
+      "tto_ACT": {
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
         "_defn": [
           {
             "_row_num": 36,
             "section_name": "model"
           }
         ],
-        "elementKey": "r3d2",
-        "elementName": "r3d2",
+        "elementKey": "tto_ACT",
+        "elementName": "tto_ACT",
         "elementSet": "data",
-        "elementPath": "r3d2"
+        "elementPath": "tto_ACT"
       },
-      "r3d3": {
-        "prompt_type_name": "adate",
+      "tranferencia": {
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
         "_defn": [
           {
             "_row_num": 37,
             "section_name": "model"
           }
         ],
-        "elementKey": "r3d3",
-        "elementName": "r3d3",
+        "elementKey": "tranferencia",
+        "elementName": "tranferencia",
         "elementSet": "data",
-        "elementPath": "r3d3"
+        "elementPath": "tranferencia"
       },
-      "tem_adverso_r3": {
+      "motivo": {
         "type": "string",
         "_defn": [
           {
@@ -1952,208 +1867,101 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "tem_adverso_r3",
-        "elementName": "tem_adverso_r3",
+        "elementKey": "motivo",
+        "elementName": "motivo",
         "elementSet": "data",
-        "elementPath": "tem_adverso_r3"
+        "elementPath": "motivo"
       },
-      "ef_adveso_r3": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "elementKey": "ef_adveso_r3_items",
-          "elementName": "items",
-          "elementSet": "data",
-          "elementPath": "ef_adveso_r3.items",
-          "notUnitOfRetention": true
-        },
+      "inelegivel": {
         "_defn": [
           {
             "_row_num": 39,
             "section_name": "model"
           }
         ],
-        "elementKey": "ef_adveso_r3",
-        "elementName": "ef_adveso_r3",
+        "type": "note",
+        "elementKey": "inelegivel",
+        "elementName": "inelegivel",
         "elementSet": "data",
-        "elementPath": "ef_adveso_r3",
-        "listChildElementKeys": [
-          "ef_adveso_r3_items"
-        ]
+        "elementPath": "inelegivel"
       },
-      "esp_ef_adverso_r3": {
-        "type": "string",
+      "razao": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "elementKey": "razao_items",
+          "elementName": "items",
+          "elementSet": "data",
+          "elementPath": "razao.items",
+          "notUnitOfRetention": true
+        },
         "_defn": [
           {
             "_row_num": 40,
             "section_name": "model"
           }
         ],
-        "elementKey": "esp_ef_adverso_r3",
-        "elementName": "esp_ef_adverso_r3",
+        "elementKey": "razao",
+        "elementName": "razao",
         "elementSet": "data",
-        "elementPath": "esp_ef_adverso_r3"
+        "elementPath": "razao",
+        "listChildElementKeys": [
+          "razao_items"
+        ]
       },
-      "r4d1": {
-        "prompt_type_name": "adate",
+      "esp_razao": {
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 41,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "esp_razao",
+        "elementName": "esp_razao",
+        "elementSet": "data",
+        "elementPath": "esp_razao"
+      },
+      "refusal_statement": {
+        "_defn": [
+          {
+            "_row_num": 42,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "refusal_statement",
+        "elementName": "refusal_statement",
+        "elementSet": "data",
+        "elementPath": "refusal_statement"
+      },
+      "survey_complete": {
         "_defn": [
           {
             "_row_num": 43,
             "section_name": "model"
           }
         ],
-        "elementKey": "r4d1",
-        "elementName": "r4d1",
+        "type": "note",
+        "elementKey": "survey_complete",
+        "elementName": "survey_complete",
         "elementSet": "data",
-        "elementPath": "r4d1"
+        "elementPath": "survey_complete"
       },
-      "r4d2": {
-        "prompt_type_name": "adate",
+      "ef_adveso_items": {
         "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
-        "_defn": [
-          {
-            "_row_num": 44,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r4d2",
-        "elementName": "r4d2",
-        "elementSet": "data",
-        "elementPath": "r4d2"
-      },
-      "r4d3": {
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
-        "_defn": [
-          {
-            "_row_num": 45,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r4d3",
-        "elementName": "r4d3",
-        "elementSet": "data",
-        "elementPath": "r4d3"
-      },
-      "tem_adverso_r4": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 46,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "tem_adverso_r4",
-        "elementName": "tem_adverso_r4",
-        "elementSet": "data",
-        "elementPath": "tem_adverso_r4"
-      },
-      "ef_adveso_r4": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "elementKey": "ef_adveso_r4_items",
-          "elementName": "items",
-          "elementSet": "data",
-          "elementPath": "ef_adveso_r4.items",
-          "notUnitOfRetention": true
-        },
-        "_defn": [
-          {
-            "_row_num": 47,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "ef_adveso_r4",
-        "elementName": "ef_adveso_r4",
-        "elementSet": "data",
-        "elementPath": "ef_adveso_r4",
-        "listChildElementKeys": [
-          "ef_adveso_r4_items"
-        ]
-      },
-      "esp_ef_adverso_r4": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 48,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "esp_ef_adverso_r4",
-        "elementName": "esp_ef_adverso_r4",
-        "elementSet": "data",
-        "elementPath": "esp_ef_adverso_r4"
-      },
-      "numero_sticker": {
-        "type": "integer",
-        "_defn": [
-          {
-            "_row_num": 50,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "numero_sticker",
-        "elementName": "numero_sticker",
-        "elementSet": "data",
-        "elementPath": "numero_sticker"
-      },
-      "nome_casa": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 52,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "nome_casa",
-        "elementName": "nome_casa",
-        "elementSet": "data",
-        "elementPath": "nome_casa"
-      },
-      "ef_adveso_r1_items": {
-        "type": "string",
-        "elementKey": "ef_adveso_r1_items",
+        "elementKey": "ef_adveso_items",
         "elementName": "items",
         "elementSet": "data",
-        "elementPath": "ef_adveso_r1.items",
+        "elementPath": "ef_adveso.items",
         "notUnitOfRetention": true
       },
-      "ef_adveso_r2_items": {
+      "razao_items": {
         "type": "string",
-        "elementKey": "ef_adveso_r2_items",
+        "elementKey": "razao_items",
         "elementName": "items",
         "elementSet": "data",
-        "elementPath": "ef_adveso_r2.items",
-        "notUnitOfRetention": true
-      },
-      "ef_adveso_r3_items": {
-        "type": "string",
-        "elementKey": "ef_adveso_r3_items",
-        "elementName": "items",
-        "elementSet": "data",
-        "elementPath": "ef_adveso_r3.items",
-        "notUnitOfRetention": true
-      },
-      "ef_adveso_r4_items": {
-        "type": "string",
-        "elementKey": "ef_adveso_r4_items",
-        "elementName": "items",
-        "elementSet": "data",
-        "elementPath": "ef_adveso_r4.items",
+        "elementPath": "razao.items",
         "notUnitOfRetention": true
       },
       "_id": {

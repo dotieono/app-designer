@@ -40,25 +40,12 @@ window.listViewLogic = {
     navTextCnt: null,
     showEditAndDelButtons: false,
 
-    lastvisit: null,
-    
     hdrLabel: null,
     hdrColId: null,
-    firstDetLabel1: null,
-    firstDetColId1: null,
-    firstDetLabel2: null,
-    firstDetColId2: null,  
-    secondDetLabel1: null,
-    secondDetColId1: null,
-    secondDetLabel2: null,
-    secondDetColId2: null,
-    thirdDetLabel1: null,
-    thirdDetColId1: null,
-    thirdDetLabel2: null,
-    thirdDetColId2: null,      
-    thirdDetLabel3: null,
-    thirdDetColId3: null,
-    
+    firstDetLabel: null,
+    firstDetColId: null,
+    secondDetLabel: null,
+    secondDetColId: null,
     
     setTableId: function(tableName) {
         if (tableName === null || tableName === undefined ||
@@ -66,27 +53,16 @@ window.listViewLogic = {
             console.log('setTableId: invalid table name');
             return;
         }
-        
+
         var that = this;
 
         that.tableId = tableName;
+        that.formId = that.tableId;
         that.limitKey = that.tableId + ':limit';
         that.offsetKey = that.tableId + ':offset';
         that.rowCountKey = that.tableId + ':rowCount';
         that.queryKey = that.tableId + ':query';
         that.searchKey = that.tableId + ':search';
-    },
-   
-    setFormId: function(formName) {
-        if (formName === null || formName === undefined ||
-            formName.length === 0) {
-            console.log('setFormId: invalid form name');
-            return;
-        }
-        
-        var that = this;
-        
-        that.formId = formName;
     },
     
     setListQuery: function(queryToUse) {
@@ -231,18 +207,9 @@ window.listViewLogic = {
             }
         }
     },
-    
-    setLastvisit: function(lastvisit) {
-    	var that = this;
-    	if (lastvisit !== null && lastvisit !==undefined && lastvisit.length !==0) {
-    		that.lastvisit = lastvisit;
-    	}
-    },
 
     setColIdsToDisplayInList: function(headerLabel, headerColId, 
-            firstDetailLabel1, firstDetailColId1, firstDetailLabel2, firstDetailColId2, 
-            secondDetailLabel1, secondDetailColId1, secondDetailLabel2, secondDetailColId2,
-            thirdDetailLabel1, thirdDetailColId1, thirdDetailLabel2, thirdDetailColId2, thirdDetailLabel3, thirdDetailColId3 ) {
+            firstDetailLabel, firstDetailColId, secondDetailLabel, secondDetailColId) {
         var that = this;
 
         if (headerLabel !== null && headerLabel !== undefined && headerLabel.length !== 0) {
@@ -253,62 +220,21 @@ window.listViewLogic = {
             that.hdrColId = headerColId;
         }
 
-        if (firstDetailLabel1 !== null && firstDetailLabel1 !== undefined && firstDetailLabel1.length !== 0) {
-            that.firstDetLabel1 = firstDetailLabel1;
+        if (firstDetailLabel !== null && firstDetailLabel !== undefined && firstDetailLabel.length !== 0) {
+            that.firstDetLabel = firstDetailLabel;
         }
 
-        if (firstDetailColId1 !== null && firstDetailColId1 !== undefined && firstDetailColId1.length !== 0) {
-            that.firstDetColId1 = firstDetailColId1;
-        }
-        
-        if (firstDetailLabel2 !== null && firstDetailLabel2 !== undefined && firstDetailLabel2.length !== 0) {
-            that.firstDetLabel2 = firstDetailLabel2;
+        if (firstDetailColId !== null && firstDetailColId !== undefined && firstDetailColId.length !== 0) {
+            that.firstDetColId = firstDetailColId;
         }
 
-        if (firstDetailColId2 !== null && firstDetailColId2 !== undefined && firstDetailColId2.length !== 0) {
-            that.firstDetColId2 = firstDetailColId2;
+        if (secondDetailLabel !== null && secondDetailLabel !== undefined && secondDetailLabel.length !== 0) {
+            that.secondDetLabel = secondDetailLabel;
         }
 
-        if (secondDetailLabel1 !== null && secondDetailLabel1 !== undefined && secondDetailLabel1.length !== 0) {
-            that.secondDetLabel1 = secondDetailLabel1;
-        }
-
-        if (secondDetailColId1 !== null && secondDetailColId1 !== undefined && secondDetailColId1.length !== 0) {
-            that.secondDetColId1 = secondDetailColId1;
-        }
-        
-        if (secondDetailLabel2 !== null && secondDetailLabel2 !== undefined && secondDetailLabel2.length !== 0) {
-            that.secondDetLabel2 = secondDetailLabel2;
-        }
-
-        if (secondDetailColId2 !== null && secondDetailColId2 !== undefined && secondDetailColId2.length !== 0) {
-            that.secondDetColId2 = secondDetailColId2;
-        }
-        
-        if (thirdDetailLabel1 !== null && thirdDetailLabel1 !== undefined && thirdDetailLabel1.length !== 0) {
-            that.thirdDetLabel1 = thirdDetailLabel1;
-        }
-
-        if (thirdDetailColId1 !== null && thirdDetailColId1 !== undefined && thirdDetailColId1.length !== 0) {
-            that.thirdDetColId1 = thirdDetailColId1;
-        }
-        
-        if (thirdDetailLabel2 !== null && thirdDetailLabel2 !== undefined && thirdDetailLabel2.length !== 0) {
-            that.thirdDetLabel2 = thirdDetailLabel2;
-        }
-
-        if (thirdDetailColId2 !== null && thirdDetailColId2 !== undefined && thirdDetailColId2.length !== 0) {
-            that.thirdDetColId2 = thirdDetailColId2;
-        }
-        
-        if (thirdDetailLabel3 !== null && thirdDetailLabel3 !== undefined && thirdDetailLabel3.length !== 0) {
-            that.thirdDetLabel3 = thirdDetailLabel3;
-        }
-
-        if (thirdDetailColId3 !== null && thirdDetailColId3 !== undefined && thirdDetailColId3.length !== 0) {
-            that.thirdDetColId3 = thirdDetailColId3;
-        }
-
+        if (secondDetailColId !== null && secondDetailColId !== undefined && secondDetailColId.length !== 0) {
+            that.secondDetColId = secondDetailColId;
+        }  
     },
 
     setImageToDisplayInList: function(imgIdToUse) {
@@ -547,8 +473,7 @@ window.listViewLogic = {
                 // make sure we retrieved the rowId
                 if (rowId !== null && rowId !== undefined) {
                     // we'll pass null as the relative path to use the default file
-                    //odkTables.openDetailView(null, that.tableId, rowId, null);
-                    odkTables.editRowWithSurvey(null, that.tableId, rowId, that.formId, null, null);
+                    odkTables.openDetailView(null, that.tableId, rowId, null);
                     console.log('opened detail view');
                 }
             });
@@ -567,114 +492,121 @@ window.listViewLogic = {
     displayGroup: function(resultSet) {
         var that = this;
         var locale = odkCommon.getPreferredLocale();
+        var editTxt = odkCommon.localizeText(locale, "edit");
+        var deleteTxt = odkCommon.localizeText(locale, "delete");
+        var delRowTxt = odkCommon.localizeText(locale, "are_you_sure_you_want_to_delete_row");
         /* Number of rows displayed per 'chunk' - can modify this value */
         for (var i = 0; i < resultSet.getCount(); i++) {
+
+            /* Creates the item space */
+            var item = $('<li>');
+            item.attr('rowId', resultSet.getRowId(i));
+            item.attr('class', 'item_space');
+            item.text(that.createLabel(that.hdrLabel) + util.formatColIdForDisplay(that.hdrColId, i, resultSet, true));
+
+            if (that.showEditAndDelButtons === false)  {
+                /* Creates arrow icon (Nothing to edit here) */
+                var chevron = $('<img>');
+                chevron.attr('src', odkCommon.getFileAsUrl('config/assets/img/white_arrow.png'));
+                chevron.attr('class', 'chevron');
+                item.append(chevron);
+            }
+
+            if (that.firstDetColId !== null && that.firstDetColId !== undefined && that.firstDetColId.length !== 0) {
+                var field1 = $('<li>');
+                field1.attr('class', 'detail');
+                var fDetail = util.formatColIdForDisplay(that.firstDetColId, i, resultSet, true);
+                field1.text(that.createLabel(that.firstDetLabel) + fDetail);
+                item.append(field1);
+            }
+
+            // Add delete button if _effective_access has 'd'
+            if (that.showEditAndDelButtons === true) {
+                var access = resultSet.getData(i, '_effective_access');
+                if (access.indexOf('d') !== -1) {
+                    var deleteButton = $('<button>');
+                    deleteButton.attr('id', 'delButton');
+                    deleteButton.attr('class', 'delBtn btn');
+
+                    deleteButton.click(function(e) {
+                        var jqueryObj = $(e.target);
+                        // get closest thing with class item_space, to get row id
+                        var containingDiv = jqueryObj.closest('.item_space');
+                        var rowId = containingDiv.attr('rowId');
+                        console.log('deleteButton clicked with rowId: ' + rowId);
+                        e.stopPropagation();
+
+                        if (confirm(delRowTxt + ' ' + rowId)) {
+                            odkData.deleteRow(that.tableId, null, rowId, function(d) {
+                                that.resumeFn('rowDeleted');
+                            }, function(error) {
+                                console.log('Failed to delete row ' +  rowId + ' with error ' + error);
+                                alert('Unable to delete row - ' + rowId);
+                            });
+                        }
+                    });
+
+                    deleteButton.text(deleteTxt);
             
-        		/* Creates the item space */
-        		var item = $('<li>');
-        		item.attr('rowId', resultSet.getRowId(i));
-        		item.attr('class', 'item_space');
-        		item.text(that.createLabel(that.hdrLabel) + util.formatColIdForDisplay(that.hdrColId, i, resultSet, true));
+                    item.append(deleteButton);
+                }
 
-        		if (that.showEditAndDelButtons === false)  {
-        			/* Creates arrow icon (Nothing to edit here) */
-        			var chevron = $('<img>');
-        			var check = null;
-        			var td = new Date();
-                    var m = td.getMonth();
-                    var d = td.getDate();
-                    var y = td.getFullYear();
+                // Add edit button if _effective_access has 'w'
+                if (access.indexOf('w') !== -1) {
+                    var editButton = $('<button>');
+                    editButton.attr('id', 'editButton');
+                    editButton.attr('class', 'editBtn btn');
 
-                    var today = new Date(y,m,d);
-                    var visit = util.formatColIdForDisplay(that.lastvisit, i, resultSet, true);
-                    if (visit !== '') {
-                    	visit = new Date(visit.substring(0,4), visit.substring(5,7)-1, visit.substring(8,10));
-                    }
-        			if (today > visit) {
-        				check = '1'
-        			}
-                    
-        			if (check === '1') {
-        				chevron.attr('src', odkCommon.getFileAsUrl('config/assets/img/white_arrow.png'));
-        			} else {
-        				chevron.attr('src', odkCommon.getFileAsUrl('config/assets/img/check_mark2.png'));
-        			}
-        			
-        			
-        			
-        			chevron.attr('class', 'chevron');
-        			item.append(chevron);
-        		}
+                    editButton.click(function(e) {
+                        var jqueryObj = $(e.target);
+                        // get closest thing with class item_space, to get row id
+                        var containingDiv = jqueryObj.closest('.item_space');
+                        var rowId = containingDiv.attr('rowId');
+                        console.log('editButton clicked with rowId: ' + rowId);
+                        e.stopPropagation();
 
-        		if (that.firstDetColId1 !== null && that.firstDetColId1 !== undefined && that.firstDetColId1.length !== 0) {
-        			var field1 = $('<li>');
-        			field1.attr('class', 'detail');
-        			var f1Detail = util.formatColIdForDisplay(that.firstDetColId1, i, resultSet, true);
-        			var f2Detail = util.formatColIdForDisplay(that.firstDetColId2, i, resultSet, true);
-        			if (that.firstDetColId1 === 'RELA1') {
-        				if (f1Detail === '') {
-        					f1Detail = 'NS'
-        				}
-        				if (f2Detail === '') {
-        					f2Detail = 'NS'
-        				}
-        			}
-        			
-        			field1.text(that.createLabel(that.firstDetLabel1) + f1Detail + '; ' + f2Detail);
-        			item.append(field1);
-        		}
+                        odkTables.editRowWithSurvey(null, that.tableId, rowId, that.formId, null, null);
+                    });
 
-        		if (that.secondDetColId1 !== null && that.secondDetColId1 !== undefined && that.secondDetColId1.length !== 0) {
-        			var field2 = $('<li>');
-        			field2.attr('class', 'detail');
-                	var s1Detail = util.formatColIdForDisplay(that.secondDetColId1, i, resultSet, true);
-                	var s2Detail = util.formatColIdForDisplay(that.secondDetColId2, i, resultSet, true);
-                	if (that.secondDetColId1 === 'RELA2') {
-        				if (s1Detail === '') {
-        					s1Detail = 'NS'
-        				}
-        				if (s2Detail === '') {
-        					s2Detail = 'NS'
-        				}
-        			}
-                	
-                	field2.text(that.createLabel(that.secondDetLabel1) + s1Detail + '; ' + s2Detail);
-                	item.append(field2);
-        		}
+                    editButton.text(editTxt);
             
-        		if (that.thirdDetColId1 !== null && that.thirdDetColId1 !== undefined && that.thirdDetColId1.length !== 0) {
-        			var field3 = $('<li>');
-        			field3.attr('class', 'detail');
-        			var t1Detail = util.formatColIdForDisplay(that.thirdDetColId1, i, resultSet, true);
-        			var t2Detail = util.formatColIdForDisplay(that.thirdDetColId2, i, resultSet, true);
-        			var t3Detail = util.formatColIdForDisplay(that.thirdDetColId3, i, resultSet, true);
-        			if (that.thirdDetColId1 === 'MOR') {
-        				if (t1Detail === '') {
-        					t1Detail = 'NS'
-        				}
-        				if (t2Detail === '') {
-        					t2Detail = 'NS'
-        				}
-        				if (t3Detail === '') {
-        					t3Detail = 'NS'
-        				}		
-        			}
-        			
-        			field3.text(that.createLabel(that.thirdDetLabel1) + t1Detail + ' ' +
-        					that.createLabel(that.thirdDetLabel2) + t2Detail + ' ' + 
-        					that.createLabel(that.thirdDetLabel3) + t3Detail);
-        			item.append(field3);
-        		}
+                    item.append(editButton);
+                }
+            } 
 
-        			
-        		$(that.listElemId).append(item);
-        		
-        		
-        		// don't append the last one to avoid the fencepost problem
-        		var borderDiv = $('<div>');
-        		borderDiv.addClass('divider');
-        		$(that.listElemId).append(borderDiv);
-        }    
+            if (that.secondDetColId !== null && that.secondDetColId !== undefined && that.secondDetColId.length !== 0) {
+                var field2 = $('<li>');
+                var sDetail = util.formatColIdForDisplay(that.secondDetColId, i, resultSet, true);
+                field2.attr('class', 'detail');
+                field2.text(that.createLabel(that.secondDetLabel) + sDetail);
+                item.append(field2);
+            }
+
+            if (that.imgId !== null && that.imgId !== undefined && that.imgId.length !== 0) {
+                var uriRelative = resultSet.getData(i, that.imgId);
+                var src = '';
+                if (uriRelative !== null  && uriRelative !== '') {
+                    var uriAbsolute = odkCommon.getRowFileAsUrl(that.tableId, resultSet.getRowId(i), uriRelative);
+                    src = uriAbsolute;
+                }
+                
+                var thumbnail = $('<img>');
+                thumbnail.attr('src', src);
+                thumbnail.attr('class', 'imgWrapper');
+
+                var imgDiv = $('<div>');
+                imgDiv.addClass('imgWrapperDiv');
+                imgDiv.append(thumbnail);
+                item.append(imgDiv);
+            }
+
+            $(that.listElemId).append(item);
+
+            // don't append the last one to avoid the fencepost problem
+            var borderDiv = $('<div>');
+            borderDiv.addClass('divider');
+            $(that.listElemId).append(borderDiv);
+        }
     },
 
     clearRows: function() {

@@ -6,25 +6,26 @@
 
 var util = {};
 
-util.facilityType = 'facility_type';
-util.regionLevel2 = 'regionLevel2';
-util.powerSource = 'power_source';
+util.tabanca = 'tabanca';
+util.af = 'AF'
+util.numero_ronda = 'n_ronda';
+util.tabanca = 'tabanca';
 util.region = 'region';
-util.leafRegion = 'admin_region';
+util.sector = 'sector';
 util.rowId = '_id';
 util.modelRowId = 'model_row_id';
-util.refrigeratorId = 'refrigerator_id';
+util.pacienteId = 'id_paciente';
 util.facilityRowId = 'facility_row_id';
 util.maintenancePriority = 'maintenance_priority';
-util.adminRegions = [
-        {'token':'central', 'label': 'Central', 'region':'Central', 
-            'subRegions': [{'token':'central_east', 'label':'Central East', 'region':'Central East'},
-                           {'token':'central_west', 'label':'Central West', 'region':'Central West'}]},
-        {'token':'north', 'label':'North', 'region':'North'},
-        {'token':'south', 'label':'South', 'region':'South', 
-            'subRegions':[{'token':'south_east', 'label':'South East', 'region':'South East'},
-                          {'token':'south_west', 'label':'South West', 'region':'South West'}]}
-    ];
+// util.adminRegions = [
+//         {'token':'central', 'label': 'Central', 'region':'Central', 
+//             'subRegions': [{'token':'central_east', 'label':'Central East', 'region':'Central East'},
+//                            {'token':'central_west', 'label':'Central West', 'region':'Central West'}]},
+//         {'token':'north', 'label':'North', 'region':'North'},
+//         {'token':'south', 'label':'South', 'region':'South', 
+//             'subRegions':[{'token':'south_east', 'label':'South East', 'region':'South East'},
+//                           {'token':'south_west', 'label':'South West', 'region':'South West'}]}
+//     ];
 
 
 /**
@@ -32,7 +33,7 @@ util.adminRegions = [
  * is passed in return all of the options.
 */
 util.getMenuOptions = function(key) {
-    return util.getMenuOptionsHelper(key, util.adminRegions);
+    return util.getMenuOptionsHelper(key, util.region);
 };
 
 util.getMenuOptionsHelper = function(key, menuObj) {
@@ -57,8 +58,8 @@ util.getMenuOptionsHelper = function(key, menuObj) {
         }
 
         if (keyToUse.indexOf(regKey) !== -1) {
-            if (menuObj[i].hasOwnProperty('subRegions')) {
-                var subReg = that.getMenuOptionsHelper(key, menuObj[i]['subRegions']);
+            if (menuObj[i].hasOwnProperty('sector')) {
+                var subReg = that.getMenuOptionsHelper(key, menuObj[i]['sector']);
                 if (subReg !== null) {
                     return subReg;
                 }
@@ -69,10 +70,10 @@ util.getMenuOptionsHelper = function(key, menuObj) {
     return null;
 };
 
-util.getFacilityTypesByDistrict = function(district, successCB, failureCB) {
-    var queryStr = 'SELECT facility_type, count(*) FROM health_facility';
-    var whereStr = ' WHERE admin_region = ?'; 
-    var groupByStr = ' GROUP BY facility_type';
+util.gettabancasByDistrict = function(district, successCB, failureCB) {
+    var queryStr = 'SELECT tabanca, count(*) FROM QPS';
+    var whereStr = ' WHERE sector = ?'; 
+    var groupByStr = ' GROUP BY tabanca';
     var queryParam = [];
 
     if (district !== null && district !== undefined && district.length > 0) {
@@ -81,9 +82,30 @@ util.getFacilityTypesByDistrict = function(district, successCB, failureCB) {
     }
 
     queryStr = queryStr + groupByStr;
-    odkData.arbitraryQuery('health_facility', 
+    odkData.arbitraryQuery('QPS', 
         queryStr,
         queryParam,
+        null, 
+        null,
+        successCB,
+        failureCB);
+};
+
+util.getAFByDistrict = function(visita, successCB, failureCB) {
+    var queryAF = 'SELECT AF, count(*) FROM QPS';
+    var whereAF = ' WHERE tabanca = ?'; 
+    var groupByAF = ' GROUP BY AF';
+    var queryAfParam = [];
+
+    if (visita !== null && visita !== undefined && visita.length > 0) {
+        queryAfParam = [visita];
+        queryAF = queryAF + whereAF;
+    }
+
+    queryAF = queryAF + groupByAF;
+    odkData.arbitraryQuery('QPS', 
+        queryAF,
+        queryAfParam,
         null, 
         null,
         successCB,
@@ -201,10 +223,9 @@ util.getKeyToAppendToColdChainURL = function(key, value, shouldBeFirst) {
  * time. The values can then be retrieved using getQueryParameter.
  */
 util.getKeysToAppendToColdChainURL = function(
-      facilityType,
-      regionLevel2,
-      adminRegion,
-      powerSource) {
+      sector,
+      tabanca,
+      af) {
 
     var that = this;
     var first = true;
@@ -212,20 +233,16 @@ util.getKeysToAppendToColdChainURL = function(
     var adaptProps = {};
 
     // Initialize the properties object
-    if (facilityType !== null && facilityType !== undefined && facilityType.length !== 0) {
-        adaptProps[that.facilityType] = facilityType;
+    if (sector !== null && sector !== undefined && sector.length !== 0) {
+        adaptProps[that.leafRegion] = sector;
+    }  
+    
+    if (tabanca !== null && tabanca !== undefined && tabanca.length !== 0) {
+        adaptProps[that.tabanca] = tabanca;
     }
 
-    if (regionLevel2 !== null && regionLevel2 !== undefined && regionLevel2.length !== 0) {
-        adaptProps[that.regionLevel2] = regionLevel2;
-    }
-
-    if (adminRegion !== null && adminRegion !== undefined && adminRegion.length !== 0) {
-        adaptProps[that.leafRegion] = adminRegion;
-    }
-
-    if (powerSource !== null && powerSource !== undefined && powerSource.length !== 0) {
-        adaptProps[that.powerSource] = powerSource;
+    if (af !== null && af !== undefined && af.length !== 0) {
+        adaptProps[that.af] = af;
     }
 
     for (var prop in adaptProps) {

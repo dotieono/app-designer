@@ -1,5 +1,31 @@
 {
   "xlsx": {
+    "settings": [
+      {
+        "setting_name": "form_id",
+        "value": "ronda",
+        "_row_num": 2
+      },
+      {
+        "setting_name": "form_version",
+        "value": 2019073000,
+        "_row_num": 3
+      },
+      {
+        "setting_name": "survey",
+        "display": {
+          "title": {
+            "text": "Rondas"
+          }
+        },
+        "_row_num": 4
+      },
+      {
+        "setting_name": "table_id",
+        "value": "ronda",
+        "_row_num": 5
+      }
+    ],
     "survey": [
       {
         "clause": "begin screen",
@@ -133,13 +159,13 @@
       },
       {
         "clause": "if",
-        "condition": "data('tem_adverso')=='1'",
+        "condition": "selected(data('tem_adverso'),'1')",
         "_row_num": 24
       },
       {
         "type": "select_multiple",
         "values_list": "efeito_adverso",
-        "name": "ef_adveso",
+        "name": "ef_adverso",
         "display": {
           "prompt": {
             "text": "Efeitos Adverso"
@@ -264,10 +290,9 @@
         "_row_num": 51
       },
       {
-        "branch_label": "tranferencia",
         "type": "select_one",
         "values_list": "yesno",
-        "name": "tranferencia",
+        "name": "transf",
         "display": {
           "prompt": {
             "text": "A criança foi tranferido"
@@ -277,7 +302,7 @@
       },
       {
         "clause": "if",
-        "condition": "data('transferencia')=='1'",
+        "condition": "data('transf')=='1'",
         "_row_num": 55
       },
       {
@@ -466,7 +491,7 @@
         "data_value": 4,
         "display": {
           "title": {
-            "text": "Diarréia (>= 7)"
+            "text": "Diarreia (mais ou igual 7)"
           }
         },
         "_row_num": 14
@@ -592,32 +617,6 @@
         "_row_num": 30
       }
     ],
-    "settings": [
-      {
-        "setting_name": "form_id",
-        "value": "ronda",
-        "_row_num": 2
-      },
-      {
-        "setting_name": "form_version",
-        "value": 2019072500,
-        "_row_num": 3
-      },
-      {
-        "setting_name": "survey",
-        "display": {
-          "title": {
-            "text": "Rondas"
-          }
-        },
-        "_row_num": 4
-      },
-      {
-        "setting_name": "table_id",
-        "value": "ronda",
-        "_row_num": 5
-      }
-    ],
     "model": [
       {
         "type": "barcode",
@@ -625,204 +624,204 @@
         "_row_num": 2
       },
       {
-        "type": "custom_date",
-        "name": "data_inscricao",
+        "type": "string",
+        "name": "letra_sticker",
         "_row_num": 3
+      },
+      {
+        "type": "integer",
+        "name": "numero_sticker",
+        "_row_num": 4
+      },
+      {
+        "type": "adate",
+        "name": "data_inscricao",
+        "_row_num": 5
       },
       {
         "type": "text",
         "name": "nome",
-        "_row_num": 4
+        "_row_num": 6
+      },
+      {
+        "type": "string",
+        "name": "nome_casa",
+        "_row_num": 7
       },
       {
         "type": "select_one",
         "name": "sexo",
-        "_row_num": 5
+        "_row_num": 8
       },
       {
         "type": "select_one",
         "name": "Data_ou_idade",
-        "_row_num": 6
+        "_row_num": 9
       },
       {
-        "type": "custom_date",
+        "type": "adate",
         "name": "dn",
-        "_row_num": 7
+        "_row_num": 10
       },
       {
         "type": "integer",
         "name": "ano",
-        "_row_num": 8
+        "_row_num": 11
       },
       {
         "type": "integer",
         "name": "mes",
-        "_row_num": 9
-      },
-      {
-        "type": "text",
-        "name": "mae",
-        "_row_num": 10
-      },
-      {
-        "type": "select_one",
-        "name": "region",
-        "_row_num": 11
-      },
-      {
-        "type": "select_one",
-        "name": "sector",
         "_row_num": 12
       },
       {
         "type": "select_one",
-        "name": "local",
+        "name": "region",
         "_row_num": 13
       },
       {
-        "type": "integer",
-        "name": "equipa",
+        "type": "select_one",
+        "name": "sector",
         "_row_num": 14
       },
       {
-        "type": "integer",
-        "name": "mtn_equi",
+        "type": "select_one",
+        "name": "tabanca",
         "_row_num": 15
       },
       {
         "type": "integer",
-        "name": "orange_equi",
+        "name": "AF",
         "_row_num": 16
       },
       {
         "type": "integer",
-        "name": "mtn_RAS",
+        "name": "equipa",
         "_row_num": 17
       },
       {
         "type": "integer",
-        "name": "orange_RAS",
+        "name": "mtn_equi",
         "_row_num": 18
       },
       {
-        "type": "custom_date",
-        "name": "r1d1",
+        "type": "integer",
+        "name": "orange_equi",
+        "_row_num": 19
+      },
+      {
+        "type": "integer",
+        "name": "mtn_RAS",
         "_row_num": 20
       },
       {
-        "type": "custom_date",
-        "name": "r1d2",
+        "type": "integer",
+        "name": "orange_RAS",
         "_row_num": 21
       },
       {
-        "type": "custom_date",
-        "name": "r1d3",
+        "type": "note",
+        "name": "abrir_ronda",
         "_row_num": 22
+      },
+      {
+        "type": "integer",
+        "name": "n_ronda",
+        "_row_num": 24
+      },
+      {
+        "type": "select_one",
+        "name": "consentimento",
+        "_row_num": 25
+      },
+      {
+        "type": "adate",
+        "name": "d1",
+        "_row_num": 26
+      },
+      {
+        "type": "adate",
+        "name": "d2",
+        "_row_num": 27
+      },
+      {
+        "type": "adate",
+        "name": "d3",
+        "_row_num": 28
       },
       {
         "type": "select_one",
         "name": "tem_adverso",
-        "_row_num": 23
-      },
-      {
-        "type": "select_multiple",
-        "name": "ef_adveso_r1",
-        "_row_num": 24
-      },
-      {
-        "type": "text",
-        "name": "esp_ef_adverso_r1",
-        "_row_num": 25
-      },
-      {
-        "type": "custom_date",
-        "name": "r2d1",
-        "_row_num": 27
-      },
-      {
-        "type": "custom_date",
-        "name": "r2d2",
-        "_row_num": 28
-      },
-      {
-        "type": "custom_date",
-        "name": "r2d3",
         "_row_num": 29
       },
       {
-        "type": "select_one",
-        "name": "tem_adverso_r2",
+        "type": "select_multiple",
+        "name": "ef_adveso",
         "_row_num": 30
       },
       {
-        "type": "select_multiple",
-        "name": "ef_adveso_r2",
+        "type": "text",
+        "name": "esp_ef_adverso",
         "_row_num": 31
       },
       {
-        "type": "text",
-        "name": "esp_ef_adverso_r2",
+        "type": "note",
+        "name": "dx_tto",
         "_row_num": 32
       },
       {
-        "type": "custom_date",
-        "name": "r3d1",
+        "type": "select_one",
+        "name": "febre",
+        "_row_num": 33
+      },
+      {
+        "type": "select_one",
+        "name": "tdr",
+        "_row_num": 34
+      },
+      {
+        "type": "select_one",
+        "name": "TDR_positivo",
         "_row_num": 35
       },
       {
-        "type": "custom_date",
-        "name": "r3d2",
+        "type": "select_one",
+        "name": "tto_ACT",
         "_row_num": 36
       },
       {
-        "type": "custom_date",
-        "name": "r3d3",
+        "type": "select_one",
+        "name": "tranferencia",
         "_row_num": 37
       },
       {
         "type": "select_one",
-        "name": "tem_adverso_r3",
+        "name": "motivo",
         "_row_num": 38
       },
       {
-        "type": "select_multiple",
-        "name": "ef_adveso_r3",
+        "type": "note",
+        "name": "inelegivel",
         "_row_num": 39
       },
       {
-        "type": "text",
-        "name": "esp_ef_adverso_r3",
+        "type": "select_multiple",
+        "name": "razao",
         "_row_num": 40
       },
       {
-        "type": "custom_date",
-        "name": "r4d1",
-        "_row_num": 43
-      },
-      {
-        "type": "custom_date",
-        "name": "r4d2",
-        "_row_num": 44
-      },
-      {
-        "type": "custom_date",
-        "name": "r4d3",
-        "_row_num": 45
-      },
-      {
-        "type": "select_one",
-        "name": "tem_adverso_r4",
-        "_row_num": 46
-      },
-      {
-        "type": "select_multiple",
-        "name": "ef_adveso_r4",
-        "_row_num": 47
-      },
-      {
         "type": "text",
-        "name": "esp_ef_adverso_r4",
-        "_row_num": 48
+        "name": "esp_razao",
+        "_row_num": 41
+      },
+      {
+        "type": "note",
+        "name": "refusal_statement",
+        "_row_num": 42
+      },
+      {
+        "type": "note",
+        "name": "survey_complete",
+        "_row_num": 43
       }
     ],
     "prompt_types": [
@@ -866,7 +865,7 @@
       },
       "form_version": {
         "setting_name": "form_version",
-        "value": 2019072500,
+        "value": 2019073000,
         "_row_num": 3
       },
       "survey": {
@@ -1015,7 +1014,7 @@
           "data_value": 4,
           "display": {
             "title": {
-              "text": "Diarréia (>= 7)"
+              "text": "Diarreia (mais ou igual 7)"
             }
           },
           "_row_num": 14
@@ -1162,16 +1161,44 @@
         ],
         "elementKey": "id_paciente"
       },
-      "data_inscricao": {
-        "prompt_type_name": "custom_date",
+      "letra_sticker": {
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
         "_defn": [
           {
+            "_row_num": 8,
+            "section_name": "survey"
+          },
+          {
             "_row_num": 3,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "letra_sticker"
+      },
+      "numero_sticker": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 9,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 4,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "numero_sticker"
+      },
+      "data_inscricao": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 5,
             "section_name": "model"
           }
         ],
@@ -1181,17 +1208,27 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 4,
+            "_row_num": 6,
             "section_name": "model"
           }
         ],
         "elementKey": "nome"
       },
+      "nome_casa": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 7,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "nome_casa"
+      },
       "sexo": {
         "type": "string",
         "_defn": [
           {
-            "_row_num": 5,
+            "_row_num": 8,
             "section_name": "model"
           }
         ],
@@ -1201,22 +1238,22 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 6,
+            "_row_num": 9,
             "section_name": "model"
           }
         ],
         "elementKey": "Data_ou_idade"
       },
       "dn": {
-        "prompt_type_name": "custom_date",
+        "prompt_type_name": "adate",
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
         "_defn": [
           {
-            "_row_num": 7,
+            "_row_num": 10,
             "section_name": "model"
           }
         ],
@@ -1226,7 +1263,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 8,
+            "_row_num": 11,
             "section_name": "model"
           }
         ],
@@ -1236,27 +1273,17 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 9,
+            "_row_num": 12,
             "section_name": "model"
           }
         ],
         "elementKey": "mes"
       },
-      "mae": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 10,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "mae"
-      },
       "region": {
         "type": "string",
         "_defn": [
           {
-            "_row_num": 11,
+            "_row_num": 13,
             "section_name": "model"
           }
         ],
@@ -1266,27 +1293,37 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 12,
+            "_row_num": 14,
             "section_name": "model"
           }
         ],
         "elementKey": "sector"
       },
-      "local": {
+      "tabanca": {
         "type": "string",
         "_defn": [
           {
-            "_row_num": 13,
+            "_row_num": 15,
             "section_name": "model"
           }
         ],
-        "elementKey": "local"
+        "elementKey": "tabanca"
+      },
+      "AF": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 16,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "AF"
       },
       "equipa": {
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 14,
+            "_row_num": 17,
             "section_name": "model"
           }
         ],
@@ -1296,7 +1333,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 15,
+            "_row_num": 18,
             "section_name": "model"
           }
         ],
@@ -1306,7 +1343,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 16,
+            "_row_num": 19,
             "section_name": "model"
           }
         ],
@@ -1316,7 +1353,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 17,
+            "_row_num": 20,
             "section_name": "model"
           }
         ],
@@ -1326,56 +1363,107 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 18,
+            "_row_num": 21,
             "section_name": "model"
           }
         ],
         "elementKey": "orange_RAS"
       },
-      "r1d1": {
-        "prompt_type_name": "custom_date",
-        "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
-        "_defn": [
-          {
-            "_row_num": 20,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r1d1"
-      },
-      "r1d2": {
-        "prompt_type_name": "custom_date",
-        "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
-        "_defn": [
-          {
-            "_row_num": 21,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r1d2"
-      },
-      "r1d3": {
-        "prompt_type_name": "custom_date",
-        "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
+      "abrir_ronda": {
         "_defn": [
           {
             "_row_num": 22,
             "section_name": "model"
           }
         ],
-        "elementKey": "r1d3"
+        "type": "note",
+        "elementKey": "abrir_ronda"
+      },
+      "n_ronda": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 14,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 24,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "n_ronda"
+      },
+      "consentimento": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 15,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 25,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "consentimento"
+      },
+      "d1": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 19,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 26,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "d1"
+      },
+      "d2": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 20,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 27,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "d2"
+      },
+      "d3": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 21,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 28,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "d3"
       },
       "tem_adverso": {
         "type": "string",
@@ -1386,272 +1474,197 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 23,
+            "_row_num": 29,
             "section_name": "model"
           }
         ],
         "elementKey": "tem_adverso"
       },
-      "ef_adveso_r1": {
+      "ef_adveso": {
         "type": "array",
         "items": {
           "type": "string",
-          "elementKey": "ef_adveso_r1_items"
+          "elementKey": "ef_adveso_items"
         },
-        "_defn": [
-          {
-            "_row_num": 24,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "ef_adveso_r1"
-      },
-      "esp_ef_adverso_r1": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 25,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "esp_ef_adverso_r1"
-      },
-      "r2d1": {
-        "prompt_type_name": "custom_date",
-        "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
-        "_defn": [
-          {
-            "_row_num": 27,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r2d1"
-      },
-      "r2d2": {
-        "prompt_type_name": "custom_date",
-        "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
-        "_defn": [
-          {
-            "_row_num": 28,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r2d2"
-      },
-      "r2d3": {
-        "prompt_type_name": "custom_date",
-        "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
-        "_defn": [
-          {
-            "_row_num": 29,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r2d3"
-      },
-      "tem_adverso_r2": {
-        "type": "string",
         "_defn": [
           {
             "_row_num": 30,
             "section_name": "model"
           }
         ],
-        "elementKey": "tem_adverso_r2"
+        "elementKey": "ef_adveso"
       },
-      "ef_adveso_r2": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "elementKey": "ef_adveso_r2_items"
-        },
+      "esp_ef_adverso": {
+        "type": "string",
         "_defn": [
+          {
+            "_row_num": 27,
+            "section_name": "survey"
+          },
           {
             "_row_num": 31,
             "section_name": "model"
           }
         ],
-        "elementKey": "ef_adveso_r2"
+        "elementKey": "esp_ef_adverso"
       },
-      "esp_ef_adverso_r2": {
-        "type": "string",
+      "dx_tto": {
         "_defn": [
           {
             "_row_num": 32,
             "section_name": "model"
           }
         ],
-        "elementKey": "esp_ef_adverso_r2"
+        "type": "note",
+        "elementKey": "dx_tto"
       },
-      "r3d1": {
-        "prompt_type_name": "custom_date",
+      "febre": {
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
+        "valuesList": "yesno",
         "_defn": [
+          {
+            "_row_num": 36,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 33,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "febre"
+      },
+      "tdr": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 38,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 34,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "tdr"
+      },
+      "TDR_positivo": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 42,
+            "section_name": "survey"
+          },
           {
             "_row_num": 35,
             "section_name": "model"
           }
         ],
-        "elementKey": "r3d1"
+        "elementKey": "TDR_positivo"
       },
-      "r3d2": {
-        "prompt_type_name": "custom_date",
+      "tto_ACT": {
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
+        "valuesList": "yesno",
         "_defn": [
+          {
+            "_row_num": 46,
+            "section_name": "survey"
+          },
           {
             "_row_num": 36,
             "section_name": "model"
           }
         ],
-        "elementKey": "r3d2"
+        "elementKey": "tto_ACT"
       },
-      "r3d3": {
-        "prompt_type_name": "custom_date",
+      "tranferencia": {
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 37,
             "section_name": "model"
           }
         ],
-        "elementKey": "r3d3"
+        "elementKey": "tranferencia"
       },
-      "tem_adverso_r3": {
+      "motivo": {
         "type": "string",
+        "valuesList": "transferencia",
         "_defn": [
+          {
+            "_row_num": 57,
+            "section_name": "survey"
+          },
           {
             "_row_num": 38,
             "section_name": "model"
           }
         ],
-        "elementKey": "tem_adverso_r3"
+        "elementKey": "motivo"
       },
-      "ef_adveso_r3": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "elementKey": "ef_adveso_r3_items"
-        },
+      "inelegivel": {
         "_defn": [
           {
             "_row_num": 39,
             "section_name": "model"
           }
         ],
-        "elementKey": "ef_adveso_r3"
+        "type": "note",
+        "elementKey": "inelegivel"
       },
-      "esp_ef_adverso_r3": {
-        "type": "string",
+      "razao": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "elementKey": "razao_items"
+        },
+        "valuesList": "razao",
         "_defn": [
+          {
+            "_row_num": 62,
+            "section_name": "survey"
+          },
           {
             "_row_num": 40,
             "section_name": "model"
           }
         ],
-        "elementKey": "esp_ef_adverso_r3"
+        "elementKey": "razao"
       },
-      "r4d1": {
-        "prompt_type_name": "custom_date",
+      "esp_razao": {
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
+        "_defn": [
+          {
+            "_row_num": 64,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 41,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "esp_razao"
+      },
+      "refusal_statement": {
+        "_defn": [
+          {
+            "_row_num": 42,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "refusal_statement"
+      },
+      "survey_complete": {
         "_defn": [
           {
             "_row_num": 43,
             "section_name": "model"
           }
         ],
-        "elementKey": "r4d1"
-      },
-      "r4d2": {
-        "prompt_type_name": "custom_date",
-        "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
-        "_defn": [
-          {
-            "_row_num": 44,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r4d2"
-      },
-      "r4d3": {
-        "prompt_type_name": "custom_date",
-        "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
-        "_defn": [
-          {
-            "_row_num": 45,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r4d3"
-      },
-      "tem_adverso_r4": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 46,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "tem_adverso_r4"
-      },
-      "ef_adveso_r4": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "elementKey": "ef_adveso_r4_items"
-        },
-        "_defn": [
-          {
-            "_row_num": 47,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "ef_adveso_r4"
-      },
-      "esp_ef_adverso_r4": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 48,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "esp_ef_adverso_r4"
+        "type": "note",
+        "elementKey": "survey_complete"
       },
       "sticker": {
         "_defn": [
@@ -1663,87 +1676,7 @@
         "type": "string",
         "elementKey": "sticker"
       },
-      "letra_sticker": {
-        "_defn": [
-          {
-            "_row_num": 8,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "letra_sticker"
-      },
-      "numero_sticker": {
-        "_defn": [
-          {
-            "_row_num": 9,
-            "section_name": "survey"
-          }
-        ],
-        "type": "integer",
-        "elementKey": "numero_sticker"
-      },
-      "n_ronda": {
-        "_defn": [
-          {
-            "_row_num": 14,
-            "section_name": "survey"
-          }
-        ],
-        "type": "integer",
-        "elementKey": "n_ronda"
-      },
-      "consentimento": {
-        "_defn": [
-          {
-            "_row_num": 15,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "consentimento"
-      },
-      "d1": {
-        "_defn": [
-          {
-            "_row_num": 19,
-            "section_name": "survey"
-          }
-        ],
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "elementKey": "d1"
-      },
-      "d2": {
-        "_defn": [
-          {
-            "_row_num": 20,
-            "section_name": "survey"
-          }
-        ],
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "elementKey": "d2"
-      },
-      "d3": {
-        "_defn": [
-          {
-            "_row_num": 21,
-            "section_name": "survey"
-          }
-        ],
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "elementKey": "d3"
-      },
-      "ef_adveso": {
+      "ef_adverso": {
         "_defn": [
           {
             "_row_num": 25,
@@ -1753,66 +1686,12 @@
         "type": "array",
         "items": {
           "type": "string",
-          "elementKey": "ef_adveso_items"
+          "elementKey": "ef_adverso_items"
         },
         "valuesList": "efeito_adverso",
-        "elementKey": "ef_adveso"
+        "elementKey": "ef_adverso"
       },
-      "esp_ef_adverso": {
-        "_defn": [
-          {
-            "_row_num": 27,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "esp_ef_adverso"
-      },
-      "febre": {
-        "_defn": [
-          {
-            "_row_num": 36,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "febre"
-      },
-      "tdr": {
-        "_defn": [
-          {
-            "_row_num": 38,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "tdr"
-      },
-      "TDR_positivo": {
-        "_defn": [
-          {
-            "_row_num": 42,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "TDR_positivo"
-      },
-      "tto_ACT": {
-        "_defn": [
-          {
-            "_row_num": 46,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "tto_ACT"
-      },
-      "tranferencia": {
+      "transf": {
         "_defn": [
           {
             "_row_num": 54,
@@ -1821,43 +1700,7 @@
         ],
         "type": "string",
         "valuesList": "yesno",
-        "elementKey": "tranferencia"
-      },
-      "motivo": {
-        "_defn": [
-          {
-            "_row_num": 57,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "transferencia",
-        "elementKey": "motivo"
-      },
-      "razao": {
-        "_defn": [
-          {
-            "_row_num": 62,
-            "section_name": "survey"
-          }
-        ],
-        "type": "array",
-        "items": {
-          "type": "string",
-          "elementKey": "razao_items"
-        },
-        "valuesList": "razao",
-        "elementKey": "razao"
-      },
-      "esp_razao": {
-        "_defn": [
-          {
-            "_row_num": 64,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "esp_razao"
+        "elementKey": "transf"
       }
     },
     "section_names": [
@@ -2032,7 +1875,7 @@
           {
             "type": "select_multiple",
             "values_list": "efeito_adverso",
-            "name": "ef_adveso",
+            "name": "ef_adverso",
             "display": {
               "prompt": {
                 "text": "Efeitos Adverso"
@@ -2142,7 +1985,7 @@
           {
             "type": "select_one",
             "values_list": "yesno",
-            "name": "tranferencia",
+            "name": "transf",
             "display": {
               "prompt": {
                 "text": "A criança foi tranferido"
@@ -2340,7 +2183,7 @@
           },
           {
             "clause": "if",
-            "condition": "data('tem_adverso')=='1'",
+            "condition": "selected(data('tem_adverso'),'1')",
             "_row_num": 24,
             "__rowNum__": 23,
             "_token_type": "goto_label",
@@ -2418,7 +2261,7 @@
           },
           {
             "clause": "if",
-            "condition": "data('transferencia')=='1'",
+            "condition": "data('transf')=='1'",
             "_row_num": 55,
             "__rowNum__": 54,
             "_token_type": "goto_label",
@@ -2573,7 +2416,6 @@
           "_endif33": 19,
           "_screen34": 19,
           "_endif51": 20,
-          "tranferencia": 20,
           "_screen54": 20,
           "_then55": 23,
           "_screen57": 23,
@@ -2786,16 +2628,50 @@
         "elementSet": "data",
         "elementPath": "id_paciente"
       },
-      "data_inscricao": {
-        "prompt_type_name": "custom_date",
+      "letra_sticker": {
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
         "_defn": [
           {
+            "_row_num": 8,
+            "section_name": "survey"
+          },
+          {
             "_row_num": 3,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "letra_sticker",
+        "elementName": "letra_sticker",
+        "elementSet": "data",
+        "elementPath": "letra_sticker"
+      },
+      "numero_sticker": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 9,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 4,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "numero_sticker",
+        "elementName": "numero_sticker",
+        "elementSet": "data",
+        "elementPath": "numero_sticker"
+      },
+      "data_inscricao": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 5,
             "section_name": "model"
           }
         ],
@@ -2808,7 +2684,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 4,
+            "_row_num": 6,
             "section_name": "model"
           }
         ],
@@ -2817,11 +2693,24 @@
         "elementSet": "data",
         "elementPath": "nome"
       },
+      "nome_casa": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 7,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "nome_casa",
+        "elementName": "nome_casa",
+        "elementSet": "data",
+        "elementPath": "nome_casa"
+      },
       "sexo": {
         "type": "string",
         "_defn": [
           {
-            "_row_num": 5,
+            "_row_num": 8,
             "section_name": "model"
           }
         ],
@@ -2834,7 +2723,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 6,
+            "_row_num": 9,
             "section_name": "model"
           }
         ],
@@ -2844,15 +2733,15 @@
         "elementPath": "Data_ou_idade"
       },
       "dn": {
-        "prompt_type_name": "custom_date",
+        "prompt_type_name": "adate",
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
         "_defn": [
           {
-            "_row_num": 7,
+            "_row_num": 10,
             "section_name": "model"
           }
         ],
@@ -2865,7 +2754,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 8,
+            "_row_num": 11,
             "section_name": "model"
           }
         ],
@@ -2878,7 +2767,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 9,
+            "_row_num": 12,
             "section_name": "model"
           }
         ],
@@ -2887,24 +2776,11 @@
         "elementSet": "data",
         "elementPath": "mes"
       },
-      "mae": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 10,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "mae",
-        "elementName": "mae",
-        "elementSet": "data",
-        "elementPath": "mae"
-      },
       "region": {
         "type": "string",
         "_defn": [
           {
-            "_row_num": 11,
+            "_row_num": 13,
             "section_name": "model"
           }
         ],
@@ -2917,7 +2793,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 12,
+            "_row_num": 14,
             "section_name": "model"
           }
         ],
@@ -2926,24 +2802,37 @@
         "elementSet": "data",
         "elementPath": "sector"
       },
-      "local": {
+      "tabanca": {
         "type": "string",
         "_defn": [
           {
-            "_row_num": 13,
+            "_row_num": 15,
             "section_name": "model"
           }
         ],
-        "elementKey": "local",
-        "elementName": "local",
+        "elementKey": "tabanca",
+        "elementName": "tabanca",
         "elementSet": "data",
-        "elementPath": "local"
+        "elementPath": "tabanca"
+      },
+      "AF": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 16,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "AF",
+        "elementName": "AF",
+        "elementSet": "data",
+        "elementPath": "AF"
       },
       "equipa": {
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 14,
+            "_row_num": 17,
             "section_name": "model"
           }
         ],
@@ -2956,7 +2845,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 15,
+            "_row_num": 18,
             "section_name": "model"
           }
         ],
@@ -2969,7 +2858,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 16,
+            "_row_num": 19,
             "section_name": "model"
           }
         ],
@@ -2982,7 +2871,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 17,
+            "_row_num": 20,
             "section_name": "model"
           }
         ],
@@ -2995,7 +2884,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 18,
+            "_row_num": 21,
             "section_name": "model"
           }
         ],
@@ -3004,59 +2893,119 @@
         "elementSet": "data",
         "elementPath": "orange_RAS"
       },
-      "r1d1": {
-        "prompt_type_name": "custom_date",
-        "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
-        "_defn": [
-          {
-            "_row_num": 20,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r1d1",
-        "elementName": "r1d1",
-        "elementSet": "data",
-        "elementPath": "r1d1"
-      },
-      "r1d2": {
-        "prompt_type_name": "custom_date",
-        "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
-        "_defn": [
-          {
-            "_row_num": 21,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r1d2",
-        "elementName": "r1d2",
-        "elementSet": "data",
-        "elementPath": "r1d2"
-      },
-      "r1d3": {
-        "prompt_type_name": "custom_date",
-        "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
+      "abrir_ronda": {
         "_defn": [
           {
             "_row_num": 22,
             "section_name": "model"
           }
         ],
-        "elementKey": "r1d3",
-        "elementName": "r1d3",
+        "type": "note",
+        "elementKey": "abrir_ronda",
+        "elementName": "abrir_ronda",
         "elementSet": "data",
-        "elementPath": "r1d3"
+        "elementPath": "abrir_ronda"
+      },
+      "n_ronda": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 14,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 24,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "n_ronda",
+        "elementName": "n_ronda",
+        "elementSet": "data",
+        "elementPath": "n_ronda"
+      },
+      "consentimento": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 15,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 25,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "consentimento",
+        "elementName": "consentimento",
+        "elementSet": "data",
+        "elementPath": "consentimento"
+      },
+      "d1": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 19,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 26,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "d1",
+        "elementName": "d1",
+        "elementSet": "data",
+        "elementPath": "d1"
+      },
+      "d2": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 20,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 27,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "d2",
+        "elementName": "d2",
+        "elementSet": "data",
+        "elementPath": "d2"
+      },
+      "d3": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 21,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 28,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "d3",
+        "elementName": "d3",
+        "elementSet": "data",
+        "elementPath": "d3"
       },
       "tem_adverso": {
         "type": "string",
@@ -3067,7 +3016,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 23,
+            "_row_num": 29,
             "section_name": "model"
           }
         ],
@@ -3076,354 +3025,247 @@
         "elementSet": "data",
         "elementPath": "tem_adverso"
       },
-      "ef_adveso_r1": {
+      "ef_adveso": {
         "type": "array",
         "items": {
           "type": "string",
-          "elementKey": "ef_adveso_r1_items",
+          "elementKey": "ef_adveso_items",
           "elementName": "items",
           "elementSet": "data",
-          "elementPath": "ef_adveso_r1.items",
+          "elementPath": "ef_adveso.items",
           "notUnitOfRetention": true
         },
-        "_defn": [
-          {
-            "_row_num": 24,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "ef_adveso_r1",
-        "elementName": "ef_adveso_r1",
-        "elementSet": "data",
-        "elementPath": "ef_adveso_r1",
-        "listChildElementKeys": [
-          "ef_adveso_r1_items"
-        ]
-      },
-      "esp_ef_adverso_r1": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 25,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "esp_ef_adverso_r1",
-        "elementName": "esp_ef_adverso_r1",
-        "elementSet": "data",
-        "elementPath": "esp_ef_adverso_r1"
-      },
-      "r2d1": {
-        "prompt_type_name": "custom_date",
-        "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
-        "_defn": [
-          {
-            "_row_num": 27,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r2d1",
-        "elementName": "r2d1",
-        "elementSet": "data",
-        "elementPath": "r2d1"
-      },
-      "r2d2": {
-        "prompt_type_name": "custom_date",
-        "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
-        "_defn": [
-          {
-            "_row_num": 28,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r2d2",
-        "elementName": "r2d2",
-        "elementSet": "data",
-        "elementPath": "r2d2"
-      },
-      "r2d3": {
-        "prompt_type_name": "custom_date",
-        "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
-        "_defn": [
-          {
-            "_row_num": 29,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r2d3",
-        "elementName": "r2d3",
-        "elementSet": "data",
-        "elementPath": "r2d3"
-      },
-      "tem_adverso_r2": {
-        "type": "string",
         "_defn": [
           {
             "_row_num": 30,
             "section_name": "model"
           }
         ],
-        "elementKey": "tem_adverso_r2",
-        "elementName": "tem_adverso_r2",
+        "elementKey": "ef_adveso",
+        "elementName": "ef_adveso",
         "elementSet": "data",
-        "elementPath": "tem_adverso_r2"
+        "elementPath": "ef_adveso",
+        "listChildElementKeys": [
+          "ef_adveso_items"
+        ]
       },
-      "ef_adveso_r2": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "elementKey": "ef_adveso_r2_items",
-          "elementName": "items",
-          "elementSet": "data",
-          "elementPath": "ef_adveso_r2.items",
-          "notUnitOfRetention": true
-        },
+      "esp_ef_adverso": {
+        "type": "string",
         "_defn": [
+          {
+            "_row_num": 27,
+            "section_name": "survey"
+          },
           {
             "_row_num": 31,
             "section_name": "model"
           }
         ],
-        "elementKey": "ef_adveso_r2",
-        "elementName": "ef_adveso_r2",
+        "elementKey": "esp_ef_adverso",
+        "elementName": "esp_ef_adverso",
         "elementSet": "data",
-        "elementPath": "ef_adveso_r2",
-        "listChildElementKeys": [
-          "ef_adveso_r2_items"
-        ]
+        "elementPath": "esp_ef_adverso"
       },
-      "esp_ef_adverso_r2": {
-        "type": "string",
+      "dx_tto": {
         "_defn": [
           {
             "_row_num": 32,
             "section_name": "model"
           }
         ],
-        "elementKey": "esp_ef_adverso_r2",
-        "elementName": "esp_ef_adverso_r2",
+        "type": "note",
+        "elementKey": "dx_tto",
+        "elementName": "dx_tto",
         "elementSet": "data",
-        "elementPath": "esp_ef_adverso_r2"
+        "elementPath": "dx_tto"
       },
-      "r3d1": {
-        "prompt_type_name": "custom_date",
+      "febre": {
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
+        "valuesList": "yesno",
         "_defn": [
+          {
+            "_row_num": 36,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 33,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "febre",
+        "elementName": "febre",
+        "elementSet": "data",
+        "elementPath": "febre"
+      },
+      "tdr": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 38,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 34,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "tdr",
+        "elementName": "tdr",
+        "elementSet": "data",
+        "elementPath": "tdr"
+      },
+      "TDR_positivo": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 42,
+            "section_name": "survey"
+          },
           {
             "_row_num": 35,
             "section_name": "model"
           }
         ],
-        "elementKey": "r3d1",
-        "elementName": "r3d1",
+        "elementKey": "TDR_positivo",
+        "elementName": "TDR_positivo",
         "elementSet": "data",
-        "elementPath": "r3d1"
+        "elementPath": "TDR_positivo"
       },
-      "r3d2": {
-        "prompt_type_name": "custom_date",
+      "tto_ACT": {
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
+        "valuesList": "yesno",
         "_defn": [
+          {
+            "_row_num": 46,
+            "section_name": "survey"
+          },
           {
             "_row_num": 36,
             "section_name": "model"
           }
         ],
-        "elementKey": "r3d2",
-        "elementName": "r3d2",
+        "elementKey": "tto_ACT",
+        "elementName": "tto_ACT",
         "elementSet": "data",
-        "elementPath": "r3d2"
+        "elementPath": "tto_ACT"
       },
-      "r3d3": {
-        "prompt_type_name": "custom_date",
+      "tranferencia": {
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
         "_defn": [
           {
             "_row_num": 37,
             "section_name": "model"
           }
         ],
-        "elementKey": "r3d3",
-        "elementName": "r3d3",
+        "elementKey": "tranferencia",
+        "elementName": "tranferencia",
         "elementSet": "data",
-        "elementPath": "r3d3"
+        "elementPath": "tranferencia"
       },
-      "tem_adverso_r3": {
+      "motivo": {
         "type": "string",
+        "valuesList": "transferencia",
         "_defn": [
+          {
+            "_row_num": 57,
+            "section_name": "survey"
+          },
           {
             "_row_num": 38,
             "section_name": "model"
           }
         ],
-        "elementKey": "tem_adverso_r3",
-        "elementName": "tem_adverso_r3",
+        "elementKey": "motivo",
+        "elementName": "motivo",
         "elementSet": "data",
-        "elementPath": "tem_adverso_r3"
+        "elementPath": "motivo"
       },
-      "ef_adveso_r3": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "elementKey": "ef_adveso_r3_items",
-          "elementName": "items",
-          "elementSet": "data",
-          "elementPath": "ef_adveso_r3.items",
-          "notUnitOfRetention": true
-        },
+      "inelegivel": {
         "_defn": [
           {
             "_row_num": 39,
             "section_name": "model"
           }
         ],
-        "elementKey": "ef_adveso_r3",
-        "elementName": "ef_adveso_r3",
+        "type": "note",
+        "elementKey": "inelegivel",
+        "elementName": "inelegivel",
         "elementSet": "data",
-        "elementPath": "ef_adveso_r3",
-        "listChildElementKeys": [
-          "ef_adveso_r3_items"
-        ]
+        "elementPath": "inelegivel"
       },
-      "esp_ef_adverso_r3": {
-        "type": "string",
+      "razao": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "elementKey": "razao_items",
+          "elementName": "items",
+          "elementSet": "data",
+          "elementPath": "razao.items",
+          "notUnitOfRetention": true
+        },
+        "valuesList": "razao",
         "_defn": [
+          {
+            "_row_num": 62,
+            "section_name": "survey"
+          },
           {
             "_row_num": 40,
             "section_name": "model"
           }
         ],
-        "elementKey": "esp_ef_adverso_r3",
-        "elementName": "esp_ef_adverso_r3",
+        "elementKey": "razao",
+        "elementName": "razao",
         "elementSet": "data",
-        "elementPath": "esp_ef_adverso_r3"
+        "elementPath": "razao",
+        "listChildElementKeys": [
+          "razao_items"
+        ]
       },
-      "r4d1": {
-        "prompt_type_name": "custom_date",
+      "esp_razao": {
         "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
+        "_defn": [
+          {
+            "_row_num": 64,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 41,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "esp_razao",
+        "elementName": "esp_razao",
+        "elementSet": "data",
+        "elementPath": "esp_razao"
+      },
+      "refusal_statement": {
+        "_defn": [
+          {
+            "_row_num": 42,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "refusal_statement",
+        "elementName": "refusal_statement",
+        "elementSet": "data",
+        "elementPath": "refusal_statement"
+      },
+      "survey_complete": {
         "_defn": [
           {
             "_row_num": 43,
             "section_name": "model"
           }
         ],
-        "elementKey": "r4d1",
-        "elementName": "r4d1",
+        "type": "note",
+        "elementKey": "survey_complete",
+        "elementName": "survey_complete",
         "elementSet": "data",
-        "elementPath": "r4d1"
-      },
-      "r4d2": {
-        "prompt_type_name": "custom_date",
-        "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
-        "_defn": [
-          {
-            "_row_num": 44,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r4d2",
-        "elementName": "r4d2",
-        "elementSet": "data",
-        "elementPath": "r4d2"
-      },
-      "r4d3": {
-        "prompt_type_name": "custom_date",
-        "type": "string",
-        "elementType": "date",
-        "comment": "Makes the date widget DD/MM/YYYY",
-        "_row_num": 2,
-        "__rowNum__": 1,
-        "_defn": [
-          {
-            "_row_num": 45,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "r4d3",
-        "elementName": "r4d3",
-        "elementSet": "data",
-        "elementPath": "r4d3"
-      },
-      "tem_adverso_r4": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 46,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "tem_adverso_r4",
-        "elementName": "tem_adverso_r4",
-        "elementSet": "data",
-        "elementPath": "tem_adverso_r4"
-      },
-      "ef_adveso_r4": {
-        "type": "array",
-        "items": {
-          "type": "string",
-          "elementKey": "ef_adveso_r4_items",
-          "elementName": "items",
-          "elementSet": "data",
-          "elementPath": "ef_adveso_r4.items",
-          "notUnitOfRetention": true
-        },
-        "_defn": [
-          {
-            "_row_num": 47,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "ef_adveso_r4",
-        "elementName": "ef_adveso_r4",
-        "elementSet": "data",
-        "elementPath": "ef_adveso_r4",
-        "listChildElementKeys": [
-          "ef_adveso_r4_items"
-        ]
-      },
-      "esp_ef_adverso_r4": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 48,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "esp_ef_adverso_r4",
-        "elementName": "esp_ef_adverso_r4",
-        "elementSet": "data",
-        "elementPath": "esp_ef_adverso_r4"
+        "elementPath": "survey_complete"
       },
       "sticker": {
         "_defn": [
@@ -3438,108 +3280,7 @@
         "elementSet": "data",
         "elementPath": "sticker"
       },
-      "letra_sticker": {
-        "_defn": [
-          {
-            "_row_num": 8,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "letra_sticker",
-        "elementName": "letra_sticker",
-        "elementSet": "data",
-        "elementPath": "letra_sticker"
-      },
-      "numero_sticker": {
-        "_defn": [
-          {
-            "_row_num": 9,
-            "section_name": "survey"
-          }
-        ],
-        "type": "integer",
-        "elementKey": "numero_sticker",
-        "elementName": "numero_sticker",
-        "elementSet": "data",
-        "elementPath": "numero_sticker"
-      },
-      "n_ronda": {
-        "_defn": [
-          {
-            "_row_num": 14,
-            "section_name": "survey"
-          }
-        ],
-        "type": "integer",
-        "elementKey": "n_ronda",
-        "elementName": "n_ronda",
-        "elementSet": "data",
-        "elementPath": "n_ronda"
-      },
-      "consentimento": {
-        "_defn": [
-          {
-            "_row_num": 15,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "consentimento",
-        "elementName": "consentimento",
-        "elementSet": "data",
-        "elementPath": "consentimento"
-      },
-      "d1": {
-        "_defn": [
-          {
-            "_row_num": 19,
-            "section_name": "survey"
-          }
-        ],
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "elementKey": "d1",
-        "elementName": "d1",
-        "elementSet": "data",
-        "elementPath": "d1"
-      },
-      "d2": {
-        "_defn": [
-          {
-            "_row_num": 20,
-            "section_name": "survey"
-          }
-        ],
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "elementKey": "d2",
-        "elementName": "d2",
-        "elementSet": "data",
-        "elementPath": "d2"
-      },
-      "d3": {
-        "_defn": [
-          {
-            "_row_num": 21,
-            "section_name": "survey"
-          }
-        ],
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "elementKey": "d3",
-        "elementName": "d3",
-        "elementSet": "data",
-        "elementPath": "d3"
-      },
-      "ef_adveso": {
+      "ef_adverso": {
         "_defn": [
           {
             "_row_num": 25,
@@ -3549,91 +3290,22 @@
         "type": "array",
         "items": {
           "type": "string",
-          "elementKey": "ef_adveso_items",
+          "elementKey": "ef_adverso_items",
           "elementName": "items",
           "elementSet": "data",
-          "elementPath": "ef_adveso.items",
+          "elementPath": "ef_adverso.items",
           "notUnitOfRetention": true
         },
         "valuesList": "efeito_adverso",
-        "elementKey": "ef_adveso",
-        "elementName": "ef_adveso",
+        "elementKey": "ef_adverso",
+        "elementName": "ef_adverso",
         "elementSet": "data",
-        "elementPath": "ef_adveso",
+        "elementPath": "ef_adverso",
         "listChildElementKeys": [
-          "ef_adveso_items"
+          "ef_adverso_items"
         ]
       },
-      "esp_ef_adverso": {
-        "_defn": [
-          {
-            "_row_num": 27,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "esp_ef_adverso",
-        "elementName": "esp_ef_adverso",
-        "elementSet": "data",
-        "elementPath": "esp_ef_adverso"
-      },
-      "febre": {
-        "_defn": [
-          {
-            "_row_num": 36,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "febre",
-        "elementName": "febre",
-        "elementSet": "data",
-        "elementPath": "febre"
-      },
-      "tdr": {
-        "_defn": [
-          {
-            "_row_num": 38,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "tdr",
-        "elementName": "tdr",
-        "elementSet": "data",
-        "elementPath": "tdr"
-      },
-      "TDR_positivo": {
-        "_defn": [
-          {
-            "_row_num": 42,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "TDR_positivo",
-        "elementName": "TDR_positivo",
-        "elementSet": "data",
-        "elementPath": "TDR_positivo"
-      },
-      "tto_ACT": {
-        "_defn": [
-          {
-            "_row_num": 46,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "tto_ACT",
-        "elementName": "tto_ACT",
-        "elementSet": "data",
-        "elementPath": "tto_ACT"
-      },
-      "tranferencia": {
+      "transf": {
         "_defn": [
           {
             "_row_num": 54,
@@ -3642,94 +3314,10 @@
         ],
         "type": "string",
         "valuesList": "yesno",
-        "elementKey": "tranferencia",
-        "elementName": "tranferencia",
+        "elementKey": "transf",
+        "elementName": "transf",
         "elementSet": "data",
-        "elementPath": "tranferencia"
-      },
-      "motivo": {
-        "_defn": [
-          {
-            "_row_num": 57,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "transferencia",
-        "elementKey": "motivo",
-        "elementName": "motivo",
-        "elementSet": "data",
-        "elementPath": "motivo"
-      },
-      "razao": {
-        "_defn": [
-          {
-            "_row_num": 62,
-            "section_name": "survey"
-          }
-        ],
-        "type": "array",
-        "items": {
-          "type": "string",
-          "elementKey": "razao_items",
-          "elementName": "items",
-          "elementSet": "data",
-          "elementPath": "razao.items",
-          "notUnitOfRetention": true
-        },
-        "valuesList": "razao",
-        "elementKey": "razao",
-        "elementName": "razao",
-        "elementSet": "data",
-        "elementPath": "razao",
-        "listChildElementKeys": [
-          "razao_items"
-        ]
-      },
-      "esp_razao": {
-        "_defn": [
-          {
-            "_row_num": 64,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "esp_razao",
-        "elementName": "esp_razao",
-        "elementSet": "data",
-        "elementPath": "esp_razao"
-      },
-      "ef_adveso_r1_items": {
-        "type": "string",
-        "elementKey": "ef_adveso_r1_items",
-        "elementName": "items",
-        "elementSet": "data",
-        "elementPath": "ef_adveso_r1.items",
-        "notUnitOfRetention": true
-      },
-      "ef_adveso_r2_items": {
-        "type": "string",
-        "elementKey": "ef_adveso_r2_items",
-        "elementName": "items",
-        "elementSet": "data",
-        "elementPath": "ef_adveso_r2.items",
-        "notUnitOfRetention": true
-      },
-      "ef_adveso_r3_items": {
-        "type": "string",
-        "elementKey": "ef_adveso_r3_items",
-        "elementName": "items",
-        "elementSet": "data",
-        "elementPath": "ef_adveso_r3.items",
-        "notUnitOfRetention": true
-      },
-      "ef_adveso_r4_items": {
-        "type": "string",
-        "elementKey": "ef_adveso_r4_items",
-        "elementName": "items",
-        "elementSet": "data",
-        "elementPath": "ef_adveso_r4.items",
-        "notUnitOfRetention": true
+        "elementPath": "transf"
       },
       "ef_adveso_items": {
         "type": "string",
@@ -3745,6 +3333,14 @@
         "elementName": "items",
         "elementSet": "data",
         "elementPath": "razao.items",
+        "notUnitOfRetention": true
+      },
+      "ef_adverso_items": {
+        "type": "string",
+        "elementKey": "ef_adverso_items",
+        "elementName": "items",
+        "elementSet": "data",
+        "elementPath": "ef_adverso.items",
         "notUnitOfRetention": true
       },
       "_id": {
@@ -3877,10 +3473,10 @@
       },
       {
         "_partition": "Column",
-        "_aspect": "ef_adveso",
+        "_aspect": "ef_adverso",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"efeito_adverso\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Vômitos\"}},\"_row_num\":11},{\"choice_list_name\":\"efeito_adverso\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Vômitos repetidos\"}},\"_row_num\":12},{\"choice_list_name\":\"efeito_adverso\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Dor de barriga intensa\"}},\"_row_num\":13},{\"choice_list_name\":\"efeito_adverso\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Diarréia (>= 7)\"}},\"_row_num\":14},{\"choice_list_name\":\"efeito_adverso\",\"data_value\":5,\"display\":{\"title\":{\"text\":\"Convulsões\"}},\"_row_num\":15},{\"choice_list_name\":\"efeito_adverso\",\"data_value\":6,\"display\":{\"title\":{\"text\":\"Erupção cutânea\"}},\"_row_num\":16},{\"choice_list_name\":\"efeito_adverso\",\"data_value\":7,\"display\":{\"title\":{\"text\":\"Outros\"}},\"_row_num\":17}]"
+        "_value": "[{\"choice_list_name\":\"efeito_adverso\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Vômitos\"}},\"_row_num\":11},{\"choice_list_name\":\"efeito_adverso\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Vômitos repetidos\"}},\"_row_num\":12},{\"choice_list_name\":\"efeito_adverso\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Dor de barriga intensa\"}},\"_row_num\":13},{\"choice_list_name\":\"efeito_adverso\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Diarreia (mais ou igual 7)\"}},\"_row_num\":14},{\"choice_list_name\":\"efeito_adverso\",\"data_value\":5,\"display\":{\"title\":{\"text\":\"Convulsões\"}},\"_row_num\":15},{\"choice_list_name\":\"efeito_adverso\",\"data_value\":6,\"display\":{\"title\":{\"text\":\"Erupção cutânea\"}},\"_row_num\":16},{\"choice_list_name\":\"efeito_adverso\",\"data_value\":7,\"display\":{\"title\":{\"text\":\"Outros\"}},\"_row_num\":17}]"
       },
       {
         "_partition": "Column",
@@ -3919,7 +3515,7 @@
       },
       {
         "_partition": "Column",
-        "_aspect": "tranferencia",
+        "_aspect": "transf",
         "_key": "displayChoicesList",
         "_type": "object",
         "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"

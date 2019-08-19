@@ -43,7 +43,9 @@ function display(result) {
     codigoId = result.get('id_paciente');
     document.getElementById('title').innerHTML =codigoId;
     document.getElementById('nome').innerHTML = result.get('nome');
-    document.getElementById('mae').innerHTML = result.get('mae')
+    document.getElementById('mae').innerHTML = result.get('mae');
+    document.getElementById('sexo').innerHTML = result.get('sexo');
+    document.getElementById('nome_casa').innerHTML = result.get('nome_casa')
     // var armText = result.get('randomization');
     // if(armText === '1') {
     //     armText = 'HOPE';
@@ -85,17 +87,17 @@ function display(result) {
     var rowId = result.getRowId(0);
     console.log('rowId: ' + rowId);
     createFormLauncherForEdit(
-            'QPS',
-            'inscricao',
-            rowId,
-            'Inscricao QPS',
-            fContainer);
-    createFormLauncherForEdit(
             'ronda',
             'ronda',
             rowId,
             'Rondas',
             fContainer);
+    // createFormLauncherForEdit(
+    //         'QPS',
+    //         'inscricao',
+    //         rowId,
+    //         'Inscricao',
+    //         fContainer);
     // createFormLauncherForEdit(
     //         'QPS',
     //         'ronda_2',
