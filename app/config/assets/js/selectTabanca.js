@@ -39,7 +39,9 @@ function selRegionChange() {
 
 
 function getSectors(region) {
+    console.log("Querying database");
     var successFn = function( result ) {
+        console.log("Got results " + result.getCount());
         var sectors = [];
         for (var row = 0; row < result.getCount(); row++) {
             sectors.push(result.getData(row,"sector"));
@@ -52,6 +54,7 @@ function getSectors(region) {
     odkData.arbitraryQuery('QPS', "SELECT DISTINCT sector FROM QPS WHERE region = '" + selRegion.val() + "' COLLATE NOCASE", null, null, null, successFn, failureFn);
 }
 function getTabancas(region, sector) {
+    console.log("Getting tabancas from db");
     var successFn = function( result ) {
         var tabancas = [];
         for (var row = 0; row < result.getCount(); row++) {
@@ -79,6 +82,9 @@ function selTabChange() {
 }
 
 function populateSelect(sel, list) {
+    console.log("Populating with...");
+    console.log(list);
+    console.log("that");
     sel.append($("<option />").val("").text("-")); // Add empty option
     $.each(list, function() {
         sel.append($("<option />").val(this).text(this));
