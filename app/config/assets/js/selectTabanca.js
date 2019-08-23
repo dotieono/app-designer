@@ -14,7 +14,7 @@ function display() {
     // Set the background to be a picture.
     body.css('background-image', 'url(img/bafata.jpg)');
 
-    
+
 }
 function hookUp() {
     selRegion = $('#selRegion');
@@ -38,7 +38,7 @@ function getSectors() {
         console.log("Got results " + result.getCount());
         var sectors = [];
         for (var row = 0; row < result.getCount(); row++) {
-            var theSector = result.getData(row,"sector");            
+            var theSector = result.getData(row,"sector");
             console.log("Got sector = " + theSector);
             if (theSector) {
                 sectors.push(theSector);
@@ -102,13 +102,14 @@ function goToList() {
     var selected_region = selRegion.val();
     var selected_sector = selSector.val();
     var selected_tabanca = selTabanca.val();
-    
-    odkCommon.setSessionVariable("selected_region", selected_region);
-    odkCommon.setSessionVariable("selected_sector", selected_sector);
-    odkCommon.setSessionVariable("selected_tabanca", selected_tabanca);
 
-    var queryParam = util.getKeysToAppendToColdChainURL(selected_region, selected_sector, selected_tabanca);
-    odkTables.launchHTML(null,'config/assets/listPersons.html' + queryParam);
+    // This is not retained between pageloads
+    // odkCommon.setSessionVariable("selected_region", selected_region);
+    // odkCommon.setSessionVariable("selected_sector", selected_sector);
+    // odkCommon.setSessionVariable("selected_tabanca", selected_tabanca);
+
+    var queryParams = util.setQuerystringParams(selected_region, selected_sector, selected_tabanca);
+    odkTables.launchHTML(null,'config/assets/listPersons.html' + queryParams);
 }
 
 

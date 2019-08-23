@@ -222,7 +222,7 @@ util.getKeyToAppendToColdChainURL = function(key, value, shouldBeFirst) {
  * Get a string to append to a url that will contain information the date and
  * time. The values can then be retrieved using getQueryParameter.
  */
-util.getKeysToAppendToColdChainURL = function(region, sector, tabanca) {
+util.setQuerystringParams = function(region, sector, tabanca) {
 
     var that = this;
     var first = true;

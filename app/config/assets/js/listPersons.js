@@ -9,9 +9,14 @@ function display() {
     console.log("Hello");
 
 
-    var region = odkCommon.getSessionVariable("selected_region");
-    var sector = odkCommon.getSessionVariable("selected_sector");
-    var tabanca = odkCommon.getSessionVariable("selected_tabanca");
+    // var region = odkCommon.getSessionVariable("selected_region");
+    // var sector = odkCommon.getSessionVariable("selected_sector");
+    // var tabanca = odkCommon.getSessionVariable("selected_tabanca");
+
+var region = util.getQueryParameter("region")
+var sector  = util.getQueryParameter("sector")
+var tabanca = util.getQueryParameter("tabanca")
+
 
     var theList = $("#theList");
     theList.text("Region = " + region + ", Sector = " + sector + ", Tabanca = " + tabanca);
