@@ -7,10 +7,6 @@
 var selRegion, selSector, selTabanca, btnGo;
 
 function display() {
-    var v = "v1.1";
-    alert(v);
-    console.log(v);
-
     doSanityCheck();
     hookUp();
 
@@ -26,22 +22,17 @@ function hookUp() {
     selTabanca = $('#selTab');
     btnGo = $('#btnGo');
 
-    selSector.on('change', selSectorChange);
-    selRegion.on('change', selRegionChange);
+    selRegion.on('change', getSectors);
+    selSector.on('change', getTabancas);
     selTabanca.on('change', selTabChange);
     btnGo.on('click', goToList);
 }
 
-function selRegionChange() {
+
+
+function getSectors() {
     resetSelects();
     var region = selRegion.val();
-    var sectors = getSectors(region);
-    populateSelect(selSector, sectors);
-    selSector.removeAttr("disabled");
-}
-
-
-function getSectors(region) {
     console.log("Querying database");
     var successFn = function( result ) {
         console.log("Got results " + result.getCount());
@@ -52,6 +43,8 @@ function getSectors(region) {
             sectors.push(theSector);
         }
         console.log("Returning " + sectors.length + " sectors");
+        populateSelect(selSector, sectors);
+        selSector.removeAttr("disabled");
         return sectors;
     }
     var failureFn = function( errorMsg ) {
@@ -61,25 +54,21 @@ function getSectors(region) {
 }
 function getTabancas(region, sector) {
     console.log("Getting tabancas from db");
+    var region = selRegion.val();
+    var sector = selSector.val();
     var successFn = function( result ) {
         var tabancas = [];
         for (var row = 0; row < result.getCount(); row++) {
             tabancas.push(result.getData(row,"tabanca"));
         }
-        return tabancas;
+        populateSelect(selTabanca, tabancas);
+        selTabanca.removeAttr("disabled");
+        return;
     }
     var failureFn = function( errorMsg ) {
         console.error('Failed to get tabancas from database: ' + errorMsg);
     }
-    odkData.arbitraryQuery('QPS', "SELECT DISTINCT tabanca FROM QPS WHERE region = '" + selRegion.val() + "' AND sector = '" + sector + "' COLLATE NOCASE", null, null, null, successFn, failureFn);
-}
-
-function selSectorChange() {
-    var region = selRegion.val();
-    var sector = selSector.val();
-    var tabancas = getTabancas(region, sector);
-    populateSelect(selTabanca, tabancas);
-    selTabanca.removeAttr("disabled");
+    odkData.arbitraryQuery('QPS', "SELECT DISTINCT tabanca FROM QPS WHERE region = '" + region + "' AND sector = '" + sector + "' COLLATE NOCASE", null, null, null, successFn, failureFn);
 }
 
 function selTabChange() {
