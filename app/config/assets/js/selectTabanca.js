@@ -49,7 +49,7 @@ function getSectors(region) {
     var failureFn = function( errorMsg ) {
         console.error('Failed to get regions from database: ' + errorMsg);
     }
-    odkData.arbitraryQuery('QPS', "SELECT DISTINCT sector FROM QPS WHERE region = '" + selRegion.val() + "'", null, null, null, successFn, failureFn);
+    odkData.arbitraryQuery('QPS', "SELECT DISTINCT sector FROM QPS WHERE region = '" + selRegion.val() + "' COLLATE NOCASE", null, null, null, successFn, failureFn);
 }
 function getTabancas(region, sector) {
     var successFn = function( result ) {
@@ -62,7 +62,7 @@ function getTabancas(region, sector) {
     var failureFn = function( errorMsg ) {
         console.error('Failed to get tabancas from database: ' + errorMsg);
     }
-    odkData.arbitraryQuery('QPS', "SELECT DISTINCT tabanca FROM QPS WHERE region = '" + selRegion.val() + "' AND sector = '" + sector + "'", null, null, null, successFn, failureFn);
+    odkData.arbitraryQuery('QPS', "SELECT DISTINCT tabanca FROM QPS WHERE region = '" + selRegion.val() + "' AND sector = '" + sector + "' COLLATE NOCASE", null, null, null, successFn, failureFn);
 }
 
 function selSectorChange() {
