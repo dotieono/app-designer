@@ -7,14 +7,15 @@
 function javaChange() {
     var action = odkCommon.viewFirstQueuedAction();
     if ( action !== null ) {
-            console.log("call back called");
-            alert("ACTION: " + action)
-            console.log(action);
-            // process action -- be idempotent!
-            // if processing fails, the action will still
-            // be on the queue.
+        console.log("call back called");
+        if (action.dispatchStruct.userAction == "thatsScanny") {
             odkCommon.removeFirstQueuedAction();
+            if (action.jsonValue.result && action.jsonValue.result.SCAN_RESULT) {
+                var scanRes = action.jsonValue.result.SCAN_RESULT;
+                doSearch(scanRes);
+            }
         }
+    }
 }
 
 function display() {
