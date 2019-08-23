@@ -52,15 +52,17 @@ function getSectors() {
     }
     odkData.arbitraryQuery('QPS', "SELECT DISTINCT sector FROM QPS WHERE region = '" + selRegion.val() + "' COLLATE NOCASE", null, null, null, successFn, failureFn);
 }
-function getTabancas(region, sector) {
-    console.log("Getting tabancas from db");
+function getTabancas() {
     var region = selRegion.val();
     var sector = selSector.val();
+    console.log("Getting tabancas from db matching region = " + region + " and sector = " + sector);
     var successFn = function( result ) {
+        console.log("Found " + result.getCount() + " tabancas");
         var tabancas = [];
         for (var row = 0; row < result.getCount(); row++) {
             tabancas.push(result.getData(row,"tabanca"));
         }
+
         populateSelect(selTabanca, tabancas);
         selTabanca.removeAttr("disabled");
         return;
@@ -68,7 +70,7 @@ function getTabancas(region, sector) {
     var failureFn = function( errorMsg ) {
         console.error('Failed to get tabancas from database: ' + errorMsg);
     }
-    odkData.arbitraryQuery('QPS', "SELECT DISTINCT tabanca FROM QPS WHERE region = '" + region + "' AND sector = '" + sector + "' COLLATE NOCASE", null, null, null, successFn, failureFn);
+    odkData.arbitraryQuery('QPS', "SELECT DISTINCT tabanca FROM QPS WHERE region = '" + region + "' COLLATE NOCASE AND sector = '" + sector + "' COLLATE NOCASE", null, null, null, successFn, failureFn);
 }
 
 function selTabChange() {
