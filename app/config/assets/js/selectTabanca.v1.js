@@ -7,7 +7,7 @@
 var selRegion, selSector, selTabanca, btnGo;
 
 function display() {
-    var v = "v1";
+    var v = "v1.1";
     alert(v);
     console.log(v);
 
@@ -47,8 +47,11 @@ function getSectors(region) {
         console.log("Got results " + result.getCount());
         var sectors = [];
         for (var row = 0; row < result.getCount(); row++) {
-            sectors.push(result.getData(row,"sector"));
+            var theSector = result.getData(row,"sector");
+            console.log("Got sector = " + theSector);
+            sectors.push(theSector);
         }
+        console.log("Returning " + sectors.length + " sectors");
         return sectors;
     }
     var failureFn = function( errorMsg ) {
