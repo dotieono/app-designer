@@ -31,7 +31,8 @@ function showNotFound() {
 }
 
 function doSearch(strQR) {
-    console.log("Querying database...");
+    var sql = 'SELECT _id FROM QPS WHERE id_paciente = "' + strQR + '" COLLATE NOCASE';
+    console.log("Querying database for: " + sql);
     var successFn = function( result ) {
         console.log("Found " + result.getCount() + " persons");
         if (result.getCount() != 1) {
