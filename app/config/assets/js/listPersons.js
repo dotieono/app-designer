@@ -23,7 +23,8 @@ function listPersons(region, sector, tabanca) {
         console.log("Found " + result.getCount() + " persons");
         var persons = [];
         for (var row = 0; row < result.getCount(); row++) {
-            var id = result.getData(row,"_id"); // or _row_etag
+            // var id = result.getData(row,"_id"); // or _row_etag
+            var id = result.getData(row,"_row_etag");
             var id_paciente = result.getData(row,"id_paciente");
             var nome =  result.getData(row,"nome");
             var nome_casa =  result.getData(row,"nome_casa");
@@ -52,7 +53,7 @@ function listPersons(region, sector, tabanca) {
     var failureFn = function( errorMsg ) {
         console.error('Failed to get persons from database: ' + errorMsg);
     }
-    var sql = 'SELECT _id, id_paciente, nome, nome_casa, sexo, dn, ano, mes, af FROM QPS WHERE region = "' + region + '" COLLATE NOCASE AND sector = "' + sector + '" COLLATE NOCASE AND tabanca = "' + tabanca + '" COLLATE NOCASE ORDER BY id_paciente';
+    var sql = 'SELECT _row_etag, id_paciente, nome, nome_casa, sexo, dn, ano, mes, af FROM QPS WHERE region = "' + region + '" COLLATE NOCASE AND sector = "' + sector + '" COLLATE NOCASE AND tabanca = "' + tabanca + '" COLLATE NOCASE ORDER BY id_paciente';
     odkData.arbitraryQuery('QPS', sql, null, null, null, successFn, failureFn);
 }
 
