@@ -82,43 +82,14 @@ function getAgeString(person) {
 
 function addPersonDiv(p) {    
     var nome = (p.nome_casa && p.nome_casa.length) ? nome = p.nome + " (" + p.nome_casa + ")" : p.nome;        
-    //$('#theList tr:last').after("<tr><td>" + p.id_paciente + "</td><td>" + nome + "</td><td>" + getSexoString(p.sexo) + "</td><td>" + getAgeString(p) + "</td><td>" + p.af + "</td><td><input onclick='openPersonForm(\"" + p.id + "\")' type='button' value='&gt;&gt;'></input></td></tr>");
-    var butt = "<input onclick='openPersonForm(\"" + p.id + "\")' type='button' value='&gt;&gt;'></input>";
-    butt = butt + "<input onclick='openPersonForm2(\"" + p.id + "\")' type='button' value='&gt;2&gt;'></input>";
-    butt = butt + "<input onclick='openPersonForm3(\"" + p.id + "\")' type='button' value='&gt;3&gt;'></input>";
-    butt = butt + "<input onclick='openPersonForm4(\"" + p.id + "\")' type='button' value='&gt;4&gt;'></input>";
-    butt = butt + "<input onclick='openPersonForm5(\"" + p.id + "\")' type='button' value='&gt;5&gt;'></input>";
-    
-    $('#theList tr:last').after("<tr><td>" + p.id_paciente + "</td><td>" + nome + "</td><td>" + getSexoString(p.sexo) + "</td><td>" + getAgeString(p) + "</td><td>" + p.af + "</td><td>" + butt + "</td></tr>");
+    $('#theList tr:last').after("<tr><td>" + p.id_paciente + "</td><td>" + nome + "</td><td>" + getSexoString(p.sexo) + "</td><td>" + getAgeString(p) + "</td><td>" + p.af + "</td><td><input onclick='openPersonForm(\"" + p.id + "\")' type='button' value='&gt;&gt;'></input></td></tr>");
 }
 
 function openPersonForm(rowId) {
     var tableId = "QPS";
     var rowId = rowId;
-    var formId = "QPS";
-    var screenPath = "initial";
-    odkTables.editRowWithSurvey(null, tableId, rowId, formId, screenPath);
-}
-
-
-function openPersonForm2(rowId) {
-    var rowId = rowId;
-    odkTables.editRowWithSurvey(null, 'QPS', rowId, "QPS", "initial");
-}
-
-function openPersonForm3(rowId) {
-    var rowId = rowId;
-    odkTables.editRowWithSurvey(null, 'QPS', rowId, "inscricao", "initial");
-}
-
-function openPersonForm4(rowId) {
-    var rowId = rowId;
-    odkTables.editRowWithSurvey(null, 'QPS', rowId, "QPS", null, null);
-}
-
-function openPersonForm5(rowId) {
-    var rowId = rowId;
-    odkTables.editRowWithSurvey(null, 'QPS', rowId, "inscricao", null, null);
+    var formId = "QPS"; 
+    odkTables.editRowWithSurvey(null, tableId, rowId, formId, null, null);
 }
 
 /* adate helper */
