@@ -86,9 +86,11 @@ function addPersonDiv(p) {
 }
 
 function openPersonForm(rowId) {
-    var tableId = "inscricao";
+    var tableId = "QPS";
     var rowId = rowId;
-    odkTables.editRowWithSurveyDefault(null, tableId, rowId);
+    var formId = "QPS";
+    var screenPath = "initial";
+    odkTables.editRowWithSurvey(null, tableId, rowId, formId, screenPath);
 }
 
 
