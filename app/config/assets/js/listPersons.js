@@ -13,10 +13,7 @@ function display() {
     var tabanca = util.getQueryParameter("tabanca")
     
     $("#theHeader").html("Region = " + region + "<br/>Sector = " + sector + "<br/>Tabanca = " + tabanca);
-    //listPersons(region, sector, tabanca);
-    mockup();
-    
-
+    listPersons(region, sector, tabanca);
 }
 
 
