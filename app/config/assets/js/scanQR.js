@@ -5,14 +5,14 @@
 /* global odkTables, util, odkCommon, odkData, odkSurvey */
 
 function display() {
+    odkCommon.registerListener(function(res) {
+        console.log(res);
+        alert("HEJ");
+    })
     console.log("Setting up display");
 
     $("#btnScan").on("click", function() {
         console.log("Before");
-        odkCommon.registerListener(function(res) {
-            console.log(res);
-            alert("HEJ");
-        })
         var x = odkSurvey.scanBarcode(null);
         console.log(x);
         console.log("After");
