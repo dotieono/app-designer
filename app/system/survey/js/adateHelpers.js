@@ -1,5 +1,5 @@
-define(['opendatakit','database','jquery','underscore','moment'],
-function(opendatakit,  database,  $,       _, moment) {
+define(['moment'],
+function(moment) {
 return {
     getMoment: function(aDate) {
         if (!aDate || aDate.length<4 || this.yearUnknown(aDate)) {
