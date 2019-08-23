@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<body>
+    <head>
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        <script type="text/javascript" src="commonDefinitions.js"></script>
+        <script type="text/javascript" src="libs/jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="libs/jquery-migrate-3.0.0.js"></script>
+        <script type="text/javascript" src="../../system/js/odkCommon.js"></script>
+        <script type="text/javascript" src="../../system/js/odkData.js"></script>
+        <script type="text/javascript" src="../../system/tables/js/odkTables.js"></script>
+        <script type="text/javascript" src="js/util.js"></script>
+        
+        <script type="text/javascript" src="js/scanQR.js"></script>
+        
+        <link href="../../system/libs/bootstrap-3.3.7-dist/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+    </head>
+    <body>
+        <form>
+            <div class="form-group">
+                <label class="form-label" for="txtCodigo">Introduzz codigozzz:</label>
+
+                <input type="text" class="form-control" id="txtCodigo" />
+                <button id="btnSearch" type="submit" class="btn btn-default">OK</button>
+                <br/>
+                <br/>
+                <button id="btnScan" type="button" class="btn">Scan</button>
+            </div>
+        </form>
+        <script type="text/javascript">
+            $(display);
+        </script>  
+    </body>
+</body>

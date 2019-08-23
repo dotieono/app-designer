@@ -6,8 +6,13 @@
 
 
 function display() {
-    console.log("Hello");
     window.adateHelper = getAdateHelper();
+    
+    // Hook up scan button
+    $("#btnOpenScan").on("click", function() {
+        odkTables.launchHTML(null, 'config/assets/scanQR.html');
+    });
+
     var region = util.getQueryParameter("region")
     var sector  = util.getQueryParameter("sector")
     var tabanca = util.getQueryParameter("tabanca")
