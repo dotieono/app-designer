@@ -5,10 +5,20 @@
 /* global odkTables, util, odkCommon, odkData, odkSurvey */
 
 function display() {
-    odkCommon.registerListener(function(res) {
-        console.log(res);
-        alert("HEJ");
-    })
+    odkCommon.registerListener(
+    function() {
+        console.log("call back called");
+        var action = odkCommon.viewFirstQueuedAction();
+        if ( action !== null ) {
+            alert("ACTION: " + action)
+            console.log(action);
+            // process action -- be idempotent!
+            // if processing fails, the action will still
+            // be on the queue.
+            odkCommon.removeFirstQueuedAction();
+        }
+    });
+
     console.log("Setting up display");
 
     $("#btnScan").on("click", function() {
