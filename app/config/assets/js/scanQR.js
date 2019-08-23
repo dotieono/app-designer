@@ -4,12 +4,10 @@
 'use strict';
 /* global odkTables, util, odkCommon, odkData, odkSurvey */
 
-function display() {
-    odkCommon.registerListener(
-    function() {
-        console.log("call back called");
-        var action = odkCommon.viewFirstQueuedAction();
-        if ( action !== null ) {
+function javaChange() {
+    var action = odkCommon.viewFirstQueuedAction();
+    if ( action !== null ) {
+            console.log("call back called");
             alert("ACTION: " + action)
             console.log(action);
             // process action -- be idempotent!
@@ -17,13 +15,19 @@ function display() {
             // be on the queue.
             odkCommon.removeFirstQueuedAction();
         }
-    });
+}
+
+function display() {
+
+    odkCommon.registerListener( javaChange );
+    javaChange(); // invoke it once...
 
     console.log("Setting up display");
 
     $("#btnScan").on("click", function() {
         console.log("Before");
-        var x = odkSurvey.scanBarcode(null);
+        var dispatchStruct = {userAction: 'thatsScanny'};
+        var x = odkSurvey.scanBarcode(dispatchStruct);
         console.log(x);
         console.log("After");
     })
