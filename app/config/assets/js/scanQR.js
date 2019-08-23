@@ -9,7 +9,12 @@ function display() {
 
     $("#btnScan").on("click", function() {
         console.log("Before");
+        odkCommon.registerListener(function(res) {
+            console.log(res);
+            alert("HEJ");
+        })
         var x = odkSurvey.scanBarcode(null);
+        console.log(x);
         console.log("After");
     })
 
