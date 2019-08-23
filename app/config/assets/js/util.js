@@ -222,10 +222,7 @@ util.getKeyToAppendToColdChainURL = function(key, value, shouldBeFirst) {
  * Get a string to append to a url that will contain information the date and
  * time. The values can then be retrieved using getQueryParameter.
  */
-util.getKeysToAppendToColdChainURL = function(
-      sector,
-      tabanca,
-      af) {
+util.getKeysToAppendToColdChainURL = function(region, sector, tabanca) {
 
     var that = this;
     var first = true;
@@ -233,16 +230,16 @@ util.getKeysToAppendToColdChainURL = function(
     var adaptProps = {};
 
     // Initialize the properties object
+    if (region !== null && region !== undefined && region.length !== 0) {
+        adaptProps[that.region] = region;
+    }  
+
     if (sector !== null && sector !== undefined && sector.length !== 0) {
-        adaptProps[that.leafRegion] = sector;
+        adaptProps[that.sector] = sector;
     }  
     
     if (tabanca !== null && tabanca !== undefined && tabanca.length !== 0) {
         adaptProps[that.tabanca] = tabanca;
-    }
-
-    if (af !== null && af !== undefined && af.length !== 0) {
-        adaptProps[that.af] = af;
     }
 
     for (var prop in adaptProps) {

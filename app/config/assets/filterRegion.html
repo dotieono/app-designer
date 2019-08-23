@@ -2,20 +2,19 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!--link href="ratchet/css/ratchet.css" type="text/css" rel="stylesheet" />
-        <link href="ratchet/css/ratchet-theme-android.css" type="text/css" rel="stylesheet" /-->
-        <link href="../../system/libs/bootstrap-3.3.7-dist/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-        <link href="css/homeScreen.css" type="text/css" rel="stylesheet" />
-        <link href="css/filterFacilityScreen.css" type="text/css" rel="stylesheet" />
+        
         <script type="text/javascript" src="commonDefinitions.js"></script>
-        <script type="text/javascript" src="libs/jquery.js"></script>
-        <script type="text/javascript" src="../../system/libs/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="../../system/tables/js/odkTables.js"></script>
+        <script type="text/javascript" src="libs/jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="libs/jquery-migrate-3.0.0.js"></script>
         <script type="text/javascript" src="../../system/js/odkCommon.js"></script>
-
-        <script type="text/javascript" src="js/filterRegionTabanca.js"></script>
+        <script type="text/javascript" src="../../system/js/odkData.js"></script>
+        <script type="text/javascript" src="../../system/tables/js/odkTables.js"></script>
+        
+        
+        <script type="text/javascript" src="js/filterRegion.js"></script>
         <script type="text/javascript" src="js/util.js"></script>
         <script type="text/javascript" src="js/list_view_logic.js"></script>
+        <link href="../../system/libs/bootstrap-3.3.7-dist/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
     </head>
 
     <body id="main">
@@ -25,48 +24,29 @@
             <div class="container">
                 <form>
                     <div class="form-group">
-                        <label id="select-sector" class="form-label" for="facility_region">Seleciona sector sanitaria:</label>
-                        <select class="form-control" id="facility_region">
-                            <option id="all-regions" selected value="none">Todos sectores do leste</option>
-                            <option id="bafata" value="North">Bafata</option>
-                            <option id="gabu" value="Central West">Gabu</option>
+                        <label class="form-label" for="selRegion">Seleciona região:</label>
+                        <select class="form-control" id="selRegion">
+                            <option selected value="">-</option>
+                            <option value="BAFATA">Bafata</option>
+                            <option value="GABU">Gabu</option>
                         </select>
 
-                        <label id="select-sector" class="form-label" for="sector">Sector sanitaria</label>
-
-                        <label id="select-tabanca" class="form-label" for="facility_type">Seleciona a tabanca:</label>
-                        <select class="form-control" id="facility_type">
-                            <option id="all-types" selected value="none">All Types</option>
-                            <option id="central-hospital" value="central_hospital">Central Hospital</option>
-                            <option id="community-hospital" value="community_hospital">Community Hospital</option>
-                            <option id="dispensary" value="dispensary">Dispensary</option>
-                            <option id="district-hospital" value="district_hospital">District Hospital</option>
-                            <option id="district-vaccine-store" value="district_vaccine_store">District Vaccine Store</option>
-                            <option id="health-center" value="health_center">Health Center</option>
-                            <option id="health-post" value="health_post">Health Post</option>
-                            <option id="hospital" value="hospital">Hospital</option>
-                            <option id="national-vaccine-store" value="national_vaccine_store">National Vaccine Store</option>
-                            <option id="regional-vaccine-store" value="regional_vaccine_store">Regional Vaccine Store</option>
-                            <option id="rural-hospital" value="rural_hospital">Rural Hospital</option>
+                        <label class="form-label" for="selSector">Sector sanitaria</label>
+                        <select class="form-control" id="selSector" disabled="disabled">
                         </select>
 
-                        <label id="select-af" class="form-label" for="power_source">Numero de AF (Agregado familiar):</label>
-                        <select class="form-control" id="power_source">
-                            <option id="all-power-sources" selected value="none">All Power Sources</option>
-                            <option id="electricity" value="electricity">Electricity</option>
-                            <option id="gas" value="gas">Gas</option>
-                            <option id="kerosene" value="kerosene">Kerosene</option>
-                            <option id="solar" value="solar">Solar</option>
-                            <option id="unknown" value="unknown">Unknown</option>
+                        <label class="form-label" for="selTab">Tabanca:</label>
+                        <select class="form-control" id="selTab" disabled="disabled">
                         </select>
 
-                        <button id="filter-region-tabanca" type="submit" class="btn btn-launch btn-filter btn-default">Mostrar a lista</button>
+                        <button id="btnGo" type="button" disabled="disabled" class="btn btn-launch btn-filter btn-default">Mostrar a lista</button>
                     </div>
                 </form>
             </div>
         </div>
 
         <script type="text/javascript">
+            console.log("Initializing display")
             $(display);
         </script>
     </body>
