@@ -19,44 +19,6 @@ function display() {
 
 }
 
-function mockup() {
-    var listOfPersons = [
-        {
-            af: null,
-            ano: 1,
-            dn: null,
-            id: "TODO",
-            id_paciente: "BBM0027",
-            mes: 8,
-            nome: "Binhaca Naiaiaia",
-            nome_casa: "Ginha",
-            sexo: "2"
-        },
-        {
-            af: null,
-            ano: null,
-            dn: "D:15,M:6,Y:2016",
-            id: "TODO",
-            id_paciente: "BBM0028",
-            mes: null,
-            nome: "Nbali nanononf",
-            nome_casa: "Nando",
-            sexo: "1"
-        },
-        {
-            af: null,
-            ano: 1,
-            dn: null,
-            id: "TODO",
-            id_paciente: "BBM0029",
-            mes: 8,
-            nome: "James bondiia",
-            nome_casa: "Bondia",
-            sexo: "1"
-        }
-    ]
-    populateList(listOfPersons);
-}
 
 function listPersons(region, sector, tabanca) {
     console.log("Querying database...");
@@ -84,11 +46,10 @@ function listPersons(region, sector, tabanca) {
                 mes,
                 af
             }
-            console.log("Se mor jeg har fanget en frakkel: ");
             console.log(p);
             persons.push(p);
         }
-        
+        populateList(persons);
         return;
     }
     var failureFn = function( errorMsg ) {
