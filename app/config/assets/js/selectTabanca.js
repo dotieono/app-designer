@@ -38,9 +38,11 @@ function getSectors() {
         console.log("Got results " + result.getCount());
         var sectors = [];
         for (var row = 0; row < result.getCount(); row++) {
-            var theSector = result.getData(row,"sector");
+            var theSector = result.getData(row,"sector");            
             console.log("Got sector = " + theSector);
-            sectors.push(theSector);
+            if (theSector) {
+                sectors.push(theSector);
+            }
         }
         console.log("Returning " + sectors.length + " sectors");
         populateSelect(selSector, sectors);
@@ -50,7 +52,7 @@ function getSectors() {
     var failureFn = function( errorMsg ) {
         console.error('Failed to get regions from database: ' + errorMsg);
     }
-    odkData.arbitraryQuery('QPS', "SELECT DISTINCT sector FROM QPS WHERE region = '" + selRegion.val() + "' COLLATE NOCASE", null, null, null, successFn, failureFn);
+    odkData.arbitraryQuery('QPS', "SELECT DISTINCT sector FROM QPS WHERE region = '" + region + "' COLLATE NOCASE", null, null, null, successFn, failureFn);
 }
 function getTabancas() {
     var region = selRegion.val();
