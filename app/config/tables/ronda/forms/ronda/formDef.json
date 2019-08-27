@@ -36,7 +36,7 @@
         "name": "nota",
         "display": {
           "prompt": {
-            "text": "Está a fazer entrevista com: {{data.nome}} and ID: {{data.id_paciente}}"
+            "text": "Está a fazer entrevista com: {{data.nome}} e ID: {{data.id_paciente}}"
           }
         },
         "_row_num": 4
@@ -47,8 +47,12 @@
         "display": {
           "prompt": {
             "text": "Escanea o codigo de barra"
+          },
+          "constraint_message": {
+            "text": "o Codigo da Pessoa nao corresponde ao codigo escaneado"
           }
         },
+        "constraint": "data('stiker')==data.id_paciente",
         "_row_num": 5
       },
       {
@@ -87,6 +91,9 @@
         "display": {
           "prompt": {
             "text": "Numero de Ronda"
+          },
+          "constraint_message": {
+            "text": "resposta errada"
           }
         },
         "constraint": "(data('n_ronda')<4)",
@@ -325,7 +332,7 @@
         "name": "inelegivel",
         "display": {
           "prompt": {
-            "text": "Obrigado pelo seu tempo em responder a estas perguntas. Com base em algumas das respostas que você deu, você é inelegível para fazer parte do estudo. Isso de modo algum afeta o cuidado que você receberá aqui nesta clínica. Posso responder a quaisquer perguntas que você possa ter?"
+            "text": "Obrigado pelo seu tempo em responder a estas perguntas. Com base em algumas das respostas que você deu, você é inelegível para fazer parte do estudo."
           }
         },
         "_row_num": 60
@@ -370,7 +377,7 @@
         "name": "refusal_statement",
         "display": {
           "prompt": {
-            "text": "Diga: Obrigado por me informar porque você não quer participar. É importante que saibamos por que as mulheres podem se sentir assim. Isso de modo algum afetará os cuidados que você, seus filhos ou seu parceiro receberão na clínica."
+            "text": "Diga: Obrigado por me informar porque você não quer participar."
           }
         },
         "_row_num": 66
@@ -1438,7 +1445,7 @@
             "name": "nota",
             "display": {
               "prompt": {
-                "text": "Está a fazer entrevista com: {{data.nome}} and ID: {{data.id_paciente}}"
+                "text": "Está a fazer entrevista com: {{data.nome}} e ID: {{data.id_paciente}}"
               }
             },
             "_row_num": 4,
@@ -1454,8 +1461,12 @@
             "display": {
               "prompt": {
                 "text": "Escanea o codigo de barra"
+              },
+              "constraint_message": {
+                "text": "o Codigo da Pessoa nao corresponde ao codigo escaneado"
               }
             },
+            "constraint": "data('stiker')==data.id_paciente",
             "_row_num": 5,
             "__rowNum__": 4,
             "_token_type": "prompt",
@@ -1505,6 +1516,9 @@
             "display": {
               "prompt": {
                 "text": "Numero de Ronda"
+              },
+              "constraint_message": {
+                "text": "resposta errada"
               }
             },
             "constraint": "(data('n_ronda')<4)",
@@ -1734,7 +1748,7 @@
             "name": "inelegivel",
             "display": {
               "prompt": {
-                "text": "Obrigado pelo seu tempo em responder a estas perguntas. Com base em algumas das respostas que você deu, você é inelegível para fazer parte do estudo. Isso de modo algum afeta o cuidado que você receberá aqui nesta clínica. Posso responder a quaisquer perguntas que você possa ter?"
+                "text": "Obrigado pelo seu tempo em responder a estas perguntas. Com base em algumas das respostas que você deu, você é inelegível para fazer parte do estudo."
               }
             },
             "_row_num": 60,
@@ -1780,7 +1794,7 @@
             "name": "refusal_statement",
             "display": {
               "prompt": {
-                "text": "Diga: Obrigado por me informar porque você não quer participar. É importante que saibamos por que as mulheres podem se sentir assim. Isso de modo algum afetará os cuidados que você, seus filhos ou seu parceiro receberão na clínica."
+                "text": "Diga: Obrigado por me informar porque você não quer participar."
               }
             },
             "_row_num": 66,
@@ -1816,6 +1830,7 @@
         ],
         "validation_tag_map": {
           "finalize": [
+            1,
             4
           ]
         },
