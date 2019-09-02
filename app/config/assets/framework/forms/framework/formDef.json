@@ -83,11 +83,11 @@
         "_row_num": 14
       },
       {
-        "branch_label": "ronda",
+        "branch_label": "dados_adicional",
         "_row_num": 16
       },
       {
-        "url": "'?' + odkSurvey.getHashString('ronda')",
+        "url": "'?' + odkSurvey.getHashString('QPS','dados_adicional')",
         "type": "external_link",
         "display": {
           "prompt": {
@@ -99,6 +99,24 @@
       {
         "clause": "exit section",
         "_row_num": 18
+      },
+      {
+        "branch_label": "ronda",
+        "_row_num": 20
+      },
+      {
+        "url": "'?' + odkSurvey.getHashString('ronda')",
+        "type": "external_link",
+        "display": {
+          "prompt": {
+            "text": "Open form"
+          }
+        },
+        "_row_num": 21
+      },
+      {
+        "clause": "exit section",
+        "_row_num": 22
       }
     ],
     "settings": [
@@ -195,6 +213,16 @@
           }
         },
         "_row_num": 4
+      },
+      {
+        "choice_list_name": "test_forms",
+        "data_value": "dados_adicional",
+        "display": {
+          "title": {
+            "text": "Dados adicionais"
+          }
+        },
+        "_row_num": 5
       }
     ],
     "framework_translations": [
@@ -827,6 +855,16 @@
             }
           },
           "_row_num": 4
+        },
+        {
+          "choice_list_name": "test_forms",
+          "data_value": "dados_adicional",
+          "display": {
+            "title": {
+              "text": "Dados adicionais"
+            }
+          },
+          "_row_num": 5
         }
       ]
     },
@@ -1517,7 +1555,7 @@
             "promptIdx": 3
           },
           {
-            "url": "'?' + odkSurvey.getHashString('ronda')",
+            "url": "'?' + odkSurvey.getHashString('QPS','dados_adicional')",
             "type": "external_link",
             "display": {
               "prompt": {
@@ -1532,12 +1570,27 @@
             "promptIdx": 4
           },
           {
+            "url": "'?' + odkSurvey.getHashString('ronda')",
+            "type": "external_link",
+            "display": {
+              "prompt": {
+                "text": "Open form"
+              }
+            },
+            "_row_num": 21,
+            "__rowNum__": 20,
+            "_token_type": "prompt",
+            "_type": "external_link",
+            "_branch_label_enclosing_screen": "survey/_screen21",
+            "promptIdx": 5
+          },
+          {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 19,
-            "_branch_label_enclosing_screen": "survey/_screen19",
-            "promptIdx": 5
+            "_row_num": 23,
+            "_branch_label_enclosing_screen": "survey/_screen23",
+            "promptIdx": 6
           }
         ],
         "validation_tag_map": {
@@ -1626,25 +1679,38 @@
             "operationIdx": 11
           },
           {
-            "_token_type": "exit_section",
-            "clause": "exit section",
-            "_row_num": 19,
+            "_row_num": 21,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(5);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 12
           },
           {
-            "_row_num": 19,
+            "clause": "exit section",
+            "_row_num": 22,
+            "__rowNum__": 21,
+            "_token_type": "exit_section",
+            "operationIdx": 13
+          },
+          {
+            "_token_type": "exit_section",
+            "clause": "exit section",
+            "_row_num": 23,
+            "operationIdx": 14
+          },
+          {
+            "_row_num": 23,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(5);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(6);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
-            "operationIdx": 13
+            "operationIdx": 15
           },
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 19,
-            "operationIdx": 14
+            "_row_num": 23,
+            "operationIdx": 16
           }
         ],
         "branch_label_map": {
@@ -1657,10 +1723,12 @@
           "_screen9": 6,
           "inscricao": 8,
           "_screen13": 8,
-          "ronda": 10,
+          "dados_adicional": 10,
           "_screen17": 10,
-          "_contents": 13,
-          "_screen19": 13
+          "ronda": 12,
+          "_screen21": 12,
+          "_contents": 15,
+          "_screen23": 15
         }
       }
     },
