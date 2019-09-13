@@ -37,6 +37,7 @@ function listPersons(region, sector, tabanca) {
             var ano =  result.getData(row,"ano");
             var mes =  result.getData(row,"mes");
             var af =  result.getData(row,"AF");
+            var numRondas = result.getData(row, 'numero_rondas')
             var p = {
                 id,
                 id_paciente,
@@ -46,7 +47,8 @@ function listPersons(region, sector, tabanca) {
                 dn,
                 ano,
                 mes,
-                af
+                af,
+                numRondas
             }
             console.log(p);
             persons.push(p);
@@ -57,7 +59,10 @@ function listPersons(region, sector, tabanca) {
     var failureFn = function( errorMsg ) {
         console.error('Failed to get persons from database: ' + errorMsg);
     }
-    var sql = 'SELECT _id, id_paciente, nome, nome_casa, sexo, dn, ano, mes, af FROM QPS WHERE region = "' + region + '" COLLATE NOCASE AND sector = "' + sector + '" COLLATE NOCASE AND tabanca = "' + tabanca + '" COLLATE NOCASE ORDER BY id_paciente';
+    var sql = 'SELECT count(ronda.id_paciente) as numero_rondas, QPS._id, QPS.  id_paciente, nome, nome_casa, sexo, dn, ano, mes, af'
+    sql = sql + ' FROM QPS INNER JOIN ronda ON QPS.id_paciente = ronda.id_paciente'
+    sql = sql + ' WHERE region = "' + region + '" COLLATE NOCASE AND sector = "' + sector + '" COLLATE NOCASE AND tabanca = "' + tabanca + '" COLLATE NOCASE'
+    sql = sql + ' GROUP BY ronda.id_paciente ORDER BY QPS.id_paciente';
     odkData.arbitraryQuery('QPS', sql, null, null, null, successFn, failureFn);
 }
 
@@ -87,7 +92,7 @@ function getAgeString(person) {
 
 function addPersonDiv(p) {    
     var nome = (p.nome_casa && p.nome_casa.length) ? nome = p.nome + " (" + p.nome_casa + ")" : p.nome;        
-    $('#theList tr:last').after("<tr><td>" + p.id_paciente + "</td><td>" + nome + "</td><td>" + getSexoString(p.sexo) + "</td><td>" + getAgeString(p) + "</td><td>" + p.af + "</td><td><input onclick='openPersonForm(\"" + p.id + "\")' type='button' value='&gt;&gt;'></input></td></tr>");
+    $('#theList tr:last').after("<tr class='numron" + p.numRondas + "'><td>" + p.id_paciente + "</td><td>" + nome + "</td><td>" + getSexoString(p.sexo) + "</td><td>" + getAgeString(p) + "</td><td>" + p.af + "</td><td><input onclick='openPersonForm(\"" + p.id + "\")' type='button' value='&gt;&gt;'></input></td></tr>");
 }
 
 function openPersonForm(rowId) {

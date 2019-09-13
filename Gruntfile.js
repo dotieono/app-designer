@@ -530,7 +530,8 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
             var dirs = grunt.file.expand(
                 {filter: 'isFile',
                  cwd: 'app' },
-				'.nomedia',
+                '.nomedia',
+                '!**/~$*.xlsx',
                 '**',
                 '!system/**',
 				'!data/**',
@@ -539,6 +540,7 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
 
             // Now push these files to the phone.
             dirs.forEach(function(fileName) {
+                if (fileName.indexOf("~$")>-1) return;
                 //  Have to add app back into the file name for the adb push
                 var src = tablesConfig.appDir + '/' + fileName;
                 var dest =
@@ -567,6 +569,7 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
                  cwd: 'app' },
 				'.nomedia',
                 '**',
+                '!**/~$*.xlsx',
                 '!system/**',
 				'!data/**',
 				'!output/**',
@@ -609,6 +612,7 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
                  cwd: 'app' },
 				'.nomedia',
                 '**',
+                '!**/~$*.xlsx',
                 '!system/**',
                 'system/tables/js/**',
                 'system/survey/**',
@@ -658,7 +662,8 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
                  cwd: 'app' },
 				'.nomedia',
                 '**',
-				'!system/**',
+                '!system/**',
+                '!**/~$*.xlsx',
 				'!data/**',
 				'!output/**',
                 '!config/tables/**',
@@ -711,7 +716,8 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
                  cwd: 'app' },
 				'.nomedia',
                 '**',
-				'!system/**',
+                '!system/**',
+                '!**/~$*.xlsx',
 				'!data/**',
 				'!output/**',
                 '!config/tables/**',
@@ -759,7 +765,8 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
                  cwd: 'app' },
 				'.nomedia',
                 '**',
-				'!system/**',
+                '!system/**',
+                '!**/~$*.xlsx',
 				'!data/**',
 				'!output/**',
 				'!config/assets/**',
@@ -910,7 +917,8 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
 			 cwd: 'app' },
 			'.nomedia',
 			'**',
-			'!system/**',
+            '!system/**',
+            '!**/~$*.xlsx',
 			'!data/**',
 			'!output/**',
 			'!config/tables/**',
@@ -958,7 +966,8 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
 			 cwd: 'app' },
 			'.nomedia',
 			'**',
-			'!system/**',
+            '!system/**',
+            '!**/~$*.xlsx',
 			'!data/**',
 			'!output/**',
 			'!config/tables/**',
@@ -1046,7 +1055,8 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
 			 cwd: 'app' },
 			'.nomedia',
 			'**',
-			'!system/**',
+            '!system/**',
+            '!**/~$*.xlsx',
 			'!data/**',
 			'!output/**',
 			'!config/assets/**',
@@ -1119,7 +1129,8 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
 			 cwd: 'app' },
 			'.nomedia',
 			'**',
-			'!system/**',
+            '!system/**',
+            '!**/~$*.xlsx',
 			'!data/**',
 			'!output/**',
 			'!config/assets/**',
@@ -1198,7 +1209,8 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
 			 cwd: 'app' },
 			'.nomedia',
 			'**',
-			'!system/**',
+            '!system/**',
+            '!**/~$*.xlsx',
 			'!data/**',
 			'!output/**',
 			'!config/assets/**',
@@ -1289,7 +1301,8 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
 			 cwd: 'app' },
 			'.nomedia',
 			'**',
-			'!system/**',
+            '!system/**',
+            '!**/~$*.xlsx',
 			'!data/**',
 			'!output/**',
 			'!config/assets/**',
@@ -1451,7 +1464,8 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
 			 cwd: 'app' },
 			'.nomedia',
 			'**',
-			'!system/**',
+            '!system/**',
+            '!**/~$*.xlsx',
 			'!data/**',
 			'!output/**',
 			'!config/assets/**',
@@ -1527,6 +1541,7 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
 				'.nomedia',
                 '**',
                 '!system/**',
+                '!**/~$*.xlsx',
 				'!data/**',
 				'!output/**',
                 '!**/~$*.xlsx');
@@ -1566,6 +1581,7 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
 				'.nomedia',
                 '**',
                 '!system/**',
+                '!**/~$*.xlsx',
 				'!data/**',
 				'!output/**',
                 '!config/tables/**',
@@ -1610,6 +1626,7 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
 				'.nomedia',
                 '**',
                 '!system/**',
+                '!**/~$*.xlsx',
 				'!data/**',
 				'!output/**',
                 '!config/tables/**',
@@ -1655,7 +1672,8 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
                  cwd: 'app' },
 				'.nomedia',
                 '**',
-				'!system/**',
+                '!system/**',
+                '!**/~$*.xlsx',
 				'!data/**',
 				'!output/**',
                 '!config/assets/**',
@@ -1706,6 +1724,7 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
 				'.nomedia',
                 '**',
                 '!system/**',
+                '!**/~$*.xlsx',
 				'!data/**',
                 '!output/**',
                 '!config/assets/**',
@@ -1754,6 +1773,7 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
 				'.nomedia',
                 '**',
                 '!system/**',
+                '!**/~$*.xlsx',
 				'!data/**',
                 '!output/**',
                 '!config/assets/**',
@@ -1801,6 +1821,7 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
                 '**',
                 '!config/assets/**',
                 '!system/**',
+                '!**/~$*.xlsx',
 				'!data/**',
                 '!output/**',
                 '!config/tables/**',
@@ -2057,7 +2078,11 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
             var files = ["/config/assets/app.properties", "/data/device.properties"];
             grunt.task.run("force:on")
             for (var i = 0; i < files.length; i++) {
-                grunt.task.run("exec:adbpull:".concat(base, files[i], ":", destbase, basename(files[i])));
+                try {
+                    grunt.task.run("exec:adbpull:".concat(base, files[i], ":", destbase, basename(files[i])));
+                } catch {
+                    //that is not so bad..
+                }
             }
             grunt.task.run("adbpull-fixprops")
             grunt.task.run("force:restore")
