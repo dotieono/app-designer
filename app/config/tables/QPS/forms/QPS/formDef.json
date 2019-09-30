@@ -47,7 +47,7 @@
         "values_list": "dados_adicionais",
         "display": {
           "prompt": {
-            "text": "Por favor toca em editar deste ficheiro abaixo e introduza os dados que faltavam na ronda anterior"
+            "text": "Por favor toca em editar deste ficheiro abaixo e introduza os dados que faltavam na ronda anterior.\n<h3><center><span style=\"color:blue\">EDITAR</h3></span></center>"
           }
         },
         "_row_num": 7
@@ -231,129 +231,134 @@
         "_row_num": 2
       },
       {
+        "type": "barcode",
+        "name": "sticker",
+        "_row_num": 3
+      },
+      {
         "type": "string",
         "name": "letra_sticker",
-        "_row_num": 3
+        "_row_num": 4
       },
       {
         "type": "integer",
         "name": "numero_sticker",
-        "_row_num": 4
+        "_row_num": 5
       },
       {
         "type": "adate",
         "name": "data_inscricao",
-        "_row_num": 5
+        "_row_num": 6
       },
       {
         "type": "text",
         "name": "nome",
-        "_row_num": 6
+        "_row_num": 7
       },
       {
         "type": "string",
         "name": "nome_casa",
-        "_row_num": 7
-      },
-      {
-        "type": "select_one",
-        "name": "sexo",
         "_row_num": 8
       },
       {
         "type": "select_one",
-        "name": "Data_ou_idade",
+        "name": "sexo",
         "_row_num": 9
+      },
+      {
+        "type": "select_one",
+        "name": "Data_ou_idade",
+        "_row_num": 10
       },
       {
         "type": "adate",
         "name": "dn",
-        "_row_num": 10
-      },
-      {
-        "type": "integer",
-        "name": "ano",
         "_row_num": 11
       },
       {
         "type": "integer",
-        "name": "mes",
+        "name": "ano",
         "_row_num": 12
       },
       {
-        "type": "select_one",
-        "name": "region",
+        "type": "integer",
+        "name": "mes",
         "_row_num": 13
       },
       {
         "type": "select_one",
-        "name": "sector",
+        "name": "region",
         "_row_num": 14
       },
       {
         "type": "select_one",
-        "name": "tabanca",
+        "name": "sector",
         "_row_num": 15
       },
       {
-        "type": "integer",
-        "name": "AF",
+        "type": "select_one",
+        "name": "tabanca",
         "_row_num": 16
       },
       {
         "type": "integer",
-        "name": "equipa",
+        "name": "AF",
         "_row_num": 17
       },
       {
         "type": "integer",
-        "name": "mtn_equi",
+        "name": "equipa",
         "_row_num": 18
       },
       {
         "type": "integer",
-        "name": "orange_equi",
+        "name": "mtn_equi",
         "_row_num": 19
       },
       {
         "type": "integer",
-        "name": "mtn_RAS",
+        "name": "orange_equi",
         "_row_num": 20
       },
       {
         "type": "integer",
-        "name": "orange_RAS",
+        "name": "mtn_RAS",
         "_row_num": 21
+      },
+      {
+        "type": "integer",
+        "name": "orange_RAS",
+        "_row_num": 22
       },
       {
         "type": "note",
         "name": "abrir_ronda",
-        "_row_num": 22
+        "_row_num": 23
       },
       {
         "type": "text",
         "name": "mae",
-        "_row_num": 24
-      },
-      {
-        "type": "text",
-        "name": "chefe_af",
         "_row_num": 25
       },
       {
         "type": "text",
-        "name": "comentario",
-        "_row_num": 27
+        "name": "chefe_af",
+        "_row_num": 26
       },
       {
         "type": "text",
-        "name": "comentario_2",
+        "name": "comentario",
         "_row_num": 28
       },
       {
         "type": "text",
-        "name": "comentario_3",
+        "name": "comentario_2",
         "_row_num": 29
+      },
+      {
+        "type": "text",
+        "name": "comentario_3",
+        "_row_num": 30
       }
     ],
     "prompt_types": [
@@ -623,11 +628,21 @@
         ],
         "elementKey": "id_paciente"
       },
-      "letra_sticker": {
+      "sticker": {
         "type": "string",
         "_defn": [
           {
             "_row_num": 3,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "sticker"
+      },
+      "letra_sticker": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 4,
             "section_name": "model"
           }
         ],
@@ -637,7 +652,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 4,
+            "_row_num": 5,
             "section_name": "model"
           }
         ],
@@ -652,7 +667,7 @@
         "__rowNum__": 2,
         "_defn": [
           {
-            "_row_num": 5,
+            "_row_num": 6,
             "section_name": "model"
           }
         ],
@@ -662,7 +677,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 6,
+            "_row_num": 7,
             "section_name": "model"
           }
         ],
@@ -672,7 +687,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 7,
+            "_row_num": 8,
             "section_name": "model"
           }
         ],
@@ -682,7 +697,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 8,
+            "_row_num": 9,
             "section_name": "model"
           }
         ],
@@ -692,7 +707,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 9,
+            "_row_num": 10,
             "section_name": "model"
           }
         ],
@@ -707,7 +722,7 @@
         "__rowNum__": 2,
         "_defn": [
           {
-            "_row_num": 10,
+            "_row_num": 11,
             "section_name": "model"
           }
         ],
@@ -717,7 +732,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 11,
+            "_row_num": 12,
             "section_name": "model"
           }
         ],
@@ -727,7 +742,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 12,
+            "_row_num": 13,
             "section_name": "model"
           }
         ],
@@ -737,7 +752,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 13,
+            "_row_num": 14,
             "section_name": "model"
           }
         ],
@@ -747,7 +762,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 14,
+            "_row_num": 15,
             "section_name": "model"
           }
         ],
@@ -757,7 +772,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 15,
+            "_row_num": 16,
             "section_name": "model"
           }
         ],
@@ -767,7 +782,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 16,
+            "_row_num": 17,
             "section_name": "model"
           }
         ],
@@ -777,7 +792,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 17,
+            "_row_num": 18,
             "section_name": "model"
           }
         ],
@@ -787,7 +802,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 18,
+            "_row_num": 19,
             "section_name": "model"
           }
         ],
@@ -797,7 +812,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 19,
+            "_row_num": 20,
             "section_name": "model"
           }
         ],
@@ -807,7 +822,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 20,
+            "_row_num": 21,
             "section_name": "model"
           }
         ],
@@ -817,7 +832,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 21,
+            "_row_num": 22,
             "section_name": "model"
           }
         ],
@@ -826,7 +841,7 @@
       "abrir_ronda": {
         "_defn": [
           {
-            "_row_num": 22,
+            "_row_num": 23,
             "section_name": "model"
           }
         ],
@@ -837,7 +852,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 24,
+            "_row_num": 25,
             "section_name": "model"
           }
         ],
@@ -847,7 +862,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 25,
+            "_row_num": 26,
             "section_name": "model"
           }
         ],
@@ -861,7 +876,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 27,
+            "_row_num": 28,
             "section_name": "model"
           }
         ],
@@ -871,7 +886,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 28,
+            "_row_num": 29,
             "section_name": "model"
           }
         ],
@@ -881,7 +896,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 29,
+            "_row_num": 30,
             "section_name": "model"
           }
         ],
@@ -918,7 +933,7 @@
             "values_list": "dados_adicionais",
             "display": {
               "prompt": {
-                "text": "Por favor toca em editar deste ficheiro abaixo e introduza os dados que faltavam na ronda anterior"
+                "text": "Por favor toca em editar deste ficheiro abaixo e introduza os dados que faltavam na ronda anterior.\n<h3><center><span style=\"color:blue\">EDITAR</h3></span></center>"
               }
             },
             "_row_num": 7,
@@ -1222,11 +1237,24 @@
         "elementSet": "data",
         "elementPath": "id_paciente"
       },
-      "letra_sticker": {
+      "sticker": {
         "type": "string",
         "_defn": [
           {
             "_row_num": 3,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "sticker",
+        "elementName": "sticker",
+        "elementSet": "data",
+        "elementPath": "sticker"
+      },
+      "letra_sticker": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 4,
             "section_name": "model"
           }
         ],
@@ -1239,7 +1267,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 4,
+            "_row_num": 5,
             "section_name": "model"
           }
         ],
@@ -1257,7 +1285,7 @@
         "__rowNum__": 2,
         "_defn": [
           {
-            "_row_num": 5,
+            "_row_num": 6,
             "section_name": "model"
           }
         ],
@@ -1270,7 +1298,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 6,
+            "_row_num": 7,
             "section_name": "model"
           }
         ],
@@ -1283,7 +1311,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 7,
+            "_row_num": 8,
             "section_name": "model"
           }
         ],
@@ -1296,7 +1324,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 8,
+            "_row_num": 9,
             "section_name": "model"
           }
         ],
@@ -1309,7 +1337,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 9,
+            "_row_num": 10,
             "section_name": "model"
           }
         ],
@@ -1327,7 +1355,7 @@
         "__rowNum__": 2,
         "_defn": [
           {
-            "_row_num": 10,
+            "_row_num": 11,
             "section_name": "model"
           }
         ],
@@ -1340,7 +1368,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 11,
+            "_row_num": 12,
             "section_name": "model"
           }
         ],
@@ -1353,7 +1381,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 12,
+            "_row_num": 13,
             "section_name": "model"
           }
         ],
@@ -1366,7 +1394,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 13,
+            "_row_num": 14,
             "section_name": "model"
           }
         ],
@@ -1379,7 +1407,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 14,
+            "_row_num": 15,
             "section_name": "model"
           }
         ],
@@ -1392,7 +1420,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 15,
+            "_row_num": 16,
             "section_name": "model"
           }
         ],
@@ -1405,7 +1433,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 16,
+            "_row_num": 17,
             "section_name": "model"
           }
         ],
@@ -1418,7 +1446,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 17,
+            "_row_num": 18,
             "section_name": "model"
           }
         ],
@@ -1431,7 +1459,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 18,
+            "_row_num": 19,
             "section_name": "model"
           }
         ],
@@ -1444,7 +1472,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 19,
+            "_row_num": 20,
             "section_name": "model"
           }
         ],
@@ -1457,7 +1485,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 20,
+            "_row_num": 21,
             "section_name": "model"
           }
         ],
@@ -1470,7 +1498,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 21,
+            "_row_num": 22,
             "section_name": "model"
           }
         ],
@@ -1482,7 +1510,7 @@
       "abrir_ronda": {
         "_defn": [
           {
-            "_row_num": 22,
+            "_row_num": 23,
             "section_name": "model"
           }
         ],
@@ -1496,7 +1524,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 24,
+            "_row_num": 25,
             "section_name": "model"
           }
         ],
@@ -1509,7 +1537,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 25,
+            "_row_num": 26,
             "section_name": "model"
           }
         ],
@@ -1526,7 +1554,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 27,
+            "_row_num": 28,
             "section_name": "model"
           }
         ],
@@ -1539,7 +1567,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 28,
+            "_row_num": 29,
             "section_name": "model"
           }
         ],
@@ -1552,7 +1580,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 29,
+            "_row_num": 30,
             "section_name": "model"
           }
         ],
