@@ -1,0 +1,8 @@
+_partition,_aspect,_key,_type,_value
+Column,GE,displayChoicesList,object,"[{""choice_list_name"":""resultado"",""data_value"":1,""display"":{""title"":{""text"":""Positivo""}},""_row_num"":14},{""choice_list_name"":""resultado"",""data_value"":2,""display"":{""title"":{""text"":""Negativo""}},""_row_num"":15},{""choice_list_name"":""resultado"",""data_value"":3,""display"":{""title"":{""text"":""Incontavel""}},""_row_num"":16},{""choice_list_name"":""resultado"",""data_value"":4,""display"":{""title"":{""text"":""Indeterminado""}},""_row_num"":17}]"
+Column,observados,displayChoicesList,object,"[{""choice_list_name"":""yesno"",""data_value"":1,""display"":{""title"":{""text"":""Sim""}},""_row_num"":4},{""choice_list_name"":""yesno"",""data_value"":2,""display"":{""title"":{""text"":""Não""}},""_row_num"":5}]"
+Column,plasmodium,displayChoicesList,object,"[{""choice_list_name"":""plasmodium"",""data_value"":1,""display"":{""title"":{""text"":""P. Falciparum""}},""_row_num"":7},{""choice_list_name"":""plasmodium"",""data_value"":2,""display"":{""title"":{""text"":""P. Malariae""}},""_row_num"":8},{""choice_list_name"":""plasmodium"",""data_value"":3,""display"":{""title"":{""text"":""P. Ovale""}},""_row_num"":9},{""choice_list_name"":""plasmodium"",""data_value"":4,""display"":{""title"":{""text"":""P. Vivax""}},""_row_num"":10}]"
+FormType,default,FormType.formType,string,SURVEY
+SurveyUtil,default,SurveyUtil.formId,string,laboratorio
+Table,default,defaultViewType,string,SPREADSHEET
+Table,default,displayName,object,"{""text"":""Resultados de laboratorio""}"

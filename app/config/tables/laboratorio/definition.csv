@@ -1,0 +1,9 @@
+_element_key,_element_name,_element_type,_list_child_element_keys
+GE,GE,string,[]
+apresentacao,apresentacao,note,[]
+id_lamina,id_lamina,string,[]
+lab_comentario,lab_comentario,string,[]
+n_parasita,n_parasita,integer,[]
+observados,observados,string,[]
+plasmodium,plasmodium,array,"[""plasmodium_items""]"
+plasmodium_items,items,string,[]
