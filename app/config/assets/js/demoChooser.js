@@ -7,12 +7,16 @@ var currentTab = 1;
 
 function display() { 
     updateForTab(currentTab);
-    $('#psbTab').on('click', function() {
+    $('#centroTab').on('click', function() {
         currentTab = 0;
         updateForTab(currentTab);
     });
-    $('#ascTab').on('click', function() {
+    $('#visitaTab').on('click', function() {
         currentTab = 1;
+        updateForTab(currentTab);
+    });
+   $('#labTab').on('click', function() {
+        currentTab = 2;
         updateForTab(currentTab);
     });
 
@@ -20,10 +24,12 @@ function display() {
             'click',
             function() {
                 if (currentTab === 0) {
-                    odkTables.launchHTML(null, 'config/assets/PSB.html');
+                    odkTables.launchHTML(null, 'config/assets/centro.html');
                 } else if (currentTab === 1) {
-                    odkTables.launchHTML(null, 'config/assets/ASC.html');
-                }  else {
+                    odkTables.launchHTML(null, 'config/assets/visita.html');
+                } else if (currentTab === 2) {
+                    odkTables.launchHTML(null, 'config/assets/lab.html');
+                } else {
                     console.error('trouble, unrecognized tab');
                 }
             });
@@ -38,16 +44,21 @@ function updateForTab(tab) {
 
     // Now add the current tab to active and update the description.
     if (tab === 0) {
-        fileUri = odkCommon.getFileAsUrl('config/assets/img/logo_psb.jpg');
-        descriptionDiv.text('Para inqueridores (entrevistadores) de Projecto de Saude de Bandim.');
+        fileUri = odkCommon.getFileAsUrl('config/assets/img/centro.JPG');
+        descriptionDiv.text('Exclusiva para CENTROS DE SAUDE');
         descriptionDiv.attr('class','description-text-black');
-        tabItem = $('#psbTab');
+        tabItem = $('#centroTab');
     } else if (tab === 1) {
-        fileUri = odkCommon.getFileAsUrl('config/assets/img/logo_republica.JPG');
-        descriptionDiv.text('Para agente de saude comunitaria ou pessoais de saude que vao administrar medicamento.');
+        fileUri = odkCommon.getFileAsUrl('config/assets/img/bafata.JPG');
+        descriptionDiv.text('Para agente de saude comunitaria ou pessoais de saude que vao fazer seguimento de casos.');
         descriptionDiv.attr('class','description-text-black');
-        tabItem = $('#ascTab');
-    }  else {
+        tabItem = $('#visitaTab');
+    }  else if (tab === 2) {
+        fileUri = odkCommon.getFileAsUrl('config/assets/img/lab.JPG');
+        descriptionDiv.text('Para introducao de resultados de laboratorio.');
+        descriptionDiv.attr('class','description-text-black');
+        tabItem = $('#labTab');
+    }else {
         console.error('unrecognized tab index: ' + tab);
     }
     $('body').css('background-image', 'url(' + fileUri + ')');

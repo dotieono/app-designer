@@ -14,10 +14,10 @@ function display() {
     });
 
     var region = util.getQueryParameter("region")
-    var sector  = util.getQueryParameter("sector")
-    var tabanca = util.getQueryParameter("tabanca")
+    var sector  = util.getQueryParameter("cs")
+    var tabanca = util.getQueryParameter("tab_bairro")
     
-    $("#theHeader").html("Region = " + region + "<br/>Sector = " + sector + "<br/>Tabanca = " + tabanca);
+    $("#theHeader").html("Region = " + region + "<br/>Centro de saude = " + sector + "<br/>Tabanca = " + tabanca);
     listPersons(region, sector, tabanca);
 }
 
@@ -94,7 +94,6 @@ function addPersonDiv(p) {
     var nome = (p.nome_casa && p.nome_casa.length) ? nome = p.nome + " (" + p.nome_casa + ")" : p.nome;        
     $('#theList tr:last').after("<tr class='numron" + p.numRondas + "'><td>" + p.id_paciente + "</td><td>" + nome + "</td><td>" + getSexoString(p.sexo) + "</td><td>" + getAgeString(p) + "</td><td>" + p.af + "</td><td><input onclick='openPersonForm(\"" + p.id + "\")' type='button' value='&gt;&gt;'></input></td></tr>");
 }
-
 function openPersonForm(rowId) {
     var tableId = "QPS";
     var rowId = rowId;

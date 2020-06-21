@@ -24,6 +24,11 @@
         "setting_name": "table_id",
         "value": "medicamento_administrado",
         "_row_num": 5
+      },
+      {
+        "setting_name": "instance_name",
+        "value": "nome_medicamento",
+        "_row_num": 6
       }
     ],
     "survey": [
@@ -274,6 +279,11 @@
         "setting_name": "table_id",
         "value": "medicamento_administrado",
         "_row_num": 5
+      },
+      "instance_name": {
+        "setting_name": "instance_name",
+        "value": "nome_medicamento",
+        "_row_num": 6
       },
       "_locales": {
         "setting_name": "_locales",

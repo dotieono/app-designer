@@ -429,7 +429,21 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
 			// finalize the archive (ie we are done appending files but streams have to finish yet) 
 			archive.finalize();
 };
-
+grunt.registerTask(
+    'adate',
+    'updates scripts in system/survey/js',
+    function() {
+        // Copy system-files
+        var sysFilesToCopy = ['app/system/survey/js/adateHelpers.js', 'app/system/survey/js/formulaFunctions.js'];
+        var sysDest = '/sdcard/opendatakit/default/system/survey/js';
+        sysFilesToCopy.forEach(fileName => {
+            var src = fileName;
+            var dest = sysDest + fileName.substr(fileName.lastIndexOf('/'));
+            //console.log(src, dest);
+            grunt.task.run('exec:adbpush:' + src + ':' + dest);
+        });
+    }
+);
     grunt.registerTask(
         'build-zips',
         'BROKEN: does not compress and last file is not terminated properly. Construct the configzip and systemzip for survey and tables',

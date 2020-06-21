@@ -1,9 +1,17 @@
 _element_key,_element_name,_element_type,_list_child_element_keys
+DOB_ou_idade,DOB_ou_idade,string,[]
 GE,GE,string,[]
+ano,ano,integer,[]
 apresentacao,apresentacao,note,[]
+cs,cs,string,[]
+dn,dn,string,[]
+id_estudo,id_estudo,string,[]
 id_lamina,id_lamina,string,[]
 lab_comentario,lab_comentario,string,[]
+mes,mes,integer,[]
 n_parasita,n_parasita,integer,[]
 observados,observados,string,[]
 plasmodium,plasmodium,array,"[""plasmodium_items""]"
 plasmodium_items,items,string,[]
+sexo,sexo,string,[]
+visita_id,visita_id,integer,[]

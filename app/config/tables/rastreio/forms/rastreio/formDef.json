@@ -44,27 +44,20 @@
         "_row_num": 3
       },
       {
-        "type": "string",
-        "name": "id_rastreio",
-        "display": {
-          "prompt": {
-            "text": "Nº de rastreio"
-          }
-        },
-        "required": true,
-        "_row_num": 4
-      },
-      {
         "type": "select_one",
         "values_list": "region",
         "name": "region",
         "display": {
           "prompt": {
             "text": "Região"
+          },
+          "adate": {
+            "fromYear": 2020,
+            "toYear": 2020
           }
         },
         "required": true,
-        "_row_num": 5
+        "_row_num": 4
       },
       {
         "type": "select_one",
@@ -76,6 +69,17 @@
           }
         },
         "choice_filter": "choice_item.region === data('region')",
+        "required": true,
+        "_row_num": 5
+      },
+      {
+        "type": "string",
+        "name": "id_rastreio",
+        "display": {
+          "prompt": {
+            "text": "Nº de rastreio"
+          }
+        },
         "required": true,
         "_row_num": 6
       },
@@ -117,6 +121,10 @@
         "display": {
           "prompt": {
             "text": "Data de Nascimento"
+          },
+          "adate": {
+            "fromYear": 2014,
+            "toYear": 2020
           }
         },
         "required": "data('DOB_ou_idade')=='1'",
@@ -266,7 +274,7 @@
       },
       {
         "type": "select_one",
-        "values_list": "yesno",
+        "values_list": "outra_condicao",
         "name": "outra_condicao",
         "display": {
           "prompt": {
@@ -282,8 +290,7 @@
         "_row_num": 41
       },
       {
-        "type": "select_one",
-        "values_list": "outra_condicao",
+        "type": "text",
         "name": "especificar_condicao",
         "display": {
           "prompt": {
@@ -657,7 +664,7 @@
         "query_name": "inclusao",
         "query_type": "linked_table",
         "linked_form_id": "inclusao",
-        "linked_table_id": "AQSP",
+        "linked_table_id": "inclusao",
         "selection": "id_rastreio=?",
         "selectionArgs": "[data('id_rastreio')]",
         "newRowInitialElementKeyToValueMap": "{date_rastreio: data('date_rastreio'), id_rastreio: data('id_rastreio'), region: data('region'), cs: data('cs'), nome: data('nome'), DOB_ou_idade: data('DOB_ou_idade'), dn: data('dn'), ano: data('ano'), mes: data('mes'), febre: data('febre'), temperatura: data('temperatura'), TDR: data('TDR'), resultado_TDR: data('resultado_TDR'), via_oral: data('via_oral'), desnutrido: data('desnutrido'), paludismo_grave: data('paludismo_grave'), outra_condicao: data('outra_condicao'), especificar_condicao: data('especificar_condicao'), nota_condicao: data('nota_condicao'), consentimento: data('consentimento'), }",
@@ -806,7 +813,7 @@
         "_row_num": 25
       },
       {
-        "type": "select_one",
+        "type": "text",
         "name": "especificar_condicao",
         "_row_num": 26
       },
@@ -1431,7 +1438,7 @@
         "query_name": "inclusao",
         "query_type": "linked_table",
         "linked_form_id": "inclusao",
-        "linked_table_id": "AQSP",
+        "linked_table_id": "inclusao",
         "selection": "id_rastreio=?",
         "selectionArgs": "[data('id_rastreio')]",
         "newRowInitialElementKeyToValueMap": "{date_rastreio: data('date_rastreio'), id_rastreio: data('id_rastreio'), region: data('region'), cs: data('cs'), nome: data('nome'), DOB_ou_idade: data('DOB_ou_idade'), dn: data('dn'), ano: data('ano'), mes: data('mes'), febre: data('febre'), temperatura: data('temperatura'), TDR: data('TDR'), resultado_TDR: data('resultado_TDR'), via_oral: data('via_oral'), desnutrido: data('desnutrido'), paludismo_grave: data('paludismo_grave'), outra_condicao: data('outra_condicao'), especificar_condicao: data('especificar_condicao'), nota_condicao: data('nota_condicao'), consentimento: data('consentimento'), }",
@@ -1526,7 +1533,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 4,
+            "_row_num": 6,
             "section_name": "survey"
           },
           {
@@ -1541,7 +1548,7 @@
         "valuesList": "region",
         "_defn": [
           {
-            "_row_num": 5,
+            "_row_num": 4,
             "section_name": "survey"
           },
           {
@@ -1556,7 +1563,7 @@
         "valuesList": "cs",
         "_defn": [
           {
-            "_row_num": 6,
+            "_row_num": 5,
             "section_name": "survey"
           },
           {
@@ -1748,7 +1755,7 @@
       },
       "outra_condicao": {
         "type": "string",
-        "valuesList": "yesno",
+        "valuesList": "outra_condicao",
         "_defn": [
           {
             "_row_num": 40,
@@ -1763,7 +1770,6 @@
       },
       "especificar_condicao": {
         "type": "string",
-        "valuesList": "outra_condicao",
         "_defn": [
           {
             "_row_num": 42,
@@ -2392,37 +2398,25 @@
             "promptIdx": 0
           },
           {
-            "type": "string",
-            "name": "id_rastreio",
-            "display": {
-              "prompt": {
-                "text": "Nº de rastreio"
-              }
-            },
-            "required": true,
-            "_row_num": 4,
-            "__rowNum__": 3,
-            "_token_type": "prompt",
-            "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen4",
-            "promptIdx": 1
-          },
-          {
             "type": "select_one",
             "values_list": "region",
             "name": "region",
             "display": {
               "prompt": {
                 "text": "Região"
+              },
+              "adate": {
+                "fromYear": 2020,
+                "toYear": 2020
               }
             },
             "required": true,
-            "_row_num": 5,
-            "__rowNum__": 4,
+            "_row_num": 4,
+            "__rowNum__": 3,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen5",
-            "promptIdx": 2
+            "_branch_label_enclosing_screen": "survey/_screen4",
+            "promptIdx": 1
           },
           {
             "type": "select_one",
@@ -2435,10 +2429,26 @@
             },
             "choice_filter": "choice_item.region === data('region')",
             "required": true,
+            "_row_num": 5,
+            "__rowNum__": 4,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen5",
+            "promptIdx": 2
+          },
+          {
+            "type": "string",
+            "name": "id_rastreio",
+            "display": {
+              "prompt": {
+                "text": "Nº de rastreio"
+              }
+            },
+            "required": true,
             "_row_num": 6,
             "__rowNum__": 5,
             "_token_type": "prompt",
-            "_type": "select_one",
+            "_type": "string",
             "_branch_label_enclosing_screen": "survey/_screen6",
             "promptIdx": 3
           },
@@ -2481,6 +2491,10 @@
             "display": {
               "prompt": {
                 "text": "Data de Nascimento"
+              },
+              "adate": {
+                "fromYear": 2014,
+                "toYear": 2020
               }
             },
             "required": "data('DOB_ou_idade')=='1'",
@@ -2650,7 +2664,7 @@
           },
           {
             "type": "select_one",
-            "values_list": "yesno",
+            "values_list": "outra_condicao",
             "name": "outra_condicao",
             "display": {
               "prompt": {
@@ -2666,8 +2680,7 @@
             "promptIdx": 16
           },
           {
-            "type": "select_one",
-            "values_list": "outra_condicao",
+            "type": "text",
             "name": "especificar_condicao",
             "display": {
               "prompt": {
@@ -2678,7 +2691,7 @@
             "_row_num": 42,
             "__rowNum__": 41,
             "_token_type": "prompt",
-            "_type": "select_one",
+            "_type": "text",
             "_branch_label_enclosing_screen": "survey/_screen42",
             "promptIdx": 17
           },
@@ -3400,7 +3413,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 4,
+            "_row_num": 6,
             "section_name": "survey"
           },
           {
@@ -3418,7 +3431,7 @@
         "valuesList": "region",
         "_defn": [
           {
-            "_row_num": 5,
+            "_row_num": 4,
             "section_name": "survey"
           },
           {
@@ -3436,7 +3449,7 @@
         "valuesList": "cs",
         "_defn": [
           {
-            "_row_num": 6,
+            "_row_num": 5,
             "section_name": "survey"
           },
           {
@@ -3667,7 +3680,7 @@
       },
       "outra_condicao": {
         "type": "string",
-        "valuesList": "yesno",
+        "valuesList": "outra_condicao",
         "_defn": [
           {
             "_row_num": 40,
@@ -3685,7 +3698,6 @@
       },
       "especificar_condicao": {
         "type": "string",
-        "valuesList": "outra_condicao",
         "_defn": [
           {
             "_row_num": 42,
@@ -4608,13 +4620,6 @@
       },
       {
         "_partition": "Column",
-        "_aspect": "especificar_condicao",
-        "_key": "displayChoicesList",
-        "_type": "object",
-        "_value": "[{\"choice_list_name\":\"outra_condicao\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Febre causada por outra doença\"}},\"_row_num\":35},{\"choice_list_name\":\"outra_condicao\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"doença crónica/grave subjacente\"}},\"_row_num\":36},{\"choice_list_name\":\"outra_condicao\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"meducação regulas interfere ou contraindicação de QPS\"}},\"_row_num\":37}]"
-      },
-      {
-        "_partition": "Column",
         "_aspect": "exclusao",
         "_key": "displayChoicesList",
         "_type": "object",
@@ -4632,7 +4637,7 @@
         "_aspect": "outra_condicao",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+        "_value": "[{\"choice_list_name\":\"outra_condicao\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Febre causada por outra doença\"}},\"_row_num\":35},{\"choice_list_name\":\"outra_condicao\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"doença crónica/grave subjacente\"}},\"_row_num\":36},{\"choice_list_name\":\"outra_condicao\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"meducação regulas interfere ou contraindicação de QPS\"}},\"_row_num\":37}]"
       },
       {
         "_partition": "Column",

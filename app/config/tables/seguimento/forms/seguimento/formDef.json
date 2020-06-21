@@ -3,7 +3,7 @@
     "settings": [
       {
         "setting_name": "form_id",
-        "value": "dia01",
+        "value": "seguimento",
         "_row_num": 2
       },
       {
@@ -15,7 +15,7 @@
         "setting_name": "survey",
         "display": {
           "title": {
-            "text": "Formulário de seguimento de caso: dia 01"
+            "text": "Seguimento"
           }
         },
         "_row_num": 4
@@ -33,17 +33,17 @@
       },
       {
         "type": "note",
-        "name": "titulo_form_d1",
+        "name": "titulo_form",
         "display": {
           "prompt": {
-            "text": "Formulário de seguimento de caso dia 1"
+            "text": "Formulário de seguimento de caso dia {{visita_id}}"
           }
         },
         "_row_num": 4
       },
       {
         "type": "note",
-        "name": "cabezado_d1",
+        "name": "cabezado",
         "display": {
           "prompt": {
             "text": "Estás a fazer o seguimento de {{data.nome}}, ID de estudo: {{data.id_estudo}} \nFilho de {{data.nome_mae}} e de {{data.nome_pai}}\nque foi consulta no {{data.cs}}"
@@ -53,12 +53,13 @@
       },
       {
         "type": "string",
-        "name": "idestudo_d1",
+        "name": "idestudo",
         "display": {
           "prompt": {
             "text": "Código do estudo"
           }
         },
+        "required": true,
         "_row_num": 8
       },
       {
@@ -67,12 +68,12 @@
       },
       {
         "clause": "if",
-        "condition": "data('idestudo_d1') != data('id_estudo')",
+        "condition": "data('idestudo') != data('id_estudo')",
         "_row_num": 10
       },
       {
         "type": "note",
-        "name": "erro_d1",
+        "name": "erro",
         "display": {
           "prompt": {
             "text": "O código de estudo introduzido não corresponte com o codigo do estudo"
@@ -87,7 +88,7 @@
       {
         "type": "select_one",
         "values_list": "yesno",
-        "name": "presenca_d1",
+        "name": "presenca",
         "display": {
           "prompt": {
             "text": "A criança está presente e os pais e a criança aceitaram a tomar o medicamento?"
@@ -97,7 +98,7 @@
       },
       {
         "clause": "goto ausente",
-        "condition": "data('presenca_d1')=='2'",
+        "condition": "data('presenca')=='2'",
         "_row_num": 14
       },
       {
@@ -107,7 +108,7 @@
       {
         "type": "select_one",
         "values_list": "yesno",
-        "name": "sinais_perigo_d1",
+        "name": "sinais_perigo",
         "display": {
           "prompt": {
             "text": "Presença de sinais de perigo/paludismo severo ou complicado?"
@@ -117,15 +118,15 @@
       },
       {
         "clause": "if",
-        "condition": "data('sinais_perigo_d1')=='1'",
+        "condition": "data('sinais_perigo')=='1'",
         "_row_num": 17
       },
       {
         "type": "note",
-        "name": "gota_d1",
+        "name": "gota",
         "display": {
           "prompt": {
-            "text": "Se sim, fazer gota e esfregaço sanguineo"
+            "text": "<h2 style=\"text-align:center;background-color:#FA0;padding:15px;\">  \nSe sim, fazer gota e esfregaço sanguineo    \n  </h2>"
           }
         },
         "_row_num": 18
@@ -135,52 +136,49 @@
         "_row_num": 19
       },
       {
+        "clause": "end screen",
+        "_row_num": 20
+      },
+      {
+        "clause": "begin screen",
+        "_row_num": 21
+      },
+      {
         "type": "decimal",
-        "name": "temperatura_d1",
+        "name": "temperatura",
         "display": {
           "prompt": {
             "text": "Temperatura Axilar"
           }
         },
-        "_row_num": 20
+        "_row_num": 22
       },
       {
         "type": "select_one",
         "values_list": "yesno",
-        "name": "febre_d1",
+        "name": "febre",
         "display": {
           "prompt": {
             "text": "História de febre nas últimas 24 horas"
           }
         },
-        "_row_num": 21
+        "_row_num": 23
       },
       {
         "clause": "end screen",
-        "_row_num": 22
-      },
-      {
-        "clause": "begin screen",
         "_row_num": 24
       },
       {
-        "type": "select_one",
-        "values_list": "quantidade",
-        "name": "doente_d1",
-        "display": {
-          "prompt": {
-            "text": "A criança está doente?"
-          }
-        },
+        "clause": "begin screen",
         "_row_num": 25
       },
       {
         "type": "select_one",
-        "values_list": "intensidade",
-        "name": "vomito_d1",
+        "values_list": "quantidade",
+        "name": "doente",
         "display": {
           "prompt": {
-            "text": "Teve vómitos?"
+            "text": "A criança está doente?"
           }
         },
         "_row_num": 26
@@ -188,10 +186,10 @@
       {
         "type": "select_one",
         "values_list": "intensidade",
-        "name": "coceira_d1",
+        "name": "vomito",
         "display": {
           "prompt": {
-            "text": "Teve coceira?"
+            "text": "Teve vómitos?"
           }
         },
         "_row_num": 27
@@ -199,10 +197,10 @@
       {
         "type": "select_one",
         "values_list": "intensidade",
-        "name": "exantema_d1",
+        "name": "coceira",
         "display": {
           "prompt": {
-            "text": "Teve exantema"
+            "text": "Teve coceira?"
           }
         },
         "_row_num": 28
@@ -210,51 +208,51 @@
       {
         "type": "select_one",
         "values_list": "intensidade",
-        "name": "dor_articular_d1",
+        "name": "exantema",
         "display": {
           "prompt": {
-            "text": "Tem dor de articulações"
+            "text": "Teve exantema"
           }
         },
         "_row_num": 29
       },
       {
-        "clause": "end screen",
+        "type": "select_one",
+        "values_list": "intensidade",
+        "name": "dor_articular",
+        "display": {
+          "prompt": {
+            "text": "Tem dor de articulações"
+          }
+        },
         "_row_num": 30
       },
       {
-        "clause": "begin screen",
+        "clause": "end screen",
         "_row_num": 31
       },
       {
-        "type": "select_one",
-        "values_list": "frequencia",
-        "name": "come_d1",
-        "display": {
-          "prompt": {
-            "text": "A criança come:"
-          }
-        },
+        "clause": "begin screen",
         "_row_num": 32
       },
       {
         "type": "select_one",
         "values_list": "frequencia",
-        "name": "bebe_d1",
+        "name": "come",
         "display": {
           "prompt": {
-            "text": "A criança bebe:"
+            "text": "A criança come:"
           }
         },
         "_row_num": 33
       },
       {
         "type": "select_one",
-        "values_list": "yesno",
-        "name": "convulsao_d1",
+        "values_list": "frequencia",
+        "name": "bebe",
         "display": {
           "prompt": {
-            "text": "Teve convulções?"
+            "text": "A criança bebe:"
           }
         },
         "_row_num": 34
@@ -262,206 +260,226 @@
       {
         "type": "select_one",
         "values_list": "yesno",
-        "name": "outro_sintomas_d1",
+        "name": "convulsao",
         "display": {
           "prompt": {
-            "text": "Teve outros sintomas?"
+            "text": "Teve convulções?"
           }
         },
         "_row_num": 35
       },
       {
-        "clause": "if // outro_sintomas",
-        "condition": "data('outro_sintomas_d1')=='1'",
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "outro_sintomas",
+        "display": {
+          "prompt": {
+            "text": "Teve outros sintomas?"
+          }
+        },
         "_row_num": 36
       },
       {
+        "clause": "if // outro_sintomas",
+        "condition": "data('outro_sintomas')=='1'",
+        "_row_num": 37
+      },
+      {
         "type": "text",
-        "name": "esp_sintomas_d1",
+        "name": "esp_sintomas",
         "display": {
           "prompt": {
             "text": "Quais são outros sintomas:"
           }
         },
-        "_row_num": 37
-      },
-      {
-        "clause": "end if // outro_sintomas",
         "_row_num": 38
       },
       {
-        "clause": "end screen",
+        "clause": "end if // outro_sintomas",
         "_row_num": 39
+      },
+      {
+        "clause": "end screen",
+        "_row_num": 40
       },
       {
         "type": "select_one",
         "values_list": "yesno",
-        "name": "evento_adverso_d1",
+        "name": "evento_adverso",
         "display": {
           "prompt": {
             "text": "Teve um evento adverso sério?"
           }
         },
-        "_row_num": 40
-      },
-      {
-        "clause": "if",
-        "condition": "data('evento_adverso_d1')=='1'",
         "_row_num": 41
       },
       {
-        "clause": "begin screen",
+        "clause": "if",
+        "condition": "data('evento_adverso')=='1'",
         "_row_num": 42
       },
       {
+        "clause": "begin screen",
+        "_row_num": 43
+      },
+      {
         "type": "note",
-        "name": "nota_evento_d1",
+        "name": "nota_evento",
         "display": {
           "prompt": {
             "text": "Se sim, preencha o formulario adequado e informar ao projecto"
           }
         },
-        "_row_num": 43
+        "_row_num": 44
       },
       {
         "type": "linked_table",
         "values_list": "evento_adverso",
-        "_row_num": 44
-      },
-      {
-        "clause": "end screen",
         "_row_num": 45
       },
       {
-        "clause": "end if",
+        "clause": "end screen",
         "_row_num": 46
       },
       {
+        "clause": "end if",
+        "_row_num": 48
+      },
+      {
+        "clause": "if // aq",
+        "condition": "data('visita_id')<3",
+        "_row_num": 50
+      },
+      {
         "clause": "begin screen",
-        "_row_num": 47
+        "_row_num": 51
       },
       {
         "type": "note",
-        "name": "aq_d1",
+        "name": "aq",
         "display": {
           "prompt": {
             "text": "Amodiaquina"
           }
         },
-        "_row_num": 48
+        "_row_num": 52
       },
       {
         "type": "adate",
-        "name": "date_AQ_d1",
+        "name": "date_AQ",
         "display": {
           "prompt": {
             "text": "Data"
           }
         },
-        "_row_num": 49
+        "_row_num": 53
       },
       {
         "type": "time",
-        "name": "hora_AQ_d1",
+        "name": "hora_AQ",
         "display": {
           "prompt": {
             "text": "Hora"
           }
         },
-        "_row_num": 50
+        "_row_num": 54
       },
       {
         "type": "select_one",
         "values_list": "doseAQ",
-        "name": "dose_AQ_d1",
+        "name": "dose_AQ",
         "display": {
           "prompt": {
             "text": "Doses"
           }
         },
-        "_row_num": 51
+        "_row_num": 55
       },
       {
         "type": "select_one",
         "values_list": "yesno",
-        "name": "vomitou_AQ_d1",
+        "name": "vomitou_AQ",
         "display": {
           "prompt": {
             "text": "Vomitou?"
           }
         },
-        "_row_num": 52
+        "_row_num": 56
       },
       {
-        "clause": "if",
-        "condition": "data('vomitou_AQ_d1')=='1'",
-        "_row_num": 53
+        "clause": "if // vomito",
+        "condition": "data('vomitou_AQ')=='1'",
+        "_row_num": 57
       },
       {
         "type": "time",
-        "name": "hora_vomito_AQ_d1",
+        "name": "hora_vomito_AQ",
         "display": {
           "prompt": {
             "text": "A hora que vomitou AQ?"
           }
         },
-        "_row_num": 54
+        "_row_num": 58
       },
       {
-        "clause": "end if",
-        "_row_num": 55
+        "clause": "end if //vomito",
+        "_row_num": 59
       },
       {
         "clause": "end screen",
-        "_row_num": 56
+        "_row_num": 61
+      },
+      {
+        "clause": "end if //aq",
+        "_row_num": 62
       },
       {
         "type": "select_one",
         "values_list": "yesno",
-        "name": "outro_medicamento_d1",
+        "name": "outro_medicamento",
         "display": {
           "prompt": {
             "text": "Outros medicamentos administrados ( antipalúdicos, antibióticos ou anlgésicos)"
           }
         },
-        "_row_num": 58
+        "_row_num": 63
       },
       {
         "clause": "if // medi_previo",
-        "condition": "data('outro_medicamento_d1')=='1'",
-        "_row_num": 59
+        "condition": "data('outro_medicamento')=='1'",
+        "_row_num": 64
       },
       {
         "clause": "begin screen",
-        "_row_num": 60
+        "_row_num": 65
       },
       {
         "type": "note",
-        "name": "outros_medicamentos_d1",
+        "name": "outros_medicamentos",
         "display": {
           "prompt": {
             "text": "Lista de outros medicamentos administrados ( antipalúdicos, antibióticos ou anlgésicos)"
           }
         },
-        "_row_num": 61
+        "_row_num": 66
       },
       {
         "type": "linked_table",
         "values_list": "medicamento_administrado",
-        "_row_num": 62
+        "_row_num": 67
       },
       {
         "clause": "end screen",
-        "_row_num": 63
+        "_row_num": 68
       },
       {
         "clause": "end if // medi_previo",
-        "_row_num": 64
+        "_row_num": 69
       },
       {
         "type": "select_one",
         "values_list": "yesno",
-        "name": "lamina_d1",
+        "name": "lamina",
         "display": {
           "prompt": {
             "text": "Foi coletada amostra de sangue para a lâmina?"
@@ -470,43 +488,51 @@
             "text": "Preencher só se se fez gota espessa e esfregaço devido ao estado clínico ou a pedido do médico"
           }
         },
-        "_row_num": 65
+        "_row_num": 70
+      },
+      {
+        "clause": "goto ending",
+        "_row_num": 71
       },
       {
         "branch_label": "ausente",
         "type": "select_one",
         "values_list": "motivo",
-        "name": "motivo_ausencia_d1",
+        "name": "motivo_ausencia",
         "display": {
           "prompt": {
             "text": "Qual é a razão de não ver a criança?"
           }
         },
-        "_row_num": 67
+        "_row_num": 72
       },
       {
         "clause": "if",
-        "condition": "selected(data('motivo_ausencia_d1'),'4') || selected(data('motivo_ausencia_d1'),'5')",
-        "_row_num": 68
+        "condition": "selected(data('motivo_ausencia'),'4') || selected(data('motivo_ausencia'),'5')",
+        "_row_num": 73
       },
       {
         "type": "text",
-        "name": "esp_motivo_d1",
+        "name": "esp_motivo",
         "display": {
           "prompt": {
             "text": "Especifica a razão da recisa ou \"OUTRO\""
           }
         },
-        "_row_num": 69
+        "_row_num": 74
       },
       {
         "clause": "end if",
-        "_row_num": 70
+        "_row_num": 75
+      },
+      {
+        "branch_label": "ending",
+        "_row_num": 77
       },
       {
         "type": "text",
-        "name": "comentario_d1",
-        "_row_num": 71
+        "name": "comentario",
+        "_row_num": 78
       }
     ],
     "choices": [
@@ -969,24 +995,24 @@
     ],
     "queries": [
       {
-        "query_name": "evento_adverso",
-        "query_type": "linked_table",
-        "linked_form_id": "evento_adverso",
-        "linked_table_id": "evento_adverso",
-        "selection": "id_estudo=?",
-        "selectionArgs": "[ opendatakit.getCurrentInstanceId() ]",
-        "newRowInitialElementKeyToValueMap": "{}",
-        "openRowInitialElementKeyToValueMap": "{}",
-        "_row_num": 2
-      },
-      {
         "query_name": "medicamento_administrado",
         "query_type": "linked_table",
         "linked_form_id": "medicamento_administrado",
         "linked_table_id": "medicamento_administrado",
         "selection": "id_estudo=?",
-        "selectionArgs": "[ opendatakit.getCurrentInstanceId() ]",
-        "newRowInitialElementKeyToValueMap": "{}",
+        "selectionArgs": "[data('id_estudo')]",
+        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo')}",
+        "openRowInitialElementKeyToValueMap": "{}",
+        "_row_num": 2
+      },
+      {
+        "query_name": "evento_adverso",
+        "query_type": "linked_table",
+        "linked_form_id": "evento_adverso",
+        "linked_table_id": "evento_adverso",
+        "selection": "id_estudo=?",
+        "selectionArgs": "[data('id_estudo')]",
+        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo'), region: data('region'), cs: data('cs'), nome: data('nome'), DOB_ou_idade: data('DOB_ou_idade'), dn: data('dn'), ano: data('ano'), mes: data('mes'), sexo: data('sexo')}",
         "openRowInitialElementKeyToValueMap": "{}",
         "_row_num": 3
       }
@@ -1009,169 +1035,229 @@
     ],
     "model": [
       {
-        "type": "note",
-        "name": "titulo_form_d1",
-        "_row_num": 2
-      },
-      {
-        "type": "note",
-        "name": "cabezado_d1",
-        "_row_num": 3
-      },
-      {
-        "type": "string",
-        "name": "idestudo_d1",
-        "_row_num": 4
-      },
-      {
-        "type": "note",
-        "name": "erro_d1",
+        "type": "select_one",
+        "name": "region",
         "_row_num": 5
       },
       {
         "type": "select_one",
-        "name": "presenca_d1",
+        "name": "cs",
         "_row_num": 6
       },
       {
-        "type": "select_one",
-        "name": "sinais_perigo_d1",
+        "type": "text",
+        "name": "nome",
         "_row_num": 7
       },
       {
-        "type": "note",
-        "name": "gota_d1",
+        "type": "select_one",
+        "name": "DOB_ou_idade",
         "_row_num": 8
       },
       {
-        "type": "decimal",
-        "name": "temperatura_d1",
+        "type": "adate",
+        "name": "dn",
         "_row_num": 9
       },
       {
-        "type": "select_one",
-        "name": "febre_d1",
+        "type": "integer",
+        "name": "ano",
         "_row_num": 10
       },
       {
-        "type": "select_one",
-        "name": "doente_d1",
+        "type": "integer",
+        "name": "mes",
         "_row_num": 11
       },
       {
-        "type": "select_one",
-        "name": "vomito_d1",
-        "_row_num": 12
-      },
-      {
-        "type": "select_one",
-        "name": "coceira_d1",
+        "type": "string",
+        "name": "id_estudo",
         "_row_num": 13
       },
       {
         "type": "select_one",
-        "name": "exantema_d1",
+        "name": "sexo",
         "_row_num": 14
       },
       {
-        "type": "select_one",
-        "name": "dor_articular_d1",
+        "type": "string",
+        "name": "nome_mae",
         "_row_num": 15
       },
       {
-        "type": "select_one",
-        "name": "come_d1",
+        "type": "string",
+        "name": "nome_pai",
         "_row_num": 16
       },
       {
-        "type": "select_one",
-        "name": "bebe_d1",
+        "type": "note",
+        "name": "titulo_form",
         "_row_num": 17
       },
       {
-        "type": "select_one",
-        "name": "convulsao_d1",
+        "type": "note",
+        "name": "cabezado",
         "_row_num": 18
       },
       {
-        "type": "select_one",
-        "name": "outro_sintomas_d1",
+        "type": "integer",
+        "name": "visita_id",
         "_row_num": 19
       },
       {
-        "type": "text",
-        "name": "esp_sintomas_d1",
+        "type": "string",
+        "name": "idestudo",
         "_row_num": 20
       },
       {
-        "type": "select_one",
-        "name": "evento_adverso_d1",
+        "type": "note",
+        "name": "erro",
         "_row_num": 21
       },
       {
-        "type": "note",
-        "name": "nota_evento_d1",
+        "type": "select_one",
+        "name": "presenca",
         "_row_num": 22
       },
       {
-        "type": "note",
-        "name": "aq_d1",
+        "type": "select_one",
+        "name": "sinais_perigo",
         "_row_num": 23
       },
       {
-        "type": "adate",
-        "name": "date_AQ_d1",
+        "type": "note",
+        "name": "gota",
         "_row_num": 24
       },
       {
-        "type": "time",
-        "name": "hora_AQ_d1",
+        "type": "decimal",
+        "name": "temperatura",
         "_row_num": 25
       },
       {
         "type": "select_one",
-        "name": "dose_AQ_d1",
+        "name": "febre",
         "_row_num": 26
       },
       {
         "type": "select_one",
-        "name": "vomitou_AQ_d1",
+        "name": "doente",
         "_row_num": 27
       },
       {
-        "type": "time",
-        "name": "hora_vomito_AQ_d1",
+        "type": "select_one",
+        "name": "vomito",
         "_row_num": 28
       },
       {
         "type": "select_one",
-        "name": "outro_medicamento_d1",
+        "name": "coceira",
         "_row_num": 29
       },
       {
-        "type": "note",
-        "name": "outros_medicamentos_d1",
+        "type": "select_one",
+        "name": "exantema",
         "_row_num": 30
       },
       {
         "type": "select_one",
-        "name": "lamina_d1",
+        "name": "dor_articular",
         "_row_num": 31
       },
       {
         "type": "select_one",
-        "name": "motivo_ausencia_d1",
+        "name": "come",
         "_row_num": 32
       },
       {
-        "type": "text",
-        "name": "esp_motivo_d1",
+        "type": "select_one",
+        "name": "bebe",
         "_row_num": 33
       },
       {
-        "type": "text",
-        "name": "comentario_d1",
+        "type": "select_one",
+        "name": "convulsao",
         "_row_num": 34
+      },
+      {
+        "type": "select_one",
+        "name": "outro_sintomas",
+        "_row_num": 35
+      },
+      {
+        "type": "text",
+        "name": "esp_sintomas",
+        "_row_num": 36
+      },
+      {
+        "type": "select_one",
+        "name": "evento_adverso",
+        "_row_num": 37
+      },
+      {
+        "type": "note",
+        "name": "nota_evento",
+        "_row_num": 38
+      },
+      {
+        "type": "note",
+        "name": "aq",
+        "_row_num": 39
+      },
+      {
+        "type": "adate",
+        "name": "date_AQ",
+        "_row_num": 40
+      },
+      {
+        "type": "time",
+        "name": "hora_AQ",
+        "_row_num": 41
+      },
+      {
+        "type": "select_one",
+        "name": "dose_AQ",
+        "_row_num": 42
+      },
+      {
+        "type": "select_one",
+        "name": "vomitou_AQ",
+        "_row_num": 43
+      },
+      {
+        "type": "time",
+        "name": "hora_vomito_AQ",
+        "_row_num": 44
+      },
+      {
+        "type": "select_one",
+        "name": "outro_medicamento",
+        "_row_num": 45
+      },
+      {
+        "type": "note",
+        "name": "outros_medicamentos",
+        "_row_num": 46
+      },
+      {
+        "type": "select_one",
+        "name": "lamina",
+        "_row_num": 47
+      },
+      {
+        "type": "select_one",
+        "name": "motivo_ausencia",
+        "_row_num": 48
+      },
+      {
+        "type": "text",
+        "name": "esp_motivo",
+        "_row_num": 49
+      },
+      {
+        "type": "text",
+        "name": "comentario",
+        "_row_num": 50
       }
     ]
   },
@@ -1194,7 +1280,7 @@
     "settings": {
       "form_id": {
         "setting_name": "form_id",
-        "value": "dia01",
+        "value": "seguimento",
         "_row_num": 2
       },
       "form_version": {
@@ -1206,7 +1292,7 @@
         "setting_name": "survey",
         "display": {
           "title": {
-            "text": "Formulário de seguimento de caso: dia 01"
+            "text": "Seguimento"
           }
         },
         "_row_num": 4
@@ -1239,7 +1325,7 @@
         "setting_name": "survey",
         "display": {
           "title": {
-            "text": "Formulário de seguimento de caso: dia 01"
+            "text": "Seguimento"
           }
         },
         "_row_num": 4
@@ -1735,330 +1821,76 @@
         }
       ]
     },
+    "table_specific_definitions": {
+      "_tokens": {}
+    },
     "queries": {
-      "evento_adverso": {
-        "query_name": "evento_adverso",
-        "query_type": "linked_table",
-        "linked_form_id": "evento_adverso",
-        "linked_table_id": "evento_adverso",
-        "selection": "id_estudo=?",
-        "selectionArgs": "[ opendatakit.getCurrentInstanceId() ]",
-        "newRowInitialElementKeyToValueMap": "{}",
-        "openRowInitialElementKeyToValueMap": "{}",
-        "_row_num": 2
-      },
       "medicamento_administrado": {
         "query_name": "medicamento_administrado",
         "query_type": "linked_table",
         "linked_form_id": "medicamento_administrado",
         "linked_table_id": "medicamento_administrado",
         "selection": "id_estudo=?",
-        "selectionArgs": "[ opendatakit.getCurrentInstanceId() ]",
-        "newRowInitialElementKeyToValueMap": "{}",
+        "selectionArgs": "[data('id_estudo')]",
+        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo')}",
+        "openRowInitialElementKeyToValueMap": "{}",
+        "_row_num": 2
+      },
+      "evento_adverso": {
+        "query_name": "evento_adverso",
+        "query_type": "linked_table",
+        "linked_form_id": "evento_adverso",
+        "linked_table_id": "evento_adverso",
+        "selection": "id_estudo=?",
+        "selectionArgs": "[data('id_estudo')]",
+        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo'), region: data('region'), cs: data('cs'), nome: data('nome'), DOB_ou_idade: data('DOB_ou_idade'), dn: data('dn'), ano: data('ano'), mes: data('mes'), sexo: data('sexo')}",
         "openRowInitialElementKeyToValueMap": "{}",
         "_row_num": 3
       }
     },
     "calculates": {},
     "model": {
-      "titulo_form_d1": {
-        "_defn": [
-          {
-            "_row_num": 2,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "titulo_form_d1"
-      },
-      "cabezado_d1": {
-        "_defn": [
-          {
-            "_row_num": 3,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "cabezado_d1"
-      },
-      "idestudo_d1": {
+      "region": {
         "type": "string",
-        "_defn": [
-          {
-            "_row_num": 8,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 4,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "idestudo_d1"
-      },
-      "erro_d1": {
         "_defn": [
           {
             "_row_num": 5,
             "section_name": "model"
           }
         ],
-        "type": "note",
-        "elementKey": "erro_d1"
+        "elementKey": "region"
       },
-      "presenca_d1": {
+      "cs": {
         "type": "string",
-        "valuesList": "yesno",
         "_defn": [
-          {
-            "_row_num": 13,
-            "section_name": "survey"
-          },
           {
             "_row_num": 6,
             "section_name": "model"
           }
         ],
-        "elementKey": "presenca_d1"
+        "elementKey": "cs"
       },
-      "sinais_perigo_d1": {
+      "nome": {
         "type": "string",
-        "valuesList": "yesno",
         "_defn": [
-          {
-            "_row_num": 16,
-            "section_name": "survey"
-          },
           {
             "_row_num": 7,
             "section_name": "model"
           }
         ],
-        "elementKey": "sinais_perigo_d1"
+        "elementKey": "nome"
       },
-      "gota_d1": {
+      "DOB_ou_idade": {
+        "type": "string",
         "_defn": [
           {
             "_row_num": 8,
             "section_name": "model"
           }
         ],
-        "type": "note",
-        "elementKey": "gota_d1"
+        "elementKey": "DOB_ou_idade"
       },
-      "temperatura_d1": {
-        "type": "number",
-        "_defn": [
-          {
-            "_row_num": 20,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 9,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "temperatura_d1"
-      },
-      "febre_d1": {
-        "type": "string",
-        "valuesList": "yesno",
-        "_defn": [
-          {
-            "_row_num": 21,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 10,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "febre_d1"
-      },
-      "doente_d1": {
-        "type": "string",
-        "valuesList": "quantidade",
-        "_defn": [
-          {
-            "_row_num": 25,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 11,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "doente_d1"
-      },
-      "vomito_d1": {
-        "type": "string",
-        "valuesList": "intensidade",
-        "_defn": [
-          {
-            "_row_num": 26,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 12,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "vomito_d1"
-      },
-      "coceira_d1": {
-        "type": "string",
-        "valuesList": "intensidade",
-        "_defn": [
-          {
-            "_row_num": 27,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 13,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "coceira_d1"
-      },
-      "exantema_d1": {
-        "type": "string",
-        "valuesList": "intensidade",
-        "_defn": [
-          {
-            "_row_num": 28,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 14,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "exantema_d1"
-      },
-      "dor_articular_d1": {
-        "type": "string",
-        "valuesList": "intensidade",
-        "_defn": [
-          {
-            "_row_num": 29,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 15,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "dor_articular_d1"
-      },
-      "come_d1": {
-        "type": "string",
-        "valuesList": "frequencia",
-        "_defn": [
-          {
-            "_row_num": 32,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 16,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "come_d1"
-      },
-      "bebe_d1": {
-        "type": "string",
-        "valuesList": "frequencia",
-        "_defn": [
-          {
-            "_row_num": 33,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 17,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "bebe_d1"
-      },
-      "convulsao_d1": {
-        "type": "string",
-        "valuesList": "yesno",
-        "_defn": [
-          {
-            "_row_num": 34,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 18,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "convulsao_d1"
-      },
-      "outro_sintomas_d1": {
-        "type": "string",
-        "valuesList": "yesno",
-        "_defn": [
-          {
-            "_row_num": 35,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 19,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "outro_sintomas_d1"
-      },
-      "esp_sintomas_d1": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 37,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 20,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "esp_sintomas_d1"
-      },
-      "evento_adverso_d1": {
-        "type": "string",
-        "valuesList": "yesno",
-        "_defn": [
-          {
-            "_row_num": 40,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 21,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "evento_adverso_d1"
-      },
-      "nota_evento_d1": {
-        "_defn": [
-          {
-            "_row_num": 22,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "nota_evento_d1"
-      },
-      "aq_d1": {
-        "_defn": [
-          {
-            "_row_num": 23,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "aq_d1"
-      },
-      "date_AQ_d1": {
+      "dn": {
         "prompt_type_name": "adate",
         "type": "string",
         "elementType": "string",
@@ -2067,22 +1899,171 @@
         "__rowNum__": 2,
         "_defn": [
           {
-            "_row_num": 49,
+            "_row_num": 9,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "dn"
+      },
+      "ano": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 10,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "ano"
+      },
+      "mes": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 11,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "mes"
+      },
+      "id_estudo": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 13,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "id_estudo"
+      },
+      "sexo": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 14,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "sexo"
+      },
+      "nome_mae": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 15,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "nome_mae"
+      },
+      "nome_pai": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 16,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "nome_pai"
+      },
+      "titulo_form": {
+        "_defn": [
+          {
+            "_row_num": 17,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "titulo_form"
+      },
+      "cabezado": {
+        "_defn": [
+          {
+            "_row_num": 18,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "cabezado"
+      },
+      "visita_id": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 19,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "visita_id"
+      },
+      "idestudo": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 8,
             "section_name": "survey"
           },
+          {
+            "_row_num": 20,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "idestudo"
+      },
+      "erro": {
+        "_defn": [
+          {
+            "_row_num": 21,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "erro"
+      },
+      "presenca": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 13,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 22,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "presenca"
+      },
+      "sinais_perigo": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 16,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 23,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "sinais_perigo"
+      },
+      "gota": {
+        "_defn": [
           {
             "_row_num": 24,
             "section_name": "model"
           }
         ],
-        "elementKey": "date_AQ_d1"
+        "type": "note",
+        "elementKey": "gota"
       },
-      "hora_AQ_d1": {
-        "type": "string",
-        "elementType": "time",
+      "temperatura": {
+        "type": "number",
         "_defn": [
           {
-            "_row_num": 50,
+            "_row_num": 22,
             "section_name": "survey"
           },
           {
@@ -2090,14 +2071,14 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "hora_AQ_d1"
+        "elementKey": "temperatura"
       },
-      "dose_AQ_d1": {
+      "febre": {
         "type": "string",
-        "valuesList": "doseAQ",
+        "valuesList": "yesno",
         "_defn": [
           {
-            "_row_num": 51,
+            "_row_num": 23,
             "section_name": "survey"
           },
           {
@@ -2105,14 +2086,14 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "dose_AQ_d1"
+        "elementKey": "febre"
       },
-      "vomitou_AQ_d1": {
+      "doente": {
         "type": "string",
-        "valuesList": "yesno",
+        "valuesList": "quantidade",
         "_defn": [
           {
-            "_row_num": 52,
+            "_row_num": 26,
             "section_name": "survey"
           },
           {
@@ -2120,9 +2101,197 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "vomitou_AQ_d1"
+        "elementKey": "doente"
       },
-      "hora_vomito_AQ_d1": {
+      "vomito": {
+        "type": "string",
+        "valuesList": "intensidade",
+        "_defn": [
+          {
+            "_row_num": 27,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 28,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "vomito"
+      },
+      "coceira": {
+        "type": "string",
+        "valuesList": "intensidade",
+        "_defn": [
+          {
+            "_row_num": 28,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 29,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "coceira"
+      },
+      "exantema": {
+        "type": "string",
+        "valuesList": "intensidade",
+        "_defn": [
+          {
+            "_row_num": 29,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 30,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "exantema"
+      },
+      "dor_articular": {
+        "type": "string",
+        "valuesList": "intensidade",
+        "_defn": [
+          {
+            "_row_num": 30,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 31,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "dor_articular"
+      },
+      "come": {
+        "type": "string",
+        "valuesList": "frequencia",
+        "_defn": [
+          {
+            "_row_num": 33,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 32,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "come"
+      },
+      "bebe": {
+        "type": "string",
+        "valuesList": "frequencia",
+        "_defn": [
+          {
+            "_row_num": 34,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 33,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "bebe"
+      },
+      "convulsao": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 35,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 34,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "convulsao"
+      },
+      "outro_sintomas": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 36,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 35,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "outro_sintomas"
+      },
+      "esp_sintomas": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 38,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 36,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "esp_sintomas"
+      },
+      "evento_adverso": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 41,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 37,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "evento_adverso"
+      },
+      "nota_evento": {
+        "_defn": [
+          {
+            "_row_num": 38,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "nota_evento"
+      },
+      "aq": {
+        "_defn": [
+          {
+            "_row_num": 39,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "aq"
+      },
+      "date_AQ": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 53,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 40,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "date_AQ"
+      },
+      "hora_AQ": {
         "type": "string",
         "elementType": "time",
         "_defn": [
@@ -2131,94 +2300,139 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 28,
+            "_row_num": 41,
             "section_name": "model"
           }
         ],
-        "elementKey": "hora_vomito_AQ_d1"
+        "elementKey": "hora_AQ"
       },
-      "outro_medicamento_d1": {
+      "dose_AQ": {
+        "type": "string",
+        "valuesList": "doseAQ",
+        "_defn": [
+          {
+            "_row_num": 55,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 42,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "dose_AQ"
+      },
+      "vomitou_AQ": {
         "type": "string",
         "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 56,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 43,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "vomitou_AQ"
+      },
+      "hora_vomito_AQ": {
+        "type": "string",
+        "elementType": "time",
         "_defn": [
           {
             "_row_num": 58,
             "section_name": "survey"
           },
           {
-            "_row_num": 29,
+            "_row_num": 44,
             "section_name": "model"
           }
         ],
-        "elementKey": "outro_medicamento_d1"
+        "elementKey": "hora_vomito_AQ"
       },
-      "outros_medicamentos_d1": {
-        "_defn": [
-          {
-            "_row_num": 30,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "outros_medicamentos_d1"
-      },
-      "lamina_d1": {
+      "outro_medicamento": {
         "type": "string",
         "valuesList": "yesno",
         "_defn": [
           {
-            "_row_num": 65,
+            "_row_num": 63,
             "section_name": "survey"
           },
           {
-            "_row_num": 31,
+            "_row_num": 45,
             "section_name": "model"
           }
         ],
-        "elementKey": "lamina_d1"
+        "elementKey": "outro_medicamento"
       },
-      "motivo_ausencia_d1": {
+      "outros_medicamentos": {
+        "_defn": [
+          {
+            "_row_num": 46,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "outros_medicamentos"
+      },
+      "lamina": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 70,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 47,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "lamina"
+      },
+      "motivo_ausencia": {
         "type": "string",
         "valuesList": "motivo",
         "_defn": [
           {
-            "_row_num": 67,
+            "_row_num": 72,
             "section_name": "survey"
           },
           {
-            "_row_num": 32,
+            "_row_num": 48,
             "section_name": "model"
           }
         ],
-        "elementKey": "motivo_ausencia_d1"
+        "elementKey": "motivo_ausencia"
       },
-      "esp_motivo_d1": {
+      "esp_motivo": {
         "type": "string",
         "_defn": [
           {
-            "_row_num": 69,
+            "_row_num": 74,
             "section_name": "survey"
           },
           {
-            "_row_num": 33,
+            "_row_num": 49,
             "section_name": "model"
           }
         ],
-        "elementKey": "esp_motivo_d1"
+        "elementKey": "esp_motivo"
       },
-      "comentario_d1": {
+      "comentario": {
         "type": "string",
         "_defn": [
           {
-            "_row_num": 71,
+            "_row_num": 78,
             "section_name": "survey"
           },
           {
-            "_row_num": 34,
+            "_row_num": 50,
             "section_name": "model"
           }
         ],
-        "elementKey": "comentario_d1"
+        "elementKey": "comentario"
       }
     },
     "section_names": [
@@ -2233,10 +2447,10 @@
         "prompts": [
           {
             "type": "note",
-            "name": "titulo_form_d1",
+            "name": "titulo_form",
             "display": {
               "prompt": {
-                "text": "Formulário de seguimento de caso dia 1"
+                "text": "Formulário de seguimento de caso dia {{visita_id}}"
               }
             },
             "_row_num": 4,
@@ -2248,7 +2462,7 @@
           },
           {
             "type": "note",
-            "name": "cabezado_d1",
+            "name": "cabezado",
             "display": {
               "prompt": {
                 "text": "Estás a fazer o seguimento de {{data.nome}}, ID de estudo: {{data.id_estudo}} \nFilho de {{data.nome_mae}} e de {{data.nome_pai}}\nque foi consulta no {{data.cs}}"
@@ -2263,12 +2477,13 @@
           },
           {
             "type": "string",
-            "name": "idestudo_d1",
+            "name": "idestudo",
             "display": {
               "prompt": {
                 "text": "Código do estudo"
               }
             },
+            "required": true,
             "_row_num": 8,
             "__rowNum__": 7,
             "_token_type": "prompt",
@@ -2278,7 +2493,7 @@
           },
           {
             "type": "note",
-            "name": "erro_d1",
+            "name": "erro",
             "display": {
               "prompt": {
                 "text": "O código de estudo introduzido não corresponte com o codigo do estudo"
@@ -2294,7 +2509,7 @@
           {
             "type": "select_one",
             "values_list": "yesno",
-            "name": "presenca_d1",
+            "name": "presenca",
             "display": {
               "prompt": {
                 "text": "A criança está presente e os pais e a criança aceitaram a tomar o medicamento?"
@@ -2310,7 +2525,7 @@
           {
             "type": "select_one",
             "values_list": "yesno",
-            "name": "sinais_perigo_d1",
+            "name": "sinais_perigo",
             "display": {
               "prompt": {
                 "text": "Presença de sinais de perigo/paludismo severo ou complicado?"
@@ -2325,10 +2540,10 @@
           },
           {
             "type": "note",
-            "name": "gota_d1",
+            "name": "gota",
             "display": {
               "prompt": {
-                "text": "Se sim, fazer gota e esfregaço sanguineo"
+                "text": "<h2 style=\"text-align:center;background-color:#FA0;padding:15px;\">  \nSe sim, fazer gota e esfregaço sanguineo    \n  </h2>"
               }
             },
             "_row_num": 18,
@@ -2340,372 +2555,372 @@
           },
           {
             "type": "decimal",
-            "name": "temperatura_d1",
+            "name": "temperatura",
             "display": {
               "prompt": {
                 "text": "Temperatura Axilar"
               }
             },
-            "_row_num": 20,
-            "__rowNum__": 19,
+            "_row_num": 22,
+            "__rowNum__": 21,
             "_token_type": "prompt",
             "_type": "decimal",
-            "_branch_label_enclosing_screen": "survey/_screen15",
+            "_branch_label_enclosing_screen": "survey/_screen21",
             "promptIdx": 7
           },
           {
             "type": "select_one",
             "values_list": "yesno",
-            "name": "febre_d1",
+            "name": "febre",
             "display": {
               "prompt": {
                 "text": "História de febre nas últimas 24 horas"
               }
             },
-            "_row_num": 21,
-            "__rowNum__": 20,
+            "_row_num": 23,
+            "__rowNum__": 22,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen15",
+            "_branch_label_enclosing_screen": "survey/_screen21",
             "promptIdx": 8
           },
           {
             "type": "select_one",
             "values_list": "quantidade",
-            "name": "doente_d1",
+            "name": "doente",
             "display": {
               "prompt": {
                 "text": "A criança está doente?"
-              }
-            },
-            "_row_num": 25,
-            "__rowNum__": 24,
-            "_token_type": "prompt",
-            "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen24",
-            "promptIdx": 9
-          },
-          {
-            "type": "select_one",
-            "values_list": "intensidade",
-            "name": "vomito_d1",
-            "display": {
-              "prompt": {
-                "text": "Teve vómitos?"
               }
             },
             "_row_num": 26,
             "__rowNum__": 25,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen24",
-            "promptIdx": 10
+            "_branch_label_enclosing_screen": "survey/_screen25",
+            "promptIdx": 9
           },
           {
             "type": "select_one",
             "values_list": "intensidade",
-            "name": "coceira_d1",
+            "name": "vomito",
             "display": {
               "prompt": {
-                "text": "Teve coceira?"
+                "text": "Teve vómitos?"
               }
             },
             "_row_num": 27,
             "__rowNum__": 26,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen24",
-            "promptIdx": 11
+            "_branch_label_enclosing_screen": "survey/_screen25",
+            "promptIdx": 10
           },
           {
             "type": "select_one",
             "values_list": "intensidade",
-            "name": "exantema_d1",
+            "name": "coceira",
             "display": {
               "prompt": {
-                "text": "Teve exantema"
+                "text": "Teve coceira?"
               }
             },
             "_row_num": 28,
             "__rowNum__": 27,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen24",
-            "promptIdx": 12
+            "_branch_label_enclosing_screen": "survey/_screen25",
+            "promptIdx": 11
           },
           {
             "type": "select_one",
             "values_list": "intensidade",
-            "name": "dor_articular_d1",
+            "name": "exantema",
             "display": {
               "prompt": {
-                "text": "Tem dor de articulações"
+                "text": "Teve exantema"
               }
             },
             "_row_num": 29,
             "__rowNum__": 28,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen24",
+            "_branch_label_enclosing_screen": "survey/_screen25",
+            "promptIdx": 12
+          },
+          {
+            "type": "select_one",
+            "values_list": "intensidade",
+            "name": "dor_articular",
+            "display": {
+              "prompt": {
+                "text": "Tem dor de articulações"
+              }
+            },
+            "_row_num": 30,
+            "__rowNum__": 29,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen25",
             "promptIdx": 13
           },
           {
             "type": "select_one",
             "values_list": "frequencia",
-            "name": "come_d1",
+            "name": "come",
             "display": {
               "prompt": {
                 "text": "A criança come:"
-              }
-            },
-            "_row_num": 32,
-            "__rowNum__": 31,
-            "_token_type": "prompt",
-            "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen31",
-            "promptIdx": 14
-          },
-          {
-            "type": "select_one",
-            "values_list": "frequencia",
-            "name": "bebe_d1",
-            "display": {
-              "prompt": {
-                "text": "A criança bebe:"
               }
             },
             "_row_num": 33,
             "__rowNum__": 32,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen31",
-            "promptIdx": 15
+            "_branch_label_enclosing_screen": "survey/_screen32",
+            "promptIdx": 14
           },
           {
             "type": "select_one",
-            "values_list": "yesno",
-            "name": "convulsao_d1",
+            "values_list": "frequencia",
+            "name": "bebe",
             "display": {
               "prompt": {
-                "text": "Teve convulções?"
+                "text": "A criança bebe:"
               }
             },
             "_row_num": 34,
             "__rowNum__": 33,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen31",
-            "promptIdx": 16
+            "_branch_label_enclosing_screen": "survey/_screen32",
+            "promptIdx": 15
           },
           {
             "type": "select_one",
             "values_list": "yesno",
-            "name": "outro_sintomas_d1",
+            "name": "convulsao",
             "display": {
               "prompt": {
-                "text": "Teve outros sintomas?"
+                "text": "Teve convulções?"
               }
             },
             "_row_num": 35,
             "__rowNum__": 34,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen31",
+            "_branch_label_enclosing_screen": "survey/_screen32",
+            "promptIdx": 16
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "outro_sintomas",
+            "display": {
+              "prompt": {
+                "text": "Teve outros sintomas?"
+              }
+            },
+            "_row_num": 36,
+            "__rowNum__": 35,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen32",
             "promptIdx": 17
           },
           {
             "type": "text",
-            "name": "esp_sintomas_d1",
+            "name": "esp_sintomas",
             "display": {
               "prompt": {
                 "text": "Quais são outros sintomas:"
               }
             },
-            "_row_num": 37,
-            "__rowNum__": 36,
+            "_row_num": 38,
+            "__rowNum__": 37,
             "_token_type": "prompt",
             "_type": "text",
-            "_branch_label_enclosing_screen": "survey/_screen31",
+            "_branch_label_enclosing_screen": "survey/_screen32",
             "promptIdx": 18
           },
           {
             "type": "select_one",
             "values_list": "yesno",
-            "name": "evento_adverso_d1",
+            "name": "evento_adverso",
             "display": {
               "prompt": {
                 "text": "Teve um evento adverso sério?"
               }
             },
-            "_row_num": 40,
-            "__rowNum__": 39,
+            "_row_num": 41,
+            "__rowNum__": 40,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen40",
+            "_branch_label_enclosing_screen": "survey/_screen41",
             "promptIdx": 19
           },
           {
             "type": "note",
-            "name": "nota_evento_d1",
+            "name": "nota_evento",
             "display": {
               "prompt": {
                 "text": "Se sim, preencha o formulario adequado e informar ao projecto"
               }
             },
-            "_row_num": 43,
-            "__rowNum__": 42,
+            "_row_num": 44,
+            "__rowNum__": 43,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen42",
+            "_branch_label_enclosing_screen": "survey/_screen43",
             "promptIdx": 20
           },
           {
             "type": "linked_table",
             "values_list": "evento_adverso",
-            "_row_num": 44,
-            "__rowNum__": 43,
+            "_row_num": 45,
+            "__rowNum__": 44,
             "_token_type": "prompt",
             "_type": "linked_table",
-            "_branch_label_enclosing_screen": "survey/_screen42",
+            "_branch_label_enclosing_screen": "survey/_screen43",
             "promptIdx": 21
           },
           {
             "type": "note",
-            "name": "aq_d1",
+            "name": "aq",
             "display": {
               "prompt": {
                 "text": "Amodiaquina"
               }
             },
-            "_row_num": 48,
-            "__rowNum__": 47,
+            "_row_num": 52,
+            "__rowNum__": 51,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen47",
+            "_branch_label_enclosing_screen": "survey/_screen51",
             "promptIdx": 22
           },
           {
             "type": "adate",
-            "name": "date_AQ_d1",
+            "name": "date_AQ",
             "display": {
               "prompt": {
                 "text": "Data"
               }
             },
-            "_row_num": 49,
-            "__rowNum__": 48,
+            "_row_num": 53,
+            "__rowNum__": 52,
             "_token_type": "prompt",
             "_type": "adate",
-            "_branch_label_enclosing_screen": "survey/_screen47",
+            "_branch_label_enclosing_screen": "survey/_screen51",
             "promptIdx": 23
           },
           {
             "type": "time",
-            "name": "hora_AQ_d1",
+            "name": "hora_AQ",
             "display": {
               "prompt": {
                 "text": "Hora"
-              }
-            },
-            "_row_num": 50,
-            "__rowNum__": 49,
-            "_token_type": "prompt",
-            "_type": "time",
-            "_branch_label_enclosing_screen": "survey/_screen47",
-            "promptIdx": 24
-          },
-          {
-            "type": "select_one",
-            "values_list": "doseAQ",
-            "name": "dose_AQ_d1",
-            "display": {
-              "prompt": {
-                "text": "Doses"
-              }
-            },
-            "_row_num": 51,
-            "__rowNum__": 50,
-            "_token_type": "prompt",
-            "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen47",
-            "promptIdx": 25
-          },
-          {
-            "type": "select_one",
-            "values_list": "yesno",
-            "name": "vomitou_AQ_d1",
-            "display": {
-              "prompt": {
-                "text": "Vomitou?"
-              }
-            },
-            "_row_num": 52,
-            "__rowNum__": 51,
-            "_token_type": "prompt",
-            "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen47",
-            "promptIdx": 26
-          },
-          {
-            "type": "time",
-            "name": "hora_vomito_AQ_d1",
-            "display": {
-              "prompt": {
-                "text": "A hora que vomitou AQ?"
               }
             },
             "_row_num": 54,
             "__rowNum__": 53,
             "_token_type": "prompt",
             "_type": "time",
-            "_branch_label_enclosing_screen": "survey/_screen47",
-            "promptIdx": 27
+            "_branch_label_enclosing_screen": "survey/_screen51",
+            "promptIdx": 24
+          },
+          {
+            "type": "select_one",
+            "values_list": "doseAQ",
+            "name": "dose_AQ",
+            "display": {
+              "prompt": {
+                "text": "Doses"
+              }
+            },
+            "_row_num": 55,
+            "__rowNum__": 54,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen51",
+            "promptIdx": 25
           },
           {
             "type": "select_one",
             "values_list": "yesno",
-            "name": "outro_medicamento_d1",
+            "name": "vomitou_AQ",
             "display": {
               "prompt": {
-                "text": "Outros medicamentos administrados ( antipalúdicos, antibióticos ou anlgésicos)"
+                "text": "Vomitou?"
+              }
+            },
+            "_row_num": 56,
+            "__rowNum__": 55,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen51",
+            "promptIdx": 26
+          },
+          {
+            "type": "time",
+            "name": "hora_vomito_AQ",
+            "display": {
+              "prompt": {
+                "text": "A hora que vomitou AQ?"
               }
             },
             "_row_num": 58,
             "__rowNum__": 57,
             "_token_type": "prompt",
+            "_type": "time",
+            "_branch_label_enclosing_screen": "survey/_screen51",
+            "promptIdx": 27
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "outro_medicamento",
+            "display": {
+              "prompt": {
+                "text": "Outros medicamentos administrados ( antipalúdicos, antibióticos ou anlgésicos)"
+              }
+            },
+            "_row_num": 63,
+            "__rowNum__": 62,
+            "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen58",
+            "_branch_label_enclosing_screen": "survey/_screen63",
             "promptIdx": 28
           },
           {
             "type": "note",
-            "name": "outros_medicamentos_d1",
+            "name": "outros_medicamentos",
             "display": {
               "prompt": {
                 "text": "Lista de outros medicamentos administrados ( antipalúdicos, antibióticos ou anlgésicos)"
               }
             },
-            "_row_num": 61,
-            "__rowNum__": 60,
+            "_row_num": 66,
+            "__rowNum__": 65,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen60",
+            "_branch_label_enclosing_screen": "survey/_screen65",
             "promptIdx": 29
           },
           {
             "type": "linked_table",
             "values_list": "medicamento_administrado",
-            "_row_num": 62,
-            "__rowNum__": 61,
+            "_row_num": 67,
+            "__rowNum__": 66,
             "_token_type": "prompt",
             "_type": "linked_table",
-            "_branch_label_enclosing_screen": "survey/_screen60",
+            "_branch_label_enclosing_screen": "survey/_screen65",
             "promptIdx": 30
           },
           {
             "type": "select_one",
             "values_list": "yesno",
-            "name": "lamina_d1",
+            "name": "lamina",
             "display": {
               "prompt": {
                 "text": "Foi coletada amostra de sangue para a lâmina?"
@@ -2714,65 +2929,67 @@
                 "text": "Preencher só se se fez gota espessa e esfregaço devido ao estado clínico ou a pedido do médico"
               }
             },
-            "_row_num": 65,
-            "__rowNum__": 64,
+            "_row_num": 70,
+            "__rowNum__": 69,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen65",
+            "_branch_label_enclosing_screen": "survey/_screen70",
             "promptIdx": 31
           },
           {
             "type": "select_one",
             "values_list": "motivo",
-            "name": "motivo_ausencia_d1",
+            "name": "motivo_ausencia",
             "display": {
               "prompt": {
                 "text": "Qual é a razão de não ver a criança?"
               }
             },
-            "_row_num": 67,
-            "__rowNum__": 66,
+            "_row_num": 72,
+            "__rowNum__": 71,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen67",
+            "_branch_label_enclosing_screen": "survey/_screen72",
             "promptIdx": 32
           },
           {
             "type": "text",
-            "name": "esp_motivo_d1",
+            "name": "esp_motivo",
             "display": {
               "prompt": {
                 "text": "Especifica a razão da recisa ou \"OUTRO\""
               }
             },
-            "_row_num": 69,
-            "__rowNum__": 68,
+            "_row_num": 74,
+            "__rowNum__": 73,
             "_token_type": "prompt",
             "_type": "text",
-            "_branch_label_enclosing_screen": "survey/_screen69",
+            "_branch_label_enclosing_screen": "survey/_screen74",
             "promptIdx": 33
           },
           {
             "type": "text",
-            "name": "comentario_d1",
-            "_row_num": 71,
-            "__rowNum__": 70,
+            "name": "comentario",
+            "_row_num": 78,
+            "__rowNum__": 77,
             "_token_type": "prompt",
             "_type": "text",
-            "_branch_label_enclosing_screen": "survey/_screen71",
+            "_branch_label_enclosing_screen": "survey/_screen78",
             "promptIdx": 34
           },
           {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 72,
-            "_branch_label_enclosing_screen": "survey/_screen72",
+            "_row_num": 79,
+            "_branch_label_enclosing_screen": "survey/_screen79",
             "promptIdx": 35
           }
         ],
         "validation_tag_map": {
-          "finalize": []
+          "finalize": [
+            2
+          ]
         },
         "operations": [
           {
@@ -2791,7 +3008,7 @@
           },
           {
             "clause": "if",
-            "condition": "data('idestudo_d1') != data('id_estudo')",
+            "condition": "data('idestudo') != data('id_estudo')",
             "_row_num": 10,
             "__rowNum__": 9,
             "_token_type": "goto_label",
@@ -2826,7 +3043,7 @@
           },
           {
             "clause": "goto ausente",
-            "condition": "data('presenca_d1')=='2'",
+            "condition": "data('presenca')=='2'",
             "_row_num": 14,
             "__rowNum__": 13,
             "_token_type": "goto_label",
@@ -2840,209 +3057,255 @@
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 22,
-              "__rowNum__": 21,
+              "_row_num": 20,
+              "__rowNum__": 19,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(5);\nif (data('sinais_perigo_d1')=='1') {\nactivePromptIndicies.push(6);\n}\nactivePromptIndicies.push(7);\nactivePromptIndicies.push(8);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(5);\nif (data('sinais_perigo')=='1') {\nactivePromptIndicies.push(6);\n}\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 7
           },
           {
             "clause": "begin screen",
-            "_row_num": 24,
-            "__rowNum__": 23,
+            "_row_num": 21,
+            "__rowNum__": 20,
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 30,
-              "__rowNum__": 29,
+              "_row_num": 24,
+              "__rowNum__": 23,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(9);\nactivePromptIndicies.push(10);\nactivePromptIndicies.push(11);\nactivePromptIndicies.push(12);\nactivePromptIndicies.push(13);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(7);\nactivePromptIndicies.push(8);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 8
           },
           {
             "clause": "begin screen",
-            "_row_num": 31,
-            "__rowNum__": 30,
+            "_row_num": 25,
+            "__rowNum__": 24,
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 39,
-              "__rowNum__": 38,
+              "_row_num": 31,
+              "__rowNum__": 30,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(14);\nactivePromptIndicies.push(15);\nactivePromptIndicies.push(16);\nactivePromptIndicies.push(17);\nif (data('outro_sintomas_d1')=='1') {\nactivePromptIndicies.push(18);\n}\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(9);\nactivePromptIndicies.push(10);\nactivePromptIndicies.push(11);\nactivePromptIndicies.push(12);\nactivePromptIndicies.push(13);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 9
           },
           {
-            "_row_num": 40,
+            "clause": "begin screen",
+            "_row_num": 32,
+            "__rowNum__": 31,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(19);\n\nreturn activePromptIndicies;\n}\n",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 40,
+              "__rowNum__": 39,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(14);\nactivePromptIndicies.push(15);\nactivePromptIndicies.push(16);\nactivePromptIndicies.push(17);\nif (data('outro_sintomas')=='1') {\nactivePromptIndicies.push(18);\n}\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 10
           },
           {
-            "clause": "if",
-            "condition": "data('evento_adverso_d1')=='1'",
             "_row_num": 41,
-            "__rowNum__": 40,
-            "_token_type": "goto_label",
-            "_branch_label": "_then41",
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(19);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 11
           },
           {
-            "clause": "end if",
+            "clause": "if",
+            "condition": "data('evento_adverso')=='1'",
+            "_row_num": 42,
+            "__rowNum__": 41,
             "_token_type": "goto_label",
-            "_branch_label": "_else46",
-            "_row_num": 46,
+            "_branch_label": "_then42",
             "operationIdx": 12
           },
           {
-            "clause": "begin screen",
-            "_row_num": 42,
-            "__rowNum__": 41,
-            "_token_type": "begin_screen",
-            "_end_screen_clause": {
-              "clause": "end screen",
-              "_row_num": 45,
-              "__rowNum__": 44,
-              "_token_type": "end_screen"
-            },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(20);\nactivePromptIndicies.push(21);\n\nreturn activePromptIndicies;\n}\n",
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_else48",
+            "_row_num": 48,
             "operationIdx": 13
           },
           {
-            "clause": "end if",
-            "_token_type": "goto_label",
-            "_branch_label": "_endif46",
-            "_row_num": 46,
+            "clause": "begin screen",
+            "_row_num": 43,
+            "__rowNum__": 42,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 46,
+              "__rowNum__": 45,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(20);\nactivePromptIndicies.push(21);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 14
           },
           {
-            "clause": "begin screen",
-            "_row_num": 47,
-            "__rowNum__": 46,
-            "_token_type": "begin_screen",
-            "_end_screen_clause": {
-              "clause": "end screen",
-              "_row_num": 56,
-              "__rowNum__": 55,
-              "_token_type": "end_screen"
-            },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(22);\nactivePromptIndicies.push(23);\nactivePromptIndicies.push(24);\nactivePromptIndicies.push(25);\nactivePromptIndicies.push(26);\nif (data('vomitou_AQ_d1')=='1') {\nactivePromptIndicies.push(27);\n}\n\nreturn activePromptIndicies;\n}\n",
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif48",
+            "_row_num": 48,
             "operationIdx": 15
           },
           {
-            "_row_num": 58,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(28);\n\nreturn activePromptIndicies;\n}\n",
+            "clause": "if // aq",
+            "condition": "data('visita_id')<3",
+            "_row_num": 50,
+            "__rowNum__": 49,
+            "_token_type": "goto_label",
+            "_tag_name": "aq",
+            "_branch_label": "_then50",
             "operationIdx": 16
           },
           {
-            "clause": "if // medi_previo",
-            "condition": "data('outro_medicamento_d1')=='1'",
-            "_row_num": 59,
-            "__rowNum__": 58,
+            "clause": "end if //aq",
             "_token_type": "goto_label",
-            "_tag_name": "medi_previo",
-            "_branch_label": "_then59",
+            "_branch_label": "_else62",
+            "_row_num": 62,
             "operationIdx": 17
           },
           {
-            "clause": "end if // medi_previo",
-            "_token_type": "goto_label",
-            "_branch_label": "_else64",
-            "_row_num": 64,
-            "operationIdx": 18
-          },
-          {
             "clause": "begin screen",
-            "_row_num": 60,
-            "__rowNum__": 59,
+            "_row_num": 51,
+            "__rowNum__": 50,
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 63,
-              "__rowNum__": 62,
+              "_row_num": 61,
+              "__rowNum__": 60,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(29);\nactivePromptIndicies.push(30);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(22);\nactivePromptIndicies.push(23);\nactivePromptIndicies.push(24);\nactivePromptIndicies.push(25);\nactivePromptIndicies.push(26);\nif (data('vomitou_AQ')=='1') {\nactivePromptIndicies.push(27);\n}\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 18
+          },
+          {
+            "clause": "end if //aq",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif62",
+            "_row_num": 62,
             "operationIdx": 19
+          },
+          {
+            "_row_num": 63,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(28);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 20
+          },
+          {
+            "clause": "if // medi_previo",
+            "condition": "data('outro_medicamento')=='1'",
+            "_row_num": 64,
+            "__rowNum__": 63,
+            "_token_type": "goto_label",
+            "_tag_name": "medi_previo",
+            "_branch_label": "_then64",
+            "operationIdx": 21
           },
           {
             "clause": "end if // medi_previo",
             "_token_type": "goto_label",
-            "_branch_label": "_endif64",
-            "_row_num": 64,
-            "operationIdx": 20
-          },
-          {
-            "_row_num": 65,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(31);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 21
-          },
-          {
-            "_row_num": 67,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(32);\n\nreturn activePromptIndicies;\n}\n",
+            "_branch_label": "_else69",
+            "_row_num": 69,
             "operationIdx": 22
           },
           {
-            "clause": "if",
-            "condition": "selected(data('motivo_ausencia_d1'),'4') || selected(data('motivo_ausencia_d1'),'5')",
-            "_row_num": 68,
-            "__rowNum__": 67,
-            "_token_type": "goto_label",
-            "_branch_label": "_then68",
+            "clause": "begin screen",
+            "_row_num": 65,
+            "__rowNum__": 64,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 68,
+              "__rowNum__": 67,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(29);\nactivePromptIndicies.push(30);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 23
           },
           {
-            "clause": "end if",
+            "clause": "end if // medi_previo",
             "_token_type": "goto_label",
-            "_branch_label": "_else70",
-            "_row_num": 70,
+            "_branch_label": "_endif69",
+            "_row_num": 69,
             "operationIdx": 24
           },
           {
-            "_row_num": 69,
+            "_row_num": 70,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(33);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(31);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 25
+          },
+          {
+            "clause": "goto ending",
+            "_row_num": 71,
+            "__rowNum__": 70,
+            "_token_type": "goto_label",
+            "_branch_label": "ending",
+            "operationIdx": 26
+          },
+          {
+            "_row_num": 72,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(32);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 27
+          },
+          {
+            "clause": "if",
+            "condition": "selected(data('motivo_ausencia'),'4') || selected(data('motivo_ausencia'),'5')",
+            "_row_num": 73,
+            "__rowNum__": 72,
+            "_token_type": "goto_label",
+            "_branch_label": "_then73",
+            "operationIdx": 28
           },
           {
             "clause": "end if",
             "_token_type": "goto_label",
-            "_branch_label": "_endif70",
-            "_row_num": 70,
-            "operationIdx": 26
+            "_branch_label": "_else75",
+            "_row_num": 75,
+            "operationIdx": 29
           },
           {
-            "_row_num": 71,
+            "_row_num": 74,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(33);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 30
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif75",
+            "_row_num": 75,
+            "operationIdx": 31
+          },
+          {
+            "_row_num": 78,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(34);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 27
+            "operationIdx": 32
           },
           {
             "_token_type": "exit_section",
             "clause": "exit section",
-            "_row_num": 72,
-            "operationIdx": 28
+            "_row_num": 79,
+            "operationIdx": 33
           },
           {
-            "_row_num": 72,
+            "_row_num": 79,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(35);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
-            "operationIdx": 29
+            "operationIdx": 34
           },
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 72,
-            "operationIdx": 30
+            "_row_num": 79,
+            "operationIdx": 35
           }
         ],
         "branch_label_map": {
@@ -3053,29 +3316,34 @@
           "_endif12": 5,
           "_screen13": 5,
           "_screen15": 7,
-          "_screen24": 8,
-          "_screen31": 9,
-          "_screen40": 10,
-          "_then41": 13,
-          "_screen42": 13,
-          "_else46": 15,
-          "_endif46": 15,
-          "_screen47": 15,
-          "_screen58": 16,
-          "_then59": 19,
-          "_screen60": 19,
-          "_else64": 21,
-          "_endif64": 21,
-          "_screen65": 21,
-          "ausente": 22,
-          "_screen67": 22,
-          "_then68": 25,
-          "_screen69": 25,
-          "_else70": 27,
-          "_endif70": 27,
-          "_screen71": 27,
-          "_contents": 29,
-          "_screen72": 29
+          "_screen21": 8,
+          "_screen25": 9,
+          "_screen32": 10,
+          "_screen41": 11,
+          "_then42": 14,
+          "_screen43": 14,
+          "_else48": 16,
+          "_endif48": 16,
+          "_then50": 18,
+          "_screen51": 18,
+          "_else62": 20,
+          "_endif62": 20,
+          "_screen63": 20,
+          "_then64": 23,
+          "_screen65": 23,
+          "_else69": 25,
+          "_endif69": 25,
+          "_screen70": 25,
+          "ausente": 27,
+          "_screen72": 27,
+          "_then73": 30,
+          "_screen74": 30,
+          "_else75": 32,
+          "_endif75": 32,
+          "ending": 32,
+          "_screen78": 32,
+          "_contents": 34,
+          "_screen79": 34
         }
       },
       "initial": {
@@ -3107,7 +3375,7 @@
             "promptIdx": 1,
             "display": {
               "title": {
-                "text": "Formulário de seguimento de caso: dia 01"
+                "text": "Seguimento"
               }
             },
             "_branch_label_enclosing_screen": "survey/0"
@@ -3257,370 +3525,59 @@
       }
     },
     "dataTableModel": {
-      "titulo_form_d1": {
-        "_defn": [
-          {
-            "_row_num": 2,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "titulo_form_d1",
-        "elementName": "titulo_form_d1",
-        "elementSet": "data",
-        "elementPath": "titulo_form_d1"
-      },
-      "cabezado_d1": {
-        "_defn": [
-          {
-            "_row_num": 3,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "cabezado_d1",
-        "elementName": "cabezado_d1",
-        "elementSet": "data",
-        "elementPath": "cabezado_d1"
-      },
-      "idestudo_d1": {
+      "region": {
         "type": "string",
-        "_defn": [
-          {
-            "_row_num": 8,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 4,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "idestudo_d1",
-        "elementName": "idestudo_d1",
-        "elementSet": "data",
-        "elementPath": "idestudo_d1"
-      },
-      "erro_d1": {
         "_defn": [
           {
             "_row_num": 5,
             "section_name": "model"
           }
         ],
-        "type": "note",
-        "elementKey": "erro_d1",
-        "elementName": "erro_d1",
+        "elementKey": "region",
+        "elementName": "region",
         "elementSet": "data",
-        "elementPath": "erro_d1"
+        "elementPath": "region"
       },
-      "presenca_d1": {
+      "cs": {
         "type": "string",
-        "valuesList": "yesno",
         "_defn": [
-          {
-            "_row_num": 13,
-            "section_name": "survey"
-          },
           {
             "_row_num": 6,
             "section_name": "model"
           }
         ],
-        "elementKey": "presenca_d1",
-        "elementName": "presenca_d1",
+        "elementKey": "cs",
+        "elementName": "cs",
         "elementSet": "data",
-        "elementPath": "presenca_d1"
+        "elementPath": "cs"
       },
-      "sinais_perigo_d1": {
+      "nome": {
         "type": "string",
-        "valuesList": "yesno",
         "_defn": [
-          {
-            "_row_num": 16,
-            "section_name": "survey"
-          },
           {
             "_row_num": 7,
             "section_name": "model"
           }
         ],
-        "elementKey": "sinais_perigo_d1",
-        "elementName": "sinais_perigo_d1",
+        "elementKey": "nome",
+        "elementName": "nome",
         "elementSet": "data",
-        "elementPath": "sinais_perigo_d1"
+        "elementPath": "nome"
       },
-      "gota_d1": {
+      "DOB_ou_idade": {
+        "type": "string",
         "_defn": [
           {
             "_row_num": 8,
             "section_name": "model"
           }
         ],
-        "type": "note",
-        "elementKey": "gota_d1",
-        "elementName": "gota_d1",
+        "elementKey": "DOB_ou_idade",
+        "elementName": "DOB_ou_idade",
         "elementSet": "data",
-        "elementPath": "gota_d1"
+        "elementPath": "DOB_ou_idade"
       },
-      "temperatura_d1": {
-        "type": "number",
-        "_defn": [
-          {
-            "_row_num": 20,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 9,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "temperatura_d1",
-        "elementName": "temperatura_d1",
-        "elementSet": "data",
-        "elementPath": "temperatura_d1"
-      },
-      "febre_d1": {
-        "type": "string",
-        "valuesList": "yesno",
-        "_defn": [
-          {
-            "_row_num": 21,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 10,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "febre_d1",
-        "elementName": "febre_d1",
-        "elementSet": "data",
-        "elementPath": "febre_d1"
-      },
-      "doente_d1": {
-        "type": "string",
-        "valuesList": "quantidade",
-        "_defn": [
-          {
-            "_row_num": 25,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 11,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "doente_d1",
-        "elementName": "doente_d1",
-        "elementSet": "data",
-        "elementPath": "doente_d1"
-      },
-      "vomito_d1": {
-        "type": "string",
-        "valuesList": "intensidade",
-        "_defn": [
-          {
-            "_row_num": 26,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 12,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "vomito_d1",
-        "elementName": "vomito_d1",
-        "elementSet": "data",
-        "elementPath": "vomito_d1"
-      },
-      "coceira_d1": {
-        "type": "string",
-        "valuesList": "intensidade",
-        "_defn": [
-          {
-            "_row_num": 27,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 13,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "coceira_d1",
-        "elementName": "coceira_d1",
-        "elementSet": "data",
-        "elementPath": "coceira_d1"
-      },
-      "exantema_d1": {
-        "type": "string",
-        "valuesList": "intensidade",
-        "_defn": [
-          {
-            "_row_num": 28,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 14,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "exantema_d1",
-        "elementName": "exantema_d1",
-        "elementSet": "data",
-        "elementPath": "exantema_d1"
-      },
-      "dor_articular_d1": {
-        "type": "string",
-        "valuesList": "intensidade",
-        "_defn": [
-          {
-            "_row_num": 29,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 15,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "dor_articular_d1",
-        "elementName": "dor_articular_d1",
-        "elementSet": "data",
-        "elementPath": "dor_articular_d1"
-      },
-      "come_d1": {
-        "type": "string",
-        "valuesList": "frequencia",
-        "_defn": [
-          {
-            "_row_num": 32,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 16,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "come_d1",
-        "elementName": "come_d1",
-        "elementSet": "data",
-        "elementPath": "come_d1"
-      },
-      "bebe_d1": {
-        "type": "string",
-        "valuesList": "frequencia",
-        "_defn": [
-          {
-            "_row_num": 33,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 17,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "bebe_d1",
-        "elementName": "bebe_d1",
-        "elementSet": "data",
-        "elementPath": "bebe_d1"
-      },
-      "convulsao_d1": {
-        "type": "string",
-        "valuesList": "yesno",
-        "_defn": [
-          {
-            "_row_num": 34,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 18,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "convulsao_d1",
-        "elementName": "convulsao_d1",
-        "elementSet": "data",
-        "elementPath": "convulsao_d1"
-      },
-      "outro_sintomas_d1": {
-        "type": "string",
-        "valuesList": "yesno",
-        "_defn": [
-          {
-            "_row_num": 35,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 19,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "outro_sintomas_d1",
-        "elementName": "outro_sintomas_d1",
-        "elementSet": "data",
-        "elementPath": "outro_sintomas_d1"
-      },
-      "esp_sintomas_d1": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 37,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 20,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "esp_sintomas_d1",
-        "elementName": "esp_sintomas_d1",
-        "elementSet": "data",
-        "elementPath": "esp_sintomas_d1"
-      },
-      "evento_adverso_d1": {
-        "type": "string",
-        "valuesList": "yesno",
-        "_defn": [
-          {
-            "_row_num": 40,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 21,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "evento_adverso_d1",
-        "elementName": "evento_adverso_d1",
-        "elementSet": "data",
-        "elementPath": "evento_adverso_d1"
-      },
-      "nota_evento_d1": {
-        "_defn": [
-          {
-            "_row_num": 22,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "nota_evento_d1",
-        "elementName": "nota_evento_d1",
-        "elementSet": "data",
-        "elementPath": "nota_evento_d1"
-      },
-      "aq_d1": {
-        "_defn": [
-          {
-            "_row_num": 23,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "aq_d1",
-        "elementName": "aq_d1",
-        "elementSet": "data",
-        "elementPath": "aq_d1"
-      },
-      "date_AQ_d1": {
+      "dn": {
         "prompt_type_name": "adate",
         "type": "string",
         "elementType": "string",
@@ -3629,25 +3586,216 @@
         "__rowNum__": 2,
         "_defn": [
           {
-            "_row_num": 49,
+            "_row_num": 9,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "dn",
+        "elementName": "dn",
+        "elementSet": "data",
+        "elementPath": "dn"
+      },
+      "ano": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 10,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "ano",
+        "elementName": "ano",
+        "elementSet": "data",
+        "elementPath": "ano"
+      },
+      "mes": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 11,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "mes",
+        "elementName": "mes",
+        "elementSet": "data",
+        "elementPath": "mes"
+      },
+      "id_estudo": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 13,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "id_estudo",
+        "elementName": "id_estudo",
+        "elementSet": "data",
+        "elementPath": "id_estudo"
+      },
+      "sexo": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 14,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "sexo",
+        "elementName": "sexo",
+        "elementSet": "data",
+        "elementPath": "sexo"
+      },
+      "nome_mae": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 15,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "nome_mae",
+        "elementName": "nome_mae",
+        "elementSet": "data",
+        "elementPath": "nome_mae"
+      },
+      "nome_pai": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 16,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "nome_pai",
+        "elementName": "nome_pai",
+        "elementSet": "data",
+        "elementPath": "nome_pai"
+      },
+      "titulo_form": {
+        "_defn": [
+          {
+            "_row_num": 17,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "titulo_form",
+        "elementName": "titulo_form",
+        "elementSet": "data",
+        "elementPath": "titulo_form"
+      },
+      "cabezado": {
+        "_defn": [
+          {
+            "_row_num": 18,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "cabezado",
+        "elementName": "cabezado",
+        "elementSet": "data",
+        "elementPath": "cabezado"
+      },
+      "visita_id": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 19,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "visita_id",
+        "elementName": "visita_id",
+        "elementSet": "data",
+        "elementPath": "visita_id"
+      },
+      "idestudo": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 8,
             "section_name": "survey"
           },
+          {
+            "_row_num": 20,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "idestudo",
+        "elementName": "idestudo",
+        "elementSet": "data",
+        "elementPath": "idestudo"
+      },
+      "erro": {
+        "_defn": [
+          {
+            "_row_num": 21,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "erro",
+        "elementName": "erro",
+        "elementSet": "data",
+        "elementPath": "erro"
+      },
+      "presenca": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 13,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 22,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "presenca",
+        "elementName": "presenca",
+        "elementSet": "data",
+        "elementPath": "presenca"
+      },
+      "sinais_perigo": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 16,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 23,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "sinais_perigo",
+        "elementName": "sinais_perigo",
+        "elementSet": "data",
+        "elementPath": "sinais_perigo"
+      },
+      "gota": {
+        "_defn": [
           {
             "_row_num": 24,
             "section_name": "model"
           }
         ],
-        "elementKey": "date_AQ_d1",
-        "elementName": "date_AQ_d1",
+        "type": "note",
+        "elementKey": "gota",
+        "elementName": "gota",
         "elementSet": "data",
-        "elementPath": "date_AQ_d1"
+        "elementPath": "gota"
       },
-      "hora_AQ_d1": {
-        "type": "string",
-        "elementType": "time",
+      "temperatura": {
+        "type": "number",
         "_defn": [
           {
-            "_row_num": 50,
+            "_row_num": 22,
             "section_name": "survey"
           },
           {
@@ -3655,17 +3803,17 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "hora_AQ_d1",
-        "elementName": "hora_AQ_d1",
+        "elementKey": "temperatura",
+        "elementName": "temperatura",
         "elementSet": "data",
-        "elementPath": "hora_AQ_d1"
+        "elementPath": "temperatura"
       },
-      "dose_AQ_d1": {
+      "febre": {
         "type": "string",
-        "valuesList": "doseAQ",
+        "valuesList": "yesno",
         "_defn": [
           {
-            "_row_num": 51,
+            "_row_num": 23,
             "section_name": "survey"
           },
           {
@@ -3673,17 +3821,17 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "dose_AQ_d1",
-        "elementName": "dose_AQ_d1",
+        "elementKey": "febre",
+        "elementName": "febre",
         "elementSet": "data",
-        "elementPath": "dose_AQ_d1"
+        "elementPath": "febre"
       },
-      "vomitou_AQ_d1": {
+      "doente": {
         "type": "string",
-        "valuesList": "yesno",
+        "valuesList": "quantidade",
         "_defn": [
           {
-            "_row_num": 52,
+            "_row_num": 26,
             "section_name": "survey"
           },
           {
@@ -3691,12 +3839,239 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "vomitou_AQ_d1",
-        "elementName": "vomitou_AQ_d1",
+        "elementKey": "doente",
+        "elementName": "doente",
         "elementSet": "data",
-        "elementPath": "vomitou_AQ_d1"
+        "elementPath": "doente"
       },
-      "hora_vomito_AQ_d1": {
+      "vomito": {
+        "type": "string",
+        "valuesList": "intensidade",
+        "_defn": [
+          {
+            "_row_num": 27,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 28,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "vomito",
+        "elementName": "vomito",
+        "elementSet": "data",
+        "elementPath": "vomito"
+      },
+      "coceira": {
+        "type": "string",
+        "valuesList": "intensidade",
+        "_defn": [
+          {
+            "_row_num": 28,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 29,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "coceira",
+        "elementName": "coceira",
+        "elementSet": "data",
+        "elementPath": "coceira"
+      },
+      "exantema": {
+        "type": "string",
+        "valuesList": "intensidade",
+        "_defn": [
+          {
+            "_row_num": 29,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 30,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "exantema",
+        "elementName": "exantema",
+        "elementSet": "data",
+        "elementPath": "exantema"
+      },
+      "dor_articular": {
+        "type": "string",
+        "valuesList": "intensidade",
+        "_defn": [
+          {
+            "_row_num": 30,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 31,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "dor_articular",
+        "elementName": "dor_articular",
+        "elementSet": "data",
+        "elementPath": "dor_articular"
+      },
+      "come": {
+        "type": "string",
+        "valuesList": "frequencia",
+        "_defn": [
+          {
+            "_row_num": 33,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 32,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "come",
+        "elementName": "come",
+        "elementSet": "data",
+        "elementPath": "come"
+      },
+      "bebe": {
+        "type": "string",
+        "valuesList": "frequencia",
+        "_defn": [
+          {
+            "_row_num": 34,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 33,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "bebe",
+        "elementName": "bebe",
+        "elementSet": "data",
+        "elementPath": "bebe"
+      },
+      "convulsao": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 35,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 34,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "convulsao",
+        "elementName": "convulsao",
+        "elementSet": "data",
+        "elementPath": "convulsao"
+      },
+      "outro_sintomas": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 36,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 35,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "outro_sintomas",
+        "elementName": "outro_sintomas",
+        "elementSet": "data",
+        "elementPath": "outro_sintomas"
+      },
+      "esp_sintomas": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 38,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 36,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "esp_sintomas",
+        "elementName": "esp_sintomas",
+        "elementSet": "data",
+        "elementPath": "esp_sintomas"
+      },
+      "evento_adverso": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 41,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 37,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "evento_adverso",
+        "elementName": "evento_adverso",
+        "elementSet": "data",
+        "elementPath": "evento_adverso"
+      },
+      "nota_evento": {
+        "_defn": [
+          {
+            "_row_num": 38,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "nota_evento",
+        "elementName": "nota_evento",
+        "elementSet": "data",
+        "elementPath": "nota_evento"
+      },
+      "aq": {
+        "_defn": [
+          {
+            "_row_num": 39,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "aq",
+        "elementName": "aq",
+        "elementSet": "data",
+        "elementPath": "aq"
+      },
+      "date_AQ": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 53,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 40,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "date_AQ",
+        "elementName": "date_AQ",
+        "elementSet": "data",
+        "elementPath": "date_AQ"
+      },
+      "hora_AQ": {
         "type": "string",
         "elementType": "time",
         "_defn": [
@@ -3705,115 +4080,169 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 28,
+            "_row_num": 41,
             "section_name": "model"
           }
         ],
-        "elementKey": "hora_vomito_AQ_d1",
-        "elementName": "hora_vomito_AQ_d1",
+        "elementKey": "hora_AQ",
+        "elementName": "hora_AQ",
         "elementSet": "data",
-        "elementPath": "hora_vomito_AQ_d1"
+        "elementPath": "hora_AQ"
       },
-      "outro_medicamento_d1": {
+      "dose_AQ": {
+        "type": "string",
+        "valuesList": "doseAQ",
+        "_defn": [
+          {
+            "_row_num": 55,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 42,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "dose_AQ",
+        "elementName": "dose_AQ",
+        "elementSet": "data",
+        "elementPath": "dose_AQ"
+      },
+      "vomitou_AQ": {
         "type": "string",
         "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 56,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 43,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "vomitou_AQ",
+        "elementName": "vomitou_AQ",
+        "elementSet": "data",
+        "elementPath": "vomitou_AQ"
+      },
+      "hora_vomito_AQ": {
+        "type": "string",
+        "elementType": "time",
         "_defn": [
           {
             "_row_num": 58,
             "section_name": "survey"
           },
           {
-            "_row_num": 29,
+            "_row_num": 44,
             "section_name": "model"
           }
         ],
-        "elementKey": "outro_medicamento_d1",
-        "elementName": "outro_medicamento_d1",
+        "elementKey": "hora_vomito_AQ",
+        "elementName": "hora_vomito_AQ",
         "elementSet": "data",
-        "elementPath": "outro_medicamento_d1"
+        "elementPath": "hora_vomito_AQ"
       },
-      "outros_medicamentos_d1": {
-        "_defn": [
-          {
-            "_row_num": 30,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "outros_medicamentos_d1",
-        "elementName": "outros_medicamentos_d1",
-        "elementSet": "data",
-        "elementPath": "outros_medicamentos_d1"
-      },
-      "lamina_d1": {
+      "outro_medicamento": {
         "type": "string",
         "valuesList": "yesno",
         "_defn": [
           {
-            "_row_num": 65,
+            "_row_num": 63,
             "section_name": "survey"
           },
           {
-            "_row_num": 31,
+            "_row_num": 45,
             "section_name": "model"
           }
         ],
-        "elementKey": "lamina_d1",
-        "elementName": "lamina_d1",
+        "elementKey": "outro_medicamento",
+        "elementName": "outro_medicamento",
         "elementSet": "data",
-        "elementPath": "lamina_d1"
+        "elementPath": "outro_medicamento"
       },
-      "motivo_ausencia_d1": {
+      "outros_medicamentos": {
+        "_defn": [
+          {
+            "_row_num": 46,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "outros_medicamentos",
+        "elementName": "outros_medicamentos",
+        "elementSet": "data",
+        "elementPath": "outros_medicamentos"
+      },
+      "lamina": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 70,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 47,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "lamina",
+        "elementName": "lamina",
+        "elementSet": "data",
+        "elementPath": "lamina"
+      },
+      "motivo_ausencia": {
         "type": "string",
         "valuesList": "motivo",
         "_defn": [
           {
-            "_row_num": 67,
+            "_row_num": 72,
             "section_name": "survey"
           },
           {
-            "_row_num": 32,
+            "_row_num": 48,
             "section_name": "model"
           }
         ],
-        "elementKey": "motivo_ausencia_d1",
-        "elementName": "motivo_ausencia_d1",
+        "elementKey": "motivo_ausencia",
+        "elementName": "motivo_ausencia",
         "elementSet": "data",
-        "elementPath": "motivo_ausencia_d1"
+        "elementPath": "motivo_ausencia"
       },
-      "esp_motivo_d1": {
+      "esp_motivo": {
         "type": "string",
         "_defn": [
           {
-            "_row_num": 69,
+            "_row_num": 74,
             "section_name": "survey"
           },
           {
-            "_row_num": 33,
+            "_row_num": 49,
             "section_name": "model"
           }
         ],
-        "elementKey": "esp_motivo_d1",
-        "elementName": "esp_motivo_d1",
+        "elementKey": "esp_motivo",
+        "elementName": "esp_motivo",
         "elementSet": "data",
-        "elementPath": "esp_motivo_d1"
+        "elementPath": "esp_motivo"
       },
-      "comentario_d1": {
+      "comentario": {
         "type": "string",
         "_defn": [
           {
-            "_row_num": 71,
+            "_row_num": 78,
             "section_name": "survey"
           },
           {
-            "_row_num": 34,
+            "_row_num": 50,
             "section_name": "model"
           }
         ],
-        "elementKey": "comentario_d1",
-        "elementName": "comentario_d1",
+        "elementKey": "comentario",
+        "elementName": "comentario",
         "elementSet": "data",
-        "elementPath": "comentario_d1"
+        "elementPath": "comentario"
       },
       "_id": {
         "type": "string",
@@ -3927,6 +4356,162 @@
         "elementSet": "instanceMetadata",
         "elementPath": "_savepoint_creator"
       }
-    }
+    },
+    "properties": [
+      {
+        "_partition": "Column",
+        "_aspect": "bebe",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"frequencia\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Como sempre\"}},\"_row_num\":55},{\"choice_list_name\":\"frequencia\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":56},{\"choice_list_name\":\"frequencia\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"nada\"}},\"_row_num\":57}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "coceira",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"intensidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":50},{\"choice_list_name\":\"intensidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":51},{\"choice_list_name\":\"intensidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Severo\"}},\"_row_num\":52}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "come",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"frequencia\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Como sempre\"}},\"_row_num\":55},{\"choice_list_name\":\"frequencia\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":56},{\"choice_list_name\":\"frequencia\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"nada\"}},\"_row_num\":57}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "convulsao",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "doente",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"quantidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":46},{\"choice_list_name\":\"quantidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":47},{\"choice_list_name\":\"quantidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Muito\"}},\"_row_num\":48}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "dor_articular",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"intensidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":50},{\"choice_list_name\":\"intensidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":51},{\"choice_list_name\":\"intensidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Severo\"}},\"_row_num\":52}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "dose_AQ",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"doseAQ\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"75mg Amodiaquina\"}},\"_row_num\":64},{\"choice_list_name\":\"doseAQ\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"150mg Amodiaquina\"}},\"_row_num\":65}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "evento_adverso",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "exantema",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"intensidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":50},{\"choice_list_name\":\"intensidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":51},{\"choice_list_name\":\"intensidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Severo\"}},\"_row_num\":52}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "febre",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "lamina",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "motivo_ausencia",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"motivo\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"a Criança na se encontra em casa\"}},\"_row_num\":68},{\"choice_list_name\":\"motivo\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"A família está de viagem\"}},\"_row_num\":69},{\"choice_list_name\":\"motivo\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Mudaram\"}},\"_row_num\":70},{\"choice_list_name\":\"motivo\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Os pais recusaram\"}},\"_row_num\":71},{\"choice_list_name\":\"motivo\",\"data_value\":5,\"display\":{\"title\":{\"text\":\"outros\"}},\"_row_num\":72}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "outro_medicamento",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "outro_sintomas",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "presenca",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "sinais_perigo",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "vomito",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"intensidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":50},{\"choice_list_name\":\"intensidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":51},{\"choice_list_name\":\"intensidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Severo\"}},\"_row_num\":52}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "vomitou_AQ",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "FormType",
+        "_aspect": "default",
+        "_key": "FormType.formType",
+        "_type": "string",
+        "_value": "SURVEY"
+      },
+      {
+        "_partition": "SurveyUtil",
+        "_aspect": "default",
+        "_key": "SurveyUtil.formId",
+        "_type": "string",
+        "_value": "seguimento"
+      },
+      {
+        "_partition": "Table",
+        "_aspect": "default",
+        "_key": "defaultViewType",
+        "_type": "string",
+        "_value": "SPREADSHEET"
+      },
+      {
+        "_partition": "Table",
+        "_aspect": "default",
+        "_key": "displayName",
+        "_type": "object",
+        "_value": "{\"text\":\"Seguimento\"}"
+      }
+    ]
   }
 }

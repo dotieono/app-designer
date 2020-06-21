@@ -1,3 +1,9 @@
-table_keys=QPS, ronda
-QPS.filename=config/assets/csv/QPS.csv
-ronda.filename=config/assets/csv/ronda.csv
+table_keys=inclusao, rastreio, seguimento, laboratorio, medicacao_previa, medicamento_administrado, evento_adverso, medicamento_suspeito
+rastreio.filename=config/assets/csv/rastreio.csv
+inclusao.filename=config/assets/csv/inclusao.csv
+seguimento.filename=config/assets/config/seguimento.csv
+laboratorio.filename=config/assets/config/laboratorio.csv
+medicacao_previa.filename=config/assets/config/medicacao_previa.csv
+medicamento_administrado.filename=config/assets/config/medicamento_administrado.csv
+evento_adverso.filename=config/assets/config/evento_adverso.csv
+medicamento_suspeito.filename=config/assets/config/medicamento_suspeito.csv

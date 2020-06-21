@@ -1,9 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!--Menu-->
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="css/ASC.css" type="text/css" rel="stylesheet" />
+        <link href="css/visita.css" type="text/css" rel="stylesheet" />
         <script type="text/javascript" src="commonDefinitions.js"></script>
         <script type="text/javascript" src="libs/jquery-3.2.1.js"></script>
         <script type="text/javascript" src="libs/jquery-migrate-3.0.0.js"></script>
@@ -16,28 +15,25 @@
         function display() {
 
             /*    Screen new client option that launches new client list view */
-            var rastreio = document.createElement("button");
-            rastreio.setAttribute("id", "button1");
-            rastreio.innerHTML = "rastreio";
-            rastreio.onclick = function() {
-                odkTables.addRowWithSurvey(null,
-                    'rastreio',
-                    null,
-                    null,
-                    null);
+             var visita = document.createElement("button");
+            visita.setAttribute("id", "button2");
+            visita.innerHTML = "Visitas de hoje";
+            visita.onclick = function() {
+                odkTables.launchHTML(null, 
+                'config/assets/selectZona.html');
             }
-            document.getElementById("wrapper").appendChild(rastreio);    
+            document.getElementById("wrapper").appendChild(visita);  
 
             // Follow up with existing client option that launches
             // 'femaleClients' table list view
-            var followUp = document.createElement("button");
-            followUp.setAttribute("id", "button2");
-            followUp.innerHTML = "Inclusao";
-            followUp.onclick = function() {
+            var agenda = document.createElement("button");
+            agenda.setAttribute("id", "button2");
+            agenda.innerHTML = "Agenda";
+            agenda.onclick = function() {
                 odkTables.launchHTML(null, 
-                'config/assets/selectTabanca.html');
+                'config/assets/selectZona.html');
             }
-            document.getElementById("wrapper").appendChild(followUp);    
+            document.getElementById("wrapper").appendChild(agenda);    
 
             // Send data option that luanches send finalized forms screen in
             // Collect
@@ -54,9 +50,8 @@
     </head>
 
     <body onload="display();">
-        <h1>Quimioprevenção do Paludismo Sazonal</h1>
-        <h2>Agente sanitaria comunitaria</h2>
-        <a href="selectZona.html">BAI LA</a>
+        <h1>Avaliação de eficácia de Sulfadoxina-pirimetamina mais Amodiaquina </h1>
+        <h2>SEGUIMENTOS DE CASOS</h2>
 
         <div id="wrapper"></div>
     </body>
