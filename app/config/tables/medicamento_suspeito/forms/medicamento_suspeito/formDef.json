@@ -142,7 +142,7 @@
       },
       {
         "clause": "if",
-        "condition": "data('via')=='10'",
+        "condition": "data('via')=='9'",
         "_row_num": 18
       },
       {
@@ -173,6 +173,9 @@
         "display": {
           "prompt": {
             "text": "Data do início"
+          },
+          "adate": {
+            "toYear": 2020
           }
         },
         "_row_num": 24
@@ -183,8 +186,12 @@
         "display": {
           "prompt": {
             "text": "Data do fim"
+          },
+          "adate": {
+            "toYear": 2020
           }
         },
+        "constraint": "data('date_end')>=data('date_start')",
         "_row_num": 25
       },
       {
@@ -308,20 +315,10 @@
         "data_value": 9,
         "display": {
           "title": {
-            "text": "Vaginal"
-          }
-        },
-        "_row_num": 15
-      },
-      {
-        "choice_list_name": "via_adm",
-        "data_value": 10,
-        "display": {
-          "title": {
             "text": "outro"
           }
         },
-        "_row_num": 16
+        "_row_num": 15
       },
       {
         "choice_list_name": "unidade",
@@ -331,7 +328,7 @@
             "text": "mg (miligramos)"
           }
         },
-        "_row_num": 19
+        "_row_num": 18
       },
       {
         "choice_list_name": "unidade",
@@ -341,7 +338,7 @@
             "text": "g (gramos)"
           }
         },
-        "_row_num": 20
+        "_row_num": 19
       },
       {
         "choice_list_name": "unidade",
@@ -351,7 +348,7 @@
             "text": "ug (microgramos)"
           }
         },
-        "_row_num": 21
+        "_row_num": 20
       },
       {
         "choice_list_name": "unidade",
@@ -361,7 +358,7 @@
             "text": "ml (mililitros)"
           }
         },
-        "_row_num": 22
+        "_row_num": 21
       },
       {
         "choice_list_name": "unidade",
@@ -371,7 +368,7 @@
             "text": "dl (decilitros)"
           }
         },
-        "_row_num": 23
+        "_row_num": 22
       },
       {
         "choice_list_name": "unidade",
@@ -381,7 +378,7 @@
             "text": "L (litros)"
           }
         },
-        "_row_num": 24
+        "_row_num": 23
       },
       {
         "choice_list_name": "unidade",
@@ -391,7 +388,7 @@
             "text": "gotas"
           }
         },
-        "_row_num": 25
+        "_row_num": 24
       },
       {
         "choice_list_name": "unidade",
@@ -401,7 +398,7 @@
             "text": "Pomadas ou cremes"
           }
         },
-        "_row_num": 26
+        "_row_num": 25
       },
       {
         "choice_list_name": "unidade",
@@ -411,7 +408,7 @@
             "text": "outras unidades"
           }
         },
-        "_row_num": 27
+        "_row_num": 26
       }
     ],
     "prompt_types": [
@@ -427,18 +424,6 @@
         "type": "string",
         "elementType": "string",
         "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3
-      }
-    ],
-    "calculates": [
-      {
-        "calculation_name": "codigo_manual",
-        "calculation": "concat(data('letra_sticker'),data('numero_sticker'))",
-        "_row_num": 2
-      },
-      {
-        "calculation_name": "ano_em_mes",
-        "calculation": "(data('ano')*12) + data('mes')",
         "_row_num": 3
       }
     ],
@@ -694,20 +679,10 @@
           "data_value": 9,
           "display": {
             "title": {
-              "text": "Vaginal"
-            }
-          },
-          "_row_num": 15
-        },
-        {
-          "choice_list_name": "via_adm",
-          "data_value": 10,
-          "display": {
-            "title": {
               "text": "outro"
             }
           },
-          "_row_num": 16
+          "_row_num": 15
         }
       ],
       "unidade": [
@@ -719,7 +694,7 @@
               "text": "mg (miligramos)"
             }
           },
-          "_row_num": 19
+          "_row_num": 18
         },
         {
           "choice_list_name": "unidade",
@@ -729,7 +704,7 @@
               "text": "g (gramos)"
             }
           },
-          "_row_num": 20
+          "_row_num": 19
         },
         {
           "choice_list_name": "unidade",
@@ -739,7 +714,7 @@
               "text": "ug (microgramos)"
             }
           },
-          "_row_num": 21
+          "_row_num": 20
         },
         {
           "choice_list_name": "unidade",
@@ -749,7 +724,7 @@
               "text": "ml (mililitros)"
             }
           },
-          "_row_num": 22
+          "_row_num": 21
         },
         {
           "choice_list_name": "unidade",
@@ -759,7 +734,7 @@
               "text": "dl (decilitros)"
             }
           },
-          "_row_num": 23
+          "_row_num": 22
         },
         {
           "choice_list_name": "unidade",
@@ -769,7 +744,7 @@
               "text": "L (litros)"
             }
           },
-          "_row_num": 24
+          "_row_num": 23
         },
         {
           "choice_list_name": "unidade",
@@ -779,7 +754,7 @@
               "text": "gotas"
             }
           },
-          "_row_num": 25
+          "_row_num": 24
         },
         {
           "choice_list_name": "unidade",
@@ -789,7 +764,7 @@
               "text": "Pomadas ou cremes"
             }
           },
-          "_row_num": 26
+          "_row_num": 25
         },
         {
           "choice_list_name": "unidade",
@@ -799,7 +774,7 @@
               "text": "outras unidades"
             }
           },
-          "_row_num": 27
+          "_row_num": 26
         }
       ]
     },
@@ -807,18 +782,7 @@
       "_tokens": {}
     },
     "queries": {},
-    "calculates": {
-      "codigo_manual": {
-        "calculation_name": "codigo_manual",
-        "calculation": "concat(data('letra_sticker'),data('numero_sticker'))",
-        "_row_num": 2
-      },
-      "ano_em_mes": {
-        "calculation_name": "ano_em_mes",
-        "calculation": "(data('ano')*12) + data('mes')",
-        "_row_num": 3
-      }
-    },
+    "calculates": {},
     "model": {
       "id_estudo": {
         "type": "string",
@@ -1185,6 +1149,9 @@
             "display": {
               "prompt": {
                 "text": "Data do início"
+              },
+              "adate": {
+                "toYear": 2020
               }
             },
             "_row_num": 24,
@@ -1200,8 +1167,12 @@
             "display": {
               "prompt": {
                 "text": "Data do fim"
+              },
+              "adate": {
+                "toYear": 2020
               }
             },
+            "constraint": "data('date_end')>=data('date_start')",
             "_row_num": 25,
             "__rowNum__": 24,
             "_token_type": "prompt",
@@ -1234,7 +1205,9 @@
           }
         ],
         "validation_tag_map": {
-          "finalize": []
+          "finalize": [
+            11
+          ]
         },
         "operations": [
           {
@@ -1262,7 +1235,7 @@
               "__rowNum__": 20,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(4);\nactivePromptIndicies.push(5);\nactivePromptIndicies.push(6);\nif (data('unidade')=='9') {\nactivePromptIndicies.push(7);\n}\nactivePromptIndicies.push(8);\nif (data('via')=='10') {\nactivePromptIndicies.push(9);\n}\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(4);\nactivePromptIndicies.push(5);\nactivePromptIndicies.push(6);\nif (data('unidade')=='9') {\nactivePromptIndicies.push(7);\n}\nactivePromptIndicies.push(8);\nif (data('via')=='9') {\nactivePromptIndicies.push(9);\n}\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 1
           },
           {
@@ -1852,14 +1825,14 @@
         "_aspect": "unidade",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"unidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"mg (miligramos)\"}},\"_row_num\":19},{\"choice_list_name\":\"unidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"g (gramos)\"}},\"_row_num\":20},{\"choice_list_name\":\"unidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"ug (microgramos)\"}},\"_row_num\":21},{\"choice_list_name\":\"unidade\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"ml (mililitros)\"}},\"_row_num\":22},{\"choice_list_name\":\"unidade\",\"data_value\":5,\"display\":{\"title\":{\"text\":\"dl (decilitros)\"}},\"_row_num\":23},{\"choice_list_name\":\"unidade\",\"data_value\":6,\"display\":{\"title\":{\"text\":\"L (litros)\"}},\"_row_num\":24},{\"choice_list_name\":\"unidade\",\"data_value\":7,\"display\":{\"title\":{\"text\":\"gotas\"}},\"_row_num\":25},{\"choice_list_name\":\"unidade\",\"data_value\":8,\"display\":{\"title\":{\"text\":\"Pomadas ou cremes\"}},\"_row_num\":26},{\"choice_list_name\":\"unidade\",\"data_value\":9,\"display\":{\"title\":{\"text\":\"outras unidades\"}},\"_row_num\":27}]"
+        "_value": "[{\"choice_list_name\":\"unidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"mg (miligramos)\"}},\"_row_num\":18},{\"choice_list_name\":\"unidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"g (gramos)\"}},\"_row_num\":19},{\"choice_list_name\":\"unidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"ug (microgramos)\"}},\"_row_num\":20},{\"choice_list_name\":\"unidade\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"ml (mililitros)\"}},\"_row_num\":21},{\"choice_list_name\":\"unidade\",\"data_value\":5,\"display\":{\"title\":{\"text\":\"dl (decilitros)\"}},\"_row_num\":22},{\"choice_list_name\":\"unidade\",\"data_value\":6,\"display\":{\"title\":{\"text\":\"L (litros)\"}},\"_row_num\":23},{\"choice_list_name\":\"unidade\",\"data_value\":7,\"display\":{\"title\":{\"text\":\"gotas\"}},\"_row_num\":24},{\"choice_list_name\":\"unidade\",\"data_value\":8,\"display\":{\"title\":{\"text\":\"Pomadas ou cremes\"}},\"_row_num\":25},{\"choice_list_name\":\"unidade\",\"data_value\":9,\"display\":{\"title\":{\"text\":\"outras unidades\"}},\"_row_num\":26}]"
       },
       {
         "_partition": "Column",
         "_aspect": "via",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"via_adm\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Oral\"}},\"_row_num\":7},{\"choice_list_name\":\"via_adm\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Injetavel (IM, IV SC...)\"}},\"_row_num\":8},{\"choice_list_name\":\"via_adm\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"sublingual\"}},\"_row_num\":9},{\"choice_list_name\":\"via_adm\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Inalação (vapor)\"}},\"_row_num\":10},{\"choice_list_name\":\"via_adm\",\"data_value\":5,\"display\":{\"title\":{\"text\":\"Nasal\"}},\"_row_num\":11},{\"choice_list_name\":\"via_adm\",\"data_value\":6,\"display\":{\"title\":{\"text\":\"Cutânea/tópico\"}},\"_row_num\":12},{\"choice_list_name\":\"via_adm\",\"data_value\":7,\"display\":{\"title\":{\"text\":\"ocular\"}},\"_row_num\":13},{\"choice_list_name\":\"via_adm\",\"data_value\":8,\"display\":{\"title\":{\"text\":\"Retal\"}},\"_row_num\":14},{\"choice_list_name\":\"via_adm\",\"data_value\":9,\"display\":{\"title\":{\"text\":\"Vaginal\"}},\"_row_num\":15},{\"choice_list_name\":\"via_adm\",\"data_value\":10,\"display\":{\"title\":{\"text\":\"outro\"}},\"_row_num\":16}]"
+        "_value": "[{\"choice_list_name\":\"via_adm\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Oral\"}},\"_row_num\":7},{\"choice_list_name\":\"via_adm\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Injetavel (IM, IV SC...)\"}},\"_row_num\":8},{\"choice_list_name\":\"via_adm\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"sublingual\"}},\"_row_num\":9},{\"choice_list_name\":\"via_adm\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Inalação (vapor)\"}},\"_row_num\":10},{\"choice_list_name\":\"via_adm\",\"data_value\":5,\"display\":{\"title\":{\"text\":\"Nasal\"}},\"_row_num\":11},{\"choice_list_name\":\"via_adm\",\"data_value\":6,\"display\":{\"title\":{\"text\":\"Cutânea/tópico\"}},\"_row_num\":12},{\"choice_list_name\":\"via_adm\",\"data_value\":7,\"display\":{\"title\":{\"text\":\"ocular\"}},\"_row_num\":13},{\"choice_list_name\":\"via_adm\",\"data_value\":8,\"display\":{\"title\":{\"text\":\"Retal\"}},\"_row_num\":14},{\"choice_list_name\":\"via_adm\",\"data_value\":9,\"display\":{\"title\":{\"text\":\"outro\"}},\"_row_num\":15}]"
       },
       {
         "_partition": "FormType",

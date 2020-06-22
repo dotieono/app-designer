@@ -52,6 +52,10 @@
         "display": {
           "prompt": {
             "text": "Data"
+          },
+          "adate": {
+            "fromYear": 2020,
+            "toYear": 2020
           }
         },
         "_row_num": 5
@@ -533,6 +537,10 @@
             "display": {
               "prompt": {
                 "text": "Data"
+              },
+              "adate": {
+                "fromYear": 2020,
+                "toYear": 2020
               }
             },
             "_row_num": 5,

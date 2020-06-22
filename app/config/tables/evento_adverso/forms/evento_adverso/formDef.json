@@ -80,98 +80,88 @@
         "_row_num": 10
       },
       {
-        "type": "string",
-        "name": "nome",
+        "type": "note",
+        "name": "nota_nome",
         "display": {
           "prompt": {
-            "text": "Nome do paciente"
+            "text": "O nome da criança é {{data.nome}}"
           }
         },
         "_row_num": 11
       },
       {
-        "type": "select_one",
-        "values_list": "DOB_ou_idade",
-        "name": "DOB_ou_idade",
-        "display": {
-          "prompt": {
-            "text": "Idade ou data de nascimento?"
-          }
-        },
-        "required": true,
+        "clause": "if",
+        "condition": "data('DOB_ou_idade')=='1'",
         "_row_num": 12
       },
       {
-        "clause": "if",
-        "condition": "data('DOB_ou_idade')=='1'",
+        "type": "note",
+        "name": "nota_dn",
+        "display": {
+          "prompt": {
+            "text": "Data de Nascimento: {{data.dn}}"
+          }
+        },
         "_row_num": 13
       },
       {
-        "type": "adate",
-        "name": "dn",
-        "display": {
-          "prompt": {
-            "text": "Data de Nascimento"
-          }
-        },
-        "required": "data('DOB_ou_idade')=='1'",
+        "clause": "else",
         "_row_num": 14
       },
       {
-        "clause": "else",
+        "type": "note",
+        "name": "nota_ano",
+        "display": {
+          "prompt": {
+            "text": "Tem {{data.ano}} anos e {{data.mes}} meses"
+          }
+        },
         "_row_num": 15
       },
       {
-        "type": "integer",
-        "name": "ano",
-        "display": {
-          "prompt": {
-            "text": "Idades em anos"
-          },
-          "hint": {
-            "text": "se for menos de 1 ano coloca zero"
-          }
-        },
-        "required": "data('DOB_ou_idade')=='2'",
+        "clause": "end if",
         "_row_num": 16
       },
       {
-        "type": "integer",
-        "name": "mes",
-        "display": {
-          "prompt": {
-            "text": "Idade em meses"
-          },
-          "hint": {
-            "text": "se nao souber coloca zero, se for 12 acrescenta 1 ano"
-          }
-        },
-        "constraint": "data('mes')<12",
-        "required": "data('DOB_ou_idade')=='2'",
+        "clause": "if",
+        "condition": "data('sexo')=='1'",
         "_row_num": 17
       },
       {
-        "clause": "end if",
+        "type": "note",
+        "name": "masculino",
+        "display": {
+          "prompt": {
+            "text": "Sexo: Masculino"
+          }
+        },
+        "_row_num": 18
+      },
+      {
+        "clause": "else",
         "_row_num": 19
       },
       {
-        "clause": "end screen",
+        "type": "note",
+        "name": "feminino",
+        "display": {
+          "prompt": {
+            "text": "Sexo: Feminino"
+          }
+        },
         "_row_num": 20
       },
       {
-        "clause": "begin screen",
+        "clause": "end if",
+        "_row_num": 21
+      },
+      {
+        "clause": "end screen",
         "_row_num": 22
       },
       {
-        "type": "select_one",
-        "values_list": "sexo",
-        "name": "sexo",
-        "display": {
-          "prompt": {
-            "text": "Sexo"
-          }
-        },
-        "_row_num": 23
+        "clause": "begin screen",
+        "_row_num": 24
       },
       {
         "type": "decimal",
@@ -181,7 +171,7 @@
             "text": "Altura (cm)"
           }
         },
-        "_row_num": 24
+        "_row_num": 25
       },
       {
         "type": "decimal",
@@ -191,15 +181,15 @@
             "text": "Peso (Kg)"
           }
         },
-        "_row_num": 25
-      },
-      {
-        "clause": "end screen",
         "_row_num": 26
       },
       {
+        "clause": "end screen",
+        "_row_num": 27
+      },
+      {
         "clause": "begin screen",
-        "_row_num": 28
+        "_row_num": 29
       },
       {
         "type": "adate",
@@ -207,9 +197,13 @@
         "display": {
           "prompt": {
             "text": "Data da ocorrência"
+          },
+          "adate": {
+            "fromYear": 2020,
+            "toYear": 2020
           }
         },
-        "_row_num": 29
+        "_row_num": 30
       },
       {
         "type": "select_one",
@@ -220,11 +214,11 @@
             "text": "Tipo de evento"
           }
         },
-        "_row_num": 30
+        "_row_num": 31
       },
       {
         "clause": "end screen",
-        "_row_num": 31
+        "_row_num": 32
       },
       {
         "type": "text",
@@ -234,7 +228,7 @@
             "text": "Descreva comom as reações foram tratadas:"
           }
         },
-        "_row_num": 32
+        "_row_num": 33
       },
       {
         "type": "select_one",
@@ -245,11 +239,11 @@
             "text": "Resultado"
           }
         },
-        "_row_num": 33
+        "_row_num": 34
       },
       {
         "clause": "begin screen",
-        "_row_num": 34
+        "_row_num": 35
       },
       {
         "type": "note",
@@ -259,20 +253,20 @@
             "text": "Anote o medicamento suspeito de causar o evento adverso sério e todos os concomitantes"
           }
         },
-        "_row_num": 35
+        "_row_num": 36
       },
       {
         "type": "linked_table",
         "values_list": "medicamento_suspeito",
-        "_row_num": 36
-      },
-      {
-        "clause": "end screen",
         "_row_num": 37
       },
       {
-        "clause": "begin screen",
+        "clause": "end screen",
         "_row_num": 38
+      },
+      {
+        "clause": "begin screen",
+        "_row_num": 39
       },
       {
         "type": "note",
@@ -282,7 +276,7 @@
             "text": "Relatório do técnico"
           }
         },
-        "_row_num": 39
+        "_row_num": 40
       },
       {
         "type": "string",
@@ -292,7 +286,7 @@
             "text": "Nome do técnico:"
           }
         },
-        "_row_num": 40
+        "_row_num": 41
       },
       {
         "type": "string",
@@ -302,7 +296,7 @@
             "text": "Qualificação:"
           }
         },
-        "_row_num": 41
+        "_row_num": 42
       },
       {
         "type": "string",
@@ -312,7 +306,7 @@
             "text": "Endereço:"
           }
         },
-        "_row_num": 42
+        "_row_num": 43
       },
       {
         "type": "integer",
@@ -322,7 +316,7 @@
             "text": "Telefone:"
           }
         },
-        "_row_num": 43
+        "_row_num": 44
       },
       {
         "type": "string",
@@ -332,7 +326,7 @@
             "text": "Email:"
           }
         },
-        "_row_num": 44
+        "_row_num": 45
       },
       {
         "type": "signature",
@@ -342,7 +336,7 @@
             "text": "Assinatura:"
           }
         },
-        "_row_num": 45
+        "_row_num": 46
       },
       {
         "type": "adate",
@@ -350,13 +344,17 @@
         "display": {
           "prompt": {
             "text": "Data:"
+          },
+          "adate": {
+            "fromYear": 2020,
+            "toYear": 2020
           }
         },
-        "_row_num": 46
+        "_row_num": 47
       },
       {
         "clause": "end screen",
-        "_row_num": 47
+        "_row_num": 48
       }
     ],
     "choices": [
@@ -608,55 +606,45 @@
     ],
     "calculates": [
       {
-        "calculation_name": "codigo_manual",
-        "calculation": "concat(data('letra_sticker'),data('numero_sticker'))",
+        "calculation_name": "visita_id",
+        "calculation": "adate.ageInDays(data('date_rastreio'))",
         "_row_num": 2
       },
       {
-        "calculation_name": "ano_em_mes",
-        "calculation": "(data('ano')*12) + data('mes')",
+        "calculation_name": "idade_mes",
+        "calculation": "(data('DOB_ou_idade')=='1')?adate.ageInMonths(data('dn')):(12*data('ano')+data('mes'))",
         "_row_num": 3
       }
     ],
     "model": [
       {
-        "type": "barcode",
-        "name": "id_paciente",
-        "_row_num": 2
-      },
-      {
-        "type": "string",
-        "name": "letra_sticker",
-        "_row_num": 3
-      },
-      {
-        "type": "integer",
-        "name": "numero_sticker",
+        "type": "adate",
+        "name": "date_rastreio",
         "_row_num": 4
       },
       {
-        "type": "adate",
-        "name": "data_inscricao",
+        "type": "string",
+        "name": "id_rastreio",
         "_row_num": 5
+      },
+      {
+        "type": "select_one",
+        "name": "region",
+        "_row_num": 6
+      },
+      {
+        "type": "select_one",
+        "name": "cs",
+        "_row_num": 7
       },
       {
         "type": "text",
         "name": "nome",
-        "_row_num": 6
-      },
-      {
-        "type": "string",
-        "name": "nome_casa",
-        "_row_num": 7
-      },
-      {
-        "type": "select_one",
-        "name": "sexo",
         "_row_num": 8
       },
       {
         "type": "select_one",
-        "name": "Data_ou_idade",
+        "name": "DOB_ou_idade",
         "_row_num": 9
       },
       {
@@ -676,63 +664,123 @@
       },
       {
         "type": "select_one",
-        "name": "region",
+        "name": "sexo",
         "_row_num": 13
       },
       {
-        "type": "select_one",
-        "name": "sector",
-        "_row_num": 14
-      },
-      {
-        "type": "select_one",
-        "name": "tabanca",
-        "_row_num": 15
-      },
-      {
-        "type": "integer",
-        "name": "AF",
-        "_row_num": 16
-      },
-      {
-        "type": "integer",
-        "name": "equipa",
+        "type": "note",
+        "name": "cabezado",
         "_row_num": 17
       },
       {
-        "type": "integer",
-        "name": "mtn_equi",
+        "type": "string",
+        "name": "evento_id",
         "_row_num": 18
       },
       {
-        "type": "integer",
-        "name": "orange_equi",
+        "type": "note",
+        "name": "erro_evento",
         "_row_num": 19
       },
       {
-        "type": "integer",
-        "name": "mtn_RAS",
+        "type": "note",
+        "name": "nota_nome",
         "_row_num": 20
       },
       {
-        "type": "integer",
-        "name": "orange_RAS",
+        "type": "note",
+        "name": "nota_dn",
         "_row_num": 21
       },
       {
         "type": "note",
-        "name": "abrir_ronda",
+        "name": "nota_ano",
         "_row_num": 22
       },
       {
-        "type": "text",
-        "name": "mae",
+        "type": "note",
+        "name": "masculino",
+        "_row_num": 23
+      },
+      {
+        "type": "note",
+        "name": "feminino",
         "_row_num": 24
       },
       {
-        "type": "text",
-        "name": "chefe_af",
+        "type": "decimal",
+        "name": "altura",
         "_row_num": 25
+      },
+      {
+        "type": "decimal",
+        "name": "peso",
+        "_row_num": 26
+      },
+      {
+        "type": "adate",
+        "name": "data_ocorrencia",
+        "_row_num": 27
+      },
+      {
+        "type": "select_one",
+        "name": "tipo_evento",
+        "_row_num": 28
+      },
+      {
+        "type": "text",
+        "name": "descricao",
+        "_row_num": 29
+      },
+      {
+        "type": "select_one",
+        "name": "resultado",
+        "_row_num": 30
+      },
+      {
+        "type": "note",
+        "name": "listas",
+        "_row_num": 31
+      },
+      {
+        "type": "note",
+        "name": "rel_tecnico",
+        "_row_num": 32
+      },
+      {
+        "type": "string",
+        "name": "tecnico",
+        "_row_num": 33
+      },
+      {
+        "type": "string",
+        "name": "qualificacao",
+        "_row_num": 34
+      },
+      {
+        "type": "string",
+        "name": "endereco",
+        "_row_num": 35
+      },
+      {
+        "type": "integer",
+        "name": "tel_tecnico",
+        "_row_num": 36
+      },
+      {
+        "type": "string",
+        "name": "email_tecnico",
+        "_row_num": 37
+      },
+      {
+        "type": "signature",
+        "name": "assinatura",
+        "_row_num": 38
+      },
+      {
+        "type": "adate",
+        "name": "date_assinatuda",
+        "_row_num": 39
       }
     ]
   },
@@ -1055,49 +1103,19 @@
       }
     },
     "calculates": {
-      "codigo_manual": {
-        "calculation_name": "codigo_manual",
-        "calculation": "concat(data('letra_sticker'),data('numero_sticker'))",
+      "visita_id": {
+        "calculation_name": "visita_id",
+        "calculation": "adate.ageInDays(data('date_rastreio'))",
         "_row_num": 2
       },
-      "ano_em_mes": {
-        "calculation_name": "ano_em_mes",
-        "calculation": "(data('ano')*12) + data('mes')",
+      "idade_mes": {
+        "calculation_name": "idade_mes",
+        "calculation": "(data('DOB_ou_idade')=='1')?adate.ageInMonths(data('dn')):(12*data('ano')+data('mes'))",
         "_row_num": 3
       }
     },
     "model": {
-      "id_paciente": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 2,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "id_paciente"
-      },
-      "letra_sticker": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 3,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "letra_sticker"
-      },
-      "numero_sticker": {
-        "type": "integer",
-        "_defn": [
-          {
-            "_row_num": 4,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "numero_sticker"
-      },
-      "data_inscricao": {
+      "date_rastreio": {
         "prompt_type_name": "adate",
         "type": "string",
         "elementType": "string",
@@ -1106,27 +1124,33 @@
         "__rowNum__": 2,
         "_defn": [
           {
+            "_row_num": 4,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "date_rastreio"
+      },
+      "id_rastreio": {
+        "type": "string",
+        "_defn": [
+          {
             "_row_num": 5,
             "section_name": "model"
           }
         ],
-        "elementKey": "data_inscricao"
+        "elementKey": "id_rastreio"
       },
-      "nome": {
+      "region": {
         "type": "string",
         "_defn": [
-          {
-            "_row_num": 11,
-            "section_name": "survey"
-          },
           {
             "_row_num": 6,
             "section_name": "model"
           }
         ],
-        "elementKey": "nome"
+        "elementKey": "region"
       },
-      "nome_casa": {
+      "cs": {
         "type": "string",
         "_defn": [
           {
@@ -1134,24 +1158,19 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "nome_casa"
+        "elementKey": "cs"
       },
-      "sexo": {
+      "nome": {
         "type": "string",
-        "valuesList": "sexo",
         "_defn": [
-          {
-            "_row_num": 23,
-            "section_name": "survey"
-          },
           {
             "_row_num": 8,
             "section_name": "model"
           }
         ],
-        "elementKey": "sexo"
+        "elementKey": "nome"
       },
-      "Data_ou_idade": {
+      "DOB_ou_idade": {
         "type": "string",
         "_defn": [
           {
@@ -1159,7 +1178,7 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "Data_ou_idade"
+        "elementKey": "DOB_ou_idade"
       },
       "dn": {
         "prompt_type_name": "adate",
@@ -1169,10 +1188,6 @@
         "_row_num": 3,
         "__rowNum__": 2,
         "_defn": [
-          {
-            "_row_num": 14,
-            "section_name": "survey"
-          },
           {
             "_row_num": 10,
             "section_name": "model"
@@ -1184,10 +1199,6 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 16,
-            "section_name": "survey"
-          },
-          {
             "_row_num": 11,
             "section_name": "model"
           }
@@ -1198,17 +1209,13 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 17,
-            "section_name": "survey"
-          },
-          {
             "_row_num": 12,
             "section_name": "model"
           }
         ],
         "elementKey": "mes"
       },
-      "region": {
+      "sexo": {
         "type": "string",
         "_defn": [
           {
@@ -1216,89 +1223,63 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "region"
+        "elementKey": "sexo"
       },
-      "sector": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 14,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "sector"
-      },
-      "tabanca": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 15,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "tabanca"
-      },
-      "AF": {
-        "type": "integer",
-        "_defn": [
-          {
-            "_row_num": 16,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "AF"
-      },
-      "equipa": {
-        "type": "integer",
+      "cabezado": {
         "_defn": [
           {
             "_row_num": 17,
             "section_name": "model"
           }
         ],
-        "elementKey": "equipa"
+        "type": "note",
+        "elementKey": "cabezado"
       },
-      "mtn_equi": {
-        "type": "integer",
+      "evento_id": {
+        "type": "string",
         "_defn": [
+          {
+            "_row_num": 5,
+            "section_name": "survey"
+          },
           {
             "_row_num": 18,
             "section_name": "model"
           }
         ],
-        "elementKey": "mtn_equi"
+        "elementKey": "evento_id"
       },
-      "orange_equi": {
-        "type": "integer",
+      "erro_evento": {
         "_defn": [
           {
             "_row_num": 19,
             "section_name": "model"
           }
         ],
-        "elementKey": "orange_equi"
+        "type": "note",
+        "elementKey": "erro_evento"
       },
-      "mtn_RAS": {
-        "type": "integer",
+      "nota_nome": {
         "_defn": [
           {
             "_row_num": 20,
             "section_name": "model"
           }
         ],
-        "elementKey": "mtn_RAS"
+        "type": "note",
+        "elementKey": "nota_nome"
       },
-      "orange_RAS": {
-        "type": "integer",
+      "nota_dn": {
         "_defn": [
           {
             "_row_num": 21,
             "section_name": "model"
           }
         ],
-        "elementKey": "orange_RAS"
+        "type": "note",
+        "elementKey": "nota_dn"
       },
-      "abrir_ronda": {
+      "nota_ano": {
         "_defn": [
           {
             "_row_num": 22,
@@ -1306,171 +1287,210 @@
           }
         ],
         "type": "note",
-        "elementKey": "abrir_ronda"
+        "elementKey": "nota_ano"
       },
-      "mae": {
-        "type": "string",
+      "masculino": {
+        "_defn": [
+          {
+            "_row_num": 23,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "masculino"
+      },
+      "feminino": {
         "_defn": [
           {
             "_row_num": 24,
             "section_name": "model"
           }
         ],
-        "elementKey": "mae"
+        "type": "note",
+        "elementKey": "feminino"
       },
-      "chefe_af": {
-        "type": "string",
+      "altura": {
+        "type": "number",
         "_defn": [
+          {
+            "_row_num": 25,
+            "section_name": "survey"
+          },
           {
             "_row_num": 25,
             "section_name": "model"
           }
         ],
-        "elementKey": "chefe_af"
-      },
-      "evento_id": {
-        "_defn": [
-          {
-            "_row_num": 5,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "evento_id"
-      },
-      "DOB_ou_idade": {
-        "_defn": [
-          {
-            "_row_num": 12,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "DOB_ou_idade",
-        "elementKey": "DOB_ou_idade"
-      },
-      "altura": {
-        "_defn": [
-          {
-            "_row_num": 24,
-            "section_name": "survey"
-          }
-        ],
-        "type": "number",
         "elementKey": "altura"
       },
       "peso": {
+        "type": "number",
         "_defn": [
           {
-            "_row_num": 25,
+            "_row_num": 26,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 26,
+            "section_name": "model"
           }
         ],
-        "type": "number",
         "elementKey": "peso"
       },
       "data_ocorrencia": {
-        "_defn": [
-          {
-            "_row_num": 29,
-            "section_name": "survey"
-          }
-        ],
         "prompt_type_name": "adate",
         "type": "string",
         "elementType": "string",
         "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "elementKey": "data_ocorrencia"
-      },
-      "tipo_evento": {
+        "_row_num": 3,
+        "__rowNum__": 2,
         "_defn": [
           {
             "_row_num": 30,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 27,
+            "section_name": "model"
           }
         ],
+        "elementKey": "data_ocorrencia"
+      },
+      "tipo_evento": {
         "type": "string",
         "valuesList": "tipo_evento",
+        "_defn": [
+          {
+            "_row_num": 31,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 28,
+            "section_name": "model"
+          }
+        ],
         "elementKey": "tipo_evento"
       },
       "descricao": {
-        "_defn": [
-          {
-            "_row_num": 32,
-            "section_name": "survey"
-          }
-        ],
         "type": "string",
-        "elementKey": "descricao"
-      },
-      "resultado": {
         "_defn": [
           {
             "_row_num": 33,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 29,
+            "section_name": "model"
           }
         ],
+        "elementKey": "descricao"
+      },
+      "resultado": {
         "type": "string",
         "valuesList": "resultados",
-        "elementKey": "resultado"
-      },
-      "tecnico": {
         "_defn": [
           {
-            "_row_num": 40,
+            "_row_num": 34,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 30,
+            "section_name": "model"
           }
         ],
-        "type": "string",
-        "elementKey": "tecnico"
+        "elementKey": "resultado"
       },
-      "qualificacao": {
+      "listas": {
+        "_defn": [
+          {
+            "_row_num": 31,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "listas"
+      },
+      "rel_tecnico": {
+        "_defn": [
+          {
+            "_row_num": 32,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "rel_tecnico"
+      },
+      "tecnico": {
+        "type": "string",
         "_defn": [
           {
             "_row_num": 41,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 33,
+            "section_name": "model"
           }
         ],
-        "type": "string",
-        "elementKey": "qualificacao"
+        "elementKey": "tecnico"
       },
-      "endereco": {
+      "qualificacao": {
+        "type": "string",
         "_defn": [
           {
             "_row_num": 42,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 34,
+            "section_name": "model"
           }
         ],
-        "type": "string",
-        "elementKey": "endereco"
+        "elementKey": "qualificacao"
       },
-      "tel_tecnico": {
+      "endereco": {
+        "type": "string",
         "_defn": [
           {
             "_row_num": 43,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 35,
+            "section_name": "model"
           }
         ],
-        "type": "integer",
-        "elementKey": "tel_tecnico"
+        "elementKey": "endereco"
       },
-      "email_tecnico": {
+      "tel_tecnico": {
+        "type": "integer",
         "_defn": [
           {
             "_row_num": 44,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 36,
+            "section_name": "model"
           }
         ],
-        "type": "string",
-        "elementKey": "email_tecnico"
+        "elementKey": "tel_tecnico"
       },
-      "assinatura": {
+      "email_tecnico": {
+        "type": "string",
         "_defn": [
           {
             "_row_num": 45,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 37,
+            "section_name": "model"
           }
         ],
+        "elementKey": "email_tecnico"
+      },
+      "assinatura": {
         "type": "object",
         "elementType": "mimeUri",
         "properties": {
@@ -1486,19 +1506,35 @@
             "elementKey": "assinatura_contentType"
           }
         },
-        "elementKey": "assinatura"
-      },
-      "date_assinatuda": {
         "_defn": [
           {
             "_row_num": 46,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 38,
+            "section_name": "model"
           }
         ],
+        "elementKey": "assinatura"
+      },
+      "date_assinatuda": {
         "prompt_type_name": "adate",
         "type": "string",
         "elementType": "string",
         "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 47,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 39,
+            "section_name": "model"
+          }
+        ],
         "elementKey": "date_assinatuda"
       }
     },
@@ -1558,107 +1594,79 @@
             "promptIdx": 2
           },
           {
-            "type": "string",
-            "name": "nome",
+            "type": "note",
+            "name": "nota_nome",
             "display": {
               "prompt": {
-                "text": "Nome do paciente"
+                "text": "O nome da criança é {{data.nome}}"
               }
             },
             "_row_num": 11,
             "__rowNum__": 10,
             "_token_type": "prompt",
-            "_type": "string",
+            "_type": "note",
             "_branch_label_enclosing_screen": "survey/_screen10",
             "promptIdx": 3
           },
           {
-            "type": "select_one",
-            "values_list": "DOB_ou_idade",
-            "name": "DOB_ou_idade",
+            "type": "note",
+            "name": "nota_dn",
             "display": {
               "prompt": {
-                "text": "Idade ou data de nascimento?"
+                "text": "Data de Nascimento: {{data.dn}}"
               }
             },
-            "required": true,
-            "_row_num": 12,
-            "__rowNum__": 11,
+            "_row_num": 13,
+            "__rowNum__": 12,
             "_token_type": "prompt",
-            "_type": "select_one",
+            "_type": "note",
             "_branch_label_enclosing_screen": "survey/_screen10",
             "promptIdx": 4
           },
           {
-            "type": "adate",
-            "name": "dn",
+            "type": "note",
+            "name": "nota_ano",
             "display": {
               "prompt": {
-                "text": "Data de Nascimento"
+                "text": "Tem {{data.ano}} anos e {{data.mes}} meses"
               }
             },
-            "required": "data('DOB_ou_idade')=='1'",
-            "_row_num": 14,
-            "__rowNum__": 13,
+            "_row_num": 15,
+            "__rowNum__": 14,
             "_token_type": "prompt",
-            "_type": "adate",
+            "_type": "note",
             "_branch_label_enclosing_screen": "survey/_screen10",
             "promptIdx": 5
           },
           {
-            "type": "integer",
-            "name": "ano",
+            "type": "note",
+            "name": "masculino",
             "display": {
               "prompt": {
-                "text": "Idades em anos"
-              },
-              "hint": {
-                "text": "se for menos de 1 ano coloca zero"
+                "text": "Sexo: Masculino"
               }
             },
-            "required": "data('DOB_ou_idade')=='2'",
-            "_row_num": 16,
-            "__rowNum__": 15,
+            "_row_num": 18,
+            "__rowNum__": 17,
             "_token_type": "prompt",
-            "_type": "integer",
+            "_type": "note",
             "_branch_label_enclosing_screen": "survey/_screen10",
             "promptIdx": 6
           },
           {
-            "type": "integer",
-            "name": "mes",
+            "type": "note",
+            "name": "feminino",
             "display": {
               "prompt": {
-                "text": "Idade em meses"
-              },
-              "hint": {
-                "text": "se nao souber coloca zero, se for 12 acrescenta 1 ano"
+                "text": "Sexo: Feminino"
               }
             },
-            "constraint": "data('mes')<12",
-            "required": "data('DOB_ou_idade')=='2'",
-            "_row_num": 17,
-            "__rowNum__": 16,
+            "_row_num": 20,
+            "__rowNum__": 19,
             "_token_type": "prompt",
-            "_type": "integer",
+            "_type": "note",
             "_branch_label_enclosing_screen": "survey/_screen10",
             "promptIdx": 7
-          },
-          {
-            "type": "select_one",
-            "values_list": "sexo",
-            "name": "sexo",
-            "display": {
-              "prompt": {
-                "text": "Sexo"
-              }
-            },
-            "_row_num": 23,
-            "__rowNum__": 22,
-            "_token_type": "prompt",
-            "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen22",
-            "promptIdx": 8
           },
           {
             "type": "decimal",
@@ -1668,12 +1676,12 @@
                 "text": "Altura (cm)"
               }
             },
-            "_row_num": 24,
-            "__rowNum__": 23,
+            "_row_num": 25,
+            "__rowNum__": 24,
             "_token_type": "prompt",
             "_type": "decimal",
-            "_branch_label_enclosing_screen": "survey/_screen22",
-            "promptIdx": 9
+            "_branch_label_enclosing_screen": "survey/_screen24",
+            "promptIdx": 8
           },
           {
             "type": "decimal",
@@ -1683,12 +1691,12 @@
                 "text": "Peso (Kg)"
               }
             },
-            "_row_num": 25,
-            "__rowNum__": 24,
+            "_row_num": 26,
+            "__rowNum__": 25,
             "_token_type": "prompt",
             "_type": "decimal",
-            "_branch_label_enclosing_screen": "survey/_screen22",
-            "promptIdx": 10
+            "_branch_label_enclosing_screen": "survey/_screen24",
+            "promptIdx": 9
           },
           {
             "type": "adate",
@@ -1696,14 +1704,18 @@
             "display": {
               "prompt": {
                 "text": "Data da ocorrência"
+              },
+              "adate": {
+                "fromYear": 2020,
+                "toYear": 2020
               }
             },
-            "_row_num": 29,
-            "__rowNum__": 28,
+            "_row_num": 30,
+            "__rowNum__": 29,
             "_token_type": "prompt",
             "_type": "adate",
-            "_branch_label_enclosing_screen": "survey/_screen28",
-            "promptIdx": 11
+            "_branch_label_enclosing_screen": "survey/_screen29",
+            "promptIdx": 10
           },
           {
             "type": "select_one",
@@ -1714,12 +1726,12 @@
                 "text": "Tipo de evento"
               }
             },
-            "_row_num": 30,
-            "__rowNum__": 29,
+            "_row_num": 31,
+            "__rowNum__": 30,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen28",
-            "promptIdx": 12
+            "_branch_label_enclosing_screen": "survey/_screen29",
+            "promptIdx": 11
           },
           {
             "type": "text",
@@ -1729,12 +1741,12 @@
                 "text": "Descreva comom as reações foram tratadas:"
               }
             },
-            "_row_num": 32,
-            "__rowNum__": 31,
+            "_row_num": 33,
+            "__rowNum__": 32,
             "_token_type": "prompt",
             "_type": "text",
-            "_branch_label_enclosing_screen": "survey/_screen32",
-            "promptIdx": 13
+            "_branch_label_enclosing_screen": "survey/_screen33",
+            "promptIdx": 12
           },
           {
             "type": "select_one",
@@ -1745,12 +1757,12 @@
                 "text": "Resultado"
               }
             },
-            "_row_num": 33,
-            "__rowNum__": 32,
+            "_row_num": 34,
+            "__rowNum__": 33,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen33",
-            "promptIdx": 14
+            "_branch_label_enclosing_screen": "survey/_screen34",
+            "promptIdx": 13
           },
           {
             "type": "note",
@@ -1760,22 +1772,22 @@
                 "text": "Anote o medicamento suspeito de causar o evento adverso sério e todos os concomitantes"
               }
             },
-            "_row_num": 35,
-            "__rowNum__": 34,
+            "_row_num": 36,
+            "__rowNum__": 35,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen34",
-            "promptIdx": 15
+            "_branch_label_enclosing_screen": "survey/_screen35",
+            "promptIdx": 14
           },
           {
             "type": "linked_table",
             "values_list": "medicamento_suspeito",
-            "_row_num": 36,
-            "__rowNum__": 35,
+            "_row_num": 37,
+            "__rowNum__": 36,
             "_token_type": "prompt",
             "_type": "linked_table",
-            "_branch_label_enclosing_screen": "survey/_screen34",
-            "promptIdx": 16
+            "_branch_label_enclosing_screen": "survey/_screen35",
+            "promptIdx": 15
           },
           {
             "type": "note",
@@ -1785,12 +1797,12 @@
                 "text": "Relatório do técnico"
               }
             },
-            "_row_num": 39,
-            "__rowNum__": 38,
+            "_row_num": 40,
+            "__rowNum__": 39,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen38",
-            "promptIdx": 17
+            "_branch_label_enclosing_screen": "survey/_screen39",
+            "promptIdx": 16
           },
           {
             "type": "string",
@@ -1800,12 +1812,12 @@
                 "text": "Nome do técnico:"
               }
             },
-            "_row_num": 40,
-            "__rowNum__": 39,
+            "_row_num": 41,
+            "__rowNum__": 40,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen38",
-            "promptIdx": 18
+            "_branch_label_enclosing_screen": "survey/_screen39",
+            "promptIdx": 17
           },
           {
             "type": "string",
@@ -1815,12 +1827,12 @@
                 "text": "Qualificação:"
               }
             },
-            "_row_num": 41,
-            "__rowNum__": 40,
+            "_row_num": 42,
+            "__rowNum__": 41,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen38",
-            "promptIdx": 19
+            "_branch_label_enclosing_screen": "survey/_screen39",
+            "promptIdx": 18
           },
           {
             "type": "string",
@@ -1830,12 +1842,12 @@
                 "text": "Endereço:"
               }
             },
-            "_row_num": 42,
-            "__rowNum__": 41,
+            "_row_num": 43,
+            "__rowNum__": 42,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen38",
-            "promptIdx": 20
+            "_branch_label_enclosing_screen": "survey/_screen39",
+            "promptIdx": 19
           },
           {
             "type": "integer",
@@ -1845,12 +1857,12 @@
                 "text": "Telefone:"
               }
             },
-            "_row_num": 43,
-            "__rowNum__": 42,
+            "_row_num": 44,
+            "__rowNum__": 43,
             "_token_type": "prompt",
             "_type": "integer",
-            "_branch_label_enclosing_screen": "survey/_screen38",
-            "promptIdx": 21
+            "_branch_label_enclosing_screen": "survey/_screen39",
+            "promptIdx": 20
           },
           {
             "type": "string",
@@ -1860,12 +1872,12 @@
                 "text": "Email:"
               }
             },
-            "_row_num": 44,
-            "__rowNum__": 43,
+            "_row_num": 45,
+            "__rowNum__": 44,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen38",
-            "promptIdx": 22
+            "_branch_label_enclosing_screen": "survey/_screen39",
+            "promptIdx": 21
           },
           {
             "type": "signature",
@@ -1875,12 +1887,12 @@
                 "text": "Assinatura:"
               }
             },
-            "_row_num": 45,
-            "__rowNum__": 44,
+            "_row_num": 46,
+            "__rowNum__": 45,
             "_token_type": "prompt",
             "_type": "signature",
-            "_branch_label_enclosing_screen": "survey/_screen38",
-            "promptIdx": 23
+            "_branch_label_enclosing_screen": "survey/_screen39",
+            "promptIdx": 22
           },
           {
             "type": "adate",
@@ -1888,31 +1900,30 @@
             "display": {
               "prompt": {
                 "text": "Data:"
+              },
+              "adate": {
+                "fromYear": 2020,
+                "toYear": 2020
               }
             },
-            "_row_num": 46,
-            "__rowNum__": 45,
+            "_row_num": 47,
+            "__rowNum__": 46,
             "_token_type": "prompt",
             "_type": "adate",
-            "_branch_label_enclosing_screen": "survey/_screen38",
-            "promptIdx": 24
+            "_branch_label_enclosing_screen": "survey/_screen39",
+            "promptIdx": 23
           },
           {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 48,
-            "_branch_label_enclosing_screen": "survey/_screen48",
-            "promptIdx": 25
+            "_row_num": 49,
+            "_branch_label_enclosing_screen": "survey/_screen49",
+            "promptIdx": 24
           }
         ],
         "validation_tag_map": {
-          "finalize": [
-            4,
-            5,
-            6,
-            7
-          ]
+          "finalize": []
         },
         "operations": [
           {
@@ -1966,91 +1977,91 @@
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 20,
-              "__rowNum__": 19,
+              "_row_num": 22,
+              "__rowNum__": 21,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(3);\nactivePromptIndicies.push(4);\nif (data('DOB_ou_idade')=='1') {\nactivePromptIndicies.push(5);\n}\nelse {\nactivePromptIndicies.push(6);\nactivePromptIndicies.push(7);\n}\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(3);\nif (data('DOB_ou_idade')=='1') {\nactivePromptIndicies.push(4);\n}\nelse {\nactivePromptIndicies.push(5);\n}\nif (data('sexo')=='1') {\nactivePromptIndicies.push(6);\n}\nelse {\nactivePromptIndicies.push(7);\n}\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 5
           },
           {
             "clause": "begin screen",
-            "_row_num": 22,
-            "__rowNum__": 21,
+            "_row_num": 24,
+            "__rowNum__": 23,
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 26,
-              "__rowNum__": 25,
+              "_row_num": 27,
+              "__rowNum__": 26,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(8);\nactivePromptIndicies.push(9);\nactivePromptIndicies.push(10);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(8);\nactivePromptIndicies.push(9);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 6
           },
           {
             "clause": "begin screen",
-            "_row_num": 28,
-            "__rowNum__": 27,
+            "_row_num": 29,
+            "__rowNum__": 28,
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 31,
-              "__rowNum__": 30,
+              "_row_num": 32,
+              "__rowNum__": 31,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(11);\nactivePromptIndicies.push(12);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(10);\nactivePromptIndicies.push(11);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 7
-          },
-          {
-            "_row_num": 32,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(13);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 8
           },
           {
             "_row_num": 33,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(14);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(12);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 8
+          },
+          {
+            "_row_num": 34,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(13);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 9
           },
           {
             "clause": "begin screen",
-            "_row_num": 34,
-            "__rowNum__": 33,
+            "_row_num": 35,
+            "__rowNum__": 34,
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 37,
-              "__rowNum__": 36,
+              "_row_num": 38,
+              "__rowNum__": 37,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(15);\nactivePromptIndicies.push(16);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(14);\nactivePromptIndicies.push(15);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 10
           },
           {
             "clause": "begin screen",
-            "_row_num": 38,
-            "__rowNum__": 37,
+            "_row_num": 39,
+            "__rowNum__": 38,
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 47,
-              "__rowNum__": 46,
+              "_row_num": 48,
+              "__rowNum__": 47,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(17);\nactivePromptIndicies.push(18);\nactivePromptIndicies.push(19);\nactivePromptIndicies.push(20);\nactivePromptIndicies.push(21);\nactivePromptIndicies.push(22);\nactivePromptIndicies.push(23);\nactivePromptIndicies.push(24);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(16);\nactivePromptIndicies.push(17);\nactivePromptIndicies.push(18);\nactivePromptIndicies.push(19);\nactivePromptIndicies.push(20);\nactivePromptIndicies.push(21);\nactivePromptIndicies.push(22);\nactivePromptIndicies.push(23);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 11
           },
           {
             "_token_type": "exit_section",
             "clause": "exit section",
-            "_row_num": 48,
+            "_row_num": 49,
             "operationIdx": 12
           },
           {
-            "_row_num": 48,
+            "_row_num": 49,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(25);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(24);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
@@ -2059,7 +2070,7 @@
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 48,
+            "_row_num": 49,
             "operationIdx": 14
           }
         ],
@@ -2070,14 +2081,14 @@
           "_else9": 5,
           "_endif9": 5,
           "_screen10": 5,
-          "_screen22": 6,
-          "_screen28": 7,
-          "_screen32": 8,
-          "_screen33": 9,
-          "_screen34": 10,
-          "_screen38": 11,
+          "_screen24": 6,
+          "_screen29": 7,
+          "_screen33": 8,
+          "_screen34": 9,
+          "_screen35": 10,
+          "_screen39": 11,
           "_contents": 13,
-          "_screen48": 13
+          "_screen49": 13
         }
       },
       "initial": {
@@ -2259,46 +2270,7 @@
       }
     },
     "dataTableModel": {
-      "id_paciente": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 2,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "id_paciente",
-        "elementName": "id_paciente",
-        "elementSet": "data",
-        "elementPath": "id_paciente"
-      },
-      "letra_sticker": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 3,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "letra_sticker",
-        "elementName": "letra_sticker",
-        "elementSet": "data",
-        "elementPath": "letra_sticker"
-      },
-      "numero_sticker": {
-        "type": "integer",
-        "_defn": [
-          {
-            "_row_num": 4,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "numero_sticker",
-        "elementName": "numero_sticker",
-        "elementSet": "data",
-        "elementPath": "numero_sticker"
-      },
-      "data_inscricao": {
+      "date_rastreio": {
         "prompt_type_name": "adate",
         "type": "string",
         "elementType": "string",
@@ -2307,24 +2279,59 @@
         "__rowNum__": 2,
         "_defn": [
           {
+            "_row_num": 4,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "date_rastreio",
+        "elementName": "date_rastreio",
+        "elementSet": "data",
+        "elementPath": "date_rastreio"
+      },
+      "id_rastreio": {
+        "type": "string",
+        "_defn": [
+          {
             "_row_num": 5,
             "section_name": "model"
           }
         ],
-        "elementKey": "data_inscricao",
-        "elementName": "data_inscricao",
+        "elementKey": "id_rastreio",
+        "elementName": "id_rastreio",
         "elementSet": "data",
-        "elementPath": "data_inscricao"
+        "elementPath": "id_rastreio"
+      },
+      "region": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 6,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "region",
+        "elementName": "region",
+        "elementSet": "data",
+        "elementPath": "region"
+      },
+      "cs": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 7,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "cs",
+        "elementName": "cs",
+        "elementSet": "data",
+        "elementPath": "cs"
       },
       "nome": {
         "type": "string",
         "_defn": [
           {
-            "_row_num": 11,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 6,
+            "_row_num": 8,
             "section_name": "model"
           }
         ],
@@ -2333,38 +2340,7 @@
         "elementSet": "data",
         "elementPath": "nome"
       },
-      "nome_casa": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 7,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "nome_casa",
-        "elementName": "nome_casa",
-        "elementSet": "data",
-        "elementPath": "nome_casa"
-      },
-      "sexo": {
-        "type": "string",
-        "valuesList": "sexo",
-        "_defn": [
-          {
-            "_row_num": 23,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 8,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "sexo",
-        "elementName": "sexo",
-        "elementSet": "data",
-        "elementPath": "sexo"
-      },
-      "Data_ou_idade": {
+      "DOB_ou_idade": {
         "type": "string",
         "_defn": [
           {
@@ -2372,10 +2348,10 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "Data_ou_idade",
-        "elementName": "Data_ou_idade",
+        "elementKey": "DOB_ou_idade",
+        "elementName": "DOB_ou_idade",
         "elementSet": "data",
-        "elementPath": "Data_ou_idade"
+        "elementPath": "DOB_ou_idade"
       },
       "dn": {
         "prompt_type_name": "adate",
@@ -2385,10 +2361,6 @@
         "_row_num": 3,
         "__rowNum__": 2,
         "_defn": [
-          {
-            "_row_num": 14,
-            "section_name": "survey"
-          },
           {
             "_row_num": 10,
             "section_name": "model"
@@ -2403,10 +2375,6 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 16,
-            "section_name": "survey"
-          },
-          {
             "_row_num": 11,
             "section_name": "model"
           }
@@ -2420,10 +2388,6 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 17,
-            "section_name": "survey"
-          },
-          {
             "_row_num": 12,
             "section_name": "model"
           }
@@ -2433,7 +2397,7 @@
         "elementSet": "data",
         "elementPath": "mes"
       },
-      "region": {
+      "sexo": {
         "type": "string",
         "_defn": [
           {
@@ -2441,116 +2405,81 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "region",
-        "elementName": "region",
+        "elementKey": "sexo",
+        "elementName": "sexo",
         "elementSet": "data",
-        "elementPath": "region"
+        "elementPath": "sexo"
       },
-      "sector": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 14,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "sector",
-        "elementName": "sector",
-        "elementSet": "data",
-        "elementPath": "sector"
-      },
-      "tabanca": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 15,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "tabanca",
-        "elementName": "tabanca",
-        "elementSet": "data",
-        "elementPath": "tabanca"
-      },
-      "AF": {
-        "type": "integer",
-        "_defn": [
-          {
-            "_row_num": 16,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "AF",
-        "elementName": "AF",
-        "elementSet": "data",
-        "elementPath": "AF"
-      },
-      "equipa": {
-        "type": "integer",
+      "cabezado": {
         "_defn": [
           {
             "_row_num": 17,
             "section_name": "model"
           }
         ],
-        "elementKey": "equipa",
-        "elementName": "equipa",
+        "type": "note",
+        "elementKey": "cabezado",
+        "elementName": "cabezado",
         "elementSet": "data",
-        "elementPath": "equipa"
+        "elementPath": "cabezado"
       },
-      "mtn_equi": {
-        "type": "integer",
+      "evento_id": {
+        "type": "string",
         "_defn": [
+          {
+            "_row_num": 5,
+            "section_name": "survey"
+          },
           {
             "_row_num": 18,
             "section_name": "model"
           }
         ],
-        "elementKey": "mtn_equi",
-        "elementName": "mtn_equi",
+        "elementKey": "evento_id",
+        "elementName": "evento_id",
         "elementSet": "data",
-        "elementPath": "mtn_equi"
+        "elementPath": "evento_id"
       },
-      "orange_equi": {
-        "type": "integer",
+      "erro_evento": {
         "_defn": [
           {
             "_row_num": 19,
             "section_name": "model"
           }
         ],
-        "elementKey": "orange_equi",
-        "elementName": "orange_equi",
+        "type": "note",
+        "elementKey": "erro_evento",
+        "elementName": "erro_evento",
         "elementSet": "data",
-        "elementPath": "orange_equi"
+        "elementPath": "erro_evento"
       },
-      "mtn_RAS": {
-        "type": "integer",
+      "nota_nome": {
         "_defn": [
           {
             "_row_num": 20,
             "section_name": "model"
           }
         ],
-        "elementKey": "mtn_RAS",
-        "elementName": "mtn_RAS",
+        "type": "note",
+        "elementKey": "nota_nome",
+        "elementName": "nota_nome",
         "elementSet": "data",
-        "elementPath": "mtn_RAS"
+        "elementPath": "nota_nome"
       },
-      "orange_RAS": {
-        "type": "integer",
+      "nota_dn": {
         "_defn": [
           {
             "_row_num": 21,
             "section_name": "model"
           }
         ],
-        "elementKey": "orange_RAS",
-        "elementName": "orange_RAS",
+        "type": "note",
+        "elementKey": "nota_dn",
+        "elementName": "nota_dn",
         "elementSet": "data",
-        "elementPath": "orange_RAS"
+        "elementPath": "nota_dn"
       },
-      "abrir_ronda": {
+      "nota_ano": {
         "_defn": [
           {
             "_row_num": 22,
@@ -2558,219 +2487,258 @@
           }
         ],
         "type": "note",
-        "elementKey": "abrir_ronda",
-        "elementName": "abrir_ronda",
+        "elementKey": "nota_ano",
+        "elementName": "nota_ano",
         "elementSet": "data",
-        "elementPath": "abrir_ronda"
+        "elementPath": "nota_ano"
       },
-      "mae": {
-        "type": "string",
+      "masculino": {
+        "_defn": [
+          {
+            "_row_num": 23,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "masculino",
+        "elementName": "masculino",
+        "elementSet": "data",
+        "elementPath": "masculino"
+      },
+      "feminino": {
         "_defn": [
           {
             "_row_num": 24,
             "section_name": "model"
           }
         ],
-        "elementKey": "mae",
-        "elementName": "mae",
+        "type": "note",
+        "elementKey": "feminino",
+        "elementName": "feminino",
         "elementSet": "data",
-        "elementPath": "mae"
+        "elementPath": "feminino"
       },
-      "chefe_af": {
-        "type": "string",
+      "altura": {
+        "type": "number",
         "_defn": [
+          {
+            "_row_num": 25,
+            "section_name": "survey"
+          },
           {
             "_row_num": 25,
             "section_name": "model"
           }
         ],
-        "elementKey": "chefe_af",
-        "elementName": "chefe_af",
-        "elementSet": "data",
-        "elementPath": "chefe_af"
-      },
-      "evento_id": {
-        "_defn": [
-          {
-            "_row_num": 5,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "evento_id",
-        "elementName": "evento_id",
-        "elementSet": "data",
-        "elementPath": "evento_id"
-      },
-      "DOB_ou_idade": {
-        "_defn": [
-          {
-            "_row_num": 12,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "DOB_ou_idade",
-        "elementKey": "DOB_ou_idade",
-        "elementName": "DOB_ou_idade",
-        "elementSet": "data",
-        "elementPath": "DOB_ou_idade"
-      },
-      "altura": {
-        "_defn": [
-          {
-            "_row_num": 24,
-            "section_name": "survey"
-          }
-        ],
-        "type": "number",
         "elementKey": "altura",
         "elementName": "altura",
         "elementSet": "data",
         "elementPath": "altura"
       },
       "peso": {
+        "type": "number",
         "_defn": [
           {
-            "_row_num": 25,
+            "_row_num": 26,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 26,
+            "section_name": "model"
           }
         ],
-        "type": "number",
         "elementKey": "peso",
         "elementName": "peso",
         "elementSet": "data",
         "elementPath": "peso"
       },
       "data_ocorrencia": {
-        "_defn": [
-          {
-            "_row_num": 29,
-            "section_name": "survey"
-          }
-        ],
         "prompt_type_name": "adate",
         "type": "string",
         "elementType": "string",
         "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 30,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 27,
+            "section_name": "model"
+          }
+        ],
         "elementKey": "data_ocorrencia",
         "elementName": "data_ocorrencia",
         "elementSet": "data",
         "elementPath": "data_ocorrencia"
       },
       "tipo_evento": {
-        "_defn": [
-          {
-            "_row_num": 30,
-            "section_name": "survey"
-          }
-        ],
         "type": "string",
         "valuesList": "tipo_evento",
+        "_defn": [
+          {
+            "_row_num": 31,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 28,
+            "section_name": "model"
+          }
+        ],
         "elementKey": "tipo_evento",
         "elementName": "tipo_evento",
         "elementSet": "data",
         "elementPath": "tipo_evento"
       },
       "descricao": {
+        "type": "string",
         "_defn": [
           {
-            "_row_num": 32,
+            "_row_num": 33,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 29,
+            "section_name": "model"
           }
         ],
-        "type": "string",
         "elementKey": "descricao",
         "elementName": "descricao",
         "elementSet": "data",
         "elementPath": "descricao"
       },
       "resultado": {
-        "_defn": [
-          {
-            "_row_num": 33,
-            "section_name": "survey"
-          }
-        ],
         "type": "string",
         "valuesList": "resultados",
+        "_defn": [
+          {
+            "_row_num": 34,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 30,
+            "section_name": "model"
+          }
+        ],
         "elementKey": "resultado",
         "elementName": "resultado",
         "elementSet": "data",
         "elementPath": "resultado"
       },
-      "tecnico": {
+      "listas": {
         "_defn": [
           {
-            "_row_num": 40,
-            "section_name": "survey"
+            "_row_num": 31,
+            "section_name": "model"
           }
         ],
+        "type": "note",
+        "elementKey": "listas",
+        "elementName": "listas",
+        "elementSet": "data",
+        "elementPath": "listas"
+      },
+      "rel_tecnico": {
+        "_defn": [
+          {
+            "_row_num": 32,
+            "section_name": "model"
+          }
+        ],
+        "type": "note",
+        "elementKey": "rel_tecnico",
+        "elementName": "rel_tecnico",
+        "elementSet": "data",
+        "elementPath": "rel_tecnico"
+      },
+      "tecnico": {
         "type": "string",
+        "_defn": [
+          {
+            "_row_num": 41,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 33,
+            "section_name": "model"
+          }
+        ],
         "elementKey": "tecnico",
         "elementName": "tecnico",
         "elementSet": "data",
         "elementPath": "tecnico"
       },
       "qualificacao": {
+        "type": "string",
         "_defn": [
           {
-            "_row_num": 41,
+            "_row_num": 42,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 34,
+            "section_name": "model"
           }
         ],
-        "type": "string",
         "elementKey": "qualificacao",
         "elementName": "qualificacao",
         "elementSet": "data",
         "elementPath": "qualificacao"
       },
       "endereco": {
+        "type": "string",
         "_defn": [
           {
-            "_row_num": 42,
+            "_row_num": 43,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 35,
+            "section_name": "model"
           }
         ],
-        "type": "string",
         "elementKey": "endereco",
         "elementName": "endereco",
         "elementSet": "data",
         "elementPath": "endereco"
       },
       "tel_tecnico": {
+        "type": "integer",
         "_defn": [
           {
-            "_row_num": 43,
+            "_row_num": 44,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 36,
+            "section_name": "model"
           }
         ],
-        "type": "integer",
         "elementKey": "tel_tecnico",
         "elementName": "tel_tecnico",
         "elementSet": "data",
         "elementPath": "tel_tecnico"
       },
       "email_tecnico": {
+        "type": "string",
         "_defn": [
           {
-            "_row_num": 44,
+            "_row_num": 45,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 37,
+            "section_name": "model"
           }
         ],
-        "type": "string",
         "elementKey": "email_tecnico",
         "elementName": "email_tecnico",
         "elementSet": "data",
         "elementPath": "email_tecnico"
       },
       "assinatura": {
-        "_defn": [
-          {
-            "_row_num": 45,
-            "section_name": "survey"
-          }
-        ],
         "type": "object",
         "elementType": "mimeUri",
         "properties": {
@@ -2792,6 +2760,16 @@
             "elementPath": "assinatura.contentType"
           }
         },
+        "_defn": [
+          {
+            "_row_num": 46,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 38,
+            "section_name": "model"
+          }
+        ],
         "elementKey": "assinatura",
         "elementName": "assinatura",
         "elementSet": "data",
@@ -2803,16 +2781,22 @@
         "notUnitOfRetention": true
       },
       "date_assinatuda": {
-        "_defn": [
-          {
-            "_row_num": 46,
-            "section_name": "survey"
-          }
-        ],
         "prompt_type_name": "adate",
         "type": "string",
         "elementType": "string",
         "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 47,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 39,
+            "section_name": "model"
+          }
+        ],
         "elementKey": "date_assinatuda",
         "elementName": "date_assinatuda",
         "elementSet": "data",
@@ -2951,24 +2935,10 @@
     "properties": [
       {
         "_partition": "Column",
-        "_aspect": "DOB_ou_idade",
-        "_key": "displayChoicesList",
-        "_type": "object",
-        "_value": "[{\"choice_list_name\":\"DOB_ou_idade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Data de Nascimento\"}},\"_row_num\":5},{\"choice_list_name\":\"DOB_ou_idade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Idade\"}},\"_row_num\":6}]"
-      },
-      {
-        "_partition": "Column",
         "_aspect": "resultado",
         "_key": "displayChoicesList",
         "_type": "object",
         "_value": "[{\"choice_list_name\":\"resultados\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Recuperação\"}},\"_row_num\":28},{\"choice_list_name\":\"resultados\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Ainda não está recuperado\"}},\"_row_num\":29},{\"choice_list_name\":\"resultados\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Recuperação com consequências à longo-termo\"}},\"_row_num\":30}]"
-      },
-      {
-        "_partition": "Column",
-        "_aspect": "sexo",
-        "_key": "displayChoicesList",
-        "_type": "object",
-        "_value": "[{\"choice_list_name\":\"sexo\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Masculino\"}},\"_row_num\":2},{\"choice_list_name\":\"sexo\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Feminino\"}},\"_row_num\":3}]"
       },
       {
         "_partition": "Column",

@@ -29,10 +29,12 @@ function listPersons(region, sector, tabanca) {
         var persons = [];
         for (var row = 0; row < result.getCount(); row++) {
             var id = result.getData(row,"_id"); // or _row_etag
-            var id_paciente = result.getData(row,"id_paciente");
+            var id_paciente = result.getData(row,"id_estudo");
+            var id_rastreio
             var nome =  result.getData(row,"nome");
             var nome_casa =  result.getData(row,"nome_casa");
             var sexo =  result.getData(row,"sexo");
+            var DOB_ou_idade = result.getData(row,"DOB_ou_idade");
             var dn =  result.getData(row,"dn");
             var ano =  result.getData(row,"ano");
             var mes =  result.getData(row,"mes");

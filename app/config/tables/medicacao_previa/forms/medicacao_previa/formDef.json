@@ -55,6 +55,10 @@
         "display": {
           "prompt": {
             "text": "Data do início"
+          },
+          "adate": {
+            "fromYear": 2020,
+            "toYear": 2020
           }
         },
         "_row_num": 5
@@ -65,8 +69,13 @@
         "display": {
           "prompt": {
             "text": "Data do fim"
+          },
+          "adate": {
+            "fromYear": 2020,
+            "toYear": 2020
           }
         },
+        "constraint": "data('date_end')>=data('date_start')",
         "_row_num": 6
       },
       {
@@ -139,6 +148,10 @@
         "_row_num": 15
       },
       {
+        "clause": "end screen",
+        "_row_num": 16
+      },
+      {
         "type": "select_one",
         "values_list": "via_adm",
         "name": "via",
@@ -147,12 +160,12 @@
             "text": "Via de administração"
           }
         },
-        "_row_num": 16
+        "_row_num": 18
       },
       {
         "clause": "if",
-        "condition": "data('via')=='10'",
-        "_row_num": 17
+        "condition": "data('via')=='9'",
+        "_row_num": 19
       },
       {
         "type": "string",
@@ -162,11 +175,11 @@
             "text": "Especifica a via de administração"
           }
         },
-        "_row_num": 18
+        "_row_num": 20
       },
       {
         "clause": "end if",
-        "_row_num": 19
+        "_row_num": 21
       },
       {
         "type": "string",
@@ -176,11 +189,7 @@
             "text": "Indicações de uso"
           }
         },
-        "_row_num": 20
-      },
-      {
-        "clause": "end screen",
-        "_row_num": 21
+        "_row_num": 22
       }
     ],
     "choices": [
@@ -289,20 +298,10 @@
         "data_value": 9,
         "display": {
           "title": {
-            "text": "Vaginal"
-          }
-        },
-        "_row_num": 15
-      },
-      {
-        "choice_list_name": "via_adm",
-        "data_value": 10,
-        "display": {
-          "title": {
             "text": "outro"
           }
         },
-        "_row_num": 16
+        "_row_num": 15
       },
       {
         "choice_list_name": "unidade",
@@ -312,7 +311,7 @@
             "text": "mg (miligramos)"
           }
         },
-        "_row_num": 18
+        "_row_num": 17
       },
       {
         "choice_list_name": "unidade",
@@ -322,7 +321,7 @@
             "text": "g (gramos)"
           }
         },
-        "_row_num": 19
+        "_row_num": 18
       },
       {
         "choice_list_name": "unidade",
@@ -332,7 +331,7 @@
             "text": "ug (microgramos)"
           }
         },
-        "_row_num": 20
+        "_row_num": 19
       },
       {
         "choice_list_name": "unidade",
@@ -342,7 +341,7 @@
             "text": "ml (mililitros)"
           }
         },
-        "_row_num": 21
+        "_row_num": 20
       },
       {
         "choice_list_name": "unidade",
@@ -352,7 +351,7 @@
             "text": "dl (decilitros)"
           }
         },
-        "_row_num": 22
+        "_row_num": 21
       },
       {
         "choice_list_name": "unidade",
@@ -362,7 +361,7 @@
             "text": "L (litros)"
           }
         },
-        "_row_num": 23
+        "_row_num": 22
       },
       {
         "choice_list_name": "unidade",
@@ -372,7 +371,7 @@
             "text": "gotas"
           }
         },
-        "_row_num": 24
+        "_row_num": 23
       },
       {
         "choice_list_name": "unidade",
@@ -382,7 +381,7 @@
             "text": "Pomadas ou cremes"
           }
         },
-        "_row_num": 25
+        "_row_num": 24
       },
       {
         "choice_list_name": "unidade",
@@ -392,7 +391,7 @@
             "text": "outras unidades"
           }
         },
-        "_row_num": 26
+        "_row_num": 25
       }
     ],
     "prompt_types": [
@@ -670,20 +669,10 @@
           "data_value": 9,
           "display": {
             "title": {
-              "text": "Vaginal"
-            }
-          },
-          "_row_num": 15
-        },
-        {
-          "choice_list_name": "via_adm",
-          "data_value": 10,
-          "display": {
-            "title": {
               "text": "outro"
             }
           },
-          "_row_num": 16
+          "_row_num": 15
         }
       ],
       "unidade": [
@@ -695,7 +684,7 @@
               "text": "mg (miligramos)"
             }
           },
-          "_row_num": 18
+          "_row_num": 17
         },
         {
           "choice_list_name": "unidade",
@@ -705,7 +694,7 @@
               "text": "g (gramos)"
             }
           },
-          "_row_num": 19
+          "_row_num": 18
         },
         {
           "choice_list_name": "unidade",
@@ -715,7 +704,7 @@
               "text": "ug (microgramos)"
             }
           },
-          "_row_num": 20
+          "_row_num": 19
         },
         {
           "choice_list_name": "unidade",
@@ -725,7 +714,7 @@
               "text": "ml (mililitros)"
             }
           },
-          "_row_num": 21
+          "_row_num": 20
         },
         {
           "choice_list_name": "unidade",
@@ -735,7 +724,7 @@
               "text": "dl (decilitros)"
             }
           },
-          "_row_num": 22
+          "_row_num": 21
         },
         {
           "choice_list_name": "unidade",
@@ -745,7 +734,7 @@
               "text": "L (litros)"
             }
           },
-          "_row_num": 23
+          "_row_num": 22
         },
         {
           "choice_list_name": "unidade",
@@ -755,7 +744,7 @@
               "text": "gotas"
             }
           },
-          "_row_num": 24
+          "_row_num": 23
         },
         {
           "choice_list_name": "unidade",
@@ -765,7 +754,7 @@
               "text": "Pomadas ou cremes"
             }
           },
-          "_row_num": 25
+          "_row_num": 24
         },
         {
           "choice_list_name": "unidade",
@@ -775,7 +764,7 @@
               "text": "outras unidades"
             }
           },
-          "_row_num": 26
+          "_row_num": 25
         }
       ]
     },
@@ -931,7 +920,7 @@
         "valuesList": "via_adm",
         "_defn": [
           {
-            "_row_num": 16,
+            "_row_num": 18,
             "section_name": "survey"
           },
           {
@@ -945,7 +934,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 18,
+            "_row_num": 20,
             "section_name": "survey"
           },
           {
@@ -959,7 +948,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 20,
+            "_row_num": 22,
             "section_name": "survey"
           },
           {
@@ -1004,6 +993,10 @@
             "display": {
               "prompt": {
                 "text": "Data do início"
+              },
+              "adate": {
+                "fromYear": 2020,
+                "toYear": 2020
               }
             },
             "_row_num": 5,
@@ -1019,8 +1012,13 @@
             "display": {
               "prompt": {
                 "text": "Data do fim"
+              },
+              "adate": {
+                "fromYear": 2020,
+                "toYear": 2020
               }
             },
+            "constraint": "data('date_end')>=data('date_start')",
             "_row_num": 6,
             "__rowNum__": 5,
             "_token_type": "prompt",
@@ -1114,11 +1112,11 @@
                 "text": "Via de administração"
               }
             },
-            "_row_num": 16,
-            "__rowNum__": 15,
+            "_row_num": 18,
+            "__rowNum__": 17,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen9",
+            "_branch_label_enclosing_screen": "survey/_screen18",
             "promptIdx": 8
           },
           {
@@ -1129,11 +1127,11 @@
                 "text": "Especifica a via de administração"
               }
             },
-            "_row_num": 18,
-            "__rowNum__": 17,
+            "_row_num": 20,
+            "__rowNum__": 19,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen9",
+            "_branch_label_enclosing_screen": "survey/_screen20",
             "promptIdx": 9
           },
           {
@@ -1144,24 +1142,26 @@
                 "text": "Indicações de uso"
               }
             },
-            "_row_num": 20,
-            "__rowNum__": 19,
+            "_row_num": 22,
+            "__rowNum__": 21,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen9",
+            "_branch_label_enclosing_screen": "survey/_screen22",
             "promptIdx": 10
           },
           {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 22,
-            "_branch_label_enclosing_screen": "survey/_screen22",
+            "_row_num": 23,
+            "_branch_label_enclosing_screen": "survey/_screen23",
             "promptIdx": 11
           }
         ],
         "validation_tag_map": {
-          "finalize": []
+          "finalize": [
+            2
+          ]
         },
         "operations": [
           {
@@ -1185,40 +1185,87 @@
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 21,
-              "__rowNum__": 20,
+              "_row_num": 16,
+              "__rowNum__": 15,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(4);\nactivePromptIndicies.push(5);\nactivePromptIndicies.push(6);\nif (data('unidade')=='9') {\nactivePromptIndicies.push(7);\n}\nactivePromptIndicies.push(8);\nif (data('via')=='10') {\nactivePromptIndicies.push(9);\n}\nactivePromptIndicies.push(10);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(4);\nactivePromptIndicies.push(5);\nactivePromptIndicies.push(6);\nif (data('unidade')=='9') {\nactivePromptIndicies.push(7);\n}\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 1
+          },
+          {
+            "_row_num": 18,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(8);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 2
+          },
+          {
+            "clause": "if",
+            "condition": "data('via')=='9'",
+            "_row_num": 19,
+            "__rowNum__": 18,
+            "_token_type": "goto_label",
+            "_branch_label": "_then19",
+            "operationIdx": 3
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_else21",
+            "_row_num": 21,
+            "operationIdx": 4
+          },
+          {
+            "_row_num": 20,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(9);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 5
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif21",
+            "_row_num": 21,
+            "operationIdx": 6
+          },
+          {
+            "_row_num": 22,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(10);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 7
           },
           {
             "_token_type": "exit_section",
             "clause": "exit section",
-            "_row_num": 22,
-            "operationIdx": 2
+            "_row_num": 23,
+            "operationIdx": 8
           },
           {
-            "_row_num": 22,
+            "_row_num": 23,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(11);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
-            "operationIdx": 3
+            "operationIdx": 9
           },
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 22,
-            "operationIdx": 4
+            "_row_num": 23,
+            "operationIdx": 10
           }
         ],
         "branch_label_map": {
           "_screen3": 0,
           "_screen9": 1,
-          "_contents": 3,
-          "_screen22": 3
+          "_screen18": 2,
+          "_then19": 5,
+          "_screen20": 5,
+          "_else21": 7,
+          "_endif21": 7,
+          "_screen22": 7,
+          "_contents": 9,
+          "_screen23": 9
         }
       },
       "initial": {
@@ -1562,7 +1609,7 @@
         "valuesList": "via_adm",
         "_defn": [
           {
-            "_row_num": 16,
+            "_row_num": 18,
             "section_name": "survey"
           },
           {
@@ -1579,7 +1626,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 18,
+            "_row_num": 20,
             "section_name": "survey"
           },
           {
@@ -1596,7 +1643,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 20,
+            "_row_num": 22,
             "section_name": "survey"
           },
           {
@@ -1735,14 +1782,14 @@
         "_aspect": "unidade",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"unidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"mg (miligramos)\"}},\"_row_num\":18},{\"choice_list_name\":\"unidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"g (gramos)\"}},\"_row_num\":19},{\"choice_list_name\":\"unidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"ug (microgramos)\"}},\"_row_num\":20},{\"choice_list_name\":\"unidade\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"ml (mililitros)\"}},\"_row_num\":21},{\"choice_list_name\":\"unidade\",\"data_value\":5,\"display\":{\"title\":{\"text\":\"dl (decilitros)\"}},\"_row_num\":22},{\"choice_list_name\":\"unidade\",\"data_value\":6,\"display\":{\"title\":{\"text\":\"L (litros)\"}},\"_row_num\":23},{\"choice_list_name\":\"unidade\",\"data_value\":7,\"display\":{\"title\":{\"text\":\"gotas\"}},\"_row_num\":24},{\"choice_list_name\":\"unidade\",\"data_value\":8,\"display\":{\"title\":{\"text\":\"Pomadas ou cremes\"}},\"_row_num\":25},{\"choice_list_name\":\"unidade\",\"data_value\":9,\"display\":{\"title\":{\"text\":\"outras unidades\"}},\"_row_num\":26}]"
+        "_value": "[{\"choice_list_name\":\"unidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"mg (miligramos)\"}},\"_row_num\":17},{\"choice_list_name\":\"unidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"g (gramos)\"}},\"_row_num\":18},{\"choice_list_name\":\"unidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"ug (microgramos)\"}},\"_row_num\":19},{\"choice_list_name\":\"unidade\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"ml (mililitros)\"}},\"_row_num\":20},{\"choice_list_name\":\"unidade\",\"data_value\":5,\"display\":{\"title\":{\"text\":\"dl (decilitros)\"}},\"_row_num\":21},{\"choice_list_name\":\"unidade\",\"data_value\":6,\"display\":{\"title\":{\"text\":\"L (litros)\"}},\"_row_num\":22},{\"choice_list_name\":\"unidade\",\"data_value\":7,\"display\":{\"title\":{\"text\":\"gotas\"}},\"_row_num\":23},{\"choice_list_name\":\"unidade\",\"data_value\":8,\"display\":{\"title\":{\"text\":\"Pomadas ou cremes\"}},\"_row_num\":24},{\"choice_list_name\":\"unidade\",\"data_value\":9,\"display\":{\"title\":{\"text\":\"outras unidades\"}},\"_row_num\":25}]"
       },
       {
         "_partition": "Column",
         "_aspect": "via",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"via_adm\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Oral\"}},\"_row_num\":7},{\"choice_list_name\":\"via_adm\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Injetavel (IM, IV SC...)\"}},\"_row_num\":8},{\"choice_list_name\":\"via_adm\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"sublingual\"}},\"_row_num\":9},{\"choice_list_name\":\"via_adm\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Inalação (vapor)\"}},\"_row_num\":10},{\"choice_list_name\":\"via_adm\",\"data_value\":5,\"display\":{\"title\":{\"text\":\"Nasal\"}},\"_row_num\":11},{\"choice_list_name\":\"via_adm\",\"data_value\":6,\"display\":{\"title\":{\"text\":\"Cutânea/tópico\"}},\"_row_num\":12},{\"choice_list_name\":\"via_adm\",\"data_value\":7,\"display\":{\"title\":{\"text\":\"ocular\"}},\"_row_num\":13},{\"choice_list_name\":\"via_adm\",\"data_value\":8,\"display\":{\"title\":{\"text\":\"Retal\"}},\"_row_num\":14},{\"choice_list_name\":\"via_adm\",\"data_value\":9,\"display\":{\"title\":{\"text\":\"Vaginal\"}},\"_row_num\":15},{\"choice_list_name\":\"via_adm\",\"data_value\":10,\"display\":{\"title\":{\"text\":\"outro\"}},\"_row_num\":16}]"
+        "_value": "[{\"choice_list_name\":\"via_adm\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Oral\"}},\"_row_num\":7},{\"choice_list_name\":\"via_adm\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Injetavel (IM, IV SC...)\"}},\"_row_num\":8},{\"choice_list_name\":\"via_adm\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"sublingual\"}},\"_row_num\":9},{\"choice_list_name\":\"via_adm\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Inalação (vapor)\"}},\"_row_num\":10},{\"choice_list_name\":\"via_adm\",\"data_value\":5,\"display\":{\"title\":{\"text\":\"Nasal\"}},\"_row_num\":11},{\"choice_list_name\":\"via_adm\",\"data_value\":6,\"display\":{\"title\":{\"text\":\"Cutânea/tópico\"}},\"_row_num\":12},{\"choice_list_name\":\"via_adm\",\"data_value\":7,\"display\":{\"title\":{\"text\":\"ocular\"}},\"_row_num\":13},{\"choice_list_name\":\"via_adm\",\"data_value\":8,\"display\":{\"title\":{\"text\":\"Retal\"}},\"_row_num\":14},{\"choice_list_name\":\"via_adm\",\"data_value\":9,\"display\":{\"title\":{\"text\":\"outro\"}},\"_row_num\":15}]"
       },
       {
         "_partition": "FormType",

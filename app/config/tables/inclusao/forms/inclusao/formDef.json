@@ -78,7 +78,6 @@
       },
       {
         "clause": "end screen",
-        "required": true,
         "_row_num": 8
       },
       {
@@ -542,6 +541,10 @@
         "display": {
           "prompt": {
             "text": "Data"
+          },
+          "adate": {
+            "fromYear": 2020,
+            "toYear": 2020
           }
         },
         "_row_num": 80
@@ -563,8 +566,12 @@
         "display": {
           "prompt": {
             "text": "Doses"
+          },
+          "constraint_message": {
+            "text": "A dose selecionada nao corresponde com a do idade da crianca"
           }
         },
+        "constraint": "(calculates.idade_mes()<12)?(data('dose_SP')=='1'):(data('dose_SP')=='2')",
         "_row_num": 82
       },
       {
@@ -621,6 +628,10 @@
         "display": {
           "prompt": {
             "text": "Data"
+          },
+          "adate": {
+            "fromYear": 2020,
+            "toYear": 2020
           }
         },
         "_row_num": 91
@@ -642,8 +653,12 @@
         "display": {
           "prompt": {
             "text": "Doses"
+          },
+          "constraint_message": {
+            "text": "A dose selecionada nao corresponde com a do idade da crianca"
           }
         },
+        "constraint": "(calculates.idade_mes()<12)?(data('dose_AQ')=='1'):(data('dose_AQ')=='2')",
         "_row_num": 93
       },
       {
@@ -1232,9 +1247,14 @@
     ],
     "calculates": [
       {
-        "calculation_name": "ano_em_mes",
-        "calculation": "(data('ano')*12) + data('mes')",
+        "calculation_name": "visita_id",
+        "calculation": "adate.ageInDays(data('date_rastreio'))",
         "_row_num": 2
+      },
+      {
+        "calculation_name": "idade_mes",
+        "calculation": "(data('DOB_ou_idade')=='1')?adate.ageInMonths(data('dn')):(12*data('ano')+data('mes'))",
+        "_row_num": 3
       }
     ],
     "model": [
@@ -2171,10 +2191,15 @@
       }
     },
     "calculates": {
-      "ano_em_mes": {
-        "calculation_name": "ano_em_mes",
-        "calculation": "(data('ano')*12) + data('mes')",
+      "visita_id": {
+        "calculation_name": "visita_id",
+        "calculation": "adate.ageInDays(data('date_rastreio'))",
         "_row_num": 2
+      },
+      "idade_mes": {
+        "calculation_name": "idade_mes",
+        "calculation": "(data('DOB_ou_idade')=='1')?adate.ageInMonths(data('dn')):(12*data('ano')+data('mes'))",
+        "_row_num": 3
       }
     },
     "model": {
@@ -3754,6 +3779,10 @@
             "display": {
               "prompt": {
                 "text": "Data"
+              },
+              "adate": {
+                "fromYear": 2020,
+                "toYear": 2020
               }
             },
             "_row_num": 80,
@@ -3785,8 +3814,12 @@
             "display": {
               "prompt": {
                 "text": "Doses"
+              },
+              "constraint_message": {
+                "text": "A dose selecionada nao corresponde com a do idade da crianca"
               }
             },
+            "constraint": "(calculates.idade_mes()<12)?(data('dose_SP')=='1'):(data('dose_SP')=='2')",
             "_row_num": 82,
             "__rowNum__": 81,
             "_token_type": "prompt",
@@ -3846,6 +3879,10 @@
             "display": {
               "prompt": {
                 "text": "Data"
+              },
+              "adate": {
+                "fromYear": 2020,
+                "toYear": 2020
               }
             },
             "_row_num": 91,
@@ -3877,8 +3914,12 @@
             "display": {
               "prompt": {
                 "text": "Doses"
+              },
+              "constraint_message": {
+                "text": "A dose selecionada nao corresponde com a do idade da crianca"
               }
             },
+            "constraint": "(calculates.idade_mes()<12)?(data('dose_AQ')=='1'):(data('dose_AQ')=='2')",
             "_row_num": 93,
             "__rowNum__": 92,
             "_token_type": "prompt",
@@ -4032,6 +4073,8 @@
         ],
         "validation_tag_map": {
           "finalize": [
+            39,
+            45,
             52
           ]
         },
@@ -4043,7 +4086,6 @@
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "required": true,
               "_row_num": 8,
               "__rowNum__": 7,
               "_token_type": "end_screen"
