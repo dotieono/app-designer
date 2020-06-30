@@ -109,13 +109,15 @@
                 alert(errorMsg);
             }
 
+            var selCs = $("#selCs").val();
+
             var sql = 'SELECT _id, nome, DOB_ou_idade, dn, ano, mes, resultado_TDR FROM rastreio WHERE ';
-            sql = sql + 'region = "bafata" COLLATE NOCASE AND ';
-            sql = sql + 'cs = "bafata" COLLATE NOCASE AND ';
+            sql = sql + 'region = "' + getRegion(selCs) + '" COLLATE NOCASE AND ';
+            sql = sql + 'cs = "' + selCs + '" COLLATE NOCASE AND ';
             sql = sql + '(resultado_TDR = 1 OR resultado_TDR = 3) AND ';
             sql = sql + 'date_rastreio = "' + todayAdate() + '" ';
             console.log(sql);
-            
+
             odkData.arbitraryQuery('rastreio', sql, null, null, null, successFn, failureFn);
         }
         

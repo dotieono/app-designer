@@ -1254,7 +1254,7 @@ grunt.registerTask(
                         '/' +
                         fileName;
                     grunt.log.writeln('adb push ' + src + ' ' + dest);
-                    //grunt.task.run('exec:adbpush:' + src + ':' + dest);
+                    grunt.task.run('exec:adbpush:' + src + ':' + dest);
                 });
     
             });
