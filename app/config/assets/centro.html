@@ -65,7 +65,7 @@
 
             
             setTimeout(restoreState, 10);
-            loadList();
+            setTimeout(loadList, 100);
         }
         
         function loadList() {
@@ -114,7 +114,8 @@
             sql = sql + 'cs = "bafata" COLLATE NOCASE AND ';
             sql = sql + '(resultado_TDR = 1 OR resultado_TDR = 3) AND ';
             sql = sql + 'date_rastreio = "' + todayAdate() + '" ';
-
+            console.log(sql);
+            
             odkData.arbitraryQuery('rastreio', sql, null, null, null, successFn, failureFn);
         }
         
@@ -188,13 +189,6 @@
             return "" + adateHelper.ageInYears(theAdate) + "." + (adateHelper.ageInMonths(theAdate) % 12);
         }
 
-        function updateButton() {
-            var selVal = $("#selCs").val();             
-            if (selVal !== '') 
-                btnNew.removeAttr("disabled")
-            else 
-                btnNew.attr("disabled", "disabled");
-        }
 
         function getRegion(cs) {
             switch (cs) {
