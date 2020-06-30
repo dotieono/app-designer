@@ -5,7 +5,7 @@
  //TODO: These functions need unit testing.
 
 define(['opendatakit','database','jquery','underscore','survey/js/adateHelpers', 'survey/js/freebaseHelpers',  'survey/js/sapiensConsultHelpers'],
-function(opendatakit,  database,  $,       _, adateHelpers) {
+function(opendatakit,  database,  $, _, adateHelpers, freebaseHelpers, scHelpers) {
     /* global odkCommon */
     verifyLoad('formulaFunctions',
         ['opendatakit','database','jquery','underscore'],
