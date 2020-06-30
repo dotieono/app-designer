@@ -51,6 +51,7 @@
             selCs.on("change",function() {
                 var selVal = $("#selCs").val();
                 localStorage.setItem("centro", selVal);
+                loadList();
             })
             
             setTimeout(restoreState, 10);
