@@ -5,7 +5,7 @@ return {
         if (!aDate || aDate.length<4 || this.yearUnknown(aDate)) {
             return false;
         }
-        aDate = aDate.toUpperCase().replace('D:NS','D:15').replace('M:NS','M:5');
+        aDate = aDate.toUpperCase().replace('D:NS','D:15').replace('M:NS','M:06');
         var d = moment(aDate, '\\D:DD,\\M:MM,\\Y:YYYY');
         if (d.isValid()) {
             return d;
