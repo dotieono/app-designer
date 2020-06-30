@@ -1223,6 +1223,42 @@ grunt.registerTask(
 
         });
 
+        grunt.registerTask(
+            'zap',
+            'Push the system directory to the survey appName on the device',
+            function() {
+                // Useful for testing working system code before constructing
+                // the framework zip file and adding it to the APK res/raw
+                // folder.
+                // The first parameter is an options object where we specify that
+                // we only want files--this is important because otherwise when
+                // we get directory names adb will push everything in the directory
+                // name, effectively pushing everything twice.  We also specify that we
+                // want everything returned to be relative to 'app' by using 'cwd'.
+                var dirs = grunt.file.expand(
+                    {filter: 'isFile',
+                     cwd: 'app' },
+                    'config/assets/**/*.js',
+                    'config/assets/**/*.html',
+                    '!**/~$*.xlsx');
+
+                grunt.log.writeln('zapping');
+                // Now push these files to the phone.
+                dirs.forEach(function(fileName) {
+                    //  Have to add app back into the file name for the adb push
+                    var src = surveyConfig.appDir + '/' + fileName;
+                    var dest =
+                        surveyConfig.deviceMount +
+                        '/' +
+                        surveyConfig.appName +
+                        '/' +
+                        fileName;
+                    grunt.log.writeln('adb push ' + src + ' ' + dest);
+                    //grunt.task.run('exec:adbpush:' + src + ':' + dest);
+                });
+    
+            });
+
         grunt.registerTask('instah',
         'Initializes a phressh Lenovo E7 tablet',
         function eqmInit() {
