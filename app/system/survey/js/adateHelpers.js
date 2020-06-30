@@ -75,6 +75,28 @@ return {
         }
         return d;
     },
+    getDay: function(aDate) {
+        var a = this.getMoment(aDate);
+        if (!a) return 0;
+        return a.date();
+    },
+    getMonth: function(aDate) {
+        var a = this.getMoment(aDate);
+        if (!a) return 0;
+        return a.month() + 1;
+    },
+    getYear: function(aDate) {
+        var a = this.getMoment(aDate);
+        if (!a) return 0;
+        return a.year() + 1;
+    },
+    hoursMinutes: function(date) {
+        var d = new Date(date);
+        var h = ("0" + d.getHours()).slice(-2);
+        var m = ("0" + d.getMinutes()).slice(-2);
+        var hourMin = h + ":" + m;
+        return hourMin;
+    },
     today: function() {
         var today = new Date();
         var day = today.getDate();
@@ -83,12 +105,5 @@ return {
         var aDate = 'D:' + day + ',M:' + mon + ',Y:' + yea;
         return aDate;
     },
-    hoursMinutes: function(date) {
-        var d = new Date(date);
-        var h = ("0" + d.getHours()).slice(-2);
-        var m = ("0" + d.getMinutes()).slice(-2);
-        var hourMin = h + ":" + m;
-        return hourMin;
-    }
 }
 });
