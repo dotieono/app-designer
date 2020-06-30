@@ -49,7 +49,7 @@ function updateForTab(tab) {
         descriptionDiv.attr('class','description-text-black');
         tabItem = $('#centroTab');
     } else if (tab === 1) {
-        fileUri = odkCommon.getFileAsUrl('config/assets/img/bafata.JPG');
+        fileUri = odkCommon.getFileAsUrl('config/assets/img/lab.jpg');
         descriptionDiv.text('Para agente de saude comunitaria ou pessoais de saude que vao fazer seguimento de casos.');
         descriptionDiv.attr('class','description-text-black');
         tabItem = $('#visitaTab');
@@ -61,6 +61,7 @@ function updateForTab(tab) {
     }else {
         console.error('unrecognized tab index: ' + tab);
     }
-    $('body').css('background-image', 'url(' + fileUri + ')');
+    $('#content-table').css('background-image', 'url(' + fileUri + ')');
+    
     tabItem.addClass('active');
 }
