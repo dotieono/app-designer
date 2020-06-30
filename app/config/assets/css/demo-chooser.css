@@ -4,13 +4,13 @@ html, body {
 }
 
 body {
-    text-align: center;
+    background-image: url(../img/bottom.png);
+    background-position: bottom;
     background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    font-size: large;
+    background-size: contain;
+    font-family: arial;
+    margin: 0;
 }
-
 #all-screen {
     height: 100%;
     width: 100%:

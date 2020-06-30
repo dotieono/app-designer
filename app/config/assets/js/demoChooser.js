@@ -2,8 +2,8 @@
 /* global $, odkTables, odkCommon */
 /* exported display */
 "use strict";
-
-var currentTab = 1;
+var storedTab = localStorage.getItem("selTab");
+var currentTab = /^[-]?\d+$/.test(storedTab) ? parseInt(storedTab, 10) : 1;
 
 function display() { 
     updateForTab(currentTab);
@@ -36,6 +36,7 @@ function display() {
 }
 
 function updateForTab(tab) {
+    localStorage.setItem("selTab", tab);
     var fileUri;
     var tabItem;
     var descriptionDiv = $('#description');
@@ -58,8 +59,8 @@ function updateForTab(tab) {
         descriptionDiv.text('Para introducao de resultados de laboratorio.');
         descriptionDiv.attr('class','description-text-black');
         tabItem = $('#labTab');
-    }else {
-        console.error('unrecognized tab index: ' + tab);
+    } else {
+        alert('unrecognized tab index: ' + tab);
     }
     $('#content-table').css('background-image', 'url(' + fileUri + ')');
     

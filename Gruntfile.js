@@ -275,6 +275,11 @@ module.exports = function (grunt) {
         'Perform all the adbpull tasks',
         ['adbpull-debug', 'adbpull-db', 'adbpull-csv']);
 
+    grunt.registerTask(
+            'qpush',
+            'Perform some quick pushings',
+            ['adbpush-tables', 'adate']);
+
     // Just an alias task--shorthand for doing all the pushings
     grunt.registerTask(
         'adbpush',
