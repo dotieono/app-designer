@@ -41,7 +41,7 @@
         "name": "cabezado",
         "display": {
           "prompt": {
-            "text": "Estás a fazer rastreio no Centro de Saúde de {{data.cs}}, no dia {{data.date_rastreio}}\nNúmero de rasteio: {{data.id_rastreio}}"
+            "text": "Estás a fazer rastreio no Centro de Saúde de {{data.cs}}, no dia {{calculates.date_rastreio_display}}\nNúmero de rasteio: {{data.id_rastreio}}"
           }
         },
         "_row_num": 4
@@ -104,7 +104,7 @@
         "name": "nota_dn",
         "display": {
           "prompt": {
-            "text": "Data de Nascimento: {{data.dn}}"
+            "text": "Data de Nascimento: {{calculates.dn_display}}"
           }
         },
         "_row_num": 15
@@ -152,8 +152,12 @@
         "display": {
           "prompt": {
             "text": "Altura (cm)"
+          },
+          "constraint_message": {
+            "text": "Altura deve ser em centimetros (cm) por favor verifica se nao está em metros (m) ou outra unidade"
           }
         },
+        "constraint": "data('altura')<=160 && data('altura')>=20",
         "_row_num": 24
       },
       {
@@ -162,8 +166,12 @@
         "display": {
           "prompt": {
             "text": "Peso (Kg)"
+          },
+          "constraint_message": {
+            "text": "Peso deve ser em Quilogramos (Kg) por favor verifica se nao está em gramos (g) ou em outra unidade"
           }
         },
+        "constraint": "data('peso')<=50 && data('peso')>=2",
         "_row_num": 25
       },
       {
@@ -220,8 +228,12 @@
         "display": {
           "prompt": {
             "text": "Tel:"
+          },
+          "constraint_message": {
+            "text": "O numero de Tel, nao é valido, ou nao é numero da Guine"
           }
         },
+        "constraint": "data('tel_mae')>=950000000 && data('tel_mae')<=969999999",
         "_row_num": 35
       },
       {
@@ -240,8 +252,12 @@
         "display": {
           "prompt": {
             "text": "Tel:"
+          },
+          "constraint_message": {
+            "text": "O numero de Tel, nao é valido, ou nao é numero da Guine"
           }
         },
+        "constraint": "data('tel_pai')>=950000000 && data('tel_pai')<=969999999",
         "_row_num": 37
       },
       {
@@ -265,8 +281,12 @@
         "display": {
           "prompt": {
             "text": "Tel:"
+          },
+          "constraint_message": {
+            "text": "O numero de Tel, nao é valido, ou nao é numero da Guine"
           }
         },
+        "constraint": "data('tel_acomp')>=950000000 && data('tel_acomp')<=969999999",
         "_row_num": 40
       },
       {
@@ -739,6 +759,43 @@
         "_row_num": 106
       },
       {
+        "values_list": "note",
+        "_row_num": 108
+      },
+      {
+        "clause": "if",
+        "condition": "data('DOB_ou_idade')=='1'",
+        "_row_num": 109
+      },
+      {
+        "type": "note",
+        "name": "nota_lab_dn",
+        "display": {
+          "prompt": {
+            "text": "{{data.date_rastreio}}  Idade: {{calculates.dn_display}}"
+          }
+        },
+        "_row_num": 110
+      },
+      {
+        "clause": "else",
+        "_row_num": 111
+      },
+      {
+        "type": "note",
+        "name": "nota_lab_ano",
+        "display": {
+          "prompt": {
+            "text": "{{data.date_rastreio}}  Idade: {{data.ano}} A e {{data.mes}} M"
+          }
+        },
+        "_row_num": 112
+      },
+      {
+        "clause": "end if",
+        "_row_num": 114
+      },
+      {
         "type": "select_one",
         "values_list": "yesno",
         "name": "lamina",
@@ -747,11 +804,11 @@
             "text": "Colheu-se amostra de sangue para a lâmina?"
           }
         },
-        "_row_num": 107
+        "_row_num": 116
       },
       {
         "clause": "goto ending",
-        "_row_num": 108
+        "_row_num": 117
       },
       {
         "branch_label": "exclusao",
@@ -764,11 +821,11 @@
           }
         },
         "required": "data('TDR')=='2'",
-        "_row_num": 109
+        "_row_num": 118
       },
       {
         "clause": "goto ending",
-        "_row_num": 110
+        "_row_num": 119
       },
       {
         "branch_label": "recusa",
@@ -779,11 +836,11 @@
             "text": "Eu entendo que você não quer participar deste estudo. Você poderia me dizer porque você não gostaria de participar?"
           }
         },
-        "_row_num": 113
+        "_row_num": 122
       },
       {
         "clause": "goto ending",
-        "_row_num": 115
+        "_row_num": 124
       },
       {
         "branch_label": "ending",
@@ -794,7 +851,7 @@
             "text": "A exibição agora está completa, por favor, vá para a próxima página para finalizar suas respostas."
           }
         },
-        "_row_num": 120
+        "_row_num": 129
       }
     ],
     "choices": [
@@ -1255,6 +1312,16 @@
         "calculation_name": "idade_mes",
         "calculation": "(data('DOB_ou_idade')=='1')?adate.ageInMonths(data('dn')):(12*data('ano')+data('mes'))",
         "_row_num": 3
+      },
+      {
+        "calculation_name": "date_rastreio_display",
+        "calculation": "adate.display(calculates.date_rastreio())",
+        "_row_num": 4
+      },
+      {
+        "calculation_name": "dn_display",
+        "calculation": "adate.display(data('dn'))",
+        "_row_num": 5
       }
     ],
     "model": [
@@ -2200,6 +2267,16 @@
         "calculation_name": "idade_mes",
         "calculation": "(data('DOB_ou_idade')=='1')?adate.ageInMonths(data('dn')):(12*data('ano')+data('mes'))",
         "_row_num": 3
+      },
+      "date_rastreio_display": {
+        "calculation_name": "date_rastreio_display",
+        "calculation": "adate.display(calculates.date_rastreio())",
+        "_row_num": 4
+      },
+      "dn_display": {
+        "calculation_name": "dn_display",
+        "calculation": "adate.display(data('dn'))",
+        "_row_num": 5
       }
     },
     "model": {
@@ -3150,7 +3227,7 @@
         "valuesList": "yesno",
         "_defn": [
           {
-            "_row_num": 107,
+            "_row_num": 116,
             "section_name": "survey"
           },
           {
@@ -3165,7 +3242,7 @@
         "valuesList": "ok",
         "_defn": [
           {
-            "_row_num": 109,
+            "_row_num": 118,
             "section_name": "survey"
           },
           {
@@ -3179,7 +3256,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 113,
+            "_row_num": 122,
             "section_name": "survey"
           },
           {
@@ -3215,7 +3292,7 @@
             "name": "cabezado",
             "display": {
               "prompt": {
-                "text": "Estás a fazer rastreio no Centro de Saúde de {{data.cs}}, no dia {{data.date_rastreio}}\nNúmero de rasteio: {{data.id_rastreio}}"
+                "text": "Estás a fazer rastreio no Centro de Saúde de {{data.cs}}, no dia {{calculates.date_rastreio_display}}\nNúmero de rasteio: {{data.id_rastreio}}"
               }
             },
             "_row_num": 4,
@@ -3290,7 +3367,7 @@
             "name": "nota_dn",
             "display": {
               "prompt": {
-                "text": "Data de Nascimento: {{data.dn}}"
+                "text": "Data de Nascimento: {{calculates.dn_display}}"
               }
             },
             "_row_num": 15,
@@ -3337,8 +3414,12 @@
             "display": {
               "prompt": {
                 "text": "Altura (cm)"
+              },
+              "constraint_message": {
+                "text": "Altura deve ser em centimetros (cm) por favor verifica se nao está em metros (m) ou outra unidade"
               }
             },
+            "constraint": "data('altura')<=160 && data('altura')>=20",
             "_row_num": 24,
             "__rowNum__": 23,
             "_token_type": "prompt",
@@ -3352,8 +3433,12 @@
             "display": {
               "prompt": {
                 "text": "Peso (Kg)"
+              },
+              "constraint_message": {
+                "text": "Peso deve ser em Quilogramos (Kg) por favor verifica se nao está em gramos (g) ou em outra unidade"
               }
             },
+            "constraint": "data('peso')<=50 && data('peso')>=2",
             "_row_num": 25,
             "__rowNum__": 24,
             "_token_type": "prompt",
@@ -3413,8 +3498,12 @@
             "display": {
               "prompt": {
                 "text": "Tel:"
+              },
+              "constraint_message": {
+                "text": "O numero de Tel, nao é valido, ou nao é numero da Guine"
               }
             },
+            "constraint": "data('tel_mae')>=950000000 && data('tel_mae')<=969999999",
             "_row_num": 35,
             "__rowNum__": 34,
             "_token_type": "prompt",
@@ -3443,8 +3532,12 @@
             "display": {
               "prompt": {
                 "text": "Tel:"
+              },
+              "constraint_message": {
+                "text": "O numero de Tel, nao é valido, ou nao é numero da Guine"
               }
             },
+            "constraint": "data('tel_pai')>=950000000 && data('tel_pai')<=969999999",
             "_row_num": 37,
             "__rowNum__": 36,
             "_token_type": "prompt",
@@ -3473,8 +3566,12 @@
             "display": {
               "prompt": {
                 "text": "Tel:"
+              },
+              "constraint_message": {
+                "text": "O numero de Tel, nao é valido, ou nao é numero da Guine"
               }
             },
+            "constraint": "data('tel_acomp')>=950000000 && data('tel_acomp')<=969999999",
             "_row_num": 40,
             "__rowNum__": 39,
             "_token_type": "prompt",
@@ -4000,6 +4097,36 @@
             "promptIdx": 50
           },
           {
+            "type": "note",
+            "name": "nota_lab_dn",
+            "display": {
+              "prompt": {
+                "text": "{{data.date_rastreio}}  Idade: {{calculates.dn_display}}"
+              }
+            },
+            "_row_num": 110,
+            "__rowNum__": 109,
+            "_token_type": "prompt",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen110",
+            "promptIdx": 51
+          },
+          {
+            "type": "note",
+            "name": "nota_lab_ano",
+            "display": {
+              "prompt": {
+                "text": "{{data.date_rastreio}}  Idade: {{data.ano}} A e {{data.mes}} M"
+              }
+            },
+            "_row_num": 112,
+            "__rowNum__": 111,
+            "_token_type": "prompt",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen112",
+            "promptIdx": 52
+          },
+          {
             "type": "select_one",
             "values_list": "yesno",
             "name": "lamina",
@@ -4008,12 +4135,12 @@
                 "text": "Colheu-se amostra de sangue para a lâmina?"
               }
             },
-            "_row_num": 107,
-            "__rowNum__": 106,
+            "_row_num": 116,
+            "__rowNum__": 115,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen107",
-            "promptIdx": 51
+            "_branch_label_enclosing_screen": "survey/_screen116",
+            "promptIdx": 53
           },
           {
             "type": "select_one",
@@ -4025,12 +4152,12 @@
               }
             },
             "required": "data('TDR')=='2'",
-            "_row_num": 109,
-            "__rowNum__": 108,
+            "_row_num": 118,
+            "__rowNum__": 117,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen109",
-            "promptIdx": 52
+            "_branch_label_enclosing_screen": "survey/_screen118",
+            "promptIdx": 54
           },
           {
             "type": "text",
@@ -4040,12 +4167,12 @@
                 "text": "Eu entendo que você não quer participar deste estudo. Você poderia me dizer porque você não gostaria de participar?"
               }
             },
-            "_row_num": 113,
-            "__rowNum__": 112,
+            "_row_num": 122,
+            "__rowNum__": 121,
             "_token_type": "prompt",
             "_type": "text",
-            "_branch_label_enclosing_screen": "survey/_screen113",
-            "promptIdx": 53
+            "_branch_label_enclosing_screen": "survey/_screen122",
+            "promptIdx": 55
           },
           {
             "type": "note",
@@ -4055,27 +4182,32 @@
                 "text": "A exibição agora está completa, por favor, vá para a próxima página para finalizar suas respostas."
               }
             },
-            "_row_num": 120,
-            "__rowNum__": 119,
+            "_row_num": 129,
+            "__rowNum__": 128,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen120",
-            "promptIdx": 54
+            "_branch_label_enclosing_screen": "survey/_screen129",
+            "promptIdx": 56
           },
           {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 121,
-            "_branch_label_enclosing_screen": "survey/_screen121",
-            "promptIdx": 55
+            "_row_num": 130,
+            "_branch_label_enclosing_screen": "survey/_screen130",
+            "promptIdx": 57
           }
         ],
         "validation_tag_map": {
           "finalize": [
+            8,
+            9,
+            13,
+            15,
+            17,
             39,
             45,
-            52
+            54
           ]
         },
         "operations": [
@@ -4308,73 +4440,108 @@
             "operationIdx": 19
           },
           {
-            "_row_num": 107,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(51);\n\nreturn activePromptIndicies;\n}\n",
+            "clause": "if",
+            "condition": "data('DOB_ou_idade')=='1'",
+            "_row_num": 109,
+            "__rowNum__": 108,
+            "_token_type": "goto_label",
+            "_branch_label": "_then109",
             "operationIdx": 20
           },
           {
-            "clause": "goto ending",
-            "_row_num": 108,
-            "__rowNum__": 107,
+            "clause": "else",
             "_token_type": "goto_label",
-            "_branch_label": "ending",
+            "_branch_label": "_else111",
+            "_row_num": 111,
             "operationIdx": 21
           },
           {
-            "_row_num": 109,
+            "_row_num": 110,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(52);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(51);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 22
           },
           {
-            "clause": "goto ending",
-            "_row_num": 110,
-            "__rowNum__": 109,
+            "clause": "end if",
             "_token_type": "goto_label",
-            "_branch_label": "ending",
+            "_branch_label": "_endif114",
+            "_row_num": 114,
             "operationIdx": 23
           },
           {
-            "_row_num": 113,
+            "_row_num": 112,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(53);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(52);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 24
           },
           {
-            "clause": "goto ending",
-            "_row_num": 115,
-            "__rowNum__": 114,
-            "_token_type": "goto_label",
-            "_branch_label": "ending",
+            "_row_num": 116,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(53);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 25
           },
           {
-            "_row_num": 120,
+            "clause": "goto ending",
+            "_row_num": 117,
+            "__rowNum__": 116,
+            "_token_type": "goto_label",
+            "_branch_label": "ending",
+            "operationIdx": 26
+          },
+          {
+            "_row_num": 118,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(54);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 26
+            "operationIdx": 27
+          },
+          {
+            "clause": "goto ending",
+            "_row_num": 119,
+            "__rowNum__": 118,
+            "_token_type": "goto_label",
+            "_branch_label": "ending",
+            "operationIdx": 28
+          },
+          {
+            "_row_num": 122,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(55);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 29
+          },
+          {
+            "clause": "goto ending",
+            "_row_num": 124,
+            "__rowNum__": 123,
+            "_token_type": "goto_label",
+            "_branch_label": "ending",
+            "operationIdx": 30
+          },
+          {
+            "_row_num": 129,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(56);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 31
           },
           {
             "_token_type": "exit_section",
             "clause": "exit section",
-            "_row_num": 121,
-            "operationIdx": 27
+            "_row_num": 130,
+            "operationIdx": 32
           },
           {
-            "_row_num": 121,
+            "_row_num": 130,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(55);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(57);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
-            "operationIdx": 28
+            "operationIdx": 33
           },
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 121,
-            "operationIdx": 29
+            "_row_num": 130,
+            "operationIdx": 34
           }
         ],
         "branch_label_map": {
@@ -4398,15 +4565,20 @@
           "_screen102": 18,
           "_else106": 20,
           "_endif106": 20,
-          "_screen107": 20,
-          "exclusao": 22,
-          "_screen109": 22,
-          "recusa": 24,
-          "_screen113": 24,
-          "ending": 26,
-          "_screen120": 26,
-          "_contents": 28,
-          "_screen121": 28
+          "_then109": 22,
+          "_screen110": 22,
+          "_else111": 24,
+          "_screen112": 24,
+          "_endif114": 25,
+          "_screen116": 25,
+          "exclusao": 27,
+          "_screen118": 27,
+          "recusa": 29,
+          "_screen122": 29,
+          "ending": 31,
+          "_screen129": 31,
+          "_contents": 33,
+          "_screen130": 33
         }
       },
       "initial": {
@@ -5757,7 +5929,7 @@
         "valuesList": "yesno",
         "_defn": [
           {
-            "_row_num": 107,
+            "_row_num": 116,
             "section_name": "survey"
           },
           {
@@ -5775,7 +5947,7 @@
         "valuesList": "ok",
         "_defn": [
           {
-            "_row_num": 109,
+            "_row_num": 118,
             "section_name": "survey"
           },
           {
@@ -5792,7 +5964,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 113,
+            "_row_num": 122,
             "section_name": "survey"
           },
           {
