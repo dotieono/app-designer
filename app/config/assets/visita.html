@@ -7,16 +7,17 @@
         <link href="css/visita.css" type="text/css" rel="stylesheet" />
         <script type="text/javascript" src="commonDefinitions.js"></script>
         <script type="text/javascript" src="libs/jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="../../system/libs/eonasdan/moment.min.js"></script>
         <script type="text/javascript" src="libs/jquery-migrate-3.0.0.js"></script>
         <script type="text/javascript" src="../../system/js/odkCommon.js"></script>
         <script type="text/javascript" src="../../system/js/odkData.js"></script>
-        <script type="text/javascript" src="../../system/tables/js/odkTables.js"></script>
+        <script type="text/javascript" src="../../system/tables/js/odkTables.js"></script>        
         <script type="text/javascript">
 
         // Displays homescreen
         function display() {
-            console.log('Loading centro v. 0.10');
-
+            console.log('Loading centro v. 0.11');
+            window.adateHelper = getAdateHelper();
             // /*    Screen new client option that launches new client list view */
             //  var visita = document.createElement("button");
             // visita.setAttribute("id", "button2");
@@ -103,29 +104,50 @@
                 var persons = [];
                 for (var row = 0; row < result.getCount(); row++) {
                     var id = result.getData(row,"_id"); // or _row_etag
-                    // var id_paciente = result.getData(row,"id_estudo");
-                    // var id_rastreio = result.getData(row,"id_rastreio");
+                    var id_estudo = result.getData(row,"id_estudo");                    
+                    
+                    var tab_bairro = result.getData(row,"tab_bairro");
+                    var zona = result.getData(row, "zona");
+                    var cs = result.getData(row, "cs");
+
+                    var date_rastreio = result.getData(row, "date_rastreio");
+
+                    var sexo = result.getData(row, "sexo");
                     var nome =  result.getData(row,"nome");
-                    // var nome_casa =  result.getData(row,"nome_casa");
-                    var resTdr =  result.getData(row,"resultado_TDR");
+                    var nome_acomp =  result.getData(row,"nome_acomp");
+                    var nome_mae =  result.getData(row,"nome_mae");
+                    var nome_pai =  result.getData(row,"nome_pai");
+
+                    var tel_acomp = result.getData(row,"tel_acomp");
+                    var tel_mae = result.getData(row,"tel_mae");
+                    var tel_pai = result.getData(row,"tel_pai");
+                    
                     var DOB_ou_idade = result.getData(row,"DOB_ou_idade");
                     var dn =  result.getData(row,"dn");
                     var ano =  result.getData(row,"ano");
                     var mes =  result.getData(row,"mes");
-                    // var af =  result.getData(row,"AF");
-                    // var numRondas = result.getData(row, 'numero_rondas')
+                    
                     var p = {
                         id,
-                        // id_paciente,
+                        id_estudo,
+                        tab_bairro,
+                        zona,
+                        cs,
+                        date_rastreio,
+                        sexo,
                         nome,
-                        resTdr,
-                        // sexo,
-                         dn,
-                         ano,
-                         mes,
-                        // af,
-                        // numRondas
-                    }
+                        nome_acomp,
+                        nome_mae,
+                        nome_pai,
+                        tel_acomp,
+                        tel_mae,
+                        tel_pai,
+                        dn,
+                        ano,
+                        mes,
+                    }          
+
+                    if (!isRelevant(p)) continue;
                     console.log(p);
                     persons.push(p);
                 }
@@ -137,20 +159,76 @@
                 alert(errorMsg);
             }
 
-            var sql = 'SELECT _id, nome, DOB_ou_idade, dn, ano, mes, resultado_TDR FROM rastreio WHERE ';
-            sql = sql + 'region = "bafata" COLLATE NOCASE AND ';
-            sql = sql + 'cs = "bafata" COLLATE NOCASE AND ';
-            sql = sql + '(resultado_TDR = 1 OR resultado_TDR = 3) AND ';
-            sql = sql + 'date_rastreio = "' + todayAdate() + '" ';
+            var selCs = $("#selCs").val();
+            var sql = 'SELECT tab_bairro, zona, cs, date_rastreio, nome, nome_acomp, nome_mae, nome_pai, tel_acomp, tel_mae, tel_pai, sexo, id_estudo, DOB_ou_idade, ano, mes, dn FROM inclusao '
+            sql = sql + 'WHERE cs = "' + selCs + '"'
             console.log(sql);
-            odkData.arbitraryQuery('rastreio', sql, null, null, null, successFn, failureFn);
+            odkData.arbitraryQuery('inclusao', sql, null, null, null, successFn, failureFn);
         }
         
-        function openPersonForm(rowId) {
-            var tableId = "rastreio";
-            var rowId = rowId;
-            var formId = "rastreio"; 
-            odkTables.editRowWithSurvey(null, tableId, rowId, formId, null, null);
+        function isRelevant(person) {
+            var days = adateHelper.ageInDays(person.date_rastreio);
+            console.log(days);
+            if (days <= 3) return true;
+            if (days % 7 == 0) return true;
+            console.log("NOT RELEVANT");
+            person.nome = "NO: " + person.nome;
+            return true;
+        }
+
+        function addPersonForm(person) {
+            var tableId = "seguimento";
+            var formId = "seguimento"; 
+            var dispatchStruct = null;
+            var screenPath = null;
+            var jsonMap = getJsonMap(person);
+            odkTables.addRowWithSurvey(dispatchStruct,tableId, formId, screenPath, jsonMap);
+            
+        }
+
+        function getJsonMap(person) {
+            // This is the data available in the questionnaire (excel)
+            /* A person looks more or less like this;
+               ano: null
+                date_rastreio: "D:20,M:6,Y:2020"
+                dn: "D:5,M:2,Y:2020"
+                id: undefined
+                id_estudo: "Ba11"
+                mes: null
+                nome: "Quin"
+                nome_acomp: null
+                nome_mae: "Quan"
+                nome_pai: "Quon"
+                sexo: "1"
+                tab_bairro: "Praca"
+                tel_acomp: null
+                tel_mae: 58094
+                tel_pai: 802
+                zona: "Purto"
+            */      
+
+
+            // delete person.ano;
+            // delete person.date_rastreio;
+            // delete person.dn;
+            // delete person.id;
+            // delete person.id_estudo;
+            // delete person.mes;
+            // delete person.nome;
+            // delete person.nome_mae;
+            // delete person.nome_pai;
+            delete person.nome_acomp;
+            // delete person.sexo;
+            delete person.tab_bairro;
+            delete person.tel_acomp;
+            delete person.tel_mae;
+            delete person.tel_pai;
+            delete person.zona;
+
+            console.log("Sending following data:");
+            console.log(person);      
+
+            return person;
         }
 
         function todayAdate() {
@@ -171,16 +249,45 @@
         }
         function addPersonDiv(p) {    
             var nome = (p.nome_casa && p.nome_casa.length) ? nome = p.nome + " (" + p.nome_casa + ")" : p.nome;        
-            $('#theList tr:last').after("<tr class='tdr" + p.resTdr + "' data-id='" + p._id + "'><td>" + nome + "</td><td>" + getAgeString(p) + "</td><td><input onclick='openPersonForm(\"" + p.id + "\")' type='button' value='&gt;&gt;'></input></td></tr>");
+            var btnRow = "<tr><td>" + getAddress(p) + "</td><td>" + getNames(p) + "</td><td>" + getAgeString(p) + "<br/>" + getPhones(p) + "</td><td><button class='btn btn-sm'>&gt;</button></td></tr>";
+            $('#theList tr:last').after(btnRow);
+            $('#theList tr:last').on("click",function() { 
+                addPersonForm(p);
+                return false;
+            });
         }
+        function getAddress(p) {
+            var r = "";
+            if (p.tab_bairro) r = r + p.tab_bairro + "<br/>";
+            if (p.zona) r = r + p.zona + "<br/>";
+            r = r + "ID: " + p.id_estudo;
+            return r;
+        }
+        function getPhones(p) {
+            var r = "";
+            if (p.tel_mae) r = r + p.tel_mae + " (mãe)<br/>";
+            if (p.tel_pai) r = r + p.tel_pai + " (pai)<br/>";
+            if (p.tel_acomp) r = r + p.tel_acomp + " (acomp.)<br/>";
+            return r;
+        }
+        function getNames(p) {
+            var d = p.nome + (p.sexo == '2' ? ' (F)':' (M)');
+            if (p.nome_mae) d = d + "<br/>Mãe: " + p.nome_mae;
+            if (p.nome_pai) d = d + "<br/>Pai: " + p.nome_pai;
+            if (p.nome_acomp) d = d + "<br/>Acomp.: " + p.nome_acomp;                
+            return "<div>" + d + "</div>";
+        }
+
         function getAgeString(person) {
             var theAdate = person.dn;
             if (!theAdate) {
                 var res = (person.ano) ? person.ano : "0";
-                if (person.mes) res = res + ("." + person.mes);
-                return res;
+                var mes = person.mes ? person.mes : "0";
+                return res + " anos " + mes + " meses";                
             }    
-            return "" + adateHelper.ageInYears(theAdate) + "." + (adateHelper.ageInMonths(theAdate) % 12);
+            var months = adateHelper.ageInMonths(theAdate);
+            var anosTxt = (months >= 12) ? "" + adateHelper.ageInYears(theAdate) + " anos " : "";
+            return anosTxt + (adateHelper.ageInMonths(theAdate) % 12) + " meses";
         }
   
         /* adate helper */
@@ -231,9 +338,68 @@
                     return -9999;
                 }
                 return b.diff(a,'years');
-            }
+            },
+            diffInDays: function(aDateA, aDateB) {
+                var a = this.getMoment(aDateA);
+                var b = this.getMoment(aDateB);
+                if (!a || !b) {
+                    return -9999;
+                }
+                return b.diff(a,'days');
+            }            
         }};
 
+
+        /* adate helper */
+function getAdateHelper() {return {
+    getMoment: function(aDate) {
+        if (!aDate || aDate.length<4 || this.yearUnknown(aDate)) {
+            return false;
+        }
+        aDate = aDate.toUpperCase().replace('D:NS','D:15').replace('M:NS','M:5');
+        var d = moment(aDate, '\\D:DD,\\M:MM,\\Y:YYYY');
+        if (d.isValid()) {
+            return d;
+        }
+        return false;
+    },
+    hasUncertainty: function(aDate) {
+        return !aDate || aDate.toUpperCase().indexOf('NS')>-1;   
+    },
+    yearUnknown: function(aDate) {
+        return !aDate || aDate.toUpperCase().indexOf('Y:NS')>-1;
+    },
+    monthUnkown: function(aDate) {
+        return !aDate || aDate.toUpperCase().indexOf('M:NS')>-1;   
+    },
+    dayUnkown: function(aDate) {
+        return !aDate || aDate.toUpperCase().indexOf('D:NS')>-1;
+    },
+    ageIn: function(aDate, strUnit) {
+        var a = this.getMoment(aDate);
+        if (!a) {
+            return -9999;
+        }
+        return moment().diff(a,strUnit);
+    },
+    ageInYears: function(aDate) {
+        return this.ageIn(aDate, 'years');
+    },
+    ageInMonths: function(aDate) {
+        return this.ageIn(aDate, 'months');
+    },
+    ageInDays: function(aDate) {
+        return this.ageIn(aDate, 'days');
+    },
+    diffInYears: function(aDateA, aDateB) {
+        var a = this.getMoment(aDateA);
+        var b = this.getMoment(aDateB);
+        if (!a || !b) {
+            return -9999;
+        }
+        return b.diff(a,'years');
+    }
+}};
         </script>
     </head>
 
@@ -255,6 +421,7 @@
                 <hr/>
                 <table id="theList" class="table">
                     <tr>
+                        <th>Tabz</th>
                         <th>Nome</th>
                         <th>Idade</th>
                         <th>&nbsp;</th>

@@ -18,40 +18,8 @@
         function display() {
             console.log('Loading centro v. 0.40');
             window.adateHelper = getAdateHelper();
-            // var visita = document.createElement("button");
-            // visita.setAttribute("id", "button2");
-            // visita.innerHTML = "Visitas de hoje";
-            // visita.onclick = function() {
-            //     odkTables.launchHTML(null, 
-            //     'config/assets/selectZona.html');
-            // }
-            // document.getElementById("wrapper").appendChild(visita);  
-
-            // var agenda = document.createElement("button");
-            // agenda.setAttribute("id", "button2");
-            // agenda.innerHTML = "Agenda";
-            // agenda.onclick = function() {
-            //     odkTables.launchHTML(null, 
-            //     'config/assets/selectZona.html');
-            // }
-            // document.getElementById("wrapper").appendChild(agenda);    
-
-            // var sendData = document.createElement("button");
-            // sendData.setAttribute("id", "button3");
-            // sendData.innerHTML = "Enviar Dados";
-            // sendData.onclick = function() {
-            //   odkCommon.doAction(null, "org.opendatakit.services.sync.actions.activities.SyncActivity", {"componentPackage": "org.opendatakit.services", "componentActivity": "org.opendatakit.services.sync.actions.activities.SyncActivity"});
-            // }
-            // document.getElementById("wrapper").appendChild(sendData);    
-
-
             var btnNew = $("#btnCreateNew");
             var selCs = $("#selCs");
-            
-
-          
-            // Bind events
-            
             $("#selCs").change(function() {
                 var newVal = $(this).val();
                 if (!confirm("Tem certeza de mudar centro de saúde para " + newVal + "?")) {
@@ -194,7 +162,6 @@
                     data);
             
         }
-
         function getAgeString(person) {
             var theAdate = person.dn;
             if (!theAdate) {
@@ -202,9 +169,10 @@
                 if (person.mes) res = res + ("." + person.mes);
                 return res;
             }    
-            return "" + adateHelper.ageInYears(theAdate) + "." + (adateHelper.ageInMonths(theAdate) % 12);
+            var months = adateHelper.ageInMonths(theAdate);
+            var anosTxt = (months >= 12) ? "" + adateHelper.ageInYears(theAdate) + " anos " : "";
+            return anosTxt + (adateHelper.ageInMonths(theAdate) % 12) + " meses";
         }
-
 
         function getRegion(cs) {
             switch (cs) {
