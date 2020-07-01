@@ -16,6 +16,7 @@
 
         // Displays homescreen
         function display() {
+            console.log('Loading centro v. 0.3');
             window.adateHelper = getAdateHelper();
             // var visita = document.createElement("button");
             // visita.setAttribute("id", "button2");
@@ -51,12 +52,23 @@
           
             // Bind events
             
-
-            selCs.on("change",function() {
-                var selVal = $("#selCs").val();
-                localStorage.setItem("centro", selVal);
+            $("#selCs").change(function() {
+                var newVal = $(this).val();
+                if (!confirm("Tem certeza de mudar centro de saúde para " + newVal + "?")) {
+                    console.log("restoring to: " + $(this).data('val'))
+                    $(this).val($(this).data('val')); //set back
+                    selectByText($(this).data('val'));
+                    return;                           //abort!
+                }
+                console.log("Changed to " + newVal);
+                $(this).data('val', newVal);
+                localStorage.setItem("centro", newVal);
                 loadList();
-            })
+            });
+            // selCs.on("change",function() {
+            //     var selVal = $("#selCs").val();
+                
+            // })
 
             btnNew.on("click", function() {
                 var selVal = $("#selCs").val();
@@ -264,12 +276,12 @@ function getAdateHelper() {return {
                 <label class="form-label" for="selCs">Centro de saúde</label><br/>
                 <select id="selCs" class="form-control">
                     <option></option>
-                    <option>bafata</option>
-                    <option>bambadinca</option>
-                    <option>cosse</option>
-                    <option>gabu</option>
-                    <option>mafanco</option>
-                    <option>pitche</option>
+                    <option value="bafata">bafata</option>
+                    <option value="bambadinca">bambadinca</option>
+                    <option value="cosse">cosse</option>
+                    <option value="gabu">gabu</option>
+                    <option value="mafanco">mafanco</option>
+                    <option value="pitche">pitche</option>
                 </select>
                 <hr/>
                 <button id="btnCreateNew" class="form-control btn btn-lg btn-success" style="height:50px;width:100%;">CREATE NEW</button>
