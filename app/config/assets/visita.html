@@ -2,6 +2,7 @@
 <!--Menu-->
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="../../system/libs/bootstrap-3.3.7-dist/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
         <link href="css/odk-survey.css" type="text/css" rel="stylesheet" />
         <link href="css/visita.css" type="text/css" rel="stylesheet" />
         <script type="text/javascript" src="commonDefinitions.js"></script>
@@ -14,6 +15,7 @@
 
         // Displays homescreen
         function display() {
+            console.log('Loading centro v. 0.10');
 
             // /*    Screen new client option that launches new client list view */
             //  var visita = document.createElement("button");
@@ -48,11 +50,21 @@
 
 
             var selCs = $("#selCs");
-            selCs.on("change",function() {
-                var selVal = $("#selCs").val();
-                localStorage.setItem("centro", selVal);
+            $("#selCs").change(function() {
+                var newVal = $(this).val();
+                if (!confirm("Tem certeza de mudar centro de saúde para " + newVal + "?")) {
+                    console.log("restoring to: " + $(this).data('val'))
+                    $(this).val($(this).data('val')); //set back
+                    selectByText($(this).data('val'));
+                    return;                           //abort!
+                }
+                console.log("Changed to " + newVal);
+                $("#theList tr:not(:first-of-type)").remove(); // clear table except header
+                $(this).data('val', newVal);
+                localStorage.setItem("centro", newVal);
                 loadList();
-            })
+            });
+            
             
             setTimeout(restoreState, 10);
             setTimeout(loadList, 100);
