@@ -16,7 +16,7 @@
 
         // Displays homescreen
         function display() {
-            console.log('Loading centro v. 0.3');
+            console.log('Loading centro v. 0.40');
             window.adateHelper = getAdateHelper();
             // var visita = document.createElement("button");
             // visita.setAttribute("id", "button2");
@@ -61,6 +61,7 @@
                     return;                           //abort!
                 }
                 console.log("Changed to " + newVal);
+                $("#theList tr:not(:first-of-type)").remove(); // clear table except header
                 $(this).data('val', newVal);
                 localStorage.setItem("centro", newVal);
                 loadList();
@@ -81,8 +82,7 @@
             setTimeout(loadList, 100);
         }
         
-        function loadList() {
-            $("#theList > tr:not(:first-of-type)").remove(); // clear table except header
+        function loadList() {            
             console.log("Querying database...");
             var successFn = function( result ) {
                 console.log("Found " + result.getCount() + " persons");
