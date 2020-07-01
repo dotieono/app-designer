@@ -82,6 +82,7 @@
         }
         
         function loadList() {
+            $("#theList > tr:not(:first-of-type)").remove(); // clear table except header
             console.log("Querying database...");
             var successFn = function( result ) {
                 console.log("Found " + result.getCount() + " persons");
