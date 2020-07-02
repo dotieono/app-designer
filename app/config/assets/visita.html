@@ -169,6 +169,8 @@
         function isRelevant(person) {
             var days = adateHelper.ageInDays(person.date_rastreio);
             console.log(days);
+            if (days > 28) return false;
+            if (days == 0) return false;
             if (days <= 3) return true;
             if (days % 7 == 0) return true;
             console.log("NOT RELEVANT");
