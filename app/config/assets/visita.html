@@ -296,8 +296,12 @@ function updateDay() {
             });
         }
         function addPersonDiv(p) {    
+            var btn = "<button class='btn btn-sm'>&gt;</button>";
+            if (window.dayOffset < -1 || window.dayOffset > 1) {
+                btn =  "";    //show no button for these days.
+            }
             var nome = (p.nome_casa && p.nome_casa.length) ? nome = p.nome + " (" + p.nome_casa + ")" : p.nome;        
-            var btnRow = "<tr><td>" + getAddress(p) + "</td><td>" + getNames(p) + "</td><td>" + getAgeString(p) + "<br/>" + getPhones(p) + "</td><td><button class='btn btn-sm'>&gt;</button></td></tr>";
+            var btnRow = "<tr><td>" + getAddress(p) + "</td><td>" + getNames(p) + "</td><td>" + getAgeString(p) + "<br/>" + getPhones(p) + "</td><td>" + btn + "</td></tr>";
             $('#theList tr:last').after(btnRow);
             $('#theList tr:last').on("click",function() { 
                 addPersonForm(p);
