@@ -12,11 +12,40 @@
         <script type="text/javascript" src="../../system/js/odkCommon.js"></script>
         <script type="text/javascript" src="../../system/js/odkData.js"></script>
         <script type="text/javascript" src="../../system/tables/js/odkTables.js"></script>        
-        <script type="text/javascript">
 
-        // Displays homescreen
+        <script type="text/javascript">
+window.dayOffset = 0;
+function getLocalDateString(moment) {
+    return translateDay(moment.format('dddd')) + " " + moment.format('DD.MM.YYYY'); 
+}
+function translateDay(strDay) {
+    switch (strDay) {
+        case 'Monday':
+            return 'Segunda'
+        case 'Tuesday':
+            return 'Terça'
+        case 'Wednesday':
+            return 'Quarta'
+        case 'Thursday':
+            return 'Quinta'
+        case 'Friday':
+            return 'Sexta'
+        case 'Saturday':
+            return 'Sábado'
+        case 'Sunday':
+            return 'Domingo'                                    
+        default:
+            return strDay;
+    }
+}
+
+function offset(qty) {
+    console.log("yo");
+}
+// Displays homescreen
         function display() {
-            console.log('Loading centro v. 0.11');
+            console.log('Loading centro v. 0.11');            
+            
             window.adateHelper = getAdateHelper();
             // /*    Screen new client option that launches new client list view */
             //  var visita = document.createElement("button");
@@ -63,15 +92,31 @@
                 $("#theList tr:not(:first-of-type)").remove(); // clear table except header
                 $(this).data('val', newVal);
                 localStorage.setItem("centro", newVal);
-                loadList();
+                window.dayOffset = 0;
+                updateDay();
             });
-            
-            
+            $("#theDate").on("click", function() {
+                window.dayOffset = 0;
+                updateDay();
+            })
+            $("#prevDay").on("click", function() {
+                window.dayOffset -= 1;
+                updateDay();
+            })
+            $("#nextDay").on("click", function() {
+                window.dayOffset += 1;
+                updateDay();
+            })
             setTimeout(restoreState, 10);
-            setTimeout(loadList, 100);
+            setTimeout(updateDay, 100);
         }
         
-
+function updateDay() {
+    window.today = new moment();
+    today.add(window.dayOffset, "days");
+    $("#theDate").text(getLocalDateString(today));
+    loadList();
+}
         function restoreState() {
             // Preload previous selections
             var storedCentro = localStorage.getItem("centro");
@@ -167,12 +212,13 @@
         }
         
         function isRelevant(person) {
+            var offSet = window.dayOffset;
             var days = adateHelper.ageInDays(person.date_rastreio);
             console.log(days);
-            if (days > 28) return false;
-            if (days == 0) return false;
-            if (days <= 3) return true;
-            if (days % 7 == 0) return true;
+            if (days > 28+offSet) return false;
+            if (days == 0+offSet) return false;
+            if (days <= 3+offSet) return true;
+            if (days % 7 == 0+offSet) return true;
             console.log("NOT RELEVANT");
             person.nome = "NO: " + person.nome;
             return false;
@@ -421,6 +467,9 @@ function getAdateHelper() {return {
                     <option>pitche</option>
                 </select>
                 <hr/>
+                <div>
+                    <span id="prevDay">&lt;</span><span id="theDate"></span><span id="nextDay">&gt;</span>
+                </div>
                 <table id="theList" class="table">
                     <tr>
                         <th>Tabz</th>
