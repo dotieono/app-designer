@@ -189,6 +189,24 @@
       {
         "clause": "exit section",
         "_row_num": 36
+      },
+      {
+        "branch_label": "resultado_tdr",
+        "_row_num": 38
+      },
+      {
+        "url": "'?' + odkSurvey.getHashString('rastreio','resultado_tdr')",
+        "type": "external_link",
+        "display": {
+          "prompt": {
+            "text": "Open form"
+          }
+        },
+        "_row_num": 39
+      },
+      {
+        "clause": "exit section",
+        "_row_num": 40
       }
     ],
     "settings": [
@@ -335,6 +353,16 @@
           }
         },
         "_row_num": 9
+      },
+      {
+        "choice_list_name": "test_forms",
+        "data_value": "resultado_tdr",
+        "display": {
+          "title": {
+            "text": "Introducao do resultado de TDR"
+          }
+        },
+        "_row_num": 10
       }
     ],
     "framework_translations": [
@@ -1017,6 +1045,16 @@
             }
           },
           "_row_num": 9
+        },
+        {
+          "choice_list_name": "test_forms",
+          "data_value": "resultado_tdr",
+          "display": {
+            "title": {
+              "text": "Introducao do resultado de TDR"
+            }
+          },
+          "_row_num": 10
         }
       ]
     },
@@ -1797,12 +1835,27 @@
             "promptIdx": 9
           },
           {
+            "url": "'?' + odkSurvey.getHashString('rastreio','resultado_tdr')",
+            "type": "external_link",
+            "display": {
+              "prompt": {
+                "text": "Open form"
+              }
+            },
+            "_row_num": 39,
+            "__rowNum__": 38,
+            "_token_type": "prompt",
+            "_type": "external_link",
+            "_branch_label_enclosing_screen": "survey/_screen39",
+            "promptIdx": 10
+          },
+          {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 37,
-            "_branch_label_enclosing_screen": "survey/_screen37",
-            "promptIdx": 10
+            "_row_num": 41,
+            "_branch_label_enclosing_screen": "survey/_screen41",
+            "promptIdx": 11
           }
         ],
         "validation_tag_map": {
@@ -1956,25 +2009,38 @@
             "operationIdx": 21
           },
           {
-            "_token_type": "exit_section",
-            "clause": "exit section",
-            "_row_num": 37,
+            "_row_num": 39,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(10);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 22
           },
           {
-            "_row_num": 37,
+            "clause": "exit section",
+            "_row_num": 40,
+            "__rowNum__": 39,
+            "_token_type": "exit_section",
+            "operationIdx": 23
+          },
+          {
+            "_token_type": "exit_section",
+            "clause": "exit section",
+            "_row_num": 41,
+            "operationIdx": 24
+          },
+          {
+            "_row_num": 41,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(10);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(11);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
-            "operationIdx": 23
+            "operationIdx": 25
           },
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 37,
-            "operationIdx": 24
+            "_row_num": 41,
+            "operationIdx": 26
           }
         ],
         "branch_label_map": {
@@ -1999,8 +2065,10 @@
           "_screen31": 18,
           "seguimento": 20,
           "_screen35": 20,
-          "_contents": 23,
-          "_screen37": 23
+          "resultado_tdr": 22,
+          "_screen39": 22,
+          "_contents": 25,
+          "_screen41": 25
         }
       }
     },

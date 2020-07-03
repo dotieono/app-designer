@@ -57,8 +57,8 @@
                 var persons = [];
                 for (var row = 0; row < result.getCount(); row++) {
                     var id = result.getData(row,"_id"); // or _row_etag
-                    // var id_paciente = result.getData(row,"id_estudo");
-                    // var id_rastreio = result.getData(row,"id_rastreio");
+                    var temperatura = result.getData(row,"temperatura");
+                    var febre = result.getData(row,"febre");
                     var nome =  result.getData(row,"nome");
                     // var nome_casa =  result.getData(row,"nome_casa");
                     var resTdr =  result.getData(row,"resultado_TDR");
@@ -70,10 +70,10 @@
                     // var numRondas = result.getData(row, 'numero_rondas')
                     var p = {
                         id,
-                        // id_paciente,
+                        temperatura,
                         nome,
                         resTdr,
-                        // sexo,
+                        febre,
                          dn,
                          ano,
                          mes,
@@ -93,7 +93,7 @@
 
             var selCs = $("#selCs").val();
 
-            var sql = 'SELECT _id, nome, DOB_ou_idade, dn, ano, mes, resultado_TDR FROM rastreio WHERE ';
+            var sql = 'SELECT _id, nome, DOB_ou_idade, dn, ano, mes, temperatura, febre, resultado_TDR FROM rastreio WHERE ';
             sql = sql + 'region = "' + getRegion(selCs) + '" COLLATE NOCASE AND ';
             sql = sql + 'cs = "' + selCs + '" COLLATE NOCASE AND ';
             sql = sql + '(resultado_TDR = 1 OR resultado_TDR = 3) AND ';
@@ -106,7 +106,7 @@
         function openPersonForm(rowId) {
             var tableId = "rastreio";
             var rowId = rowId;
-            var formId = "rastreio"; 
+            var formId = "resultado_tdr"; 
             odkTables.editRowWithSurvey(null, tableId, rowId, formId, null, null);
         }
 
