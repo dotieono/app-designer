@@ -213,10 +213,10 @@ function updateDay() {
             var offSet = window.dayOffset;
             var days = adateHelper.ageInDays(person.date_rastreio);
             console.log(days);
-            if (days > 28+offSet) return false;
-            if (days == 0+offSet) return false;
-            if (days <= 3+offSet) return true;
-            if (days % 7 == 0+offSet) return true;
+            if ((days+offSet) > 28) return false;
+            if ((days+offSet) == 0) return false;
+            if ((days+offSet) <= 3) return true;
+            if ((days+offSet) % 7 == 0) return true;
             console.log("NOT RELEVANT");
             person.nome = "NO: " + person.nome;
             return false;
