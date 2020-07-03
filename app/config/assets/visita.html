@@ -39,9 +39,6 @@ function translateDay(strDay) {
     }
 }
 
-function offset(qty) {
-    console.log("yo");
-}
 // Displays homescreen
         function display() {
             console.log('Loading centro v. 0.11');            
@@ -89,7 +86,7 @@ function offset(qty) {
                     return;                           //abort!
                 }
                 console.log("Changed to " + newVal);
-                $("#theList tr:not(:first-of-type)").remove(); // clear table except header
+                
                 $(this).data('val', newVal);
                 localStorage.setItem("centro", newVal);
                 window.dayOffset = 0;
@@ -143,6 +140,7 @@ function updateDay() {
         }
 
         function loadList() {
+            $("#theList tr:not(:first-of-type)").remove(); // clear table except header
             console.log("Querying database...");
             var successFn = function( result ) {
                 console.log("Found " + result.getCount() + " persons");
@@ -312,7 +310,7 @@ function updateDay() {
             var r = "";
             if (p.tab_bairro) r = r + p.tab_bairro + "<br/>";
             if (p.zona) r = r + p.zona + "<br/>";
-            r = r + "ID: " + p.id_estudo;
+            r = r + "ID: " + p.id_estudo + " (dias: " + (adateHelper.ageInDays(person.date_rastreio) + window.dayOffset) + ")";
             return r;
         }
         function getPhones(p) {
