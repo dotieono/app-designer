@@ -302,10 +302,14 @@ function updateDay() {
             var nome = (p.nome_casa && p.nome_casa.length) ? nome = p.nome + " (" + p.nome_casa + ")" : p.nome;        
             var btnRow = "<tr><td>" + getAddress(p) + "</td><td>" + getNames(p) + "</td><td>" + getAgeString(p) + "<br/>" + getPhones(p) + "</td><td>" + btn + "</td></tr>";
             $('#theList tr:last').after(btnRow);
-            $('#theList tr:last').on("click",function() { 
-                addPersonForm(p);
-                return false;
-            });
+            if (window.dayOffset < -1 || window.dayOffset > 1) {
+                // show no button for these days.
+            } else {
+                $('#theList tr:last').on("click",function() { 
+                    addPersonForm(p);
+                    return false;
+                });
+            }
         }
         function getAddress(p) {
             var r = "";
