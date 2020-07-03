@@ -311,7 +311,7 @@ function updateDay() {
             var r = "";
             if (p.tab_bairro) r = r + p.tab_bairro + "<br/>";
             if (p.zona) r = r + p.zona + "<br/>";
-            r = r + "ID: " + p.id_estudo + " (dias: " + (adateHelper.ageInDays(person.date_rastreio) + window.dayOffset) + ")";
+            r = r + "ID: " + p.id_estudo + " (dias: " + (adateHelper.ageInDays(p.date_rastreio) + window.dayOffset) + ")";
             return r;
         }
         function getPhones(p) {
