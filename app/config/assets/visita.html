@@ -191,7 +191,7 @@ function updateDay() {
                     }          
 
                     if (!isRelevant(p)) continue;
-                    console.log(p);
+                    //console.log(p);
                     persons.push(p);
                 }
                 populateList(persons);
@@ -287,14 +287,12 @@ function updateDay() {
         }
         
         function populateList(listOfPersons) {
-            var theList = $("#theList");
             $("#theList tr:not(:first-of-type)").remove(); // clear table except header
-            setTimeout(function() {
-                console.log("Populating list with " + listOfPersons.length + " persons");
-                listOfPersons.forEach(person => {
-                    addPersonDiv(person);
-                });
-            }, 50);
+            var theList = $("#theList");
+            console.log("Populating list with " + listOfPersons.length + " persons");
+            listOfPersons.forEach(person => {
+                addPersonDiv(person);
+            });
         }
         function addPersonDiv(p) {    
             var btn = "<button class='btn btn-sm'>&gt;</button>";
