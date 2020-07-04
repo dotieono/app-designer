@@ -59,16 +59,19 @@
                     var ano =  result.getData(row,"ano");
                     var mes =  result.getData(row,"mes");
                     var sexo =  result.getData(row,"sexo");
-                    
+                    var nome =  result.getData(row,"nome");
+                    var id_visita =  result.getData(row,"id_visita");
                     var p = {
                         id,
                         id_estudo,
+                        id_visita,
                         codigo_lamina,
                         dn,
                         ano,
                         mes,
                         DOB_ou_idade,
-                        sexo
+                        sexo,
+                        nome
                     }          
 
                     persons.push(p);
@@ -81,8 +84,8 @@
                 alert(errorMsg);
             }
 
-
-            var sql = 'SELECT codigo_lamina, dn, sexo, ano, mes, id_estudo, DOB_ou_idade  FROM inclusao WHERE codigo_lamina = "' + codigo + '" COLLATE NOCASE UNION SELECT codigo_lamina, dn, sexo, ano, mes, id_estudo, DOB_ou_idade FROM seguimento  WHERE codigo_lamina = "' + codigo + '" COLLATE NOCASE';            
+            var fields = 'codigo_lamina, dn, sexo, nome, ano, mes, id_estudo, DOB_ou_idade, id_visita':
+            var sql = 'SELECT ' + fields + ' FROM inclusao WHERE codigo_lamina = "' + codigo + '" COLLATE NOCASE UNION SELECT ' + fields + ' WHERE codigo_lamina = "' + codigo + '" COLLATE NOCASE';            
             console.log(sql);
             odkData.arbitraryQuery('inclusao', sql, null, null, null, successFn, failureFn);
         }
@@ -137,7 +140,7 @@
             var r = "";
             if (p.tab_bairro) r = r + p.tab_bairro + "<br/>";
             if (p.zona) r = r + p.zona + "<br/>";
-            r = r + "ID: " + p.id_estudo + " (dias: " + (adateHelper.ageInDays(p.date_rastreio) + window.dayOffset) + ")";
+            r = r + "ID: " + p.id_estudo + " (dias: " + p.id_visita + ")";
             return r;
         }
         function getPhones(p) {
