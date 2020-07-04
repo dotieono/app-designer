@@ -45,6 +45,10 @@
                 return false;
             })
 
+            btnVisit.on("click", function() {
+                odkTables.launchHTML(null, 'config/assets/centro_visit.html');
+                return false;
+            });
             
             setTimeout(restoreState, 10);
             setTimeout(loadList, 100);
@@ -240,7 +244,7 @@ function getAdateHelper() {return {
     </head>
 
     <body onload="display();">        
-        <form>
+        <form class="form-inline">
             <div class="form-group" style="margin:20px;text-align:center;">
                 <label class="form-label" for="selCs">Centro de saúde</label><br/>
                 <select id="selCs" class="form-control">
@@ -253,8 +257,13 @@ function getAdateHelper() {return {
                     <option value="pitche">pitche</option>
                 </select>
                 <hr/>
-                <button id="btnCreateNew" class="form-control btn btn-lg btn-success" style="height:50px;width:100%;">CREATE NEW</button>
-                <hr/>
+            </div>
+            <div class="form-group" style="margin:20px;height: 50px;">
+                <button id="btnCreateNew" class="form-control btn btn-lg btn-success" style="height:50px;width:50%;margin-right:10%;float:left;">Rastreio</button>
+                <a id="btnVisit" href="#" class="form-control btn btn-lg btn-primary" style="height:50px;width:40%;float:right;">Visita</a>
+            </div>
+            
+            <div style="margin:20px;">
                 <table id="theList" class="table">
                     <tr>
                         <th>Nome</th>
