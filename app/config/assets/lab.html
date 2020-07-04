@@ -21,29 +21,7 @@
             console.log('Loading lab v. 0.01');            
             
             window.adateHelper = getAdateHelper();
-            // /*    Screen new client option that launches new client list view */
-            //  var visita = document.createElement("button");
-            // visita.setAttribute("id", "button2");
-            // visita.innerHTML = "Visitas de hoje";
-            // visita.onclick = function() {
-            //     odkTables.launchHTML(null, 
-            //     'config/assets/selectZona.html');
-            // }
-            // document.getElementById("wrapper").appendChild(visita);  
-
-            // // Follow up with existing client option that launches
-            // // 'femaleClients' table list view
-            // var agenda = document.createElement("button");
-            // agenda.setAttribute("id", "button2");
-            // agenda.innerHTML = "Agenda";
-            // agenda.onclick = function() {
-            //     odkTables.launchHTML(null, 
-            //     'config/assets/selectZona.html');
-            // }
-            // document.getElementById("wrapper").appendChild(agenda);    
-
-            // Send data option that luanches send finalized forms screen in
-            // Collect
+      
             var sendData = document.createElement("button");
             sendData.setAttribute("id", "button3");
             sendData.innerHTML = "Enviar Dados";
@@ -52,77 +30,25 @@
             }
             document.getElementById("wrapper").appendChild(sendData);    
 
-
-            var selCs = $("#selCs");
-            $("#selCs").change(function() {
-                var newVal = $(this).val();
-                if (!confirm("Tem certeza de mudar centro de saúde para " + newVal + "?")) {
-                    console.log("restoring to: " + $(this).data('val'))
-                    $(this).val($(this).data('val')); //set back
-                    selectByText($(this).data('val'));
-                    return;                           //abort!
-                }
-                console.log("Changed to " + newVal);
-                
-                $(this).data('val', newVal);
-                localStorage.setItem("centro", newVal);
-                window.dayOffset = 0;
-                updateDay();
+            $("#btnSearch").on("click", function() {
+                var val = $("#txtCodigo").val();
+                loadList(val);
             });
-            $("#theDate").on("click", function() {
-                window.dayOffset = 0;
-                updateDay();
-            })
-            $("#prevDay").on("click", function() {
-                window.dayOffset -= 1;
-                updateDay();
-            })
-            $("#nextDay").on("click", function() {
-                window.dayOffset += 1;
-                updateDay();
-            })
-            setTimeout(restoreState, 10);
-            setTimeout(updateDay, 100);
+
         }
         
-function updateDay() {
-    window.today = new moment();
-    today.add(window.dayOffset, "days");
-    $("#theDate").text(getLocalDateString(today));
-    loadList();
-}
-        function restoreState() {
-            // Preload previous selections
-            var storedCentro = localStorage.getItem("centro");
-            console.log("Restoring to " + storedCentro);
-            if (storedCentro != '') {
-                selectByText(storedCentro);
-            }
-        }
-        function selectByText( txt ) {
-            $('#selCs option')
-            .filter(function() { return $.trim( $(this).text() ) == txt; })
-            .attr('selected',true);
-        }
 
-        function getRegion(cs) {
-            switch (cs) {
-                case "bafata":
-                case "bambadinca":
-                case "cosse":
-                    return 'bafata'
-                default:
-                    return 'gabu'
-            }
-        }
-
-        function loadList() {
-            
+        function loadList(codigo) {
+            $("#theList tr:not(:first-of-type)").remove(); // clear table except header
+            if (!codigo || codigo.length<2) return;
             console.log("Querying database...");
             var successFn = function( result ) {
                 console.log("Found " + result.getCount() + " persons");
                 var persons = [];
                 for (var row = 0; row < result.getCount(); row++) {
+
+                    
+                    var codigo_lamina = result.getData(row,"codigo_lamina");
                     var id = result.getData(row,"_id"); // or _row_etag
                     var id_estudo = result.getData(row,"id_estudo");                    
                     
@@ -150,6 +76,7 @@ function updateDay() {
                     var p = {
                         id,
                         id_estudo,
+                        codigo_lamina,
                         tab_bairro,
                         zona,
                         cs,
@@ -167,8 +94,6 @@ function updateDay() {
                         mes,
                     }          
 
-                    if (!isRelevant(p)) continue;
-                    //console.log(p);
                     persons.push(p);
                 }
                 populateList(persons);
@@ -179,29 +104,16 @@ function updateDay() {
                 alert(errorMsg);
             }
 
-            var selCs = $("#selCs").val();
-            var sql = 'SELECT tab_bairro, zona, cs, date_rastreio, nome, nome_acomp, nome_mae, nome_pai, tel_acomp, tel_mae, tel_pai, sexo, id_estudo, DOB_ou_idade, ano, mes, dn FROM inclusao '
-            sql = sql + 'WHERE cs = "' + selCs + '"'
+            var sql = 'SELECT codigo_lamina, tab_bairro, zona, cs, date_rastreio, nome, nome_acomp, nome_mae, nome_pai, tel_acomp, tel_mae, tel_pai, sexo, id_estudo, DOB_ou_idade, ano, mes, dn FROM inclusao WHERE codigo_lamina = "' + codigo + '"';
             console.log(sql);
             odkData.arbitraryQuery('inclusao', sql, null, null, null, successFn, failureFn);
         }
         
-        function isRelevant(person) {
-            var offSet = window.dayOffset;
-            var days = adateHelper.ageInDays(person.date_rastreio);
-            console.log(days);
-            if ((days+offSet) > 28) return false;
-            if ((days+offSet) == 0) return false;
-            if ((days+offSet) <= 3) return true;
-            if ((days+offSet) % 7 == 0) return true;
-            console.log("NOT RELEVANT");
-            person.nome = "NO: " + person.nome;
-            return false;
-        }
+        
 
         function addPersonForm(person) {
-            var tableId = "seguimento";
-            var formId = "seguimento"; 
+            var tableId = "laboratorio";
+            var formId = "laboratorio"; 
             var dispatchStruct = null;
             var screenPath = null;
             var jsonMap = getJsonMap(person);
@@ -210,61 +122,21 @@ function updateDay() {
         }
 
         function getJsonMap(person) {
-            // This is the data available in the questionnaire (excel)
-            /* A person looks more or less like this;
-               ano: null
-                date_rastreio: "D:20,M:6,Y:2020"
-                dn: "D:5,M:2,Y:2020"
-                id: undefined
-                id_estudo: "Ba11"
-                mes: null
-                nome: "Quin"
-                nome_acomp: null
-                nome_mae: "Quan"
-                nome_pai: "Quon"
-                sexo: "1"
-                tab_bairro: "Praca"
-                tel_acomp: null
-                tel_mae: 58094
-                tel_pai: 802
-                zona: "Purto"
-            */      
+            var data = {
+                dn = person.dn,
+                ano = person.ano,
+                mes = person.mes,
+                id_estudo = person.id_estudo,
 
-
-            // delete person.ano;
-            // delete person.date_rastreio;
-            // delete person.dn;
-            // delete person.id;
-            // delete person.id_estudo;
-            // delete person.mes;
-            // delete person.nome;
-            // delete person.nome_mae;
-            // delete person.nome_pai;
-            delete person.nome_acomp;
-            // delete person.sexo;
-            delete person.tab_bairro;
-            delete person.tel_acomp;
-            delete person.tel_mae;
-            delete person.tel_pai;
-            delete person.zona;
+            }
 
             console.log("Sending following data:");
-            console.log(person);      
+            console.log(data);
 
-            return person;
-        }
-
-        function todayAdate() {
-            var today = new Date();
-            var day = today.getDate();
-            var mon = today.getMonth()+1;
-            var yea = today.getFullYear();
-            var aDate = 'D:' + day + ',M:' + mon + ',Y:' + yea;
-            return aDate;
+            return data;
         }
         
-        function populateList(listOfPersons) {
-            $("#theList tr:not(:first-of-type)").remove(); // clear table except header
+        function populateList(listOfPersons) {            
             var theList = $("#theList");
             console.log("Populating list with " + listOfPersons.length + " persons");
             listOfPersons.forEach(person => {
@@ -273,20 +145,13 @@ function updateDay() {
         }
         function addPersonDiv(p) {    
             var btn = "<button class='btn btn-sm'>&gt;</button>";
-            if (window.dayOffset < -1 || window.dayOffset > 1) {
-                btn =  "";    //show no button for these days.
-            }
             var nome = (p.nome_casa && p.nome_casa.length) ? nome = p.nome + " (" + p.nome_casa + ")" : p.nome;        
             var btnRow = "<tr><td>" + getAddress(p) + "</td><td>" + getNames(p) + "</td><td>" + getAgeString(p) + "<br/>" + getPhones(p) + "</td><td>" + btn + "</td></tr>";
             $('#theList tr:last').after(btnRow);
-            if (window.dayOffset < -1 || window.dayOffset > 1) {
-                // show no button for these days.
-            } else {
-                $('#theList tr:last').on("click",function() { 
-                    addPersonForm(p);
-                    return false;
-                });
-            }
+            $('#theList tr:last').on("click",function() { 
+                addPersonForm(p);
+                return false;
+            });
         }
         function getAddress(p) {
             var r = "";
@@ -309,7 +174,6 @@ function updateDay() {
             if (p.nome_acomp) d = d + "<br/>Acomp.: " + p.nome_acomp;                
             return "<div>" + d + "</div>";
         }
-
         function getAgeString(person) {
             var theAdate = person.dn;
             if (!theAdate) {
@@ -381,79 +245,19 @@ function updateDay() {
             }            
         }};
 
-
-        /* adate helper */
-function getAdateHelper() {return {
-    getMoment: function(aDate) {
-        if (!aDate || aDate.length<4 || this.yearUnknown(aDate)) {
-            return false;
-        }
-        aDate = aDate.toUpperCase().replace('D:NS','D:15').replace('M:NS','M:5');
-        var d = moment(aDate, '\\D:DD,\\M:MM,\\Y:YYYY');
-        if (d.isValid()) {
-            return d;
-        }
-        return false;
-    },
-    hasUncertainty: function(aDate) {
-        return !aDate || aDate.toUpperCase().indexOf('NS')>-1;   
-    },
-    yearUnknown: function(aDate) {
-        return !aDate || aDate.toUpperCase().indexOf('Y:NS')>-1;
-    },
-    monthUnkown: function(aDate) {
-        return !aDate || aDate.toUpperCase().indexOf('M:NS')>-1;   
-    },
-    dayUnkown: function(aDate) {
-        return !aDate || aDate.toUpperCase().indexOf('D:NS')>-1;
-    },
-    ageIn: function(aDate, strUnit) {
-        var a = this.getMoment(aDate);
-        if (!a) {
-            return -9999;
-        }
-        return moment().diff(a,strUnit);
-    },
-    ageInYears: function(aDate) {
-        return this.ageIn(aDate, 'years');
-    },
-    ageInMonths: function(aDate) {
-        return this.ageIn(aDate, 'months');
-    },
-    ageInDays: function(aDate) {
-        return this.ageIn(aDate, 'days');
-    },
-    diffInYears: function(aDateA, aDateB) {
-        var a = this.getMoment(aDateA);
-        var b = this.getMoment(aDateB);
-        if (!a || !b) {
-            return -9999;
-        }
-        return b.diff(a,'years');
-    }
-}};
         </script>
     </head>
 
     <body onload="display();">
         <!-- <h1>Avaliação de eficácia de Sulfadoxina-pirimetamina mais Amodiaquina </h1> -->
-        <h2>SEGUIMENTOS DE CASOS</h2>
-        <form>
+        <h2>LABO</h2>
+        <form class="form-inline" style="text-align: center;">
             <div class="form-group" style="margin:20px;text-align:center;">
-                <label class="form-label" for="selCs">Centro de saúde</label><br/>
-                <select id="selCs" class="form-control">
-                    <option></option>
-                    <option>bafata</option>
-                    <option>bambadinca</option>
-                    <option>cosse</option>
-                    <option>gabu</option>
-                    <option>mafanco</option>
-                    <option>pitche</option>
-                </select>
-                <hr/>
-                <div style="margin-bottom:10px;">
-                    <span id="prevDay">&lt;</span><span id="theDate"></span><span id="nextDay">&gt;</span>
-                </div>
+                <label class="form-label" for="selCs">Codigo:
+                    <input type="text" class="form-control input-lg" id="txtCodigo"/> <button class="btn btn-sm btn-success" style="height: inherit;width: auto;padding: 13px 35px;" id="btnSearch">OK</button>
+                </label>    
+            </div><div>
+                <hr/>                
                 <table id="theList" class="table">
                     <tr>
                         <th>Tabz</th>
