@@ -810,7 +810,7 @@
       },
       {
         "calculation_name": "dn_idade_display",
-        "calculation": "data('DOB_ou_idade')=='1' ? (\"Data de nascimento é \" + calculates.dn() ) : (\"Tem \" +data('ano')+\"anos e \" + data('mes') + \"meses\")",
+        "calculation": "data('DOB_ou_idade')=='1' ? (\"Data de nascimento é \" + calculates.dn_display() ) : (\"Tem \" +data('ano')+\" anos e \" + data('mes') + \" meses\")",
         "_row_num": 9
       }
     ],
@@ -1184,6 +1184,45 @@
         "type": "note",
         "name": "survey_complete",
         "_row_num": 79
+      },
+      {
+        "type": "calculates",
+        "name": "visita_id",
+        "_row_num": 81
+      },
+      {
+        "type": "calculates",
+        "name": "idade_mes",
+        "_row_num": 82
+      },
+      {
+        "type": "calculates",
+        "name": "exclude",
+        "_row_num": 83
+      },
+      {
+        "type": "calculates",
+        "name": "date_rastreio_display",
+        "_row_num": 84
+      },
+      {
+        "type": "calculates",
+        "name": "dn_display",
+        "_row_num": 85
+      },
+      {
+        "type": "calculates",
+        "_row_num": 86
+      },
+      {
+        "type": "calculates",
+        "name": "febre_display",
+        "_row_num": 87
+      },
+      {
+        "type": "calculates",
+        "name": "dn_idade_display",
+        "_row_num": 88
       }
     ]
   },
@@ -1588,7 +1627,7 @@
       },
       "dn_idade_display": {
         "calculation_name": "dn_idade_display",
-        "calculation": "data('DOB_ou_idade')=='1' ? (\"Data de nascimento é \" + calculates.dn() ) : (\"Tem \" +data('ano')+\"anos e \" + data('mes') + \"meses\")",
+        "calculation": "data('DOB_ou_idade')=='1' ? (\"Data de nascimento é \" + calculates.dn_display() ) : (\"Tem \" +data('ano')+\" anos e \" + data('mes') + \" meses\")",
         "_row_num": 9
       }
     },
@@ -2452,6 +2491,76 @@
         ],
         "type": "note",
         "elementKey": "survey_complete"
+      },
+      "visita_id": {
+        "_defn": [
+          {
+            "_row_num": 81,
+            "section_name": "model"
+          }
+        ],
+        "type": "calculates",
+        "elementKey": "visita_id"
+      },
+      "idade_mes": {
+        "_defn": [
+          {
+            "_row_num": 82,
+            "section_name": "model"
+          }
+        ],
+        "type": "calculates",
+        "elementKey": "idade_mes"
+      },
+      "exclude": {
+        "_defn": [
+          {
+            "_row_num": 83,
+            "section_name": "model"
+          }
+        ],
+        "type": "calculates",
+        "elementKey": "exclude"
+      },
+      "date_rastreio_display": {
+        "_defn": [
+          {
+            "_row_num": 84,
+            "section_name": "model"
+          }
+        ],
+        "type": "calculates",
+        "elementKey": "date_rastreio_display"
+      },
+      "dn_display": {
+        "_defn": [
+          {
+            "_row_num": 85,
+            "section_name": "model"
+          }
+        ],
+        "type": "calculates",
+        "elementKey": "dn_display"
+      },
+      "febre_display": {
+        "_defn": [
+          {
+            "_row_num": 87,
+            "section_name": "model"
+          }
+        ],
+        "type": "calculates",
+        "elementKey": "febre_display"
+      },
+      "dn_idade_display": {
+        "_defn": [
+          {
+            "_row_num": 88,
+            "section_name": "model"
+          }
+        ],
+        "type": "calculates",
+        "elementKey": "dn_idade_display"
       },
       "tipo_condicao": {
         "_defn": [
@@ -4642,6 +4751,97 @@
         "elementName": "survey_complete",
         "elementSet": "data",
         "elementPath": "survey_complete"
+      },
+      "visita_id": {
+        "_defn": [
+          {
+            "_row_num": 81,
+            "section_name": "model"
+          }
+        ],
+        "type": "calculates",
+        "elementKey": "visita_id",
+        "elementName": "visita_id",
+        "elementSet": "data",
+        "elementPath": "visita_id"
+      },
+      "idade_mes": {
+        "_defn": [
+          {
+            "_row_num": 82,
+            "section_name": "model"
+          }
+        ],
+        "type": "calculates",
+        "elementKey": "idade_mes",
+        "elementName": "idade_mes",
+        "elementSet": "data",
+        "elementPath": "idade_mes"
+      },
+      "exclude": {
+        "_defn": [
+          {
+            "_row_num": 83,
+            "section_name": "model"
+          }
+        ],
+        "type": "calculates",
+        "elementKey": "exclude",
+        "elementName": "exclude",
+        "elementSet": "data",
+        "elementPath": "exclude"
+      },
+      "date_rastreio_display": {
+        "_defn": [
+          {
+            "_row_num": 84,
+            "section_name": "model"
+          }
+        ],
+        "type": "calculates",
+        "elementKey": "date_rastreio_display",
+        "elementName": "date_rastreio_display",
+        "elementSet": "data",
+        "elementPath": "date_rastreio_display"
+      },
+      "dn_display": {
+        "_defn": [
+          {
+            "_row_num": 85,
+            "section_name": "model"
+          }
+        ],
+        "type": "calculates",
+        "elementKey": "dn_display",
+        "elementName": "dn_display",
+        "elementSet": "data",
+        "elementPath": "dn_display"
+      },
+      "febre_display": {
+        "_defn": [
+          {
+            "_row_num": 87,
+            "section_name": "model"
+          }
+        ],
+        "type": "calculates",
+        "elementKey": "febre_display",
+        "elementName": "febre_display",
+        "elementSet": "data",
+        "elementPath": "febre_display"
+      },
+      "dn_idade_display": {
+        "_defn": [
+          {
+            "_row_num": 88,
+            "section_name": "model"
+          }
+        ],
+        "type": "calculates",
+        "elementKey": "dn_idade_display",
+        "elementName": "dn_idade_display",
+        "elementSet": "data",
+        "elementPath": "dn_idade_display"
       },
       "tipo_condicao": {
         "_defn": [

@@ -52,37 +52,46 @@
         "_row_num": 5
       },
       {
-        "type": "string",
-        "name": "idestudo",
-        "display": {
-          "prompt": {
-            "text": "Código do estudo"
-          }
-        },
-        "required": true,
-        "_row_num": 8
+        "clause": "if",
+        "condition": "!calculates.dia_programado()",
+        "_row_num": 6
       },
       {
-        "clause": "end screen",
-        "_row_num": 9
+        "type": "select_one",
+        "values_list": "outro_dia",
+        "name": "tipo_visita",
+        "display": {
+          "prompt": {
+            "text": "Qual é o motivo de visitar a crianca no dia {{calculates.visita_id}}"
+          }
+        },
+        "_row_num": 7
       },
       {
         "clause": "if",
-        "condition": "data('idestudo') != data('id_estudo')",
-        "_row_num": 10
+        "condition": "data('tipo_visita')=='3'",
+        "_row_num": 8
       },
       {
-        "type": "note",
-        "name": "erro",
+        "type": "text",
+        "name": "esp_tipovisita",
         "display": {
           "prompt": {
-            "text": "O código de estudo introduzido não corresponte com o codigo do estudo"
+            "text": "Especifica a outra razao de visita no dia {{calculatess.visita_id}}"
           }
         },
-        "_row_num": 11
+        "_row_num": 9
       },
       {
         "clause": "end if",
+        "_row_num": 10
+      },
+      {
+        "clause": "end if",
+        "_row_num": 11
+      },
+      {
+        "clause": "end screen",
         "_row_num": 12
       },
       {
@@ -347,7 +356,7 @@
       },
       {
         "clause": "if // aq",
-        "condition": "data('visita_id')<3",
+        "condition": "calculates.visita_id()<3",
         "_row_num": 50
       },
       {
@@ -379,6 +388,26 @@
         "_row_num": 53
       },
       {
+        "clause": "if",
+        "condition": "calculates.no_dateAQ()",
+        "_row_num": 54
+      },
+      {
+        "type": "note",
+        "name": "erro_dateAQ",
+        "display": {
+          "prompt": {
+            "text": "Por favor verifica a data introduzida"
+          }
+        },
+        "required": "calculates.no_dateAQ()",
+        "_row_num": 55
+      },
+      {
+        "clause": "end if",
+        "_row_num": 56
+      },
+      {
         "type": "time",
         "name": "hora_AQ",
         "display": {
@@ -386,7 +415,7 @@
             "text": "Hora"
           }
         },
-        "_row_num": 54
+        "_row_num": 57
       },
       {
         "type": "select_one",
@@ -401,7 +430,7 @@
           }
         },
         "constraint": "(calculates.idade_mes()<12)?(data('dose_AQ')=='1'):(data('dose_AQ')=='2')",
-        "_row_num": 55
+        "_row_num": 58
       },
       {
         "type": "select_one",
@@ -412,12 +441,12 @@
             "text": "Vomitou?"
           }
         },
-        "_row_num": 56
+        "_row_num": 59
       },
       {
         "clause": "if // vomito",
         "condition": "data('vomitou_AQ')=='1'",
-        "_row_num": 57
+        "_row_num": 60
       },
       {
         "type": "time",
@@ -427,19 +456,19 @@
             "text": "A hora que vomitou AQ?"
           }
         },
-        "_row_num": 58
-      },
-      {
-        "clause": "end if //vomito",
-        "_row_num": 59
-      },
-      {
-        "clause": "end screen",
         "_row_num": 61
       },
       {
-        "clause": "end if //aq",
+        "clause": "end if //vomito",
         "_row_num": 62
+      },
+      {
+        "clause": "end screen",
+        "_row_num": 64
+      },
+      {
+        "clause": "end if //aq",
+        "_row_num": 65
       },
       {
         "type": "select_one",
@@ -450,16 +479,16 @@
             "text": "Outros medicamentos administrados ( antipalúdicos, antibióticos ou anlgésicos)"
           }
         },
-        "_row_num": 63
+        "_row_num": 66
       },
       {
         "clause": "if // medi_previo",
         "condition": "data('outro_medicamento')=='1'",
-        "_row_num": 64
+        "_row_num": 67
       },
       {
         "clause": "begin screen",
-        "_row_num": 65
+        "_row_num": 68
       },
       {
         "type": "note",
@@ -469,20 +498,79 @@
             "text": "Lista de outros medicamentos administrados ( antipalúdicos, antibióticos ou anlgésicos)"
           }
         },
-        "_row_num": 66
+        "_row_num": 69
       },
       {
         "type": "linked_table",
         "values_list": "medicamento_administrado",
-        "_row_num": 67
+        "_row_num": 70
       },
       {
         "clause": "end screen",
-        "_row_num": 68
+        "_row_num": 71
       },
       {
         "clause": "end if // medi_previo",
-        "_row_num": 69
+        "_row_num": 72
+      },
+      {
+        "clause": "begin screen",
+        "_row_num": 73
+      },
+      {
+        "type": "note",
+        "name": "nota_lab",
+        "display": {
+          "prompt": {
+            "text": "Ecreva na lamina de verficacao seguntes dados:"
+          }
+        },
+        "_row_num": 74
+      },
+      {
+        "type": "note",
+        "name": "nota_id_lamina",
+        "display": {
+          "prompt": {
+            "text": "Código: {{calculates.id_lamina}}"
+          }
+        },
+        "_row_num": 75
+      },
+      {
+        "type": "note",
+        "name": "nota_lab_dn",
+        "display": {
+          "prompt": {
+            "text": "{{calculates.date_rastreio_display}} | {{calculates.dn_idade_display}}"
+          }
+        },
+        "_row_num": 77
+      },
+      {
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "lamina",
+        "display": {
+          "prompt": {
+            "text": "Colheu-se amostra de sangue para a lâmina?"
+          }
+        },
+        "_row_num": 80
+      },
+      {
+        "type": "image",
+        "name": "picture_lamina",
+        "display": {
+          "prompt": {
+            "text": "Depois de escrever os dados acima na lamina de verificacao, tira a foto:"
+          }
+        },
+        "_row_num": 81
+      },
+      {
+        "clause": "end screen",
+        "_row_num": 82
       },
       {
         "type": "select_one",
@@ -496,11 +584,11 @@
             "text": "Preencher só se se fez gota espessa e esfregaço devido ao estado clínico ou a pedido do médico"
           }
         },
-        "_row_num": 70
+        "_row_num": 83
       },
       {
         "clause": "goto ending",
-        "_row_num": 71
+        "_row_num": 84
       },
       {
         "branch_label": "ausente",
@@ -512,12 +600,12 @@
             "text": "Qual é a razão de não ver a criança?"
           }
         },
-        "_row_num": 72
+        "_row_num": 85
       },
       {
         "clause": "if",
         "condition": "selected(data('motivo_ausencia'),'4') || selected(data('motivo_ausencia'),'5')",
-        "_row_num": 73
+        "_row_num": 86
       },
       {
         "type": "text",
@@ -527,20 +615,20 @@
             "text": "Especifica a razão da recisa ou \"OUTRO\""
           }
         },
-        "_row_num": 74
+        "_row_num": 87
       },
       {
         "clause": "end if",
-        "_row_num": 75
+        "_row_num": 88
       },
       {
         "branch_label": "ending",
-        "_row_num": 77
+        "_row_num": 90
       },
       {
         "type": "text",
         "name": "comentario",
-        "_row_num": 78
+        "_row_num": 91
       }
     ],
     "choices": [
@@ -999,6 +1087,36 @@
           }
         },
         "_row_num": 72
+      },
+      {
+        "choice_list_name": "outro_dia",
+        "data_value": 1,
+        "display": {
+          "title": {
+            "text": "Formulario de seguimento de outro dia, nos Centros de saude"
+          }
+        },
+        "_row_num": 74
+      },
+      {
+        "choice_list_name": "outro_dia",
+        "data_value": 2,
+        "display": {
+          "title": {
+            "text": "Imposibilidade de visitar no dia que corresponde"
+          }
+        },
+        "_row_num": 75
+      },
+      {
+        "choice_list_name": "outro_dia",
+        "data_value": 3,
+        "display": {
+          "title": {
+            "text": "outra razao"
+          }
+        },
+        "_row_num": 76
       }
     ],
     "queries": [
@@ -1051,6 +1169,56 @@
         "calculation_name": "idade_mes",
         "calculation": "(data('DOB_ou_idade')=='1')?adate.ageInMonths(data('dn')):(12*data('ano')+data('mes'))",
         "_row_num": 3
+      },
+      {
+        "calculation_name": "date_rastreio_display",
+        "calculation": "adate.display(data('date_rastreio'))",
+        "_row_num": 4
+      },
+      {
+        "calculation_name": "dn_display",
+        "calculation": "adate.display(data('dn'))",
+        "_row_num": 5
+      },
+      {
+        "calculation_name": "acompanhante_info",
+        "calculation": "!selected(data('acompanhante'), '1') && !selected(data('acompanhante'), '2')",
+        "_row_num": 6
+      },
+      {
+        "calculation_name": "label_codigo",
+        "calculation": "data('cs')=='bafata'?'BA':data('cs')=='bambadinca'?'KN':data('cs')=='cosse'?'CS':data('cs')=='gabu'?'GU':data('cs')=='mafanco'?'MF':data('cs')=='pitche'?'PT':''",
+        "_row_num": 7
+      },
+      {
+        "calculation_name": "id_lamina",
+        "calculation": "\"\"+ data('id_estudo') + \"X\" + calculates.visita_id()",
+        "_row_num": 8
+      },
+      {
+        "calculation_name": "nao_tel",
+        "calculation": "(data('tel_mae')=='88' && data('tel_pai') == '88') && (!data('tel_acomp') ||data('tel_acomp') == '88')",
+        "_row_num": 10
+      },
+      {
+        "calculation_name": "dn_idade_display",
+        "calculation": "data('DOB_ou_idade')=='1' ? (\"DOB \" + calculates.dn_display() ) : (\"Tem \" +data('ano')+\" A e \" + data('mes') + \" M\")",
+        "_row_num": 11
+      },
+      {
+        "calculation_name": "dia_programado",
+        "calculation": "calculates.visita_id()<4 || (calculates.visita_id()<29 && calculates.visita_id()%7 == 0)",
+        "_row_num": 14
+      },
+      {
+        "calculation_name": "no_dateAQ",
+        "calculation": "calculates.naosabe() && calculates.visita_id()<3",
+        "_row_num": 16
+      },
+      {
+        "calculation_name": "naosabe",
+        "calculation": "!adate.hasUncertainty(data('date_AQ')) || !data('date_AQ')",
+        "_row_num": 17
       }
     ],
     "model": [
@@ -1283,6 +1451,21 @@
         "type": "text",
         "name": "comentario",
         "_row_num": 51
+      },
+      {
+        "type": "image",
+        "name": "picture_lamina",
+        "_row_num": 53
+      },
+      {
+        "type": "select_one",
+        "name": "tipo_visita",
+        "_row_num": 54
+      },
+      {
+        "type": "text",
+        "name": "esp_tipovisita",
+        "_row_num": 55
       }
     ]
   },
@@ -1844,6 +2027,38 @@
           },
           "_row_num": 72
         }
+      ],
+      "outro_dia": [
+        {
+          "choice_list_name": "outro_dia",
+          "data_value": 1,
+          "display": {
+            "title": {
+              "text": "Formulario de seguimento de outro dia, nos Centros de saude"
+            }
+          },
+          "_row_num": 74
+        },
+        {
+          "choice_list_name": "outro_dia",
+          "data_value": 2,
+          "display": {
+            "title": {
+              "text": "Imposibilidade de visitar no dia que corresponde"
+            }
+          },
+          "_row_num": 75
+        },
+        {
+          "choice_list_name": "outro_dia",
+          "data_value": 3,
+          "display": {
+            "title": {
+              "text": "outra razao"
+            }
+          },
+          "_row_num": 76
+        }
       ]
     },
     "table_specific_definitions": {
@@ -1883,6 +2098,56 @@
         "calculation_name": "idade_mes",
         "calculation": "(data('DOB_ou_idade')=='1')?adate.ageInMonths(data('dn')):(12*data('ano')+data('mes'))",
         "_row_num": 3
+      },
+      "date_rastreio_display": {
+        "calculation_name": "date_rastreio_display",
+        "calculation": "adate.display(data('date_rastreio'))",
+        "_row_num": 4
+      },
+      "dn_display": {
+        "calculation_name": "dn_display",
+        "calculation": "adate.display(data('dn'))",
+        "_row_num": 5
+      },
+      "acompanhante_info": {
+        "calculation_name": "acompanhante_info",
+        "calculation": "!selected(data('acompanhante'), '1') && !selected(data('acompanhante'), '2')",
+        "_row_num": 6
+      },
+      "label_codigo": {
+        "calculation_name": "label_codigo",
+        "calculation": "data('cs')=='bafata'?'BA':data('cs')=='bambadinca'?'KN':data('cs')=='cosse'?'CS':data('cs')=='gabu'?'GU':data('cs')=='mafanco'?'MF':data('cs')=='pitche'?'PT':''",
+        "_row_num": 7
+      },
+      "id_lamina": {
+        "calculation_name": "id_lamina",
+        "calculation": "\"\"+ data('id_estudo') + \"X\" + calculates.visita_id()",
+        "_row_num": 8
+      },
+      "nao_tel": {
+        "calculation_name": "nao_tel",
+        "calculation": "(data('tel_mae')=='88' && data('tel_pai') == '88') && (!data('tel_acomp') ||data('tel_acomp') == '88')",
+        "_row_num": 10
+      },
+      "dn_idade_display": {
+        "calculation_name": "dn_idade_display",
+        "calculation": "data('DOB_ou_idade')=='1' ? (\"DOB \" + calculates.dn_display() ) : (\"Tem \" +data('ano')+\" A e \" + data('mes') + \" M\")",
+        "_row_num": 11
+      },
+      "dia_programado": {
+        "calculation_name": "dia_programado",
+        "calculation": "calculates.visita_id()<4 || (calculates.visita_id()<29 && calculates.visita_id()%7 == 0)",
+        "_row_num": 14
+      },
+      "no_dateAQ": {
+        "calculation_name": "no_dateAQ",
+        "calculation": "calculates.naosabe() && calculates.visita_id()<3",
+        "_row_num": 16
+      },
+      "naosabe": {
+        "calculation_name": "naosabe",
+        "calculation": "!adate.hasUncertainty(data('date_AQ')) || !data('date_AQ')",
+        "_row_num": 17
       }
     },
     "model": {
@@ -2049,10 +2314,6 @@
       "idestudo": {
         "type": "string",
         "_defn": [
-          {
-            "_row_num": 8,
-            "section_name": "survey"
-          },
           {
             "_row_num": 21,
             "section_name": "model"
@@ -2347,7 +2608,7 @@
         "elementType": "time",
         "_defn": [
           {
-            "_row_num": 54,
+            "_row_num": 57,
             "section_name": "survey"
           },
           {
@@ -2362,7 +2623,7 @@
         "valuesList": "doseAQ",
         "_defn": [
           {
-            "_row_num": 55,
+            "_row_num": 58,
             "section_name": "survey"
           },
           {
@@ -2377,7 +2638,7 @@
         "valuesList": "yesno",
         "_defn": [
           {
-            "_row_num": 56,
+            "_row_num": 59,
             "section_name": "survey"
           },
           {
@@ -2392,7 +2653,7 @@
         "elementType": "time",
         "_defn": [
           {
-            "_row_num": 58,
+            "_row_num": 61,
             "section_name": "survey"
           },
           {
@@ -2407,7 +2668,7 @@
         "valuesList": "yesno",
         "_defn": [
           {
-            "_row_num": 63,
+            "_row_num": 66,
             "section_name": "survey"
           },
           {
@@ -2432,7 +2693,11 @@
         "valuesList": "yesno",
         "_defn": [
           {
-            "_row_num": 70,
+            "_row_num": 80,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 83,
             "section_name": "survey"
           },
           {
@@ -2447,7 +2712,7 @@
         "valuesList": "motivo",
         "_defn": [
           {
-            "_row_num": 72,
+            "_row_num": 85,
             "section_name": "survey"
           },
           {
@@ -2461,7 +2726,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 74,
+            "_row_num": 87,
             "section_name": "survey"
           },
           {
@@ -2475,7 +2740,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 78,
+            "_row_num": 91,
             "section_name": "survey"
           },
           {
@@ -2484,6 +2749,63 @@
           }
         ],
         "elementKey": "comentario"
+      },
+      "picture_lamina": {
+        "type": "object",
+        "elementType": "mimeUri",
+        "properties": {
+          "uriFragment": {
+            "type": "string",
+            "elementType": "rowpath",
+            "elementKey": "picture_lamina_uriFragment"
+          },
+          "contentType": {
+            "type": "string",
+            "elementType": "mimeType",
+            "default": "image/*",
+            "elementKey": "picture_lamina_contentType"
+          }
+        },
+        "_defn": [
+          {
+            "_row_num": 81,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 53,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "picture_lamina"
+      },
+      "tipo_visita": {
+        "type": "string",
+        "valuesList": "outro_dia",
+        "_defn": [
+          {
+            "_row_num": 7,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 54,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "tipo_visita"
+      },
+      "esp_tipovisita": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 9,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 55,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "esp_tipovisita"
       }
     },
     "section_names": [
@@ -2527,34 +2849,34 @@
             "promptIdx": 1
           },
           {
-            "type": "string",
-            "name": "idestudo",
+            "type": "select_one",
+            "values_list": "outro_dia",
+            "name": "tipo_visita",
             "display": {
               "prompt": {
-                "text": "Código do estudo"
+                "text": "Qual é o motivo de visitar a crianca no dia {{calculates.visita_id}}"
               }
             },
-            "required": true,
-            "_row_num": 8,
-            "__rowNum__": 7,
+            "_row_num": 7,
+            "__rowNum__": 6,
             "_token_type": "prompt",
-            "_type": "string",
+            "_type": "select_one",
             "_branch_label_enclosing_screen": "survey/_screen3",
             "promptIdx": 2
           },
           {
-            "type": "note",
-            "name": "erro",
+            "type": "text",
+            "name": "esp_tipovisita",
             "display": {
               "prompt": {
-                "text": "O código de estudo introduzido não corresponte com o codigo do estudo"
+                "text": "Especifica a outra razao de visita no dia {{calculatess.visita_id}}"
               }
             },
-            "_row_num": 11,
-            "__rowNum__": 10,
+            "_row_num": 9,
+            "__rowNum__": 8,
             "_token_type": "prompt",
-            "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen11",
+            "_type": "text",
+            "_branch_label_enclosing_screen": "survey/_screen3",
             "promptIdx": 3
           },
           {
@@ -2870,6 +3192,22 @@
             "promptIdx": 23
           },
           {
+            "type": "note",
+            "name": "erro_dateAQ",
+            "display": {
+              "prompt": {
+                "text": "Por favor verifica a data introduzida"
+              }
+            },
+            "required": "calculates.no_dateAQ()",
+            "_row_num": 55,
+            "__rowNum__": 54,
+            "_token_type": "prompt",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen51",
+            "promptIdx": 24
+          },
+          {
             "type": "time",
             "name": "hora_AQ",
             "display": {
@@ -2877,12 +3215,12 @@
                 "text": "Hora"
               }
             },
-            "_row_num": 54,
-            "__rowNum__": 53,
+            "_row_num": 57,
+            "__rowNum__": 56,
             "_token_type": "prompt",
             "_type": "time",
             "_branch_label_enclosing_screen": "survey/_screen51",
-            "promptIdx": 24
+            "promptIdx": 25
           },
           {
             "type": "select_one",
@@ -2897,12 +3235,12 @@
               }
             },
             "constraint": "(calculates.idade_mes()<12)?(data('dose_AQ')=='1'):(data('dose_AQ')=='2')",
-            "_row_num": 55,
-            "__rowNum__": 54,
+            "_row_num": 58,
+            "__rowNum__": 57,
             "_token_type": "prompt",
             "_type": "select_one",
             "_branch_label_enclosing_screen": "survey/_screen51",
-            "promptIdx": 25
+            "promptIdx": 26
           },
           {
             "type": "select_one",
@@ -2913,12 +3251,12 @@
                 "text": "Vomitou?"
               }
             },
-            "_row_num": 56,
-            "__rowNum__": 55,
+            "_row_num": 59,
+            "__rowNum__": 58,
             "_token_type": "prompt",
             "_type": "select_one",
             "_branch_label_enclosing_screen": "survey/_screen51",
-            "promptIdx": 26
+            "promptIdx": 27
           },
           {
             "type": "time",
@@ -2928,12 +3266,12 @@
                 "text": "A hora que vomitou AQ?"
               }
             },
-            "_row_num": 58,
-            "__rowNum__": 57,
+            "_row_num": 61,
+            "__rowNum__": 60,
             "_token_type": "prompt",
             "_type": "time",
             "_branch_label_enclosing_screen": "survey/_screen51",
-            "promptIdx": 27
+            "promptIdx": 28
           },
           {
             "type": "select_one",
@@ -2944,12 +3282,12 @@
                 "text": "Outros medicamentos administrados ( antipalúdicos, antibióticos ou anlgésicos)"
               }
             },
-            "_row_num": 63,
-            "__rowNum__": 62,
+            "_row_num": 66,
+            "__rowNum__": 65,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen63",
-            "promptIdx": 28
+            "_branch_label_enclosing_screen": "survey/_screen66",
+            "promptIdx": 29
           },
           {
             "type": "note",
@@ -2959,22 +3297,98 @@
                 "text": "Lista de outros medicamentos administrados ( antipalúdicos, antibióticos ou anlgésicos)"
               }
             },
-            "_row_num": 66,
-            "__rowNum__": 65,
+            "_row_num": 69,
+            "__rowNum__": 68,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen65",
-            "promptIdx": 29
+            "_branch_label_enclosing_screen": "survey/_screen68",
+            "promptIdx": 30
           },
           {
             "type": "linked_table",
             "values_list": "medicamento_administrado",
-            "_row_num": 67,
-            "__rowNum__": 66,
+            "_row_num": 70,
+            "__rowNum__": 69,
             "_token_type": "prompt",
             "_type": "linked_table",
-            "_branch_label_enclosing_screen": "survey/_screen65",
-            "promptIdx": 30
+            "_branch_label_enclosing_screen": "survey/_screen68",
+            "promptIdx": 31
+          },
+          {
+            "type": "note",
+            "name": "nota_lab",
+            "display": {
+              "prompt": {
+                "text": "Ecreva na lamina de verficacao seguntes dados:"
+              }
+            },
+            "_row_num": 74,
+            "__rowNum__": 73,
+            "_token_type": "prompt",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen73",
+            "promptIdx": 32
+          },
+          {
+            "type": "note",
+            "name": "nota_id_lamina",
+            "display": {
+              "prompt": {
+                "text": "Código: {{calculates.id_lamina}}"
+              }
+            },
+            "_row_num": 75,
+            "__rowNum__": 74,
+            "_token_type": "prompt",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen73",
+            "promptIdx": 33
+          },
+          {
+            "type": "note",
+            "name": "nota_lab_dn",
+            "display": {
+              "prompt": {
+                "text": "{{calculates.date_rastreio_display}} | {{calculates.dn_idade_display}}"
+              }
+            },
+            "_row_num": 77,
+            "__rowNum__": 76,
+            "_token_type": "prompt",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen73",
+            "promptIdx": 34
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "lamina",
+            "display": {
+              "prompt": {
+                "text": "Colheu-se amostra de sangue para a lâmina?"
+              }
+            },
+            "_row_num": 80,
+            "__rowNum__": 79,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen73",
+            "promptIdx": 35
+          },
+          {
+            "type": "image",
+            "name": "picture_lamina",
+            "display": {
+              "prompt": {
+                "text": "Depois de escrever os dados acima na lamina de verificacao, tira a foto:"
+              }
+            },
+            "_row_num": 81,
+            "__rowNum__": 80,
+            "_token_type": "prompt",
+            "_type": "image",
+            "_branch_label_enclosing_screen": "survey/_screen73",
+            "promptIdx": 36
           },
           {
             "type": "select_one",
@@ -2988,12 +3402,12 @@
                 "text": "Preencher só se se fez gota espessa e esfregaço devido ao estado clínico ou a pedido do médico"
               }
             },
-            "_row_num": 70,
-            "__rowNum__": 69,
+            "_row_num": 83,
+            "__rowNum__": 82,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen70",
-            "promptIdx": 31
+            "_branch_label_enclosing_screen": "survey/_screen83",
+            "promptIdx": 37
           },
           {
             "type": "select_one",
@@ -3004,12 +3418,12 @@
                 "text": "Qual é a razão de não ver a criança?"
               }
             },
-            "_row_num": 72,
-            "__rowNum__": 71,
+            "_row_num": 85,
+            "__rowNum__": 84,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen72",
-            "promptIdx": 32
+            "_branch_label_enclosing_screen": "survey/_screen85",
+            "promptIdx": 38
           },
           {
             "type": "text",
@@ -3019,36 +3433,36 @@
                 "text": "Especifica a razão da recisa ou \"OUTRO\""
               }
             },
-            "_row_num": 74,
-            "__rowNum__": 73,
+            "_row_num": 87,
+            "__rowNum__": 86,
             "_token_type": "prompt",
             "_type": "text",
-            "_branch_label_enclosing_screen": "survey/_screen74",
-            "promptIdx": 33
+            "_branch_label_enclosing_screen": "survey/_screen87",
+            "promptIdx": 39
           },
           {
             "type": "text",
             "name": "comentario",
-            "_row_num": 78,
-            "__rowNum__": 77,
+            "_row_num": 91,
+            "__rowNum__": 90,
             "_token_type": "prompt",
             "_type": "text",
-            "_branch_label_enclosing_screen": "survey/_screen78",
-            "promptIdx": 34
+            "_branch_label_enclosing_screen": "survey/_screen91",
+            "promptIdx": 40
           },
           {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 79,
-            "_branch_label_enclosing_screen": "survey/_screen79",
-            "promptIdx": 35
+            "_row_num": 92,
+            "_branch_label_enclosing_screen": "survey/_screen92",
+            "promptIdx": 41
           }
         ],
         "validation_tag_map": {
           "finalize": [
-            2,
-            25
+            24,
+            26
           ]
         },
         "operations": [
@@ -3059,47 +3473,18 @@
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 9,
-              "__rowNum__": 8,
+              "_row_num": 12,
+              "__rowNum__": 11,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(0);\nactivePromptIndicies.push(1);\nactivePromptIndicies.push(2);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(0);\nactivePromptIndicies.push(1);\nif (!calculates.dia_programado()) {\nactivePromptIndicies.push(2);\nif (data('tipo_visita')=='3') {\nactivePromptIndicies.push(3);\n}\n}\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 0
-          },
-          {
-            "clause": "if",
-            "condition": "data('idestudo') != data('id_estudo')",
-            "_row_num": 10,
-            "__rowNum__": 9,
-            "_token_type": "goto_label",
-            "_branch_label": "_then10",
-            "operationIdx": 1
-          },
-          {
-            "clause": "end if",
-            "_token_type": "goto_label",
-            "_branch_label": "_else12",
-            "_row_num": 12,
-            "operationIdx": 2
-          },
-          {
-            "_row_num": 11,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(3);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 3
-          },
-          {
-            "clause": "end if",
-            "_token_type": "goto_label",
-            "_branch_label": "_endif12",
-            "_row_num": 12,
-            "operationIdx": 4
           },
           {
             "_row_num": 13,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(4);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 5
+            "operationIdx": 1
           },
           {
             "clause": "goto ausente",
@@ -3108,7 +3493,7 @@
             "__rowNum__": 13,
             "_token_type": "goto_label",
             "_branch_label": "ausente",
-            "operationIdx": 6
+            "operationIdx": 2
           },
           {
             "clause": "begin screen",
@@ -3122,7 +3507,7 @@
               "_token_type": "end_screen"
             },
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(5);\nif (data('sinais_perigo')=='1') {\nactivePromptIndicies.push(6);\n}\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 7
+            "operationIdx": 3
           },
           {
             "clause": "begin screen",
@@ -3136,7 +3521,7 @@
               "_token_type": "end_screen"
             },
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(7);\nactivePromptIndicies.push(8);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 8
+            "operationIdx": 4
           },
           {
             "clause": "begin screen",
@@ -3150,7 +3535,7 @@
               "_token_type": "end_screen"
             },
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(9);\nactivePromptIndicies.push(10);\nactivePromptIndicies.push(11);\nactivePromptIndicies.push(12);\nactivePromptIndicies.push(13);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 9
+            "operationIdx": 5
           },
           {
             "clause": "begin screen",
@@ -3164,13 +3549,13 @@
               "_token_type": "end_screen"
             },
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(14);\nactivePromptIndicies.push(15);\nactivePromptIndicies.push(16);\nactivePromptIndicies.push(17);\nif (data('outro_sintomas')=='1') {\nactivePromptIndicies.push(18);\n}\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 10
+            "operationIdx": 6
           },
           {
             "_row_num": 41,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(19);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 11
+            "operationIdx": 7
           },
           {
             "clause": "if",
@@ -3179,14 +3564,14 @@
             "__rowNum__": 41,
             "_token_type": "goto_label",
             "_branch_label": "_then42",
-            "operationIdx": 12
+            "operationIdx": 8
           },
           {
             "clause": "end if",
             "_token_type": "goto_label",
             "_branch_label": "_else48",
             "_row_num": 48,
-            "operationIdx": 13
+            "operationIdx": 9
           },
           {
             "clause": "begin screen",
@@ -3200,31 +3585,31 @@
               "_token_type": "end_screen"
             },
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(20);\nactivePromptIndicies.push(21);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 14
+            "operationIdx": 10
           },
           {
             "clause": "end if",
             "_token_type": "goto_label",
             "_branch_label": "_endif48",
             "_row_num": 48,
-            "operationIdx": 15
+            "operationIdx": 11
           },
           {
             "clause": "if // aq",
-            "condition": "data('visita_id')<3",
+            "condition": "calculates.visita_id()<3",
             "_row_num": 50,
             "__rowNum__": 49,
             "_token_type": "goto_label",
             "_tag_name": "aq",
             "_branch_label": "_then50",
-            "operationIdx": 16
+            "operationIdx": 12
           },
           {
             "clause": "end if //aq",
             "_token_type": "goto_label",
-            "_branch_label": "_else62",
-            "_row_num": 62,
-            "operationIdx": 17
+            "_branch_label": "_else65",
+            "_row_num": 65,
+            "operationIdx": 13
           },
           {
             "clause": "begin screen",
@@ -3233,177 +3618,188 @@
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 61,
-              "__rowNum__": 60,
+              "_row_num": 64,
+              "__rowNum__": 63,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(22);\nactivePromptIndicies.push(23);\nactivePromptIndicies.push(24);\nactivePromptIndicies.push(25);\nactivePromptIndicies.push(26);\nif (data('vomitou_AQ')=='1') {\nactivePromptIndicies.push(27);\n}\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 18
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(22);\nactivePromptIndicies.push(23);\nif (calculates.no_dateAQ()) {\nactivePromptIndicies.push(24);\n}\nactivePromptIndicies.push(25);\nactivePromptIndicies.push(26);\nactivePromptIndicies.push(27);\nif (data('vomitou_AQ')=='1') {\nactivePromptIndicies.push(28);\n}\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 14
           },
           {
             "clause": "end if //aq",
             "_token_type": "goto_label",
-            "_branch_label": "_endif62",
-            "_row_num": 62,
-            "operationIdx": 19
+            "_branch_label": "_endif65",
+            "_row_num": 65,
+            "operationIdx": 15
           },
           {
-            "_row_num": 63,
+            "_row_num": 66,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(28);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 20
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(29);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 16
           },
           {
             "clause": "if // medi_previo",
             "condition": "data('outro_medicamento')=='1'",
-            "_row_num": 64,
-            "__rowNum__": 63,
+            "_row_num": 67,
+            "__rowNum__": 66,
             "_token_type": "goto_label",
             "_tag_name": "medi_previo",
-            "_branch_label": "_then64",
-            "operationIdx": 21
+            "_branch_label": "_then67",
+            "operationIdx": 17
           },
           {
             "clause": "end if // medi_previo",
             "_token_type": "goto_label",
-            "_branch_label": "_else69",
-            "_row_num": 69,
-            "operationIdx": 22
+            "_branch_label": "_else72",
+            "_row_num": 72,
+            "operationIdx": 18
           },
           {
             "clause": "begin screen",
-            "_row_num": 65,
-            "__rowNum__": 64,
+            "_row_num": 68,
+            "__rowNum__": 67,
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 68,
-              "__rowNum__": 67,
+              "_row_num": 71,
+              "__rowNum__": 70,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(29);\nactivePromptIndicies.push(30);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 23
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(30);\nactivePromptIndicies.push(31);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 19
           },
           {
             "clause": "end if // medi_previo",
             "_token_type": "goto_label",
-            "_branch_label": "_endif69",
-            "_row_num": 69,
-            "operationIdx": 24
+            "_branch_label": "_endif72",
+            "_row_num": 72,
+            "operationIdx": 20
           },
           {
-            "_row_num": 70,
+            "clause": "begin screen",
+            "_row_num": 73,
+            "__rowNum__": 72,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(31);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 25
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 82,
+              "__rowNum__": 81,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(32);\nactivePromptIndicies.push(33);\nactivePromptIndicies.push(34);\nactivePromptIndicies.push(35);\nactivePromptIndicies.push(36);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 21
+          },
+          {
+            "_row_num": 83,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(37);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 22
           },
           {
             "clause": "goto ending",
-            "_row_num": 71,
-            "__rowNum__": 70,
+            "_row_num": 84,
+            "__rowNum__": 83,
             "_token_type": "goto_label",
             "_branch_label": "ending",
-            "operationIdx": 26
+            "operationIdx": 23
           },
           {
-            "_row_num": 72,
+            "_row_num": 85,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(32);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 27
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(38);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 24
           },
           {
             "clause": "if",
             "condition": "selected(data('motivo_ausencia'),'4') || selected(data('motivo_ausencia'),'5')",
-            "_row_num": 73,
-            "__rowNum__": 72,
+            "_row_num": 86,
+            "__rowNum__": 85,
             "_token_type": "goto_label",
-            "_branch_label": "_then73",
+            "_branch_label": "_then86",
+            "operationIdx": 25
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_else88",
+            "_row_num": 88,
+            "operationIdx": 26
+          },
+          {
+            "_row_num": 87,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(39);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 27
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif88",
+            "_row_num": 88,
             "operationIdx": 28
           },
           {
-            "clause": "end if",
-            "_token_type": "goto_label",
-            "_branch_label": "_else75",
-            "_row_num": 75,
+            "_row_num": 91,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(40);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 29
-          },
-          {
-            "_row_num": 74,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(33);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 30
-          },
-          {
-            "clause": "end if",
-            "_token_type": "goto_label",
-            "_branch_label": "_endif75",
-            "_row_num": 75,
-            "operationIdx": 31
-          },
-          {
-            "_row_num": 78,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(34);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 32
           },
           {
             "_token_type": "exit_section",
             "clause": "exit section",
-            "_row_num": 79,
-            "operationIdx": 33
+            "_row_num": 92,
+            "operationIdx": 30
           },
           {
-            "_row_num": 79,
+            "_row_num": 92,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(35);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(41);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
-            "operationIdx": 34
+            "operationIdx": 31
           },
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 79,
-            "operationIdx": 35
+            "_row_num": 92,
+            "operationIdx": 32
           }
         ],
         "branch_label_map": {
           "_screen3": 0,
-          "_then10": 3,
-          "_screen11": 3,
-          "_else12": 5,
-          "_endif12": 5,
-          "_screen13": 5,
-          "_screen15": 7,
-          "_screen21": 8,
-          "_screen25": 9,
-          "_screen32": 10,
-          "_screen41": 11,
-          "_then42": 14,
-          "_screen43": 14,
-          "_else48": 16,
-          "_endif48": 16,
-          "_then50": 18,
-          "_screen51": 18,
-          "_else62": 20,
-          "_endif62": 20,
-          "_screen63": 20,
-          "_then64": 23,
-          "_screen65": 23,
-          "_else69": 25,
-          "_endif69": 25,
-          "_screen70": 25,
-          "ausente": 27,
-          "_screen72": 27,
-          "_then73": 30,
-          "_screen74": 30,
-          "_else75": 32,
-          "_endif75": 32,
-          "ending": 32,
-          "_screen78": 32,
-          "_contents": 34,
-          "_screen79": 34
+          "_screen13": 1,
+          "_screen15": 3,
+          "_screen21": 4,
+          "_screen25": 5,
+          "_screen32": 6,
+          "_screen41": 7,
+          "_then42": 10,
+          "_screen43": 10,
+          "_else48": 12,
+          "_endif48": 12,
+          "_then50": 14,
+          "_screen51": 14,
+          "_else65": 16,
+          "_endif65": 16,
+          "_screen66": 16,
+          "_then67": 19,
+          "_screen68": 19,
+          "_else72": 21,
+          "_endif72": 21,
+          "_screen73": 21,
+          "_screen83": 22,
+          "ausente": 24,
+          "_screen85": 24,
+          "_then86": 27,
+          "_screen87": 27,
+          "_else88": 29,
+          "_endif88": 29,
+          "ending": 29,
+          "_screen91": 29,
+          "_contents": 31,
+          "_screen92": 31
         }
       },
       "initial": {
@@ -3794,10 +4190,6 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 8,
-            "section_name": "survey"
-          },
-          {
             "_row_num": 21,
             "section_name": "model"
           }
@@ -4154,7 +4546,7 @@
         "elementType": "time",
         "_defn": [
           {
-            "_row_num": 54,
+            "_row_num": 57,
             "section_name": "survey"
           },
           {
@@ -4172,7 +4564,7 @@
         "valuesList": "doseAQ",
         "_defn": [
           {
-            "_row_num": 55,
+            "_row_num": 58,
             "section_name": "survey"
           },
           {
@@ -4190,7 +4582,7 @@
         "valuesList": "yesno",
         "_defn": [
           {
-            "_row_num": 56,
+            "_row_num": 59,
             "section_name": "survey"
           },
           {
@@ -4208,7 +4600,7 @@
         "elementType": "time",
         "_defn": [
           {
-            "_row_num": 58,
+            "_row_num": 61,
             "section_name": "survey"
           },
           {
@@ -4226,7 +4618,7 @@
         "valuesList": "yesno",
         "_defn": [
           {
-            "_row_num": 63,
+            "_row_num": 66,
             "section_name": "survey"
           },
           {
@@ -4257,7 +4649,11 @@
         "valuesList": "yesno",
         "_defn": [
           {
-            "_row_num": 70,
+            "_row_num": 80,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 83,
             "section_name": "survey"
           },
           {
@@ -4275,7 +4671,7 @@
         "valuesList": "motivo",
         "_defn": [
           {
-            "_row_num": 72,
+            "_row_num": 85,
             "section_name": "survey"
           },
           {
@@ -4292,7 +4688,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 74,
+            "_row_num": 87,
             "section_name": "survey"
           },
           {
@@ -4309,7 +4705,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 78,
+            "_row_num": 91,
             "section_name": "survey"
           },
           {
@@ -4321,6 +4717,100 @@
         "elementName": "comentario",
         "elementSet": "data",
         "elementPath": "comentario"
+      },
+      "picture_lamina": {
+        "type": "object",
+        "elementType": "mimeUri",
+        "properties": {
+          "uriFragment": {
+            "type": "string",
+            "elementType": "rowpath",
+            "elementKey": "picture_lamina_uriFragment",
+            "elementName": "uriFragment",
+            "elementSet": "data",
+            "elementPath": "picture_lamina.uriFragment"
+          },
+          "contentType": {
+            "type": "string",
+            "elementType": "mimeType",
+            "default": "image/*",
+            "elementKey": "picture_lamina_contentType",
+            "elementName": "contentType",
+            "elementSet": "data",
+            "elementPath": "picture_lamina.contentType"
+          }
+        },
+        "_defn": [
+          {
+            "_row_num": 81,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 53,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "picture_lamina",
+        "elementName": "picture_lamina",
+        "elementSet": "data",
+        "elementPath": "picture_lamina",
+        "listChildElementKeys": [
+          "picture_lamina_contentType",
+          "picture_lamina_uriFragment"
+        ],
+        "notUnitOfRetention": true
+      },
+      "tipo_visita": {
+        "type": "string",
+        "valuesList": "outro_dia",
+        "_defn": [
+          {
+            "_row_num": 7,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 54,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "tipo_visita",
+        "elementName": "tipo_visita",
+        "elementSet": "data",
+        "elementPath": "tipo_visita"
+      },
+      "esp_tipovisita": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 9,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 55,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "esp_tipovisita",
+        "elementName": "esp_tipovisita",
+        "elementSet": "data",
+        "elementPath": "esp_tipovisita"
+      },
+      "picture_lamina_uriFragment": {
+        "type": "string",
+        "elementType": "rowpath",
+        "elementKey": "picture_lamina_uriFragment",
+        "elementName": "uriFragment",
+        "elementSet": "data",
+        "elementPath": "picture_lamina.uriFragment"
+      },
+      "picture_lamina_contentType": {
+        "type": "string",
+        "elementType": "mimeType",
+        "default": "image/*",
+        "elementKey": "picture_lamina_contentType",
+        "elementName": "contentType",
+        "elementSet": "data",
+        "elementPath": "picture_lamina.contentType"
       },
       "_id": {
         "type": "string",
@@ -4547,6 +5037,13 @@
         "_key": "displayChoicesList",
         "_type": "object",
         "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "tipo_visita",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"outro_dia\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Formulario de seguimento de outro dia, nos Centros de saude\"}},\"_row_num\":74},{\"choice_list_name\":\"outro_dia\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Imposibilidade de visitar no dia que corresponde\"}},\"_row_num\":75},{\"choice_list_name\":\"outro_dia\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"outra razao\"}},\"_row_num\":76}]"
       },
       {
         "_partition": "Column",
