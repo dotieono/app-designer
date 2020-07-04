@@ -4,6 +4,19 @@
 "use strict";
 var storedTab = localStorage.getItem("selTab");
 var currentTab = /^[-]?\d+$/.test(storedTab) ? parseInt(storedTab, 10) : 1;
+setTimeout(function() {
+    // Update indices in database
+    console.log("Creating indices in database");
+    var sql = 'CREATE INDEX IF NOT EXISTS ix_codigo ON inclusao (codigo_lamina)';
+    var sql2 = 'CREATE INDEX IF NOT EXISTS ix_inc_cs ON inclusao (cs)';
+    var sql3 = 'CREATE INDEX IF NOT EXISTS ix_codigoSeg ON seguimento (codigo_lamina)';
+    odkData.arbitraryQuery('inclusao', sql ,null,null, null,idxSuccess,idxFailure);
+    odkData.arbitraryQuery('inclusao', sql2 ,null,null, null,idxSuccess,idxFailure);
+    odkData.arbitraryQuery('seguimento', sql3 ,null,null, null,idxSuccess,idxFailure);
+},1000);
+
+function idxFailure() { console.log("Failed to create index")}
+function idxSuccess() { console.log("Created index")}
 
 function display() { 
     updateForTab(currentTab);

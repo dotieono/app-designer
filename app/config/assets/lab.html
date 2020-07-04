@@ -48,50 +48,25 @@
                 for (var row = 0; row < result.getCount(); row++) {
 
                     
-                    var codigo_lamina = result.getData(row,"codigo_lamina");
                     var id = result.getData(row,"_id"); // or _row_etag
                     var id_estudo = result.getData(row,"id_estudo");                    
-                    
-                    var tab_bairro = result.getData(row,"tab_bairro");
-                    var zona = result.getData(row, "zona");
-                    var cs = result.getData(row, "cs");
-
-                    var date_rastreio = result.getData(row, "date_rastreio");
-
-                    var sexo = result.getData(row, "sexo");
-                    var nome =  result.getData(row,"nome");
-                    var nome_acomp =  result.getData(row,"nome_acomp");
-                    var nome_mae =  result.getData(row,"nome_mae");
-                    var nome_pai =  result.getData(row,"nome_pai");
-
-                    var tel_acomp = result.getData(row,"tel_acomp");
-                    var tel_mae = result.getData(row,"tel_mae");
-                    var tel_pai = result.getData(row,"tel_pai");
+                    var codigo_lamina = result.getData(row,"codigo_lamina");
                     
                     var DOB_ou_idade = result.getData(row,"DOB_ou_idade");
                     var dn =  result.getData(row,"dn");
                     var ano =  result.getData(row,"ano");
                     var mes =  result.getData(row,"mes");
+                    var sexo =  result.getData(row,"sexo");
                     
                     var p = {
                         id,
                         id_estudo,
                         codigo_lamina,
-                        tab_bairro,
-                        zona,
-                        cs,
-                        date_rastreio,
-                        sexo,
-                        nome,
-                        nome_acomp,
-                        nome_mae,
-                        nome_pai,
-                        tel_acomp,
-                        tel_mae,
-                        tel_pai,
                         dn,
                         ano,
                         mes,
+                        DOB_ou_idade,
+                        sexo
                     }          
 
                     persons.push(p);
@@ -104,7 +79,8 @@
                 alert(errorMsg);
             }
 
-            var sql = 'SELECT codigo_lamina, tab_bairro, zona, cs, date_rastreio, nome, nome_acomp, nome_mae, nome_pai, tel_acomp, tel_mae, tel_pai, sexo, id_estudo, DOB_ou_idade, ano, mes, dn FROM inclusao WHERE codigo_lamina = "' + codigo + '"';
+
+            var sql = 'SELECT codigo_lamina, dn, sexo, ano, mes, id_estudo, DOB_ou_idade  FROM inclusao WHERE codigo_lamina = "' + codigo + '" UNION SELECT codigo_lamina, dn, sexo, ano, mes, id_estudo, DOB_ou_idade FROM seguimento  WHERE codigo_lamina = "' + codigo + '"';            
             console.log(sql);
             odkData.arbitraryQuery('inclusao', sql, null, null, null, successFn, failureFn);
         }
@@ -123,11 +99,13 @@
 
         function getJsonMap(person) {
             var data = {
+                id_estudo = person.id_estudo,
+                codigo_lamina = person.codigo_lamina,
+                DOB_ou_idade = DOB_ou_idade,
                 dn = person.dn,
                 ano = person.ano,
                 mes = person.mes,
-                id_estudo = person.id_estudo,
-
+                sexo = sexo,
             }
 
             console.log("Sending following data:");
