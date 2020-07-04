@@ -84,7 +84,7 @@
                 alert(errorMsg);
             }
 
-            var fields = 'codigo_lamina, dn, sexo, nome, ano, mes, id_estudo, DOB_ou_idade, id_visita':
+            var fields = 'codigo_lamina, dn, sexo, nome, ano, mes, id_estudo, DOB_ou_idade, id_visita';
             var sql = 'SELECT ' + fields + ' FROM inclusao WHERE codigo_lamina = "' + codigo + '" COLLATE NOCASE UNION SELECT ' + fields + ' WHERE codigo_lamina = "' + codigo + '" COLLATE NOCASE';            
             console.log(sql);
             odkData.arbitraryQuery('inclusao', sql, null, null, null, successFn, failureFn);
