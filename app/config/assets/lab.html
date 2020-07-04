@@ -42,6 +42,7 @@
         function loadList(codigo) {
             $("#theList tr:not(:first-of-type)").remove(); // clear table except header
             if (!codigo || codigo.length<2) return;
+            codigo = codigo.toUpperCase();
             console.log("Querying database...");
             var successFn = function( result ) {
                 console.log("Found " + result.getCount() + " persons");
@@ -233,7 +234,7 @@
         <form class="form-inline" style="text-align: center;">
             <div class="form-group" style="margin:20px;text-align:center;">
                 <label class="form-label" for="selCs">Codigo:
-                    <input type="text" class="form-control input-lg" id="txtCodigo"/> <a href="#" class="btn btn-sm btn-success" style="height: inherit;width: auto;padding: 13px 35px;" id="btnSearch">OK</a>
+                    <input type="text" class="form-control input-lg" id="txtCodigo" style="text-transform: uppercase;"/> <a href="#" class="btn btn-sm btn-success" style="height: inherit;width: auto;padding: 13px 35px;" id="btnSearch">OK</a>
                 </label>    
             </div><div>
                 <hr/>                
