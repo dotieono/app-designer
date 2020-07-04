@@ -45,7 +45,7 @@
                 return false;
             })
 
-            btnVisit.on("click", function() {
+            $("#btnVisit").on("click", function() {
                 odkTables.launchHTML(null, 'config/assets/centro_visit.html');
                 return false;
             });
@@ -244,7 +244,7 @@ function getAdateHelper() {return {
     </head>
 
     <body onload="display();">        
-        <form class="form-inline">
+        <form>
             <div class="form-group" style="margin:20px;text-align:center;">
                 <label class="form-label" for="selCs">Centro de saúde</label><br/>
                 <select id="selCs" class="form-control">
