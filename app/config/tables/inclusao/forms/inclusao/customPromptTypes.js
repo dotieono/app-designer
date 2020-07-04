@@ -7,9 +7,9 @@ window.is_finalized = function() {
 };
 
 function elog(obj) {
-    var prefix = "**BHP**";
-    console.error(prefix, obj);
-    return;
+    // var prefix = "**BHP**";
+    // console.error(prefix, obj);
+    // return;
 }
 
 var adate = promptTypes.input_type.extend({

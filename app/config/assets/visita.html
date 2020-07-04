@@ -41,7 +41,7 @@
 
         // Displays homescreen
         function display() {
-            console.log('Loading visita v. 0.11');            
+            //console.log('Loading visita v. 0.11');            
             
             window.adateHelper = getAdateHelper();
             // /*    Screen new client option that launches new client list view */
@@ -80,12 +80,12 @@
             $("#selCs").change(function() {
                 var newVal = $(this).val();
                 if (!confirm("Tem certeza de mudar centro de saúde para " + newVal + "?")) {
-                    console.log("restoring to: " + $(this).data('val'))
+                    //console.log("restoring to: " + $(this).data('val'))
                     $(this).val($(this).data('val')); //set back
                     selectByText($(this).data('val'));
                     return;                           //abort!
                 }
-                console.log("Changed to " + newVal);
+                //console.log("Changed to " + newVal);
                 
                 $(this).data('val', newVal);
                 localStorage.setItem("centro", newVal);
@@ -117,7 +117,7 @@ function updateDay() {
         function restoreState() {
             // Preload previous selections
             var storedCentro = localStorage.getItem("centro");
-            console.log("Restoring to " + storedCentro);
+            //console.log("Restoring to " + storedCentro);
             if (storedCentro != '') {
                 selectByText(storedCentro);
             }
@@ -141,9 +141,9 @@ function updateDay() {
 
         function loadList() {
             
-            console.log("Querying database...");
+            //console.log("Querying database...");
             var successFn = function( result ) {
-                console.log("Found " + result.getCount() + " persons");
+                //console.log("Found " + result.getCount() + " persons");
                 var persons = [];
                 for (var row = 0; row < result.getCount(); row++) {
                     var id = result.getData(row,"_id"); // or _row_etag
@@ -192,7 +192,7 @@ function updateDay() {
                     }          
 
                     if (!isRelevant(p)) continue;
-                    //console.log(p);
+                    ////console.log(p);
                     persons.push(p);
                 }
                 populateList(persons);
@@ -206,19 +206,19 @@ function updateDay() {
             var selCs = $("#selCs").val();
             var sql = 'SELECT tab_bairro, zona, cs, date_rastreio, nome, nome_acomp, nome_mae, nome_pai, tel_acomp, tel_mae, tel_pai, sexo, id_estudo, DOB_ou_idade, ano, mes, dn FROM inclusao '
             sql = sql + 'WHERE cs = "' + selCs + '"'
-            console.log(sql);
+            //console.log(sql);
             odkData.arbitraryQuery('inclusao', sql, null, null, null, successFn, failureFn);
         }
         
         function isRelevant(person) {
             var offSet = window.dayOffset;
             var days = adateHelper.ageInDays(person.date_rastreio);
-            console.log(days);
+            //console.log(days);
             if ((days+offSet) > 28) return false;
             if ((days+offSet) == 0) return false;
             if ((days+offSet) <= 3) return true;
             if ((days+offSet) % 7 == 0) return true;
-            console.log("NOT RELEVANT");
+            //console.log("NOT RELEVANT");
             person.nome = "NO: " + person.nome;
             return false;
         }
@@ -272,8 +272,8 @@ function updateDay() {
             delete person.tel_pai;
             delete person.zona;
 
-            console.log("Sending following data:");
-            console.log(person);      
+            //console.log("Sending following data:");
+            //console.log(person);      
 
             return person;
         }
@@ -290,7 +290,7 @@ function updateDay() {
         function populateList(listOfPersons) {
             $("#theList tr:not(:first-of-type)").remove(); // clear table except header
             var theList = $("#theList");
-            console.log("Populating list with " + listOfPersons.length + " persons");
+            //console.log("Populating list with " + listOfPersons.length + " persons");
             listOfPersons.forEach(person => {
                 addPersonDiv(person);
             });

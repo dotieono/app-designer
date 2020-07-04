@@ -42,7 +42,7 @@
         function loadList(codigo) {
             $("#theList tr:not(:first-of-type)").remove(); // clear table except header
             if (!codigo || codigo.length<2) return;
-            codigo = codigo.toUpperCase();
+            codigo = codigo.trim().replace(/"/g,'').toUpperCase();
             console.log("Querying database...");
             var successFn = function( result ) {
                 console.log("Found " + result.getCount() + " persons");

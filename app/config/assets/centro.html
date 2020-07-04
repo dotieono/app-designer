@@ -16,19 +16,19 @@
 
         // Displays homescreen
         function display() {
-            console.log('Loading centro v. 0.40');
+            //console.log('Loading centro v. 0.40');
             window.adateHelper = getAdateHelper();
             var btnNew = $("#btnCreateNew");
             var selCs = $("#selCs");
             $("#selCs").change(function() {
                 var newVal = $(this).val();
                 if (!confirm("Tem certeza de mudar centro de saúde para " + newVal + "?")) {
-                    console.log("restoring to: " + $(this).data('val'))
+                    //console.log("restoring to: " + $(this).data('val'))
                     $(this).val($(this).data('val')); //set back
                     selectByText($(this).data('val'));
                     return;                           //abort!
                 }
-                console.log("Changed to " + newVal);
+                //console.log("Changed to " + newVal);
                 $("#theList tr:not(:first-of-type)").remove(); // clear table except header
                 $(this).data('val', newVal);
                 localStorage.setItem("centro", newVal);
@@ -51,9 +51,9 @@
         }
         
         function loadList() {            
-            console.log("Querying database...");
+            //console.log("Querying database...");
             var successFn = function( result ) {
-                console.log("Found " + result.getCount() + " persons");
+                //console.log("Found " + result.getCount() + " persons");
                 var persons = [];
                 for (var row = 0; row < result.getCount(); row++) {
                     var id = result.getData(row,"_id"); // or _row_etag
@@ -80,7 +80,7 @@
                         // af,
                         // numRondas
                     }
-                    console.log(p);
+                    //console.log(p);
                     persons.push(p);
                 }
                 populateList(persons);
@@ -98,7 +98,7 @@
             sql = sql + 'cs = "' + selCs + '" COLLATE NOCASE AND ';
             sql = sql + '(resultado_TDR = 1 OR resultado_TDR = 3) AND ';
             sql = sql + 'date_rastreio = "' + todayAdate() + '" ';
-            console.log(sql);
+            //console.log(sql);
 
             odkData.arbitraryQuery('rastreio', sql, null, null, null, successFn, failureFn);
         }
@@ -121,7 +121,7 @@
         
         function populateList(listOfPersons) {
             var theList = $("#theList");
-            console.log("Populating list with " + listOfPersons.length + " persons");
+            //console.log("Populating list with " + listOfPersons.length + " persons");
             listOfPersons.forEach(person => {
                 addPersonDiv(person);
             });
@@ -134,7 +134,7 @@
         function restoreState() {
             // Preload previous selections
             var storedCentro = localStorage.getItem("centro");
-            console.log("Restoring to " + storedCentro);
+            //console.log("Restoring to " + storedCentro);
             if (storedCentro != '') {
                 selectByText(storedCentro);
             }
