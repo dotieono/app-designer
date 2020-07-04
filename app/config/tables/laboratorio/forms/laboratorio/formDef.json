@@ -32,62 +32,18 @@
         "_row_num": 3
       },
       {
-        "clause": "if",
-        "condition": "data('DOB_ou_idade')=='1'",
-        "_row_num": 4
-      },
-      {
         "type": "note",
         "name": "apresenta_dob",
         "display": {
           "prompt": {
-            "text": "Está indroduzindo os resultados de analises do dia {{data.id_visita}} de um paciente se sexo: {{data.sexo}}\ncom codigo de estudo: {{data.id_estudo}}\nData de nascimento: {{data.dn}}"
+            "text": "Está indroduzindo os resultados de analises do dia {{data.id_visita}} de um paciente se sexo: {{data.sexo}}\ncom codigo de estudo: {{data.id_estudo}}\n{{calculates.dn_idade_display_longo}}\n{{data.codigo_lamina}}"
           }
         },
-        "_row_num": 5
-      },
-      {
-        "clause": "else",
-        "_row_num": 6
-      },
-      {
-        "type": "note",
-        "name": "apresenta_idade",
-        "display": {
-          "prompt": {
-            "text": "Está indroduzindo os resultados de analises do dia {{data.id_visita}} de um paciente se sexo: {{data.sexo}}\ncom codigo de estudo: {{data.id_estudo}}\nTem {{data.ano}} anos e {{data.mes}} meses"
-          }
-        },
-        "_row_num": 7
-      },
-      {
-        "clause": "end if",
-        "_row_num": 8
+        "_row_num": 4
       },
       {
         "clause": "end screen",
-        "_row_num": 9
-      },
-      {
-        "type": "string",
-        "name": "id_lamina",
-        "display": {
-          "prompt": {
-            "text": "com codigo de estudo: {{data.id_estudo}}"
-          }
-        },
-        "_row_num": 10
-      },
-      {
-        "type": "select_one",
-        "values_list": "yesno",
-        "name": "observados",
-        "display": {
-          "prompt": {
-            "text": "Data de nascimento: {{data.dn}}"
-          }
-        },
-        "_row_num": 11
+        "_row_num": 5
       },
       {
         "type": "select_one",
@@ -98,16 +54,16 @@
             "text": "Resultado de GE"
           }
         },
-        "_row_num": 12
+        "_row_num": 6
       },
       {
         "clause": "if // GE",
         "condition": "data('GE') != '2' || data('GE') != '4'",
-        "_row_num": 13
+        "_row_num": 7
       },
       {
         "clause": "begin screen",
-        "_row_num": 14
+        "_row_num": 8
       },
       {
         "type": "integer",
@@ -117,7 +73,7 @@
             "text": "Nº de parasita / 200 leuco"
           }
         },
-        "_row_num": 15
+        "_row_num": 9
       },
       {
         "type": "select_multiple",
@@ -128,15 +84,15 @@
             "text": "Espécie"
           }
         },
-        "_row_num": 16
+        "_row_num": 10
       },
       {
         "clause": "end screen",
-        "_row_num": 17
+        "_row_num": 11
       },
       {
         "clause": "end if //GE",
-        "_row_num": 18
+        "_row_num": 12
       },
       {
         "type": "text",
@@ -146,7 +102,7 @@
             "text": "Comentário"
           }
         },
-        "_row_num": 20
+        "_row_num": 14
       }
     ],
     "choices": [
@@ -269,14 +225,9 @@
     ],
     "calculates": [
       {
-        "calculation_name": "codigo_manual",
-        "calculation": "concat(data('letra_sticker'),data('numero_sticker'))",
+        "calculation_name": "dn_idade_display_longo",
+        "calculation": "data('DOB_ou_idade')=='1' ? (\"Data de nascimento é \" + calculates.dn_display() ) : (\"Tem \" +data('ano')+\" anos e \" + data('mes') + \" meses\")",
         "_row_num": 2
-      },
-      {
-        "calculation_name": "ano_em_mes",
-        "calculation": "(data('ano')*12) + data('mes')",
-        "_row_num": 3
       }
     ],
     "model": [
@@ -326,34 +277,29 @@
         "_row_num": 13
       },
       {
-        "type": "string",
-        "name": "id_lamina",
+        "type": "assign",
+        "name": "codigo_lamina",
         "_row_num": 14
       },
       {
         "type": "select_one",
-        "name": "observados",
-        "_row_num": 15
-      },
-      {
-        "type": "select_one",
         "name": "GE",
-        "_row_num": 16
+        "_row_num": 15
       },
       {
         "type": "integer",
         "name": "n_parasita",
-        "_row_num": 17
+        "_row_num": 16
       },
       {
         "type": "select_multiple",
         "name": "plasmodium",
-        "_row_num": 18
+        "_row_num": 17
       },
       {
         "type": "text",
         "name": "lab_comentario",
-        "_row_num": 19
+        "_row_num": 18
       }
     ]
   },
@@ -540,15 +486,10 @@
     },
     "queries": {},
     "calculates": {
-      "codigo_manual": {
-        "calculation_name": "codigo_manual",
-        "calculation": "concat(data('letra_sticker'),data('numero_sticker'))",
+      "dn_idade_display_longo": {
+        "calculation_name": "dn_idade_display_longo",
+        "calculation": "data('DOB_ou_idade')=='1' ? (\"Data de nascimento é \" + calculates.dn_display() ) : (\"Tem \" +data('ano')+\" anos e \" + data('mes') + \" meses\")",
         "_row_num": 2
-      },
-      "ano_em_mes": {
-        "calculation_name": "ano_em_mes",
-        "calculation": "(data('ano')*12) + data('mes')",
-        "_row_num": 3
       }
     },
     "model": {
@@ -647,45 +588,26 @@
         "type": "note",
         "elementKey": "apresentacao"
       },
-      "id_lamina": {
-        "type": "string",
+      "codigo_lamina": {
         "_defn": [
-          {
-            "_row_num": 10,
-            "section_name": "survey"
-          },
           {
             "_row_num": 14,
             "section_name": "model"
           }
         ],
-        "elementKey": "id_lamina"
-      },
-      "observados": {
-        "type": "string",
-        "valuesList": "yesno",
-        "_defn": [
-          {
-            "_row_num": 11,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 15,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "observados"
+        "type": "assign",
+        "elementKey": "codigo_lamina"
       },
       "GE": {
         "type": "string",
         "valuesList": "resultado",
         "_defn": [
           {
-            "_row_num": 12,
+            "_row_num": 6,
             "section_name": "survey"
           },
           {
-            "_row_num": 16,
+            "_row_num": 15,
             "section_name": "model"
           }
         ],
@@ -695,11 +617,11 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 15,
+            "_row_num": 9,
             "section_name": "survey"
           },
           {
-            "_row_num": 17,
+            "_row_num": 16,
             "section_name": "model"
           }
         ],
@@ -714,11 +636,11 @@
         "valuesList": "plasmodium",
         "_defn": [
           {
-            "_row_num": 16,
+            "_row_num": 10,
             "section_name": "survey"
           },
           {
-            "_row_num": 18,
+            "_row_num": 17,
             "section_name": "model"
           }
         ],
@@ -728,11 +650,11 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 20,
+            "_row_num": 14,
             "section_name": "survey"
           },
           {
-            "_row_num": 19,
+            "_row_num": 18,
             "section_name": "model"
           }
         ],
@@ -754,61 +676,15 @@
             "name": "apresenta_dob",
             "display": {
               "prompt": {
-                "text": "Está indroduzindo os resultados de analises do dia {{data.id_visita}} de um paciente se sexo: {{data.sexo}}\ncom codigo de estudo: {{data.id_estudo}}\nData de nascimento: {{data.dn}}"
+                "text": "Está indroduzindo os resultados de analises do dia {{data.id_visita}} de um paciente se sexo: {{data.sexo}}\ncom codigo de estudo: {{data.id_estudo}}\n{{calculates.dn_idade_display_longo}}\n{{data.codigo_lamina}}"
               }
             },
-            "_row_num": 5,
-            "__rowNum__": 4,
+            "_row_num": 4,
+            "__rowNum__": 3,
             "_token_type": "prompt",
             "_type": "note",
             "_branch_label_enclosing_screen": "survey/_screen3",
             "promptIdx": 0
-          },
-          {
-            "type": "note",
-            "name": "apresenta_idade",
-            "display": {
-              "prompt": {
-                "text": "Está indroduzindo os resultados de analises do dia {{data.id_visita}} de um paciente se sexo: {{data.sexo}}\ncom codigo de estudo: {{data.id_estudo}}\nTem {{data.ano}} anos e {{data.mes}} meses"
-              }
-            },
-            "_row_num": 7,
-            "__rowNum__": 6,
-            "_token_type": "prompt",
-            "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen3",
-            "promptIdx": 1
-          },
-          {
-            "type": "string",
-            "name": "id_lamina",
-            "display": {
-              "prompt": {
-                "text": "com codigo de estudo: {{data.id_estudo}}"
-              }
-            },
-            "_row_num": 10,
-            "__rowNum__": 9,
-            "_token_type": "prompt",
-            "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen10",
-            "promptIdx": 2
-          },
-          {
-            "type": "select_one",
-            "values_list": "yesno",
-            "name": "observados",
-            "display": {
-              "prompt": {
-                "text": "Data de nascimento: {{data.dn}}"
-              }
-            },
-            "_row_num": 11,
-            "__rowNum__": 10,
-            "_token_type": "prompt",
-            "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen11",
-            "promptIdx": 3
           },
           {
             "type": "select_one",
@@ -819,12 +695,12 @@
                 "text": "Resultado de GE"
               }
             },
-            "_row_num": 12,
-            "__rowNum__": 11,
+            "_row_num": 6,
+            "__rowNum__": 5,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen12",
-            "promptIdx": 4
+            "_branch_label_enclosing_screen": "survey/_screen6",
+            "promptIdx": 1
           },
           {
             "type": "integer",
@@ -834,12 +710,12 @@
                 "text": "Nº de parasita / 200 leuco"
               }
             },
-            "_row_num": 15,
-            "__rowNum__": 14,
+            "_row_num": 9,
+            "__rowNum__": 8,
             "_token_type": "prompt",
             "_type": "integer",
-            "_branch_label_enclosing_screen": "survey/_screen14",
-            "promptIdx": 5
+            "_branch_label_enclosing_screen": "survey/_screen8",
+            "promptIdx": 2
           },
           {
             "type": "select_multiple",
@@ -850,12 +726,12 @@
                 "text": "Espécie"
               }
             },
-            "_row_num": 16,
-            "__rowNum__": 15,
+            "_row_num": 10,
+            "__rowNum__": 9,
             "_token_type": "prompt",
             "_type": "select_multiple",
-            "_branch_label_enclosing_screen": "survey/_screen14",
-            "promptIdx": 6
+            "_branch_label_enclosing_screen": "survey/_screen8",
+            "promptIdx": 3
           },
           {
             "type": "text",
@@ -865,20 +741,20 @@
                 "text": "Comentário"
               }
             },
-            "_row_num": 20,
-            "__rowNum__": 19,
+            "_row_num": 14,
+            "__rowNum__": 13,
             "_token_type": "prompt",
             "_type": "text",
-            "_branch_label_enclosing_screen": "survey/_screen20",
-            "promptIdx": 7
+            "_branch_label_enclosing_screen": "survey/_screen14",
+            "promptIdx": 4
           },
           {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 21,
-            "_branch_label_enclosing_screen": "survey/_screen21",
-            "promptIdx": 8
+            "_row_num": 15,
+            "_branch_label_enclosing_screen": "survey/_screen15",
+            "promptIdx": 5
           }
         ],
         "validation_tag_map": {
@@ -892,109 +768,95 @@
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 9,
-              "__rowNum__": 8,
+              "_row_num": 5,
+              "__rowNum__": 4,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nif (data('DOB_ou_idade')=='1') {\nactivePromptIndicies.push(0);\n}\nelse {\nactivePromptIndicies.push(1);\n}\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(0);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 0
           },
           {
-            "_row_num": 10,
+            "_row_num": 6,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(2);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(1);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 1
-          },
-          {
-            "_row_num": 11,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(3);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 2
-          },
-          {
-            "_row_num": 12,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(4);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 3
           },
           {
             "clause": "if // GE",
             "condition": "data('GE') != '2' || data('GE') != '4'",
-            "_row_num": 13,
-            "__rowNum__": 12,
+            "_row_num": 7,
+            "__rowNum__": 6,
             "_token_type": "goto_label",
             "_tag_name": "GE",
-            "_branch_label": "_then13",
+            "_branch_label": "_then7",
+            "operationIdx": 2
+          },
+          {
+            "clause": "end if //GE",
+            "_token_type": "goto_label",
+            "_branch_label": "_else12",
+            "_row_num": 12,
+            "operationIdx": 3
+          },
+          {
+            "clause": "begin screen",
+            "_row_num": 8,
+            "__rowNum__": 7,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 11,
+              "__rowNum__": 10,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(2);\nactivePromptIndicies.push(3);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 4
           },
           {
             "clause": "end if //GE",
             "_token_type": "goto_label",
-            "_branch_label": "_else18",
-            "_row_num": 18,
+            "_branch_label": "_endif12",
+            "_row_num": 12,
             "operationIdx": 5
           },
           {
-            "clause": "begin screen",
             "_row_num": 14,
-            "__rowNum__": 13,
             "_token_type": "begin_screen",
-            "_end_screen_clause": {
-              "clause": "end screen",
-              "_row_num": 17,
-              "__rowNum__": 16,
-              "_token_type": "end_screen"
-            },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(5);\nactivePromptIndicies.push(6);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(4);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 6
-          },
-          {
-            "clause": "end if //GE",
-            "_token_type": "goto_label",
-            "_branch_label": "_endif18",
-            "_row_num": 18,
-            "operationIdx": 7
-          },
-          {
-            "_row_num": 20,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(7);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 8
           },
           {
             "_token_type": "exit_section",
             "clause": "exit section",
-            "_row_num": 21,
-            "operationIdx": 9
+            "_row_num": 15,
+            "operationIdx": 7
           },
           {
-            "_row_num": 21,
+            "_row_num": 15,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(8);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(5);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
-            "operationIdx": 10
+            "operationIdx": 8
           },
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 21,
-            "operationIdx": 11
+            "_row_num": 15,
+            "operationIdx": 9
           }
         ],
         "branch_label_map": {
           "_screen3": 0,
-          "_screen10": 1,
-          "_screen11": 2,
-          "_screen12": 3,
-          "_then13": 6,
+          "_screen6": 1,
+          "_then7": 4,
+          "_screen8": 4,
+          "_else12": 6,
+          "_endif12": 6,
           "_screen14": 6,
-          "_else18": 8,
-          "_endif18": 8,
-          "_screen20": 8,
-          "_contents": 10,
-          "_screen21": 10
+          "_contents": 8,
+          "_screen15": 8
         }
       },
       "initial": {
@@ -1298,51 +1160,29 @@
         "elementSet": "data",
         "elementPath": "apresentacao"
       },
-      "id_lamina": {
-        "type": "string",
+      "codigo_lamina": {
         "_defn": [
-          {
-            "_row_num": 10,
-            "section_name": "survey"
-          },
           {
             "_row_num": 14,
             "section_name": "model"
           }
         ],
-        "elementKey": "id_lamina",
-        "elementName": "id_lamina",
+        "type": "assign",
+        "elementKey": "codigo_lamina",
+        "elementName": "codigo_lamina",
         "elementSet": "data",
-        "elementPath": "id_lamina"
-      },
-      "observados": {
-        "type": "string",
-        "valuesList": "yesno",
-        "_defn": [
-          {
-            "_row_num": 11,
-            "section_name": "survey"
-          },
-          {
-            "_row_num": 15,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "observados",
-        "elementName": "observados",
-        "elementSet": "data",
-        "elementPath": "observados"
+        "elementPath": "codigo_lamina"
       },
       "GE": {
         "type": "string",
         "valuesList": "resultado",
         "_defn": [
           {
-            "_row_num": 12,
+            "_row_num": 6,
             "section_name": "survey"
           },
           {
-            "_row_num": 16,
+            "_row_num": 15,
             "section_name": "model"
           }
         ],
@@ -1355,11 +1195,11 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 15,
+            "_row_num": 9,
             "section_name": "survey"
           },
           {
-            "_row_num": 17,
+            "_row_num": 16,
             "section_name": "model"
           }
         ],
@@ -1381,11 +1221,11 @@
         "valuesList": "plasmodium",
         "_defn": [
           {
-            "_row_num": 16,
+            "_row_num": 10,
             "section_name": "survey"
           },
           {
-            "_row_num": 18,
+            "_row_num": 17,
             "section_name": "model"
           }
         ],
@@ -1401,11 +1241,11 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 20,
+            "_row_num": 14,
             "section_name": "survey"
           },
           {
-            "_row_num": 19,
+            "_row_num": 18,
             "section_name": "model"
           }
         ],
@@ -1542,13 +1382,6 @@
         "_key": "displayChoicesList",
         "_type": "object",
         "_value": "[{\"choice_list_name\":\"resultado\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Positivo\"}},\"_row_num\":14},{\"choice_list_name\":\"resultado\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Negativo\"}},\"_row_num\":15},{\"choice_list_name\":\"resultado\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Incontavel\"}},\"_row_num\":16},{\"choice_list_name\":\"resultado\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Indeterminado\"}},\"_row_num\":17}]"
-      },
-      {
-        "_partition": "Column",
-        "_aspect": "observados",
-        "_key": "displayChoicesList",
-        "_type": "object",
-        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":4},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":5}]"
       },
       {
         "_partition": "Column",
