@@ -7,9 +7,9 @@ var currentTab = /^[-]?\d+$/.test(storedTab) ? parseInt(storedTab, 10) : 1;
 setTimeout(function() {
     // Update indices in database
     console.log("Creating indices in database");
-    var sql = 'CREATE INDEX IF NOT EXISTS ix_codigo ON inclusao (codigo_lamina)';
-    var sql2 = 'CREATE INDEX IF NOT EXISTS ix_inc_cs ON inclusao (cs)';
-    var sql3 = 'CREATE INDEX IF NOT EXISTS ix_codigoSeg ON seguimento (codigo_lamina)';
+    var sql = 'CREATE INDEX IF NOT EXISTS ix_codigo ON inclusao (codigo_lamina) --';
+    var sql2 = 'CREATE INDEX IF NOT EXISTS ix_inc_cs ON inclusao (cs) --';
+    var sql3 = 'CREATE INDEX IF NOT EXISTS ix_codigoSeg ON seguimento (codigo_lamina) --';
     odkData.arbitraryQuery('inclusao', sql , [],null, null,idxSuccess,idxFailure);
     odkData.arbitraryQuery('inclusao', sql2 , [],null, null,idxSuccess,idxFailure);
     odkData.arbitraryQuery('seguimento', sql3 , [],null, null,idxSuccess,idxFailure);
