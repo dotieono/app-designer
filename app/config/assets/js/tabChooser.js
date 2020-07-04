@@ -7,12 +7,14 @@ var currentTab = /^[-]?\d+$/.test(storedTab) ? parseInt(storedTab, 10) : 1;
 setTimeout(function() {
     // Update indices in database
     console.log("Creating indices in database");
-    var sql = 'CREATE INDEX IF NOT EXISTS ix_codigo ON inclusao (codigo_lamina) --';
+    var sql = 'CREATE INDEX IF NOT EXISTS ix_codigo ON inclusao (codigo_lamina) --'; // the "--" at the end is important, since that will evade the automatically appended "LIMIT 1" that odkData insists on.. (probably we should not use arbitraryQuery for this...)
     var sql2 = 'CREATE INDEX IF NOT EXISTS ix_inc_cs ON inclusao (cs) --';
     var sql3 = 'CREATE INDEX IF NOT EXISTS ix_codigoSeg ON seguimento (codigo_lamina) --';
+    var sql4 = 'CREATE INDEX IF NOT EXISTS ix_inc_estudoid ON inclusao (id_estudo) --';
     odkData.arbitraryQuery('inclusao', sql , [],null, null,idxSuccess,idxFailure);
     odkData.arbitraryQuery('inclusao', sql2 , [],null, null,idxSuccess,idxFailure);
     odkData.arbitraryQuery('seguimento', sql3 , [],null, null,idxSuccess,idxFailure);
+    odkData.arbitraryQuery('inclusao', sql4 , [],null, null,idxSuccess,idxFailure);
 },1000);
 
 function idxFailure(er) { console.log("Failed to create index: " + er)}

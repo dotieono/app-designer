@@ -77,6 +77,9 @@
                     persons.push(p);
                 }
                 populateList(persons);
+                if (result.getCount() === 0) {
+                    alert("Não encontrado")
+                }
                 return;
             }
             var failureFn = function( errorMsg ) {
@@ -236,11 +239,11 @@
         <h2>LABO</h2>
         <form class="form-inline" style="text-align: center;" onsubmit="$('#btnSearch').click();">
             <div class="form-group" style="margin:20px;text-align:center;">
-                <label class="form-label" for="selCs">Codigo:
-                    <input type="text" class="form-control input-lg" id="txtCodigo" style="text-transform: uppercase;"/> <a href="#" class="btn btn-sm btn-success" style="height: inherit;width: auto;padding: 13px 35px;" id="btnSearch">OK</a>
+                <label class="form-label" for="selCs">
+                    <input type="text" placeholder="Codigo" class="form-control input-lg" id="txtCodigo" style="text-transform: uppercase;"/> <a href="#" class="btn btn-sm btn-success" style="height: inherit;width: auto;padding: 13px 35px;" id="btnSearch">OK</a>
                 </label>    
-            </div><div>
-                <hr/>                
+            </div>
+            <div>
                 <table id="theList" class="table">
                     <tr>
                         <th>Tabz</th>
