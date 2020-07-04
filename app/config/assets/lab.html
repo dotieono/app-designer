@@ -80,7 +80,7 @@
             }
 
 
-            var sql = 'SELECT codigo_lamina, dn, sexo, ano, mes, id_estudo, DOB_ou_idade  FROM inclusao WHERE codigo_lamina = "' + codigo + '" UNION SELECT codigo_lamina, dn, sexo, ano, mes, id_estudo, DOB_ou_idade FROM seguimento  WHERE codigo_lamina = "' + codigo + '"';            
+            var sql = 'SELECT codigo_lamina, dn, sexo, ano, mes, id_estudo, DOB_ou_idade  FROM inclusao WHERE codigo_lamina = "' + codigo + '" COLLATE NOCASE UNION SELECT codigo_lamina, dn, sexo, ano, mes, id_estudo, DOB_ou_idade FROM seguimento  WHERE codigo_lamina = "' + codigo + '" COLLATE NOCASE';            
             console.log(sql);
             odkData.arbitraryQuery('inclusao', sql, null, null, null, successFn, failureFn);
         }
