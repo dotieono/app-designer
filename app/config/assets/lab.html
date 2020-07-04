@@ -30,9 +30,10 @@
             }
             document.getElementById("wrapper").appendChild(sendData);    
 
-            $("#btnSearch").on("click", function() {
+            $("#btnSearch").click(function() {
                 var val = $("#txtCodigo").val();
                 loadList(val);
+                e.preventDefault();
                 return false;
             });
 
