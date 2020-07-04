@@ -14,34 +14,34 @@
         <script type="text/javascript" src="../../system/tables/js/odkTables.js"></script>        
 
         <script type="text/javascript">
-window.dayOffset = 0;
-function getLocalDateString(moment) {
-    return translateDay(moment.format('dddd')) + " " + moment.format('DD.MM.YYYY'); 
-}
-function translateDay(strDay) {
-    switch (strDay) {
-        case 'Monday':
-            return 'Segunda'
-        case 'Tuesday':
-            return 'Terça'
-        case 'Wednesday':
-            return 'Quarta'
-        case 'Thursday':
-            return 'Quinta'
-        case 'Friday':
-            return 'Sexta'
-        case 'Saturday':
-            return 'Sábado'
-        case 'Sunday':
-            return 'Domingo'                                    
-        default:
-            return strDay;
-    }
-}
+        window.dayOffset = 0;
+        function getLocalDateString(moment) {
+            return translateDay(moment.format('dddd')) + " " + moment.format('DD.MM.YYYY'); 
+        }
+        function translateDay(strDay) {
+            switch (strDay) {
+                case 'Monday':
+                    return 'Segunda'
+                case 'Tuesday':
+                    return 'Terça'
+                case 'Wednesday':
+                    return 'Quarta'
+                case 'Thursday':
+                    return 'Quinta'
+                case 'Friday':
+                    return 'Sexta'
+                case 'Saturday':
+                    return 'Sábado'
+                case 'Sunday':
+                    return 'Domingo'                                    
+                default:
+                    return strDay;
+            }
+        }
 
-// Displays homescreen
+        // Displays homescreen
         function display() {
-            console.log('Loading centro v. 0.11');            
+            console.log('Loading visita v. 0.11');            
             
             window.adateHelper = getAdateHelper();
             // /*    Screen new client option that launches new client list view */
