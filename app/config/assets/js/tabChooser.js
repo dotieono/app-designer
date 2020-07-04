@@ -15,7 +15,7 @@ setTimeout(function() {
     odkData.arbitraryQuery('seguimento', sql3 , [],null, null,idxSuccess,idxFailure);
 },1000);
 
-function idxFailure() { console.log("Failed to create index")}
+function idxFailure(er) { console.log("Failed to create index: " + er)}
 function idxSuccess() { console.log("Created index")}
 
 function display() { 
