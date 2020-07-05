@@ -15,7 +15,9 @@ div {
 .tdr1 {
     background-color:#5cb85c;
 }
-
+.hasHadVisitToday {
+    background-color:#5cb85c;
+}
 button {
     width: 90%;
     max-width: 500px;

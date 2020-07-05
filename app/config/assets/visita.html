@@ -311,8 +311,11 @@ function updateDay() {
             }
             var cssClass = '';
             if (p.visitCount != '0') {
-                console.log("Has visits: " + p.visits);
-                cssClass = "HALLO";
+                console.log("Has visit: " + p.visits);
+                var todaysDays = "" + (adateHelper.ageInDays(p.date_rastreio) + window.dayOffset);                
+                if (p.visits.split(",").filter(x => x.trim() == todaysDays).length>0) {
+                    cssClass = "hasHadVisitToday";
+                }
             }
             var nome = (p.nome_casa && p.nome_casa.length) ? nome = p.nome + " (" + p.nome_casa + ")" : p.nome;        
             var btnRow = "<tr class='" + cssClass + "'><td>" + getAddress(p) + "</td><td>" + getNames(p) + "</td><td>" + getAgeString(p) + "<br/>" + getPhones(p) + "</td><td>" + btn + "</td></tr>";
