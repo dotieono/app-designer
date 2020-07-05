@@ -18,6 +18,9 @@ div {
 .hasHadVisitToday {
     background-color:#5cb85c;
 }
+.hasHadVisitADayOff {
+    background-color:orange;
+}
 button {
     width: 90%;
     max-width: 500px;
