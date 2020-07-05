@@ -42,7 +42,13 @@ button:active {
 }
 
 #button3 {
-    border-color: #66A3C2;
+    background-image: url(../img/sync.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 20px;
+    height: 40px;
+    line-height: 10px;
+    border: solid 1px black;
 }
 
 #button4 {
@@ -74,9 +80,9 @@ h2 {
     display: inline-block;
     background-color: cadetblue;
     border-radius: 50%;
-    width: 40px;
+    width: 10%;
     height: 40px;
-    margin: 0 40px;
+    margin: 0 5%;
     color: white;
     font-weight: bolder;
 

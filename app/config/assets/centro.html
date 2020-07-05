@@ -50,6 +50,15 @@
                 return false;
             });
             
+            // sync button
+            var sendData = document.createElement("button");
+            sendData.setAttribute("id", "button3");
+            sendData.innerHTML = "Enviar Dados";
+            sendData.onclick = function() {
+              odkCommon.doAction(null, "org.opendatakit.services.sync.actions.activities.SyncActivity", {"componentPackage": "org.opendatakit.services", "componentActivity": "org.opendatakit.services.sync.actions.activities.SyncActivity"});
+            }
+            document.getElementById("wrapper").appendChild(sendData);    
+
             setTimeout(restoreState, 10);
             setTimeout(loadList, 100);
         }
