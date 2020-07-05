@@ -581,9 +581,9 @@
         "query_type": "linked_table",
         "linked_form_id": "medicamento_suspeito",
         "linked_table_id": "medicamento_suspeito",
-        "selection": "id_estudo=?",
-        "selectionArgs": "[ opendatakit.getCurrentInstanceId() ]",
-        "newRowInitialElementKeyToValueMap": "{}",
+        "selection": "_id=?",
+        "selectionArgs": "[data('_id')]",
+        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo'), evento_adversoformID: data('_id')}",
         "openRowInitialElementKeyToValueMap": "{}",
         "_row_num": 2
       }
@@ -668,119 +668,79 @@
         "_row_num": 13
       },
       {
-        "type": "note",
-        "name": "cabezado",
-        "_row_num": 17
-      },
-      {
         "type": "string",
         "name": "evento_id",
-        "_row_num": 18
-      },
-      {
-        "type": "note",
-        "name": "erro_evento",
-        "_row_num": 19
-      },
-      {
-        "type": "note",
-        "name": "nota_nome",
-        "_row_num": 20
-      },
-      {
-        "type": "note",
-        "name": "nota_dn",
-        "_row_num": 21
-      },
-      {
-        "type": "note",
-        "name": "nota_ano",
-        "_row_num": 22
-      },
-      {
-        "type": "note",
-        "name": "masculino",
-        "_row_num": 23
-      },
-      {
-        "type": "note",
-        "name": "feminino",
-        "_row_num": 24
+        "_row_num": 17
       },
       {
         "type": "decimal",
         "name": "altura",
-        "_row_num": 25
+        "_row_num": 18
       },
       {
         "type": "decimal",
         "name": "peso",
-        "_row_num": 26
+        "_row_num": 19
       },
       {
         "type": "adate",
         "name": "data_ocorrencia",
-        "_row_num": 27
+        "_row_num": 20
       },
       {
         "type": "select_one",
         "name": "tipo_evento",
-        "_row_num": 28
+        "_row_num": 21
       },
       {
         "type": "text",
         "name": "descricao",
-        "_row_num": 29
+        "_row_num": 22
       },
       {
         "type": "select_one",
         "name": "resultado",
-        "_row_num": 30
-      },
-      {
-        "type": "note",
-        "name": "listas",
-        "_row_num": 31
-      },
-      {
-        "type": "note",
-        "name": "rel_tecnico",
-        "_row_num": 32
+        "_row_num": 23
       },
       {
         "type": "string",
         "name": "tecnico",
-        "_row_num": 33
+        "_row_num": 24
       },
       {
         "type": "string",
         "name": "qualificacao",
-        "_row_num": 34
+        "_row_num": 25
       },
       {
         "type": "string",
         "name": "endereco",
-        "_row_num": 35
+        "_row_num": 26
       },
       {
         "type": "integer",
         "name": "tel_tecnico",
-        "_row_num": 36
+        "_row_num": 27
       },
       {
         "type": "string",
         "name": "email_tecnico",
-        "_row_num": 37
+        "_row_num": 28
       },
       {
         "type": "signature",
         "name": "assinatura",
-        "_row_num": 38
+        "_row_num": 29
       },
       {
         "type": "adate",
         "name": "date_assinatuda",
-        "_row_num": 39
+        "_row_num": 30
+      },
+      {
+        "type": "string",
+        "name": "visitaformID",
+        "_row_num": 32
       }
     ]
   },
@@ -1095,9 +1055,9 @@
         "query_type": "linked_table",
         "linked_form_id": "medicamento_suspeito",
         "linked_table_id": "medicamento_suspeito",
-        "selection": "id_estudo=?",
-        "selectionArgs": "[ opendatakit.getCurrentInstanceId() ]",
-        "newRowInitialElementKeyToValueMap": "{}",
+        "selection": "_id=?",
+        "selectionArgs": "[data('_id')]",
+        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo'), evento_adversoformID: data('_id')}",
         "openRowInitialElementKeyToValueMap": "{}",
         "_row_num": 2
       }
@@ -1225,16 +1185,6 @@
         ],
         "elementKey": "sexo"
       },
-      "cabezado": {
-        "_defn": [
-          {
-            "_row_num": 17,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "cabezado"
-      },
       "evento_id": {
         "type": "string",
         "_defn": [
@@ -1243,71 +1193,11 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 18,
+            "_row_num": 17,
             "section_name": "model"
           }
         ],
         "elementKey": "evento_id"
-      },
-      "erro_evento": {
-        "_defn": [
-          {
-            "_row_num": 19,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "erro_evento"
-      },
-      "nota_nome": {
-        "_defn": [
-          {
-            "_row_num": 20,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "nota_nome"
-      },
-      "nota_dn": {
-        "_defn": [
-          {
-            "_row_num": 21,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "nota_dn"
-      },
-      "nota_ano": {
-        "_defn": [
-          {
-            "_row_num": 22,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "nota_ano"
-      },
-      "masculino": {
-        "_defn": [
-          {
-            "_row_num": 23,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "masculino"
-      },
-      "feminino": {
-        "_defn": [
-          {
-            "_row_num": 24,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "feminino"
       },
       "altura": {
         "type": "number",
@@ -1317,7 +1207,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 25,
+            "_row_num": 18,
             "section_name": "model"
           }
         ],
@@ -1331,7 +1221,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 26,
+            "_row_num": 19,
             "section_name": "model"
           }
         ],
@@ -1350,7 +1240,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 27,
+            "_row_num": 20,
             "section_name": "model"
           }
         ],
@@ -1365,7 +1255,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 28,
+            "_row_num": 21,
             "section_name": "model"
           }
         ],
@@ -1379,7 +1269,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 29,
+            "_row_num": 22,
             "section_name": "model"
           }
         ],
@@ -1394,31 +1284,11 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 30,
+            "_row_num": 23,
             "section_name": "model"
           }
         ],
         "elementKey": "resultado"
-      },
-      "listas": {
-        "_defn": [
-          {
-            "_row_num": 31,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "listas"
-      },
-      "rel_tecnico": {
-        "_defn": [
-          {
-            "_row_num": 32,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "rel_tecnico"
       },
       "tecnico": {
         "type": "string",
@@ -1428,7 +1298,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 33,
+            "_row_num": 24,
             "section_name": "model"
           }
         ],
@@ -1442,7 +1312,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 34,
+            "_row_num": 25,
             "section_name": "model"
           }
         ],
@@ -1456,7 +1326,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 35,
+            "_row_num": 26,
             "section_name": "model"
           }
         ],
@@ -1470,7 +1340,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 36,
+            "_row_num": 27,
             "section_name": "model"
           }
         ],
@@ -1484,7 +1354,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 37,
+            "_row_num": 28,
             "section_name": "model"
           }
         ],
@@ -1512,7 +1382,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 38,
+            "_row_num": 29,
             "section_name": "model"
           }
         ],
@@ -1531,11 +1401,21 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 39,
+            "_row_num": 30,
             "section_name": "model"
           }
         ],
         "elementKey": "date_assinatuda"
+      },
+      "visitaformID": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 32,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "visitaformID"
       }
     },
     "section_names": [
@@ -2410,19 +2290,6 @@
         "elementSet": "data",
         "elementPath": "sexo"
       },
-      "cabezado": {
-        "_defn": [
-          {
-            "_row_num": 17,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "cabezado",
-        "elementName": "cabezado",
-        "elementSet": "data",
-        "elementPath": "cabezado"
-      },
       "evento_id": {
         "type": "string",
         "_defn": [
@@ -2431,7 +2298,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 18,
+            "_row_num": 17,
             "section_name": "model"
           }
         ],
@@ -2439,84 +2306,6 @@
         "elementName": "evento_id",
         "elementSet": "data",
         "elementPath": "evento_id"
-      },
-      "erro_evento": {
-        "_defn": [
-          {
-            "_row_num": 19,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "erro_evento",
-        "elementName": "erro_evento",
-        "elementSet": "data",
-        "elementPath": "erro_evento"
-      },
-      "nota_nome": {
-        "_defn": [
-          {
-            "_row_num": 20,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "nota_nome",
-        "elementName": "nota_nome",
-        "elementSet": "data",
-        "elementPath": "nota_nome"
-      },
-      "nota_dn": {
-        "_defn": [
-          {
-            "_row_num": 21,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "nota_dn",
-        "elementName": "nota_dn",
-        "elementSet": "data",
-        "elementPath": "nota_dn"
-      },
-      "nota_ano": {
-        "_defn": [
-          {
-            "_row_num": 22,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "nota_ano",
-        "elementName": "nota_ano",
-        "elementSet": "data",
-        "elementPath": "nota_ano"
-      },
-      "masculino": {
-        "_defn": [
-          {
-            "_row_num": 23,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "masculino",
-        "elementName": "masculino",
-        "elementSet": "data",
-        "elementPath": "masculino"
-      },
-      "feminino": {
-        "_defn": [
-          {
-            "_row_num": 24,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "feminino",
-        "elementName": "feminino",
-        "elementSet": "data",
-        "elementPath": "feminino"
       },
       "altura": {
         "type": "number",
@@ -2526,7 +2315,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 25,
+            "_row_num": 18,
             "section_name": "model"
           }
         ],
@@ -2543,7 +2332,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 26,
+            "_row_num": 19,
             "section_name": "model"
           }
         ],
@@ -2565,7 +2354,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 27,
+            "_row_num": 20,
             "section_name": "model"
           }
         ],
@@ -2583,7 +2372,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 28,
+            "_row_num": 21,
             "section_name": "model"
           }
         ],
@@ -2600,7 +2389,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 29,
+            "_row_num": 22,
             "section_name": "model"
           }
         ],
@@ -2618,7 +2407,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 30,
+            "_row_num": 23,
             "section_name": "model"
           }
         ],
@@ -2626,32 +2415,6 @@
         "elementName": "resultado",
         "elementSet": "data",
         "elementPath": "resultado"
-      },
-      "listas": {
-        "_defn": [
-          {
-            "_row_num": 31,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "listas",
-        "elementName": "listas",
-        "elementSet": "data",
-        "elementPath": "listas"
-      },
-      "rel_tecnico": {
-        "_defn": [
-          {
-            "_row_num": 32,
-            "section_name": "model"
-          }
-        ],
-        "type": "note",
-        "elementKey": "rel_tecnico",
-        "elementName": "rel_tecnico",
-        "elementSet": "data",
-        "elementPath": "rel_tecnico"
       },
       "tecnico": {
         "type": "string",
@@ -2661,7 +2424,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 33,
+            "_row_num": 24,
             "section_name": "model"
           }
         ],
@@ -2678,7 +2441,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 34,
+            "_row_num": 25,
             "section_name": "model"
           }
         ],
@@ -2695,7 +2458,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 35,
+            "_row_num": 26,
             "section_name": "model"
           }
         ],
@@ -2712,7 +2475,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 36,
+            "_row_num": 27,
             "section_name": "model"
           }
         ],
@@ -2729,7 +2492,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 37,
+            "_row_num": 28,
             "section_name": "model"
           }
         ],
@@ -2766,7 +2529,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 38,
+            "_row_num": 29,
             "section_name": "model"
           }
         ],
@@ -2793,7 +2556,7 @@
             "section_name": "survey"
           },
           {
-            "_row_num": 39,
+            "_row_num": 30,
             "section_name": "model"
           }
         ],
@@ -2801,6 +2564,19 @@
         "elementName": "date_assinatuda",
         "elementSet": "data",
         "elementPath": "date_assinatuda"
+      },
+      "visitaformID": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 32,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "visitaformID",
+        "elementName": "visitaformID",
+        "elementSet": "data",
+        "elementPath": "visitaformID"
       },
       "assinatura_uriFragment": {
         "type": "string",
