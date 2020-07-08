@@ -240,6 +240,16 @@
         "type": "time",
         "name": "hora_vomito_adm",
         "_row_num": 8
+      },
+      {
+        "type": "string",
+        "name": "inclusaoformID",
+        "_row_num": 9
+      },
+      {
+        "type": "string",
+        "name": "visitaformID",
+        "_row_num": 10
       }
     ]
   },
@@ -504,6 +514,26 @@
           }
         ],
         "elementKey": "hora_vomito_adm"
+      },
+      "inclusaoformID": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 9,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "inclusaoformID"
+      },
+      "visitaformID": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 10,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "visitaformID"
       }
     },
     "section_names": [
@@ -967,6 +997,32 @@
         "elementName": "hora_vomito_adm",
         "elementSet": "data",
         "elementPath": "hora_vomito_adm"
+      },
+      "inclusaoformID": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 9,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "inclusaoformID",
+        "elementName": "inclusaoformID",
+        "elementSet": "data",
+        "elementPath": "inclusaoformID"
+      },
+      "visitaformID": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 10,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "visitaformID",
+        "elementName": "visitaformID",
+        "elementSet": "data",
+        "elementPath": "visitaformID"
       },
       "_id": {
         "type": "string",

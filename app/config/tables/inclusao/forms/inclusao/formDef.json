@@ -812,6 +812,16 @@
         "_row_num": 118
       },
       {
+        "type": "note",
+        "name": "nota_sexo",
+        "display": {
+          "prompt": {
+            "text": "Sexo: {{calculates.sexo_display}}"
+          }
+        },
+        "_row_num": 119
+      },
+      {
         "type": "select_one",
         "values_list": "yesno",
         "name": "lamina",
@@ -1258,9 +1268,9 @@
         "query_type": "linked_table",
         "linked_form_id": "medicacao_previa",
         "linked_table_id": "medicacao_previa",
-        "selection": "_id=?",
-        "selectionArgs": "[data('_id')]",
-        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo'), inclusaoformID: data('_id')}",
+        "selection": "id_estudo=?",
+        "selectionArgs": "[ data('id_estudo') ]",
+        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo'), inclusaoformID: opendatakit.getCurrentInstanceId()}",
         "openRowInitialElementKeyToValueMap": "{}",
         "_row_num": 2
       },
@@ -1269,9 +1279,9 @@
         "query_type": "linked_table",
         "linked_form_id": "medicamento_administrado",
         "linked_table_id": "medicamento_administrado",
-        "selection": "_id=?",
-        "selectionArgs": "[data('_id')]",
-        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo'), inclusaoformID: data('_id')}",
+        "selection": "id_estudo=?",
+        "selectionArgs": "[ data('id_estudo') ]",
+        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo'), inclusaoformID: opendatakit.getCurrentInstanceId()}",
         "openRowInitialElementKeyToValueMap": "{}",
         "_row_num": 3
       },
@@ -1349,6 +1359,11 @@
         "calculation_name": "dn_idade_display_longo",
         "calculation": "data('DOB_ou_idade')=='1' ? (\"Data de nascimento é \" + calculates.dn_display() ) : (\"Tem \" +data('ano')+\" anos e \" + data('mes') + \" meses\")",
         "_row_num": 11
+      },
+      {
+        "calculation_name": "sexo_display",
+        "calculation": "data('sexo') == '1' ? 'M' : 'F'",
+        "_row_num": 12
       }
     ],
     "model": [
@@ -2211,9 +2226,9 @@
         "query_type": "linked_table",
         "linked_form_id": "medicacao_previa",
         "linked_table_id": "medicacao_previa",
-        "selection": "_id=?",
-        "selectionArgs": "[data('_id')]",
-        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo'), inclusaoformID: data('_id')}",
+        "selection": "id_estudo=?",
+        "selectionArgs": "[ data('id_estudo') ]",
+        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo'), inclusaoformID: opendatakit.getCurrentInstanceId()}",
         "openRowInitialElementKeyToValueMap": "{}",
         "_row_num": 2
       },
@@ -2222,9 +2237,9 @@
         "query_type": "linked_table",
         "linked_form_id": "medicamento_administrado",
         "linked_table_id": "medicamento_administrado",
-        "selection": "_id=?",
-        "selectionArgs": "[data('_id')]",
-        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo'), inclusaoformID: data('_id')}",
+        "selection": "id_estudo=?",
+        "selectionArgs": "[ data('id_estudo') ]",
+        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo'), inclusaoformID: opendatakit.getCurrentInstanceId()}",
         "openRowInitialElementKeyToValueMap": "{}",
         "_row_num": 3
       },
@@ -2286,6 +2301,11 @@
         "calculation_name": "dn_idade_display_longo",
         "calculation": "data('DOB_ou_idade')=='1' ? (\"Data de nascimento é \" + calculates.dn_display() ) : (\"Tem \" +data('ano')+\" anos e \" + data('mes') + \" meses\")",
         "_row_num": 11
+      },
+      "sexo_display": {
+        "calculation_name": "sexo_display",
+        "calculation": "data('sexo') == '1' ? 'M' : 'F'",
+        "_row_num": 12
       }
     },
     "model": {
@@ -4039,6 +4059,21 @@
             "promptIdx": 51
           },
           {
+            "type": "note",
+            "name": "nota_sexo",
+            "display": {
+              "prompt": {
+                "text": "Sexo: {{calculates.sexo_display}}"
+              }
+            },
+            "_row_num": 119,
+            "__rowNum__": 118,
+            "_token_type": "prompt",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen114",
+            "promptIdx": 52
+          },
+          {
             "type": "select_one",
             "values_list": "yesno",
             "name": "lamina",
@@ -4052,7 +4087,7 @@
             "_token_type": "prompt",
             "_type": "select_one",
             "_branch_label_enclosing_screen": "survey/_screen114",
-            "promptIdx": 52
+            "promptIdx": 53
           },
           {
             "type": "text",
@@ -4067,7 +4102,7 @@
             "_token_type": "prompt",
             "_type": "text",
             "_branch_label_enclosing_screen": "survey/_screen124",
-            "promptIdx": 53
+            "promptIdx": 54
           },
           {
             "_token_type": "prompt",
@@ -4075,7 +4110,7 @@
             "_type": "contents",
             "_row_num": 125,
             "_branch_label_enclosing_screen": "survey/_screen125",
-            "promptIdx": 54
+            "promptIdx": 55
           }
         ],
         "validation_tag_map": {
@@ -4404,7 +4439,7 @@
               "__rowNum__": 120,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(50);\nactivePromptIndicies.push(51);\nactivePromptIndicies.push(52);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(50);\nactivePromptIndicies.push(51);\nactivePromptIndicies.push(52);\nactivePromptIndicies.push(53);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 28
           },
           {
@@ -4420,7 +4455,7 @@
           {
             "_row_num": 124,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(53);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(54);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 30
           },
           {
@@ -4432,7 +4467,7 @@
           {
             "_row_num": 125,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(54);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(55);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
