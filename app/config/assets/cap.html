@@ -77,11 +77,10 @@
                 
                 $(this).data('val', newVal);
                 localStorage.setItem("centro", newVal);
-                updateDay();
             });
 
             setTimeout(restoreState, 10);
-          
+            setTimeout(loadList, 100);
         }
         
         function restoreState() {
@@ -221,7 +220,7 @@
         function addPersonDiv(p) {    
             var btn = "<button class='btn btn-sm'>&gt;</button>";
             var nome = (p.nome_casa && p.nome_casa.length) ? nome = p.nome + " (" + p.nome_casa + ")" : p.nome;        
-            var btnRow = "<tr class='" + cssClass + "'><td>" + getAddress(p) + "</td><td>" + getNames(p) + "</td><td>" + getAgeString(p) + "<br/>" + getPhones(p) + "</td><td>" + btn + "</td></tr>";
+            var btnRow = "<tr><td>" + getAddress(p) + "</td><td>" + getNames(p) + "</td><td>" + getAgeString(p) + "<br/>" + getPhones(p) + "</td><td>" + btn + "</td></tr>";
             $('#theList tr:last').after(btnRow);
             $('#theList tr:last').on("click",function() { 
                 addPersonForm(p);
