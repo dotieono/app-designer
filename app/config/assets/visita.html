@@ -44,29 +44,7 @@
             //console.log('Loading visita v. 0.11');            
             
             window.adateHelper = getAdateHelper();
-            // /*    Screen new client option that launches new client list view */
-            //  var visita = document.createElement("button");
-            // visita.setAttribute("id", "button2");
-            // visita.innerHTML = "Visitas de hoje";
-            // visita.onclick = function() {
-            //     odkTables.launchHTML(null, 
-            //     'config/assets/selectZona.html');
-            // }
-            // document.getElementById("wrapper").appendChild(visita);  
-
-            // // Follow up with existing client option that launches
-            // // 'femaleClients' table list view
-            // var agenda = document.createElement("button");
-            // agenda.setAttribute("id", "button2");
-            // agenda.innerHTML = "Agenda";
-            // agenda.onclick = function() {
-            //     odkTables.launchHTML(null, 
-            //     'config/assets/selectZona.html');
-            // }
-            // document.getElementById("wrapper").appendChild(agenda);    
-
-            // Send data option that luanches send finalized forms screen in
-            // Collect
+           
             var sendData = document.createElement("button");
             sendData.setAttribute("id", "button3");
             sendData.innerHTML = "Enviar Dados";
@@ -104,16 +82,21 @@
                 window.dayOffset += 1;
                 updateDay();
             })
+            $("#btnVisit").on("click", function() {
+                odkTables.launchHTML(null, 'config/assets/centro_visit.html');
+                return false;
+            })
+
             setTimeout(restoreState, 10);
             setTimeout(updateDay, 100);
         }
         
-function updateDay() {
-    window.today = new moment();
-    today.add(window.dayOffset, "days");
-    $("#theDate").text(getLocalDateString(today));
-    loadList();
-}
+        function updateDay() {
+            window.today = new moment();
+            today.add(window.dayOffset, "days");
+            $("#theDate").text(getLocalDateString(today));
+            loadList();
+        }
         function restoreState() {
             // Preload previous selections
             var storedCentro = localStorage.getItem("centro");
@@ -449,6 +432,7 @@ function updateDay() {
             </div>
         </form>
         <br/>
+        <a id="btnVisit" href="#" class="form-control btn btn-lg btn-primary" style="height:50px;width:40%;float:right;">Outro dia</a><br/>
         <div id="wrapper"></div>
     </body>
 </html>
