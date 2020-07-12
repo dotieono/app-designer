@@ -3,7 +3,7 @@
     "settings": [
       {
         "setting_name": "form_id",
-        "value": "seguimento",
+        "value": "outroDia",
         "_row_num": 2
       },
       {
@@ -15,14 +15,14 @@
         "setting_name": "survey",
         "display": {
           "title": {
-            "text": "Seguimento"
+            "text": "Seguimento de qualquer outro Dia"
           }
         },
         "_row_num": 4
       },
       {
         "setting_name": "table_id",
-        "value": "seguimento",
+        "value": "outroDia",
         "_row_num": 5
       }
     ],
@@ -1144,7 +1144,7 @@
         "linked_table_id": "medicamento_administrado",
         "selection": "id_estudo=?",
         "selectionArgs": "[ data('id_estudo') ]",
-        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo'), visitaformID: opendatakit.getCurrentInstanceId()}",
+        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo'), outrodiaformID: opendatakit.getCurrentInstanceId()}",
         "openRowInitialElementKeyToValueMap": "{}",
         "_row_num": 2
       },
@@ -1155,7 +1155,7 @@
         "linked_table_id": "evento_adverso",
         "selection": "id_estudo=?",
         "selectionArgs": "[ data('id_estudo') ]",
-        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo'), region: data('region'), cs: data('cs'), nome: data('nome'), DOB_ou_idade: data('DOB_ou_idade'), dn: data('dn'), ano: data('ano'), mes: data('mes'), sexo: data('sexo'), date_rastreio:data('date_rastreio'), visitaformID: opendatakit.getCurrentInstanceId()}",
+        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo'), region: data('region'), cs: data('cs'), nome: data('nome'), DOB_ou_idade: data('DOB_ou_idade'), dn: data('dn'), ano: data('ano'), mes: data('mes'), sexo: data('sexo'), date_rastreio:data('date_rastreio'), outrodiaformID: opendatakit.getCurrentInstanceId()}",
         "openRowInitialElementKeyToValueMap": "{}",
         "_row_num": 3
       }
@@ -1500,7 +1500,7 @@
     "settings": {
       "form_id": {
         "setting_name": "form_id",
-        "value": "seguimento",
+        "value": "outroDia",
         "_row_num": 2
       },
       "form_version": {
@@ -1512,14 +1512,14 @@
         "setting_name": "survey",
         "display": {
           "title": {
-            "text": "Seguimento"
+            "text": "Seguimento de qualquer outro Dia"
           }
         },
         "_row_num": 4
       },
       "table_id": {
         "setting_name": "table_id",
-        "value": "seguimento",
+        "value": "outroDia",
         "_row_num": 5
       },
       "_locales": {
@@ -1545,7 +1545,7 @@
         "setting_name": "survey",
         "display": {
           "title": {
-            "text": "Seguimento"
+            "text": "Seguimento de qualquer outro Dia"
           }
         },
         "_row_num": 4
@@ -2084,7 +2084,7 @@
         "linked_table_id": "medicamento_administrado",
         "selection": "id_estudo=?",
         "selectionArgs": "[ data('id_estudo') ]",
-        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo'), visitaformID: opendatakit.getCurrentInstanceId()}",
+        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo'), outrodiaformID: opendatakit.getCurrentInstanceId()}",
         "openRowInitialElementKeyToValueMap": "{}",
         "_row_num": 2
       },
@@ -2095,7 +2095,7 @@
         "linked_table_id": "evento_adverso",
         "selection": "id_estudo=?",
         "selectionArgs": "[ data('id_estudo') ]",
-        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo'), region: data('region'), cs: data('cs'), nome: data('nome'), DOB_ou_idade: data('DOB_ou_idade'), dn: data('dn'), ano: data('ano'), mes: data('mes'), sexo: data('sexo'), date_rastreio:data('date_rastreio'), visitaformID: opendatakit.getCurrentInstanceId()}",
+        "newRowInitialElementKeyToValueMap": "{id_estudo: data('id_estudo'), region: data('region'), cs: data('cs'), nome: data('nome'), DOB_ou_idade: data('DOB_ou_idade'), dn: data('dn'), ano: data('ano'), mes: data('mes'), sexo: data('sexo'), date_rastreio:data('date_rastreio'), outrodiaformID: opendatakit.getCurrentInstanceId()}",
         "openRowInitialElementKeyToValueMap": "{}",
         "_row_num": 3
       }
@@ -3840,7 +3840,7 @@
             "promptIdx": 1,
             "display": {
               "title": {
-                "text": "Seguimento"
+                "text": "Seguimento de qualquer outro Dia"
               }
             },
             "_branch_label_enclosing_screen": "survey/0"
@@ -5023,7 +5023,7 @@
         "_aspect": "default",
         "_key": "SurveyUtil.formId",
         "_type": "string",
-        "_value": "seguimento"
+        "_value": "outroDia"
       },
       {
         "_partition": "Table",
@@ -5037,7 +5037,7 @@
         "_aspect": "default",
         "_key": "displayName",
         "_type": "object",
-        "_value": "{\"text\":\"Seguimento\"}"
+        "_value": "{\"text\":\"Seguimento de qualquer outro Dia\"}"
       }
     ]
   }

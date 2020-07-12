@@ -38,7 +38,7 @@
       },
       {
         "type": "string",
-        "name": "nome_Medicamento",
+        "name": "nome_medicamento",
         "display": {
           "prompt": {
             "text": "Nome genérico do medicamento"
@@ -430,7 +430,7 @@
       },
       {
         "type": "string",
-        "name": "nome_Medicamento",
+        "name": "nome_medicamento",
         "_row_num": 3
       },
       {
@@ -800,7 +800,7 @@
         ],
         "elementKey": "id_estudo"
       },
-      "nome_Medicamento": {
+      "nome_medicamento": {
         "type": "string",
         "_defn": [
           {
@@ -812,7 +812,7 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "nome_Medicamento"
+        "elementKey": "nome_medicamento"
       },
       "date_start": {
         "prompt_type_name": "adate",
@@ -986,7 +986,7 @@
         "prompts": [
           {
             "type": "string",
-            "name": "nome_Medicamento",
+            "name": "nome_medicamento",
             "display": {
               "prompt": {
                 "text": "Nome genérico do medicamento"
@@ -1475,7 +1475,7 @@
         "elementSet": "data",
         "elementPath": "id_estudo"
       },
-      "nome_Medicamento": {
+      "nome_medicamento": {
         "type": "string",
         "_defn": [
           {
@@ -1487,10 +1487,10 @@
             "section_name": "model"
           }
         ],
-        "elementKey": "nome_Medicamento",
-        "elementName": "nome_Medicamento",
+        "elementKey": "nome_medicamento",
+        "elementName": "nome_medicamento",
         "elementSet": "data",
-        "elementPath": "nome_Medicamento"
+        "elementPath": "nome_medicamento"
       },
       "date_start": {
         "prompt_type_name": "adate",
