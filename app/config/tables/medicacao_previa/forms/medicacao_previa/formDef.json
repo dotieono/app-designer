@@ -75,7 +75,6 @@
             "toYear": 2020
           }
         },
-        "constraint": "data('date_end')>=data('date_start')",
         "_row_num": 6
       },
       {
@@ -94,8 +93,27 @@
         "_row_num": 8
       },
       {
-        "clause": "begin screen",
+        "clause": "if",
+        "condition": "calculates.diferenca()<0",
         "_row_num": 9
+      },
+      {
+        "type": "note",
+        "name": "erro_datas",
+        "display": {
+          "prompt": {
+            "text": "A data do fim \"{{data('date_end')}}\" não deve ser menor que a data do inicio \"{{data('date_start')}}"
+          }
+        },
+        "_row_num": 10
+      },
+      {
+        "clause": "end if",
+        "_row_num": 11
+      },
+      {
+        "clause": "begin screen",
+        "_row_num": 12
       },
       {
         "type": "note",
@@ -105,7 +123,7 @@
             "text": "Dose diária total e unidade"
           }
         },
-        "_row_num": 10
+        "_row_num": 13
       },
       {
         "type": "integer",
@@ -115,7 +133,7 @@
             "text": "Quantidade de doses diária"
           }
         },
-        "_row_num": 11
+        "_row_num": 14
       },
       {
         "type": "select_one",
@@ -126,12 +144,12 @@
             "text": "unidade"
           }
         },
-        "_row_num": 12
+        "_row_num": 15
       },
       {
         "clause": "if",
         "condition": "data('unidade')=='9'",
-        "_row_num": 13
+        "_row_num": 16
       },
       {
         "type": "string",
@@ -141,15 +159,15 @@
             "text": "Especifica a unidade da dose"
           }
         },
-        "_row_num": 14
+        "_row_num": 17
       },
       {
         "clause": "end if",
-        "_row_num": 15
+        "_row_num": 18
       },
       {
         "clause": "end screen",
-        "_row_num": 16
+        "_row_num": 19
       },
       {
         "type": "select_one",
@@ -160,12 +178,12 @@
             "text": "Via de administração"
           }
         },
-        "_row_num": 18
+        "_row_num": 21
       },
       {
         "clause": "if",
         "condition": "data('via')=='9'",
-        "_row_num": 19
+        "_row_num": 22
       },
       {
         "type": "string",
@@ -175,11 +193,11 @@
             "text": "Especifica a via de administração"
           }
         },
-        "_row_num": 20
+        "_row_num": 23
       },
       {
         "clause": "end if",
-        "_row_num": 21
+        "_row_num": 24
       },
       {
         "type": "string",
@@ -189,7 +207,13 @@
             "text": "Indicações de uso"
           }
         },
-        "_row_num": 22
+        "_row_num": 25
+      },
+      {
+        "type": "assign",
+        "name": "date_form",
+        "calculation": "adate.today()",
+        "_row_num": 27
       }
     ],
     "choices": [
@@ -412,14 +436,9 @@
     ],
     "calculates": [
       {
-        "calculation_name": "codigo_manual",
-        "calculation": "concat(data('letra_sticker'),data('numero_sticker'))",
+        "calculation_name": "diferenca",
+        "calculation": "adate.diffInDays(data('date_end'), data('date_start'))",
         "_row_num": 2
-      },
-      {
-        "calculation_name": "ano_em_mes",
-        "calculation": "(data('ano')*12) + data('mes')",
-        "_row_num": 3
       }
     ],
     "model": [
@@ -778,15 +797,10 @@
     },
     "queries": {},
     "calculates": {
-      "codigo_manual": {
-        "calculation_name": "codigo_manual",
-        "calculation": "concat(data('letra_sticker'),data('numero_sticker'))",
+      "diferenca": {
+        "calculation_name": "diferenca",
+        "calculation": "adate.diffInDays(data('date_end'), data('date_start'))",
         "_row_num": 2
-      },
-      "ano_em_mes": {
-        "calculation_name": "ano_em_mes",
-        "calculation": "(data('ano')*12) + data('mes')",
-        "_row_num": 3
       }
     },
     "model": {
@@ -881,7 +895,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 11,
+            "_row_num": 14,
             "section_name": "survey"
           },
           {
@@ -896,7 +910,7 @@
         "valuesList": "unidade",
         "_defn": [
           {
-            "_row_num": 12,
+            "_row_num": 15,
             "section_name": "survey"
           },
           {
@@ -910,7 +924,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 14,
+            "_row_num": 17,
             "section_name": "survey"
           },
           {
@@ -925,7 +939,7 @@
         "valuesList": "via_adm",
         "_defn": [
           {
-            "_row_num": 18,
+            "_row_num": 21,
             "section_name": "survey"
           },
           {
@@ -939,7 +953,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 20,
+            "_row_num": 23,
             "section_name": "survey"
           },
           {
@@ -953,7 +967,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 22,
+            "_row_num": 25,
             "section_name": "survey"
           },
           {
@@ -972,6 +986,15 @@
           }
         ],
         "elementKey": "inclusaoformID"
+      },
+      "date_form": {
+        "_defn": [
+          {
+            "_row_num": 27,
+            "section_name": "survey"
+          }
+        ],
+        "elementKey": "date_form"
       }
     },
     "section_names": [
@@ -1033,7 +1056,6 @@
                 "toYear": 2020
               }
             },
-            "constraint": "data('date_end')>=data('date_start')",
             "_row_num": 6,
             "__rowNum__": 5,
             "_token_type": "prompt",
@@ -1059,18 +1081,33 @@
           },
           {
             "type": "note",
-            "name": "dose",
+            "name": "erro_datas",
             "display": {
               "prompt": {
-                "text": "Dose diária total e unidade"
+                "text": "A data do fim \"{{data('date_end')}}\" não deve ser menor que a data do inicio \"{{data('date_start')}}"
               }
             },
             "_row_num": 10,
             "__rowNum__": 9,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen9",
+            "_branch_label_enclosing_screen": "survey/_screen10",
             "promptIdx": 4
+          },
+          {
+            "type": "note",
+            "name": "dose",
+            "display": {
+              "prompt": {
+                "text": "Dose diária total e unidade"
+              }
+            },
+            "_row_num": 13,
+            "__rowNum__": 12,
+            "_token_type": "prompt",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen12",
+            "promptIdx": 5
           },
           {
             "type": "integer",
@@ -1080,12 +1117,12 @@
                 "text": "Quantidade de doses diária"
               }
             },
-            "_row_num": 11,
-            "__rowNum__": 10,
+            "_row_num": 14,
+            "__rowNum__": 13,
             "_token_type": "prompt",
             "_type": "integer",
-            "_branch_label_enclosing_screen": "survey/_screen9",
-            "promptIdx": 5
+            "_branch_label_enclosing_screen": "survey/_screen12",
+            "promptIdx": 6
           },
           {
             "type": "select_one",
@@ -1096,12 +1133,12 @@
                 "text": "unidade"
               }
             },
-            "_row_num": 12,
-            "__rowNum__": 11,
+            "_row_num": 15,
+            "__rowNum__": 14,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen9",
-            "promptIdx": 6
+            "_branch_label_enclosing_screen": "survey/_screen12",
+            "promptIdx": 7
           },
           {
             "type": "string",
@@ -1111,12 +1148,12 @@
                 "text": "Especifica a unidade da dose"
               }
             },
-            "_row_num": 14,
-            "__rowNum__": 13,
+            "_row_num": 17,
+            "__rowNum__": 16,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen9",
-            "promptIdx": 7
+            "_branch_label_enclosing_screen": "survey/_screen12",
+            "promptIdx": 8
           },
           {
             "type": "select_one",
@@ -1127,12 +1164,12 @@
                 "text": "Via de administração"
               }
             },
-            "_row_num": 18,
-            "__rowNum__": 17,
+            "_row_num": 21,
+            "__rowNum__": 20,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen18",
-            "promptIdx": 8
+            "_branch_label_enclosing_screen": "survey/_screen21",
+            "promptIdx": 9
           },
           {
             "type": "string",
@@ -1142,12 +1179,12 @@
                 "text": "Especifica a via de administração"
               }
             },
-            "_row_num": 20,
-            "__rowNum__": 19,
+            "_row_num": 23,
+            "__rowNum__": 22,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen20",
-            "promptIdx": 9
+            "_branch_label_enclosing_screen": "survey/_screen23",
+            "promptIdx": 10
           },
           {
             "type": "string",
@@ -1157,26 +1194,24 @@
                 "text": "Indicações de uso"
               }
             },
-            "_row_num": 22,
-            "__rowNum__": 21,
+            "_row_num": 25,
+            "__rowNum__": 24,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen22",
-            "promptIdx": 10
+            "_branch_label_enclosing_screen": "survey/_screen25",
+            "promptIdx": 11
           },
           {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 23,
-            "_branch_label_enclosing_screen": "survey/_screen23",
-            "promptIdx": 11
+            "_row_num": 28,
+            "_branch_label_enclosing_screen": "survey/_screen28",
+            "promptIdx": 12
           }
         ],
         "validation_tag_map": {
-          "finalize": [
-            2
-          ]
+          "finalize": []
         },
         "operations": [
           {
@@ -1194,93 +1229,135 @@
             "operationIdx": 0
           },
           {
-            "clause": "begin screen",
+            "clause": "if",
+            "condition": "calculates.diferenca()<0",
             "_row_num": 9,
             "__rowNum__": 8,
-            "_token_type": "begin_screen",
-            "_end_screen_clause": {
-              "clause": "end screen",
-              "_row_num": 16,
-              "__rowNum__": 15,
-              "_token_type": "end_screen"
-            },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(4);\nactivePromptIndicies.push(5);\nactivePromptIndicies.push(6);\nif (data('unidade')=='9') {\nactivePromptIndicies.push(7);\n}\n\nreturn activePromptIndicies;\n}\n",
+            "_token_type": "goto_label",
+            "_branch_label": "_then9",
             "operationIdx": 1
           },
           {
-            "_row_num": 18,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(8);\n\nreturn activePromptIndicies;\n}\n",
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_else11",
+            "_row_num": 11,
             "operationIdx": 2
           },
           {
-            "clause": "if",
-            "condition": "data('via')=='9'",
-            "_row_num": 19,
-            "__rowNum__": 18,
-            "_token_type": "goto_label",
-            "_branch_label": "_then19",
+            "_row_num": 10,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(4);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 3
           },
           {
             "clause": "end if",
             "_token_type": "goto_label",
-            "_branch_label": "_else21",
-            "_row_num": 21,
+            "_branch_label": "_endif11",
+            "_row_num": 11,
             "operationIdx": 4
           },
           {
-            "_row_num": 20,
+            "clause": "begin screen",
+            "_row_num": 12,
+            "__rowNum__": 11,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 19,
+              "__rowNum__": 18,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(5);\nactivePromptIndicies.push(6);\nactivePromptIndicies.push(7);\nif (data('unidade')=='9') {\nactivePromptIndicies.push(8);\n}\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 5
+          },
+          {
+            "_row_num": 21,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(9);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 5
+            "operationIdx": 6
+          },
+          {
+            "clause": "if",
+            "condition": "data('via')=='9'",
+            "_row_num": 22,
+            "__rowNum__": 21,
+            "_token_type": "goto_label",
+            "_branch_label": "_then22",
+            "operationIdx": 7
           },
           {
             "clause": "end if",
             "_token_type": "goto_label",
-            "_branch_label": "_endif21",
-            "_row_num": 21,
-            "operationIdx": 6
-          },
-          {
-            "_row_num": 22,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(10);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 7
-          },
-          {
-            "_token_type": "exit_section",
-            "clause": "exit section",
-            "_row_num": 23,
+            "_branch_label": "_else24",
+            "_row_num": 24,
             "operationIdx": 8
           },
           {
             "_row_num": 23,
             "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(10);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 9
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif24",
+            "_row_num": 24,
+            "operationIdx": 10
+          },
+          {
+            "_row_num": 25,
+            "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(11);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 11
+          },
+          {
+            "type": "assign",
+            "name": "date_form",
+            "calculation": "adate.today()",
+            "_row_num": 27,
+            "__rowNum__": 26,
+            "_token_type": "assign",
+            "operationIdx": 12
+          },
+          {
+            "_token_type": "exit_section",
+            "clause": "exit section",
+            "_row_num": 28,
+            "operationIdx": 13
+          },
+          {
+            "_row_num": 28,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(12);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
-            "operationIdx": 9
+            "operationIdx": 14
           },
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 23,
-            "operationIdx": 10
+            "_row_num": 28,
+            "operationIdx": 15
           }
         ],
         "branch_label_map": {
           "_screen3": 0,
-          "_screen9": 1,
-          "_screen18": 2,
-          "_then19": 5,
-          "_screen20": 5,
-          "_else21": 7,
-          "_endif21": 7,
-          "_screen22": 7,
-          "_contents": 9,
-          "_screen23": 9
+          "_then9": 3,
+          "_screen10": 3,
+          "_else11": 5,
+          "_endif11": 5,
+          "_screen12": 5,
+          "_screen21": 6,
+          "_then22": 9,
+          "_screen23": 9,
+          "_else24": 11,
+          "_endif24": 11,
+          "_screen25": 11,
+          "_contents": 14,
+          "_screen28": 14
         }
       },
       "initial": {
@@ -1571,7 +1648,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 11,
+            "_row_num": 14,
             "section_name": "survey"
           },
           {
@@ -1589,7 +1666,7 @@
         "valuesList": "unidade",
         "_defn": [
           {
-            "_row_num": 12,
+            "_row_num": 15,
             "section_name": "survey"
           },
           {
@@ -1606,7 +1683,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 14,
+            "_row_num": 17,
             "section_name": "survey"
           },
           {
@@ -1624,7 +1701,7 @@
         "valuesList": "via_adm",
         "_defn": [
           {
-            "_row_num": 18,
+            "_row_num": 21,
             "section_name": "survey"
           },
           {
@@ -1641,7 +1718,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 20,
+            "_row_num": 23,
             "section_name": "survey"
           },
           {
@@ -1658,7 +1735,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 22,
+            "_row_num": 25,
             "section_name": "survey"
           },
           {
@@ -1683,6 +1760,18 @@
         "elementName": "inclusaoformID",
         "elementSet": "data",
         "elementPath": "inclusaoformID"
+      },
+      "date_form": {
+        "_defn": [
+          {
+            "_row_num": 27,
+            "section_name": "survey"
+          }
+        ],
+        "elementKey": "date_form",
+        "elementName": "date_form",
+        "elementSet": "data",
+        "elementPath": "date_form"
       },
       "_id": {
         "type": "string",

@@ -46,7 +46,7 @@
         "name": "evento_id",
         "display": {
           "prompt": {
-            "text": "Código de estudo:"
+            "text": "Código de estudo:{{id_estudo}}"
           }
         },
         "_row_num": 5
@@ -722,6 +722,11 @@
         "type": "string",
         "name": "visitaformID",
         "_row_num": 31
+      },
+      {
+        "type": "string",
+        "name": "outrodiaformID",
+        "_row_num": 32
       }
     ]
   },
@@ -1397,6 +1402,16 @@
           }
         ],
         "elementKey": "visitaformID"
+      },
+      "outrodiaformID": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 32,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "outrodiaformID"
       }
     },
     "section_names": [
@@ -1429,7 +1444,7 @@
             "name": "evento_id",
             "display": {
               "prompt": {
-                "text": "Código de estudo:"
+                "text": "Código de estudo:{{id_estudo}}"
               }
             },
             "_row_num": 5,
@@ -2510,6 +2525,19 @@
         "elementName": "visitaformID",
         "elementSet": "data",
         "elementPath": "visitaformID"
+      },
+      "outrodiaformID": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 32,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "outrodiaformID",
+        "elementName": "outrodiaformID",
+        "elementSet": "data",
+        "elementPath": "outrodiaformID"
       },
       "assinatura_uriFragment": {
         "type": "string",

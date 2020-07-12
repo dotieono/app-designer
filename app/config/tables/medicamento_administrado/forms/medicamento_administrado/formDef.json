@@ -195,14 +195,19 @@
     ],
     "calculates": [
       {
-        "calculation_name": "codigo_manual",
-        "calculation": "concat(data('letra_sticker'),data('numero_sticker'))",
+        "calculation_name": "hoje",
+        "calculation": "adate.today()",
         "_row_num": 2
       },
       {
-        "calculation_name": "ano_em_mes",
-        "calculation": "(data('ano')*12) + data('mes')",
+        "calculation_name": "nao_data",
+        "calculation": "adate.hasUncertainty(data('date_adm'))",
         "_row_num": 3
+      },
+      {
+        "calculation_name": "nao_futuro",
+        "calculation": "adate.diffInDays(calculates.hoje(),data('date_adm'))",
+        "_row_num": 4
       }
     ],
     "model": [
@@ -250,6 +255,11 @@
         "type": "string",
         "name": "visitaformID",
         "_row_num": 10
+      },
+      {
+        "type": "string",
+        "name": "outrodiaformID",
+        "_row_num": 11
       }
     ]
   },
@@ -401,15 +411,20 @@
     },
     "queries": {},
     "calculates": {
-      "codigo_manual": {
-        "calculation_name": "codigo_manual",
-        "calculation": "concat(data('letra_sticker'),data('numero_sticker'))",
+      "hoje": {
+        "calculation_name": "hoje",
+        "calculation": "adate.today()",
         "_row_num": 2
       },
-      "ano_em_mes": {
-        "calculation_name": "ano_em_mes",
-        "calculation": "(data('ano')*12) + data('mes')",
+      "nao_data": {
+        "calculation_name": "nao_data",
+        "calculation": "adate.hasUncertainty(data('date_adm'))",
         "_row_num": 3
+      },
+      "nao_futuro": {
+        "calculation_name": "nao_futuro",
+        "calculation": "adate.diffInDays(calculates.hoje(),data('date_adm'))",
+        "_row_num": 4
       }
     },
     "model": {
@@ -534,6 +549,16 @@
           }
         ],
         "elementKey": "visitaformID"
+      },
+      "outrodiaformID": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 11,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "outrodiaformID"
       }
     },
     "section_names": [
@@ -1023,6 +1048,19 @@
         "elementName": "visitaformID",
         "elementSet": "data",
         "elementPath": "visitaformID"
+      },
+      "outrodiaformID": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 11,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "outrodiaformID",
+        "elementName": "outrodiaformID",
+        "elementSet": "data",
+        "elementPath": "outrodiaformID"
       },
       "_id": {
         "type": "string",

@@ -207,6 +207,24 @@
       {
         "clause": "exit section",
         "_row_num": 40
+      },
+      {
+        "branch_label": "outroDia",
+        "_row_num": 41
+      },
+      {
+        "url": "'?' + odkSurvey.getHashString('outroDia')",
+        "type": "external_link",
+        "display": {
+          "prompt": {
+            "text": "Open form"
+          }
+        },
+        "_row_num": 42
+      },
+      {
+        "clause": "exit section",
+        "_row_num": 43
       }
     ],
     "settings": [
@@ -363,6 +381,16 @@
           }
         },
         "_row_num": 10
+      },
+      {
+        "choice_list_name": "test_forms",
+        "data_value": "outroDia",
+        "display": {
+          "title": {
+            "text": "Seguimento de qualquer outro Dia"
+          }
+        },
+        "_row_num": 11
       }
     ],
     "framework_translations": [
@@ -1055,6 +1083,16 @@
             }
           },
           "_row_num": 10
+        },
+        {
+          "choice_list_name": "test_forms",
+          "data_value": "outroDia",
+          "display": {
+            "title": {
+              "text": "Seguimento de qualquer outro Dia"
+            }
+          },
+          "_row_num": 11
         }
       ]
     },
@@ -1850,12 +1888,27 @@
             "promptIdx": 10
           },
           {
+            "url": "'?' + odkSurvey.getHashString('outroDia')",
+            "type": "external_link",
+            "display": {
+              "prompt": {
+                "text": "Open form"
+              }
+            },
+            "_row_num": 42,
+            "__rowNum__": 41,
+            "_token_type": "prompt",
+            "_type": "external_link",
+            "_branch_label_enclosing_screen": "survey/_screen42",
+            "promptIdx": 11
+          },
+          {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 41,
-            "_branch_label_enclosing_screen": "survey/_screen41",
-            "promptIdx": 11
+            "_row_num": 44,
+            "_branch_label_enclosing_screen": "survey/_screen44",
+            "promptIdx": 12
           }
         ],
         "validation_tag_map": {
@@ -2022,25 +2075,38 @@
             "operationIdx": 23
           },
           {
-            "_token_type": "exit_section",
-            "clause": "exit section",
-            "_row_num": 41,
+            "_row_num": 42,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(11);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 24
           },
           {
-            "_row_num": 41,
+            "clause": "exit section",
+            "_row_num": 43,
+            "__rowNum__": 42,
+            "_token_type": "exit_section",
+            "operationIdx": 25
+          },
+          {
+            "_token_type": "exit_section",
+            "clause": "exit section",
+            "_row_num": 44,
+            "operationIdx": 26
+          },
+          {
+            "_row_num": 44,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(11);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(12);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
-            "operationIdx": 25
+            "operationIdx": 27
           },
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 41,
-            "operationIdx": 26
+            "_row_num": 44,
+            "operationIdx": 28
           }
         ],
         "branch_label_map": {
@@ -2067,8 +2133,10 @@
           "_screen35": 20,
           "resultado_tdr": 22,
           "_screen39": 22,
-          "_contents": 25,
-          "_screen41": 25
+          "outroDia": 24,
+          "_screen42": 24,
+          "_contents": 27,
+          "_screen44": 27
         }
       }
     },

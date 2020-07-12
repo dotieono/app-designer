@@ -36,7 +36,7 @@
         "name": "titulo_form",
         "display": {
           "prompt": {
-            "text": "Formulário de seguimento de caso do dia {{calculates.dia_corregido}}"
+            "text": "Formulário de seguimento de caso do dia {{calculates.dia_corregido}} (dose adjusted:{{data.DoseAdjustedDay}})"
           }
         },
         "_row_num": 4
@@ -1456,6 +1456,11 @@
         "type": "assign",
         "name": "dia_corregido",
         "_row_num": 52
+      },
+      {
+        "type": "integer",
+        "name": "DoseAdjustedDay",
+        "_row_num": 53
       }
     ]
   },
@@ -2809,6 +2814,16 @@
         ],
         "type": "assign",
         "elementKey": "dia_corregido"
+      },
+      "DoseAdjustedDay": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 53,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "DoseAdjustedDay"
       }
     },
     "section_names": [
@@ -2826,7 +2841,7 @@
             "name": "titulo_form",
             "display": {
               "prompt": {
-                "text": "Formulário de seguimento de caso do dia {{calculates.dia_corregido}}"
+                "text": "Formulário de seguimento de caso do dia {{calculates.dia_corregido}} (dose adjusted:{{data.DoseAdjustedDay}})"
               }
             },
             "_row_num": 4,
@@ -4733,6 +4748,19 @@
         "elementName": "dia_corregido",
         "elementSet": "data",
         "elementPath": "dia_corregido"
+      },
+      "DoseAdjustedDay": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 53,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "DoseAdjustedDay",
+        "elementName": "DoseAdjustedDay",
+        "elementSet": "data",
+        "elementPath": "DoseAdjustedDay"
       },
       "picture_lamina_uriFragment": {
         "type": "string",
