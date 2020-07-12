@@ -173,6 +173,8 @@ function updateDay() {
                     var visits = result.getData(row, "visits");
                     var visitCount = result.getData(row, "visitCount");
 
+                    var doseCount =  result.getData(row,"COUNT_DOSES");
+
                     var p = {
                         id,
                         id_estudo,
@@ -194,10 +196,11 @@ function updateDay() {
                         mes,
                         visits,
                         visitCount,
+                        doseCount,
                     }          
 
                     if (!isRelevant(p)) continue;
-                    ////console.log(p);
+                    
                     persons.push(p);
                 }
                 populateList(persons);
@@ -209,10 +212,13 @@ function updateDay() {
             }
 
             var selCs = $("#selCs").val();
-            var sql = 'SELECT count(seg._id) as visitCount, group_concat(seg.id_visita) as visits, inc.tab_bairro, inc.zona, inc.cs, inc.date_rastreio, inc.nome, inc.nome_acomp, inc.nome_mae, inc.nome_pai, inc.tel_acomp, inc.tel_mae, inc.tel_pai, inc.sexo, inc.id_estudo, inc.DOB_ou_idade, inc.ano, inc.mes, inc.dn FROM inclusao inc LEFT JOIN seguimento seg ON inc.id_estudo = seg.id_estudo ';
+            
+            var sql = 'SELECT count(DISTINCT seg._id) as visitCount, count(DISTINCT seg2.id_visita) as COUNT_DOSES, group_concat(DISTINCT seg.id_visita) as visits, ';
+            sql = sql + 'inc.tab_bairro, inc.zona, inc.cs, inc.date_rastreio, inc.nome, inc.nome_acomp, inc.nome_mae, inc.nome_pai, inc.tel_acomp, ';
+            sql = sql + 'inc.tel_mae, inc.tel_pai, inc.sexo, inc.id_estudo, inc.DOB_ou_idade, inc.ano, inc.mes, inc.dn ';
+            sql = sql + 'FROM inclusao inc LEFT JOIN seguimento seg ON inc.id_estudo = seg.id_estudo LEFT JOIN seguimento seg2 ON inc.id_estudo = seg2.id_estudo  AND (seg2.dose_AQ == "1" OR seg2.dose_AQ == "2") AND (seg2.id_visita == "1" OR seg2.id_visita == "2" OR seg2.id_visita == "3") ';
             sql = sql + "WHERE inc.cs = '" + selCs + "' GROUP BY inc._id";
-            // var sql = 'SELECT tab_bairro, zona, cs, date_rastreio, nome, nome_acomp, nome_mae, nome_pai, tel_acomp, tel_mae, tel_pai, sexo, id_estudo, DOB_ou_idade, ano, mes, dn FROM inclusao '
-            // sql = sql + 'WHERE cs = "' + selCs + '"'
+
             console.log(sql);
             odkData.arbitraryQuery('inclusao', sql, null, null, null, successFn, failureFn);
         }
@@ -230,6 +236,16 @@ function updateDay() {
             return false;
         }
 
+        function getAdjustedDay(p) {            
+            // This checks the number of doses this person has been given and adjusts the "day" of the visit to match
+            var real_days = adateHelper.ageInDays(p.date_rastreio);
+            if (real_days>4) return real_days;
+            if (p.doseCount == 0) return 1;
+            if (p.doseCount == 1) return 2;
+            if (p.doseCount == 2) return 3;
+            return real_days;
+        }
+
         function addPersonForm(person) {
             var tableId = "seguimento";
             var formId = "seguimento"; 
@@ -241,38 +257,8 @@ function updateDay() {
         }
 
         function getJsonMap(person) {
-            // This is the data available in the questionnaire (excel)
-            /* A person looks more or less like this;
-               ano: null
-                date_rastreio: "D:20,M:6,Y:2020"
-                dn: "D:5,M:2,Y:2020"
-                id: undefined
-                id_estudo: "Ba11"
-                mes: null
-                nome: "Quin"
-                nome_acomp: null
-                nome_mae: "Quan"
-                nome_pai: "Quon"
-                sexo: "1"
-                tab_bairro: "Praca"
-                tel_acomp: null
-                tel_mae: 58094
-                tel_pai: 802
-                zona: "Purto"
-            */      
 
-
-            // delete person.ano;
-            // delete person.date_rastreio;
-            // delete person.dn;
-            // delete person.id;
-            // delete person.id_estudo;
-            // delete person.mes;
-            // delete person.nome;
-            // delete person.nome_mae;
-            // delete person.nome_pai;
             delete person.nome_acomp;
-            // delete person.sexo;
             delete person.tab_bairro;
             delete person.tel_acomp;
             delete person.tel_mae;
@@ -280,9 +266,12 @@ function updateDay() {
             delete person.zona;
             delete person.visitCount;
             delete person.visits;
+            
+            // Add a field with the dose-adjusted day
+            person.DoseAdjustedDay =  getAdjustedDay(person);
 
-            //console.log("Sending following data:");
-            //console.log(person);      
+            // console.log("Sending following data:");
+            // console.log(person);      
 
             return person;
         }
