@@ -48,6 +48,14 @@ function display() {
                     console.error('trouble, unrecognized tab');
                 }
             });
+
+            $('#launchButton2').on('click', function() {
+                if (currentTab === 1) {
+                    odkTables.launchHTML(null, 'config/assets/cap.html');                
+                } else {
+                    console.error('trouble, unrecognized tab');
+                }
+            });
 }
 
 function updateForTab(tab) {
