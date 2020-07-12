@@ -18,7 +18,7 @@
 
         // Displays homescreen
         function display() {
-            console.log('Loading lab v. 0.14');            
+            console.log('Loading lab v. 0.15');            
             
             window.adateHelper = getAdateHelper();
       
@@ -31,7 +31,12 @@
             document.getElementById("wrapper").appendChild(sendData);    
 
             $("#btnSearch").on("click", function() {
-                var val = $("#txtCodigo").val().trim() + 'X' +  $("#txtCodigoX").val().trim();
+                var dia = $("#txtCodigoX").val().trim();
+                if (isNaN(parseInt($("#txtCodigoX").val().trim(),10))) {
+                    alert("So aceita o numero do dia! '" + dia + "' nao é válido");
+                    return false;
+                }
+                var val = $("#txtCodigo").val().trim() + 'D' +  dia;
                 loadList(val);
                 return false;
             });
@@ -240,7 +245,7 @@
         <form class="form-inline" style="text-align: center;" onsubmit="$('#btnSearch').click();return false;" action="#">
             <div class="form-group" style="margin:20px;text-align:center;">
                 <label class="form-label" for="selCs">
-                    <input type="text" placeholder="Codigo" class="form-control input-lg" id="txtCodigo" style="text-transform: uppercase;width:50%;float:left;"/> - 
+                    <input type="text" placeholder="Codigo" class="form-control input-lg" id="txtCodigo" style="text-transform: uppercase;width:48%;float:left;margin-right:2%;"/>
                     <input type="text" placeholder="Dia" class="form-control input-lg" id="txtCodigoX" style="text-transform: uppercase;width:20%;float:left;"/> 
                     <a href="#" class="btn btn-sm btn-success" style="height: inherit;width: auto;padding: 13px 35px;" id="btnSearch">OK</a>
                 </label>    
