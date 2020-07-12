@@ -25,7 +25,6 @@
     }
 </style>
         <script type="text/javascript">
-        window.dayOffset = 0;
         function getLocalDateString(moment) {
             return translateDay(moment.format('dddd')) + " " + moment.format('DD.MM.YYYY'); 
         }
@@ -78,36 +77,13 @@
                 
                 $(this).data('val', newVal);
                 localStorage.setItem("centro", newVal);
-                window.dayOffset = 0;
                 updateDay();
             });
-            $("#theDate").on("click", function() {
-                window.dayOffset = 0;
-                updateDay();
-            })
-            $("#prevDay").on("click", function() {
-                window.dayOffset -= 1;
-                updateDay();
-            })
-            $("#nextDay").on("click", function() {
-                window.dayOffset += 1;
-                updateDay();
-            })
-            $("#btnVisit").on("click", function() {
-                odkTables.launchHTML(null, 'config/assets/centro_visit.html');
-                return false;
-            })
 
             setTimeout(restoreState, 10);
-            setTimeout(updateDay, 100);
+          
         }
         
-        function updateDay() {
-            window.today = new moment();
-            today.add(window.dayOffset, "days");
-            $("#theDate").text(getLocalDateString(today));
-            loadList();
-        }
         function restoreState() {
             // Preload previous selections
             var storedCentro = localStorage.getItem("centro");
@@ -163,11 +139,6 @@
                     var dn =  result.getData(row,"dn");
                     var ano =  result.getData(row,"ano");
                     var mes =  result.getData(row,"mes");
-                    
-                    var visits = result.getData(row, "visits");
-                    var visitCount = result.getData(row, "visitCount");
-
-                    var doseCount =  result.getData(row,"COUNT_DOSES");
 
                     var p = {
                         id,
@@ -187,14 +158,9 @@
                         DOB_ou_idade,
                         dn,
                         ano,
-                        mes,
-                        visits,
-                        visitCount,
-                        doseCount,
+                        mes,                        
                     }          
 
-                    if (!isRelevant(p)) continue;
-                    
                     persons.push(p);
                 }
                 populateList(persons);
@@ -206,40 +172,13 @@
             }
 
             var selCs = $("#selCs").val();
-            
-            var sql = 'SELECT count(DISTINCT seg._id) as visitCount, count(DISTINCT seg2.id_visita) as COUNT_DOSES, group_concat(DISTINCT seg.id_visita) as visits, ';
-            sql = sql + 'inc.tab_bairro, inc.zona, inc.cs, inc.date_rastreio, inc.nome, inc.nome_acomp, inc.nome_mae, inc.nome_pai, inc.tel_acomp, ';
-            sql = sql + 'inc.tel_mae, inc.tel_pai, inc.sexo, inc.id_estudo, inc.DOB_ou_idade, inc.ano, inc.mes, inc.dn ';
-            sql = sql + 'FROM inclusao inc LEFT JOIN seguimento seg ON inc.id_estudo = seg.id_estudo LEFT JOIN seguimento seg2 ON inc.id_estudo = seg2.id_estudo  AND (seg2.dose_AQ == "1" OR seg2.dose_AQ == "2") AND (seg2.id_visita == "1" OR seg2.id_visita == "2" OR seg2.id_visita == "3") ';
-            sql = sql + "WHERE inc.cs = '" + selCs + "' GROUP BY inc._id";
+            var sql = 'SELECT inc.tab_bairro, inc.zona, inc.cs, inc.date_rastreio, inc.nome, inc.nome_acomp, inc.nome_mae, inc.nome_pai, inc.tel_acomp, inc.tel_mae, inc.tel_pai, inc.sexo, inc.id_estudo, inc.DOB_ou_idade, inc.ano, inc.mes, inc.dn FROM inclusao inc WHERE inc.cs = "' + selCs + '" GROUP BY inc._id';
 
+         
             console.log(sql);
             odkData.arbitraryQuery('inclusao', sql, null, null, null, successFn, failureFn);
         }
         
-        function isRelevant(person) {
-            var offSet = window.dayOffset;
-            var days = adateHelper.ageInDays(person.date_rastreio);
-            //console.log(days);
-            if ((days+offSet) > 28) return false;
-            if ((days+offSet) == 0) return false;
-            if ((days+offSet) <= 3) return true;
-            if ((days+offSet) % 7 == 0) return true;
-            //console.log("NOT RELEVANT");
-            person.nome = "NO: " + person.nome;
-            return false;
-        }
-
-        function getAdjustedDay(p) {            
-            // This checks the number of doses this person has been given and adjusts the "day" of the visit to match
-            var real_days = adateHelper.ageInDays(p.date_rastreio);
-            if (real_days>4) return real_days;
-            if (p.doseCount == 0) return 1;
-            if (p.doseCount == 1) return 2;
-            if (p.doseCount == 2) return 3;
-            return real_days;
-        }
-
         function addPersonForm(person) {
             var tableId = "cap";
             var formId = "cap"; 
@@ -251,24 +190,15 @@
         }
 
         function getJsonMap(person) {
-
-            delete person.nome_acomp;
-            delete person.tab_bairro;
-            delete person.tel_acomp;
-            delete person.tel_mae;
-            delete person.tel_pai;
-            delete person.zona;
-            delete person.visitCount;
-            delete person.visits;
-            delete person.doseCount;
+            var data = {
+                cs: person.cs,
+                region: getRegion(person.cs)
+            };
             
-            // Add a field with the dose-adjusted day
-            person.DoseAdjustedDay =  getAdjustedDay(person);
-
             console.log("Sending following data:");
-            console.log(person);      
+            console.log(data);      
 
-            return person;
+            return data;
         }
 
         function todayAdate() {
@@ -290,36 +220,20 @@
         }
         function addPersonDiv(p) {    
             var btn = "<button class='btn btn-sm'>&gt;</button>";
-            if (window.dayOffset < -1 || window.dayOffset > 1) {
-                btn =  "";    //show no button for these days.
-            }
-            var cssClass = '';
-            if (p.visitCount != '0') {
-                //console.log("Has visit: " + p.visits);
-                var todaysDays = (adateHelper.ageInDays(p.date_rastreio) + window.dayOffset);                
-                if (p.visits.split(",").filter(x => x.trim() == todaysDays).length>0) {
-                    cssClass = "hasHadVisitToday";
-                } else if (p.visits.split(",").filter(x => (x.trim() == todaysDays-1 || x.trim() == todaysDays+1)).length>0) {
-                    cssClass = "hasHadVisitADayOff";
-                }
-            }
             var nome = (p.nome_casa && p.nome_casa.length) ? nome = p.nome + " (" + p.nome_casa + ")" : p.nome;        
             var btnRow = "<tr class='" + cssClass + "'><td>" + getAddress(p) + "</td><td>" + getNames(p) + "</td><td>" + getAgeString(p) + "<br/>" + getPhones(p) + "</td><td>" + btn + "</td></tr>";
             $('#theList tr:last').after(btnRow);
-            if (window.dayOffset < -1 || window.dayOffset > 1) {
-                // show no button for these days.
-            } else {
-                $('#theList tr:last').on("click",function() { 
-                    addPersonForm(p);
-                    return false;
-                });
-            }
+            $('#theList tr:last').on("click",function() { 
+                addPersonForm(p);
+                return false;
+            });
         }
+        
         function getAddress(p) {
             var r = "";
             if (p.tab_bairro) r = r + p.tab_bairro + "<br/>";
             if (p.zona) r = r + p.zona + "<br/>";
-            r = r + "ID: " + p.id_estudo + " (dias: " + (adateHelper.ageInDays(p.date_rastreio) + window.dayOffset) + ")";
+            r = r + "ID: " + p.id_estudo + " (dias: " + adateHelper.ageInDays(p.date_rastreio) + ")";
             return r;
         }
         function getPhones(p) {
@@ -414,7 +328,7 @@
 
     <body onload="display();">
         <!-- <h1>Avaliação de eficácia de Sulfadoxina-pirimetamina mais Amodiaquina </h1> -->
-        <h2>SEGUIMENTOS DE CASOS</h2>
+        <h2>CAP</h2>
         <form>
             <div class="form-group" style="margin:20px;text-align:center;">
                 <label class="form-label" for="selCs">Centro de saúde</label><br/>
@@ -427,10 +341,7 @@
                     <option>mafanco</option>
                     <option>pitche</option>
                 </select>
-                <hr/>
-                <div style="margin-bottom:10px;">
-                    <span id="prevDay">&lt;</span><span id="theDate"></span><span id="nextDay">&gt;</span>
-                </div>
+                
             </div><div>
                 <table id="theList" class="table">
                     <tr>
@@ -444,6 +355,5 @@
         </form>
         <br/>
         <div id="wrapper"></div>
-        <br/><a id="btnVisit" href="#" class="form-control btn btn-lg btn-primary" >Seguimento de outro dia</a>
     </body>
 </html>
