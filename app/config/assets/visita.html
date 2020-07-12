@@ -270,8 +270,8 @@ function updateDay() {
             // Add a field with the dose-adjusted day
             person.DoseAdjustedDay =  getAdjustedDay(person);
 
-            // console.log("Sending following data:");
-            // console.log(person);      
+            console.log("Sending following data:");
+            console.log(person);      
 
             return person;
         }
@@ -300,7 +300,7 @@ function updateDay() {
             }
             var cssClass = '';
             if (p.visitCount != '0') {
-                console.log("Has visit: " + p.visits);
+                //console.log("Has visit: " + p.visits);
                 var todaysDays = (adateHelper.ageInDays(p.date_rastreio) + window.dayOffset);                
                 if (p.visits.split(",").filter(x => x.trim() == todaysDays).length>0) {
                     cssClass = "hasHadVisitToday";
