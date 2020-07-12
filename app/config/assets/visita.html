@@ -266,6 +266,7 @@ function updateDay() {
             delete person.zona;
             delete person.visitCount;
             delete person.visits;
+            delete person.doseCount;
             
             // Add a field with the dose-adjusted day
             person.DoseAdjustedDay =  getAdjustedDay(person);

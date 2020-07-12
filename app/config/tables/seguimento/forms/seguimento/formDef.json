@@ -1458,7 +1458,7 @@
         "_row_num": 52
       },
       {
-        "type": "integer",
+        "type": "assign",
         "name": "DoseAdjustedDay",
         "_row_num": 53
       }
@@ -2816,13 +2816,13 @@
         "elementKey": "dia_corregido"
       },
       "DoseAdjustedDay": {
-        "type": "integer",
         "_defn": [
           {
             "_row_num": 53,
             "section_name": "model"
           }
         ],
+        "type": "assign",
         "elementKey": "DoseAdjustedDay"
       }
     },
@@ -4750,13 +4750,13 @@
         "elementPath": "dia_corregido"
       },
       "DoseAdjustedDay": {
-        "type": "integer",
         "_defn": [
           {
             "_row_num": 53,
             "section_name": "model"
           }
         ],
+        "type": "assign",
         "elementKey": "DoseAdjustedDay",
         "elementName": "DoseAdjustedDay",
         "elementSet": "data",
