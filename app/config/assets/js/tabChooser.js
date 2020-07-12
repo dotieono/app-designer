@@ -64,16 +64,23 @@ function updateForTab(tab) {
         descriptionDiv.text('Exclusiva para CENTROS DE SAUDE');
         descriptionDiv.attr('class','description-text-black');
         tabItem = $('#centroTab');
+        $("#launchButton2").hide();
+        $("#launch-button").text("Entrar");
     } else if (tab === 1) {
         fileUri = odkCommon.getFileAsUrl('config/assets/img/lab.jpg');
         descriptionDiv.text('Para agente de saude comunitaria ou pessoais de saude que vao fazer seguimento de casos.');
         descriptionDiv.attr('class','description-text-black');
         tabItem = $('#visitaTab');
+        $("#launchButton2").show();
+        $("#launch-button").text("Seguimento");
+        $("#launchButton2").text("CAP");
     }  else if (tab === 2) {
         fileUri = odkCommon.getFileAsUrl('config/assets/img/lab.JPG');
         descriptionDiv.text('Para introducao de resultados de laboratorio.');
         descriptionDiv.attr('class','description-text-black');
         tabItem = $('#labTab');
+        $("#launchButton2").hide();
+        $("#launch-button").text("Entrar");
     } else {
         alert('unrecognized tab index: ' + tab);
     }
