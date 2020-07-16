@@ -102,7 +102,7 @@
         "name": "erro_datas",
         "display": {
           "prompt": {
-            "text": "A data do fim \"{{data('date_end')}}\" não deve ser menor que a data do inicio \"{{data('date_start')}}"
+            "text": "A data do fim {{data.date_end}} não deve ser menor que a data do inicio {{data.date_start}}"
           }
         },
         "_row_num": 10
@@ -112,8 +112,53 @@
         "_row_num": 11
       },
       {
-        "clause": "begin screen",
+        "clause": "if",
+        "condition": "calculates.nao_futuro_end()<0",
         "_row_num": 12
+      },
+      {
+        "type": "note",
+        "name": "erro_data_fim",
+        "display": {
+          "prompt": {
+            "text": "A data não deve ser no futuro porque hoje é {{calculates.data_form}} que é menor do que a data do fim {{data.date_end}}"
+          },
+          "hint": {
+            "text": "corrija a data por favor"
+          }
+        },
+        "constraint": "!calculates.erro_data()",
+        "_row_num": 13
+      },
+      {
+        "clause": "end if",
+        "_row_num": 14
+      },
+      {
+        "clause": "if",
+        "condition": "calculates.nao_futuro_start()<0",
+        "_row_num": 15
+      },
+      {
+        "name": "erro_data_inicio",
+        "display": {
+          "prompt": {
+            "text": "A data não deve ser no futuro porque hoje é {{calculates.data_form}} que é menor do que a data do inicio {{data.date_start}}"
+          },
+          "hint": {
+            "text": "corrija a data por favor"
+          }
+        },
+        "constraint": "!calculates.erro_data()",
+        "_row_num": 16
+      },
+      {
+        "clause": "end if",
+        "_row_num": 17
+      },
+      {
+        "clause": "begin screen",
+        "_row_num": 21
       },
       {
         "type": "note",
@@ -123,7 +168,7 @@
             "text": "Dose diária total e unidade"
           }
         },
-        "_row_num": 13
+        "_row_num": 22
       },
       {
         "type": "integer",
@@ -133,7 +178,7 @@
             "text": "Quantidade de doses diária"
           }
         },
-        "_row_num": 14
+        "_row_num": 23
       },
       {
         "type": "select_one",
@@ -144,12 +189,12 @@
             "text": "unidade"
           }
         },
-        "_row_num": 15
+        "_row_num": 24
       },
       {
         "clause": "if",
         "condition": "data('unidade')=='9'",
-        "_row_num": 16
+        "_row_num": 25
       },
       {
         "type": "string",
@@ -159,15 +204,15 @@
             "text": "Especifica a unidade da dose"
           }
         },
-        "_row_num": 17
+        "_row_num": 26
       },
       {
         "clause": "end if",
-        "_row_num": 18
+        "_row_num": 27
       },
       {
         "clause": "end screen",
-        "_row_num": 19
+        "_row_num": 28
       },
       {
         "type": "select_one",
@@ -178,12 +223,12 @@
             "text": "Via de administração"
           }
         },
-        "_row_num": 21
+        "_row_num": 30
       },
       {
         "clause": "if",
         "condition": "data('via')=='9'",
-        "_row_num": 22
+        "_row_num": 31
       },
       {
         "type": "string",
@@ -193,11 +238,11 @@
             "text": "Especifica a via de administração"
           }
         },
-        "_row_num": 23
+        "_row_num": 32
       },
       {
         "clause": "end if",
-        "_row_num": 24
+        "_row_num": 33
       },
       {
         "type": "string",
@@ -207,13 +252,13 @@
             "text": "Indicações de uso"
           }
         },
-        "_row_num": 25
+        "_row_num": 34
       },
       {
         "type": "assign",
         "name": "date_form",
         "calculation": "adate.today()",
-        "_row_num": 27
+        "_row_num": 36
       }
     ],
     "choices": [
@@ -436,9 +481,34 @@
     ],
     "calculates": [
       {
-        "calculation_name": "diferenca",
-        "calculation": "adate.diffInDays(data('date_end'), data('date_start'))",
+        "calculation_name": "data_form",
+        "calculation": "adate.today()",
         "_row_num": 2
+      },
+      {
+        "calculation_name": "date_form_display",
+        "calculation": "adate.display(calculates.date_form())",
+        "_row_num": 3
+      },
+      {
+        "calculation_name": "diferenca",
+        "calculation": "adate.diffInDays(data('date_start'),data('date_end'))",
+        "_row_num": 4
+      },
+      {
+        "calculation_name": "nao_futuro_end",
+        "calculation": "adate.diffInDays(data('date_end'),calculates.data_form())",
+        "_row_num": 5
+      },
+      {
+        "calculation_name": "nao_futuro_start",
+        "calculation": "adate.diffInDays(data('date_start'),calculates.data_form())",
+        "_row_num": 6
+      },
+      {
+        "calculation_name": "erro_data",
+        "calculation": "calculates.nao_futuro_end()<0 || calculates.nao_futuro_start()<0",
+        "_row_num": 7
       }
     ],
     "model": [
@@ -797,10 +867,35 @@
     },
     "queries": {},
     "calculates": {
+      "data_form": {
+        "calculation_name": "data_form",
+        "calculation": "adate.today()",
+        "_row_num": 2
+      },
+      "date_form_display": {
+        "calculation_name": "date_form_display",
+        "calculation": "adate.display(calculates.date_form())",
+        "_row_num": 3
+      },
       "diferenca": {
         "calculation_name": "diferenca",
-        "calculation": "adate.diffInDays(data('date_end'), data('date_start'))",
-        "_row_num": 2
+        "calculation": "adate.diffInDays(data('date_start'),data('date_end'))",
+        "_row_num": 4
+      },
+      "nao_futuro_end": {
+        "calculation_name": "nao_futuro_end",
+        "calculation": "adate.diffInDays(data('date_end'),calculates.data_form())",
+        "_row_num": 5
+      },
+      "nao_futuro_start": {
+        "calculation_name": "nao_futuro_start",
+        "calculation": "adate.diffInDays(data('date_start'),calculates.data_form())",
+        "_row_num": 6
+      },
+      "erro_data": {
+        "calculation_name": "erro_data",
+        "calculation": "calculates.nao_futuro_end()<0 || calculates.nao_futuro_start()<0",
+        "_row_num": 7
       }
     },
     "model": {
@@ -895,7 +990,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 14,
+            "_row_num": 23,
             "section_name": "survey"
           },
           {
@@ -910,7 +1005,7 @@
         "valuesList": "unidade",
         "_defn": [
           {
-            "_row_num": 15,
+            "_row_num": 24,
             "section_name": "survey"
           },
           {
@@ -924,7 +1019,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 17,
+            "_row_num": 26,
             "section_name": "survey"
           },
           {
@@ -939,7 +1034,7 @@
         "valuesList": "via_adm",
         "_defn": [
           {
-            "_row_num": 21,
+            "_row_num": 30,
             "section_name": "survey"
           },
           {
@@ -953,7 +1048,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 23,
+            "_row_num": 32,
             "section_name": "survey"
           },
           {
@@ -967,7 +1062,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 25,
+            "_row_num": 34,
             "section_name": "survey"
           },
           {
@@ -990,7 +1085,7 @@
       "date_form": {
         "_defn": [
           {
-            "_row_num": 27,
+            "_row_num": 36,
             "section_name": "survey"
           }
         ],
@@ -1084,7 +1179,7 @@
             "name": "erro_datas",
             "display": {
               "prompt": {
-                "text": "A data do fim \"{{data('date_end')}}\" não deve ser menor que a data do inicio \"{{data('date_start')}}"
+                "text": "A data do fim {{data.date_end}} não deve ser menor que a data do inicio {{data.date_start}}"
               }
             },
             "_row_num": 10,
@@ -1096,18 +1191,37 @@
           },
           {
             "type": "note",
+            "name": "erro_data_fim",
+            "display": {
+              "prompt": {
+                "text": "A data não deve ser no futuro porque hoje é {{calculates.data_form}} que é menor do que a data do fim {{data.date_end}}"
+              },
+              "hint": {
+                "text": "corrija a data por favor"
+              }
+            },
+            "constraint": "!calculates.erro_data()",
+            "_row_num": 13,
+            "__rowNum__": 12,
+            "_token_type": "prompt",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen13",
+            "promptIdx": 5
+          },
+          {
+            "type": "note",
             "name": "dose",
             "display": {
               "prompt": {
                 "text": "Dose diária total e unidade"
               }
             },
-            "_row_num": 13,
-            "__rowNum__": 12,
+            "_row_num": 22,
+            "__rowNum__": 21,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen12",
-            "promptIdx": 5
+            "_branch_label_enclosing_screen": "survey/_screen21",
+            "promptIdx": 6
           },
           {
             "type": "integer",
@@ -1117,12 +1231,12 @@
                 "text": "Quantidade de doses diária"
               }
             },
-            "_row_num": 14,
-            "__rowNum__": 13,
+            "_row_num": 23,
+            "__rowNum__": 22,
             "_token_type": "prompt",
             "_type": "integer",
-            "_branch_label_enclosing_screen": "survey/_screen12",
-            "promptIdx": 6
+            "_branch_label_enclosing_screen": "survey/_screen21",
+            "promptIdx": 7
           },
           {
             "type": "select_one",
@@ -1133,12 +1247,12 @@
                 "text": "unidade"
               }
             },
-            "_row_num": 15,
-            "__rowNum__": 14,
+            "_row_num": 24,
+            "__rowNum__": 23,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen12",
-            "promptIdx": 7
+            "_branch_label_enclosing_screen": "survey/_screen21",
+            "promptIdx": 8
           },
           {
             "type": "string",
@@ -1148,12 +1262,12 @@
                 "text": "Especifica a unidade da dose"
               }
             },
-            "_row_num": 17,
-            "__rowNum__": 16,
+            "_row_num": 26,
+            "__rowNum__": 25,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen12",
-            "promptIdx": 8
+            "_branch_label_enclosing_screen": "survey/_screen21",
+            "promptIdx": 9
           },
           {
             "type": "select_one",
@@ -1164,12 +1278,12 @@
                 "text": "Via de administração"
               }
             },
-            "_row_num": 21,
-            "__rowNum__": 20,
+            "_row_num": 30,
+            "__rowNum__": 29,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen21",
-            "promptIdx": 9
+            "_branch_label_enclosing_screen": "survey/_screen30",
+            "promptIdx": 10
           },
           {
             "type": "string",
@@ -1179,12 +1293,12 @@
                 "text": "Especifica a via de administração"
               }
             },
-            "_row_num": 23,
-            "__rowNum__": 22,
+            "_row_num": 32,
+            "__rowNum__": 31,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen23",
-            "promptIdx": 10
+            "_branch_label_enclosing_screen": "survey/_screen32",
+            "promptIdx": 11
           },
           {
             "type": "string",
@@ -1194,24 +1308,26 @@
                 "text": "Indicações de uso"
               }
             },
-            "_row_num": 25,
-            "__rowNum__": 24,
+            "_row_num": 34,
+            "__rowNum__": 33,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen25",
-            "promptIdx": 11
+            "_branch_label_enclosing_screen": "survey/_screen34",
+            "promptIdx": 12
           },
           {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 28,
-            "_branch_label_enclosing_screen": "survey/_screen28",
-            "promptIdx": 12
+            "_row_num": 37,
+            "_branch_label_enclosing_screen": "survey/_screen37",
+            "promptIdx": 13
           }
         ],
         "validation_tag_map": {
-          "finalize": []
+          "finalize": [
+            5
+          ]
         },
         "operations": [
           {
@@ -1258,89 +1374,141 @@
             "operationIdx": 4
           },
           {
-            "clause": "begin screen",
+            "clause": "if",
+            "condition": "calculates.nao_futuro_end()<0",
             "_row_num": 12,
             "__rowNum__": 11,
-            "_token_type": "begin_screen",
-            "_end_screen_clause": {
-              "clause": "end screen",
-              "_row_num": 19,
-              "__rowNum__": 18,
-              "_token_type": "end_screen"
-            },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(5);\nactivePromptIndicies.push(6);\nactivePromptIndicies.push(7);\nif (data('unidade')=='9') {\nactivePromptIndicies.push(8);\n}\n\nreturn activePromptIndicies;\n}\n",
+            "_token_type": "goto_label",
+            "_branch_label": "_then12",
             "operationIdx": 5
           },
           {
-            "_row_num": 21,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(9);\n\nreturn activePromptIndicies;\n}\n",
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_else14",
+            "_row_num": 14,
             "operationIdx": 6
           },
           {
-            "clause": "if",
-            "condition": "data('via')=='9'",
-            "_row_num": 22,
-            "__rowNum__": 21,
-            "_token_type": "goto_label",
-            "_branch_label": "_then22",
+            "_row_num": 13,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(5);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 7
           },
           {
             "clause": "end if",
             "_token_type": "goto_label",
-            "_branch_label": "_else24",
-            "_row_num": 24,
+            "_branch_label": "_endif14",
+            "_row_num": 14,
             "operationIdx": 8
           },
           {
-            "_row_num": 23,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(10);\n\nreturn activePromptIndicies;\n}\n",
+            "clause": "if",
+            "condition": "calculates.nao_futuro_start()<0",
+            "_row_num": 15,
+            "__rowNum__": 14,
+            "_token_type": "goto_label",
+            "_branch_label": "_then15",
             "operationIdx": 9
           },
           {
             "clause": "end if",
             "_token_type": "goto_label",
-            "_branch_label": "_endif24",
-            "_row_num": 24,
+            "_branch_label": "_else17",
+            "_row_num": 17,
             "operationIdx": 10
           },
           {
-            "_row_num": 25,
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif17",
+            "_row_num": 17,
+            "operationIdx": 11
+          },
+          {
+            "clause": "begin screen",
+            "_row_num": 21,
+            "__rowNum__": 20,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 28,
+              "__rowNum__": 27,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(6);\nactivePromptIndicies.push(7);\nactivePromptIndicies.push(8);\nif (data('unidade')=='9') {\nactivePromptIndicies.push(9);\n}\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 12
+          },
+          {
+            "_row_num": 30,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(10);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 13
+          },
+          {
+            "clause": "if",
+            "condition": "data('via')=='9'",
+            "_row_num": 31,
+            "__rowNum__": 30,
+            "_token_type": "goto_label",
+            "_branch_label": "_then31",
+            "operationIdx": 14
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_else33",
+            "_row_num": 33,
+            "operationIdx": 15
+          },
+          {
+            "_row_num": 32,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(11);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 11
+            "operationIdx": 16
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif33",
+            "_row_num": 33,
+            "operationIdx": 17
+          },
+          {
+            "_row_num": 34,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(12);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 18
           },
           {
             "type": "assign",
             "name": "date_form",
             "calculation": "adate.today()",
-            "_row_num": 27,
-            "__rowNum__": 26,
+            "_row_num": 36,
+            "__rowNum__": 35,
             "_token_type": "assign",
-            "operationIdx": 12
+            "operationIdx": 19
           },
           {
             "_token_type": "exit_section",
             "clause": "exit section",
-            "_row_num": 28,
-            "operationIdx": 13
+            "_row_num": 37,
+            "operationIdx": 20
           },
           {
-            "_row_num": 28,
+            "_row_num": 37,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(12);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(13);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
-            "operationIdx": 14
+            "operationIdx": 21
           },
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 28,
-            "operationIdx": 15
+            "_row_num": 37,
+            "operationIdx": 22
           }
         ],
         "branch_label_map": {
@@ -1349,15 +1517,22 @@
           "_screen10": 3,
           "_else11": 5,
           "_endif11": 5,
-          "_screen12": 5,
-          "_screen21": 6,
-          "_then22": 9,
-          "_screen23": 9,
-          "_else24": 11,
-          "_endif24": 11,
-          "_screen25": 11,
-          "_contents": 14,
-          "_screen28": 14
+          "_then12": 7,
+          "_screen13": 7,
+          "_else14": 9,
+          "_endif14": 9,
+          "_then15": 11,
+          "_else17": 12,
+          "_endif17": 12,
+          "_screen21": 12,
+          "_screen30": 13,
+          "_then31": 16,
+          "_screen32": 16,
+          "_else33": 18,
+          "_endif33": 18,
+          "_screen34": 18,
+          "_contents": 21,
+          "_screen37": 21
         }
       },
       "initial": {
@@ -1648,7 +1823,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 14,
+            "_row_num": 23,
             "section_name": "survey"
           },
           {
@@ -1666,7 +1841,7 @@
         "valuesList": "unidade",
         "_defn": [
           {
-            "_row_num": 15,
+            "_row_num": 24,
             "section_name": "survey"
           },
           {
@@ -1683,7 +1858,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 17,
+            "_row_num": 26,
             "section_name": "survey"
           },
           {
@@ -1701,7 +1876,7 @@
         "valuesList": "via_adm",
         "_defn": [
           {
-            "_row_num": 21,
+            "_row_num": 30,
             "section_name": "survey"
           },
           {
@@ -1718,7 +1893,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 23,
+            "_row_num": 32,
             "section_name": "survey"
           },
           {
@@ -1735,7 +1910,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 25,
+            "_row_num": 34,
             "section_name": "survey"
           },
           {
@@ -1764,7 +1939,7 @@
       "date_form": {
         "_defn": [
           {
-            "_row_num": 27,
+            "_row_num": 36,
             "section_name": "survey"
           }
         ],

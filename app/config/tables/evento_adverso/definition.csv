@@ -1,13 +1,15 @@
 _element_key,_element_name,_element_type,_list_child_element_keys
 DOB_ou_idade,DOB_ou_idade,string,[]
+MUAC,MUAC,number,[]
 altura,altura,number,[]
 ano,ano,integer,[]
 assinatura,assinatura,mimeUri,"[""assinatura_contentType"",""assinatura_uriFragment""]"
 assinatura_contentType,contentType,mimeType,[]
 assinatura_uriFragment,uriFragment,rowpath,[]
 cs,cs,string,[]
-data_ocorrencia,data_ocorrencia,string,[]
+data_fomulario,data_fomulario,assign,[]
 date_assinatuda,date_assinatuda,string,[]
+date_ocorrencia,date_ocorrencia,string,[]
 date_rastreio,date_rastreio,string,[]
 descricao,descricao,string,[]
 dn,dn,string,[]

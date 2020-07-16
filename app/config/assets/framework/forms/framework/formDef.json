@@ -191,11 +191,11 @@
         "_row_num": 36
       },
       {
-        "branch_label": "resultado_tdr",
+        "branch_label": "cap",
         "_row_num": 38
       },
       {
-        "url": "'?' + odkSurvey.getHashString('rastreio','resultado_tdr')",
+        "url": "'?' + odkSurvey.getHashString('cap')",
         "type": "external_link",
         "display": {
           "prompt": {
@@ -374,10 +374,10 @@
       },
       {
         "choice_list_name": "test_forms",
-        "data_value": "resultado_tdr",
+        "data_value": "cap",
         "display": {
           "title": {
-            "text": "Introducao do resultado de TDR"
+            "text": "CAP sobre Avaliação da Quimioprofilaxia sazonal para prevenção do Paludismo"
           }
         },
         "_row_num": 10
@@ -1076,10 +1076,10 @@
         },
         {
           "choice_list_name": "test_forms",
-          "data_value": "resultado_tdr",
+          "data_value": "cap",
           "display": {
             "title": {
-              "text": "Introducao do resultado de TDR"
+              "text": "CAP sobre Avaliação da Quimioprofilaxia sazonal para prevenção do Paludismo"
             }
           },
           "_row_num": 10
@@ -1873,7 +1873,7 @@
             "promptIdx": 9
           },
           {
-            "url": "'?' + odkSurvey.getHashString('rastreio','resultado_tdr')",
+            "url": "'?' + odkSurvey.getHashString('cap')",
             "type": "external_link",
             "display": {
               "prompt": {
@@ -2131,7 +2131,7 @@
           "_screen31": 18,
           "seguimento": 20,
           "_screen35": 20,
-          "resultado_tdr": 22,
+          "cap": 22,
           "_screen39": 22,
           "outroDia": 24,
           "_screen42": 24,

@@ -113,6 +113,29 @@
       {
         "clause": "end screen",
         "_row_num": 12
+      },
+      {
+        "clause": "if",
+        "condition": "calculates.erro_data()",
+        "_row_num": 14
+      },
+      {
+        "type": "note",
+        "name": "erro_data",
+        "display": {
+          "prompt": {
+            "text": "Não se admite falta de informação na datas e nem as datas no futuro"
+          },
+          "hint": {
+            "text": "Por favor verifica verifica de novo a data introduzida"
+          }
+        },
+        "constraint": "!calculates.erro_data()",
+        "_row_num": 15
+      },
+      {
+        "clause": "end if",
+        "_row_num": 16
       }
     ],
     "choices": [
@@ -206,8 +229,13 @@
       },
       {
         "calculation_name": "nao_futuro",
-        "calculation": "adate.diffInDays(calculates.hoje(),data('date_adm'))",
+        "calculation": "adate.diffInDays(data('date_adm'),calculates.hoje())",
         "_row_num": 4
+      },
+      {
+        "calculation_name": "erro_data",
+        "calculation": "calculates.nao_data() || calculates.nao_futuro()<0",
+        "_row_num": 5
       }
     ],
     "model": [
@@ -423,8 +451,13 @@
       },
       "nao_futuro": {
         "calculation_name": "nao_futuro",
-        "calculation": "adate.diffInDays(calculates.hoje(),data('date_adm'))",
+        "calculation": "adate.diffInDays(data('date_adm'),calculates.hoje())",
         "_row_num": 4
+      },
+      "erro_data": {
+        "calculation_name": "erro_data",
+        "calculation": "calculates.nao_data() || calculates.nao_futuro()<0",
+        "_row_num": 5
       }
     },
     "model": {
@@ -667,16 +700,37 @@
             "promptIdx": 5
           },
           {
+            "type": "note",
+            "name": "erro_data",
+            "display": {
+              "prompt": {
+                "text": "Não se admite falta de informação na datas e nem as datas no futuro"
+              },
+              "hint": {
+                "text": "Por favor verifica verifica de novo a data introduzida"
+              }
+            },
+            "constraint": "!calculates.erro_data()",
+            "_row_num": 15,
+            "__rowNum__": 14,
+            "_token_type": "prompt",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen15",
+            "promptIdx": 6
+          },
+          {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 13,
-            "_branch_label_enclosing_screen": "survey/_screen13",
-            "promptIdx": 6
+            "_row_num": 17,
+            "_branch_label_enclosing_screen": "survey/_screen17",
+            "promptIdx": 7
           }
         ],
         "validation_tag_map": {
-          "finalize": []
+          "finalize": [
+            6
+          ]
         },
         "operations": [
           {
@@ -694,31 +748,64 @@
             "operationIdx": 0
           },
           {
-            "_token_type": "exit_section",
-            "clause": "exit section",
-            "_row_num": 13,
+            "clause": "if",
+            "condition": "calculates.erro_data()",
+            "_row_num": 14,
+            "__rowNum__": 13,
+            "_token_type": "goto_label",
+            "_branch_label": "_then14",
             "operationIdx": 1
           },
           {
-            "_row_num": 13,
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_else16",
+            "_row_num": 16,
+            "operationIdx": 2
+          },
+          {
+            "_row_num": 15,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(6);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 3
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif16",
+            "_row_num": 16,
+            "operationIdx": 4
+          },
+          {
+            "_token_type": "exit_section",
+            "clause": "exit section",
+            "_row_num": 17,
+            "operationIdx": 5
+          },
+          {
+            "_row_num": 17,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(7);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
-            "operationIdx": 2
+            "operationIdx": 6
           },
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 13,
-            "operationIdx": 3
+            "_row_num": 17,
+            "operationIdx": 7
           }
         ],
         "branch_label_map": {
           "_screen3": 0,
-          "_contents": 2,
-          "_screen13": 2
+          "_then14": 3,
+          "_screen15": 3,
+          "_else16": 5,
+          "_endif16": 5,
+          "_contents": 6,
+          "_screen17": 6
         }
       },
       "initial": {

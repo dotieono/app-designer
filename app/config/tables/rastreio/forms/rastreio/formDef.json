@@ -251,8 +251,6 @@
             "text": "revisa o valor introduzido, a temperatura deve ser en grau celsius e nao fahrenheit"
           }
         },
-        "constraint": "calculates.exclude() || (data('temperatura')<46 && data('temperatura')>34) || (data('temperatura')=='88')",
-        "required": "!calculates.exclude()",
         "default": 37,
         "_row_num": 36
       },
@@ -624,10 +622,10 @@
       },
       {
         "choice_list_name": "cs",
-        "data_value": "cosse",
+        "data_value": "ganmamudo",
         "display": {
           "title": {
-            "text": "Cossé"
+            "text": "Gã-Mamudo"
           }
         },
         "region": "bafata",
@@ -646,10 +644,10 @@
       },
       {
         "choice_list_name": "cs",
-        "data_value": "mafanco",
+        "data_value": "sonaco",
         "display": {
           "title": {
-            "text": "Mafanco"
+            "text": "Sonaco"
           }
         },
         "region": "gabu",
@@ -717,16 +715,6 @@
         "_row_num": 29
       },
       {
-        "choice_list_name": "resultado",
-        "data_value": 3,
-        "display": {
-          "title": {
-            "text": "A espera do resultado"
-          }
-        },
-        "_row_num": 30
-      },
-      {
         "choice_list_name": "ok",
         "data_value": 1,
         "display": {
@@ -734,7 +722,7 @@
             "text": "OK"
           }
         },
-        "_row_num": 32
+        "_row_num": 31
       },
       {
         "choice_list_name": "outra_condicao",
@@ -744,7 +732,7 @@
             "text": "Febre causada por outra doença"
           }
         },
-        "_row_num": 35
+        "_row_num": 34
       },
       {
         "choice_list_name": "outra_condicao",
@@ -754,7 +742,7 @@
             "text": "doença crónica/grave subjacente"
           }
         },
-        "_row_num": 36
+        "_row_num": 35
       },
       {
         "choice_list_name": "outra_condicao",
@@ -764,7 +752,7 @@
             "text": "meducação regulas interfere ou contraindicação de QPS"
           }
         },
-        "_row_num": 37
+        "_row_num": 36
       },
       {
         "choice_list_name": "outra_condicao",
@@ -774,7 +762,7 @@
             "text": "Outra condição"
           }
         },
-        "_row_num": 38
+        "_row_num": 37
       }
     ],
     "queries": [
@@ -1431,10 +1419,10 @@
         },
         {
           "choice_list_name": "cs",
-          "data_value": "cosse",
+          "data_value": "ganmamudo",
           "display": {
             "title": {
-              "text": "Cossé"
+              "text": "Gã-Mamudo"
             }
           },
           "region": "bafata",
@@ -1453,10 +1441,10 @@
         },
         {
           "choice_list_name": "cs",
-          "data_value": "mafanco",
+          "data_value": "sonaco",
           "display": {
             "title": {
-              "text": "Mafanco"
+              "text": "Sonaco"
             }
           },
           "region": "gabu",
@@ -1526,16 +1514,6 @@
             }
           },
           "_row_num": 29
-        },
-        {
-          "choice_list_name": "resultado",
-          "data_value": 3,
-          "display": {
-            "title": {
-              "text": "A espera do resultado"
-            }
-          },
-          "_row_num": 30
         }
       ],
       "ok": [
@@ -1547,7 +1525,7 @@
               "text": "OK"
             }
           },
-          "_row_num": 32
+          "_row_num": 31
         }
       ],
       "outra_condicao": [
@@ -1559,7 +1537,7 @@
               "text": "Febre causada por outra doença"
             }
           },
-          "_row_num": 35
+          "_row_num": 34
         },
         {
           "choice_list_name": "outra_condicao",
@@ -1569,7 +1547,7 @@
               "text": "doença crónica/grave subjacente"
             }
           },
-          "_row_num": 36
+          "_row_num": 35
         },
         {
           "choice_list_name": "outra_condicao",
@@ -1579,7 +1557,7 @@
               "text": "meducação regulas interfere ou contraindicação de QPS"
             }
           },
-          "_row_num": 37
+          "_row_num": 36
         },
         {
           "choice_list_name": "outra_condicao",
@@ -1589,7 +1567,7 @@
               "text": "Outra condição"
             }
           },
-          "_row_num": 38
+          "_row_num": 37
         }
       ]
     },
@@ -2764,8 +2742,6 @@
                 "text": "revisa o valor introduzido, a temperatura deve ser en grau celsius e nao fahrenheit"
               }
             },
-            "constraint": "calculates.exclude() || (data('temperatura')<46 && data('temperatura')>34) || (data('temperatura')=='88')",
-            "required": "!calculates.exclude()",
             "default": 37,
             "_row_num": 36,
             "__rowNum__": 35,
@@ -3029,7 +3005,6 @@
             8,
             9,
             10,
-            11,
             12,
             13,
             14,
@@ -4888,7 +4863,7 @@
         "_aspect": "cs",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"cs\",\"data_value\":\"bafata\",\"display\":{\"title\":{\"text\":\"Bafatá\"}},\"region\":\"bafata\",\"_row_num\":15},{\"choice_list_name\":\"cs\",\"data_value\":\"bambadinca\",\"display\":{\"title\":{\"text\":\"Bambadinca\"}},\"region\":\"bafata\",\"_row_num\":16},{\"choice_list_name\":\"cs\",\"data_value\":\"cosse\",\"display\":{\"title\":{\"text\":\"Cossé\"}},\"region\":\"bafata\",\"_row_num\":17},{\"choice_list_name\":\"cs\",\"data_value\":\"gabu\",\"display\":{\"title\":{\"text\":\"Gabú\"}},\"region\":\"gabu\",\"_row_num\":18},{\"choice_list_name\":\"cs\",\"data_value\":\"mafanco\",\"display\":{\"title\":{\"text\":\"Mafanco\"}},\"region\":\"gabu\",\"_row_num\":19},{\"choice_list_name\":\"cs\",\"data_value\":\"pitche\",\"display\":{\"title\":{\"text\":\"Pitche\"}},\"region\":\"gabu\",\"_row_num\":20}]"
+        "_value": "[{\"choice_list_name\":\"cs\",\"data_value\":\"bafata\",\"display\":{\"title\":{\"text\":\"Bafatá\"}},\"region\":\"bafata\",\"_row_num\":15},{\"choice_list_name\":\"cs\",\"data_value\":\"bambadinca\",\"display\":{\"title\":{\"text\":\"Bambadinca\"}},\"region\":\"bafata\",\"_row_num\":16},{\"choice_list_name\":\"cs\",\"data_value\":\"ganmamudo\",\"display\":{\"title\":{\"text\":\"Gã-Mamudo\"}},\"region\":\"bafata\",\"_row_num\":17},{\"choice_list_name\":\"cs\",\"data_value\":\"gabu\",\"display\":{\"title\":{\"text\":\"Gabú\"}},\"region\":\"gabu\",\"_row_num\":18},{\"choice_list_name\":\"cs\",\"data_value\":\"sonaco\",\"display\":{\"title\":{\"text\":\"Sonaco\"}},\"region\":\"gabu\",\"_row_num\":19},{\"choice_list_name\":\"cs\",\"data_value\":\"pitche\",\"display\":{\"title\":{\"text\":\"Pitche\"}},\"region\":\"gabu\",\"_row_num\":20}]"
       },
       {
         "_partition": "Column",
@@ -4902,7 +4877,7 @@
         "_aspect": "exclusao",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"ok\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"OK\"}},\"_row_num\":32}]"
+        "_value": "[{\"choice_list_name\":\"ok\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"OK\"}},\"_row_num\":31}]"
       },
       {
         "_partition": "Column",
@@ -4937,14 +4912,14 @@
         "_aspect": "resultado_TDR",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"resultado\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Positivo\"}},\"_row_num\":28},{\"choice_list_name\":\"resultado\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Negativo\"}},\"_row_num\":29},{\"choice_list_name\":\"resultado\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"A espera do resultado\"}},\"_row_num\":30}]"
+        "_value": "[{\"choice_list_name\":\"resultado\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Positivo\"}},\"_row_num\":28},{\"choice_list_name\":\"resultado\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Negativo\"}},\"_row_num\":29}]"
       },
       {
         "_partition": "Column",
         "_aspect": "tipo_condicao",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"outra_condicao\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Febre causada por outra doença\"}},\"_row_num\":35},{\"choice_list_name\":\"outra_condicao\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"doença crónica/grave subjacente\"}},\"_row_num\":36},{\"choice_list_name\":\"outra_condicao\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"meducação regulas interfere ou contraindicação de QPS\"}},\"_row_num\":37},{\"choice_list_name\":\"outra_condicao\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Outra condição\"}},\"_row_num\":38}]"
+        "_value": "[{\"choice_list_name\":\"outra_condicao\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Febre causada por outra doença\"}},\"_row_num\":34},{\"choice_list_name\":\"outra_condicao\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"doença crónica/grave subjacente\"}},\"_row_num\":35},{\"choice_list_name\":\"outra_condicao\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"meducação regulas interfere ou contraindicação de QPS\"}},\"_row_num\":36},{\"choice_list_name\":\"outra_condicao\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Outra condição\"}},\"_row_num\":37}]"
       },
       {
         "_partition": "Column",

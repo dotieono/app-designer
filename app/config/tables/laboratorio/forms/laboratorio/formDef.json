@@ -47,7 +47,7 @@
       },
       {
         "type": "select_one",
-        "values_list": "resultado",
+        "values_list": "resultado_lab",
         "name": "GE",
         "display": {
           "prompt": {
@@ -167,7 +167,7 @@
         "_row_num": 10
       },
       {
-        "choice_list_name": "resultado",
+        "choice_list_name": "resultado_lab",
         "data_value": 1,
         "display": {
           "title": {
@@ -177,7 +177,7 @@
         "_row_num": 14
       },
       {
-        "choice_list_name": "resultado",
+        "choice_list_name": "resultado_lab",
         "data_value": 2,
         "display": {
           "title": {
@@ -187,7 +187,7 @@
         "_row_num": 15
       },
       {
-        "choice_list_name": "resultado",
+        "choice_list_name": "resultado_lab",
         "data_value": 3,
         "display": {
           "title": {
@@ -197,7 +197,7 @@
         "_row_num": 16
       },
       {
-        "choice_list_name": "resultado",
+        "choice_list_name": "resultado_lab",
         "data_value": 4,
         "display": {
           "title": {
@@ -438,9 +438,9 @@
           "_row_num": 10
         }
       ],
-      "resultado": [
+      "resultado_lab": [
         {
-          "choice_list_name": "resultado",
+          "choice_list_name": "resultado_lab",
           "data_value": 1,
           "display": {
             "title": {
@@ -450,7 +450,7 @@
           "_row_num": 14
         },
         {
-          "choice_list_name": "resultado",
+          "choice_list_name": "resultado_lab",
           "data_value": 2,
           "display": {
             "title": {
@@ -460,7 +460,7 @@
           "_row_num": 15
         },
         {
-          "choice_list_name": "resultado",
+          "choice_list_name": "resultado_lab",
           "data_value": 3,
           "display": {
             "title": {
@@ -470,7 +470,7 @@
           "_row_num": 16
         },
         {
-          "choice_list_name": "resultado",
+          "choice_list_name": "resultado_lab",
           "data_value": 4,
           "display": {
             "title": {
@@ -600,7 +600,7 @@
       },
       "GE": {
         "type": "string",
-        "valuesList": "resultado",
+        "valuesList": "resultado_lab",
         "_defn": [
           {
             "_row_num": 6,
@@ -688,7 +688,7 @@
           },
           {
             "type": "select_one",
-            "values_list": "resultado",
+            "values_list": "resultado_lab",
             "name": "GE",
             "display": {
               "prompt": {
@@ -1175,7 +1175,7 @@
       },
       "GE": {
         "type": "string",
-        "valuesList": "resultado",
+        "valuesList": "resultado_lab",
         "_defn": [
           {
             "_row_num": 6,
@@ -1381,7 +1381,7 @@
         "_aspect": "GE",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"resultado\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Positivo\"}},\"_row_num\":14},{\"choice_list_name\":\"resultado\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Negativo\"}},\"_row_num\":15},{\"choice_list_name\":\"resultado\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Incontavel\"}},\"_row_num\":16},{\"choice_list_name\":\"resultado\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Indeterminado\"}},\"_row_num\":17}]"
+        "_value": "[{\"choice_list_name\":\"resultado_lab\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Positivo\"}},\"_row_num\":14},{\"choice_list_name\":\"resultado_lab\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Negativo\"}},\"_row_num\":15},{\"choice_list_name\":\"resultado_lab\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Incontavel\"}},\"_row_num\":16},{\"choice_list_name\":\"resultado_lab\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Indeterminado\"}},\"_row_num\":17}]"
       },
       {
         "_partition": "Column",
