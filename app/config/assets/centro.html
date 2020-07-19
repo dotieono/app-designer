@@ -98,9 +98,9 @@
             sql = sql + 'r.region = "' + getRegion(selCs) + '" COLLATE NOCASE AND ';
             sql = sql + 'r.cs = "' + selCs + '" COLLATE NOCASE AND ';
             sql = sql + 'r.resultado_TDR = 1 AND ';
-            sql = sql + 'r.date_rastreio = "' + todayAdate() + '" AND r.exclusao is NULL ORDER BY INC_ID';
+            sql = sql + 'r.date_rastreio = "' + todayAdate() + '" AND r.exclusao is NULL ORDER BY INC_ID, r._savepoint_timestamp DESC';
 
-            console.log(sql);
+            //console.log(sql);
 
             odkData.arbitraryQuery('rastreio', sql, null, null, null, successFn, failureFn);
         }
@@ -165,7 +165,8 @@
                         var dn =  updateResult.getData(row,"dn");
                         var ano =  updateResult.getData(row,"ano");
                         var mes =  updateResult.getData(row,"mes");
-
+                        var id_rastreio =  updateResult.getData(row,"id_rastreio");
+                        
                         // Go ahead and open form
                         var tableId = "inclusao";
                         var formId = "inclusao"; 
@@ -181,7 +182,9 @@
                             date_rastreio : date_rastreio,
                             temperatura : temperatura,
                             febre : febre,
-                            id_estudo : codigo
+                            id_estudo : codigo,
+                            cs: selCs,
+                            id_rastreio: id_rastreio,
                         }
                         console.log("Sending data:");
                         console.log(jsonMap);
