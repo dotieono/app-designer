@@ -108,8 +108,15 @@
         "display": {
           "prompt": {
             "text": "MUAC"
+          },
+          "hint": {
+            "text": "se não for medido coloca 888"
+          },
+          "constraint_message": {
+            "text": "MUAC deve ser em milimetros (mm) por favor verifica se nao está em centimetros (cm) ou outra unidade"
           }
         },
+        "constraint": "(data('MUAC')>=120 && data('MUAC')<=180) || data('MUAC')==888",
         "_row_num": 13
       },
       {
@@ -118,8 +125,15 @@
         "display": {
           "prompt": {
             "text": "Peso (Kg)"
+          },
+          "hint": {
+            "text": "se não for medido coloca 888"
+          },
+          "constraint_message": {
+            "text": "Peso deve ser em Quilogramos (Kg) por favor verifica se nao está em gramos (g) ou em outra unidade"
           }
         },
+        "constraint": "(data('peso')<=35 && data('peso')>=5) || data('peso')==888",
         "_row_num": 14
       },
       {
@@ -154,6 +168,7 @@
             "text": "Tipo de evento"
           }
         },
+        "required": true,
         "_row_num": 19
       },
       {
@@ -219,94 +234,104 @@
         "_row_num": 27
       },
       {
-        "type": "linked_table",
-        "values_list": "medicamento_suspeito",
+        "type": "string",
+        "name": "marca1",
+        "display": {
+          "prompt": {
+            "text": "Nome da Marca"
+          }
+        },
         "_row_num": 28
       },
       {
-        "clause": "end screen",
+        "type": "string",
+        "name": "lote1",
+        "display": {
+          "prompt": {
+            "text": "Número de lote"
+          }
+        },
         "_row_num": 29
       },
       {
-        "clause": "begin screen",
+        "type": "string",
+        "name": "fabricador1",
+        "display": {
+          "prompt": {
+            "text": "Nome do fabricador"
+          }
+        },
         "_row_num": 30
       },
       {
-        "type": "note",
-        "name": "rel_tecnico",
+        "type": "select_one",
+        "values_list": "via_adm",
+        "name": "via1",
         "display": {
           "prompt": {
-            "text": "Relatório do técnico"
+            "text": "Via de administração"
           }
         },
         "_row_num": 31
       },
       {
-        "type": "string",
-        "name": "tecnico",
-        "display": {
-          "prompt": {
-            "text": "Nome do técnico:"
-          }
-        },
+        "clause": "end screen",
         "_row_num": 32
       },
       {
-        "type": "string",
-        "name": "qualificacao",
-        "display": {
-          "prompt": {
-            "text": "Qualificação:"
-          }
-        },
+        "clause": "begin screen",
         "_row_num": 33
       },
       {
-        "type": "string",
-        "name": "endereco",
+        "type": "note",
+        "name": "listas2",
         "display": {
           "prompt": {
-            "text": "Endereço:"
+            "text": "Anote o medicamento suspeito de causar o evento adverso sério e todos os concomitantes"
+          },
+          "hint": {
+            "text": "Alem de {{data.marca1}}"
           }
         },
         "_row_num": 34
       },
       {
-        "type": "integer",
-        "name": "tel_tecnico",
+        "type": "string",
+        "name": "marca2",
         "display": {
           "prompt": {
-            "text": "Telefone:"
+            "text": "Nome da Marca"
           }
         },
         "_row_num": 35
       },
       {
         "type": "string",
-        "name": "email_tecnico",
+        "name": "lote2",
         "display": {
           "prompt": {
-            "text": "Email:"
+            "text": "Número de lote"
           }
         },
         "_row_num": 36
       },
       {
-        "type": "signature",
-        "name": "assinatura",
+        "type": "string",
+        "name": "fabricador2",
         "display": {
           "prompt": {
-            "text": "Assinatura:"
+            "text": "Nome do fabricador"
           }
         },
         "_row_num": 37
       },
       {
-        "type": "note",
-        "name": "date_assinatuda",
+        "type": "select_one",
+        "values_list": "via_adm",
+        "name": "via2",
         "display": {
           "prompt": {
-            "text": "Data:{{calculates.data_form}}"
+            "text": "Via de administração"
           }
         },
         "_row_num": 38
@@ -316,11 +341,229 @@
         "_row_num": 39
       },
       {
+        "clause": "begin screen",
+        "_row_num": 40
+      },
+      {
+        "type": "note",
+        "name": "listas3",
+        "display": {
+          "prompt": {
+            "text": "Anote o medicamento suspeito de causar o evento adverso sério e todos os concomitantes"
+          },
+          "hint": {
+            "text": "Alem de {{data.marca1}} e {{data.marca2}}"
+          }
+        },
+        "_row_num": 41
+      },
+      {
+        "type": "string",
+        "name": "marca3",
+        "display": {
+          "prompt": {
+            "text": "Nome da Marca"
+          }
+        },
+        "_row_num": 42
+      },
+      {
+        "type": "string",
+        "name": "lote3",
+        "display": {
+          "prompt": {
+            "text": "Número de lote"
+          }
+        },
+        "_row_num": 43
+      },
+      {
+        "type": "string",
+        "name": "fabricador3",
+        "display": {
+          "prompt": {
+            "text": "Nome do fabricador"
+          }
+        },
+        "_row_num": 44
+      },
+      {
+        "type": "select_one",
+        "values_list": "via_adm",
+        "name": "via3",
+        "display": {
+          "prompt": {
+            "text": "Via de administração"
+          }
+        },
+        "_row_num": 45
+      },
+      {
+        "clause": "end screen",
+        "_row_num": 46
+      },
+      {
+        "clause": "begin screen",
+        "_row_num": 47
+      },
+      {
+        "type": "note",
+        "name": "listas4",
+        "display": {
+          "prompt": {
+            "text": "Anote o medicamento suspeito de causar o evento adverso sério e todos os concomitantes"
+          },
+          "hint": {
+            "text": "Alem de {{data.marca1}} , {{data.marca2}} e {{data.marca3}}"
+          }
+        },
+        "_row_num": 48
+      },
+      {
+        "type": "string",
+        "name": "marca4",
+        "display": {
+          "prompt": {
+            "text": "Nome da Marca"
+          }
+        },
+        "_row_num": 49
+      },
+      {
+        "type": "string",
+        "name": "lote4",
+        "display": {
+          "prompt": {
+            "text": "Número de lote"
+          }
+        },
+        "_row_num": 50
+      },
+      {
+        "type": "string",
+        "name": "fabricador4",
+        "display": {
+          "prompt": {
+            "text": "Nome do fabricador"
+          }
+        },
+        "_row_num": 51
+      },
+      {
+        "type": "select_one",
+        "values_list": "via_adm",
+        "name": "via4",
+        "display": {
+          "prompt": {
+            "text": "Via de administração"
+          }
+        },
+        "_row_num": 52
+      },
+      {
+        "clause": "end screen",
+        "_row_num": 53
+      },
+      {
+        "clause": "begin screen",
+        "_row_num": 54
+      },
+      {
+        "type": "note",
+        "name": "rel_tecnico",
+        "display": {
+          "prompt": {
+            "text": "Relatório do técnico"
+          }
+        },
+        "_row_num": 55
+      },
+      {
+        "type": "string",
+        "name": "tecnico",
+        "display": {
+          "prompt": {
+            "text": "Nome do técnico:"
+          }
+        },
+        "required": true,
+        "_row_num": 56
+      },
+      {
+        "type": "string",
+        "name": "qualificacao",
+        "display": {
+          "prompt": {
+            "text": "Qualificação:"
+          }
+        },
+        "required": true,
+        "_row_num": 57
+      },
+      {
+        "type": "string",
+        "name": "endereco",
+        "display": {
+          "prompt": {
+            "text": "Endereço:"
+          }
+        },
+        "required": true,
+        "_row_num": 58
+      },
+      {
+        "type": "integer",
+        "name": "tel_tecnico",
+        "display": {
+          "prompt": {
+            "text": "Telefone:"
+          }
+        },
+        "required": true,
+        "_row_num": 59
+      },
+      {
+        "type": "string",
+        "name": "email_tecnico",
+        "display": {
+          "prompt": {
+            "text": "Email:"
+          }
+        },
+        "required": true,
+        "_row_num": 60
+      },
+      {
+        "type": "signature",
+        "name": "assinatura",
+        "display": {
+          "prompt": {
+            "text": "Assinatura:"
+          }
+        },
+        "required": true,
+        "_row_num": 61
+      },
+      {
+        "type": "note",
+        "name": "date_assinatuda",
+        "display": {
+          "prompt": {
+            "text": "Data:{{calculates.data_form}}"
+          }
+        },
+        "_row_num": 62
+      },
+      {
+        "clause": "end screen",
+        "_row_num": 63
+      },
+      {
         "type": "assign",
         "name": "data_fomulario",
         "calculation": "adate.today()",
         "hideInContents": true,
-        "_row_num": 40
+        "_row_num": 64
       }
     ],
     "choices": [
@@ -539,6 +782,36 @@
           }
         },
         "_row_num": 30
+      },
+      {
+        "choice_list_name": "via_adm",
+        "data_value": 1,
+        "display": {
+          "title": {
+            "text": "VO (Oral)"
+          }
+        },
+        "_row_num": 33
+      },
+      {
+        "choice_list_name": "via_adm",
+        "data_value": 2,
+        "display": {
+          "title": {
+            "text": "IM (Intra-muscular)"
+          }
+        },
+        "_row_num": 34
+      },
+      {
+        "choice_list_name": "via_adm",
+        "data_value": 3,
+        "display": {
+          "title": {
+            "text": "EV (Intra-venosa)"
+          }
+        },
+        "_row_num": 35
       }
     ],
     "queries": [
@@ -1060,6 +1333,38 @@
           },
           "_row_num": 30
         }
+      ],
+      "via_adm": [
+        {
+          "choice_list_name": "via_adm",
+          "data_value": 1,
+          "display": {
+            "title": {
+              "text": "VO (Oral)"
+            }
+          },
+          "_row_num": 33
+        },
+        {
+          "choice_list_name": "via_adm",
+          "data_value": 2,
+          "display": {
+            "title": {
+              "text": "IM (Intra-muscular)"
+            }
+          },
+          "_row_num": 34
+        },
+        {
+          "choice_list_name": "via_adm",
+          "data_value": 3,
+          "display": {
+            "title": {
+              "text": "EV (Intra-venosa)"
+            }
+          },
+          "_row_num": 35
+        }
       ]
     },
     "table_specific_definitions": {
@@ -1331,7 +1636,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 32,
+            "_row_num": 56,
             "section_name": "survey"
           },
           {
@@ -1345,7 +1650,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 33,
+            "_row_num": 57,
             "section_name": "survey"
           },
           {
@@ -1359,7 +1664,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 34,
+            "_row_num": 58,
             "section_name": "survey"
           },
           {
@@ -1373,7 +1678,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 35,
+            "_row_num": 59,
             "section_name": "survey"
           },
           {
@@ -1387,7 +1692,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 36,
+            "_row_num": 60,
             "section_name": "survey"
           },
           {
@@ -1415,7 +1720,7 @@
         },
         "_defn": [
           {
-            "_row_num": 37,
+            "_row_num": 61,
             "section_name": "survey"
           },
           {
@@ -1473,7 +1778,7 @@
       "data_fomulario": {
         "_defn": [
           {
-            "_row_num": 40,
+            "_row_num": 64,
             "section_name": "survey"
           },
           {
@@ -1493,6 +1798,170 @@
         ],
         "type": "number",
         "elementKey": "MUAC"
+      },
+      "marca1": {
+        "_defn": [
+          {
+            "_row_num": 28,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "marca1"
+      },
+      "lote1": {
+        "_defn": [
+          {
+            "_row_num": 29,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "lote1"
+      },
+      "fabricador1": {
+        "_defn": [
+          {
+            "_row_num": 30,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "fabricador1"
+      },
+      "via1": {
+        "_defn": [
+          {
+            "_row_num": 31,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "via_adm",
+        "elementKey": "via1"
+      },
+      "marca2": {
+        "_defn": [
+          {
+            "_row_num": 35,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "marca2"
+      },
+      "lote2": {
+        "_defn": [
+          {
+            "_row_num": 36,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "lote2"
+      },
+      "fabricador2": {
+        "_defn": [
+          {
+            "_row_num": 37,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "fabricador2"
+      },
+      "via2": {
+        "_defn": [
+          {
+            "_row_num": 38,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "via_adm",
+        "elementKey": "via2"
+      },
+      "marca3": {
+        "_defn": [
+          {
+            "_row_num": 42,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "marca3"
+      },
+      "lote3": {
+        "_defn": [
+          {
+            "_row_num": 43,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "lote3"
+      },
+      "fabricador3": {
+        "_defn": [
+          {
+            "_row_num": 44,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "fabricador3"
+      },
+      "via3": {
+        "_defn": [
+          {
+            "_row_num": 45,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "via_adm",
+        "elementKey": "via3"
+      },
+      "marca4": {
+        "_defn": [
+          {
+            "_row_num": 49,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "marca4"
+      },
+      "lote4": {
+        "_defn": [
+          {
+            "_row_num": 50,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "lote4"
+      },
+      "fabricador4": {
+        "_defn": [
+          {
+            "_row_num": 51,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "fabricador4"
+      },
+      "via4": {
+        "_defn": [
+          {
+            "_row_num": 52,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "via_adm",
+        "elementKey": "via4"
       }
     },
     "section_names": [
@@ -1586,8 +2055,15 @@
             "display": {
               "prompt": {
                 "text": "MUAC"
+              },
+              "hint": {
+                "text": "se não for medido coloca 888"
+              },
+              "constraint_message": {
+                "text": "MUAC deve ser em milimetros (mm) por favor verifica se nao está em centimetros (cm) ou outra unidade"
               }
             },
+            "constraint": "(data('MUAC')>=120 && data('MUAC')<=180) || data('MUAC')==888",
             "_row_num": 13,
             "__rowNum__": 12,
             "_token_type": "prompt",
@@ -1601,8 +2077,15 @@
             "display": {
               "prompt": {
                 "text": "Peso (Kg)"
+              },
+              "hint": {
+                "text": "se não for medido coloca 888"
+              },
+              "constraint_message": {
+                "text": "Peso deve ser em Quilogramos (Kg) por favor verifica se nao está em gramos (g) ou em outra unidade"
               }
             },
+            "constraint": "(data('peso')<=35 && data('peso')>=5) || data('peso')==888",
             "_row_num": 14,
             "__rowNum__": 13,
             "_token_type": "prompt",
@@ -1639,6 +2122,7 @@
                 "text": "Tipo de evento"
               }
             },
+            "required": true,
             "_row_num": 19,
             "__rowNum__": 18,
             "_token_type": "prompt",
@@ -1712,14 +2196,302 @@
             "promptIdx": 12
           },
           {
-            "type": "linked_table",
-            "values_list": "medicamento_suspeito",
+            "type": "string",
+            "name": "marca1",
+            "display": {
+              "prompt": {
+                "text": "Nome da Marca"
+              }
+            },
             "_row_num": 28,
             "__rowNum__": 27,
             "_token_type": "prompt",
-            "_type": "linked_table",
+            "_type": "string",
             "_branch_label_enclosing_screen": "survey/_screen26",
             "promptIdx": 13
+          },
+          {
+            "type": "string",
+            "name": "lote1",
+            "display": {
+              "prompt": {
+                "text": "Número de lote"
+              }
+            },
+            "_row_num": 29,
+            "__rowNum__": 28,
+            "_token_type": "prompt",
+            "_type": "string",
+            "_branch_label_enclosing_screen": "survey/_screen26",
+            "promptIdx": 14
+          },
+          {
+            "type": "string",
+            "name": "fabricador1",
+            "display": {
+              "prompt": {
+                "text": "Nome do fabricador"
+              }
+            },
+            "_row_num": 30,
+            "__rowNum__": 29,
+            "_token_type": "prompt",
+            "_type": "string",
+            "_branch_label_enclosing_screen": "survey/_screen26",
+            "promptIdx": 15
+          },
+          {
+            "type": "select_one",
+            "values_list": "via_adm",
+            "name": "via1",
+            "display": {
+              "prompt": {
+                "text": "Via de administração"
+              }
+            },
+            "_row_num": 31,
+            "__rowNum__": 30,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen26",
+            "promptIdx": 16
+          },
+          {
+            "type": "note",
+            "name": "listas2",
+            "display": {
+              "prompt": {
+                "text": "Anote o medicamento suspeito de causar o evento adverso sério e todos os concomitantes"
+              },
+              "hint": {
+                "text": "Alem de {{data.marca1}}"
+              }
+            },
+            "_row_num": 34,
+            "__rowNum__": 33,
+            "_token_type": "prompt",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen33",
+            "promptIdx": 17
+          },
+          {
+            "type": "string",
+            "name": "marca2",
+            "display": {
+              "prompt": {
+                "text": "Nome da Marca"
+              }
+            },
+            "_row_num": 35,
+            "__rowNum__": 34,
+            "_token_type": "prompt",
+            "_type": "string",
+            "_branch_label_enclosing_screen": "survey/_screen33",
+            "promptIdx": 18
+          },
+          {
+            "type": "string",
+            "name": "lote2",
+            "display": {
+              "prompt": {
+                "text": "Número de lote"
+              }
+            },
+            "_row_num": 36,
+            "__rowNum__": 35,
+            "_token_type": "prompt",
+            "_type": "string",
+            "_branch_label_enclosing_screen": "survey/_screen33",
+            "promptIdx": 19
+          },
+          {
+            "type": "string",
+            "name": "fabricador2",
+            "display": {
+              "prompt": {
+                "text": "Nome do fabricador"
+              }
+            },
+            "_row_num": 37,
+            "__rowNum__": 36,
+            "_token_type": "prompt",
+            "_type": "string",
+            "_branch_label_enclosing_screen": "survey/_screen33",
+            "promptIdx": 20
+          },
+          {
+            "type": "select_one",
+            "values_list": "via_adm",
+            "name": "via2",
+            "display": {
+              "prompt": {
+                "text": "Via de administração"
+              }
+            },
+            "_row_num": 38,
+            "__rowNum__": 37,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen33",
+            "promptIdx": 21
+          },
+          {
+            "type": "note",
+            "name": "listas3",
+            "display": {
+              "prompt": {
+                "text": "Anote o medicamento suspeito de causar o evento adverso sério e todos os concomitantes"
+              },
+              "hint": {
+                "text": "Alem de {{data.marca1}} e {{data.marca2}}"
+              }
+            },
+            "_row_num": 41,
+            "__rowNum__": 40,
+            "_token_type": "prompt",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen40",
+            "promptIdx": 22
+          },
+          {
+            "type": "string",
+            "name": "marca3",
+            "display": {
+              "prompt": {
+                "text": "Nome da Marca"
+              }
+            },
+            "_row_num": 42,
+            "__rowNum__": 41,
+            "_token_type": "prompt",
+            "_type": "string",
+            "_branch_label_enclosing_screen": "survey/_screen40",
+            "promptIdx": 23
+          },
+          {
+            "type": "string",
+            "name": "lote3",
+            "display": {
+              "prompt": {
+                "text": "Número de lote"
+              }
+            },
+            "_row_num": 43,
+            "__rowNum__": 42,
+            "_token_type": "prompt",
+            "_type": "string",
+            "_branch_label_enclosing_screen": "survey/_screen40",
+            "promptIdx": 24
+          },
+          {
+            "type": "string",
+            "name": "fabricador3",
+            "display": {
+              "prompt": {
+                "text": "Nome do fabricador"
+              }
+            },
+            "_row_num": 44,
+            "__rowNum__": 43,
+            "_token_type": "prompt",
+            "_type": "string",
+            "_branch_label_enclosing_screen": "survey/_screen40",
+            "promptIdx": 25
+          },
+          {
+            "type": "select_one",
+            "values_list": "via_adm",
+            "name": "via3",
+            "display": {
+              "prompt": {
+                "text": "Via de administração"
+              }
+            },
+            "_row_num": 45,
+            "__rowNum__": 44,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen40",
+            "promptIdx": 26
+          },
+          {
+            "type": "note",
+            "name": "listas4",
+            "display": {
+              "prompt": {
+                "text": "Anote o medicamento suspeito de causar o evento adverso sério e todos os concomitantes"
+              },
+              "hint": {
+                "text": "Alem de {{data.marca1}} , {{data.marca2}} e {{data.marca3}}"
+              }
+            },
+            "_row_num": 48,
+            "__rowNum__": 47,
+            "_token_type": "prompt",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen47",
+            "promptIdx": 27
+          },
+          {
+            "type": "string",
+            "name": "marca4",
+            "display": {
+              "prompt": {
+                "text": "Nome da Marca"
+              }
+            },
+            "_row_num": 49,
+            "__rowNum__": 48,
+            "_token_type": "prompt",
+            "_type": "string",
+            "_branch_label_enclosing_screen": "survey/_screen47",
+            "promptIdx": 28
+          },
+          {
+            "type": "string",
+            "name": "lote4",
+            "display": {
+              "prompt": {
+                "text": "Número de lote"
+              }
+            },
+            "_row_num": 50,
+            "__rowNum__": 49,
+            "_token_type": "prompt",
+            "_type": "string",
+            "_branch_label_enclosing_screen": "survey/_screen47",
+            "promptIdx": 29
+          },
+          {
+            "type": "string",
+            "name": "fabricador4",
+            "display": {
+              "prompt": {
+                "text": "Nome do fabricador"
+              }
+            },
+            "_row_num": 51,
+            "__rowNum__": 50,
+            "_token_type": "prompt",
+            "_type": "string",
+            "_branch_label_enclosing_screen": "survey/_screen47",
+            "promptIdx": 30
+          },
+          {
+            "type": "select_one",
+            "values_list": "via_adm",
+            "name": "via4",
+            "display": {
+              "prompt": {
+                "text": "Via de administração"
+              }
+            },
+            "_row_num": 52,
+            "__rowNum__": 51,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen47",
+            "promptIdx": 31
           },
           {
             "type": "note",
@@ -1729,12 +2501,12 @@
                 "text": "Relatório do técnico"
               }
             },
-            "_row_num": 31,
-            "__rowNum__": 30,
+            "_row_num": 55,
+            "__rowNum__": 54,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen30",
-            "promptIdx": 14
+            "_branch_label_enclosing_screen": "survey/_screen54",
+            "promptIdx": 32
           },
           {
             "type": "string",
@@ -1744,12 +2516,13 @@
                 "text": "Nome do técnico:"
               }
             },
-            "_row_num": 32,
-            "__rowNum__": 31,
+            "required": true,
+            "_row_num": 56,
+            "__rowNum__": 55,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen30",
-            "promptIdx": 15
+            "_branch_label_enclosing_screen": "survey/_screen54",
+            "promptIdx": 33
           },
           {
             "type": "string",
@@ -1759,12 +2532,13 @@
                 "text": "Qualificação:"
               }
             },
-            "_row_num": 33,
-            "__rowNum__": 32,
+            "required": true,
+            "_row_num": 57,
+            "__rowNum__": 56,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen30",
-            "promptIdx": 16
+            "_branch_label_enclosing_screen": "survey/_screen54",
+            "promptIdx": 34
           },
           {
             "type": "string",
@@ -1774,12 +2548,13 @@
                 "text": "Endereço:"
               }
             },
-            "_row_num": 34,
-            "__rowNum__": 33,
+            "required": true,
+            "_row_num": 58,
+            "__rowNum__": 57,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen30",
-            "promptIdx": 17
+            "_branch_label_enclosing_screen": "survey/_screen54",
+            "promptIdx": 35
           },
           {
             "type": "integer",
@@ -1789,12 +2564,13 @@
                 "text": "Telefone:"
               }
             },
-            "_row_num": 35,
-            "__rowNum__": 34,
+            "required": true,
+            "_row_num": 59,
+            "__rowNum__": 58,
             "_token_type": "prompt",
             "_type": "integer",
-            "_branch_label_enclosing_screen": "survey/_screen30",
-            "promptIdx": 18
+            "_branch_label_enclosing_screen": "survey/_screen54",
+            "promptIdx": 36
           },
           {
             "type": "string",
@@ -1804,12 +2580,13 @@
                 "text": "Email:"
               }
             },
-            "_row_num": 36,
-            "__rowNum__": 35,
+            "required": true,
+            "_row_num": 60,
+            "__rowNum__": 59,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen30",
-            "promptIdx": 19
+            "_branch_label_enclosing_screen": "survey/_screen54",
+            "promptIdx": 37
           },
           {
             "type": "signature",
@@ -1819,12 +2596,13 @@
                 "text": "Assinatura:"
               }
             },
-            "_row_num": 37,
-            "__rowNum__": 36,
+            "required": true,
+            "_row_num": 61,
+            "__rowNum__": 60,
             "_token_type": "prompt",
             "_type": "signature",
-            "_branch_label_enclosing_screen": "survey/_screen30",
-            "promptIdx": 20
+            "_branch_label_enclosing_screen": "survey/_screen54",
+            "promptIdx": 38
           },
           {
             "type": "note",
@@ -1834,26 +2612,35 @@
                 "text": "Data:{{calculates.data_form}}"
               }
             },
-            "_row_num": 38,
-            "__rowNum__": 37,
+            "_row_num": 62,
+            "__rowNum__": 61,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen30",
-            "promptIdx": 21
+            "_branch_label_enclosing_screen": "survey/_screen54",
+            "promptIdx": 39
           },
           {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 41,
-            "_branch_label_enclosing_screen": "survey/_screen41",
-            "promptIdx": 22
+            "_row_num": 65,
+            "_branch_label_enclosing_screen": "survey/_screen65",
+            "promptIdx": 40
           }
         ],
         "validation_tag_map": {
           "finalize": [
+            5,
+            6,
             7,
-            9
+            8,
+            9,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38
           ]
         },
         "operations": [
@@ -1961,17 +2748,17 @@
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 29,
-              "__rowNum__": 28,
+              "_row_num": 32,
+              "__rowNum__": 31,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(12);\nactivePromptIndicies.push(13);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(12);\nactivePromptIndicies.push(13);\nactivePromptIndicies.push(14);\nactivePromptIndicies.push(15);\nactivePromptIndicies.push(16);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 10
           },
           {
             "clause": "begin screen",
-            "_row_num": 30,
-            "__rowNum__": 29,
+            "_row_num": 33,
+            "__rowNum__": 32,
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
@@ -1979,39 +2766,81 @@
               "__rowNum__": 38,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(14);\nactivePromptIndicies.push(15);\nactivePromptIndicies.push(16);\nactivePromptIndicies.push(17);\nactivePromptIndicies.push(18);\nactivePromptIndicies.push(19);\nactivePromptIndicies.push(20);\nactivePromptIndicies.push(21);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(17);\nactivePromptIndicies.push(18);\nactivePromptIndicies.push(19);\nactivePromptIndicies.push(20);\nactivePromptIndicies.push(21);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 11
+          },
+          {
+            "clause": "begin screen",
+            "_row_num": 40,
+            "__rowNum__": 39,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 46,
+              "__rowNum__": 45,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(22);\nactivePromptIndicies.push(23);\nactivePromptIndicies.push(24);\nactivePromptIndicies.push(25);\nactivePromptIndicies.push(26);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 12
+          },
+          {
+            "clause": "begin screen",
+            "_row_num": 47,
+            "__rowNum__": 46,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 53,
+              "__rowNum__": 52,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(27);\nactivePromptIndicies.push(28);\nactivePromptIndicies.push(29);\nactivePromptIndicies.push(30);\nactivePromptIndicies.push(31);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 13
+          },
+          {
+            "clause": "begin screen",
+            "_row_num": 54,
+            "__rowNum__": 53,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 63,
+              "__rowNum__": 62,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(32);\nactivePromptIndicies.push(33);\nactivePromptIndicies.push(34);\nactivePromptIndicies.push(35);\nactivePromptIndicies.push(36);\nactivePromptIndicies.push(37);\nactivePromptIndicies.push(38);\nactivePromptIndicies.push(39);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 14
           },
           {
             "type": "assign",
             "name": "data_fomulario",
             "calculation": "adate.today()",
             "hideInContents": true,
-            "_row_num": 40,
-            "__rowNum__": 39,
+            "_row_num": 64,
+            "__rowNum__": 63,
             "_token_type": "assign",
-            "operationIdx": 12
+            "operationIdx": 15
           },
           {
             "_token_type": "exit_section",
             "clause": "exit section",
-            "_row_num": 41,
-            "operationIdx": 13
+            "_row_num": 65,
+            "operationIdx": 16
           },
           {
-            "_row_num": 41,
+            "_row_num": 65,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(22);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(40);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
-            "operationIdx": 14
+            "operationIdx": 17
           },
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 41,
-            "operationIdx": 15
+            "_row_num": 65,
+            "operationIdx": 18
           }
         ],
         "branch_label_map": {
@@ -2026,9 +2855,12 @@
           "_screen24": 8,
           "_screen25": 9,
           "_screen26": 10,
-          "_screen30": 11,
-          "_contents": 14,
-          "_screen41": 14
+          "_screen33": 11,
+          "_screen40": 12,
+          "_screen47": 13,
+          "_screen54": 14,
+          "_contents": 17,
+          "_screen65": 17
         }
       },
       "initial": {
@@ -2463,7 +3295,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 32,
+            "_row_num": 56,
             "section_name": "survey"
           },
           {
@@ -2480,7 +3312,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 33,
+            "_row_num": 57,
             "section_name": "survey"
           },
           {
@@ -2497,7 +3329,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 34,
+            "_row_num": 58,
             "section_name": "survey"
           },
           {
@@ -2514,7 +3346,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 35,
+            "_row_num": 59,
             "section_name": "survey"
           },
           {
@@ -2531,7 +3363,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 36,
+            "_row_num": 60,
             "section_name": "survey"
           },
           {
@@ -2568,7 +3400,7 @@
         },
         "_defn": [
           {
-            "_row_num": 37,
+            "_row_num": 61,
             "section_name": "survey"
           },
           {
@@ -2646,7 +3478,7 @@
       "data_fomulario": {
         "_defn": [
           {
-            "_row_num": 40,
+            "_row_num": 64,
             "section_name": "survey"
           },
           {
@@ -2672,6 +3504,218 @@
         "elementName": "MUAC",
         "elementSet": "data",
         "elementPath": "MUAC"
+      },
+      "marca1": {
+        "_defn": [
+          {
+            "_row_num": 28,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "marca1",
+        "elementName": "marca1",
+        "elementSet": "data",
+        "elementPath": "marca1"
+      },
+      "lote1": {
+        "_defn": [
+          {
+            "_row_num": 29,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "lote1",
+        "elementName": "lote1",
+        "elementSet": "data",
+        "elementPath": "lote1"
+      },
+      "fabricador1": {
+        "_defn": [
+          {
+            "_row_num": 30,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "fabricador1",
+        "elementName": "fabricador1",
+        "elementSet": "data",
+        "elementPath": "fabricador1"
+      },
+      "via1": {
+        "_defn": [
+          {
+            "_row_num": 31,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "via_adm",
+        "elementKey": "via1",
+        "elementName": "via1",
+        "elementSet": "data",
+        "elementPath": "via1"
+      },
+      "marca2": {
+        "_defn": [
+          {
+            "_row_num": 35,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "marca2",
+        "elementName": "marca2",
+        "elementSet": "data",
+        "elementPath": "marca2"
+      },
+      "lote2": {
+        "_defn": [
+          {
+            "_row_num": 36,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "lote2",
+        "elementName": "lote2",
+        "elementSet": "data",
+        "elementPath": "lote2"
+      },
+      "fabricador2": {
+        "_defn": [
+          {
+            "_row_num": 37,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "fabricador2",
+        "elementName": "fabricador2",
+        "elementSet": "data",
+        "elementPath": "fabricador2"
+      },
+      "via2": {
+        "_defn": [
+          {
+            "_row_num": 38,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "via_adm",
+        "elementKey": "via2",
+        "elementName": "via2",
+        "elementSet": "data",
+        "elementPath": "via2"
+      },
+      "marca3": {
+        "_defn": [
+          {
+            "_row_num": 42,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "marca3",
+        "elementName": "marca3",
+        "elementSet": "data",
+        "elementPath": "marca3"
+      },
+      "lote3": {
+        "_defn": [
+          {
+            "_row_num": 43,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "lote3",
+        "elementName": "lote3",
+        "elementSet": "data",
+        "elementPath": "lote3"
+      },
+      "fabricador3": {
+        "_defn": [
+          {
+            "_row_num": 44,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "fabricador3",
+        "elementName": "fabricador3",
+        "elementSet": "data",
+        "elementPath": "fabricador3"
+      },
+      "via3": {
+        "_defn": [
+          {
+            "_row_num": 45,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "via_adm",
+        "elementKey": "via3",
+        "elementName": "via3",
+        "elementSet": "data",
+        "elementPath": "via3"
+      },
+      "marca4": {
+        "_defn": [
+          {
+            "_row_num": 49,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "marca4",
+        "elementName": "marca4",
+        "elementSet": "data",
+        "elementPath": "marca4"
+      },
+      "lote4": {
+        "_defn": [
+          {
+            "_row_num": 50,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "lote4",
+        "elementName": "lote4",
+        "elementSet": "data",
+        "elementPath": "lote4"
+      },
+      "fabricador4": {
+        "_defn": [
+          {
+            "_row_num": 51,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "elementKey": "fabricador4",
+        "elementName": "fabricador4",
+        "elementSet": "data",
+        "elementPath": "fabricador4"
+      },
+      "via4": {
+        "_defn": [
+          {
+            "_row_num": 52,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "via_adm",
+        "elementKey": "via4",
+        "elementName": "via4",
+        "elementSet": "data",
+        "elementPath": "via4"
       },
       "assinatura_uriFragment": {
         "type": "string",
@@ -2817,6 +3861,34 @@
         "_key": "displayChoicesList",
         "_type": "object",
         "_value": "[{\"choice_list_name\":\"tipo_evento\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Morte\"}},\"_row_num\":22},{\"choice_list_name\":\"tipo_evento\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Ameaça à vida\"}},\"_row_num\":23},{\"choice_list_name\":\"tipo_evento\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Internamento ou prolongação do internamento\"}},\"_row_num\":24},{\"choice_list_name\":\"tipo_evento\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Incapacidade permanente\"}},\"_row_num\":25}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "via1",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"via_adm\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"VO (Oral)\"}},\"_row_num\":33},{\"choice_list_name\":\"via_adm\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"IM (Intra-muscular)\"}},\"_row_num\":34},{\"choice_list_name\":\"via_adm\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"EV (Intra-venosa)\"}},\"_row_num\":35}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "via2",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"via_adm\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"VO (Oral)\"}},\"_row_num\":33},{\"choice_list_name\":\"via_adm\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"IM (Intra-muscular)\"}},\"_row_num\":34},{\"choice_list_name\":\"via_adm\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"EV (Intra-venosa)\"}},\"_row_num\":35}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "via3",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"via_adm\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"VO (Oral)\"}},\"_row_num\":33},{\"choice_list_name\":\"via_adm\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"IM (Intra-muscular)\"}},\"_row_num\":34},{\"choice_list_name\":\"via_adm\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"EV (Intra-venosa)\"}},\"_row_num\":35}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "via4",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"via_adm\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"VO (Oral)\"}},\"_row_num\":33},{\"choice_list_name\":\"via_adm\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"IM (Intra-muscular)\"}},\"_row_num\":34},{\"choice_list_name\":\"via_adm\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"EV (Intra-venosa)\"}},\"_row_num\":35}]"
       },
       {
         "_partition": "FormType",

@@ -8,7 +8,7 @@
       },
       {
         "setting_name": "form_version",
-        "value": 2020061301,
+        "value": 2020071900,
         "_row_num": 3
       },
       {
@@ -160,6 +160,7 @@
             "text": "Especifique o outro acompanhante:"
           }
         },
+        "required": "selected(data('acompanhante'),'4')",
         "_row_num": 24
       },
       {
@@ -182,6 +183,7 @@
             "text": "Nome da Mãe"
           }
         },
+        "required": true,
         "_row_num": 30
       },
       {
@@ -209,6 +211,7 @@
             "text": "Nome do Pai"
           }
         },
+        "required": true,
         "_row_num": 32
       },
       {
@@ -241,6 +244,7 @@
             "text": "Nome de Acompanhante:"
           }
         },
+        "required": "calculates.acompanhante_info()",
         "_row_num": 35
       },
       {
@@ -299,6 +303,7 @@
             "text": "Tabanca/bairro"
           }
         },
+        "required": true,
         "_row_num": 44
       },
       {
@@ -309,6 +314,7 @@
             "text": "Morança/Zona"
           }
         },
+        "required": true,
         "_row_num": 45
       },
       {
@@ -319,6 +325,7 @@
             "text": "Ponto de referência importante (incl. Dono da casa):"
           }
         },
+        "required": true,
         "_row_num": 46
       },
       {
@@ -506,47 +513,21 @@
         "_row_num": 72
       },
       {
-        "type": "string",
-        "name": "codigo",
-        "display": {
-          "prompt": {
-            "text": "Introduza o codigo que aparece no  papel de Analise"
-          }
-        },
-        "required": true,
-        "_row_num": 73
-      },
-      {
         "type": "select_one",
-        "values_list": "codigos_csv",
-        "name": "id_estudo",
-        "display": {
-          "prompt": {
-            "text": "Confirma o codigo introduzido"
-          },
-          "hint": {
-            "text": "Se não aparecer o codigo, é porque o código introduzido não consta na lista de código para este Centro de saúde"
-          }
-        },
-        "choice_filter": "choice_item.region === data('region') && choice_item.cs===data('cs') && choice_item.lista== data('codigo').toUpperCase()",
-        "required": true,
-        "_row_num": 74
-      },
-      {
-        "type": "select_one",
-        "values_list": "yesno",
+        "values_list": "yesnodk",
         "name": "medicacao_previa",
         "display": {
           "prompt": {
             "text": "o Paciente tomou previamente qualquer antipalúdico (Todas as medicações prévias, incluindo remédios naturais e homeopáticos, tomadas nos 14 dias anterires)?"
           }
         },
-        "_row_num": 75
+        "required": true,
+        "_row_num": 73
       },
       {
         "clause": "if // medi_previo",
         "condition": "data('medicacao_previa')=='1'",
-        "_row_num": 76
+        "_row_num": 74
       },
       {
         "type": "integer",
@@ -560,16 +541,17 @@
           }
         },
         "constraint": "data('numero_med')>0",
-        "_row_num": 77
+        "required": "data('medicacao_previa')=='1'",
+        "_row_num": 75
       },
       {
         "clause": "if",
         "condition": "data('numero_med')>=1",
-        "_row_num": 78
+        "_row_num": 76
       },
       {
         "clause": "begin screen",
-        "_row_num": 79
+        "_row_num": 77
       },
       {
         "type": "note",
@@ -579,7 +561,7 @@
             "text": "Introduza dados do primeiro medicamento"
           }
         },
-        "_row_num": 80
+        "_row_num": 78
       },
       {
         "type": "string",
@@ -593,7 +575,7 @@
           }
         },
         "required": "data('numero_med')>=1",
-        "_row_num": 81
+        "_row_num": 79
       },
       {
         "type": "select_one",
@@ -605,7 +587,7 @@
           }
         },
         "required": "data('numero_med')>=1",
-        "_row_num": 82
+        "_row_num": 80
       },
       {
         "type": "select_one",
@@ -617,24 +599,24 @@
           }
         },
         "required": "data('numero_med')>=1",
-        "_row_num": 83
+        "_row_num": 81
       },
       {
         "clause": "end screen",
-        "_row_num": 84
+        "_row_num": 82
       },
       {
         "clause": "end if",
-        "_row_num": 85
+        "_row_num": 83
       },
       {
         "clause": "if",
         "condition": "data('numero_med')>=2",
-        "_row_num": 86
+        "_row_num": 84
       },
       {
         "clause": "begin screen",
-        "_row_num": 87
+        "_row_num": 85
       },
       {
         "type": "note",
@@ -644,7 +626,7 @@
             "text": "Para alem do {{data.nome_med1}}, introduza o 2º medicamento"
           }
         },
-        "_row_num": 88
+        "_row_num": 86
       },
       {
         "type": "string",
@@ -658,7 +640,7 @@
           }
         },
         "required": "data('numero_med')>=2",
-        "_row_num": 89
+        "_row_num": 87
       },
       {
         "type": "select_one",
@@ -670,7 +652,7 @@
           }
         },
         "required": "data('numero_med')>=2",
-        "_row_num": 90
+        "_row_num": 88
       },
       {
         "type": "select_one",
@@ -682,24 +664,24 @@
           }
         },
         "required": "data('numero_med')>=2",
-        "_row_num": 91
+        "_row_num": 89
       },
       {
         "clause": "end screen",
-        "_row_num": 92
+        "_row_num": 90
       },
       {
         "clause": "end if",
-        "_row_num": 93
+        "_row_num": 91
       },
       {
         "clause": "if",
         "condition": "data('numero_med')>=3",
-        "_row_num": 94
+        "_row_num": 92
       },
       {
         "clause": "begin screen",
-        "_row_num": 95
+        "_row_num": 93
       },
       {
         "type": "note",
@@ -709,7 +691,7 @@
             "text": "Para alem do {{data.nome_med1}} e {{data.nome_med2}}, introduza o 3º medicamento"
           }
         },
-        "_row_num": 96
+        "_row_num": 94
       },
       {
         "type": "string",
@@ -723,7 +705,7 @@
           }
         },
         "required": "data('numero_med')>=3",
-        "_row_num": 97
+        "_row_num": 95
       },
       {
         "type": "select_one",
@@ -735,7 +717,7 @@
           }
         },
         "required": "data('numero_med')>=3",
-        "_row_num": 98
+        "_row_num": 96
       },
       {
         "type": "select_one",
@@ -747,24 +729,24 @@
           }
         },
         "required": "data('numero_med')>=3",
-        "_row_num": 99
+        "_row_num": 97
       },
       {
         "clause": "end screen",
-        "_row_num": 100
+        "_row_num": 98
       },
       {
         "clause": "end if",
-        "_row_num": 101
+        "_row_num": 99
       },
       {
         "clause": "if",
         "condition": "data('numero_med')>=4",
-        "_row_num": 102
+        "_row_num": 100
       },
       {
         "clause": "begin screen",
-        "_row_num": 103
+        "_row_num": 101
       },
       {
         "type": "note",
@@ -773,7 +755,7 @@
             "text": "Para alem de {{data.nome_med1}}, {{data.nome_med2}} e {{data.nome_med3}} introduza o 4º medicamento"
           }
         },
-        "_row_num": 104
+        "_row_num": 102
       },
       {
         "type": "string",
@@ -787,7 +769,7 @@
           }
         },
         "required": "data('numero_med')>=4",
-        "_row_num": 105
+        "_row_num": 103
       },
       {
         "type": "select_one",
@@ -799,7 +781,7 @@
           }
         },
         "required": "data('numero_med')>=4",
-        "_row_num": 106
+        "_row_num": 104
       },
       {
         "type": "select_one",
@@ -811,23 +793,23 @@
           }
         },
         "required": "data('numero_med')>=4",
-        "_row_num": 107
+        "_row_num": 105
       },
       {
         "clause": "end screen",
-        "_row_num": 108
+        "_row_num": 106
       },
       {
         "clause": "end if",
-        "_row_num": 109
+        "_row_num": 107
       },
       {
         "clause": "end if // medi_previo",
-        "_row_num": 111
+        "_row_num": 109
       },
       {
         "clause": "begin screen",
-        "_row_num": 112
+        "_row_num": 110
       },
       {
         "type": "assign",
@@ -840,7 +822,7 @@
         },
         "calculation": "adate.today()",
         "hideInContents": true,
-        "_row_num": 113
+        "_row_num": 111
       },
       {
         "type": "note",
@@ -850,7 +832,7 @@
             "text": "sulfadoxina -pirimetamina \nData: {{data.date_SP}}"
           }
         },
-        "_row_num": 114
+        "_row_num": 112
       },
       {
         "type": "time",
@@ -860,7 +842,8 @@
             "text": "Hora"
           }
         },
-        "_row_num": 115
+        "required": true,
+        "_row_num": 113
       },
       {
         "type": "select_one",
@@ -875,7 +858,8 @@
           }
         },
         "constraint": "(calculates.idade_mes()<12)?(data('dose_SP')=='1'):(data('dose_SP')=='2')",
-        "_row_num": 116
+        "required": true,
+        "_row_num": 114
       },
       {
         "type": "select_one",
@@ -886,12 +870,13 @@
             "text": "Vomitou?"
           }
         },
-        "_row_num": 117
+        "required": true,
+        "_row_num": 115
       },
       {
         "clause": "if",
         "condition": "data('vomitou_SP')=='1'",
-        "_row_num": 118
+        "_row_num": 116
       },
       {
         "type": "time",
@@ -901,19 +886,20 @@
             "text": "A hora que vomitou S.P?"
           }
         },
-        "_row_num": 119
+        "required": "data('vomitou_SP')=='1'",
+        "_row_num": 117
       },
       {
         "clause": "end if",
-        "_row_num": 120
+        "_row_num": 118
       },
       {
         "clause": "end screen",
-        "_row_num": 121
+        "_row_num": 119
       },
       {
         "clause": "begin screen",
-        "_row_num": 123
+        "_row_num": 121
       },
       {
         "type": "assign",
@@ -929,7 +915,7 @@
         },
         "calculation": "adate.today()",
         "hideInContents": true,
-        "_row_num": 124
+        "_row_num": 122
       },
       {
         "type": "note",
@@ -939,7 +925,7 @@
             "text": "Amodiaquina\nData: {{calculates.hoje_display}}"
           }
         },
-        "_row_num": 125
+        "_row_num": 123
       },
       {
         "type": "time",
@@ -949,7 +935,8 @@
             "text": "Hora"
           }
         },
-        "_row_num": 126
+        "required": true,
+        "_row_num": 124
       },
       {
         "type": "select_one",
@@ -964,7 +951,8 @@
           }
         },
         "constraint": "(calculates.idade_mes()<12)?(data('dose_AQ')=='1'):(data('dose_AQ')=='2')",
-        "_row_num": 127
+        "required": true,
+        "_row_num": 125
       },
       {
         "type": "select_one",
@@ -975,12 +963,13 @@
             "text": "Vomitou?"
           }
         },
-        "_row_num": 128
+        "required": true,
+        "_row_num": 126
       },
       {
         "clause": "if",
         "condition": "data('vomitou_AQ')=='1'",
-        "_row_num": 129
+        "_row_num": 127
       },
       {
         "type": "time",
@@ -990,15 +979,16 @@
             "text": "A hora que vomitou AQ?"
           }
         },
-        "_row_num": 130
+        "_row_num": 128
       },
       {
         "clause": "end if",
-        "_row_num": 131
+        "required": "data('vomitou_AQ')=='1'",
+        "_row_num": 129
       },
       {
         "clause": "end screen",
-        "_row_num": 132
+        "_row_num": 130
       },
       {
         "type": "select_one",
@@ -1009,24 +999,25 @@
             "text": "Outros medicamentos administrados ( antipalúdicos, antibióticos ou anlgésicos)"
           }
         },
-        "_row_num": 134
+        "required": true,
+        "_row_num": 132
       },
       {
         "clause": "if // outro_medi",
         "condition": "data('outros_med')=='2'",
-        "_row_num": 135
+        "_row_num": 133
       },
       {
         "clause": "goto lab",
-        "_row_num": 136
+        "_row_num": 134
       },
       {
         "clause": "else // outro_medi",
-        "_row_num": 138
+        "_row_num": 136
       },
       {
         "clause": "begin screen",
-        "_row_num": 140
+        "_row_num": 138
       },
       {
         "type": "note",
@@ -1036,7 +1027,7 @@
             "text": "Lista de outros medicamentos administrados ( antipalúdicos, antibióticos ou anlgésicos)"
           }
         },
-        "_row_num": 141
+        "_row_num": 139
       },
       {
         "type": "string",
@@ -1046,7 +1037,8 @@
             "text": "Nome do Medicamento"
           }
         },
-        "_row_num": 142
+        "required": "data('outros_med')=='1'",
+        "_row_num": 140
       },
       {
         "type": "adate",
@@ -1060,7 +1052,8 @@
             "toYear": 2020
           }
         },
-        "_row_num": 143
+        "required": "data('outros_med')=='1'",
+        "_row_num": 141
       },
       {
         "type": "time",
@@ -1070,17 +1063,19 @@
             "text": "Hora"
           }
         },
-        "_row_num": 144
+        "required": "data('outros_med')=='1'",
+        "_row_num": 142
       },
       {
-        "type": "text",
+        "type": "decimal",
         "name": "dose_adm1",
         "display": {
           "prompt": {
             "text": "Nº de comprimido"
           }
         },
-        "_row_num": 145
+        "required": "data('outros_med')=='1'",
+        "_row_num": 143
       },
       {
         "type": "select_one",
@@ -1091,12 +1086,14 @@
             "text": "Vomitou?"
           }
         },
-        "_row_num": 146
+        "required": "data('outros_med')=='1'",
+        "_row_num": 144
       },
       {
         "clause": "if",
         "condition": "data('vomitou_adm1')=='1'",
-        "_row_num": 147
+        "required": "data('outros_med')=='1'",
+        "_row_num": 145
       },
       {
         "type": "time",
@@ -1106,20 +1103,21 @@
             "text": "A hora que vomitou S.P?"
           }
         },
-        "_row_num": 148
+        "_row_num": 146
       },
       {
         "clause": "end if",
-        "_row_num": 149
+        "required": "data('vomitou_adm1')=='1'",
+        "_row_num": 147
       },
       {
         "clause": "end screen",
-        "_row_num": 150
+        "_row_num": 148
       },
       {
         "clause": "if",
         "condition": "calculates.erro_data1()",
-        "_row_num": 152
+        "_row_num": 150
       },
       {
         "type": "note",
@@ -1133,11 +1131,11 @@
           }
         },
         "constraint": "!calculates.erro_data1()",
-        "_row_num": 153
+        "_row_num": 151
       },
       {
         "clause": "end if",
-        "_row_num": 154
+        "_row_num": 152
       },
       {
         "type": "select_one",
@@ -1148,24 +1146,25 @@
             "text": "Para alem de {{data.med_adm1}} toma outros medicamentos administrados ( antipalúdicos, antibióticos ou anlgésicos)"
           }
         },
-        "_row_num": 156
+        "required": "data('outros_med')=='1'",
+        "_row_num": 154
       },
       {
         "clause": "if",
         "condition": "data('outro_med2')=='2'",
-        "_row_num": 157
+        "_row_num": 155
       },
       {
         "clause": "goto lab",
-        "_row_num": 158
+        "_row_num": 156
       },
       {
         "clause": "else",
-        "_row_num": 159
+        "_row_num": 157
       },
       {
         "clause": "begin screen",
-        "_row_num": 160
+        "_row_num": 158
       },
       {
         "type": "string",
@@ -1175,7 +1174,8 @@
             "text": "Nome do Medicamento"
           }
         },
-        "_row_num": 161
+        "required": "data('outros_med2')=='1'",
+        "_row_num": 159
       },
       {
         "type": "adate",
@@ -1189,7 +1189,8 @@
             "toYear": 2020
           }
         },
-        "_row_num": 162
+        "required": "data('outros_med2')=='1'",
+        "_row_num": 160
       },
       {
         "type": "time",
@@ -1199,7 +1200,8 @@
             "text": "Hora"
           }
         },
-        "_row_num": 163
+        "required": "data('outros_med2')=='1'",
+        "_row_num": 161
       },
       {
         "type": "text",
@@ -1209,7 +1211,8 @@
             "text": "Nº de comprimido"
           }
         },
-        "_row_num": 164
+        "required": "data('outros_med2')=='1'",
+        "_row_num": 162
       },
       {
         "type": "select_one",
@@ -1220,12 +1223,13 @@
             "text": "Vomitou?"
           }
         },
-        "_row_num": 165
+        "required": "data('outros_med2')=='1'",
+        "_row_num": 163
       },
       {
         "clause": "if",
         "condition": "data('vomitou_adm2')=='1'",
-        "_row_num": 166
+        "_row_num": 164
       },
       {
         "type": "time",
@@ -1235,20 +1239,21 @@
             "text": "A hora que vomitou S.P?"
           }
         },
-        "_row_num": 167
+        "required": "data('vomitou_adm2')=='1'",
+        "_row_num": 165
       },
       {
         "clause": "end if",
-        "_row_num": 168
+        "_row_num": 166
       },
       {
         "clause": "end screen",
-        "_row_num": 169
+        "_row_num": 167
       },
       {
         "clause": "if",
         "condition": "calculates.erro_data2()",
-        "_row_num": 171
+        "_row_num": 169
       },
       {
         "type": "note",
@@ -1262,11 +1267,11 @@
           }
         },
         "constraint": "!calculates.erro_data2()",
-        "_row_num": 172
+        "_row_num": 170
       },
       {
         "clause": "end if",
-        "_row_num": 173
+        "_row_num": 171
       },
       {
         "type": "select_one",
@@ -1277,24 +1282,25 @@
             "text": "Para alem de {{data.med_adm1}}  e {{data.med_adm2}} toma outros medicamentos administrados ( antipalúdicos, antibióticos ou anlgésicos)"
           }
         },
-        "_row_num": 175
+        "required": "data('outros_med2')=='1'",
+        "_row_num": 173
       },
       {
         "clause": "if",
         "condition": "data('outro_med3')=='2'",
-        "_row_num": 176
+        "_row_num": 174
       },
       {
         "clause": "goto lab",
-        "_row_num": 177
+        "_row_num": 175
       },
       {
         "clause": "else",
-        "_row_num": 178
+        "_row_num": 176
       },
       {
         "clause": "begin screen",
-        "_row_num": 181
+        "_row_num": 179
       },
       {
         "type": "string",
@@ -1304,7 +1310,8 @@
             "text": "Nome do Medicamento"
           }
         },
-        "_row_num": 182
+        "required": "data('outros_med3')=='1'",
+        "_row_num": 180
       },
       {
         "type": "adate",
@@ -1318,7 +1325,8 @@
             "toYear": 2020
           }
         },
-        "_row_num": 183
+        "required": "data('outros_med3')=='1'",
+        "_row_num": 181
       },
       {
         "type": "time",
@@ -1328,7 +1336,8 @@
             "text": "Hora"
           }
         },
-        "_row_num": 184
+        "required": "data('outros_med3')=='1'",
+        "_row_num": 182
       },
       {
         "type": "text",
@@ -1338,7 +1347,8 @@
             "text": "Nº de comprimido"
           }
         },
-        "_row_num": 185
+        "required": "data('outros_med3')=='1'",
+        "_row_num": 183
       },
       {
         "type": "select_one",
@@ -1349,12 +1359,13 @@
             "text": "Vomitou?"
           }
         },
-        "_row_num": 186
+        "required": "data('outros_med3')=='1'",
+        "_row_num": 184
       },
       {
         "clause": "if",
         "condition": "data('vomitou_adm3')=='1'",
-        "_row_num": 187
+        "_row_num": 185
       },
       {
         "type": "time",
@@ -1364,20 +1375,21 @@
             "text": "A hora que vomitou S.P?"
           }
         },
-        "_row_num": 188
+        "required": "data('vomitou_adm3')=='1'",
+        "_row_num": 186
       },
       {
         "clause": "end if",
-        "_row_num": 189
+        "_row_num": 187
       },
       {
         "clause": "end screen",
-        "_row_num": 190
+        "_row_num": 188
       },
       {
         "clause": "if",
         "condition": "calculates.erro_data3()",
-        "_row_num": 192
+        "_row_num": 190
       },
       {
         "type": "note",
@@ -1391,11 +1403,11 @@
           }
         },
         "constraint": "!calculates.erro_data3()",
-        "_row_num": 193
+        "_row_num": 191
       },
       {
         "clause": "end if",
-        "_row_num": 194
+        "_row_num": 192
       },
       {
         "type": "select_one",
@@ -1406,24 +1418,25 @@
             "text": "Para alem de {{data.med_adm1}} , {{data.med_adm2}}  e {{data.med_adm3}} toma outros medicamentos administrados ( antipalúdicos, antibióticos ou anlgésicos)"
           }
         },
-        "_row_num": 196
+        "required": "data('outros_med3')=='1'",
+        "_row_num": 194
       },
       {
         "clause": "if",
         "condition": "data('outro_med4')=='2'",
-        "_row_num": 197
+        "_row_num": 195
       },
       {
         "clause": "goto lab",
-        "_row_num": 198
+        "_row_num": 196
       },
       {
         "clause": "else",
-        "_row_num": 199
+        "_row_num": 197
       },
       {
         "clause": "begin screen",
-        "_row_num": 202
+        "_row_num": 200
       },
       {
         "type": "string",
@@ -1433,7 +1446,8 @@
             "text": "Nome do Medicamento"
           }
         },
-        "_row_num": 203
+        "required": "data('outros_med4')=='1'",
+        "_row_num": 201
       },
       {
         "type": "adate",
@@ -1447,7 +1461,8 @@
             "toYear": 2020
           }
         },
-        "_row_num": 204
+        "required": "data('outros_med4')=='1'",
+        "_row_num": 202
       },
       {
         "type": "time",
@@ -1457,7 +1472,8 @@
             "text": "Hora"
           }
         },
-        "_row_num": 205
+        "required": "data('outros_med4')=='1'",
+        "_row_num": 203
       },
       {
         "type": "text",
@@ -1467,7 +1483,8 @@
             "text": "Nº de comprimido"
           }
         },
-        "_row_num": 206
+        "required": "data('outros_med4')=='1'",
+        "_row_num": 204
       },
       {
         "type": "select_one",
@@ -1478,12 +1495,13 @@
             "text": "Vomitou?"
           }
         },
-        "_row_num": 207
+        "required": "data('outros_med4')=='1'",
+        "_row_num": 205
       },
       {
         "clause": "if",
         "condition": "data('vomitou_adm4')=='1'",
-        "_row_num": 208
+        "_row_num": 206
       },
       {
         "type": "time",
@@ -1493,20 +1511,21 @@
             "text": "A hora que vomitou S.P?"
           }
         },
-        "_row_num": 209
+        "required": "data('vomitou_adm4')=='1'",
+        "_row_num": 207
       },
       {
         "clause": "end if",
-        "_row_num": 210
+        "_row_num": 208
       },
       {
         "clause": "end screen",
-        "_row_num": 211
+        "_row_num": 209
       },
       {
         "clause": "if",
         "condition": "calculates.erro_data4()",
-        "_row_num": 213
+        "_row_num": 211
       },
       {
         "type": "note",
@@ -1520,35 +1539,35 @@
           }
         },
         "constraint": "!calculates.erro_data4()",
-        "_row_num": 214
+        "_row_num": 212
       },
       {
         "clause": "end if",
-        "_row_num": 215
+        "_row_num": 213
+      },
+      {
+        "clause": "end if",
+        "_row_num": 216
+      },
+      {
+        "clause": "end if",
+        "_row_num": 217
       },
       {
         "clause": "end if",
         "_row_num": 218
       },
       {
-        "clause": "end if",
+        "clause": "end if // outro_medi",
         "_row_num": 219
       },
       {
-        "clause": "end if",
-        "_row_num": 220
-      },
-      {
-        "clause": "end if // outro_medi",
-        "_row_num": 221
-      },
-      {
         "branch_label": "lab",
-        "_row_num": 224
+        "_row_num": 222
       },
       {
         "clause": "begin screen",
-        "_row_num": 225
+        "_row_num": 223
       },
       {
         "type": "note",
@@ -1558,7 +1577,7 @@
             "text": "Código: {{data.id_estudo}}    |    D{{calculates.visita_id}}"
           }
         },
-        "_row_num": 227
+        "_row_num": 225
       },
       {
         "type": "note",
@@ -1568,7 +1587,7 @@
             "text": "{{calculates.date_rastreio_display}}    |    {{calculates.dn_idade_display}}"
           }
         },
-        "_row_num": 229
+        "_row_num": 227
       },
       {
         "type": "note",
@@ -1578,7 +1597,7 @@
             "text": "Sexo: {{calculates.sexo_display}}"
           }
         },
-        "_row_num": 230
+        "_row_num": 228
       },
       {
         "type": "select_one",
@@ -1589,18 +1608,18 @@
             "text": "Colheu-se amostra de sangue para a lâmina?"
           }
         },
-        "_row_num": 231
+        "_row_num": 229
       },
       {
         "clause": "end screen",
-        "_row_num": 232
+        "_row_num": 230
       },
       {
         "type": "assign",
         "name": "codigo_lamina",
         "calculation": "\"\"+ data('id_estudo') + \"X\" + calculates.visita_id()",
         "hideInContents": true,
-        "_row_num": 233
+        "_row_num": 231
       },
       {
         "type": "text",
@@ -1610,7 +1629,7 @@
             "text": "Comentario"
           }
         },
-        "_row_num": 235
+        "_row_num": 233
       }
     ],
     "choices": [
@@ -2628,6 +2647,206 @@
         "type": "string",
         "name": "rastreioID_completo",
         "_row_num": 73
+      },
+      {
+        "type": "integer",
+        "name": "numero_med",
+        "_row_num": 77
+      },
+      {
+        "type": "string",
+        "name": "nome_med1",
+        "_row_num": 78
+      },
+      {
+        "type": "select_one",
+        "name": "tomando_med1",
+        "_row_num": 79
+      },
+      {
+        "type": "select_one",
+        "name": "via_med1",
+        "_row_num": 80
+      },
+      {
+        "type": "string",
+        "name": "nome_med2",
+        "_row_num": 81
+      },
+      {
+        "type": "select_one",
+        "name": "tomando_med2",
+        "_row_num": 82
+      },
+      {
+        "type": "select_one",
+        "name": "via_med2",
+        "_row_num": 83
+      },
+      {
+        "type": "string",
+        "name": "nome_med3",
+        "_row_num": 84
+      },
+      {
+        "type": "select_one",
+        "name": "tomando_med3",
+        "_row_num": 85
+      },
+      {
+        "type": "select_one",
+        "name": "via_med3",
+        "_row_num": 86
+      },
+      {
+        "type": "string",
+        "name": "nome_med4",
+        "_row_num": 87
+      },
+      {
+        "type": "select_one",
+        "name": "tomando_med4",
+        "_row_num": 88
+      },
+      {
+        "type": "select_one",
+        "name": "via_med4",
+        "_row_num": 89
+      },
+      {
+        "type": "string",
+        "name": "med_adm1",
+        "_row_num": 90
+      },
+      {
+        "type": "adate",
+        "name": "date_adm1",
+        "_row_num": 91
+      },
+      {
+        "type": "time",
+        "name": "hora_adm1",
+        "_row_num": 92
+      },
+      {
+        "type": "decimal",
+        "name": "dose_adm1",
+        "_row_num": 93
+      },
+      {
+        "type": "select_one",
+        "name": "vomitou_adm1",
+        "_row_num": 94
+      },
+      {
+        "type": "time",
+        "name": "hora_vomito_adm1",
+        "_row_num": 95
+      },
+      {
+        "type": "select_one",
+        "name": "outro_med2",
+        "_row_num": 96
+      },
+      {
+        "type": "string",
+        "name": "med_adm2",
+        "_row_num": 97
+      },
+      {
+        "type": "adate",
+        "name": "date_adm2",
+        "_row_num": 98
+      },
+      {
+        "type": "time",
+        "name": "hora_adm2",
+        "_row_num": 99
+      },
+      {
+        "type": "text",
+        "name": "dose_adm2",
+        "_row_num": 100
+      },
+      {
+        "type": "select_one",
+        "name": "vomitou_adm2",
+        "_row_num": 101
+      },
+      {
+        "type": "time",
+        "name": "hora_vomito_adm2",
+        "_row_num": 102
+      },
+      {
+        "type": "select_one",
+        "name": "outro_med3",
+        "_row_num": 103
+      },
+      {
+        "type": "string",
+        "name": "med_adm3",
+        "_row_num": 104
+      },
+      {
+        "type": "adate",
+        "name": "date_adm3",
+        "_row_num": 105
+      },
+      {
+        "type": "time",
+        "name": "hora_adm3",
+        "_row_num": 106
+      },
+      {
+        "type": "text",
+        "name": "dose_adm3",
+        "_row_num": 107
+      },
+      {
+        "type": "select_one",
+        "name": "vomitou_adm3",
+        "_row_num": 108
+      },
+      {
+        "type": "time",
+        "name": "hora_vomito_adm3",
+        "_row_num": 109
+      },
+      {
+        "type": "select_one",
+        "name": "outro_med4",
+        "_row_num": 110
+      },
+      {
+        "type": "string",
+        "name": "med_adm4",
+        "_row_num": 111
+      },
+      {
+        "type": "adate",
+        "name": "date_adm4",
+        "_row_num": 112
+      },
+      {
+        "type": "time",
+        "name": "hora_adm4",
+        "_row_num": 113
+      },
+      {
+        "type": "text",
+        "name": "dose_adm4",
+        "_row_num": 114
+      },
+      {
+        "type": "select_one",
+        "name": "vomitou_adm4",
+        "_row_num": 115
+      },
+      {
+        "type": "time",
+        "name": "hora_vomito_adm4",
+        "_row_num": 116
       }
     ]
   },
@@ -2655,7 +2874,7 @@
       },
       "form_version": {
         "setting_name": "form_version",
-        "value": 2020061301,
+        "value": 2020071900,
         "_row_num": 3
       },
       "survey": {
@@ -3642,12 +3861,7 @@
       },
       "id_estudo": {
         "type": "string",
-        "valuesList": "codigos_csv",
         "_defn": [
-          {
-            "_row_num": 74,
-            "section_name": "survey"
-          },
           {
             "_row_num": 27,
             "section_name": "model"
@@ -4019,10 +4233,10 @@
       },
       "medicacao_previa": {
         "type": "string",
-        "valuesList": "yesno",
+        "valuesList": "yesnodk",
         "_defn": [
           {
-            "_row_num": 75,
+            "_row_num": 73,
             "section_name": "survey"
           },
           {
@@ -4052,7 +4266,7 @@
         "elementType": "time",
         "_defn": [
           {
-            "_row_num": 115,
+            "_row_num": 113,
             "section_name": "survey"
           },
           {
@@ -4067,7 +4281,7 @@
         "valuesList": "doseSP",
         "_defn": [
           {
-            "_row_num": 116,
+            "_row_num": 114,
             "section_name": "survey"
           },
           {
@@ -4082,7 +4296,7 @@
         "valuesList": "yesno",
         "_defn": [
           {
-            "_row_num": 117,
+            "_row_num": 115,
             "section_name": "survey"
           },
           {
@@ -4097,7 +4311,7 @@
         "elementType": "time",
         "_defn": [
           {
-            "_row_num": 119,
+            "_row_num": 117,
             "section_name": "survey"
           },
           {
@@ -4127,7 +4341,7 @@
         "elementType": "time",
         "_defn": [
           {
-            "_row_num": 126,
+            "_row_num": 124,
             "section_name": "survey"
           },
           {
@@ -4142,7 +4356,7 @@
         "valuesList": "doseAQ",
         "_defn": [
           {
-            "_row_num": 127,
+            "_row_num": 125,
             "section_name": "survey"
           },
           {
@@ -4157,7 +4371,7 @@
         "valuesList": "yesno",
         "_defn": [
           {
-            "_row_num": 128,
+            "_row_num": 126,
             "section_name": "survey"
           },
           {
@@ -4172,7 +4386,7 @@
         "elementType": "time",
         "_defn": [
           {
-            "_row_num": 130,
+            "_row_num": 128,
             "section_name": "survey"
           },
           {
@@ -4207,7 +4421,7 @@
         "valuesList": "yesno",
         "_defn": [
           {
-            "_row_num": 231,
+            "_row_num": 229,
             "section_name": "survey"
           },
           {
@@ -4240,7 +4454,7 @@
       "codigo_lamina": {
         "_defn": [
           {
-            "_row_num": 233,
+            "_row_num": 231,
             "section_name": "survey"
           },
           {
@@ -4271,158 +4485,613 @@
         ],
         "elementKey": "rastreioID_completo"
       },
-      "codigo": {
+      "numero_med": {
+        "type": "integer",
         "_defn": [
           {
-            "_row_num": 73,
+            "_row_num": 75,
             "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "codigo"
-      },
-      "numero_med": {
-        "_defn": [
+          },
           {
             "_row_num": 77,
-            "section_name": "survey"
+            "section_name": "model"
           }
         ],
-        "type": "integer",
         "elementKey": "numero_med"
       },
       "nome_med1": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 79,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 78,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "nome_med1"
+      },
+      "tomando_med1": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 80,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 79,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "tomando_med1"
+      },
+      "via_med1": {
+        "type": "string",
+        "valuesList": "via_adm",
         "_defn": [
           {
             "_row_num": 81,
             "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "nome_med1"
-      },
-      "tomando_med1": {
-        "_defn": [
+          },
           {
-            "_row_num": 82,
-            "section_name": "survey"
+            "_row_num": 80,
+            "section_name": "model"
           }
         ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "tomando_med1"
-      },
-      "via_med1": {
-        "_defn": [
-          {
-            "_row_num": 83,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "via_adm",
         "elementKey": "via_med1"
       },
       "nome_med2": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 87,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 81,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "nome_med2"
+      },
+      "tomando_med2": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 88,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 82,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "tomando_med2"
+      },
+      "via_med2": {
+        "type": "string",
+        "valuesList": "via_adm",
         "_defn": [
           {
             "_row_num": 89,
             "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "nome_med2"
-      },
-      "tomando_med2": {
-        "_defn": [
+          },
           {
-            "_row_num": 90,
-            "section_name": "survey"
+            "_row_num": 83,
+            "section_name": "model"
           }
         ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "tomando_med2"
-      },
-      "via_med2": {
-        "_defn": [
-          {
-            "_row_num": 91,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "via_adm",
         "elementKey": "via_med2"
       },
       "nome_med3": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 95,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 84,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "nome_med3"
+      },
+      "tomando_med3": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 96,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 85,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "tomando_med3"
+      },
+      "via_med3": {
+        "type": "string",
+        "valuesList": "via_adm",
         "_defn": [
           {
             "_row_num": 97,
             "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "nome_med3"
-      },
-      "tomando_med3": {
-        "_defn": [
+          },
           {
-            "_row_num": 98,
-            "section_name": "survey"
+            "_row_num": 86,
+            "section_name": "model"
           }
         ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "tomando_med3"
-      },
-      "via_med3": {
-        "_defn": [
-          {
-            "_row_num": 99,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "via_adm",
         "elementKey": "via_med3"
       },
       "nome_med4": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 103,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 87,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "nome_med4"
+      },
+      "tomando_med4": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 104,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 88,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "tomando_med4"
+      },
+      "via_med4": {
+        "type": "string",
+        "valuesList": "via_adm",
         "_defn": [
           {
             "_row_num": 105,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 89,
+            "section_name": "model"
           }
         ],
-        "type": "string",
-        "elementKey": "nome_med4"
+        "elementKey": "via_med4"
       },
-      "tomando_med4": {
+      "med_adm1": {
+        "type": "string",
         "_defn": [
           {
-            "_row_num": 106,
+            "_row_num": 140,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 90,
+            "section_name": "model"
           }
         ],
+        "elementKey": "med_adm1"
+      },
+      "date_adm1": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 141,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 91,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "date_adm1"
+      },
+      "hora_adm1": {
+        "type": "string",
+        "elementType": "time",
+        "_defn": [
+          {
+            "_row_num": 142,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 92,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "hora_adm1"
+      },
+      "dose_adm1": {
+        "type": "number",
+        "_defn": [
+          {
+            "_row_num": 143,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 93,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "dose_adm1"
+      },
+      "vomitou_adm1": {
         "type": "string",
         "valuesList": "yesno",
-        "elementKey": "tomando_med4"
-      },
-      "via_med4": {
         "_defn": [
           {
-            "_row_num": 107,
+            "_row_num": 144,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 94,
+            "section_name": "model"
           }
         ],
+        "elementKey": "vomitou_adm1"
+      },
+      "hora_vomito_adm1": {
         "type": "string",
-        "valuesList": "via_adm",
-        "elementKey": "via_med4"
+        "elementType": "time",
+        "_defn": [
+          {
+            "_row_num": 146,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 95,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "hora_vomito_adm1"
+      },
+      "outro_med2": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 154,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 96,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "outro_med2"
+      },
+      "med_adm2": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 159,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 97,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "med_adm2"
+      },
+      "date_adm2": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 160,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 98,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "date_adm2"
+      },
+      "hora_adm2": {
+        "type": "string",
+        "elementType": "time",
+        "_defn": [
+          {
+            "_row_num": 161,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 99,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "hora_adm2"
+      },
+      "dose_adm2": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 162,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 100,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "dose_adm2"
+      },
+      "vomitou_adm2": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 163,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 101,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "vomitou_adm2"
+      },
+      "hora_vomito_adm2": {
+        "type": "string",
+        "elementType": "time",
+        "_defn": [
+          {
+            "_row_num": 165,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 102,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "hora_vomito_adm2"
+      },
+      "outro_med3": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 173,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 103,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "outro_med3"
+      },
+      "med_adm3": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 180,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 104,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "med_adm3"
+      },
+      "date_adm3": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 181,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 105,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "date_adm3"
+      },
+      "hora_adm3": {
+        "type": "string",
+        "elementType": "time",
+        "_defn": [
+          {
+            "_row_num": 182,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 106,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "hora_adm3"
+      },
+      "dose_adm3": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 183,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 107,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "dose_adm3"
+      },
+      "vomitou_adm3": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 184,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 108,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "vomitou_adm3"
+      },
+      "hora_vomito_adm3": {
+        "type": "string",
+        "elementType": "time",
+        "_defn": [
+          {
+            "_row_num": 186,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 109,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "hora_vomito_adm3"
+      },
+      "outro_med4": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 194,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 110,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "outro_med4"
+      },
+      "med_adm4": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 201,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 111,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "med_adm4"
+      },
+      "date_adm4": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 202,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 112,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "date_adm4"
+      },
+      "hora_adm4": {
+        "type": "string",
+        "elementType": "time",
+        "_defn": [
+          {
+            "_row_num": 203,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 113,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "hora_adm4"
+      },
+      "dose_adm4": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 204,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 114,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "dose_adm4"
+      },
+      "vomitou_adm4": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 205,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 115,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "vomitou_adm4"
+      },
+      "hora_vomito_adm4": {
+        "type": "string",
+        "elementType": "time",
+        "_defn": [
+          {
+            "_row_num": 207,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 116,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "hora_vomito_adm4"
       },
       "outros_med": {
         "_defn": [
           {
-            "_row_num": 134,
+            "_row_num": 132,
             "section_name": "survey"
           }
         ],
@@ -4430,307 +5099,10 @@
         "valuesList": "yesno",
         "elementKey": "outros_med"
       },
-      "med_adm1": {
-        "_defn": [
-          {
-            "_row_num": 142,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "med_adm1"
-      },
-      "date_adm1": {
-        "_defn": [
-          {
-            "_row_num": 143,
-            "section_name": "survey"
-          }
-        ],
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "elementKey": "date_adm1"
-      },
-      "hora_adm1": {
-        "_defn": [
-          {
-            "_row_num": 144,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementType": "time",
-        "elementKey": "hora_adm1"
-      },
-      "dose_adm1": {
-        "_defn": [
-          {
-            "_row_num": 145,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "dose_adm1"
-      },
-      "vomitou_adm1": {
-        "_defn": [
-          {
-            "_row_num": 146,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "vomitou_adm1"
-      },
-      "hora_vomito_adm1": {
-        "_defn": [
-          {
-            "_row_num": 148,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementType": "time",
-        "elementKey": "hora_vomito_adm1"
-      },
-      "outro_med2": {
-        "_defn": [
-          {
-            "_row_num": 156,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "outro_med2"
-      },
-      "med_adm2": {
-        "_defn": [
-          {
-            "_row_num": 161,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "med_adm2"
-      },
-      "date_adm2": {
-        "_defn": [
-          {
-            "_row_num": 162,
-            "section_name": "survey"
-          }
-        ],
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "elementKey": "date_adm2"
-      },
-      "hora_adm2": {
-        "_defn": [
-          {
-            "_row_num": 163,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementType": "time",
-        "elementKey": "hora_adm2"
-      },
-      "dose_adm2": {
-        "_defn": [
-          {
-            "_row_num": 164,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "dose_adm2"
-      },
-      "vomitou_adm2": {
-        "_defn": [
-          {
-            "_row_num": 165,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "vomitou_adm2"
-      },
-      "hora_vomito_adm2": {
-        "_defn": [
-          {
-            "_row_num": 167,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementType": "time",
-        "elementKey": "hora_vomito_adm2"
-      },
-      "outro_med3": {
-        "_defn": [
-          {
-            "_row_num": 175,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "outro_med3"
-      },
-      "med_adm3": {
-        "_defn": [
-          {
-            "_row_num": 182,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "med_adm3"
-      },
-      "date_adm3": {
-        "_defn": [
-          {
-            "_row_num": 183,
-            "section_name": "survey"
-          }
-        ],
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "elementKey": "date_adm3"
-      },
-      "hora_adm3": {
-        "_defn": [
-          {
-            "_row_num": 184,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementType": "time",
-        "elementKey": "hora_adm3"
-      },
-      "dose_adm3": {
-        "_defn": [
-          {
-            "_row_num": 185,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "dose_adm3"
-      },
-      "vomitou_adm3": {
-        "_defn": [
-          {
-            "_row_num": 186,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "vomitou_adm3"
-      },
-      "hora_vomito_adm3": {
-        "_defn": [
-          {
-            "_row_num": 188,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementType": "time",
-        "elementKey": "hora_vomito_adm3"
-      },
-      "outro_med4": {
-        "_defn": [
-          {
-            "_row_num": 196,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "outro_med4"
-      },
-      "med_adm4": {
-        "_defn": [
-          {
-            "_row_num": 203,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "med_adm4"
-      },
-      "date_adm4": {
-        "_defn": [
-          {
-            "_row_num": 204,
-            "section_name": "survey"
-          }
-        ],
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "elementKey": "date_adm4"
-      },
-      "hora_adm4": {
-        "_defn": [
-          {
-            "_row_num": 205,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementType": "time",
-        "elementKey": "hora_adm4"
-      },
-      "dose_adm4": {
-        "_defn": [
-          {
-            "_row_num": 206,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "dose_adm4"
-      },
-      "vomitou_adm4": {
-        "_defn": [
-          {
-            "_row_num": 207,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "vomitou_adm4"
-      },
-      "hora_vomito_adm4": {
-        "_defn": [
-          {
-            "_row_num": 209,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementType": "time",
-        "elementKey": "hora_vomito_adm4"
-      },
       "coment_inclusao": {
         "_defn": [
           {
-            "_row_num": 235,
+            "_row_num": 233,
             "section_name": "survey"
           }
         ],
@@ -4879,6 +5251,7 @@
                 "text": "Especifique o outro acompanhante:"
               }
             },
+            "required": "selected(data('acompanhante'),'4')",
             "_row_num": 24,
             "__rowNum__": 23,
             "_token_type": "prompt",
@@ -4894,6 +5267,7 @@
                 "text": "Nome da Mãe"
               }
             },
+            "required": true,
             "_row_num": 30,
             "__rowNum__": 29,
             "_token_type": "prompt",
@@ -4931,6 +5305,7 @@
                 "text": "Nome do Pai"
               }
             },
+            "required": true,
             "_row_num": 32,
             "__rowNum__": 31,
             "_token_type": "prompt",
@@ -4968,6 +5343,7 @@
                 "text": "Nome de Acompanhante:"
               }
             },
+            "required": "calculates.acompanhante_info()",
             "_row_num": 35,
             "__rowNum__": 34,
             "_token_type": "prompt",
@@ -5020,6 +5396,7 @@
                 "text": "Tabanca/bairro"
               }
             },
+            "required": true,
             "_row_num": 44,
             "__rowNum__": 43,
             "_token_type": "prompt",
@@ -5035,6 +5412,7 @@
                 "text": "Morança/Zona"
               }
             },
+            "required": true,
             "_row_num": 45,
             "__rowNum__": 44,
             "_token_type": "prompt",
@@ -5050,6 +5428,7 @@
                 "text": "Ponto de referência importante (incl. Dono da casa):"
               }
             },
+            "required": true,
             "_row_num": 46,
             "__rowNum__": 45,
             "_token_type": "prompt",
@@ -5244,57 +5623,21 @@
             "promptIdx": 28
           },
           {
-            "type": "string",
-            "name": "codigo",
-            "display": {
-              "prompt": {
-                "text": "Introduza o codigo que aparece no  papel de Analise"
-              }
-            },
-            "required": true,
-            "_row_num": 73,
-            "__rowNum__": 72,
-            "_token_type": "prompt",
-            "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen73",
-            "promptIdx": 29
-          },
-          {
             "type": "select_one",
-            "values_list": "codigos_csv",
-            "name": "id_estudo",
-            "display": {
-              "prompt": {
-                "text": "Confirma o codigo introduzido"
-              },
-              "hint": {
-                "text": "Se não aparecer o codigo, é porque o código introduzido não consta na lista de código para este Centro de saúde"
-              }
-            },
-            "choice_filter": "choice_item.region === data('region') && choice_item.cs===data('cs') && choice_item.lista== data('codigo').toUpperCase()",
-            "required": true,
-            "_row_num": 74,
-            "__rowNum__": 73,
-            "_token_type": "prompt",
-            "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen74",
-            "promptIdx": 30
-          },
-          {
-            "type": "select_one",
-            "values_list": "yesno",
+            "values_list": "yesnodk",
             "name": "medicacao_previa",
             "display": {
               "prompt": {
                 "text": "o Paciente tomou previamente qualquer antipalúdico (Todas as medicações prévias, incluindo remédios naturais e homeopáticos, tomadas nos 14 dias anterires)?"
               }
             },
-            "_row_num": 75,
-            "__rowNum__": 74,
+            "required": true,
+            "_row_num": 73,
+            "__rowNum__": 72,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen75",
-            "promptIdx": 31
+            "_branch_label_enclosing_screen": "survey/_screen73",
+            "promptIdx": 29
           },
           {
             "type": "integer",
@@ -5308,12 +5651,13 @@
               }
             },
             "constraint": "data('numero_med')>0",
-            "_row_num": 77,
-            "__rowNum__": 76,
+            "required": "data('medicacao_previa')=='1'",
+            "_row_num": 75,
+            "__rowNum__": 74,
             "_token_type": "prompt",
             "_type": "integer",
-            "_branch_label_enclosing_screen": "survey/_screen77",
-            "promptIdx": 32
+            "_branch_label_enclosing_screen": "survey/_screen75",
+            "promptIdx": 30
           },
           {
             "type": "note",
@@ -5323,12 +5667,12 @@
                 "text": "Introduza dados do primeiro medicamento"
               }
             },
-            "_row_num": 80,
-            "__rowNum__": 79,
+            "_row_num": 78,
+            "__rowNum__": 77,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen79",
-            "promptIdx": 33
+            "_branch_label_enclosing_screen": "survey/_screen77",
+            "promptIdx": 31
           },
           {
             "type": "string",
@@ -5342,12 +5686,12 @@
               }
             },
             "required": "data('numero_med')>=1",
-            "_row_num": 81,
-            "__rowNum__": 80,
+            "_row_num": 79,
+            "__rowNum__": 78,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen79",
-            "promptIdx": 34
+            "_branch_label_enclosing_screen": "survey/_screen77",
+            "promptIdx": 32
           },
           {
             "type": "select_one",
@@ -5359,12 +5703,12 @@
               }
             },
             "required": "data('numero_med')>=1",
-            "_row_num": 82,
-            "__rowNum__": 81,
+            "_row_num": 80,
+            "__rowNum__": 79,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen79",
-            "promptIdx": 35
+            "_branch_label_enclosing_screen": "survey/_screen77",
+            "promptIdx": 33
           },
           {
             "type": "select_one",
@@ -5376,12 +5720,12 @@
               }
             },
             "required": "data('numero_med')>=1",
-            "_row_num": 83,
-            "__rowNum__": 82,
+            "_row_num": 81,
+            "__rowNum__": 80,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen79",
-            "promptIdx": 36
+            "_branch_label_enclosing_screen": "survey/_screen77",
+            "promptIdx": 34
           },
           {
             "type": "note",
@@ -5391,12 +5735,12 @@
                 "text": "Para alem do {{data.nome_med1}}, introduza o 2º medicamento"
               }
             },
-            "_row_num": 88,
-            "__rowNum__": 87,
+            "_row_num": 86,
+            "__rowNum__": 85,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen87",
-            "promptIdx": 37
+            "_branch_label_enclosing_screen": "survey/_screen85",
+            "promptIdx": 35
           },
           {
             "type": "string",
@@ -5410,12 +5754,12 @@
               }
             },
             "required": "data('numero_med')>=2",
-            "_row_num": 89,
-            "__rowNum__": 88,
+            "_row_num": 87,
+            "__rowNum__": 86,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen87",
-            "promptIdx": 38
+            "_branch_label_enclosing_screen": "survey/_screen85",
+            "promptIdx": 36
           },
           {
             "type": "select_one",
@@ -5427,12 +5771,12 @@
               }
             },
             "required": "data('numero_med')>=2",
-            "_row_num": 90,
-            "__rowNum__": 89,
+            "_row_num": 88,
+            "__rowNum__": 87,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen87",
-            "promptIdx": 39
+            "_branch_label_enclosing_screen": "survey/_screen85",
+            "promptIdx": 37
           },
           {
             "type": "select_one",
@@ -5444,12 +5788,12 @@
               }
             },
             "required": "data('numero_med')>=2",
-            "_row_num": 91,
-            "__rowNum__": 90,
+            "_row_num": 89,
+            "__rowNum__": 88,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen87",
-            "promptIdx": 40
+            "_branch_label_enclosing_screen": "survey/_screen85",
+            "promptIdx": 38
           },
           {
             "type": "note",
@@ -5459,12 +5803,12 @@
                 "text": "Para alem do {{data.nome_med1}} e {{data.nome_med2}}, introduza o 3º medicamento"
               }
             },
-            "_row_num": 96,
-            "__rowNum__": 95,
+            "_row_num": 94,
+            "__rowNum__": 93,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen95",
-            "promptIdx": 41
+            "_branch_label_enclosing_screen": "survey/_screen93",
+            "promptIdx": 39
           },
           {
             "type": "string",
@@ -5478,12 +5822,12 @@
               }
             },
             "required": "data('numero_med')>=3",
-            "_row_num": 97,
-            "__rowNum__": 96,
+            "_row_num": 95,
+            "__rowNum__": 94,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen95",
-            "promptIdx": 42
+            "_branch_label_enclosing_screen": "survey/_screen93",
+            "promptIdx": 40
           },
           {
             "type": "select_one",
@@ -5495,12 +5839,12 @@
               }
             },
             "required": "data('numero_med')>=3",
-            "_row_num": 98,
-            "__rowNum__": 97,
+            "_row_num": 96,
+            "__rowNum__": 95,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen95",
-            "promptIdx": 43
+            "_branch_label_enclosing_screen": "survey/_screen93",
+            "promptIdx": 41
           },
           {
             "type": "select_one",
@@ -5512,12 +5856,12 @@
               }
             },
             "required": "data('numero_med')>=3",
-            "_row_num": 99,
-            "__rowNum__": 98,
+            "_row_num": 97,
+            "__rowNum__": 96,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen95",
-            "promptIdx": 44
+            "_branch_label_enclosing_screen": "survey/_screen93",
+            "promptIdx": 42
           },
           {
             "type": "note",
@@ -5526,12 +5870,12 @@
                 "text": "Para alem de {{data.nome_med1}}, {{data.nome_med2}} e {{data.nome_med3}} introduza o 4º medicamento"
               }
             },
-            "_row_num": 104,
-            "__rowNum__": 103,
+            "_row_num": 102,
+            "__rowNum__": 101,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen103",
-            "promptIdx": 45
+            "_branch_label_enclosing_screen": "survey/_screen101",
+            "promptIdx": 43
           },
           {
             "type": "string",
@@ -5545,12 +5889,12 @@
               }
             },
             "required": "data('numero_med')>=4",
-            "_row_num": 105,
-            "__rowNum__": 104,
+            "_row_num": 103,
+            "__rowNum__": 102,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen103",
-            "promptIdx": 46
+            "_branch_label_enclosing_screen": "survey/_screen101",
+            "promptIdx": 44
           },
           {
             "type": "select_one",
@@ -5562,12 +5906,12 @@
               }
             },
             "required": "data('numero_med')>=4",
-            "_row_num": 106,
-            "__rowNum__": 105,
+            "_row_num": 104,
+            "__rowNum__": 103,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen103",
-            "promptIdx": 47
+            "_branch_label_enclosing_screen": "survey/_screen101",
+            "promptIdx": 45
           },
           {
             "type": "select_one",
@@ -5579,12 +5923,12 @@
               }
             },
             "required": "data('numero_med')>=4",
-            "_row_num": 107,
-            "__rowNum__": 106,
+            "_row_num": 105,
+            "__rowNum__": 104,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen103",
-            "promptIdx": 48
+            "_branch_label_enclosing_screen": "survey/_screen101",
+            "promptIdx": 46
           },
           {
             "type": "note",
@@ -5594,12 +5938,12 @@
                 "text": "sulfadoxina -pirimetamina \nData: {{data.date_SP}}"
               }
             },
-            "_row_num": 114,
-            "__rowNum__": 113,
+            "_row_num": 112,
+            "__rowNum__": 111,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen112",
-            "promptIdx": 49
+            "_branch_label_enclosing_screen": "survey/_screen110",
+            "promptIdx": 47
           },
           {
             "type": "time",
@@ -5609,12 +5953,13 @@
                 "text": "Hora"
               }
             },
-            "_row_num": 115,
-            "__rowNum__": 114,
+            "required": true,
+            "_row_num": 113,
+            "__rowNum__": 112,
             "_token_type": "prompt",
             "_type": "time",
-            "_branch_label_enclosing_screen": "survey/_screen112",
-            "promptIdx": 50
+            "_branch_label_enclosing_screen": "survey/_screen110",
+            "promptIdx": 48
           },
           {
             "type": "select_one",
@@ -5629,12 +5974,13 @@
               }
             },
             "constraint": "(calculates.idade_mes()<12)?(data('dose_SP')=='1'):(data('dose_SP')=='2')",
-            "_row_num": 116,
-            "__rowNum__": 115,
+            "required": true,
+            "_row_num": 114,
+            "__rowNum__": 113,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen112",
-            "promptIdx": 51
+            "_branch_label_enclosing_screen": "survey/_screen110",
+            "promptIdx": 49
           },
           {
             "type": "select_one",
@@ -5645,12 +5991,13 @@
                 "text": "Vomitou?"
               }
             },
-            "_row_num": 117,
-            "__rowNum__": 116,
+            "required": true,
+            "_row_num": 115,
+            "__rowNum__": 114,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen112",
-            "promptIdx": 52
+            "_branch_label_enclosing_screen": "survey/_screen110",
+            "promptIdx": 50
           },
           {
             "type": "time",
@@ -5660,12 +6007,13 @@
                 "text": "A hora que vomitou S.P?"
               }
             },
-            "_row_num": 119,
-            "__rowNum__": 118,
+            "required": "data('vomitou_SP')=='1'",
+            "_row_num": 117,
+            "__rowNum__": 116,
             "_token_type": "prompt",
             "_type": "time",
-            "_branch_label_enclosing_screen": "survey/_screen112",
-            "promptIdx": 53
+            "_branch_label_enclosing_screen": "survey/_screen110",
+            "promptIdx": 51
           },
           {
             "type": "note",
@@ -5675,12 +6023,12 @@
                 "text": "Amodiaquina\nData: {{calculates.hoje_display}}"
               }
             },
-            "_row_num": 125,
-            "__rowNum__": 124,
+            "_row_num": 123,
+            "__rowNum__": 122,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen123",
-            "promptIdx": 54
+            "_branch_label_enclosing_screen": "survey/_screen121",
+            "promptIdx": 52
           },
           {
             "type": "time",
@@ -5690,12 +6038,13 @@
                 "text": "Hora"
               }
             },
-            "_row_num": 126,
-            "__rowNum__": 125,
+            "required": true,
+            "_row_num": 124,
+            "__rowNum__": 123,
             "_token_type": "prompt",
             "_type": "time",
-            "_branch_label_enclosing_screen": "survey/_screen123",
-            "promptIdx": 55
+            "_branch_label_enclosing_screen": "survey/_screen121",
+            "promptIdx": 53
           },
           {
             "type": "select_one",
@@ -5710,12 +6059,13 @@
               }
             },
             "constraint": "(calculates.idade_mes()<12)?(data('dose_AQ')=='1'):(data('dose_AQ')=='2')",
-            "_row_num": 127,
-            "__rowNum__": 126,
+            "required": true,
+            "_row_num": 125,
+            "__rowNum__": 124,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen123",
-            "promptIdx": 56
+            "_branch_label_enclosing_screen": "survey/_screen121",
+            "promptIdx": 54
           },
           {
             "type": "select_one",
@@ -5726,12 +6076,13 @@
                 "text": "Vomitou?"
               }
             },
-            "_row_num": 128,
-            "__rowNum__": 127,
+            "required": true,
+            "_row_num": 126,
+            "__rowNum__": 125,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen123",
-            "promptIdx": 57
+            "_branch_label_enclosing_screen": "survey/_screen121",
+            "promptIdx": 55
           },
           {
             "type": "time",
@@ -5741,12 +6092,12 @@
                 "text": "A hora que vomitou AQ?"
               }
             },
-            "_row_num": 130,
-            "__rowNum__": 129,
+            "_row_num": 128,
+            "__rowNum__": 127,
             "_token_type": "prompt",
             "_type": "time",
-            "_branch_label_enclosing_screen": "survey/_screen123",
-            "promptIdx": 58
+            "_branch_label_enclosing_screen": "survey/_screen121",
+            "promptIdx": 56
           },
           {
             "type": "select_one",
@@ -5757,12 +6108,13 @@
                 "text": "Outros medicamentos administrados ( antipalúdicos, antibióticos ou anlgésicos)"
               }
             },
-            "_row_num": 134,
-            "__rowNum__": 133,
+            "required": true,
+            "_row_num": 132,
+            "__rowNum__": 131,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen134",
-            "promptIdx": 59
+            "_branch_label_enclosing_screen": "survey/_screen132",
+            "promptIdx": 57
           },
           {
             "type": "note",
@@ -5772,12 +6124,12 @@
                 "text": "Lista de outros medicamentos administrados ( antipalúdicos, antibióticos ou anlgésicos)"
               }
             },
-            "_row_num": 141,
-            "__rowNum__": 140,
+            "_row_num": 139,
+            "__rowNum__": 138,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen140",
-            "promptIdx": 60
+            "_branch_label_enclosing_screen": "survey/_screen138",
+            "promptIdx": 58
           },
           {
             "type": "string",
@@ -5787,12 +6139,13 @@
                 "text": "Nome do Medicamento"
               }
             },
-            "_row_num": 142,
-            "__rowNum__": 141,
+            "required": "data('outros_med')=='1'",
+            "_row_num": 140,
+            "__rowNum__": 139,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen140",
-            "promptIdx": 61
+            "_branch_label_enclosing_screen": "survey/_screen138",
+            "promptIdx": 59
           },
           {
             "type": "adate",
@@ -5806,12 +6159,13 @@
                 "toYear": 2020
               }
             },
-            "_row_num": 143,
-            "__rowNum__": 142,
+            "required": "data('outros_med')=='1'",
+            "_row_num": 141,
+            "__rowNum__": 140,
             "_token_type": "prompt",
             "_type": "adate",
-            "_branch_label_enclosing_screen": "survey/_screen140",
-            "promptIdx": 62
+            "_branch_label_enclosing_screen": "survey/_screen138",
+            "promptIdx": 60
           },
           {
             "type": "time",
@@ -5821,27 +6175,29 @@
                 "text": "Hora"
               }
             },
-            "_row_num": 144,
-            "__rowNum__": 143,
+            "required": "data('outros_med')=='1'",
+            "_row_num": 142,
+            "__rowNum__": 141,
             "_token_type": "prompt",
             "_type": "time",
-            "_branch_label_enclosing_screen": "survey/_screen140",
-            "promptIdx": 63
+            "_branch_label_enclosing_screen": "survey/_screen138",
+            "promptIdx": 61
           },
           {
-            "type": "text",
+            "type": "decimal",
             "name": "dose_adm1",
             "display": {
               "prompt": {
                 "text": "Nº de comprimido"
               }
             },
-            "_row_num": 145,
-            "__rowNum__": 144,
+            "required": "data('outros_med')=='1'",
+            "_row_num": 143,
+            "__rowNum__": 142,
             "_token_type": "prompt",
-            "_type": "text",
-            "_branch_label_enclosing_screen": "survey/_screen140",
-            "promptIdx": 64
+            "_type": "decimal",
+            "_branch_label_enclosing_screen": "survey/_screen138",
+            "promptIdx": 62
           },
           {
             "type": "select_one",
@@ -5852,12 +6208,13 @@
                 "text": "Vomitou?"
               }
             },
-            "_row_num": 146,
-            "__rowNum__": 145,
+            "required": "data('outros_med')=='1'",
+            "_row_num": 144,
+            "__rowNum__": 143,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen140",
-            "promptIdx": 65
+            "_branch_label_enclosing_screen": "survey/_screen138",
+            "promptIdx": 63
           },
           {
             "type": "time",
@@ -5867,12 +6224,12 @@
                 "text": "A hora que vomitou S.P?"
               }
             },
-            "_row_num": 148,
-            "__rowNum__": 147,
+            "_row_num": 146,
+            "__rowNum__": 145,
             "_token_type": "prompt",
             "_type": "time",
-            "_branch_label_enclosing_screen": "survey/_screen140",
-            "promptIdx": 66
+            "_branch_label_enclosing_screen": "survey/_screen138",
+            "promptIdx": 64
           },
           {
             "type": "note",
@@ -5886,12 +6243,12 @@
               }
             },
             "constraint": "!calculates.erro_data1()",
-            "_row_num": 153,
-            "__rowNum__": 152,
+            "_row_num": 151,
+            "__rowNum__": 150,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen153",
-            "promptIdx": 67
+            "_branch_label_enclosing_screen": "survey/_screen151",
+            "promptIdx": 65
           },
           {
             "type": "select_one",
@@ -5902,12 +6259,13 @@
                 "text": "Para alem de {{data.med_adm1}} toma outros medicamentos administrados ( antipalúdicos, antibióticos ou anlgésicos)"
               }
             },
-            "_row_num": 156,
-            "__rowNum__": 155,
+            "required": "data('outros_med')=='1'",
+            "_row_num": 154,
+            "__rowNum__": 153,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen156",
-            "promptIdx": 68
+            "_branch_label_enclosing_screen": "survey/_screen154",
+            "promptIdx": 66
           },
           {
             "type": "string",
@@ -5917,12 +6275,13 @@
                 "text": "Nome do Medicamento"
               }
             },
-            "_row_num": 161,
-            "__rowNum__": 160,
+            "required": "data('outros_med2')=='1'",
+            "_row_num": 159,
+            "__rowNum__": 158,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen160",
-            "promptIdx": 69
+            "_branch_label_enclosing_screen": "survey/_screen158",
+            "promptIdx": 67
           },
           {
             "type": "adate",
@@ -5936,12 +6295,13 @@
                 "toYear": 2020
               }
             },
-            "_row_num": 162,
-            "__rowNum__": 161,
+            "required": "data('outros_med2')=='1'",
+            "_row_num": 160,
+            "__rowNum__": 159,
             "_token_type": "prompt",
             "_type": "adate",
-            "_branch_label_enclosing_screen": "survey/_screen160",
-            "promptIdx": 70
+            "_branch_label_enclosing_screen": "survey/_screen158",
+            "promptIdx": 68
           },
           {
             "type": "time",
@@ -5951,12 +6311,13 @@
                 "text": "Hora"
               }
             },
-            "_row_num": 163,
-            "__rowNum__": 162,
+            "required": "data('outros_med2')=='1'",
+            "_row_num": 161,
+            "__rowNum__": 160,
             "_token_type": "prompt",
             "_type": "time",
-            "_branch_label_enclosing_screen": "survey/_screen160",
-            "promptIdx": 71
+            "_branch_label_enclosing_screen": "survey/_screen158",
+            "promptIdx": 69
           },
           {
             "type": "text",
@@ -5966,12 +6327,13 @@
                 "text": "Nº de comprimido"
               }
             },
-            "_row_num": 164,
-            "__rowNum__": 163,
+            "required": "data('outros_med2')=='1'",
+            "_row_num": 162,
+            "__rowNum__": 161,
             "_token_type": "prompt",
             "_type": "text",
-            "_branch_label_enclosing_screen": "survey/_screen160",
-            "promptIdx": 72
+            "_branch_label_enclosing_screen": "survey/_screen158",
+            "promptIdx": 70
           },
           {
             "type": "select_one",
@@ -5982,12 +6344,13 @@
                 "text": "Vomitou?"
               }
             },
-            "_row_num": 165,
-            "__rowNum__": 164,
+            "required": "data('outros_med2')=='1'",
+            "_row_num": 163,
+            "__rowNum__": 162,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen160",
-            "promptIdx": 73
+            "_branch_label_enclosing_screen": "survey/_screen158",
+            "promptIdx": 71
           },
           {
             "type": "time",
@@ -5997,12 +6360,13 @@
                 "text": "A hora que vomitou S.P?"
               }
             },
-            "_row_num": 167,
-            "__rowNum__": 166,
+            "required": "data('vomitou_adm2')=='1'",
+            "_row_num": 165,
+            "__rowNum__": 164,
             "_token_type": "prompt",
             "_type": "time",
-            "_branch_label_enclosing_screen": "survey/_screen160",
-            "promptIdx": 74
+            "_branch_label_enclosing_screen": "survey/_screen158",
+            "promptIdx": 72
           },
           {
             "type": "note",
@@ -6016,12 +6380,12 @@
               }
             },
             "constraint": "!calculates.erro_data2()",
-            "_row_num": 172,
-            "__rowNum__": 171,
+            "_row_num": 170,
+            "__rowNum__": 169,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen172",
-            "promptIdx": 75
+            "_branch_label_enclosing_screen": "survey/_screen170",
+            "promptIdx": 73
           },
           {
             "type": "select_one",
@@ -6032,12 +6396,13 @@
                 "text": "Para alem de {{data.med_adm1}}  e {{data.med_adm2}} toma outros medicamentos administrados ( antipalúdicos, antibióticos ou anlgésicos)"
               }
             },
-            "_row_num": 175,
-            "__rowNum__": 174,
+            "required": "data('outros_med2')=='1'",
+            "_row_num": 173,
+            "__rowNum__": 172,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen175",
-            "promptIdx": 76
+            "_branch_label_enclosing_screen": "survey/_screen173",
+            "promptIdx": 74
           },
           {
             "type": "string",
@@ -6047,12 +6412,13 @@
                 "text": "Nome do Medicamento"
               }
             },
-            "_row_num": 182,
-            "__rowNum__": 181,
+            "required": "data('outros_med3')=='1'",
+            "_row_num": 180,
+            "__rowNum__": 179,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen181",
-            "promptIdx": 77
+            "_branch_label_enclosing_screen": "survey/_screen179",
+            "promptIdx": 75
           },
           {
             "type": "adate",
@@ -6066,12 +6432,13 @@
                 "toYear": 2020
               }
             },
-            "_row_num": 183,
-            "__rowNum__": 182,
+            "required": "data('outros_med3')=='1'",
+            "_row_num": 181,
+            "__rowNum__": 180,
             "_token_type": "prompt",
             "_type": "adate",
-            "_branch_label_enclosing_screen": "survey/_screen181",
-            "promptIdx": 78
+            "_branch_label_enclosing_screen": "survey/_screen179",
+            "promptIdx": 76
           },
           {
             "type": "time",
@@ -6081,12 +6448,13 @@
                 "text": "Hora"
               }
             },
-            "_row_num": 184,
-            "__rowNum__": 183,
+            "required": "data('outros_med3')=='1'",
+            "_row_num": 182,
+            "__rowNum__": 181,
             "_token_type": "prompt",
             "_type": "time",
-            "_branch_label_enclosing_screen": "survey/_screen181",
-            "promptIdx": 79
+            "_branch_label_enclosing_screen": "survey/_screen179",
+            "promptIdx": 77
           },
           {
             "type": "text",
@@ -6096,12 +6464,13 @@
                 "text": "Nº de comprimido"
               }
             },
-            "_row_num": 185,
-            "__rowNum__": 184,
+            "required": "data('outros_med3')=='1'",
+            "_row_num": 183,
+            "__rowNum__": 182,
             "_token_type": "prompt",
             "_type": "text",
-            "_branch_label_enclosing_screen": "survey/_screen181",
-            "promptIdx": 80
+            "_branch_label_enclosing_screen": "survey/_screen179",
+            "promptIdx": 78
           },
           {
             "type": "select_one",
@@ -6112,12 +6481,13 @@
                 "text": "Vomitou?"
               }
             },
-            "_row_num": 186,
-            "__rowNum__": 185,
+            "required": "data('outros_med3')=='1'",
+            "_row_num": 184,
+            "__rowNum__": 183,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen181",
-            "promptIdx": 81
+            "_branch_label_enclosing_screen": "survey/_screen179",
+            "promptIdx": 79
           },
           {
             "type": "time",
@@ -6127,12 +6497,13 @@
                 "text": "A hora que vomitou S.P?"
               }
             },
-            "_row_num": 188,
-            "__rowNum__": 187,
+            "required": "data('vomitou_adm3')=='1'",
+            "_row_num": 186,
+            "__rowNum__": 185,
             "_token_type": "prompt",
             "_type": "time",
-            "_branch_label_enclosing_screen": "survey/_screen181",
-            "promptIdx": 82
+            "_branch_label_enclosing_screen": "survey/_screen179",
+            "promptIdx": 80
           },
           {
             "type": "note",
@@ -6146,12 +6517,12 @@
               }
             },
             "constraint": "!calculates.erro_data3()",
-            "_row_num": 193,
-            "__rowNum__": 192,
+            "_row_num": 191,
+            "__rowNum__": 190,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen193",
-            "promptIdx": 83
+            "_branch_label_enclosing_screen": "survey/_screen191",
+            "promptIdx": 81
           },
           {
             "type": "select_one",
@@ -6162,12 +6533,13 @@
                 "text": "Para alem de {{data.med_adm1}} , {{data.med_adm2}}  e {{data.med_adm3}} toma outros medicamentos administrados ( antipalúdicos, antibióticos ou anlgésicos)"
               }
             },
-            "_row_num": 196,
-            "__rowNum__": 195,
+            "required": "data('outros_med3')=='1'",
+            "_row_num": 194,
+            "__rowNum__": 193,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen196",
-            "promptIdx": 84
+            "_branch_label_enclosing_screen": "survey/_screen194",
+            "promptIdx": 82
           },
           {
             "type": "string",
@@ -6177,12 +6549,13 @@
                 "text": "Nome do Medicamento"
               }
             },
-            "_row_num": 203,
-            "__rowNum__": 202,
+            "required": "data('outros_med4')=='1'",
+            "_row_num": 201,
+            "__rowNum__": 200,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen202",
-            "promptIdx": 85
+            "_branch_label_enclosing_screen": "survey/_screen200",
+            "promptIdx": 83
           },
           {
             "type": "adate",
@@ -6196,12 +6569,13 @@
                 "toYear": 2020
               }
             },
-            "_row_num": 204,
-            "__rowNum__": 203,
+            "required": "data('outros_med4')=='1'",
+            "_row_num": 202,
+            "__rowNum__": 201,
             "_token_type": "prompt",
             "_type": "adate",
-            "_branch_label_enclosing_screen": "survey/_screen202",
-            "promptIdx": 86
+            "_branch_label_enclosing_screen": "survey/_screen200",
+            "promptIdx": 84
           },
           {
             "type": "time",
@@ -6211,12 +6585,13 @@
                 "text": "Hora"
               }
             },
-            "_row_num": 205,
-            "__rowNum__": 204,
+            "required": "data('outros_med4')=='1'",
+            "_row_num": 203,
+            "__rowNum__": 202,
             "_token_type": "prompt",
             "_type": "time",
-            "_branch_label_enclosing_screen": "survey/_screen202",
-            "promptIdx": 87
+            "_branch_label_enclosing_screen": "survey/_screen200",
+            "promptIdx": 85
           },
           {
             "type": "text",
@@ -6226,12 +6601,13 @@
                 "text": "Nº de comprimido"
               }
             },
-            "_row_num": 206,
-            "__rowNum__": 205,
+            "required": "data('outros_med4')=='1'",
+            "_row_num": 204,
+            "__rowNum__": 203,
             "_token_type": "prompt",
             "_type": "text",
-            "_branch_label_enclosing_screen": "survey/_screen202",
-            "promptIdx": 88
+            "_branch_label_enclosing_screen": "survey/_screen200",
+            "promptIdx": 86
           },
           {
             "type": "select_one",
@@ -6242,12 +6618,13 @@
                 "text": "Vomitou?"
               }
             },
-            "_row_num": 207,
-            "__rowNum__": 206,
+            "required": "data('outros_med4')=='1'",
+            "_row_num": 205,
+            "__rowNum__": 204,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen202",
-            "promptIdx": 89
+            "_branch_label_enclosing_screen": "survey/_screen200",
+            "promptIdx": 87
           },
           {
             "type": "time",
@@ -6257,12 +6634,13 @@
                 "text": "A hora que vomitou S.P?"
               }
             },
-            "_row_num": 209,
-            "__rowNum__": 208,
+            "required": "data('vomitou_adm4')=='1'",
+            "_row_num": 207,
+            "__rowNum__": 206,
             "_token_type": "prompt",
             "_type": "time",
-            "_branch_label_enclosing_screen": "survey/_screen202",
-            "promptIdx": 90
+            "_branch_label_enclosing_screen": "survey/_screen200",
+            "promptIdx": 88
           },
           {
             "type": "note",
@@ -6276,12 +6654,12 @@
               }
             },
             "constraint": "!calculates.erro_data4()",
-            "_row_num": 214,
-            "__rowNum__": 213,
+            "_row_num": 212,
+            "__rowNum__": 211,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen214",
-            "promptIdx": 91
+            "_branch_label_enclosing_screen": "survey/_screen212",
+            "promptIdx": 89
           },
           {
             "type": "note",
@@ -6291,12 +6669,12 @@
                 "text": "Código: {{data.id_estudo}}    |    D{{calculates.visita_id}}"
               }
             },
-            "_row_num": 227,
-            "__rowNum__": 226,
+            "_row_num": 225,
+            "__rowNum__": 224,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen225",
-            "promptIdx": 92
+            "_branch_label_enclosing_screen": "survey/_screen223",
+            "promptIdx": 90
           },
           {
             "type": "note",
@@ -6306,12 +6684,12 @@
                 "text": "{{calculates.date_rastreio_display}}    |    {{calculates.dn_idade_display}}"
               }
             },
-            "_row_num": 229,
-            "__rowNum__": 228,
+            "_row_num": 227,
+            "__rowNum__": 226,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen225",
-            "promptIdx": 93
+            "_branch_label_enclosing_screen": "survey/_screen223",
+            "promptIdx": 91
           },
           {
             "type": "note",
@@ -6321,12 +6699,12 @@
                 "text": "Sexo: {{calculates.sexo_display}}"
               }
             },
-            "_row_num": 230,
-            "__rowNum__": 229,
+            "_row_num": 228,
+            "__rowNum__": 227,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen225",
-            "promptIdx": 94
+            "_branch_label_enclosing_screen": "survey/_screen223",
+            "promptIdx": 92
           },
           {
             "type": "select_one",
@@ -6337,12 +6715,12 @@
                 "text": "Colheu-se amostra de sangue para a lâmina?"
               }
             },
-            "_row_num": 231,
-            "__rowNum__": 230,
+            "_row_num": 229,
+            "__rowNum__": 228,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen225",
-            "promptIdx": 95
+            "_branch_label_enclosing_screen": "survey/_screen223",
+            "promptIdx": 93
           },
           {
             "type": "text",
@@ -6352,20 +6730,20 @@
                 "text": "Comentario"
               }
             },
-            "_row_num": 235,
-            "__rowNum__": 234,
+            "_row_num": 233,
+            "__rowNum__": 232,
             "_token_type": "prompt",
             "_type": "text",
-            "_branch_label_enclosing_screen": "survey/_screen235",
-            "promptIdx": 96
+            "_branch_label_enclosing_screen": "survey/_screen233",
+            "promptIdx": 94
           },
           {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 236,
-            "_branch_label_enclosing_screen": "survey/_screen236",
-            "promptIdx": 97
+            "_row_num": 234,
+            "_branch_label_enclosing_screen": "survey/_screen234",
+            "promptIdx": 95
           }
         ],
         "validation_tag_map": {
@@ -6374,9 +6752,16 @@
             4,
             5,
             6,
+            7,
+            8,
             9,
+            10,
             11,
+            12,
             13,
+            15,
+            16,
+            17,
             18,
             19,
             20,
@@ -6391,24 +6776,55 @@
             29,
             30,
             32,
+            33,
             34,
-            35,
             36,
+            37,
             38,
-            39,
             40,
+            41,
             42,
-            43,
             44,
+            45,
             46,
-            47,
             48,
+            49,
+            50,
             51,
-            56,
+            53,
+            54,
+            55,
+            57,
+            59,
+            60,
+            61,
+            62,
+            63,
+            65,
+            66,
             67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
             75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
             83,
-            91
+            84,
+            85,
+            86,
+            87,
+            88,
+            89
           ]
         },
         "operations": [
@@ -6588,594 +7004,582 @@
             "operationIdx": 14
           },
           {
-            "_row_num": 74,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(30);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 15
-          },
-          {
-            "_row_num": 75,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(31);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 16
-          },
-          {
             "clause": "if // medi_previo",
             "condition": "data('medicacao_previa')=='1'",
-            "_row_num": 76,
-            "__rowNum__": 75,
+            "_row_num": 74,
+            "__rowNum__": 73,
             "_token_type": "goto_label",
             "_tag_name": "medi_previo",
-            "_branch_label": "_then76",
-            "operationIdx": 17
+            "_branch_label": "_then74",
+            "operationIdx": 15
           },
           {
             "clause": "end if // medi_previo",
             "_token_type": "goto_label",
-            "_branch_label": "_else111",
-            "_row_num": 111,
-            "operationIdx": 18
+            "_branch_label": "_else109",
+            "_row_num": 109,
+            "operationIdx": 16
           },
           {
-            "_row_num": 77,
+            "_row_num": 75,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(32);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 19
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(30);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 17
           },
           {
             "clause": "if",
             "condition": "data('numero_med')>=1",
-            "_row_num": 78,
-            "__rowNum__": 77,
+            "_row_num": 76,
+            "__rowNum__": 75,
             "_token_type": "goto_label",
-            "_branch_label": "_then78",
+            "_branch_label": "_then76",
+            "operationIdx": 18
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_else83",
+            "_row_num": 83,
+            "operationIdx": 19
+          },
+          {
+            "clause": "begin screen",
+            "_row_num": 77,
+            "__rowNum__": 76,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 82,
+              "__rowNum__": 81,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(31);\nactivePromptIndicies.push(32);\nactivePromptIndicies.push(33);\nactivePromptIndicies.push(34);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 20
           },
           {
             "clause": "end if",
             "_token_type": "goto_label",
-            "_branch_label": "_else85",
-            "_row_num": 85,
+            "_branch_label": "_endif83",
+            "_row_num": 83,
             "operationIdx": 21
           },
           {
-            "clause": "begin screen",
-            "_row_num": 79,
-            "__rowNum__": 78,
-            "_token_type": "begin_screen",
-            "_end_screen_clause": {
-              "clause": "end screen",
-              "_row_num": 84,
-              "__rowNum__": 83,
-              "_token_type": "end_screen"
-            },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(33);\nactivePromptIndicies.push(34);\nactivePromptIndicies.push(35);\nactivePromptIndicies.push(36);\n\nreturn activePromptIndicies;\n}\n",
+            "clause": "if",
+            "condition": "data('numero_med')>=2",
+            "_row_num": 84,
+            "__rowNum__": 83,
+            "_token_type": "goto_label",
+            "_branch_label": "_then84",
             "operationIdx": 22
           },
           {
             "clause": "end if",
             "_token_type": "goto_label",
-            "_branch_label": "_endif85",
-            "_row_num": 85,
+            "_branch_label": "_else91",
+            "_row_num": 91,
             "operationIdx": 23
           },
           {
-            "clause": "if",
-            "condition": "data('numero_med')>=2",
-            "_row_num": 86,
-            "__rowNum__": 85,
-            "_token_type": "goto_label",
-            "_branch_label": "_then86",
+            "clause": "begin screen",
+            "_row_num": 85,
+            "__rowNum__": 84,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 90,
+              "__rowNum__": 89,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(35);\nactivePromptIndicies.push(36);\nactivePromptIndicies.push(37);\nactivePromptIndicies.push(38);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 24
           },
           {
             "clause": "end if",
             "_token_type": "goto_label",
-            "_branch_label": "_else93",
-            "_row_num": 93,
+            "_branch_label": "_endif91",
+            "_row_num": 91,
             "operationIdx": 25
           },
           {
-            "clause": "begin screen",
-            "_row_num": 87,
-            "__rowNum__": 86,
-            "_token_type": "begin_screen",
-            "_end_screen_clause": {
-              "clause": "end screen",
-              "_row_num": 92,
-              "__rowNum__": 91,
-              "_token_type": "end_screen"
-            },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(37);\nactivePromptIndicies.push(38);\nactivePromptIndicies.push(39);\nactivePromptIndicies.push(40);\n\nreturn activePromptIndicies;\n}\n",
+            "clause": "if",
+            "condition": "data('numero_med')>=3",
+            "_row_num": 92,
+            "__rowNum__": 91,
+            "_token_type": "goto_label",
+            "_branch_label": "_then92",
             "operationIdx": 26
           },
           {
             "clause": "end if",
             "_token_type": "goto_label",
-            "_branch_label": "_endif93",
-            "_row_num": 93,
+            "_branch_label": "_else99",
+            "_row_num": 99,
             "operationIdx": 27
           },
           {
-            "clause": "if",
-            "condition": "data('numero_med')>=3",
-            "_row_num": 94,
-            "__rowNum__": 93,
-            "_token_type": "goto_label",
-            "_branch_label": "_then94",
+            "clause": "begin screen",
+            "_row_num": 93,
+            "__rowNum__": 92,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 98,
+              "__rowNum__": 97,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(39);\nactivePromptIndicies.push(40);\nactivePromptIndicies.push(41);\nactivePromptIndicies.push(42);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 28
           },
           {
             "clause": "end if",
             "_token_type": "goto_label",
-            "_branch_label": "_else101",
-            "_row_num": 101,
+            "_branch_label": "_endif99",
+            "_row_num": 99,
             "operationIdx": 29
           },
           {
-            "clause": "begin screen",
-            "_row_num": 95,
-            "__rowNum__": 94,
-            "_token_type": "begin_screen",
-            "_end_screen_clause": {
-              "clause": "end screen",
-              "_row_num": 100,
-              "__rowNum__": 99,
-              "_token_type": "end_screen"
-            },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(41);\nactivePromptIndicies.push(42);\nactivePromptIndicies.push(43);\nactivePromptIndicies.push(44);\n\nreturn activePromptIndicies;\n}\n",
+            "clause": "if",
+            "condition": "data('numero_med')>=4",
+            "_row_num": 100,
+            "__rowNum__": 99,
+            "_token_type": "goto_label",
+            "_branch_label": "_then100",
             "operationIdx": 30
           },
           {
             "clause": "end if",
             "_token_type": "goto_label",
-            "_branch_label": "_endif101",
-            "_row_num": 101,
+            "_branch_label": "_else107",
+            "_row_num": 107,
             "operationIdx": 31
           },
           {
-            "clause": "if",
-            "condition": "data('numero_med')>=4",
-            "_row_num": 102,
-            "__rowNum__": 101,
-            "_token_type": "goto_label",
-            "_branch_label": "_then102",
+            "clause": "begin screen",
+            "_row_num": 101,
+            "__rowNum__": 100,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 106,
+              "__rowNum__": 105,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(43);\nactivePromptIndicies.push(44);\nactivePromptIndicies.push(45);\nactivePromptIndicies.push(46);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 32
           },
           {
             "clause": "end if",
             "_token_type": "goto_label",
-            "_branch_label": "_else109",
-            "_row_num": 109,
+            "_branch_label": "_endif107",
+            "_row_num": 107,
             "operationIdx": 33
-          },
-          {
-            "clause": "begin screen",
-            "_row_num": 103,
-            "__rowNum__": 102,
-            "_token_type": "begin_screen",
-            "_end_screen_clause": {
-              "clause": "end screen",
-              "_row_num": 108,
-              "__rowNum__": 107,
-              "_token_type": "end_screen"
-            },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(45);\nactivePromptIndicies.push(46);\nactivePromptIndicies.push(47);\nactivePromptIndicies.push(48);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 34
-          },
-          {
-            "clause": "end if",
-            "_token_type": "goto_label",
-            "_branch_label": "_endif109",
-            "_row_num": 109,
-            "operationIdx": 35
           },
           {
             "clause": "end if // medi_previo",
             "_token_type": "goto_label",
-            "_branch_label": "_endif111",
-            "_row_num": 111,
+            "_branch_label": "_endif109",
+            "_row_num": 109,
+            "operationIdx": 34
+          },
+          {
+            "clause": "begin screen",
+            "_row_num": 110,
+            "__rowNum__": 109,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 119,
+              "__rowNum__": 118,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nassign('date_SP', adate.today());\nactivePromptIndicies.push(47);\nactivePromptIndicies.push(48);\nactivePromptIndicies.push(49);\nactivePromptIndicies.push(50);\nif (data('vomitou_SP')=='1') {\nactivePromptIndicies.push(51);\n}\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 35
+          },
+          {
+            "clause": "begin screen",
+            "_row_num": 121,
+            "__rowNum__": 120,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 130,
+              "__rowNum__": 129,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nassign('date_AQ', adate.today());\nactivePromptIndicies.push(52);\nactivePromptIndicies.push(53);\nactivePromptIndicies.push(54);\nactivePromptIndicies.push(55);\nif (data('vomitou_AQ')=='1') {\nactivePromptIndicies.push(56);\n}\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 36
           },
           {
-            "clause": "begin screen",
-            "_row_num": 112,
-            "__rowNum__": 111,
+            "_row_num": 132,
             "_token_type": "begin_screen",
-            "_end_screen_clause": {
-              "clause": "end screen",
-              "_row_num": 121,
-              "__rowNum__": 120,
-              "_token_type": "end_screen"
-            },
-            "_screen_block": "function() {var activePromptIndicies = [];\nassign('date_SP', adate.today());\nactivePromptIndicies.push(49);\nactivePromptIndicies.push(50);\nactivePromptIndicies.push(51);\nactivePromptIndicies.push(52);\nif (data('vomitou_SP')=='1') {\nactivePromptIndicies.push(53);\n}\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(57);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 37
-          },
-          {
-            "clause": "begin screen",
-            "_row_num": 123,
-            "__rowNum__": 122,
-            "_token_type": "begin_screen",
-            "_end_screen_clause": {
-              "clause": "end screen",
-              "_row_num": 132,
-              "__rowNum__": 131,
-              "_token_type": "end_screen"
-            },
-            "_screen_block": "function() {var activePromptIndicies = [];\nassign('date_AQ', adate.today());\nactivePromptIndicies.push(54);\nactivePromptIndicies.push(55);\nactivePromptIndicies.push(56);\nactivePromptIndicies.push(57);\nif (data('vomitou_AQ')=='1') {\nactivePromptIndicies.push(58);\n}\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 38
-          },
-          {
-            "_row_num": 134,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(59);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 39
           },
           {
             "clause": "if // outro_medi",
             "condition": "data('outros_med')=='2'",
-            "_row_num": 135,
-            "__rowNum__": 134,
+            "_row_num": 133,
+            "__rowNum__": 132,
             "_token_type": "goto_label",
             "_tag_name": "outro_medi",
-            "_branch_label": "_then135",
-            "operationIdx": 40
+            "_branch_label": "_then133",
+            "operationIdx": 38
           },
           {
             "clause": "else // outro_medi",
             "_token_type": "goto_label",
-            "_branch_label": "_else138",
-            "_row_num": 138,
-            "operationIdx": 41
+            "_branch_label": "_else136",
+            "_row_num": 136,
+            "operationIdx": 39
           },
           {
             "clause": "goto lab",
-            "_row_num": 136,
-            "__rowNum__": 135,
+            "_row_num": 134,
+            "__rowNum__": 133,
             "_token_type": "goto_label",
             "_branch_label": "lab",
-            "operationIdx": 42
+            "operationIdx": 40
           },
           {
             "clause": "end if // outro_medi",
             "_token_type": "goto_label",
-            "_branch_label": "_endif221",
-            "_row_num": 221,
-            "operationIdx": 43
+            "_branch_label": "_endif219",
+            "_row_num": 219,
+            "operationIdx": 41
           },
           {
             "clause": "begin screen",
-            "_row_num": 140,
-            "__rowNum__": 139,
+            "_row_num": 138,
+            "__rowNum__": 137,
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 150,
-              "__rowNum__": 149,
+              "_row_num": 148,
+              "__rowNum__": 147,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(60);\nactivePromptIndicies.push(61);\nactivePromptIndicies.push(62);\nactivePromptIndicies.push(63);\nactivePromptIndicies.push(64);\nactivePromptIndicies.push(65);\nif (data('vomitou_adm1')=='1') {\nactivePromptIndicies.push(66);\n}\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 44
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(58);\nactivePromptIndicies.push(59);\nactivePromptIndicies.push(60);\nactivePromptIndicies.push(61);\nactivePromptIndicies.push(62);\nactivePromptIndicies.push(63);\nif (data('vomitou_adm1')=='1') {\nactivePromptIndicies.push(64);\n}\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 42
           },
           {
             "clause": "if",
             "condition": "calculates.erro_data1()",
-            "_row_num": 152,
-            "__rowNum__": 151,
+            "_row_num": 150,
+            "__rowNum__": 149,
             "_token_type": "goto_label",
-            "_branch_label": "_then152",
+            "_branch_label": "_then150",
+            "operationIdx": 43
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_else152",
+            "_row_num": 152,
+            "operationIdx": 44
+          },
+          {
+            "_row_num": 151,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(65);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 45
           },
           {
             "clause": "end if",
             "_token_type": "goto_label",
-            "_branch_label": "_else154",
-            "_row_num": 154,
+            "_branch_label": "_endif152",
+            "_row_num": 152,
             "operationIdx": 46
           },
           {
-            "_row_num": 153,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(67);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 47
-          },
-          {
-            "clause": "end if",
-            "_token_type": "goto_label",
-            "_branch_label": "_endif154",
             "_row_num": 154,
-            "operationIdx": 48
-          },
-          {
-            "_row_num": 156,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(68);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 49
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(66);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 47
           },
           {
             "clause": "if",
             "condition": "data('outro_med2')=='2'",
+            "_row_num": 155,
+            "__rowNum__": 154,
+            "_token_type": "goto_label",
+            "_branch_label": "_then155",
+            "operationIdx": 48
+          },
+          {
+            "clause": "else",
+            "_token_type": "goto_label",
+            "_branch_label": "_else157",
             "_row_num": 157,
-            "__rowNum__": 156,
+            "operationIdx": 49
+          },
+          {
+            "clause": "goto lab",
+            "_row_num": 156,
+            "__rowNum__": 155,
             "_token_type": "goto_label",
-            "_branch_label": "_then157",
+            "_branch_label": "lab",
             "operationIdx": 50
-          },
-          {
-            "clause": "else",
-            "_token_type": "goto_label",
-            "_branch_label": "_else159",
-            "_row_num": 159,
-            "operationIdx": 51
-          },
-          {
-            "clause": "goto lab",
-            "_row_num": 158,
-            "__rowNum__": 157,
-            "_token_type": "goto_label",
-            "_branch_label": "lab",
-            "operationIdx": 52
-          },
-          {
-            "clause": "end if",
-            "_token_type": "goto_label",
-            "_branch_label": "_endif220",
-            "_row_num": 220,
-            "operationIdx": 53
-          },
-          {
-            "clause": "begin screen",
-            "_row_num": 160,
-            "__rowNum__": 159,
-            "_token_type": "begin_screen",
-            "_end_screen_clause": {
-              "clause": "end screen",
-              "_row_num": 169,
-              "__rowNum__": 168,
-              "_token_type": "end_screen"
-            },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(69);\nactivePromptIndicies.push(70);\nactivePromptIndicies.push(71);\nactivePromptIndicies.push(72);\nactivePromptIndicies.push(73);\nif (data('vomitou_adm2')=='1') {\nactivePromptIndicies.push(74);\n}\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 54
-          },
-          {
-            "clause": "if",
-            "condition": "calculates.erro_data2()",
-            "_row_num": 171,
-            "__rowNum__": 170,
-            "_token_type": "goto_label",
-            "_branch_label": "_then171",
-            "operationIdx": 55
-          },
-          {
-            "clause": "end if",
-            "_token_type": "goto_label",
-            "_branch_label": "_else173",
-            "_row_num": 173,
-            "operationIdx": 56
-          },
-          {
-            "_row_num": 172,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(75);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 57
-          },
-          {
-            "clause": "end if",
-            "_token_type": "goto_label",
-            "_branch_label": "_endif173",
-            "_row_num": 173,
-            "operationIdx": 58
-          },
-          {
-            "_row_num": 175,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(76);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 59
-          },
-          {
-            "clause": "if",
-            "condition": "data('outro_med3')=='2'",
-            "_row_num": 176,
-            "__rowNum__": 175,
-            "_token_type": "goto_label",
-            "_branch_label": "_then176",
-            "operationIdx": 60
-          },
-          {
-            "clause": "else",
-            "_token_type": "goto_label",
-            "_branch_label": "_else178",
-            "_row_num": 178,
-            "operationIdx": 61
-          },
-          {
-            "clause": "goto lab",
-            "_row_num": 177,
-            "__rowNum__": 176,
-            "_token_type": "goto_label",
-            "_branch_label": "lab",
-            "operationIdx": 62
-          },
-          {
-            "clause": "end if",
-            "_token_type": "goto_label",
-            "_branch_label": "_endif219",
-            "_row_num": 219,
-            "operationIdx": 63
-          },
-          {
-            "clause": "begin screen",
-            "_row_num": 181,
-            "__rowNum__": 180,
-            "_token_type": "begin_screen",
-            "_end_screen_clause": {
-              "clause": "end screen",
-              "_row_num": 190,
-              "__rowNum__": 189,
-              "_token_type": "end_screen"
-            },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(77);\nactivePromptIndicies.push(78);\nactivePromptIndicies.push(79);\nactivePromptIndicies.push(80);\nactivePromptIndicies.push(81);\nif (data('vomitou_adm3')=='1') {\nactivePromptIndicies.push(82);\n}\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 64
-          },
-          {
-            "clause": "if",
-            "condition": "calculates.erro_data3()",
-            "_row_num": 192,
-            "__rowNum__": 191,
-            "_token_type": "goto_label",
-            "_branch_label": "_then192",
-            "operationIdx": 65
-          },
-          {
-            "clause": "end if",
-            "_token_type": "goto_label",
-            "_branch_label": "_else194",
-            "_row_num": 194,
-            "operationIdx": 66
-          },
-          {
-            "_row_num": 193,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(83);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 67
-          },
-          {
-            "clause": "end if",
-            "_token_type": "goto_label",
-            "_branch_label": "_endif194",
-            "_row_num": 194,
-            "operationIdx": 68
-          },
-          {
-            "_row_num": 196,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(84);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 69
-          },
-          {
-            "clause": "if",
-            "condition": "data('outro_med4')=='2'",
-            "_row_num": 197,
-            "__rowNum__": 196,
-            "_token_type": "goto_label",
-            "_branch_label": "_then197",
-            "operationIdx": 70
-          },
-          {
-            "clause": "else",
-            "_token_type": "goto_label",
-            "_branch_label": "_else199",
-            "_row_num": 199,
-            "operationIdx": 71
-          },
-          {
-            "clause": "goto lab",
-            "_row_num": 198,
-            "__rowNum__": 197,
-            "_token_type": "goto_label",
-            "_branch_label": "lab",
-            "operationIdx": 72
           },
           {
             "clause": "end if",
             "_token_type": "goto_label",
             "_branch_label": "_endif218",
             "_row_num": 218,
-            "operationIdx": 73
+            "operationIdx": 51
           },
           {
             "clause": "begin screen",
-            "_row_num": 202,
-            "__rowNum__": 201,
+            "_row_num": 158,
+            "__rowNum__": 157,
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 211,
-              "__rowNum__": 210,
+              "_row_num": 167,
+              "__rowNum__": 166,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(85);\nactivePromptIndicies.push(86);\nactivePromptIndicies.push(87);\nactivePromptIndicies.push(88);\nactivePromptIndicies.push(89);\nif (data('vomitou_adm4')=='1') {\nactivePromptIndicies.push(90);\n}\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 74
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(67);\nactivePromptIndicies.push(68);\nactivePromptIndicies.push(69);\nactivePromptIndicies.push(70);\nactivePromptIndicies.push(71);\nif (data('vomitou_adm2')=='1') {\nactivePromptIndicies.push(72);\n}\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 52
+          },
+          {
+            "clause": "if",
+            "condition": "calculates.erro_data2()",
+            "_row_num": 169,
+            "__rowNum__": 168,
+            "_token_type": "goto_label",
+            "_branch_label": "_then169",
+            "operationIdx": 53
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_else171",
+            "_row_num": 171,
+            "operationIdx": 54
+          },
+          {
+            "_row_num": 170,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(73);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 55
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif171",
+            "_row_num": 171,
+            "operationIdx": 56
+          },
+          {
+            "_row_num": 173,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(74);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 57
+          },
+          {
+            "clause": "if",
+            "condition": "data('outro_med3')=='2'",
+            "_row_num": 174,
+            "__rowNum__": 173,
+            "_token_type": "goto_label",
+            "_branch_label": "_then174",
+            "operationIdx": 58
+          },
+          {
+            "clause": "else",
+            "_token_type": "goto_label",
+            "_branch_label": "_else176",
+            "_row_num": 176,
+            "operationIdx": 59
+          },
+          {
+            "clause": "goto lab",
+            "_row_num": 175,
+            "__rowNum__": 174,
+            "_token_type": "goto_label",
+            "_branch_label": "lab",
+            "operationIdx": 60
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif217",
+            "_row_num": 217,
+            "operationIdx": 61
+          },
+          {
+            "clause": "begin screen",
+            "_row_num": 179,
+            "__rowNum__": 178,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 188,
+              "__rowNum__": 187,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(75);\nactivePromptIndicies.push(76);\nactivePromptIndicies.push(77);\nactivePromptIndicies.push(78);\nactivePromptIndicies.push(79);\nif (data('vomitou_adm3')=='1') {\nactivePromptIndicies.push(80);\n}\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 62
+          },
+          {
+            "clause": "if",
+            "condition": "calculates.erro_data3()",
+            "_row_num": 190,
+            "__rowNum__": 189,
+            "_token_type": "goto_label",
+            "_branch_label": "_then190",
+            "operationIdx": 63
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_else192",
+            "_row_num": 192,
+            "operationIdx": 64
+          },
+          {
+            "_row_num": 191,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(81);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 65
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif192",
+            "_row_num": 192,
+            "operationIdx": 66
+          },
+          {
+            "_row_num": 194,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(82);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 67
+          },
+          {
+            "clause": "if",
+            "condition": "data('outro_med4')=='2'",
+            "_row_num": 195,
+            "__rowNum__": 194,
+            "_token_type": "goto_label",
+            "_branch_label": "_then195",
+            "operationIdx": 68
+          },
+          {
+            "clause": "else",
+            "_token_type": "goto_label",
+            "_branch_label": "_else197",
+            "_row_num": 197,
+            "operationIdx": 69
+          },
+          {
+            "clause": "goto lab",
+            "_row_num": 196,
+            "__rowNum__": 195,
+            "_token_type": "goto_label",
+            "_branch_label": "lab",
+            "operationIdx": 70
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif216",
+            "_row_num": 216,
+            "operationIdx": 71
+          },
+          {
+            "clause": "begin screen",
+            "_row_num": 200,
+            "__rowNum__": 199,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 209,
+              "__rowNum__": 208,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(83);\nactivePromptIndicies.push(84);\nactivePromptIndicies.push(85);\nactivePromptIndicies.push(86);\nactivePromptIndicies.push(87);\nif (data('vomitou_adm4')=='1') {\nactivePromptIndicies.push(88);\n}\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 72
           },
           {
             "clause": "if",
             "condition": "calculates.erro_data4()",
-            "_row_num": 213,
-            "__rowNum__": 212,
+            "_row_num": 211,
+            "__rowNum__": 210,
             "_token_type": "goto_label",
-            "_branch_label": "_then213",
+            "_branch_label": "_then211",
+            "operationIdx": 73
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_else213",
+            "_row_num": 213,
+            "operationIdx": 74
+          },
+          {
+            "_row_num": 212,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(89);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 75
           },
           {
             "clause": "end if",
             "_token_type": "goto_label",
-            "_branch_label": "_else215",
-            "_row_num": 215,
+            "_branch_label": "_endif213",
+            "_row_num": 213,
             "operationIdx": 76
           },
           {
-            "_row_num": 214,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(91);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 77
-          },
-          {
-            "clause": "end if",
-            "_token_type": "goto_label",
-            "_branch_label": "_endif215",
-            "_row_num": 215,
-            "operationIdx": 78
-          },
-          {
             "clause": "begin screen",
-            "_row_num": 225,
-            "__rowNum__": 224,
+            "_row_num": 223,
+            "__rowNum__": 222,
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 232,
-              "__rowNum__": 231,
+              "_row_num": 230,
+              "__rowNum__": 229,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(92);\nactivePromptIndicies.push(93);\nactivePromptIndicies.push(94);\nactivePromptIndicies.push(95);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 79
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(90);\nactivePromptIndicies.push(91);\nactivePromptIndicies.push(92);\nactivePromptIndicies.push(93);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 77
           },
           {
             "type": "assign",
             "name": "codigo_lamina",
             "calculation": "\"\"+ data('id_estudo') + \"X\" + calculates.visita_id()",
             "hideInContents": true,
-            "_row_num": 233,
-            "__rowNum__": 232,
+            "_row_num": 231,
+            "__rowNum__": 230,
             "_token_type": "assign",
-            "operationIdx": 80
+            "operationIdx": 78
           },
           {
-            "_row_num": 235,
+            "_row_num": 233,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(96);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 81
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(94);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 79
           },
           {
             "_token_type": "exit_section",
             "clause": "exit section",
-            "_row_num": 236,
-            "operationIdx": 82
+            "_row_num": 234,
+            "operationIdx": 80
           },
           {
-            "_row_num": 236,
+            "_row_num": 234,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(97);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(95);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
-            "operationIdx": 83
+            "operationIdx": 81
           },
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 236,
-            "operationIdx": 84
+            "_row_num": 234,
+            "operationIdx": 82
           }
         ],
         "branch_label_map": {
@@ -7194,71 +7598,69 @@
           "_screen62": 12,
           "_screen66": 13,
           "_screen73": 14,
-          "_screen74": 15,
-          "_screen75": 16,
-          "_then76": 19,
-          "_screen77": 19,
-          "_then78": 22,
-          "_screen79": 22,
-          "_else85": 24,
-          "_endif85": 24,
-          "_then86": 26,
-          "_screen87": 26,
-          "_else93": 28,
-          "_endif93": 28,
-          "_then94": 30,
-          "_screen95": 30,
-          "_else101": 32,
-          "_endif101": 32,
-          "_then102": 34,
-          "_screen103": 34,
-          "_else109": 36,
-          "_endif109": 36,
-          "_else111": 37,
-          "_endif111": 37,
-          "_screen112": 37,
-          "_screen123": 38,
-          "_screen134": 39,
-          "_then135": 42,
-          "_else138": 44,
-          "_screen140": 44,
-          "_then152": 47,
-          "_screen153": 47,
-          "_else154": 49,
-          "_endif154": 49,
-          "_screen156": 49,
-          "_then157": 52,
-          "_else159": 54,
-          "_screen160": 54,
-          "_then171": 57,
-          "_screen172": 57,
-          "_else173": 59,
-          "_endif173": 59,
-          "_screen175": 59,
-          "_then176": 62,
-          "_else178": 64,
-          "_screen181": 64,
-          "_then192": 67,
-          "_screen193": 67,
-          "_else194": 69,
-          "_endif194": 69,
-          "_screen196": 69,
-          "_then197": 72,
-          "_else199": 74,
-          "_screen202": 74,
-          "_then213": 77,
-          "_screen214": 77,
-          "_else215": 79,
-          "_endif215": 79,
-          "_endif218": 79,
-          "_endif219": 79,
-          "_endif220": 79,
-          "_endif221": 79,
-          "lab": 79,
-          "_screen225": 79,
-          "_screen235": 81,
-          "_contents": 83,
-          "_screen236": 83
+          "_then74": 17,
+          "_screen75": 17,
+          "_then76": 20,
+          "_screen77": 20,
+          "_else83": 22,
+          "_endif83": 22,
+          "_then84": 24,
+          "_screen85": 24,
+          "_else91": 26,
+          "_endif91": 26,
+          "_then92": 28,
+          "_screen93": 28,
+          "_else99": 30,
+          "_endif99": 30,
+          "_then100": 32,
+          "_screen101": 32,
+          "_else107": 34,
+          "_endif107": 34,
+          "_else109": 35,
+          "_endif109": 35,
+          "_screen110": 35,
+          "_screen121": 36,
+          "_screen132": 37,
+          "_then133": 40,
+          "_else136": 42,
+          "_screen138": 42,
+          "_then150": 45,
+          "_screen151": 45,
+          "_else152": 47,
+          "_endif152": 47,
+          "_screen154": 47,
+          "_then155": 50,
+          "_else157": 52,
+          "_screen158": 52,
+          "_then169": 55,
+          "_screen170": 55,
+          "_else171": 57,
+          "_endif171": 57,
+          "_screen173": 57,
+          "_then174": 60,
+          "_else176": 62,
+          "_screen179": 62,
+          "_then190": 65,
+          "_screen191": 65,
+          "_else192": 67,
+          "_endif192": 67,
+          "_screen194": 67,
+          "_then195": 70,
+          "_else197": 72,
+          "_screen200": 72,
+          "_then211": 75,
+          "_screen212": 75,
+          "_else213": 77,
+          "_endif213": 77,
+          "_endif216": 77,
+          "_endif217": 77,
+          "_endif218": 77,
+          "_endif219": 77,
+          "lab": 77,
+          "_screen223": 77,
+          "_screen233": 79,
+          "_contents": 81,
+          "_screen234": 81
         }
       },
       "initial": {
@@ -7738,12 +8140,7 @@
       },
       "id_estudo": {
         "type": "string",
-        "valuesList": "codigos_csv",
         "_defn": [
-          {
-            "_row_num": 74,
-            "section_name": "survey"
-          },
           {
             "_row_num": 27,
             "section_name": "model"
@@ -8193,10 +8590,10 @@
       },
       "medicacao_previa": {
         "type": "string",
-        "valuesList": "yesno",
+        "valuesList": "yesnodk",
         "_defn": [
           {
-            "_row_num": 75,
+            "_row_num": 73,
             "section_name": "survey"
           },
           {
@@ -8232,7 +8629,7 @@
         "elementType": "time",
         "_defn": [
           {
-            "_row_num": 115,
+            "_row_num": 113,
             "section_name": "survey"
           },
           {
@@ -8250,7 +8647,7 @@
         "valuesList": "doseSP",
         "_defn": [
           {
-            "_row_num": 116,
+            "_row_num": 114,
             "section_name": "survey"
           },
           {
@@ -8268,7 +8665,7 @@
         "valuesList": "yesno",
         "_defn": [
           {
-            "_row_num": 117,
+            "_row_num": 115,
             "section_name": "survey"
           },
           {
@@ -8286,7 +8683,7 @@
         "elementType": "time",
         "_defn": [
           {
-            "_row_num": 119,
+            "_row_num": 117,
             "section_name": "survey"
           },
           {
@@ -8322,7 +8719,7 @@
         "elementType": "time",
         "_defn": [
           {
-            "_row_num": 126,
+            "_row_num": 124,
             "section_name": "survey"
           },
           {
@@ -8340,7 +8737,7 @@
         "valuesList": "doseAQ",
         "_defn": [
           {
-            "_row_num": 127,
+            "_row_num": 125,
             "section_name": "survey"
           },
           {
@@ -8358,7 +8755,7 @@
         "valuesList": "yesno",
         "_defn": [
           {
-            "_row_num": 128,
+            "_row_num": 126,
             "section_name": "survey"
           },
           {
@@ -8376,7 +8773,7 @@
         "elementType": "time",
         "_defn": [
           {
-            "_row_num": 130,
+            "_row_num": 128,
             "section_name": "survey"
           },
           {
@@ -8420,7 +8817,7 @@
         "valuesList": "yesno",
         "_defn": [
           {
-            "_row_num": 231,
+            "_row_num": 229,
             "section_name": "survey"
           },
           {
@@ -8462,7 +8859,7 @@
       "codigo_lamina": {
         "_defn": [
           {
-            "_row_num": 233,
+            "_row_num": 231,
             "section_name": "survey"
           },
           {
@@ -8502,200 +8899,733 @@
         "elementSet": "data",
         "elementPath": "rastreioID_completo"
       },
-      "codigo": {
+      "numero_med": {
+        "type": "integer",
         "_defn": [
           {
-            "_row_num": 73,
+            "_row_num": 75,
             "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "codigo",
-        "elementName": "codigo",
-        "elementSet": "data",
-        "elementPath": "codigo"
-      },
-      "numero_med": {
-        "_defn": [
+          },
           {
             "_row_num": 77,
-            "section_name": "survey"
+            "section_name": "model"
           }
         ],
-        "type": "integer",
         "elementKey": "numero_med",
         "elementName": "numero_med",
         "elementSet": "data",
         "elementPath": "numero_med"
       },
       "nome_med1": {
+        "type": "string",
         "_defn": [
           {
-            "_row_num": 81,
+            "_row_num": 79,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 78,
+            "section_name": "model"
           }
         ],
-        "type": "string",
         "elementKey": "nome_med1",
         "elementName": "nome_med1",
         "elementSet": "data",
         "elementPath": "nome_med1"
       },
       "tomando_med1": {
-        "_defn": [
-          {
-            "_row_num": 82,
-            "section_name": "survey"
-          }
-        ],
         "type": "string",
         "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 80,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 79,
+            "section_name": "model"
+          }
+        ],
         "elementKey": "tomando_med1",
         "elementName": "tomando_med1",
         "elementSet": "data",
         "elementPath": "tomando_med1"
       },
       "via_med1": {
-        "_defn": [
-          {
-            "_row_num": 83,
-            "section_name": "survey"
-          }
-        ],
         "type": "string",
         "valuesList": "via_adm",
+        "_defn": [
+          {
+            "_row_num": 81,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 80,
+            "section_name": "model"
+          }
+        ],
         "elementKey": "via_med1",
         "elementName": "via_med1",
         "elementSet": "data",
         "elementPath": "via_med1"
       },
       "nome_med2": {
+        "type": "string",
         "_defn": [
           {
-            "_row_num": 89,
+            "_row_num": 87,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 81,
+            "section_name": "model"
           }
         ],
-        "type": "string",
         "elementKey": "nome_med2",
         "elementName": "nome_med2",
         "elementSet": "data",
         "elementPath": "nome_med2"
       },
       "tomando_med2": {
-        "_defn": [
-          {
-            "_row_num": 90,
-            "section_name": "survey"
-          }
-        ],
         "type": "string",
         "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 88,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 82,
+            "section_name": "model"
+          }
+        ],
         "elementKey": "tomando_med2",
         "elementName": "tomando_med2",
         "elementSet": "data",
         "elementPath": "tomando_med2"
       },
       "via_med2": {
-        "_defn": [
-          {
-            "_row_num": 91,
-            "section_name": "survey"
-          }
-        ],
         "type": "string",
         "valuesList": "via_adm",
+        "_defn": [
+          {
+            "_row_num": 89,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 83,
+            "section_name": "model"
+          }
+        ],
         "elementKey": "via_med2",
         "elementName": "via_med2",
         "elementSet": "data",
         "elementPath": "via_med2"
       },
       "nome_med3": {
+        "type": "string",
         "_defn": [
           {
-            "_row_num": 97,
+            "_row_num": 95,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 84,
+            "section_name": "model"
           }
         ],
-        "type": "string",
         "elementKey": "nome_med3",
         "elementName": "nome_med3",
         "elementSet": "data",
         "elementPath": "nome_med3"
       },
       "tomando_med3": {
-        "_defn": [
-          {
-            "_row_num": 98,
-            "section_name": "survey"
-          }
-        ],
         "type": "string",
         "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 96,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 85,
+            "section_name": "model"
+          }
+        ],
         "elementKey": "tomando_med3",
         "elementName": "tomando_med3",
         "elementSet": "data",
         "elementPath": "tomando_med3"
       },
       "via_med3": {
-        "_defn": [
-          {
-            "_row_num": 99,
-            "section_name": "survey"
-          }
-        ],
         "type": "string",
         "valuesList": "via_adm",
+        "_defn": [
+          {
+            "_row_num": 97,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 86,
+            "section_name": "model"
+          }
+        ],
         "elementKey": "via_med3",
         "elementName": "via_med3",
         "elementSet": "data",
         "elementPath": "via_med3"
       },
       "nome_med4": {
+        "type": "string",
         "_defn": [
           {
-            "_row_num": 105,
+            "_row_num": 103,
             "section_name": "survey"
+          },
+          {
+            "_row_num": 87,
+            "section_name": "model"
           }
         ],
-        "type": "string",
         "elementKey": "nome_med4",
         "elementName": "nome_med4",
         "elementSet": "data",
         "elementPath": "nome_med4"
       },
       "tomando_med4": {
-        "_defn": [
-          {
-            "_row_num": 106,
-            "section_name": "survey"
-          }
-        ],
         "type": "string",
         "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 104,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 88,
+            "section_name": "model"
+          }
+        ],
         "elementKey": "tomando_med4",
         "elementName": "tomando_med4",
         "elementSet": "data",
         "elementPath": "tomando_med4"
       },
       "via_med4": {
-        "_defn": [
-          {
-            "_row_num": 107,
-            "section_name": "survey"
-          }
-        ],
         "type": "string",
         "valuesList": "via_adm",
+        "_defn": [
+          {
+            "_row_num": 105,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 89,
+            "section_name": "model"
+          }
+        ],
         "elementKey": "via_med4",
         "elementName": "via_med4",
         "elementSet": "data",
         "elementPath": "via_med4"
       },
+      "med_adm1": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 140,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 90,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "med_adm1",
+        "elementName": "med_adm1",
+        "elementSet": "data",
+        "elementPath": "med_adm1"
+      },
+      "date_adm1": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 141,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 91,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "date_adm1",
+        "elementName": "date_adm1",
+        "elementSet": "data",
+        "elementPath": "date_adm1"
+      },
+      "hora_adm1": {
+        "type": "string",
+        "elementType": "time",
+        "_defn": [
+          {
+            "_row_num": 142,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 92,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "hora_adm1",
+        "elementName": "hora_adm1",
+        "elementSet": "data",
+        "elementPath": "hora_adm1"
+      },
+      "dose_adm1": {
+        "type": "number",
+        "_defn": [
+          {
+            "_row_num": 143,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 93,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "dose_adm1",
+        "elementName": "dose_adm1",
+        "elementSet": "data",
+        "elementPath": "dose_adm1"
+      },
+      "vomitou_adm1": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 144,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 94,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "vomitou_adm1",
+        "elementName": "vomitou_adm1",
+        "elementSet": "data",
+        "elementPath": "vomitou_adm1"
+      },
+      "hora_vomito_adm1": {
+        "type": "string",
+        "elementType": "time",
+        "_defn": [
+          {
+            "_row_num": 146,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 95,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "hora_vomito_adm1",
+        "elementName": "hora_vomito_adm1",
+        "elementSet": "data",
+        "elementPath": "hora_vomito_adm1"
+      },
+      "outro_med2": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 154,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 96,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "outro_med2",
+        "elementName": "outro_med2",
+        "elementSet": "data",
+        "elementPath": "outro_med2"
+      },
+      "med_adm2": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 159,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 97,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "med_adm2",
+        "elementName": "med_adm2",
+        "elementSet": "data",
+        "elementPath": "med_adm2"
+      },
+      "date_adm2": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 160,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 98,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "date_adm2",
+        "elementName": "date_adm2",
+        "elementSet": "data",
+        "elementPath": "date_adm2"
+      },
+      "hora_adm2": {
+        "type": "string",
+        "elementType": "time",
+        "_defn": [
+          {
+            "_row_num": 161,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 99,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "hora_adm2",
+        "elementName": "hora_adm2",
+        "elementSet": "data",
+        "elementPath": "hora_adm2"
+      },
+      "dose_adm2": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 162,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 100,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "dose_adm2",
+        "elementName": "dose_adm2",
+        "elementSet": "data",
+        "elementPath": "dose_adm2"
+      },
+      "vomitou_adm2": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 163,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 101,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "vomitou_adm2",
+        "elementName": "vomitou_adm2",
+        "elementSet": "data",
+        "elementPath": "vomitou_adm2"
+      },
+      "hora_vomito_adm2": {
+        "type": "string",
+        "elementType": "time",
+        "_defn": [
+          {
+            "_row_num": 165,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 102,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "hora_vomito_adm2",
+        "elementName": "hora_vomito_adm2",
+        "elementSet": "data",
+        "elementPath": "hora_vomito_adm2"
+      },
+      "outro_med3": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 173,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 103,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "outro_med3",
+        "elementName": "outro_med3",
+        "elementSet": "data",
+        "elementPath": "outro_med3"
+      },
+      "med_adm3": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 180,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 104,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "med_adm3",
+        "elementName": "med_adm3",
+        "elementSet": "data",
+        "elementPath": "med_adm3"
+      },
+      "date_adm3": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 181,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 105,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "date_adm3",
+        "elementName": "date_adm3",
+        "elementSet": "data",
+        "elementPath": "date_adm3"
+      },
+      "hora_adm3": {
+        "type": "string",
+        "elementType": "time",
+        "_defn": [
+          {
+            "_row_num": 182,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 106,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "hora_adm3",
+        "elementName": "hora_adm3",
+        "elementSet": "data",
+        "elementPath": "hora_adm3"
+      },
+      "dose_adm3": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 183,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 107,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "dose_adm3",
+        "elementName": "dose_adm3",
+        "elementSet": "data",
+        "elementPath": "dose_adm3"
+      },
+      "vomitou_adm3": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 184,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 108,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "vomitou_adm3",
+        "elementName": "vomitou_adm3",
+        "elementSet": "data",
+        "elementPath": "vomitou_adm3"
+      },
+      "hora_vomito_adm3": {
+        "type": "string",
+        "elementType": "time",
+        "_defn": [
+          {
+            "_row_num": 186,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 109,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "hora_vomito_adm3",
+        "elementName": "hora_vomito_adm3",
+        "elementSet": "data",
+        "elementPath": "hora_vomito_adm3"
+      },
+      "outro_med4": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 194,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 110,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "outro_med4",
+        "elementName": "outro_med4",
+        "elementSet": "data",
+        "elementPath": "outro_med4"
+      },
+      "med_adm4": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 201,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 111,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "med_adm4",
+        "elementName": "med_adm4",
+        "elementSet": "data",
+        "elementPath": "med_adm4"
+      },
+      "date_adm4": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 202,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 112,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "date_adm4",
+        "elementName": "date_adm4",
+        "elementSet": "data",
+        "elementPath": "date_adm4"
+      },
+      "hora_adm4": {
+        "type": "string",
+        "elementType": "time",
+        "_defn": [
+          {
+            "_row_num": 203,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 113,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "hora_adm4",
+        "elementName": "hora_adm4",
+        "elementSet": "data",
+        "elementPath": "hora_adm4"
+      },
+      "dose_adm4": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 204,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 114,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "dose_adm4",
+        "elementName": "dose_adm4",
+        "elementSet": "data",
+        "elementPath": "dose_adm4"
+      },
+      "vomitou_adm4": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 205,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 115,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "vomitou_adm4",
+        "elementName": "vomitou_adm4",
+        "elementSet": "data",
+        "elementPath": "vomitou_adm4"
+      },
+      "hora_vomito_adm4": {
+        "type": "string",
+        "elementType": "time",
+        "_defn": [
+          {
+            "_row_num": 207,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 116,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "hora_vomito_adm4",
+        "elementName": "hora_vomito_adm4",
+        "elementSet": "data",
+        "elementPath": "hora_vomito_adm4"
+      },
       "outros_med": {
         "_defn": [
           {
-            "_row_num": 134,
+            "_row_num": 132,
             "section_name": "survey"
           }
         ],
@@ -8706,388 +9636,10 @@
         "elementSet": "data",
         "elementPath": "outros_med"
       },
-      "med_adm1": {
-        "_defn": [
-          {
-            "_row_num": 142,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "med_adm1",
-        "elementName": "med_adm1",
-        "elementSet": "data",
-        "elementPath": "med_adm1"
-      },
-      "date_adm1": {
-        "_defn": [
-          {
-            "_row_num": 143,
-            "section_name": "survey"
-          }
-        ],
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "elementKey": "date_adm1",
-        "elementName": "date_adm1",
-        "elementSet": "data",
-        "elementPath": "date_adm1"
-      },
-      "hora_adm1": {
-        "_defn": [
-          {
-            "_row_num": 144,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementType": "time",
-        "elementKey": "hora_adm1",
-        "elementName": "hora_adm1",
-        "elementSet": "data",
-        "elementPath": "hora_adm1"
-      },
-      "dose_adm1": {
-        "_defn": [
-          {
-            "_row_num": 145,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "dose_adm1",
-        "elementName": "dose_adm1",
-        "elementSet": "data",
-        "elementPath": "dose_adm1"
-      },
-      "vomitou_adm1": {
-        "_defn": [
-          {
-            "_row_num": 146,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "vomitou_adm1",
-        "elementName": "vomitou_adm1",
-        "elementSet": "data",
-        "elementPath": "vomitou_adm1"
-      },
-      "hora_vomito_adm1": {
-        "_defn": [
-          {
-            "_row_num": 148,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementType": "time",
-        "elementKey": "hora_vomito_adm1",
-        "elementName": "hora_vomito_adm1",
-        "elementSet": "data",
-        "elementPath": "hora_vomito_adm1"
-      },
-      "outro_med2": {
-        "_defn": [
-          {
-            "_row_num": 156,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "outro_med2",
-        "elementName": "outro_med2",
-        "elementSet": "data",
-        "elementPath": "outro_med2"
-      },
-      "med_adm2": {
-        "_defn": [
-          {
-            "_row_num": 161,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "med_adm2",
-        "elementName": "med_adm2",
-        "elementSet": "data",
-        "elementPath": "med_adm2"
-      },
-      "date_adm2": {
-        "_defn": [
-          {
-            "_row_num": 162,
-            "section_name": "survey"
-          }
-        ],
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "elementKey": "date_adm2",
-        "elementName": "date_adm2",
-        "elementSet": "data",
-        "elementPath": "date_adm2"
-      },
-      "hora_adm2": {
-        "_defn": [
-          {
-            "_row_num": 163,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementType": "time",
-        "elementKey": "hora_adm2",
-        "elementName": "hora_adm2",
-        "elementSet": "data",
-        "elementPath": "hora_adm2"
-      },
-      "dose_adm2": {
-        "_defn": [
-          {
-            "_row_num": 164,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "dose_adm2",
-        "elementName": "dose_adm2",
-        "elementSet": "data",
-        "elementPath": "dose_adm2"
-      },
-      "vomitou_adm2": {
-        "_defn": [
-          {
-            "_row_num": 165,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "vomitou_adm2",
-        "elementName": "vomitou_adm2",
-        "elementSet": "data",
-        "elementPath": "vomitou_adm2"
-      },
-      "hora_vomito_adm2": {
-        "_defn": [
-          {
-            "_row_num": 167,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementType": "time",
-        "elementKey": "hora_vomito_adm2",
-        "elementName": "hora_vomito_adm2",
-        "elementSet": "data",
-        "elementPath": "hora_vomito_adm2"
-      },
-      "outro_med3": {
-        "_defn": [
-          {
-            "_row_num": 175,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "outro_med3",
-        "elementName": "outro_med3",
-        "elementSet": "data",
-        "elementPath": "outro_med3"
-      },
-      "med_adm3": {
-        "_defn": [
-          {
-            "_row_num": 182,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "med_adm3",
-        "elementName": "med_adm3",
-        "elementSet": "data",
-        "elementPath": "med_adm3"
-      },
-      "date_adm3": {
-        "_defn": [
-          {
-            "_row_num": 183,
-            "section_name": "survey"
-          }
-        ],
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "elementKey": "date_adm3",
-        "elementName": "date_adm3",
-        "elementSet": "data",
-        "elementPath": "date_adm3"
-      },
-      "hora_adm3": {
-        "_defn": [
-          {
-            "_row_num": 184,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementType": "time",
-        "elementKey": "hora_adm3",
-        "elementName": "hora_adm3",
-        "elementSet": "data",
-        "elementPath": "hora_adm3"
-      },
-      "dose_adm3": {
-        "_defn": [
-          {
-            "_row_num": 185,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "dose_adm3",
-        "elementName": "dose_adm3",
-        "elementSet": "data",
-        "elementPath": "dose_adm3"
-      },
-      "vomitou_adm3": {
-        "_defn": [
-          {
-            "_row_num": 186,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "vomitou_adm3",
-        "elementName": "vomitou_adm3",
-        "elementSet": "data",
-        "elementPath": "vomitou_adm3"
-      },
-      "hora_vomito_adm3": {
-        "_defn": [
-          {
-            "_row_num": 188,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementType": "time",
-        "elementKey": "hora_vomito_adm3",
-        "elementName": "hora_vomito_adm3",
-        "elementSet": "data",
-        "elementPath": "hora_vomito_adm3"
-      },
-      "outro_med4": {
-        "_defn": [
-          {
-            "_row_num": 196,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "outro_med4",
-        "elementName": "outro_med4",
-        "elementSet": "data",
-        "elementPath": "outro_med4"
-      },
-      "med_adm4": {
-        "_defn": [
-          {
-            "_row_num": 203,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "med_adm4",
-        "elementName": "med_adm4",
-        "elementSet": "data",
-        "elementPath": "med_adm4"
-      },
-      "date_adm4": {
-        "_defn": [
-          {
-            "_row_num": 204,
-            "section_name": "survey"
-          }
-        ],
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "elementKey": "date_adm4",
-        "elementName": "date_adm4",
-        "elementSet": "data",
-        "elementPath": "date_adm4"
-      },
-      "hora_adm4": {
-        "_defn": [
-          {
-            "_row_num": 205,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementType": "time",
-        "elementKey": "hora_adm4",
-        "elementName": "hora_adm4",
-        "elementSet": "data",
-        "elementPath": "hora_adm4"
-      },
-      "dose_adm4": {
-        "_defn": [
-          {
-            "_row_num": 206,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementKey": "dose_adm4",
-        "elementName": "dose_adm4",
-        "elementSet": "data",
-        "elementPath": "dose_adm4"
-      },
-      "vomitou_adm4": {
-        "_defn": [
-          {
-            "_row_num": 207,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "valuesList": "yesno",
-        "elementKey": "vomitou_adm4",
-        "elementName": "vomitou_adm4",
-        "elementSet": "data",
-        "elementPath": "vomitou_adm4"
-      },
-      "hora_vomito_adm4": {
-        "_defn": [
-          {
-            "_row_num": 209,
-            "section_name": "survey"
-          }
-        ],
-        "type": "string",
-        "elementType": "time",
-        "elementKey": "hora_vomito_adm4",
-        "elementName": "hora_vomito_adm4",
-        "elementSet": "data",
-        "elementPath": "hora_vomito_adm4"
-      },
       "coment_inclusao": {
         "_defn": [
           {
-            "_row_num": 235,
+            "_row_num": 233,
             "section_name": "survey"
           }
         ],
@@ -9300,7 +9852,7 @@
         "_aspect": "medicacao_previa",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+        "_value": "[{\"choice_list_name\":\"yesnodk\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":11},{\"choice_list_name\":\"yesnodk\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":12},{\"choice_list_name\":\"yesnodk\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":13}]"
       },
       {
         "_partition": "Column",
