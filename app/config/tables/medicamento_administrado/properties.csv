@@ -1,6 +1,0 @@
-_partition,_aspect,_key,_type,_value
-Column,vomitou_adm,displayChoicesList,object,"[{""choice_list_name"":""yesno"",""data_value"":1,""display"":{""title"":{""text"":""Sim""}},""_row_num"":8},{""choice_list_name"":""yesno"",""data_value"":2,""display"":{""title"":{""text"":""Não""}},""_row_num"":9}]"
-FormType,default,FormType.formType,string,SURVEY
-SurveyUtil,default,SurveyUtil.formId,string,medicamento_administrado
-Table,default,defaultViewType,string,SPREADSHEET
-Table,default,displayName,object,"{""text"":""Outros Medicamentos Administrados (antipalúdicos, antibióticos ou analgésicos)""}"

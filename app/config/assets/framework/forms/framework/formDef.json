@@ -119,11 +119,11 @@
         "_row_num": 22
       },
       {
-        "branch_label": "medicamento_administrado",
+        "branch_label": "rastreio",
         "_row_num": 24
       },
       {
-        "url": "'?' + odkSurvey.getHashString('medicamento_administrado')",
+        "url": "'?' + odkSurvey.getHashString('rastreio')",
         "type": "external_link",
         "display": {
           "prompt": {
@@ -137,44 +137,8 @@
         "_row_num": 26
       },
       {
-        "branch_label": "medicamento_suspeito",
-        "_row_num": 27
-      },
-      {
-        "url": "'?' + odkSurvey.getHashString('medicamento_suspeito')",
-        "type": "external_link",
-        "display": {
-          "prompt": {
-            "text": "Open form"
-          }
-        },
-        "_row_num": 28
-      },
-      {
-        "clause": "exit section",
-        "_row_num": 29
-      },
-      {
-        "branch_label": "rastreio",
-        "_row_num": 30
-      },
-      {
-        "url": "'?' + odkSurvey.getHashString('rastreio')",
-        "type": "external_link",
-        "display": {
-          "prompt": {
-            "text": "Open form"
-          }
-        },
-        "_row_num": 31
-      },
-      {
-        "clause": "exit section",
-        "_row_num": 32
-      },
-      {
         "branch_label": "seguimento",
-        "_row_num": 34
+        "_row_num": 28
       },
       {
         "url": "'?' + odkSurvey.getHashString('seguimento')",
@@ -184,33 +148,15 @@
             "text": "Open form"
           }
         },
-        "_row_num": 35
+        "_row_num": 29
       },
       {
         "clause": "exit section",
-        "_row_num": 36
-      },
-      {
-        "branch_label": "cap",
-        "_row_num": 38
-      },
-      {
-        "url": "'?' + odkSurvey.getHashString('cap')",
-        "type": "external_link",
-        "display": {
-          "prompt": {
-            "text": "Open form"
-          }
-        },
-        "_row_num": 39
-      },
-      {
-        "clause": "exit section",
-        "_row_num": 40
+        "_row_num": 30
       },
       {
         "branch_label": "outroDia",
-        "_row_num": 41
+        "_row_num": 32
       },
       {
         "url": "'?' + odkSurvey.getHashString('outroDia')",
@@ -220,11 +166,11 @@
             "text": "Open form"
           }
         },
-        "_row_num": 42
+        "_row_num": 33
       },
       {
         "clause": "exit section",
-        "_row_num": 43
+        "_row_num": 34
       }
     ],
     "settings": [
@@ -241,7 +187,7 @@
       },
       {
         "setting_name": "form_version",
-        "value": 2020061901,
+        "value": 2020071900,
         "comments": "The version of this form",
         "_row_num": 4
       },
@@ -334,33 +280,13 @@
       },
       {
         "choice_list_name": "test_forms",
-        "data_value": "medicamento_administrado",
-        "display": {
-          "title": {
-            "text": "Outros Medicamentos Administrados (antipalúdicos, antibióticos ou analgésicos)"
-          }
-        },
-        "_row_num": 6
-      },
-      {
-        "choice_list_name": "test_forms",
-        "data_value": "medicamento_suspeito",
-        "display": {
-          "title": {
-            "text": "Medicamento suspeito"
-          }
-        },
-        "_row_num": 7
-      },
-      {
-        "choice_list_name": "test_forms",
         "data_value": "evento_adverso",
         "display": {
           "title": {
             "text": "Formulário de reportagem de evento adverso"
           }
         },
-        "_row_num": 8
+        "_row_num": 6
       },
       {
         "choice_list_name": "test_forms",
@@ -370,17 +296,7 @@
             "text": "Resultados de laboratorio"
           }
         },
-        "_row_num": 9
-      },
-      {
-        "choice_list_name": "test_forms",
-        "data_value": "cap",
-        "display": {
-          "title": {
-            "text": "CAP sobre Avaliação da Quimioprofilaxia sazonal para prevenção do Paludismo"
-          }
-        },
-        "_row_num": 10
+        "_row_num": 7
       },
       {
         "choice_list_name": "test_forms",
@@ -390,7 +306,7 @@
             "text": "Seguimento de qualquer outro Dia"
           }
         },
-        "_row_num": 11
+        "_row_num": 8
       }
     ],
     "framework_translations": [
@@ -890,7 +806,7 @@
       },
       "form_version": {
         "setting_name": "form_version",
-        "value": 2020061901,
+        "value": 2020071900,
         "comments": "The version of this form",
         "_row_num": 4
       },
@@ -1036,33 +952,13 @@
         },
         {
           "choice_list_name": "test_forms",
-          "data_value": "medicamento_administrado",
-          "display": {
-            "title": {
-              "text": "Outros Medicamentos Administrados (antipalúdicos, antibióticos ou analgésicos)"
-            }
-          },
-          "_row_num": 6
-        },
-        {
-          "choice_list_name": "test_forms",
-          "data_value": "medicamento_suspeito",
-          "display": {
-            "title": {
-              "text": "Medicamento suspeito"
-            }
-          },
-          "_row_num": 7
-        },
-        {
-          "choice_list_name": "test_forms",
           "data_value": "evento_adverso",
           "display": {
             "title": {
               "text": "Formulário de reportagem de evento adverso"
             }
           },
-          "_row_num": 8
+          "_row_num": 6
         },
         {
           "choice_list_name": "test_forms",
@@ -1072,17 +968,7 @@
               "text": "Resultados de laboratorio"
             }
           },
-          "_row_num": 9
-        },
-        {
-          "choice_list_name": "test_forms",
-          "data_value": "cap",
-          "display": {
-            "title": {
-              "text": "CAP sobre Avaliação da Quimioprofilaxia sazonal para prevenção do Paludismo"
-            }
-          },
-          "_row_num": 10
+          "_row_num": 7
         },
         {
           "choice_list_name": "test_forms",
@@ -1092,7 +978,7 @@
               "text": "Seguimento de qualquer outro Dia"
             }
           },
-          "_row_num": 11
+          "_row_num": 8
         }
       ]
     },
@@ -1813,7 +1699,7 @@
             "promptIdx": 5
           },
           {
-            "url": "'?' + odkSurvey.getHashString('medicamento_administrado')",
+            "url": "'?' + odkSurvey.getHashString('rastreio')",
             "type": "external_link",
             "display": {
               "prompt": {
@@ -1828,36 +1714,6 @@
             "promptIdx": 6
           },
           {
-            "url": "'?' + odkSurvey.getHashString('medicamento_suspeito')",
-            "type": "external_link",
-            "display": {
-              "prompt": {
-                "text": "Open form"
-              }
-            },
-            "_row_num": 28,
-            "__rowNum__": 27,
-            "_token_type": "prompt",
-            "_type": "external_link",
-            "_branch_label_enclosing_screen": "survey/_screen28",
-            "promptIdx": 7
-          },
-          {
-            "url": "'?' + odkSurvey.getHashString('rastreio')",
-            "type": "external_link",
-            "display": {
-              "prompt": {
-                "text": "Open form"
-              }
-            },
-            "_row_num": 31,
-            "__rowNum__": 30,
-            "_token_type": "prompt",
-            "_type": "external_link",
-            "_branch_label_enclosing_screen": "survey/_screen31",
-            "promptIdx": 8
-          },
-          {
             "url": "'?' + odkSurvey.getHashString('seguimento')",
             "type": "external_link",
             "display": {
@@ -1865,27 +1721,12 @@
                 "text": "Open form"
               }
             },
-            "_row_num": 35,
-            "__rowNum__": 34,
+            "_row_num": 29,
+            "__rowNum__": 28,
             "_token_type": "prompt",
             "_type": "external_link",
-            "_branch_label_enclosing_screen": "survey/_screen35",
-            "promptIdx": 9
-          },
-          {
-            "url": "'?' + odkSurvey.getHashString('cap')",
-            "type": "external_link",
-            "display": {
-              "prompt": {
-                "text": "Open form"
-              }
-            },
-            "_row_num": 39,
-            "__rowNum__": 38,
-            "_token_type": "prompt",
-            "_type": "external_link",
-            "_branch_label_enclosing_screen": "survey/_screen39",
-            "promptIdx": 10
+            "_branch_label_enclosing_screen": "survey/_screen29",
+            "promptIdx": 7
           },
           {
             "url": "'?' + odkSurvey.getHashString('outroDia')",
@@ -1895,20 +1736,20 @@
                 "text": "Open form"
               }
             },
-            "_row_num": 42,
-            "__rowNum__": 41,
+            "_row_num": 33,
+            "__rowNum__": 32,
             "_token_type": "prompt",
             "_type": "external_link",
-            "_branch_label_enclosing_screen": "survey/_screen42",
-            "promptIdx": 11
+            "_branch_label_enclosing_screen": "survey/_screen33",
+            "promptIdx": 8
           },
           {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 44,
-            "_branch_label_enclosing_screen": "survey/_screen44",
-            "promptIdx": 12
+            "_row_num": 35,
+            "_branch_label_enclosing_screen": "survey/_screen35",
+            "promptIdx": 9
           }
         ],
         "validation_tag_map": {
@@ -2023,90 +1864,51 @@
             "operationIdx": 15
           },
           {
-            "_row_num": 28,
+            "_row_num": 29,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(7);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 16
           },
           {
             "clause": "exit section",
-            "_row_num": 29,
-            "__rowNum__": 28,
+            "_row_num": 30,
+            "__rowNum__": 29,
             "_token_type": "exit_section",
             "operationIdx": 17
           },
           {
-            "_row_num": 31,
+            "_row_num": 33,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(8);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 18
           },
           {
             "clause": "exit section",
-            "_row_num": 32,
-            "__rowNum__": 31,
+            "_row_num": 34,
+            "__rowNum__": 33,
             "_token_type": "exit_section",
             "operationIdx": 19
+          },
+          {
+            "_token_type": "exit_section",
+            "clause": "exit section",
+            "_row_num": 35,
+            "operationIdx": 20
           },
           {
             "_row_num": 35,
             "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(9);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 20
-          },
-          {
-            "clause": "exit section",
-            "_row_num": 36,
-            "__rowNum__": 35,
-            "_token_type": "exit_section",
-            "operationIdx": 21
-          },
-          {
-            "_row_num": 39,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(10);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 22
-          },
-          {
-            "clause": "exit section",
-            "_row_num": 40,
-            "__rowNum__": 39,
-            "_token_type": "exit_section",
-            "operationIdx": 23
-          },
-          {
-            "_row_num": 42,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(11);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 24
-          },
-          {
-            "clause": "exit section",
-            "_row_num": 43,
-            "__rowNum__": 42,
-            "_token_type": "exit_section",
-            "operationIdx": 25
-          },
-          {
-            "_token_type": "exit_section",
-            "clause": "exit section",
-            "_row_num": 44,
-            "operationIdx": 26
-          },
-          {
-            "_row_num": 44,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(12);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
-            "operationIdx": 27
+            "operationIdx": 21
           },
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 44,
-            "operationIdx": 28
+            "_row_num": 35,
+            "operationIdx": 22
           }
         ],
         "branch_label_map": {
@@ -2123,20 +1925,14 @@
           "_screen18": 10,
           "codigos": 12,
           "_screen21": 12,
-          "medicamento_administrado": 14,
+          "rastreio": 14,
           "_screen25": 14,
-          "medicamento_suspeito": 16,
-          "_screen28": 16,
-          "rastreio": 18,
-          "_screen31": 18,
-          "seguimento": 20,
-          "_screen35": 20,
-          "cap": 22,
-          "_screen39": 22,
-          "outroDia": 24,
-          "_screen42": 24,
-          "_contents": 27,
-          "_screen44": 27
+          "seguimento": 16,
+          "_screen29": 16,
+          "outroDia": 18,
+          "_screen33": 18,
+          "_contents": 21,
+          "_screen35": 21
         }
       }
     },
