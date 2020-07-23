@@ -338,7 +338,7 @@
       },
       {
         "type": "select_one",
-        "values_list": "yesno",
+        "values_list": "yesnodk",
         "name": "febre_history",
         "display": {
           "prompt": {
@@ -414,7 +414,7 @@
       },
       {
         "type": "select_one",
-        "values_list": "intensidadeDK",
+        "values_list": "intensidade",
         "name": "dor_articular",
         "display": {
           "prompt": {
@@ -1970,6 +1970,16 @@
         "_row_num": 52
       },
       {
+        "choice_list_name": "quantidade",
+        "data_value": 88,
+        "display": {
+          "title": {
+            "text": "Não sabe"
+          }
+        },
+        "_row_num": 53
+      },
+      {
         "choice_list_name": "intensidade",
         "data_value": 1,
         "display": {
@@ -1977,7 +1987,7 @@
             "text": "Não"
           }
         },
-        "_row_num": 54
+        "_row_num": 55
       },
       {
         "choice_list_name": "intensidade",
@@ -1987,7 +1997,7 @@
             "text": "Pouco"
           }
         },
-        "_row_num": 55
+        "_row_num": 56
       },
       {
         "choice_list_name": "intensidade",
@@ -1997,7 +2007,7 @@
             "text": "Severo"
           }
         },
-        "_row_num": 56
+        "_row_num": 57
       },
       {
         "choice_list_name": "intensidade",
@@ -2007,7 +2017,7 @@
             "text": "Não sabe"
           }
         },
-        "_row_num": 57
+        "_row_num": 58
       },
       {
         "choice_list_name": "frequencia",
@@ -2017,7 +2027,7 @@
             "text": "Como sempre"
           }
         },
-        "_row_num": 59
+        "_row_num": 60
       },
       {
         "choice_list_name": "frequencia",
@@ -2027,7 +2037,7 @@
             "text": "Pouco"
           }
         },
-        "_row_num": 60
+        "_row_num": 61
       },
       {
         "choice_list_name": "frequencia",
@@ -2037,7 +2047,7 @@
             "text": "nada"
           }
         },
-        "_row_num": 61
+        "_row_num": 62
       },
       {
         "choice_list_name": "frequencia",
@@ -2047,7 +2057,7 @@
             "text": "Não sabe"
           }
         },
-        "_row_num": 62
+        "_row_num": 63
       },
       {
         "choice_list_name": "doseSP",
@@ -2057,7 +2067,7 @@
             "text": "250mg/12,5mg Sulfadoxina-Pirimetamina"
           }
         },
-        "_row_num": 64
+        "_row_num": 65
       },
       {
         "choice_list_name": "doseSP",
@@ -2067,7 +2077,7 @@
             "text": "500mg/25mg Sulfadoxina-Pirimetamina"
           }
         },
-        "_row_num": 65
+        "_row_num": 66
       },
       {
         "choice_list_name": "doseAQ",
@@ -2077,7 +2087,7 @@
             "text": "75mg Amodiaquina"
           }
         },
-        "_row_num": 68
+        "_row_num": 69
       },
       {
         "choice_list_name": "doseAQ",
@@ -2087,47 +2097,7 @@
             "text": "150mg Amodiaquina"
           }
         },
-        "_row_num": 69
-      },
-      {
-        "choice_list_name": "intensidadeDK",
-        "data_value": 1,
-        "display": {
-          "title": {
-            "text": "Não"
-          }
-        },
-        "_row_num": 71
-      },
-      {
-        "choice_list_name": "intensidadeDK",
-        "data_value": 2,
-        "display": {
-          "title": {
-            "text": "Pouco"
-          }
-        },
-        "_row_num": 72
-      },
-      {
-        "choice_list_name": "intensidadeDK",
-        "data_value": 3,
-        "display": {
-          "title": {
-            "text": "Severo"
-          }
-        },
-        "_row_num": 73
-      },
-      {
-        "choice_list_name": "intensidadeDK",
-        "data_value": 88,
-        "display": {
-          "title": {
-            "text": "Não sabe"
-          }
-        },
-        "_row_num": 74
+        "_row_num": 70
       },
       {
         "choice_list_name": "via_adm",
@@ -2137,7 +2107,7 @@
             "text": "VO (Oral)"
           }
         },
-        "_row_num": 76
+        "_row_num": 73
       },
       {
         "choice_list_name": "via_adm",
@@ -2147,7 +2117,7 @@
             "text": "IM (Intra-muscular)"
           }
         },
-        "_row_num": 77
+        "_row_num": 74
       },
       {
         "choice_list_name": "via_adm",
@@ -2157,7 +2127,7 @@
             "text": "EV (Intra-venosa)"
           }
         },
-        "_row_num": 78
+        "_row_num": 75
       }
     ],
     "queries": [
@@ -2263,7 +2233,7 @@
       },
       {
         "calculation_name": "erro_data1",
-        "calculation": "calculates.nao_data1() || calculates.nao_futuro1()<0",
+        "calculation": "(calculates.nao_data1() || calculates.nao_futuro1()<0) && data('outros_med')=='1'",
         "_row_num": 17
       },
       {
@@ -2278,7 +2248,7 @@
       },
       {
         "calculation_name": "erro_data2",
-        "calculation": "calculates.nao_data2() || calculates.nao_futuro2()<0",
+        "calculation": "(calculates.nao_data2() || calculates.nao_futuro2()<0) && data('outros_med2')=='1'",
         "_row_num": 21
       },
       {
@@ -2293,7 +2263,7 @@
       },
       {
         "calculation_name": "erro_data3",
-        "calculation": "calculates.nao_data3() || calculates.nao_futuro3()<0",
+        "calculation": "(calculates.nao_data3() || calculates.nao_futuro3()<0) && data('outros_med3')=='1'",
         "_row_num": 25
       },
       {
@@ -2308,7 +2278,7 @@
       },
       {
         "calculation_name": "erro_data4",
-        "calculation": "calculates.nao_data4() || calculates.nao_futuro4()<0",
+        "calculation": "(calculates.nao_data4() || calculates.nao_futuro4()<0) && data('outros_med4')=='1'",
         "_row_num": 29
       }
     ],
@@ -3284,6 +3254,16 @@
             }
           },
           "_row_num": 52
+        },
+        {
+          "choice_list_name": "quantidade",
+          "data_value": 88,
+          "display": {
+            "title": {
+              "text": "Não sabe"
+            }
+          },
+          "_row_num": 53
         }
       ],
       "intensidade": [
@@ -3295,7 +3275,7 @@
               "text": "Não"
             }
           },
-          "_row_num": 54
+          "_row_num": 55
         },
         {
           "choice_list_name": "intensidade",
@@ -3305,7 +3285,7 @@
               "text": "Pouco"
             }
           },
-          "_row_num": 55
+          "_row_num": 56
         },
         {
           "choice_list_name": "intensidade",
@@ -3315,7 +3295,7 @@
               "text": "Severo"
             }
           },
-          "_row_num": 56
+          "_row_num": 57
         },
         {
           "choice_list_name": "intensidade",
@@ -3325,7 +3305,7 @@
               "text": "Não sabe"
             }
           },
-          "_row_num": 57
+          "_row_num": 58
         }
       ],
       "frequencia": [
@@ -3337,7 +3317,7 @@
               "text": "Como sempre"
             }
           },
-          "_row_num": 59
+          "_row_num": 60
         },
         {
           "choice_list_name": "frequencia",
@@ -3347,7 +3327,7 @@
               "text": "Pouco"
             }
           },
-          "_row_num": 60
+          "_row_num": 61
         },
         {
           "choice_list_name": "frequencia",
@@ -3357,7 +3337,7 @@
               "text": "nada"
             }
           },
-          "_row_num": 61
+          "_row_num": 62
         },
         {
           "choice_list_name": "frequencia",
@@ -3367,7 +3347,7 @@
               "text": "Não sabe"
             }
           },
-          "_row_num": 62
+          "_row_num": 63
         }
       ],
       "doseSP": [
@@ -3379,7 +3359,7 @@
               "text": "250mg/12,5mg Sulfadoxina-Pirimetamina"
             }
           },
-          "_row_num": 64
+          "_row_num": 65
         },
         {
           "choice_list_name": "doseSP",
@@ -3389,7 +3369,7 @@
               "text": "500mg/25mg Sulfadoxina-Pirimetamina"
             }
           },
-          "_row_num": 65
+          "_row_num": 66
         }
       ],
       "doseAQ": [
@@ -3401,7 +3381,7 @@
               "text": "75mg Amodiaquina"
             }
           },
-          "_row_num": 68
+          "_row_num": 69
         },
         {
           "choice_list_name": "doseAQ",
@@ -3411,49 +3391,7 @@
               "text": "150mg Amodiaquina"
             }
           },
-          "_row_num": 69
-        }
-      ],
-      "intensidadeDK": [
-        {
-          "choice_list_name": "intensidadeDK",
-          "data_value": 1,
-          "display": {
-            "title": {
-              "text": "Não"
-            }
-          },
-          "_row_num": 71
-        },
-        {
-          "choice_list_name": "intensidadeDK",
-          "data_value": 2,
-          "display": {
-            "title": {
-              "text": "Pouco"
-            }
-          },
-          "_row_num": 72
-        },
-        {
-          "choice_list_name": "intensidadeDK",
-          "data_value": 3,
-          "display": {
-            "title": {
-              "text": "Severo"
-            }
-          },
-          "_row_num": 73
-        },
-        {
-          "choice_list_name": "intensidadeDK",
-          "data_value": 88,
-          "display": {
-            "title": {
-              "text": "Não sabe"
-            }
-          },
-          "_row_num": 74
+          "_row_num": 70
         }
       ],
       "via_adm": [
@@ -3465,7 +3403,7 @@
               "text": "VO (Oral)"
             }
           },
-          "_row_num": 76
+          "_row_num": 73
         },
         {
           "choice_list_name": "via_adm",
@@ -3475,7 +3413,7 @@
               "text": "IM (Intra-muscular)"
             }
           },
-          "_row_num": 77
+          "_row_num": 74
         },
         {
           "choice_list_name": "via_adm",
@@ -3485,7 +3423,7 @@
               "text": "EV (Intra-venosa)"
             }
           },
-          "_row_num": 78
+          "_row_num": 75
         }
       ]
     },
@@ -3579,7 +3517,7 @@
       },
       "erro_data1": {
         "calculation_name": "erro_data1",
-        "calculation": "calculates.nao_data1() || calculates.nao_futuro1()<0",
+        "calculation": "(calculates.nao_data1() || calculates.nao_futuro1()<0) && data('outros_med')=='1'",
         "_row_num": 17
       },
       "nao_data2": {
@@ -3594,7 +3532,7 @@
       },
       "erro_data2": {
         "calculation_name": "erro_data2",
-        "calculation": "calculates.nao_data2() || calculates.nao_futuro2()<0",
+        "calculation": "(calculates.nao_data2() || calculates.nao_futuro2()<0) && data('outros_med2')=='1'",
         "_row_num": 21
       },
       "nao_data3": {
@@ -3609,7 +3547,7 @@
       },
       "erro_data3": {
         "calculation_name": "erro_data3",
-        "calculation": "calculates.nao_data3() || calculates.nao_futuro3()<0",
+        "calculation": "(calculates.nao_data3() || calculates.nao_futuro3()<0) && data('outros_med3')=='1'",
         "_row_num": 25
       },
       "nao_data4": {
@@ -3624,7 +3562,7 @@
       },
       "erro_data4": {
         "calculation_name": "erro_data4",
-        "calculation": "calculates.nao_data4() || calculates.nao_futuro4()<0",
+        "calculation": "(calculates.nao_data4() || calculates.nao_futuro4()<0) && data('outros_med4')=='1'",
         "_row_num": 29
       }
     },
@@ -4069,7 +4007,7 @@
       },
       "febre_history": {
         "type": "string",
-        "valuesList": "yesno",
+        "valuesList": "yesnodk",
         "_defn": [
           {
             "_row_num": 50,
@@ -4144,7 +4082,7 @@
       },
       "dor_articular": {
         "type": "string",
-        "valuesList": "intensidadeDK",
+        "valuesList": "intensidade",
         "_defn": [
           {
             "_row_num": 60,
@@ -5438,7 +5376,7 @@
           },
           {
             "type": "select_one",
-            "values_list": "yesno",
+            "values_list": "yesnodk",
             "name": "febre_history",
             "display": {
               "prompt": {
@@ -5523,7 +5461,7 @@
           },
           {
             "type": "select_one",
-            "values_list": "intensidadeDK",
+            "values_list": "intensidade",
             "name": "dor_articular",
             "display": {
               "prompt": {
@@ -8393,7 +8331,7 @@
       },
       "febre_history": {
         "type": "string",
-        "valuesList": "yesno",
+        "valuesList": "yesnodk",
         "_defn": [
           {
             "_row_num": 50,
@@ -8483,7 +8421,7 @@
       },
       "dor_articular": {
         "type": "string",
-        "valuesList": "intensidadeDK",
+        "valuesList": "intensidade",
         "_defn": [
           {
             "_row_num": 60,
@@ -9775,21 +9713,21 @@
         "_aspect": "bebe",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"frequencia\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Como sempre\"}},\"_row_num\":59},{\"choice_list_name\":\"frequencia\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":60},{\"choice_list_name\":\"frequencia\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"nada\"}},\"_row_num\":61},{\"choice_list_name\":\"frequencia\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":62}]"
+        "_value": "[{\"choice_list_name\":\"frequencia\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Como sempre\"}},\"_row_num\":60},{\"choice_list_name\":\"frequencia\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":61},{\"choice_list_name\":\"frequencia\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"nada\"}},\"_row_num\":62},{\"choice_list_name\":\"frequencia\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":63}]"
       },
       {
         "_partition": "Column",
         "_aspect": "coceira",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"intensidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":54},{\"choice_list_name\":\"intensidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":55},{\"choice_list_name\":\"intensidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Severo\"}},\"_row_num\":56},{\"choice_list_name\":\"intensidade\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":57}]"
+        "_value": "[{\"choice_list_name\":\"intensidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":55},{\"choice_list_name\":\"intensidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":56},{\"choice_list_name\":\"intensidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Severo\"}},\"_row_num\":57},{\"choice_list_name\":\"intensidade\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":58}]"
       },
       {
         "_partition": "Column",
         "_aspect": "come",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"frequencia\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Como sempre\"}},\"_row_num\":59},{\"choice_list_name\":\"frequencia\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":60},{\"choice_list_name\":\"frequencia\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"nada\"}},\"_row_num\":61},{\"choice_list_name\":\"frequencia\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":62}]"
+        "_value": "[{\"choice_list_name\":\"frequencia\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Como sempre\"}},\"_row_num\":60},{\"choice_list_name\":\"frequencia\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":61},{\"choice_list_name\":\"frequencia\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"nada\"}},\"_row_num\":62},{\"choice_list_name\":\"frequencia\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":63}]"
       },
       {
         "_partition": "Column",
@@ -9803,42 +9741,42 @@
         "_aspect": "doente",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"quantidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":50},{\"choice_list_name\":\"quantidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":51},{\"choice_list_name\":\"quantidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Muito\"}},\"_row_num\":52}]"
+        "_value": "[{\"choice_list_name\":\"quantidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":50},{\"choice_list_name\":\"quantidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":51},{\"choice_list_name\":\"quantidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Muito\"}},\"_row_num\":52},{\"choice_list_name\":\"quantidade\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":53}]"
       },
       {
         "_partition": "Column",
         "_aspect": "dor_articular",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"intensidadeDK\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":71},{\"choice_list_name\":\"intensidadeDK\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":72},{\"choice_list_name\":\"intensidadeDK\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Severo\"}},\"_row_num\":73},{\"choice_list_name\":\"intensidadeDK\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":74}]"
+        "_value": "[{\"choice_list_name\":\"intensidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":55},{\"choice_list_name\":\"intensidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":56},{\"choice_list_name\":\"intensidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Severo\"}},\"_row_num\":57},{\"choice_list_name\":\"intensidade\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":58}]"
       },
       {
         "_partition": "Column",
         "_aspect": "dose_AQ",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"doseAQ\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"75mg Amodiaquina\"}},\"_row_num\":68},{\"choice_list_name\":\"doseAQ\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"150mg Amodiaquina\"}},\"_row_num\":69}]"
+        "_value": "[{\"choice_list_name\":\"doseAQ\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"75mg Amodiaquina\"}},\"_row_num\":69},{\"choice_list_name\":\"doseAQ\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"150mg Amodiaquina\"}},\"_row_num\":70}]"
       },
       {
         "_partition": "Column",
         "_aspect": "dose_SP",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"doseSP\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"250mg/12,5mg Sulfadoxina-Pirimetamina\"}},\"_row_num\":64},{\"choice_list_name\":\"doseSP\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"500mg/25mg Sulfadoxina-Pirimetamina\"}},\"_row_num\":65}]"
+        "_value": "[{\"choice_list_name\":\"doseSP\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"250mg/12,5mg Sulfadoxina-Pirimetamina\"}},\"_row_num\":65},{\"choice_list_name\":\"doseSP\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"500mg/25mg Sulfadoxina-Pirimetamina\"}},\"_row_num\":66}]"
       },
       {
         "_partition": "Column",
         "_aspect": "exantema",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"intensidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":54},{\"choice_list_name\":\"intensidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":55},{\"choice_list_name\":\"intensidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Severo\"}},\"_row_num\":56},{\"choice_list_name\":\"intensidade\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":57}]"
+        "_value": "[{\"choice_list_name\":\"intensidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":55},{\"choice_list_name\":\"intensidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":56},{\"choice_list_name\":\"intensidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Severo\"}},\"_row_num\":57},{\"choice_list_name\":\"intensidade\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":58}]"
       },
       {
         "_partition": "Column",
         "_aspect": "febre_history",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+        "_value": "[{\"choice_list_name\":\"yesnodk\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":11},{\"choice_list_name\":\"yesnodk\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":12},{\"choice_list_name\":\"yesnodk\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":13}]"
       },
       {
         "_partition": "Column",
@@ -9929,35 +9867,35 @@
         "_aspect": "via_med1",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"via_adm\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"VO (Oral)\"}},\"_row_num\":76},{\"choice_list_name\":\"via_adm\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"IM (Intra-muscular)\"}},\"_row_num\":77},{\"choice_list_name\":\"via_adm\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"EV (Intra-venosa)\"}},\"_row_num\":78}]"
+        "_value": "[{\"choice_list_name\":\"via_adm\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"VO (Oral)\"}},\"_row_num\":73},{\"choice_list_name\":\"via_adm\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"IM (Intra-muscular)\"}},\"_row_num\":74},{\"choice_list_name\":\"via_adm\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"EV (Intra-venosa)\"}},\"_row_num\":75}]"
       },
       {
         "_partition": "Column",
         "_aspect": "via_med2",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"via_adm\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"VO (Oral)\"}},\"_row_num\":76},{\"choice_list_name\":\"via_adm\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"IM (Intra-muscular)\"}},\"_row_num\":77},{\"choice_list_name\":\"via_adm\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"EV (Intra-venosa)\"}},\"_row_num\":78}]"
+        "_value": "[{\"choice_list_name\":\"via_adm\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"VO (Oral)\"}},\"_row_num\":73},{\"choice_list_name\":\"via_adm\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"IM (Intra-muscular)\"}},\"_row_num\":74},{\"choice_list_name\":\"via_adm\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"EV (Intra-venosa)\"}},\"_row_num\":75}]"
       },
       {
         "_partition": "Column",
         "_aspect": "via_med3",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"via_adm\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"VO (Oral)\"}},\"_row_num\":76},{\"choice_list_name\":\"via_adm\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"IM (Intra-muscular)\"}},\"_row_num\":77},{\"choice_list_name\":\"via_adm\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"EV (Intra-venosa)\"}},\"_row_num\":78}]"
+        "_value": "[{\"choice_list_name\":\"via_adm\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"VO (Oral)\"}},\"_row_num\":73},{\"choice_list_name\":\"via_adm\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"IM (Intra-muscular)\"}},\"_row_num\":74},{\"choice_list_name\":\"via_adm\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"EV (Intra-venosa)\"}},\"_row_num\":75}]"
       },
       {
         "_partition": "Column",
         "_aspect": "via_med4",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"via_adm\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"VO (Oral)\"}},\"_row_num\":76},{\"choice_list_name\":\"via_adm\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"IM (Intra-muscular)\"}},\"_row_num\":77},{\"choice_list_name\":\"via_adm\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"EV (Intra-venosa)\"}},\"_row_num\":78}]"
+        "_value": "[{\"choice_list_name\":\"via_adm\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"VO (Oral)\"}},\"_row_num\":73},{\"choice_list_name\":\"via_adm\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"IM (Intra-muscular)\"}},\"_row_num\":74},{\"choice_list_name\":\"via_adm\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"EV (Intra-venosa)\"}},\"_row_num\":75}]"
       },
       {
         "_partition": "Column",
         "_aspect": "vomito",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"intensidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":54},{\"choice_list_name\":\"intensidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":55},{\"choice_list_name\":\"intensidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Severo\"}},\"_row_num\":56},{\"choice_list_name\":\"intensidade\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":57}]"
+        "_value": "[{\"choice_list_name\":\"intensidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":55},{\"choice_list_name\":\"intensidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":56},{\"choice_list_name\":\"intensidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Severo\"}},\"_row_num\":57},{\"choice_list_name\":\"intensidade\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":58}]"
       },
       {
         "_partition": "Column",

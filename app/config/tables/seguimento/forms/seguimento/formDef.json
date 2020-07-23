@@ -1837,69 +1837,64 @@
         "_row_num": 22
       },
       {
-        "calculation_name": "iniciais",
-        "calculation": "data('cs')=='bafata' ? \"BA\" : data('cs')=='bambadinca' ? \"KN\" : data('cs')=='cosse' ? \"CS\" :data('cs')=='gabu' ? \"GU\" :data('cs')=='mafanco' ? \"MF\" :data('cs')=='pitche' ? \"PT\" : \"\"",
-        "_row_num": 23
-      },
-      {
         "calculation_name": "nao_data1",
         "calculation": "adate.hasUncertainty(data('date_adm1'))",
-        "_row_num": 25
+        "_row_num": 24
       },
       {
         "calculation_name": "nao_futuro1",
         "calculation": "adate.diffInDays(data('date_adm1'),calculates.hoje())",
-        "_row_num": 26
+        "_row_num": 25
       },
       {
         "calculation_name": "erro_data1",
         "calculation": "(calculates.nao_data1() || calculates.nao_futuro1()<0) && data('outros_med')=='1'",
-        "_row_num": 27
+        "_row_num": 26
       },
       {
         "calculation_name": "nao_data2",
         "calculation": "adate.hasUncertainty(data('date_adm2'))",
-        "_row_num": 29
+        "_row_num": 28
       },
       {
         "calculation_name": "nao_futuro2",
         "calculation": "adate.diffInDays(data('date_adm2'),calculates.hoje())",
-        "_row_num": 30
+        "_row_num": 29
       },
       {
         "calculation_name": "erro_data2",
         "calculation": "(calculates.nao_data2() || calculates.nao_futuro2()<0) && data('outros_med2')=='1'",
-        "_row_num": 31
+        "_row_num": 30
       },
       {
         "calculation_name": "nao_data3",
         "calculation": "adate.hasUncertainty(data('date_adm3'))",
-        "_row_num": 33
+        "_row_num": 32
       },
       {
         "calculation_name": "nao_futuro3",
         "calculation": "adate.diffInDays(data('date_adm3'),calculates.hoje())",
-        "_row_num": 34
+        "_row_num": 33
       },
       {
         "calculation_name": "erro_data3",
         "calculation": "(calculates.nao_data3() || calculates.nao_futuro3()<0) && data('outros_med3')=='1'",
-        "_row_num": 35
+        "_row_num": 34
       },
       {
         "calculation_name": "nao_data4",
         "calculation": "adate.hasUncertainty(data('date_adm4'))",
-        "_row_num": 37
+        "_row_num": 36
       },
       {
         "calculation_name": "nao_futuro4",
         "calculation": "adate.diffInDays(data('date_adm4'),calculates.hoje())",
-        "_row_num": 38
+        "_row_num": 37
       },
       {
         "calculation_name": "erro_data4",
         "calculation": "(calculates.nao_data4() || calculates.nao_futuro4()<0) && data('outros_med4')=='1'",
-        "_row_num": 39
+        "_row_num": 38
       }
     ],
     "model": [
@@ -3057,70 +3052,65 @@
         "calculation": "adate.display(calculates.data_form())",
         "_row_num": 22
       },
-      "iniciais": {
-        "calculation_name": "iniciais",
-        "calculation": "data('cs')=='bafata' ? \"BA\" : data('cs')=='bambadinca' ? \"KN\" : data('cs')=='cosse' ? \"CS\" :data('cs')=='gabu' ? \"GU\" :data('cs')=='mafanco' ? \"MF\" :data('cs')=='pitche' ? \"PT\" : \"\"",
-        "_row_num": 23
-      },
       "nao_data1": {
         "calculation_name": "nao_data1",
         "calculation": "adate.hasUncertainty(data('date_adm1'))",
-        "_row_num": 25
+        "_row_num": 24
       },
       "nao_futuro1": {
         "calculation_name": "nao_futuro1",
         "calculation": "adate.diffInDays(data('date_adm1'),calculates.hoje())",
-        "_row_num": 26
+        "_row_num": 25
       },
       "erro_data1": {
         "calculation_name": "erro_data1",
         "calculation": "(calculates.nao_data1() || calculates.nao_futuro1()<0) && data('outros_med')=='1'",
-        "_row_num": 27
+        "_row_num": 26
       },
       "nao_data2": {
         "calculation_name": "nao_data2",
         "calculation": "adate.hasUncertainty(data('date_adm2'))",
-        "_row_num": 29
+        "_row_num": 28
       },
       "nao_futuro2": {
         "calculation_name": "nao_futuro2",
         "calculation": "adate.diffInDays(data('date_adm2'),calculates.hoje())",
-        "_row_num": 30
+        "_row_num": 29
       },
       "erro_data2": {
         "calculation_name": "erro_data2",
         "calculation": "(calculates.nao_data2() || calculates.nao_futuro2()<0) && data('outros_med2')=='1'",
-        "_row_num": 31
+        "_row_num": 30
       },
       "nao_data3": {
         "calculation_name": "nao_data3",
         "calculation": "adate.hasUncertainty(data('date_adm3'))",
-        "_row_num": 33
+        "_row_num": 32
       },
       "nao_futuro3": {
         "calculation_name": "nao_futuro3",
         "calculation": "adate.diffInDays(data('date_adm3'),calculates.hoje())",
-        "_row_num": 34
+        "_row_num": 33
       },
       "erro_data3": {
         "calculation_name": "erro_data3",
         "calculation": "(calculates.nao_data3() || calculates.nao_futuro3()<0) && data('outros_med3')=='1'",
-        "_row_num": 35
+        "_row_num": 34
       },
       "nao_data4": {
         "calculation_name": "nao_data4",
         "calculation": "adate.hasUncertainty(data('date_adm4'))",
-        "_row_num": 37
+        "_row_num": 36
       },
       "nao_futuro4": {
         "calculation_name": "nao_futuro4",
         "calculation": "adate.diffInDays(data('date_adm4'),calculates.hoje())",
-        "_row_num": 38
+        "_row_num": 37
       },
       "erro_data4": {
         "calculation_name": "erro_data4",
         "calculation": "(calculates.nao_data4() || calculates.nao_futuro4()<0) && data('outros_med4')=='1'",
-        "_row_num": 39
+        "_row_num": 38
       }
     },
     "model": {

@@ -1711,6 +1711,66 @@
         "calculation_name": "data_display",
         "calculation": "adate.display(calculates.data_form())",
         "_row_num": 17
+      },
+      {
+        "calculation_name": "nao_data1",
+        "calculation": "adate.hasUncertainty(data('date_adm1'))",
+        "_row_num": 19
+      },
+      {
+        "calculation_name": "nao_futuro1",
+        "calculation": "adate.diffInDays(data('date_adm1'),calculates.hoje())",
+        "_row_num": 20
+      },
+      {
+        "calculation_name": "erro_data1",
+        "calculation": "(calculates.nao_data1() || calculates.nao_futuro1()<0) && data('outros_med')=='1'",
+        "_row_num": 21
+      },
+      {
+        "calculation_name": "nao_data2",
+        "calculation": "adate.hasUncertainty(data('date_adm2'))",
+        "_row_num": 23
+      },
+      {
+        "calculation_name": "nao_futuro2",
+        "calculation": "adate.diffInDays(data('date_adm2'),calculates.hoje())",
+        "_row_num": 24
+      },
+      {
+        "calculation_name": "erro_data2",
+        "calculation": "(calculates.nao_data2() || calculates.nao_futuro2()<0) && data('outros_med2')=='1'",
+        "_row_num": 25
+      },
+      {
+        "calculation_name": "nao_data3",
+        "calculation": "adate.hasUncertainty(data('date_adm3'))",
+        "_row_num": 27
+      },
+      {
+        "calculation_name": "nao_futuro3",
+        "calculation": "adate.diffInDays(data('date_adm3'),calculates.hoje())",
+        "_row_num": 28
+      },
+      {
+        "calculation_name": "erro_data3",
+        "calculation": "(calculates.nao_data3() || calculates.nao_futuro3()<0) && data('outros_med3')=='1'",
+        "_row_num": 29
+      },
+      {
+        "calculation_name": "nao_data4",
+        "calculation": "adate.hasUncertainty(data('date_adm4'))",
+        "_row_num": 31
+      },
+      {
+        "calculation_name": "nao_futuro4",
+        "calculation": "adate.diffInDays(data('date_adm4'),calculates.hoje())",
+        "_row_num": 32
+      },
+      {
+        "calculation_name": "erro_data4",
+        "calculation": "(calculates.nao_data4() || calculates.nao_futuro4()<0) && data('outros_med4')=='1'",
+        "_row_num": 33
       }
     ],
     "model": [
@@ -2782,6 +2842,66 @@
         "calculation_name": "data_display",
         "calculation": "adate.display(calculates.data_form())",
         "_row_num": 17
+      },
+      "nao_data1": {
+        "calculation_name": "nao_data1",
+        "calculation": "adate.hasUncertainty(data('date_adm1'))",
+        "_row_num": 19
+      },
+      "nao_futuro1": {
+        "calculation_name": "nao_futuro1",
+        "calculation": "adate.diffInDays(data('date_adm1'),calculates.hoje())",
+        "_row_num": 20
+      },
+      "erro_data1": {
+        "calculation_name": "erro_data1",
+        "calculation": "(calculates.nao_data1() || calculates.nao_futuro1()<0) && data('outros_med')=='1'",
+        "_row_num": 21
+      },
+      "nao_data2": {
+        "calculation_name": "nao_data2",
+        "calculation": "adate.hasUncertainty(data('date_adm2'))",
+        "_row_num": 23
+      },
+      "nao_futuro2": {
+        "calculation_name": "nao_futuro2",
+        "calculation": "adate.diffInDays(data('date_adm2'),calculates.hoje())",
+        "_row_num": 24
+      },
+      "erro_data2": {
+        "calculation_name": "erro_data2",
+        "calculation": "(calculates.nao_data2() || calculates.nao_futuro2()<0) && data('outros_med2')=='1'",
+        "_row_num": 25
+      },
+      "nao_data3": {
+        "calculation_name": "nao_data3",
+        "calculation": "adate.hasUncertainty(data('date_adm3'))",
+        "_row_num": 27
+      },
+      "nao_futuro3": {
+        "calculation_name": "nao_futuro3",
+        "calculation": "adate.diffInDays(data('date_adm3'),calculates.hoje())",
+        "_row_num": 28
+      },
+      "erro_data3": {
+        "calculation_name": "erro_data3",
+        "calculation": "(calculates.nao_data3() || calculates.nao_futuro3()<0) && data('outros_med3')=='1'",
+        "_row_num": 29
+      },
+      "nao_data4": {
+        "calculation_name": "nao_data4",
+        "calculation": "adate.hasUncertainty(data('date_adm4'))",
+        "_row_num": 31
+      },
+      "nao_futuro4": {
+        "calculation_name": "nao_futuro4",
+        "calculation": "adate.diffInDays(data('date_adm4'),calculates.hoje())",
+        "_row_num": 32
+      },
+      "erro_data4": {
+        "calculation_name": "erro_data4",
+        "calculation": "(calculates.nao_data4() || calculates.nao_futuro4()<0) && data('outros_med4')=='1'",
+        "_row_num": 33
       }
     },
     "model": {

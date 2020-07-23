@@ -279,8 +279,32 @@
         "_row_num": 32
       },
       {
-        "clause": "begin screen",
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "outro_medicamento2",
+        "display": {
+          "prompt": {
+            "text": "Tem outro medicamento suspeito para além de {{marca1}}"
+          }
+        },
         "_row_num": 33
+      },
+      {
+        "clause": "if",
+        "condition": "data('outro_medicamento2')=='2'",
+        "_row_num": 34
+      },
+      {
+        "clause": "goto relatorio",
+        "_row_num": 35
+      },
+      {
+        "clause": "else",
+        "_row_num": 36
+      },
+      {
+        "clause": "begin screen",
+        "_row_num": 37
       },
       {
         "type": "note",
@@ -293,7 +317,7 @@
             "text": "Alem de {{data.marca1}}"
           }
         },
-        "_row_num": 34
+        "_row_num": 38
       },
       {
         "type": "string",
@@ -303,7 +327,7 @@
             "text": "Nome da Marca"
           }
         },
-        "_row_num": 35
+        "_row_num": 39
       },
       {
         "type": "string",
@@ -313,7 +337,7 @@
             "text": "Número de lote"
           }
         },
-        "_row_num": 36
+        "_row_num": 40
       },
       {
         "type": "string",
@@ -323,7 +347,7 @@
             "text": "Nome do fabricador"
           }
         },
-        "_row_num": 37
+        "_row_num": 41
       },
       {
         "type": "select_one",
@@ -334,15 +358,39 @@
             "text": "Via de administração"
           }
         },
-        "_row_num": 38
+        "_row_num": 42
       },
       {
         "clause": "end screen",
-        "_row_num": 39
+        "_row_num": 43
+      },
+      {
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "outro_medicamento3",
+        "display": {
+          "prompt": {
+            "text": "Tem outro medicamento suspeito para além de {{marca1}}"
+          }
+        },
+        "_row_num": 45
+      },
+      {
+        "clause": "if",
+        "condition": "data('outro_medicamento3')=='2'",
+        "_row_num": 46
+      },
+      {
+        "clause": "goto relatorio",
+        "_row_num": 47
+      },
+      {
+        "clause": "else",
+        "_row_num": 48
       },
       {
         "clause": "begin screen",
-        "_row_num": 40
+        "_row_num": 50
       },
       {
         "type": "note",
@@ -355,7 +403,7 @@
             "text": "Alem de {{data.marca1}} e {{data.marca2}}"
           }
         },
-        "_row_num": 41
+        "_row_num": 51
       },
       {
         "type": "string",
@@ -365,7 +413,7 @@
             "text": "Nome da Marca"
           }
         },
-        "_row_num": 42
+        "_row_num": 52
       },
       {
         "type": "string",
@@ -375,7 +423,7 @@
             "text": "Número de lote"
           }
         },
-        "_row_num": 43
+        "_row_num": 53
       },
       {
         "type": "string",
@@ -385,7 +433,7 @@
             "text": "Nome do fabricador"
           }
         },
-        "_row_num": 44
+        "_row_num": 54
       },
       {
         "type": "select_one",
@@ -396,15 +444,39 @@
             "text": "Via de administração"
           }
         },
-        "_row_num": 45
+        "_row_num": 55
       },
       {
         "clause": "end screen",
-        "_row_num": 46
+        "_row_num": 56
+      },
+      {
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "outro_medicamento4",
+        "display": {
+          "prompt": {
+            "text": "Tem outro medicamento suspeito para além de {{marca1}}"
+          }
+        },
+        "_row_num": 57
+      },
+      {
+        "clause": "if",
+        "condition": "data('outro_medicamento4')=='2'",
+        "_row_num": 58
+      },
+      {
+        "clause": "goto relatorio",
+        "_row_num": 59
+      },
+      {
+        "clause": "else",
+        "_row_num": 60
       },
       {
         "clause": "begin screen",
-        "_row_num": 47
+        "_row_num": 61
       },
       {
         "type": "note",
@@ -417,7 +489,7 @@
             "text": "Alem de {{data.marca1}} , {{data.marca2}} e {{data.marca3}}"
           }
         },
-        "_row_num": 48
+        "_row_num": 62
       },
       {
         "type": "string",
@@ -427,7 +499,7 @@
             "text": "Nome da Marca"
           }
         },
-        "_row_num": 49
+        "_row_num": 63
       },
       {
         "type": "string",
@@ -437,7 +509,7 @@
             "text": "Número de lote"
           }
         },
-        "_row_num": 50
+        "_row_num": 64
       },
       {
         "type": "string",
@@ -447,7 +519,7 @@
             "text": "Nome do fabricador"
           }
         },
-        "_row_num": 51
+        "_row_num": 65
       },
       {
         "type": "select_one",
@@ -458,15 +530,28 @@
             "text": "Via de administração"
           }
         },
-        "_row_num": 52
+        "_row_num": 66
       },
       {
         "clause": "end screen",
-        "_row_num": 53
+        "_row_num": 67
       },
       {
+        "clause": "end if",
+        "_row_num": 68
+      },
+      {
+        "clause": "end if",
+        "_row_num": 69
+      },
+      {
+        "clause": "end if",
+        "_row_num": 70
+      },
+      {
+        "branch_label": "relatorio",
         "clause": "begin screen",
-        "_row_num": 54
+        "_row_num": 74
       },
       {
         "type": "note",
@@ -476,7 +561,7 @@
             "text": "Relatório do técnico"
           }
         },
-        "_row_num": 55
+        "_row_num": 75
       },
       {
         "type": "string",
@@ -487,7 +572,7 @@
           }
         },
         "required": true,
-        "_row_num": 56
+        "_row_num": 76
       },
       {
         "type": "string",
@@ -498,7 +583,7 @@
           }
         },
         "required": true,
-        "_row_num": 57
+        "_row_num": 77
       },
       {
         "type": "string",
@@ -509,7 +594,7 @@
           }
         },
         "required": true,
-        "_row_num": 58
+        "_row_num": 78
       },
       {
         "type": "integer",
@@ -520,7 +605,7 @@
           }
         },
         "required": true,
-        "_row_num": 59
+        "_row_num": 79
       },
       {
         "type": "string",
@@ -531,7 +616,7 @@
           }
         },
         "required": true,
-        "_row_num": 60
+        "_row_num": 80
       },
       {
         "type": "signature",
@@ -542,7 +627,7 @@
           }
         },
         "required": true,
-        "_row_num": 61
+        "_row_num": 81
       },
       {
         "type": "note",
@@ -552,18 +637,18 @@
             "text": "Data:{{calculates.data_form}}"
           }
         },
-        "_row_num": 62
+        "_row_num": 82
       },
       {
         "clause": "end screen",
-        "_row_num": 63
+        "_row_num": 83
       },
       {
         "type": "assign",
         "name": "data_fomulario",
         "calculation": "adate.today()",
         "hideInContents": true,
-        "_row_num": 64
+        "_row_num": 84
       }
     ],
     "choices": [
@@ -1636,7 +1721,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 56,
+            "_row_num": 76,
             "section_name": "survey"
           },
           {
@@ -1650,7 +1735,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 57,
+            "_row_num": 77,
             "section_name": "survey"
           },
           {
@@ -1664,7 +1749,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 58,
+            "_row_num": 78,
             "section_name": "survey"
           },
           {
@@ -1678,7 +1763,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 59,
+            "_row_num": 79,
             "section_name": "survey"
           },
           {
@@ -1692,7 +1777,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 60,
+            "_row_num": 80,
             "section_name": "survey"
           },
           {
@@ -1720,7 +1805,7 @@
         },
         "_defn": [
           {
-            "_row_num": 61,
+            "_row_num": 81,
             "section_name": "survey"
           },
           {
@@ -1778,7 +1863,7 @@
       "data_fomulario": {
         "_defn": [
           {
-            "_row_num": 64,
+            "_row_num": 84,
             "section_name": "survey"
           },
           {
@@ -1840,10 +1925,21 @@
         "valuesList": "via_adm",
         "elementKey": "via1"
       },
+      "outro_medicamento2": {
+        "_defn": [
+          {
+            "_row_num": 33,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "outro_medicamento2"
+      },
       "marca2": {
         "_defn": [
           {
-            "_row_num": 35,
+            "_row_num": 39,
             "section_name": "survey"
           }
         ],
@@ -1853,7 +1949,7 @@
       "lote2": {
         "_defn": [
           {
-            "_row_num": 36,
+            "_row_num": 40,
             "section_name": "survey"
           }
         ],
@@ -1863,7 +1959,7 @@
       "fabricador2": {
         "_defn": [
           {
-            "_row_num": 37,
+            "_row_num": 41,
             "section_name": "survey"
           }
         ],
@@ -1873,7 +1969,7 @@
       "via2": {
         "_defn": [
           {
-            "_row_num": 38,
+            "_row_num": 42,
             "section_name": "survey"
           }
         ],
@@ -1881,10 +1977,21 @@
         "valuesList": "via_adm",
         "elementKey": "via2"
       },
+      "outro_medicamento3": {
+        "_defn": [
+          {
+            "_row_num": 45,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "outro_medicamento3"
+      },
       "marca3": {
         "_defn": [
           {
-            "_row_num": 42,
+            "_row_num": 52,
             "section_name": "survey"
           }
         ],
@@ -1894,7 +2001,7 @@
       "lote3": {
         "_defn": [
           {
-            "_row_num": 43,
+            "_row_num": 53,
             "section_name": "survey"
           }
         ],
@@ -1904,7 +2011,7 @@
       "fabricador3": {
         "_defn": [
           {
-            "_row_num": 44,
+            "_row_num": 54,
             "section_name": "survey"
           }
         ],
@@ -1914,7 +2021,7 @@
       "via3": {
         "_defn": [
           {
-            "_row_num": 45,
+            "_row_num": 55,
             "section_name": "survey"
           }
         ],
@@ -1922,10 +2029,21 @@
         "valuesList": "via_adm",
         "elementKey": "via3"
       },
+      "outro_medicamento4": {
+        "_defn": [
+          {
+            "_row_num": 57,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "outro_medicamento4"
+      },
       "marca4": {
         "_defn": [
           {
-            "_row_num": 49,
+            "_row_num": 63,
             "section_name": "survey"
           }
         ],
@@ -1935,7 +2053,7 @@
       "lote4": {
         "_defn": [
           {
-            "_row_num": 50,
+            "_row_num": 64,
             "section_name": "survey"
           }
         ],
@@ -1945,7 +2063,7 @@
       "fabricador4": {
         "_defn": [
           {
-            "_row_num": 51,
+            "_row_num": 65,
             "section_name": "survey"
           }
         ],
@@ -1955,7 +2073,7 @@
       "via4": {
         "_defn": [
           {
-            "_row_num": 52,
+            "_row_num": 66,
             "section_name": "survey"
           }
         ],
@@ -2257,6 +2375,22 @@
             "promptIdx": 16
           },
           {
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "outro_medicamento2",
+            "display": {
+              "prompt": {
+                "text": "Tem outro medicamento suspeito para além de {{marca1}}"
+              }
+            },
+            "_row_num": 33,
+            "__rowNum__": 32,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen33",
+            "promptIdx": 17
+          },
+          {
             "type": "note",
             "name": "listas2",
             "display": {
@@ -2267,12 +2401,12 @@
                 "text": "Alem de {{data.marca1}}"
               }
             },
-            "_row_num": 34,
-            "__rowNum__": 33,
+            "_row_num": 38,
+            "__rowNum__": 37,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen33",
-            "promptIdx": 17
+            "_branch_label_enclosing_screen": "survey/_screen37",
+            "promptIdx": 18
           },
           {
             "type": "string",
@@ -2282,12 +2416,12 @@
                 "text": "Nome da Marca"
               }
             },
-            "_row_num": 35,
-            "__rowNum__": 34,
+            "_row_num": 39,
+            "__rowNum__": 38,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen33",
-            "promptIdx": 18
+            "_branch_label_enclosing_screen": "survey/_screen37",
+            "promptIdx": 19
           },
           {
             "type": "string",
@@ -2297,12 +2431,12 @@
                 "text": "Número de lote"
               }
             },
-            "_row_num": 36,
-            "__rowNum__": 35,
+            "_row_num": 40,
+            "__rowNum__": 39,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen33",
-            "promptIdx": 19
+            "_branch_label_enclosing_screen": "survey/_screen37",
+            "promptIdx": 20
           },
           {
             "type": "string",
@@ -2312,12 +2446,12 @@
                 "text": "Nome do fabricador"
               }
             },
-            "_row_num": 37,
-            "__rowNum__": 36,
+            "_row_num": 41,
+            "__rowNum__": 40,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen33",
-            "promptIdx": 20
+            "_branch_label_enclosing_screen": "survey/_screen37",
+            "promptIdx": 21
           },
           {
             "type": "select_one",
@@ -2328,12 +2462,28 @@
                 "text": "Via de administração"
               }
             },
-            "_row_num": 38,
-            "__rowNum__": 37,
+            "_row_num": 42,
+            "__rowNum__": 41,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen33",
-            "promptIdx": 21
+            "_branch_label_enclosing_screen": "survey/_screen37",
+            "promptIdx": 22
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "outro_medicamento3",
+            "display": {
+              "prompt": {
+                "text": "Tem outro medicamento suspeito para além de {{marca1}}"
+              }
+            },
+            "_row_num": 45,
+            "__rowNum__": 44,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen45",
+            "promptIdx": 23
           },
           {
             "type": "note",
@@ -2346,12 +2496,12 @@
                 "text": "Alem de {{data.marca1}} e {{data.marca2}}"
               }
             },
-            "_row_num": 41,
-            "__rowNum__": 40,
+            "_row_num": 51,
+            "__rowNum__": 50,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen40",
-            "promptIdx": 22
+            "_branch_label_enclosing_screen": "survey/_screen50",
+            "promptIdx": 24
           },
           {
             "type": "string",
@@ -2361,12 +2511,12 @@
                 "text": "Nome da Marca"
               }
             },
-            "_row_num": 42,
-            "__rowNum__": 41,
+            "_row_num": 52,
+            "__rowNum__": 51,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen40",
-            "promptIdx": 23
+            "_branch_label_enclosing_screen": "survey/_screen50",
+            "promptIdx": 25
           },
           {
             "type": "string",
@@ -2376,12 +2526,12 @@
                 "text": "Número de lote"
               }
             },
-            "_row_num": 43,
-            "__rowNum__": 42,
+            "_row_num": 53,
+            "__rowNum__": 52,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen40",
-            "promptIdx": 24
+            "_branch_label_enclosing_screen": "survey/_screen50",
+            "promptIdx": 26
           },
           {
             "type": "string",
@@ -2391,12 +2541,12 @@
                 "text": "Nome do fabricador"
               }
             },
-            "_row_num": 44,
-            "__rowNum__": 43,
+            "_row_num": 54,
+            "__rowNum__": 53,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen40",
-            "promptIdx": 25
+            "_branch_label_enclosing_screen": "survey/_screen50",
+            "promptIdx": 27
           },
           {
             "type": "select_one",
@@ -2407,12 +2557,28 @@
                 "text": "Via de administração"
               }
             },
-            "_row_num": 45,
-            "__rowNum__": 44,
+            "_row_num": 55,
+            "__rowNum__": 54,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen40",
-            "promptIdx": 26
+            "_branch_label_enclosing_screen": "survey/_screen50",
+            "promptIdx": 28
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "outro_medicamento4",
+            "display": {
+              "prompt": {
+                "text": "Tem outro medicamento suspeito para além de {{marca1}}"
+              }
+            },
+            "_row_num": 57,
+            "__rowNum__": 56,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen57",
+            "promptIdx": 29
           },
           {
             "type": "note",
@@ -2425,12 +2591,12 @@
                 "text": "Alem de {{data.marca1}} , {{data.marca2}} e {{data.marca3}}"
               }
             },
-            "_row_num": 48,
-            "__rowNum__": 47,
+            "_row_num": 62,
+            "__rowNum__": 61,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen47",
-            "promptIdx": 27
+            "_branch_label_enclosing_screen": "survey/_screen61",
+            "promptIdx": 30
           },
           {
             "type": "string",
@@ -2440,12 +2606,12 @@
                 "text": "Nome da Marca"
               }
             },
-            "_row_num": 49,
-            "__rowNum__": 48,
+            "_row_num": 63,
+            "__rowNum__": 62,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen47",
-            "promptIdx": 28
+            "_branch_label_enclosing_screen": "survey/_screen61",
+            "promptIdx": 31
           },
           {
             "type": "string",
@@ -2455,12 +2621,12 @@
                 "text": "Número de lote"
               }
             },
-            "_row_num": 50,
-            "__rowNum__": 49,
+            "_row_num": 64,
+            "__rowNum__": 63,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen47",
-            "promptIdx": 29
+            "_branch_label_enclosing_screen": "survey/_screen61",
+            "promptIdx": 32
           },
           {
             "type": "string",
@@ -2470,12 +2636,12 @@
                 "text": "Nome do fabricador"
               }
             },
-            "_row_num": 51,
-            "__rowNum__": 50,
+            "_row_num": 65,
+            "__rowNum__": 64,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen47",
-            "promptIdx": 30
+            "_branch_label_enclosing_screen": "survey/_screen61",
+            "promptIdx": 33
           },
           {
             "type": "select_one",
@@ -2486,12 +2652,12 @@
                 "text": "Via de administração"
               }
             },
-            "_row_num": 52,
-            "__rowNum__": 51,
+            "_row_num": 66,
+            "__rowNum__": 65,
             "_token_type": "prompt",
             "_type": "select_one",
-            "_branch_label_enclosing_screen": "survey/_screen47",
-            "promptIdx": 31
+            "_branch_label_enclosing_screen": "survey/_screen61",
+            "promptIdx": 34
           },
           {
             "type": "note",
@@ -2501,12 +2667,12 @@
                 "text": "Relatório do técnico"
               }
             },
-            "_row_num": 55,
-            "__rowNum__": 54,
+            "_row_num": 75,
+            "__rowNum__": 74,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen54",
-            "promptIdx": 32
+            "_branch_label_enclosing_screen": "survey/_screen74",
+            "promptIdx": 35
           },
           {
             "type": "string",
@@ -2517,12 +2683,12 @@
               }
             },
             "required": true,
-            "_row_num": 56,
-            "__rowNum__": 55,
+            "_row_num": 76,
+            "__rowNum__": 75,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen54",
-            "promptIdx": 33
+            "_branch_label_enclosing_screen": "survey/_screen74",
+            "promptIdx": 36
           },
           {
             "type": "string",
@@ -2533,12 +2699,12 @@
               }
             },
             "required": true,
-            "_row_num": 57,
-            "__rowNum__": 56,
+            "_row_num": 77,
+            "__rowNum__": 76,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen54",
-            "promptIdx": 34
+            "_branch_label_enclosing_screen": "survey/_screen74",
+            "promptIdx": 37
           },
           {
             "type": "string",
@@ -2549,12 +2715,12 @@
               }
             },
             "required": true,
-            "_row_num": 58,
-            "__rowNum__": 57,
+            "_row_num": 78,
+            "__rowNum__": 77,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen54",
-            "promptIdx": 35
+            "_branch_label_enclosing_screen": "survey/_screen74",
+            "promptIdx": 38
           },
           {
             "type": "integer",
@@ -2565,12 +2731,12 @@
               }
             },
             "required": true,
-            "_row_num": 59,
-            "__rowNum__": 58,
+            "_row_num": 79,
+            "__rowNum__": 78,
             "_token_type": "prompt",
             "_type": "integer",
-            "_branch_label_enclosing_screen": "survey/_screen54",
-            "promptIdx": 36
+            "_branch_label_enclosing_screen": "survey/_screen74",
+            "promptIdx": 39
           },
           {
             "type": "string",
@@ -2581,12 +2747,12 @@
               }
             },
             "required": true,
-            "_row_num": 60,
-            "__rowNum__": 59,
+            "_row_num": 80,
+            "__rowNum__": 79,
             "_token_type": "prompt",
             "_type": "string",
-            "_branch_label_enclosing_screen": "survey/_screen54",
-            "promptIdx": 37
+            "_branch_label_enclosing_screen": "survey/_screen74",
+            "promptIdx": 40
           },
           {
             "type": "signature",
@@ -2597,12 +2763,12 @@
               }
             },
             "required": true,
-            "_row_num": 61,
-            "__rowNum__": 60,
+            "_row_num": 81,
+            "__rowNum__": 80,
             "_token_type": "prompt",
             "_type": "signature",
-            "_branch_label_enclosing_screen": "survey/_screen54",
-            "promptIdx": 38
+            "_branch_label_enclosing_screen": "survey/_screen74",
+            "promptIdx": 41
           },
           {
             "type": "note",
@@ -2612,20 +2778,20 @@
                 "text": "Data:{{calculates.data_form}}"
               }
             },
-            "_row_num": 62,
-            "__rowNum__": 61,
+            "_row_num": 82,
+            "__rowNum__": 81,
             "_token_type": "prompt",
             "_type": "note",
-            "_branch_label_enclosing_screen": "survey/_screen54",
-            "promptIdx": 39
+            "_branch_label_enclosing_screen": "survey/_screen74",
+            "promptIdx": 42
           },
           {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 65,
-            "_branch_label_enclosing_screen": "survey/_screen65",
-            "promptIdx": 40
+            "_row_num": 85,
+            "_branch_label_enclosing_screen": "survey/_screen85",
+            "promptIdx": 43
           }
         ],
         "validation_tag_map": {
@@ -2635,12 +2801,12 @@
             7,
             8,
             9,
-            33,
-            34,
-            35,
             36,
             37,
-            38
+            38,
+            39,
+            40,
+            41
           ]
         },
         "operations": [
@@ -2756,91 +2922,202 @@
             "operationIdx": 10
           },
           {
-            "clause": "begin screen",
             "_row_num": 33,
-            "__rowNum__": 32,
             "_token_type": "begin_screen",
-            "_end_screen_clause": {
-              "clause": "end screen",
-              "_row_num": 39,
-              "__rowNum__": 38,
-              "_token_type": "end_screen"
-            },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(17);\nactivePromptIndicies.push(18);\nactivePromptIndicies.push(19);\nactivePromptIndicies.push(20);\nactivePromptIndicies.push(21);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(17);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 11
           },
           {
-            "clause": "begin screen",
-            "_row_num": 40,
-            "__rowNum__": 39,
-            "_token_type": "begin_screen",
-            "_end_screen_clause": {
-              "clause": "end screen",
-              "_row_num": 46,
-              "__rowNum__": 45,
-              "_token_type": "end_screen"
-            },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(22);\nactivePromptIndicies.push(23);\nactivePromptIndicies.push(24);\nactivePromptIndicies.push(25);\nactivePromptIndicies.push(26);\n\nreturn activePromptIndicies;\n}\n",
+            "clause": "if",
+            "condition": "data('outro_medicamento2')=='2'",
+            "_row_num": 34,
+            "__rowNum__": 33,
+            "_token_type": "goto_label",
+            "_branch_label": "_then34",
             "operationIdx": 12
           },
           {
-            "clause": "begin screen",
-            "_row_num": 47,
-            "__rowNum__": 46,
-            "_token_type": "begin_screen",
-            "_end_screen_clause": {
-              "clause": "end screen",
-              "_row_num": 53,
-              "__rowNum__": 52,
-              "_token_type": "end_screen"
-            },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(27);\nactivePromptIndicies.push(28);\nactivePromptIndicies.push(29);\nactivePromptIndicies.push(30);\nactivePromptIndicies.push(31);\n\nreturn activePromptIndicies;\n}\n",
+            "clause": "else",
+            "_token_type": "goto_label",
+            "_branch_label": "_else36",
+            "_row_num": 36,
             "operationIdx": 13
           },
           {
+            "clause": "goto relatorio",
+            "_row_num": 35,
+            "__rowNum__": 34,
+            "_token_type": "goto_label",
+            "_branch_label": "relatorio",
+            "operationIdx": 14
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif70",
+            "_row_num": 70,
+            "operationIdx": 15
+          },
+          {
             "clause": "begin screen",
-            "_row_num": 54,
-            "__rowNum__": 53,
+            "_row_num": 37,
+            "__rowNum__": 36,
             "_token_type": "begin_screen",
             "_end_screen_clause": {
               "clause": "end screen",
-              "_row_num": 63,
-              "__rowNum__": 62,
+              "_row_num": 43,
+              "__rowNum__": 42,
               "_token_type": "end_screen"
             },
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(32);\nactivePromptIndicies.push(33);\nactivePromptIndicies.push(34);\nactivePromptIndicies.push(35);\nactivePromptIndicies.push(36);\nactivePromptIndicies.push(37);\nactivePromptIndicies.push(38);\nactivePromptIndicies.push(39);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 14
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(18);\nactivePromptIndicies.push(19);\nactivePromptIndicies.push(20);\nactivePromptIndicies.push(21);\nactivePromptIndicies.push(22);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 16
+          },
+          {
+            "_row_num": 45,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(23);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 17
+          },
+          {
+            "clause": "if",
+            "condition": "data('outro_medicamento3')=='2'",
+            "_row_num": 46,
+            "__rowNum__": 45,
+            "_token_type": "goto_label",
+            "_branch_label": "_then46",
+            "operationIdx": 18
+          },
+          {
+            "clause": "else",
+            "_token_type": "goto_label",
+            "_branch_label": "_else48",
+            "_row_num": 48,
+            "operationIdx": 19
+          },
+          {
+            "clause": "goto relatorio",
+            "_row_num": 47,
+            "__rowNum__": 46,
+            "_token_type": "goto_label",
+            "_branch_label": "relatorio",
+            "operationIdx": 20
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif69",
+            "_row_num": 69,
+            "operationIdx": 21
+          },
+          {
+            "clause": "begin screen",
+            "_row_num": 50,
+            "__rowNum__": 49,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 56,
+              "__rowNum__": 55,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(24);\nactivePromptIndicies.push(25);\nactivePromptIndicies.push(26);\nactivePromptIndicies.push(27);\nactivePromptIndicies.push(28);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 22
+          },
+          {
+            "_row_num": 57,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(29);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 23
+          },
+          {
+            "clause": "if",
+            "condition": "data('outro_medicamento4')=='2'",
+            "_row_num": 58,
+            "__rowNum__": 57,
+            "_token_type": "goto_label",
+            "_branch_label": "_then58",
+            "operationIdx": 24
+          },
+          {
+            "clause": "else",
+            "_token_type": "goto_label",
+            "_branch_label": "_else60",
+            "_row_num": 60,
+            "operationIdx": 25
+          },
+          {
+            "clause": "goto relatorio",
+            "_row_num": 59,
+            "__rowNum__": 58,
+            "_token_type": "goto_label",
+            "_branch_label": "relatorio",
+            "operationIdx": 26
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif68",
+            "_row_num": 68,
+            "operationIdx": 27
+          },
+          {
+            "clause": "begin screen",
+            "_row_num": 61,
+            "__rowNum__": 60,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 67,
+              "__rowNum__": 66,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(30);\nactivePromptIndicies.push(31);\nactivePromptIndicies.push(32);\nactivePromptIndicies.push(33);\nactivePromptIndicies.push(34);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 28
+          },
+          {
+            "clause": "begin screen",
+            "_row_num": 74,
+            "__rowNum__": 73,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 83,
+              "__rowNum__": 82,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(35);\nactivePromptIndicies.push(36);\nactivePromptIndicies.push(37);\nactivePromptIndicies.push(38);\nactivePromptIndicies.push(39);\nactivePromptIndicies.push(40);\nactivePromptIndicies.push(41);\nactivePromptIndicies.push(42);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 29
           },
           {
             "type": "assign",
             "name": "data_fomulario",
             "calculation": "adate.today()",
             "hideInContents": true,
-            "_row_num": 64,
-            "__rowNum__": 63,
+            "_row_num": 84,
+            "__rowNum__": 83,
             "_token_type": "assign",
-            "operationIdx": 15
+            "operationIdx": 30
           },
           {
             "_token_type": "exit_section",
             "clause": "exit section",
-            "_row_num": 65,
-            "operationIdx": 16
+            "_row_num": 85,
+            "operationIdx": 31
           },
           {
-            "_row_num": 65,
+            "_row_num": 85,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(40);\n\nreturn activePromptIndicies;\n}\n",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(43);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
-            "operationIdx": 17
+            "operationIdx": 32
           },
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 65,
-            "operationIdx": 18
+            "_row_num": 85,
+            "operationIdx": 33
           }
         ],
         "branch_label_map": {
@@ -2856,11 +3133,24 @@
           "_screen25": 9,
           "_screen26": 10,
           "_screen33": 11,
-          "_screen40": 12,
-          "_screen47": 13,
-          "_screen54": 14,
-          "_contents": 17,
-          "_screen65": 17
+          "_then34": 14,
+          "_else36": 16,
+          "_screen37": 16,
+          "_screen45": 17,
+          "_then46": 20,
+          "_else48": 22,
+          "_screen50": 22,
+          "_screen57": 23,
+          "_then58": 26,
+          "_else60": 28,
+          "_screen61": 28,
+          "_endif68": 29,
+          "_endif69": 29,
+          "_endif70": 29,
+          "relatorio": 29,
+          "_screen74": 29,
+          "_contents": 32,
+          "_screen85": 32
         }
       },
       "initial": {
@@ -3295,7 +3585,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 56,
+            "_row_num": 76,
             "section_name": "survey"
           },
           {
@@ -3312,7 +3602,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 57,
+            "_row_num": 77,
             "section_name": "survey"
           },
           {
@@ -3329,7 +3619,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 58,
+            "_row_num": 78,
             "section_name": "survey"
           },
           {
@@ -3346,7 +3636,7 @@
         "type": "integer",
         "_defn": [
           {
-            "_row_num": 59,
+            "_row_num": 79,
             "section_name": "survey"
           },
           {
@@ -3363,7 +3653,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 60,
+            "_row_num": 80,
             "section_name": "survey"
           },
           {
@@ -3400,7 +3690,7 @@
         },
         "_defn": [
           {
-            "_row_num": 61,
+            "_row_num": 81,
             "section_name": "survey"
           },
           {
@@ -3478,7 +3768,7 @@
       "data_fomulario": {
         "_defn": [
           {
-            "_row_num": 64,
+            "_row_num": 84,
             "section_name": "survey"
           },
           {
@@ -3558,10 +3848,24 @@
         "elementSet": "data",
         "elementPath": "via1"
       },
+      "outro_medicamento2": {
+        "_defn": [
+          {
+            "_row_num": 33,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "outro_medicamento2",
+        "elementName": "outro_medicamento2",
+        "elementSet": "data",
+        "elementPath": "outro_medicamento2"
+      },
       "marca2": {
         "_defn": [
           {
-            "_row_num": 35,
+            "_row_num": 39,
             "section_name": "survey"
           }
         ],
@@ -3574,7 +3878,7 @@
       "lote2": {
         "_defn": [
           {
-            "_row_num": 36,
+            "_row_num": 40,
             "section_name": "survey"
           }
         ],
@@ -3587,7 +3891,7 @@
       "fabricador2": {
         "_defn": [
           {
-            "_row_num": 37,
+            "_row_num": 41,
             "section_name": "survey"
           }
         ],
@@ -3600,7 +3904,7 @@
       "via2": {
         "_defn": [
           {
-            "_row_num": 38,
+            "_row_num": 42,
             "section_name": "survey"
           }
         ],
@@ -3611,10 +3915,24 @@
         "elementSet": "data",
         "elementPath": "via2"
       },
+      "outro_medicamento3": {
+        "_defn": [
+          {
+            "_row_num": 45,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "outro_medicamento3",
+        "elementName": "outro_medicamento3",
+        "elementSet": "data",
+        "elementPath": "outro_medicamento3"
+      },
       "marca3": {
         "_defn": [
           {
-            "_row_num": 42,
+            "_row_num": 52,
             "section_name": "survey"
           }
         ],
@@ -3627,7 +3945,7 @@
       "lote3": {
         "_defn": [
           {
-            "_row_num": 43,
+            "_row_num": 53,
             "section_name": "survey"
           }
         ],
@@ -3640,7 +3958,7 @@
       "fabricador3": {
         "_defn": [
           {
-            "_row_num": 44,
+            "_row_num": 54,
             "section_name": "survey"
           }
         ],
@@ -3653,7 +3971,7 @@
       "via3": {
         "_defn": [
           {
-            "_row_num": 45,
+            "_row_num": 55,
             "section_name": "survey"
           }
         ],
@@ -3664,10 +3982,24 @@
         "elementSet": "data",
         "elementPath": "via3"
       },
+      "outro_medicamento4": {
+        "_defn": [
+          {
+            "_row_num": 57,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "yesno",
+        "elementKey": "outro_medicamento4",
+        "elementName": "outro_medicamento4",
+        "elementSet": "data",
+        "elementPath": "outro_medicamento4"
+      },
       "marca4": {
         "_defn": [
           {
-            "_row_num": 49,
+            "_row_num": 63,
             "section_name": "survey"
           }
         ],
@@ -3680,7 +4012,7 @@
       "lote4": {
         "_defn": [
           {
-            "_row_num": 50,
+            "_row_num": 64,
             "section_name": "survey"
           }
         ],
@@ -3693,7 +4025,7 @@
       "fabricador4": {
         "_defn": [
           {
-            "_row_num": 51,
+            "_row_num": 65,
             "section_name": "survey"
           }
         ],
@@ -3706,7 +4038,7 @@
       "via4": {
         "_defn": [
           {
-            "_row_num": 52,
+            "_row_num": 66,
             "section_name": "survey"
           }
         ],
@@ -3848,6 +4180,27 @@
       }
     },
     "properties": [
+      {
+        "_partition": "Column",
+        "_aspect": "outro_medicamento2",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "outro_medicamento3",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "outro_medicamento4",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
       {
         "_partition": "Column",
         "_aspect": "resultado",
