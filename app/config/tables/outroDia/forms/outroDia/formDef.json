@@ -1049,7 +1049,7 @@
       {
         "type": "assign",
         "name": "codigo_lamina",
-        "calculation": "\"\"+ data('id_estudo') + \"X\" + calculates.visita_id()",
+        "calculation": "\"\"+ data('id_estudo') + \"D\" + calculates.visita_id()",
         "hideInContents": true,
         "_row_num": 158
       },
@@ -1411,6 +1411,16 @@
         "_row_num": 51
       },
       {
+        "choice_list_name": "quantidade",
+        "data_value": 88,
+        "display": {
+          "title": {
+            "text": "Não sabe"
+          }
+        },
+        "_row_num": 52
+      },
+      {
         "choice_list_name": "intensidade",
         "data_value": 1,
         "display": {
@@ -1418,7 +1428,7 @@
             "text": "Não"
           }
         },
-        "_row_num": 53
+        "_row_num": 54
       },
       {
         "choice_list_name": "intensidade",
@@ -1428,7 +1438,7 @@
             "text": "Pouco"
           }
         },
-        "_row_num": 54
+        "_row_num": 55
       },
       {
         "choice_list_name": "intensidade",
@@ -1438,7 +1448,17 @@
             "text": "Severo"
           }
         },
-        "_row_num": 55
+        "_row_num": 56
+      },
+      {
+        "choice_list_name": "intensidade",
+        "data_value": 88,
+        "display": {
+          "title": {
+            "text": "Não sabe"
+          }
+        },
+        "_row_num": 57
       },
       {
         "choice_list_name": "frequencia",
@@ -1448,7 +1468,7 @@
             "text": "Como sempre"
           }
         },
-        "_row_num": 58
+        "_row_num": 59
       },
       {
         "choice_list_name": "frequencia",
@@ -1458,7 +1478,7 @@
             "text": "Pouco"
           }
         },
-        "_row_num": 59
+        "_row_num": 60
       },
       {
         "choice_list_name": "frequencia",
@@ -1468,7 +1488,17 @@
             "text": "nada"
           }
         },
-        "_row_num": 60
+        "_row_num": 61
+      },
+      {
+        "choice_list_name": "frequencia",
+        "data_value": 88,
+        "display": {
+          "title": {
+            "text": "Não sabe"
+          }
+        },
+        "_row_num": 62
       },
       {
         "choice_list_name": "doseSP",
@@ -1478,7 +1508,7 @@
             "text": "250mg/12,5mg Sulfadoxina-Pirimetamina"
           }
         },
-        "_row_num": 63
+        "_row_num": 64
       },
       {
         "choice_list_name": "doseSP",
@@ -1488,7 +1518,7 @@
             "text": "500mg/25mg Sulfadoxina-Pirimetamina"
           }
         },
-        "_row_num": 64
+        "_row_num": 65
       },
       {
         "choice_list_name": "doseAQ",
@@ -1498,7 +1528,7 @@
             "text": "75mg Amodiaquina"
           }
         },
-        "_row_num": 67
+        "_row_num": 68
       },
       {
         "choice_list_name": "doseAQ",
@@ -1508,7 +1538,7 @@
             "text": "150mg Amodiaquina"
           }
         },
-        "_row_num": 68
+        "_row_num": 69
       },
       {
         "choice_list_name": "motivo",
@@ -1518,7 +1548,7 @@
             "text": "A criança na se encontra em casa"
           }
         },
-        "_row_num": 71
+        "_row_num": 72
       },
       {
         "choice_list_name": "motivo",
@@ -1528,7 +1558,7 @@
             "text": "A família está de viagem"
           }
         },
-        "_row_num": 72
+        "_row_num": 73
       },
       {
         "choice_list_name": "motivo",
@@ -1538,7 +1568,7 @@
             "text": "Mudaram"
           }
         },
-        "_row_num": 73
+        "_row_num": 74
       },
       {
         "choice_list_name": "motivo",
@@ -1548,7 +1578,7 @@
             "text": "Os pais recusaram"
           }
         },
-        "_row_num": 74
+        "_row_num": 75
       },
       {
         "choice_list_name": "motivo",
@@ -1558,7 +1588,7 @@
             "text": "outros"
           }
         },
-        "_row_num": 75
+        "_row_num": 76
       },
       {
         "choice_list_name": "outro_dia",
@@ -1568,7 +1598,7 @@
             "text": "Formulario de seguimento de outro dia, nos Centros de saude"
           }
         },
-        "_row_num": 77
+        "_row_num": 78
       },
       {
         "choice_list_name": "outro_dia",
@@ -1578,7 +1608,7 @@
             "text": "Imposibilidade de visitar no dia que corresponde"
           }
         },
-        "_row_num": 78
+        "_row_num": 79
       },
       {
         "choice_list_name": "outro_dia",
@@ -1588,7 +1618,7 @@
             "text": "outra razao"
           }
         },
-        "_row_num": 79
+        "_row_num": 80
       }
     ],
     "queries": [
@@ -2545,6 +2575,16 @@
             }
           },
           "_row_num": 51
+        },
+        {
+          "choice_list_name": "quantidade",
+          "data_value": 88,
+          "display": {
+            "title": {
+              "text": "Não sabe"
+            }
+          },
+          "_row_num": 52
         }
       ],
       "intensidade": [
@@ -2556,7 +2596,7 @@
               "text": "Não"
             }
           },
-          "_row_num": 53
+          "_row_num": 54
         },
         {
           "choice_list_name": "intensidade",
@@ -2566,7 +2606,7 @@
               "text": "Pouco"
             }
           },
-          "_row_num": 54
+          "_row_num": 55
         },
         {
           "choice_list_name": "intensidade",
@@ -2576,7 +2616,17 @@
               "text": "Severo"
             }
           },
-          "_row_num": 55
+          "_row_num": 56
+        },
+        {
+          "choice_list_name": "intensidade",
+          "data_value": 88,
+          "display": {
+            "title": {
+              "text": "Não sabe"
+            }
+          },
+          "_row_num": 57
         }
       ],
       "frequencia": [
@@ -2588,7 +2638,7 @@
               "text": "Como sempre"
             }
           },
-          "_row_num": 58
+          "_row_num": 59
         },
         {
           "choice_list_name": "frequencia",
@@ -2598,7 +2648,7 @@
               "text": "Pouco"
             }
           },
-          "_row_num": 59
+          "_row_num": 60
         },
         {
           "choice_list_name": "frequencia",
@@ -2608,7 +2658,17 @@
               "text": "nada"
             }
           },
-          "_row_num": 60
+          "_row_num": 61
+        },
+        {
+          "choice_list_name": "frequencia",
+          "data_value": 88,
+          "display": {
+            "title": {
+              "text": "Não sabe"
+            }
+          },
+          "_row_num": 62
         }
       ],
       "doseSP": [
@@ -2620,7 +2680,7 @@
               "text": "250mg/12,5mg Sulfadoxina-Pirimetamina"
             }
           },
-          "_row_num": 63
+          "_row_num": 64
         },
         {
           "choice_list_name": "doseSP",
@@ -2630,7 +2690,7 @@
               "text": "500mg/25mg Sulfadoxina-Pirimetamina"
             }
           },
-          "_row_num": 64
+          "_row_num": 65
         }
       ],
       "doseAQ": [
@@ -2642,7 +2702,7 @@
               "text": "75mg Amodiaquina"
             }
           },
-          "_row_num": 67
+          "_row_num": 68
         },
         {
           "choice_list_name": "doseAQ",
@@ -2652,7 +2712,7 @@
               "text": "150mg Amodiaquina"
             }
           },
-          "_row_num": 68
+          "_row_num": 69
         }
       ],
       "motivo": [
@@ -2664,7 +2724,7 @@
               "text": "A criança na se encontra em casa"
             }
           },
-          "_row_num": 71
+          "_row_num": 72
         },
         {
           "choice_list_name": "motivo",
@@ -2674,7 +2734,7 @@
               "text": "A família está de viagem"
             }
           },
-          "_row_num": 72
+          "_row_num": 73
         },
         {
           "choice_list_name": "motivo",
@@ -2684,7 +2744,7 @@
               "text": "Mudaram"
             }
           },
-          "_row_num": 73
+          "_row_num": 74
         },
         {
           "choice_list_name": "motivo",
@@ -2694,7 +2754,7 @@
               "text": "Os pais recusaram"
             }
           },
-          "_row_num": 74
+          "_row_num": 75
         },
         {
           "choice_list_name": "motivo",
@@ -2704,7 +2764,7 @@
               "text": "outros"
             }
           },
-          "_row_num": 75
+          "_row_num": 76
         }
       ],
       "outro_dia": [
@@ -2716,7 +2776,7 @@
               "text": "Formulario de seguimento de outro dia, nos Centros de saude"
             }
           },
-          "_row_num": 77
+          "_row_num": 78
         },
         {
           "choice_list_name": "outro_dia",
@@ -2726,7 +2786,7 @@
               "text": "Imposibilidade de visitar no dia que corresponde"
             }
           },
-          "_row_num": 78
+          "_row_num": 79
         },
         {
           "choice_list_name": "outro_dia",
@@ -2736,7 +2796,7 @@
               "text": "outra razao"
             }
           },
-          "_row_num": 79
+          "_row_num": 80
         }
       ]
     },
@@ -5538,7 +5598,7 @@
           {
             "type": "assign",
             "name": "codigo_lamina",
-            "calculation": "\"\"+ data('id_estudo') + \"X\" + calculates.visita_id()",
+            "calculation": "\"\"+ data('id_estudo') + \"D\" + calculates.visita_id()",
             "hideInContents": true,
             "_row_num": 158,
             "__rowNum__": 157,
@@ -7144,21 +7204,21 @@
         "_aspect": "bebe",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"frequencia\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Como sempre\"}},\"_row_num\":58},{\"choice_list_name\":\"frequencia\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":59},{\"choice_list_name\":\"frequencia\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"nada\"}},\"_row_num\":60}]"
+        "_value": "[{\"choice_list_name\":\"frequencia\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Como sempre\"}},\"_row_num\":59},{\"choice_list_name\":\"frequencia\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":60},{\"choice_list_name\":\"frequencia\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"nada\"}},\"_row_num\":61},{\"choice_list_name\":\"frequencia\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":62}]"
       },
       {
         "_partition": "Column",
         "_aspect": "coceira",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"intensidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":53},{\"choice_list_name\":\"intensidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":54},{\"choice_list_name\":\"intensidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Severo\"}},\"_row_num\":55}]"
+        "_value": "[{\"choice_list_name\":\"intensidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":54},{\"choice_list_name\":\"intensidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":55},{\"choice_list_name\":\"intensidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Severo\"}},\"_row_num\":56},{\"choice_list_name\":\"intensidade\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":57}]"
       },
       {
         "_partition": "Column",
         "_aspect": "come",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"frequencia\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Como sempre\"}},\"_row_num\":58},{\"choice_list_name\":\"frequencia\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":59},{\"choice_list_name\":\"frequencia\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"nada\"}},\"_row_num\":60}]"
+        "_value": "[{\"choice_list_name\":\"frequencia\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Como sempre\"}},\"_row_num\":59},{\"choice_list_name\":\"frequencia\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":60},{\"choice_list_name\":\"frequencia\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"nada\"}},\"_row_num\":61},{\"choice_list_name\":\"frequencia\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":62}]"
       },
       {
         "_partition": "Column",
@@ -7172,14 +7232,14 @@
         "_aspect": "doente",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"quantidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":49},{\"choice_list_name\":\"quantidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":50},{\"choice_list_name\":\"quantidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Muito\"}},\"_row_num\":51}]"
+        "_value": "[{\"choice_list_name\":\"quantidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":49},{\"choice_list_name\":\"quantidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":50},{\"choice_list_name\":\"quantidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Muito\"}},\"_row_num\":51},{\"choice_list_name\":\"quantidade\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":52}]"
       },
       {
         "_partition": "Column",
         "_aspect": "dor_articular",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"intensidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":53},{\"choice_list_name\":\"intensidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":54},{\"choice_list_name\":\"intensidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Severo\"}},\"_row_num\":55}]"
+        "_value": "[{\"choice_list_name\":\"intensidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":54},{\"choice_list_name\":\"intensidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":55},{\"choice_list_name\":\"intensidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Severo\"}},\"_row_num\":56},{\"choice_list_name\":\"intensidade\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":57}]"
       },
       {
         "_partition": "Column",
@@ -7193,7 +7253,7 @@
         "_aspect": "exantema",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"intensidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":53},{\"choice_list_name\":\"intensidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":54},{\"choice_list_name\":\"intensidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Severo\"}},\"_row_num\":55}]"
+        "_value": "[{\"choice_list_name\":\"intensidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":54},{\"choice_list_name\":\"intensidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":55},{\"choice_list_name\":\"intensidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Severo\"}},\"_row_num\":56},{\"choice_list_name\":\"intensidade\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":57}]"
       },
       {
         "_partition": "Column",
@@ -7214,7 +7274,7 @@
         "_aspect": "motivo_ausencia",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"motivo\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"A criança na se encontra em casa\"}},\"_row_num\":71},{\"choice_list_name\":\"motivo\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"A família está de viagem\"}},\"_row_num\":72},{\"choice_list_name\":\"motivo\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Mudaram\"}},\"_row_num\":73},{\"choice_list_name\":\"motivo\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Os pais recusaram\"}},\"_row_num\":74},{\"choice_list_name\":\"motivo\",\"data_value\":5,\"display\":{\"title\":{\"text\":\"outros\"}},\"_row_num\":75}]"
+        "_value": "[{\"choice_list_name\":\"motivo\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"A criança na se encontra em casa\"}},\"_row_num\":72},{\"choice_list_name\":\"motivo\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"A família está de viagem\"}},\"_row_num\":73},{\"choice_list_name\":\"motivo\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Mudaram\"}},\"_row_num\":74},{\"choice_list_name\":\"motivo\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Os pais recusaram\"}},\"_row_num\":75},{\"choice_list_name\":\"motivo\",\"data_value\":5,\"display\":{\"title\":{\"text\":\"outros\"}},\"_row_num\":76}]"
       },
       {
         "_partition": "Column",
@@ -7270,14 +7330,14 @@
         "_aspect": "tipo_visita",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"outro_dia\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Formulario de seguimento de outro dia, nos Centros de saude\"}},\"_row_num\":77},{\"choice_list_name\":\"outro_dia\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Imposibilidade de visitar no dia que corresponde\"}},\"_row_num\":78},{\"choice_list_name\":\"outro_dia\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"outra razao\"}},\"_row_num\":79}]"
+        "_value": "[{\"choice_list_name\":\"outro_dia\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Formulario de seguimento de outro dia, nos Centros de saude\"}},\"_row_num\":78},{\"choice_list_name\":\"outro_dia\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Imposibilidade de visitar no dia que corresponde\"}},\"_row_num\":79},{\"choice_list_name\":\"outro_dia\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"outra razao\"}},\"_row_num\":80}]"
       },
       {
         "_partition": "Column",
         "_aspect": "vomito",
         "_key": "displayChoicesList",
         "_type": "object",
-        "_value": "[{\"choice_list_name\":\"intensidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":53},{\"choice_list_name\":\"intensidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":54},{\"choice_list_name\":\"intensidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Severo\"}},\"_row_num\":55}]"
+        "_value": "[{\"choice_list_name\":\"intensidade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":54},{\"choice_list_name\":\"intensidade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Pouco\"}},\"_row_num\":55},{\"choice_list_name\":\"intensidade\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"Severo\"}},\"_row_num\":56},{\"choice_list_name\":\"intensidade\",\"data_value\":88,\"display\":{\"title\":{\"text\":\"Não sabe\"}},\"_row_num\":57}]"
       },
       {
         "_partition": "Column",

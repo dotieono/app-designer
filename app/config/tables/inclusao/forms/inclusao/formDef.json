@@ -1616,7 +1616,7 @@
       {
         "type": "assign",
         "name": "codigo_lamina",
-        "calculation": "\"\"+ data('id_estudo') + \"X\" + calculates.visita_id()",
+        "calculation": "\"\"+ data('id_estudo') + \"D\" + calculates.visita_id()",
         "hideInContents": true,
         "_row_num": 231
       },
@@ -7493,7 +7493,7 @@
           {
             "type": "assign",
             "name": "codigo_lamina",
-            "calculation": "\"\"+ data('id_estudo') + \"X\" + calculates.visita_id()",
+            "calculation": "\"\"+ data('id_estudo') + \"D\" + calculates.visita_id()",
             "hideInContents": true,
             "_row_num": 231,
             "__rowNum__": 230,

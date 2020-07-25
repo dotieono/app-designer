@@ -349,7 +349,7 @@
         "name": "aq",
         "display": {
           "prompt": {
-            "text": "Amodiaquina\nData: {{calculates.date_form_display}}"
+            "text": "Amodiaquina\nData: {{calculates.date_AQ_display}}"
           }
         },
         "_row_num": 47
@@ -1137,7 +1137,7 @@
       {
         "type": "assign",
         "name": "codigo_lamina",
-        "calculation": "\"\"+ data('id_estudo') + \"X\" + calculates.visita_id()",
+        "calculation": "\"\"+ data('id_estudo') + \"D\" + calculates.dia_corregido()",
         "hideInContents": true,
         "_row_num": 170
       },
@@ -1752,8 +1752,8 @@
         "_row_num": 3
       },
       {
-        "calculation_name": "date_form_display",
-        "calculation": "adate.display(calculates.date_form())",
+        "calculation_name": "date_AQ_display",
+        "calculation": "adate.display(data('date_AQ'))",
         "_row_num": 4
       },
       {
@@ -2972,9 +2972,9 @@
         "calculation": "adate.today()",
         "_row_num": 3
       },
-      "date_form_display": {
-        "calculation_name": "date_form_display",
-        "calculation": "adate.display(calculates.date_form())",
+      "date_AQ_display": {
+        "calculation_name": "date_AQ_display",
+        "calculation": "adate.display(data('date_AQ'))",
         "_row_num": 4
       },
       "visita_id": {
@@ -4531,7 +4531,7 @@
             "name": "aq",
             "display": {
               "prompt": {
-                "text": "Amodiaquina\nData: {{calculates.date_form_display}}"
+                "text": "Amodiaquina\nData: {{calculates.date_AQ_display}}"
               }
             },
             "_row_num": 47,
@@ -5987,7 +5987,7 @@
           {
             "type": "assign",
             "name": "codigo_lamina",
-            "calculation": "\"\"+ data('id_estudo') + \"X\" + calculates.visita_id()",
+            "calculation": "\"\"+ data('id_estudo') + \"D\" + calculates.dia_corregido()",
             "hideInContents": true,
             "_row_num": 170,
             "__rowNum__": 169,
