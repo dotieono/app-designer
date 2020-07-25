@@ -540,7 +540,6 @@
             "text": "Quantos medicamento está tomando"
           }
         },
-        "constraint": "data('numero_med')>0",
         "required": "data('medicacao_previa')=='1'",
         "_row_num": 75
       },
@@ -2162,124 +2161,129 @@
         "_row_num": 2
       },
       {
+        "calculation_name": "hoje",
+        "calculation": "adate.today()",
+        "_row_num": 3
+      },
+      {
         "calculation_name": "hoje_display",
         "calculation": "adate.display(calculates.data_form())",
-        "_row_num": 3
+        "_row_num": 4
       },
       {
         "calculation_name": "visita_id",
         "calculation": "adate.ageInDays(data('date_rastreio'))",
-        "_row_num": 4
+        "_row_num": 5
       },
       {
         "calculation_name": "idade_mes",
         "calculation": "(data('DOB_ou_idade')=='1')?adate.ageInMonths(data('dn')):(12*data('ano')+data('mes'))",
-        "_row_num": 5
+        "_row_num": 6
       },
       {
         "calculation_name": "date_rastreio_display",
         "calculation": "adate.display(data('date_rastreio'))",
-        "_row_num": 6
+        "_row_num": 7
       },
       {
         "calculation_name": "dn_display",
         "calculation": "adate.display(data('dn'))",
-        "_row_num": 7
+        "_row_num": 8
       },
       {
         "calculation_name": "acompanhante_info",
         "calculation": "!selected(data('acompanhante'), '1') && !selected(data('acompanhante'), '2')",
-        "_row_num": 8
+        "_row_num": 9
       },
       {
         "calculation_name": "id_lamina",
         "calculation": "\"\"+ data('id_estudo') + \"D\" + calculates.visita_id()",
-        "_row_num": 9
+        "_row_num": 10
       },
       {
         "calculation_name": "nao_tel_acomp",
         "calculation": "!data('tel_acomp') ||data('tel_acomp') == '88'",
-        "_row_num": 10
+        "_row_num": 11
       },
       {
         "calculation_name": "nao_tel",
         "calculation": "data('tel_mae')=='88' && data('tel_pai') == '88' && calculates.nao_tel_acomp()",
-        "_row_num": 11
+        "_row_num": 12
       },
       {
         "calculation_name": "dn_idade_display",
         "calculation": "data('DOB_ou_idade')=='1' ? (\"DOB \" + calculates.dn_display() ) : (data('ano')+\" A e \" + data('mes') + \" M\")",
-        "_row_num": 12
+        "_row_num": 13
       },
       {
         "calculation_name": "dn_idade_display_longo",
         "calculation": "data('DOB_ou_idade')=='1' ? (\"Data de nascimento é \" + calculates.dn_display() ) : (\"Tem \" +data('ano')+\" anos e \" + data('mes') + \" meses\")",
-        "_row_num": 13
+        "_row_num": 14
       },
       {
         "calculation_name": "sexo_display",
         "calculation": "data('sexo') == '1' ? 'M' : 'F'",
-        "_row_num": 14
+        "_row_num": 15
       },
       {
         "calculation_name": "nao_data1",
         "calculation": "adate.hasUncertainty(data('date_adm1'))",
-        "_row_num": 15
+        "_row_num": 16
       },
       {
         "calculation_name": "nao_futuro1",
         "calculation": "adate.diffInDays(data('date_adm1'),calculates.hoje())",
-        "_row_num": 16
+        "_row_num": 17
       },
       {
         "calculation_name": "erro_data1",
         "calculation": "(calculates.nao_data1() || calculates.nao_futuro1()<0) && data('outros_med')=='1'",
-        "_row_num": 17
+        "_row_num": 18
       },
       {
         "calculation_name": "nao_data2",
         "calculation": "adate.hasUncertainty(data('date_adm2'))",
-        "_row_num": 19
+        "_row_num": 20
       },
       {
         "calculation_name": "nao_futuro2",
         "calculation": "adate.diffInDays(data('date_adm2'),calculates.hoje())",
-        "_row_num": 20
+        "_row_num": 21
       },
       {
         "calculation_name": "erro_data2",
         "calculation": "(calculates.nao_data2() || calculates.nao_futuro2()<0) && data('outros_med2')=='1'",
-        "_row_num": 21
+        "_row_num": 22
       },
       {
         "calculation_name": "nao_data3",
         "calculation": "adate.hasUncertainty(data('date_adm3'))",
-        "_row_num": 23
+        "_row_num": 24
       },
       {
         "calculation_name": "nao_futuro3",
         "calculation": "adate.diffInDays(data('date_adm3'),calculates.hoje())",
-        "_row_num": 24
+        "_row_num": 25
       },
       {
         "calculation_name": "erro_data3",
         "calculation": "(calculates.nao_data3() || calculates.nao_futuro3()<0) && data('outros_med3')=='1'",
-        "_row_num": 25
+        "_row_num": 26
       },
       {
         "calculation_name": "nao_data4",
         "calculation": "adate.hasUncertainty(data('date_adm4'))",
-        "_row_num": 27
+        "_row_num": 28
       },
       {
         "calculation_name": "nao_futuro4",
         "calculation": "adate.diffInDays(data('date_adm4'),calculates.hoje())",
-        "_row_num": 28
+        "_row_num": 29
       },
       {
         "calculation_name": "erro_data4",
         "calculation": "(calculates.nao_data4() || calculates.nao_futuro4()<0) && data('outros_med4')=='1'",
-        "_row_num": 29
+        "_row_num": 30
       }
     ],
     "model": [
@@ -3445,125 +3449,130 @@
         "calculation": "adate.today()",
         "_row_num": 2
       },
+      "hoje": {
+        "calculation_name": "hoje",
+        "calculation": "adate.today()",
+        "_row_num": 3
+      },
       "hoje_display": {
         "calculation_name": "hoje_display",
         "calculation": "adate.display(calculates.data_form())",
-        "_row_num": 3
+        "_row_num": 4
       },
       "visita_id": {
         "calculation_name": "visita_id",
         "calculation": "adate.ageInDays(data('date_rastreio'))",
-        "_row_num": 4
+        "_row_num": 5
       },
       "idade_mes": {
         "calculation_name": "idade_mes",
         "calculation": "(data('DOB_ou_idade')=='1')?adate.ageInMonths(data('dn')):(12*data('ano')+data('mes'))",
-        "_row_num": 5
+        "_row_num": 6
       },
       "date_rastreio_display": {
         "calculation_name": "date_rastreio_display",
         "calculation": "adate.display(data('date_rastreio'))",
-        "_row_num": 6
+        "_row_num": 7
       },
       "dn_display": {
         "calculation_name": "dn_display",
         "calculation": "adate.display(data('dn'))",
-        "_row_num": 7
+        "_row_num": 8
       },
       "acompanhante_info": {
         "calculation_name": "acompanhante_info",
         "calculation": "!selected(data('acompanhante'), '1') && !selected(data('acompanhante'), '2')",
-        "_row_num": 8
+        "_row_num": 9
       },
       "id_lamina": {
         "calculation_name": "id_lamina",
         "calculation": "\"\"+ data('id_estudo') + \"D\" + calculates.visita_id()",
-        "_row_num": 9
+        "_row_num": 10
       },
       "nao_tel_acomp": {
         "calculation_name": "nao_tel_acomp",
         "calculation": "!data('tel_acomp') ||data('tel_acomp') == '88'",
-        "_row_num": 10
+        "_row_num": 11
       },
       "nao_tel": {
         "calculation_name": "nao_tel",
         "calculation": "data('tel_mae')=='88' && data('tel_pai') == '88' && calculates.nao_tel_acomp()",
-        "_row_num": 11
+        "_row_num": 12
       },
       "dn_idade_display": {
         "calculation_name": "dn_idade_display",
         "calculation": "data('DOB_ou_idade')=='1' ? (\"DOB \" + calculates.dn_display() ) : (data('ano')+\" A e \" + data('mes') + \" M\")",
-        "_row_num": 12
+        "_row_num": 13
       },
       "dn_idade_display_longo": {
         "calculation_name": "dn_idade_display_longo",
         "calculation": "data('DOB_ou_idade')=='1' ? (\"Data de nascimento é \" + calculates.dn_display() ) : (\"Tem \" +data('ano')+\" anos e \" + data('mes') + \" meses\")",
-        "_row_num": 13
+        "_row_num": 14
       },
       "sexo_display": {
         "calculation_name": "sexo_display",
         "calculation": "data('sexo') == '1' ? 'M' : 'F'",
-        "_row_num": 14
+        "_row_num": 15
       },
       "nao_data1": {
         "calculation_name": "nao_data1",
         "calculation": "adate.hasUncertainty(data('date_adm1'))",
-        "_row_num": 15
+        "_row_num": 16
       },
       "nao_futuro1": {
         "calculation_name": "nao_futuro1",
         "calculation": "adate.diffInDays(data('date_adm1'),calculates.hoje())",
-        "_row_num": 16
+        "_row_num": 17
       },
       "erro_data1": {
         "calculation_name": "erro_data1",
         "calculation": "(calculates.nao_data1() || calculates.nao_futuro1()<0) && data('outros_med')=='1'",
-        "_row_num": 17
+        "_row_num": 18
       },
       "nao_data2": {
         "calculation_name": "nao_data2",
         "calculation": "adate.hasUncertainty(data('date_adm2'))",
-        "_row_num": 19
+        "_row_num": 20
       },
       "nao_futuro2": {
         "calculation_name": "nao_futuro2",
         "calculation": "adate.diffInDays(data('date_adm2'),calculates.hoje())",
-        "_row_num": 20
+        "_row_num": 21
       },
       "erro_data2": {
         "calculation_name": "erro_data2",
         "calculation": "(calculates.nao_data2() || calculates.nao_futuro2()<0) && data('outros_med2')=='1'",
-        "_row_num": 21
+        "_row_num": 22
       },
       "nao_data3": {
         "calculation_name": "nao_data3",
         "calculation": "adate.hasUncertainty(data('date_adm3'))",
-        "_row_num": 23
+        "_row_num": 24
       },
       "nao_futuro3": {
         "calculation_name": "nao_futuro3",
         "calculation": "adate.diffInDays(data('date_adm3'),calculates.hoje())",
-        "_row_num": 24
+        "_row_num": 25
       },
       "erro_data3": {
         "calculation_name": "erro_data3",
         "calculation": "(calculates.nao_data3() || calculates.nao_futuro3()<0) && data('outros_med3')=='1'",
-        "_row_num": 25
+        "_row_num": 26
       },
       "nao_data4": {
         "calculation_name": "nao_data4",
         "calculation": "adate.hasUncertainty(data('date_adm4'))",
-        "_row_num": 27
+        "_row_num": 28
       },
       "nao_futuro4": {
         "calculation_name": "nao_futuro4",
         "calculation": "adate.diffInDays(data('date_adm4'),calculates.hoje())",
-        "_row_num": 28
+        "_row_num": 29
       },
       "erro_data4": {
         "calculation_name": "erro_data4",
         "calculation": "(calculates.nao_data4() || calculates.nao_futuro4()<0) && data('outros_med4')=='1'",
-        "_row_num": 29
+        "_row_num": 30
       }
     },
     "model": {
@@ -5588,7 +5597,6 @@
                 "text": "Quantos medicamento está tomando"
               }
             },
-            "constraint": "data('numero_med')>0",
             "required": "data('medicacao_previa')=='1'",
             "_row_num": 75,
             "__rowNum__": 74,
