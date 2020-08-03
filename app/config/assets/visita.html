@@ -295,11 +295,16 @@
             }
             var cssClass = '';
             if (p.visitCount != '0') {
-                //console.log("Has visit: " + p.visits);
+                console.log("Viscount = " + p.visitCount);
+                console.log("Has visit: " + p.visits);
+                if (!p.visits) {
+                    alert('Erro: Formulario ka fasido dirritu. Contacta Ivan immediamente!')
+                    return;
+                }
                 var todaysDays = (adateHelper.ageInDays(p.date_rastreio) + window.dayOffset);                
                 if (p.visits.split(",").filter(x => x.trim() == todaysDays).length>0) {
                     cssClass = "hasHadVisitToday";
-                } else if (p.visits.split(",").filter(x => (x.trim() == todaysDays-1 || x.trim() == todaysDays+1)).length>0) {
+                } else if (todaysDays > 3 && (p.visits.split(",").filter(x => (x.trim() == todaysDays-1 || x.trim() == todaysDays+1)).length>0)) {
                     cssClass = "hasHadVisitADayOff";
                 }
             }
