@@ -21,6 +21,9 @@ div {
 .hasHadVisitADayOff {
     background-color:#418341;
 }
+.erroGrave {
+    background-color:#FF4F4F;
+}
 button {
     width: 90%;
     max-width: 500px;

@@ -98,7 +98,7 @@
             }
 
             
-            var sql = 'SELECT tab_bairro, zona, cs, date_rastreio, nome, nome_acomp, nome_mae, nome_pai, tel_acomp, tel_mae, tel_pai, sexo, id_estudo, DOB_ou_idade, ano, mes, dn FROM inclusao WHERE id_estudo = "' + id_to_find + '" COLLATE NOCASE';
+            var sql = 'SELECT tab_bairro, zona, cs, date_rastreio, nome, nome_acomp, nome_mae, nome_pai, tel_acomp, tel_mae, tel_pai, sexo, id_estudo, DOB_ou_idade, ano, mes, dn FROM inclusao WHERE id_estudo = "' + id_to_find + '" COLLATE NOCASE AND inc._savepoint_type = "COMPLETE"';
             // var sql = 'SELECT count(DISTINCT seg.id_visita) AS COUNT_DOSES, inc.tab_bairro, inc.zona, inc.cs, inc.date_rastreio, inc.nome, inc.nome_acomp, inc.nome_mae, inc.nome_pai, inc.tel_acomp, inc.tel_mae, inc.tel_pai, inc.sexo, inc.id_estudo, inc.DOB_ou_idade, inc.ano, inc.mes, inc.dn ';
             // sql = sql + 'FROM inclusao inc LEFT JOIN seguimento seg ON inc.id_estudo = seg.id_estudo  AND (seg.dose_AQ == "1" OR seg.dose_AQ == "2") AND (seg.id_visita == "1" OR seg.id_visita == "2" OR seg.id_visita == "3") '
             // sql = sql + 'WHERE inc.id_estudo = "' + id_to_find +  '" COLLATE NOCASE GROUP BY inc.id_estudo'

@@ -151,7 +151,7 @@
                 var now = moment().format('YYYY-MM-DDTHH:mm');
                 var updateSql = "UPDATE codigos SET usado = 1, dia_usado = '" + now + "'" + where + " --commented out limit: ";
 
-                // Perform update (and also look up what was in ratreio)
+                // Perform update (and also look up what was in rastreio)
                 odkData.arbitraryQuery('codigos', updateSql, null, null, null, function( res ) {
                     console.log("Code " + cod + " marked as used");
                     var rastLookup = "SELECT * FROM rastreio WHERE _id = '" + rowId + "'";

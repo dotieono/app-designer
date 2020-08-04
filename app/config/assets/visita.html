@@ -210,8 +210,8 @@
             var sql = 'SELECT count(DISTINCT seg._id) as visitCount, count(DISTINCT seg2.id_visita) as COUNT_DOSES, group_concat(DISTINCT seg.id_visita) as visits, ';
             sql = sql + 'inc.tab_bairro, inc.zona, inc.cs, inc.date_rastreio, inc.nome, inc.nome_acomp, inc.nome_mae, inc.nome_pai, inc.tel_acomp, ';
             sql = sql + 'inc.tel_mae, inc.tel_pai, inc.sexo, inc.id_estudo, inc.DOB_ou_idade, inc.ano, inc.mes, inc.dn ';
-            sql = sql + 'FROM inclusao inc LEFT JOIN seguimento seg ON inc.id_estudo = seg.id_estudo LEFT JOIN seguimento seg2 ON inc.id_estudo = seg2.id_estudo  AND (seg2.dose_AQ == "1" OR seg2.dose_AQ == "2") AND (seg2.id_visita == "1" OR seg2.id_visita == "2" OR seg2.id_visita == "3") ';
-            sql = sql + "WHERE inc.cs = '" + selCs + "' GROUP BY inc._id";
+            sql = sql + 'FROM inclusao inc LEFT JOIN seguimento seg ON inc.id_estudo = seg.id_estudo AND seg._savepoint_type == "COMPLETE" LEFT JOIN seguimento seg2 ON inc.id_estudo = seg2.id_estudo AND seg2._savepoint_type == "COMPLETE" AND (seg2.dose_AQ == "1" OR seg2.dose_AQ == "2") AND (seg2.id_visita == "1" OR seg2.id_visita == "2" OR seg2.id_visita == "3") ';
+            sql = sql + "WHERE inc.cs = '" + selCs + "' AND inc._savepoint_type = 'COMPLETE' GROUP BY inc._id";
 
             console.log(sql);
             odkData.arbitraryQuery('inclusao', sql, null, null, null, successFn, failureFn);
@@ -222,7 +222,7 @@
             var days = adateHelper.ageInDays(person.date_rastreio);
             //console.log(days);
             if ((days+offSet) > 28) return false;
-            if ((days+offSet) == 0) return false;
+            if ((days+offSet) <= 0) return false;
             if ((days+offSet) <= 3) return true;
             if ((days+offSet) % 7 == 0) return true;
             //console.log("NOT RELEVANT");
@@ -294,19 +294,23 @@
                 btn =  "";    //show no button for these days.
             }
             var cssClass = '';
+            console.log("P.ID=" + p.id_estudo);
+            console.log("Viscount = " + p.visitCount);
+            console.log("Has visit: " + p.visits);
             if (p.visitCount != '0') {
-                console.log("Viscount = " + p.visitCount);
-                console.log("Has visit: " + p.visits);
                 if (!p.visits) {
-                    alert('Erro: Formulario não foi feito corretamente. Contacta Ivan immediatamente! ID: ' + p.id_estudo)
-                    return;
+                    alert('Erro: Formulario não foi feito corretamente. Contacta Ivan immediatamente! ID: ' + p.id_estudo);
+                    cssClass = "erroGrave";
+                } else {
+                    var todaysDays = (adateHelper.ageInDays(p.date_rastreio) + window.dayOffset);                
+                    if (p.visits.split(",").filter(x => x.trim() == todaysDays).length>0) {
+                        cssClass = "hasHadVisitToday";
+                    } else if (todaysDays > 3 && (p.visits.split(",").filter(x => (x.trim() == todaysDays-1 || x.trim() == todaysDays+1)).length>0)) {
+                        cssClass = "hasHadVisitADayOff";
+                    }
                 }
-                var todaysDays = (adateHelper.ageInDays(p.date_rastreio) + window.dayOffset);                
-                if (p.visits.split(",").filter(x => x.trim() == todaysDays).length>0) {
-                    cssClass = "hasHadVisitToday";
-                } else if (todaysDays > 3 && (p.visits.split(",").filter(x => (x.trim() == todaysDays-1 || x.trim() == todaysDays+1)).length>0)) {
-                    cssClass = "hasHadVisitADayOff";
-                }
+            } else {
+                console.log("Tene seguimento: " + p.visitCount);
             }
             var nome = (p.nome_casa && p.nome_casa.length) ? nome = p.nome + " (" + p.nome_casa + ")" : p.nome;        
             var btnRow = "<tr class='" + cssClass + "'><td>" + getAddress(p) + "</td><td>" + getNames(p) + "</td><td>" + getAgeString(p) + "<br/>" + getPhones(p) + "</td><td>" + btn + "</td></tr>";
