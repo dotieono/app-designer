@@ -1,0 +1,267 @@
+<html>
+<!--Menu-->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="../../system/libs/bootstrap-3.3.7-dist/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+        <link href="css/odk-survey.css" type="text/css" rel="stylesheet" />
+        <link href="css/visita.css" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="commonDefinitions.js"></script>
+        <script type="text/javascript" src="libs/jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="../../system/libs/eonasdan/moment.min.js"></script>
+        <script type="text/javascript" src="libs/jquery-migrate-3.0.0.js"></script>
+        <script type="text/javascript" src="../../system/js/odkCommon.js"></script>
+        <script type="text/javascript" src="../../system/js/odkData.js"></script>
+        <script type="text/javascript" src="../../system/tables/js/odkTables.js"></script>        
+
+        <script type="text/javascript">
+
+
+        // Displays homescreen
+        function display() {
+            console.log('Loading lab v. 0.15');            
+            
+            window.adateHelper = getAdateHelper();
+      
+            var sendData = document.createElement("button");
+            sendData.setAttribute("id", "button3");
+            sendData.innerHTML = "Enviar Dados";
+            sendData.onclick = function() {
+              odkCommon.doAction(null, "org.opendatakit.services.sync.actions.activities.SyncActivity", {"componentPackage": "org.opendatakit.services", "componentActivity": "org.opendatakit.services.sync.actions.activities.SyncActivity"});
+            }
+            document.getElementById("wrapper").appendChild(sendData);    
+
+            $("#btnSearch").on("click", function() {
+                var dia = $("#txtCodigoX").val().trim();
+                if (isNaN(parseInt($("#txtCodigoX").val().trim(),10))) {
+                    alert("So aceita o numero do dia! '" + dia + "' nao é válido");
+                    return false;
+                }
+                var val = $("#txtCodigo").val().trim() + 'D' +  dia;
+                loadList(val);
+                return false;
+            });
+
+        }
+        
+
+        function loadList(codigo) {
+            $("#theList tr:not(:first-of-type)").remove(); // clear table except header
+            if (!codigo || codigo.length<2) return;
+            codigo = codigo.trim().replace(/"/g,'').toUpperCase().replace(/O/g,'0').replace(/L/g,'1').replace(/I/g,'1');
+            console.log("Querying database...");
+            var successFn = function( result ) {
+                console.log("Found " + result.getCount() + " persons");
+                var persons = [];
+                for (var row = 0; row < result.getCount(); row++) {
+
+                    
+                    var id = result.getData(row,"_id"); // or _row_etag
+                    var id_estudo = result.getData(row,"id_estudo");                    
+                    var codigo_lamina = result.getData(row,"codigo_lamina");
+                    
+                    var DOB_ou_idade = result.getData(row,"DOB_ou_idade");
+                    var dn =  result.getData(row,"dn");
+                    var ano =  result.getData(row,"ano");
+                    var mes =  result.getData(row,"mes");
+                    var sexo =  result.getData(row,"sexo");
+                    var nome =  result.getData(row,"nome");
+                    var id_visita =  result.getData(row,"id_visita");
+                    var p = {
+                        id,
+                        id_estudo,
+                        id_visita,
+                        codigo_lamina,
+                        dn,
+                        ano,
+                        mes,
+                        DOB_ou_idade,
+                        sexo,
+                        nome
+                    }          
+
+                    persons.push(p);
+                }
+                populateList(persons);
+                if (result.getCount() === 0) {
+                    alert("Não encontrado")
+                }
+                return;
+            }
+            var failureFn = function( errorMsg ) {
+                console.error('Failed to get persons from database: ' + errorMsg);
+                alert(errorMsg);
+            }
+
+            var fields = 'codigo_lamina, dn, sexo, nome, ano, mes, id_estudo, DOB_ou_idade, id_visita';
+            var sql = 'SELECT ' + fields + ' FROM inclusao WHERE codigo_lamina = "' + codigo + '" COLLATE NOCASE UNION SELECT ' + fields + ' FROM seguimento WHERE codigo_lamina = "' + codigo + '" COLLATE NOCASE';            
+            console.log(sql);
+            odkData.arbitraryQuery('inclusao', sql, null, null, null, successFn, failureFn);
+        }
+        
+        
+
+        function addPersonForm(person) {
+            var tableId = "laboratorio";
+            var formId = "laboratorio"; 
+            var dispatchStruct = null;
+            var screenPath = null;
+            var jsonMap = getJsonMap(person);
+            odkTables.addRowWithSurvey(dispatchStruct,tableId, formId, screenPath, jsonMap);
+            
+        }
+
+        function getJsonMap(person) {
+            var data = {
+                id_estudo : person.id_estudo,
+                codigo_lamina : person.codigo_lamina,
+                DOB_ou_idade : person.DOB_ou_idade,
+                dn : person.dn,
+                ano : person.ano,
+                mes : person.mes,
+                sexo : person.sexo,
+            }
+
+            console.log("Sending following data:");
+            console.log(data);
+
+            return data;
+        }
+        
+        function populateList(listOfPersons) {            
+            var theList = $("#theList");
+            console.log("Populating list with " + listOfPersons.length + " persons");
+            listOfPersons.forEach(person => {
+                addPersonDiv(person);
+            });
+        }
+        function addPersonDiv(p) {    
+            var btn = "<button class='btn btn-sm'>&gt;</button>";
+            var nome = (p.nome_casa && p.nome_casa.length) ? nome = p.nome + " (" + p.nome_casa + ")" : p.nome;        
+            var btnRow = "<tr><td>" + getAddress(p) + "</td><td>" + getNames(p) + "</td><td>" + getAgeString(p) + "<br/>" + getPhones(p) + "</td><td>" + btn + "</td></tr>";
+            $('#theList tr:last').after(btnRow);
+            $('#theList tr:last').on("click",function() { 
+                addPersonForm(p);
+                return false;
+            });
+        }
+        function getAddress(p) {
+            var r = "";
+            if (p.tab_bairro) r = r + p.tab_bairro + "<br/>";
+            if (p.zona) r = r + p.zona + "<br/>";
+            r = r + "ID: " + p.id_estudo + " (dias: " + p.id_visita + ")";
+            return r;
+        }
+        function getPhones(p) {
+            var r = "";
+            if (p.tel_mae) r = r + p.tel_mae + " (mãe)<br/>";
+            if (p.tel_pai) r = r + p.tel_pai + " (pai)<br/>";
+            if (p.tel_acomp) r = r + p.tel_acomp + " (acomp.)<br/>";
+            return r;
+        }
+        function getNames(p) {
+            var d = p.nome + (p.sexo == '2' ? ' (F)':' (M)');
+            if (p.nome_mae) d = d + "<br/>Mãe: " + p.nome_mae;
+            if (p.nome_pai) d = d + "<br/>Pai: " + p.nome_pai;
+            if (p.nome_acomp) d = d + "<br/>Acomp.: " + p.nome_acomp;                
+            return "<div>" + d + "</div>";
+        }
+        function getAgeString(person) {
+            var theAdate = person.dn;
+            if (!theAdate) {
+                var res = (person.ano) ? person.ano : "0";
+                var mes = person.mes ? person.mes : "0";
+                return res + " anos " + mes + " meses";                
+            }    
+            var months = adateHelper.ageInMonths(theAdate);
+            var anosTxt = (months >= 12) ? "" + adateHelper.ageInYears(theAdate) + " anos " : "";
+            return anosTxt + (adateHelper.ageInMonths(theAdate) % 12) + " meses";
+        }
+  
+        /* adate helper */
+        function getAdateHelper() {return {
+            getMoment: function(aDate) {
+                if (!aDate || aDate.length<4 || this.yearUnknown(aDate)) {
+                    return false;
+                }
+                aDate = aDate.toUpperCase().replace('D:NS','D:15').replace('M:NS','M:5');
+                var d = moment(aDate, '\\D:DD,\\M:MM,\\Y:YYYY');
+                if (d.isValid()) {
+                    return d;
+                }
+                return false;
+            },
+            hasUncertainty: function(aDate) {
+                return !aDate || aDate.toUpperCase().indexOf('NS')>-1;   
+            },
+            yearUnknown: function(aDate) {
+                return !aDate || aDate.toUpperCase().indexOf('Y:NS')>-1;
+            },
+            monthUnkown: function(aDate) {
+                return !aDate || aDate.toUpperCase().indexOf('M:NS')>-1;   
+            },
+            dayUnkown: function(aDate) {
+                return !aDate || aDate.toUpperCase().indexOf('D:NS')>-1;
+            },
+            ageIn: function(aDate, strUnit) {
+                var a = this.getMoment(aDate);
+                if (!a) {
+                    return -9999;
+                }
+                return moment().diff(a,strUnit);
+            },
+            ageInYears: function(aDate) {
+                return this.ageIn(aDate, 'years');
+            },
+            ageInMonths: function(aDate) {
+                return this.ageIn(aDate, 'months');
+            },
+            ageInDays: function(aDate) {
+                return this.ageIn(aDate, 'days');
+            },
+            diffInYears: function(aDateA, aDateB) {
+                var a = this.getMoment(aDateA);
+                var b = this.getMoment(aDateB);
+                if (!a || !b) {
+                    return -9999;
+                }
+                return b.diff(a,'years');
+            },
+            diffInDays: function(aDateA, aDateB) {
+                var a = this.getMoment(aDateA);
+                var b = this.getMoment(aDateB);
+                if (!a || !b) {
+                    return -9999;
+                }
+                return b.diff(a,'days');
+            }            
+        }};
+
+        </script>
+    </head>
+
+    <body onload="display();">
+        <!-- <h1>Avaliação de eficácia de Sulfadoxina-pirimetamina mais Amodiaquina </h1> -->
+        <h2>LABO</h2>
+        <form class="form-inline" style="text-align: center;" onsubmit="$('#btnSearch').click();return false;" action="#">
+            <div class="form-group" style="margin:20px;text-align:center;">
+                <label class="form-label" for="selCs">
+                    <input type="text" placeholder="Codigo" class="form-control input-lg" id="txtCodigo" style="text-transform: uppercase;width:48%;float:left;margin-right:2%;"/>
+                    <input type="text" placeholder="Dia" class="form-control input-lg" id="txtCodigoX" style="text-transform: uppercase;width:20%;float:left;"/> 
+                    <a href="#" class="btn btn-sm btn-success" style="height: inherit;width: auto;padding: 13px 35px;" id="btnSearch">OK</a>
+                </label>    
+            </div>
+            <div>
+                <table id="theList" class="table">
+                    <tr>
+                        <th>Tabz</th>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>&nbsp;</th>
+                    </tr>                    
+                </table>
+            </div>
+        </form>
+        <br/>
+        <div id="wrapper"></div>
+    </body>
+</html>

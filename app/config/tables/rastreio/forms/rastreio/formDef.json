@@ -1,0 +1,3307 @@
+{
+  "xlsx": {
+    "settings": [
+      {
+        "setting_name": "form_id",
+        "value": "rastreio",
+        "_row_num": 2
+      },
+      {
+        "setting_name": "form_version",
+        "value": 2020071901,
+        "_row_num": 3
+      },
+      {
+        "setting_name": "survey",
+        "display": {
+          "title": {
+            "text": "Rastreio de caso"
+          }
+        },
+        "_row_num": 4
+      },
+      {
+        "setting_name": "table_id",
+        "value": "rastreio",
+        "_row_num": 5
+      },
+      {
+        "setting_name": "instance_name",
+        "value": "id_rastreio",
+        "_row_num": 6
+      }
+    ],
+    "survey": [
+      {
+        "clause": "begin screen",
+        "_row_num": 5
+      },
+      {
+        "type": "assign",
+        "name": "date_rastreio",
+        "display": {
+          "prompt": {
+            "text": "Data:{{calculates.hoje_display}}"
+          },
+          "adate": {
+            "fromYear": 2020,
+            "toYear": 2020
+          }
+        },
+        "calculation": "adate.today()",
+        "hideInContents": true,
+        "_row_num": 6
+      },
+      {
+        "type": "assign",
+        "name": "id_visita",
+        "calculation": "adate.ageInDays(data('date_rastreio'))",
+        "hideInContents": true,
+        "_row_num": 7
+      },
+      {
+        "type": "note",
+        "name": "mostra_data",
+        "display": {
+          "prompt": {
+            "text": "Data:{{calculates.hoje_display}}"
+          }
+        },
+        "_row_num": 8
+      },
+      {
+        "type": "select_one",
+        "values_list": "region",
+        "name": "region",
+        "display": {
+          "prompt": {
+            "text": "Região"
+          }
+        },
+        "required": true,
+        "_row_num": 9
+      },
+      {
+        "type": "select_one",
+        "values_list": "cs",
+        "name": "cs",
+        "display": {
+          "prompt": {
+            "text": "Centro de Saúde"
+          }
+        },
+        "required": true,
+        "choice_filter": "choice_item.region === data('region')",
+        "_row_num": 10
+      },
+      {
+        "type": "integer",
+        "name": "id_rastreio",
+        "display": {
+          "prompt": {
+            "text": "Nº de rastreio:"
+          }
+        },
+        "required": true,
+        "_row_num": 11
+      },
+      {
+        "clause": "end screen",
+        "_row_num": 12
+      },
+      {
+        "clause": "begin screen",
+        "_row_num": 13
+      },
+      {
+        "type": "text",
+        "name": "nome",
+        "display": {
+          "prompt": {
+            "text": "Nome e Apelido"
+          }
+        },
+        "required": true,
+        "_row_num": 14
+      },
+      {
+        "type": "select_one",
+        "values_list": "DOB_ou_idade",
+        "name": "DOB_ou_idade",
+        "display": {
+          "prompt": {
+            "text": "Idade ou data de nascimento?"
+          }
+        },
+        "required": true,
+        "_row_num": 16
+      },
+      {
+        "clause": "end screen",
+        "_row_num": 18
+      },
+      {
+        "clause": "if",
+        "condition": "data('DOB_ou_idade')=='1'",
+        "_row_num": 19
+      },
+      {
+        "type": "adate",
+        "name": "dn",
+        "display": {
+          "prompt": {
+            "text": "Data de Nascimento"
+          },
+          "adate": {
+            "fromYear": 2014,
+            "toYear": 2020
+          }
+        },
+        "required": "data('DOB_ou_idade')=='1'",
+        "_row_num": 20
+      },
+      {
+        "clause": "else",
+        "_row_num": 21
+      },
+      {
+        "type": "integer",
+        "name": "ano",
+        "display": {
+          "prompt": {
+            "text": "Idades em anos"
+          },
+          "hint": {
+            "text": "se for menos de 1 ano coloca zero"
+          }
+        },
+        "constraint": "data('ano')<5",
+        "required": "data('DOB_ou_idade')=='2'",
+        "_row_num": 22
+      },
+      {
+        "type": "integer",
+        "name": "mes",
+        "display": {
+          "prompt": {
+            "text": "Idade em meses"
+          },
+          "hint": {
+            "text": "se nao souber coloca zero, se for 12 acrescenta 1 ano"
+          }
+        },
+        "constraint": "data('mes')<12",
+        "required": "data('DOB_ou_idade')=='2'",
+        "_row_num": 23
+      },
+      {
+        "clause": "end if",
+        "_row_num": 25
+      },
+      {
+        "clause": "if",
+        "condition": "calculates.exclude()",
+        "_row_num": 26
+      },
+      {
+        "type": "note",
+        "name": "exclusao",
+        "display": {
+          "prompt": {
+            "text": "A crianca não pode entrar no estudo por ter  {{calculates.idade_mes}} meses que é {{calculates.texto_diplay}}"
+          }
+        },
+        "constraint": "!calculates.exclude()",
+        "required": "calculates.exclude()",
+        "_row_num": 27
+      },
+      {
+        "clause": "end if",
+        "_row_num": 28
+      },
+      {
+        "clause": "goto exclusao",
+        "condition": "calculates.exclude()",
+        "_row_num": 29
+      },
+      {
+        "clause": "begin screen",
+        "_row_num": 34
+      },
+      {
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "febre",
+        "display": {
+          "prompt": {
+            "text": "Tem Febre?"
+          }
+        },
+        "required": "!calculates.exclude()",
+        "_row_num": 35
+      },
+      {
+        "type": "decimal",
+        "name": "temperatura",
+        "display": {
+          "prompt": {
+            "text": "Temperatura em ºC?"
+          },
+          "hint": {
+            "text": "se não for tomada coloca 888"
+          },
+          "constraint_message": {
+            "text": "revisa o valor introduzido, a temperatura deve ser en grau celsius e nao fahrenheit"
+          }
+        },
+        "constraint": "data('temperatura')==888 || (data('temperatura')>=34  && data('temperatura')<=43)",
+        "default": 37,
+        "_row_num": 36
+      },
+      {
+        "clause": "end screen",
+        "_row_num": 37
+      },
+      {
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "TDR",
+        "display": {
+          "prompt": {
+            "text": "Fez TDR?"
+          },
+          "constraint_message": {
+            "text": "Só deve abrir a ficha se fez TDR"
+          }
+        },
+        "constraint": "data('TDR')=='1'",
+        "required": "!calculates.exclude()",
+        "_row_num": 39
+      },
+      {
+        "clause": "goto exclusao",
+        "condition": "data('TDR')=='2'",
+        "_row_num": 41
+      },
+      {
+        "type": "select_one",
+        "values_list": "resultado",
+        "name": "resultado_TDR",
+        "display": {
+          "prompt": {
+            "text": "Resultado de TDR"
+          },
+          "constraint_message": {
+            "text": "Só deve abrir a ficha se tiver TDR positivo"
+          }
+        },
+        "constraint": "data('resultado_TDR')=='1'",
+        "required": "data('TDR')=='1'",
+        "_row_num": 43
+      },
+      {
+        "clause": "goto exclusao",
+        "condition": "data('resultado_TDR')=='2'",
+        "_row_num": 45
+      },
+      {
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "via_oral",
+        "display": {
+          "prompt": {
+            "text": "Tem a capacidade de deglutir a medicação oral?"
+          }
+        },
+        "required": "data('resultado_TDR')=='1'",
+        "_row_num": 47
+      },
+      {
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "desnutrido",
+        "display": {
+          "prompt": {
+            "text": "A criança está desnutrida?"
+          }
+        },
+        "required": "data('resultado_TDR')=='1'",
+        "_row_num": 48
+      },
+      {
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "paludismo_grave",
+        "display": {
+          "prompt": {
+            "text": "A criança tem Paludismo grave?"
+          }
+        },
+        "required": "data('resultado_TDR')=='1'",
+        "_row_num": 49
+      },
+      {
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "outra_condicao",
+        "display": {
+          "prompt": {
+            "text": "A criança tem outra condiação?"
+          }
+        },
+        "required": "data('resultado_TDR')=='1'",
+        "_row_num": 50
+      },
+      {
+        "clause": "if // condicao",
+        "condition": "data('outra_condicao')=='1'",
+        "_row_num": 51
+      },
+      {
+        "clause": "begin screen",
+        "_row_num": 53
+      },
+      {
+        "type": "select_one",
+        "values_list": "outra_condicao",
+        "name": "tipo_condicao",
+        "display": {
+          "prompt": {
+            "text": "Que tipo de condição?"
+          }
+        },
+        "required": "data('outra_condicao')=='1'",
+        "_row_num": 54
+      },
+      {
+        "clause": "if",
+        "condition": "data('tipo_condicao')=='1'",
+        "_row_num": 55
+      },
+      {
+        "type": "text",
+        "name": "especificar_condicao",
+        "display": {
+          "prompt": {
+            "text": "Se For outra: especifique a outra condição que a criança tem?"
+          }
+        },
+        "required": "data('outra_condicao')=='1'",
+        "_row_num": 56
+      },
+      {
+        "clause": "end if",
+        "_row_num": 57
+      },
+      {
+        "clause": "end screen",
+        "_row_num": 59
+      },
+      {
+        "clause": "end if // condicao",
+        "_row_num": 60
+      },
+      {
+        "clause": "if",
+        "condition": "data('via_oral')=='2' || data('desnutrido')=='1' || data('paludismo_grave')=='1' || data('outra_condicao')=='1'",
+        "_row_num": 62
+      },
+      {
+        "clause": "goto exclusao",
+        "_row_num": 63
+      },
+      {
+        "clause": "end if",
+        "_row_num": 64
+      },
+      {
+        "clause": "begin screen",
+        "_row_num": 65
+      },
+      {
+        "type": "note",
+        "name": "nota_condicao",
+        "display": {
+          "prompt": {
+            "text": "A crinça reune todas as condições de participar no estudo"
+          }
+        },
+        "_row_num": 66
+      },
+      {
+        "type": "select_one",
+        "values_list": "yesno",
+        "name": "consentimento",
+        "display": {
+          "prompt": {
+            "text": "Os pais e a criança aceitaram participar no estudo?"
+          }
+        },
+        "required": "data('via_oral')=='1' && data('desnutrido')=='2' && data('paludismo_grave')=='2'",
+        "_row_num": 67
+      },
+      {
+        "clause": "end screen",
+        "_row_num": 68
+      },
+      {
+        "clause": "goto exclusao",
+        "condition": "data('consentimento')=='2'",
+        "_row_num": 69
+      },
+      {
+        "clause": "goto ending",
+        "_row_num": 71
+      },
+      {
+        "branch_label": "exclusao",
+        "type": "select_one",
+        "values_list": "ok",
+        "name": "exclusao",
+        "display": {
+          "prompt": {
+            "text": "Agradeça os pais ou encarregados da criança, e exlpica com a base em algumas respostas dadas ou resultados dos analises e/ou exame fisico medico a criança não reune as condições para participar no estudo."
+          }
+        },
+        "required": "data('via_oral')=='2' || data('desnutrido')=='1' || data('paludismo_grave')=='1' || data('outra_condicao')=='1' || data('consentimento')=='2'",
+        "_row_num": 88
+      },
+      {
+        "clause": "goto ending",
+        "_row_num": 89
+      },
+      {
+        "branch_label": "ending",
+        "type": "text",
+        "name": "comentario",
+        "display": {
+          "prompt": {
+            "text": "A exibição agora está completa, por favor, vá para a próxima página para finalizar suas respostas."
+          },
+          "hint": {
+            "text": "Comentario"
+          }
+        },
+        "_row_num": 96
+      }
+    ],
+    "choices": [
+      {
+        "choice_list_name": "sexo",
+        "data_value": 1,
+        "display": {
+          "title": {
+            "text": "Masculino"
+          }
+        },
+        "_row_num": 2
+      },
+      {
+        "choice_list_name": "sexo",
+        "data_value": 2,
+        "display": {
+          "title": {
+            "text": "Feminino"
+          }
+        },
+        "_row_num": 3
+      },
+      {
+        "choice_list_name": "DOB_ou_idade",
+        "data_value": 1,
+        "display": {
+          "title": {
+            "text": "Data de Nascimento"
+          }
+        },
+        "_row_num": 5
+      },
+      {
+        "choice_list_name": "DOB_ou_idade",
+        "data_value": 2,
+        "display": {
+          "title": {
+            "text": "Idade"
+          }
+        },
+        "_row_num": 6
+      },
+      {
+        "choice_list_name": "yesno",
+        "data_value": 1,
+        "display": {
+          "title": {
+            "text": "Sim"
+          }
+        },
+        "_row_num": 8
+      },
+      {
+        "choice_list_name": "yesno",
+        "data_value": 2,
+        "display": {
+          "title": {
+            "text": "Não"
+          }
+        },
+        "_row_num": 9
+      },
+      {
+        "choice_list_name": "region",
+        "data_value": "bafata",
+        "display": {
+          "title": {
+            "text": "Bafatá"
+          }
+        },
+        "_row_num": 12
+      },
+      {
+        "choice_list_name": "region",
+        "data_value": "gabu",
+        "display": {
+          "title": {
+            "text": "Gabú"
+          }
+        },
+        "_row_num": 13
+      },
+      {
+        "choice_list_name": "cs",
+        "data_value": "bafata",
+        "display": {
+          "title": {
+            "text": "Bafatá"
+          }
+        },
+        "region": "bafata",
+        "_row_num": 15
+      },
+      {
+        "choice_list_name": "cs",
+        "data_value": "bambadinca",
+        "display": {
+          "title": {
+            "text": "Bambadinca"
+          }
+        },
+        "region": "bafata",
+        "_row_num": 16
+      },
+      {
+        "choice_list_name": "cs",
+        "data_value": "ganmamudo",
+        "display": {
+          "title": {
+            "text": "Gã-Mamudo"
+          }
+        },
+        "region": "bafata",
+        "_row_num": 17
+      },
+      {
+        "choice_list_name": "cs",
+        "data_value": "gabu",
+        "display": {
+          "title": {
+            "text": "Gabú"
+          }
+        },
+        "region": "gabu",
+        "_row_num": 18
+      },
+      {
+        "choice_list_name": "cs",
+        "data_value": "sonaco",
+        "display": {
+          "title": {
+            "text": "Sonaco"
+          }
+        },
+        "region": "gabu",
+        "_row_num": 19
+      },
+      {
+        "choice_list_name": "cs",
+        "data_value": "pitche",
+        "display": {
+          "title": {
+            "text": "Pitche"
+          }
+        },
+        "region": "gabu",
+        "_row_num": 20
+      },
+      {
+        "choice_list_name": "plasmodium",
+        "data_value": 2,
+        "display": {
+          "title": {
+            "text": "P. Malariae"
+          }
+        },
+        "_row_num": 23
+      },
+      {
+        "choice_list_name": "plasmodium",
+        "data_value": 3,
+        "display": {
+          "title": {
+            "text": "P. Ovale"
+          }
+        },
+        "_row_num": 24
+      },
+      {
+        "choice_list_name": "plasmodium",
+        "data_value": 4,
+        "display": {
+          "title": {
+            "text": "P. Vivax"
+          }
+        },
+        "_row_num": 25
+      },
+      {
+        "choice_list_name": "resultado",
+        "data_value": 1,
+        "display": {
+          "title": {
+            "text": "Positivo"
+          }
+        },
+        "_row_num": 28
+      },
+      {
+        "choice_list_name": "resultado",
+        "data_value": 2,
+        "display": {
+          "title": {
+            "text": "Negativo"
+          }
+        },
+        "_row_num": 29
+      },
+      {
+        "choice_list_name": "ok",
+        "data_value": 1,
+        "display": {
+          "title": {
+            "text": "OK"
+          }
+        },
+        "_row_num": 31
+      },
+      {
+        "choice_list_name": "outra_condicao",
+        "data_value": 1,
+        "display": {
+          "title": {
+            "text": "Febre causada por outra doença"
+          }
+        },
+        "_row_num": 34
+      },
+      {
+        "choice_list_name": "outra_condicao",
+        "data_value": 2,
+        "display": {
+          "title": {
+            "text": "doença crónica/grave subjacente"
+          }
+        },
+        "_row_num": 35
+      },
+      {
+        "choice_list_name": "outra_condicao",
+        "data_value": 3,
+        "display": {
+          "title": {
+            "text": "meducação regulas interfere ou contraindicação de QPS"
+          }
+        },
+        "_row_num": 36
+      },
+      {
+        "choice_list_name": "outra_condicao",
+        "data_value": 4,
+        "display": {
+          "title": {
+            "text": "Outra condição"
+          }
+        },
+        "_row_num": 37
+      }
+    ],
+    "prompt_types": [
+      {
+        "prompt_type_name": "custom_date",
+        "type": "string",
+        "elementType": "date",
+        "comment": "Makes the date widget DD/MM/YYYY",
+        "_row_num": 2
+      },
+      {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3
+      }
+    ],
+    "calculates": [
+      {
+        "calculation_name": "hoje",
+        "calculation": "adate.today()",
+        "_row_num": 2
+      },
+      {
+        "calculation_name": "hoje_display",
+        "calculation": "adate.display(calculates.hoje())",
+        "_row_num": 3
+      },
+      {
+        "calculation_name": "visita_id",
+        "calculation": "adate.ageInDays(data('date_rastreio'))",
+        "_row_num": 4
+      },
+      {
+        "calculation_name": "idade_mes",
+        "calculation": "data('DOB_ou_idade')=='1' ? adate.ageInMonths(data('dn')) : sc.getMonths(data('ano'), data('mes'))",
+        "_row_num": 5
+      },
+      {
+        "calculation_name": "exclude",
+        "calculation": "calculates.idade_mes()<3 || calculates.idade_mes()>59",
+        "_row_num": 6
+      },
+      {
+        "calculation_name": "texto_display",
+        "calculation": "calculates.idade_mes()<3 ? (\"Menor que 3 meses\") : calculates.idade_mes()>59 ? (\"Maior de 59 meses\") : (\"\")",
+        "_row_num": 7
+      },
+      {
+        "calculation_name": "date_rastreio_display",
+        "calculation": "adate.display(data('date_rastreio'))",
+        "_row_num": 9
+      },
+      {
+        "calculation_name": "dn_display",
+        "calculation": "adate.display(data('dn'))",
+        "_row_num": 10
+      },
+      {
+        "calculation_name": "febre_display",
+        "calculation": "data('febre') == '1' ? 'SIM' : 'NAO'",
+        "_row_num": 11
+      },
+      {
+        "calculation_name": "dn_idade_display",
+        "calculation": "data('DOB_ou_idade')=='1' ? (\"Data de nascimento é \" + calculates.dn_display() ) : (\"Tem \" +data('ano')+\" anos e \" + data('mes') + \" meses\")",
+        "_row_num": 12
+      }
+    ],
+    "model": [
+      {
+        "type": "assign",
+        "name": "date_rastreio",
+        "_row_num": 4
+      },
+      {
+        "type": "integer",
+        "name": "id_rastreio",
+        "_row_num": 5
+      },
+      {
+        "type": "select_one",
+        "name": "region",
+        "_row_num": 6
+      },
+      {
+        "type": "select_one",
+        "name": "cs",
+        "_row_num": 7
+      },
+      {
+        "type": "text",
+        "name": "nome",
+        "_row_num": 8
+      },
+      {
+        "type": "select_one",
+        "name": "DOB_ou_idade",
+        "_row_num": 9
+      },
+      {
+        "type": "adate",
+        "name": "dn",
+        "_row_num": 10
+      },
+      {
+        "type": "integer",
+        "name": "ano",
+        "_row_num": 11
+      },
+      {
+        "type": "integer",
+        "name": "mes",
+        "_row_num": 12
+      },
+      {
+        "type": "select_one",
+        "name": "febre",
+        "_row_num": 13
+      },
+      {
+        "type": "decimal",
+        "name": "temperatura",
+        "_row_num": 14
+      },
+      {
+        "type": "select_one",
+        "name": "TDR",
+        "_row_num": 15
+      },
+      {
+        "type": "select_one",
+        "name": "resultado_TDR",
+        "_row_num": 16
+      },
+      {
+        "type": "select_one",
+        "name": "via_oral",
+        "_row_num": 17
+      },
+      {
+        "type": "select_one",
+        "name": "desnutrido",
+        "_row_num": 18
+      },
+      {
+        "type": "select_one",
+        "name": "paludismo_grave",
+        "_row_num": 19
+      },
+      {
+        "type": "select_one",
+        "name": "outra_condicao",
+        "_row_num": 20
+      },
+      {
+        "type": "text",
+        "name": "especificar_condicao",
+        "_row_num": 21
+      },
+      {
+        "type": "select_one",
+        "name": "consentimento",
+        "_row_num": 22
+      },
+      {
+        "type": "select_one",
+        "name": "exclusao",
+        "_row_num": 25
+      },
+      {
+        "type": "text",
+        "name": "razao",
+        "_row_num": 26
+      },
+      {
+        "type": "text",
+        "name": "comentario",
+        "_row_num": 27
+      },
+      {
+        "type": "assign",
+        "name": "id_visita",
+        "_row_num": 28
+      }
+    ]
+  },
+  "specification": {
+    "column_types": {
+      "_screen_block": "function",
+      "condition": "formula",
+      "constraint": "formula",
+      "required": "formula",
+      "calculation": "formula",
+      "newRowInitialElementKeyToValueMap": "formula",
+      "openRowInitialElementKeyToValueMap": "formula",
+      "selectionArgs": "formula",
+      "url": "formula",
+      "uri": "formula",
+      "callback": "formula(context)",
+      "choice_filter": "formula(choice_item)",
+      "templatePath": "requirejs_path"
+    },
+    "settings": {
+      "form_id": {
+        "setting_name": "form_id",
+        "value": "rastreio",
+        "_row_num": 2
+      },
+      "form_version": {
+        "setting_name": "form_version",
+        "value": 2020071901,
+        "_row_num": 3
+      },
+      "survey": {
+        "setting_name": "survey",
+        "display": {
+          "title": {
+            "text": "Rastreio de caso"
+          }
+        },
+        "_row_num": 4
+      },
+      "table_id": {
+        "setting_name": "table_id",
+        "value": "rastreio",
+        "_row_num": 5
+      },
+      "instance_name": {
+        "setting_name": "instance_name",
+        "value": "id_rastreio",
+        "_row_num": 6
+      },
+      "_locales": {
+        "setting_name": "_locales",
+        "_row_num": 4,
+        "value": [
+          {
+            "display": {
+              "locale": {
+                "text": "default"
+              }
+            },
+            "name": "default"
+          }
+        ]
+      },
+      "_default_locale": {
+        "setting_name": "_default_locale",
+        "_row_num": 4,
+        "value": "default"
+      },
+      "initial": {
+        "setting_name": "survey",
+        "display": {
+          "title": {
+            "text": "Rastreio de caso"
+          }
+        },
+        "_row_num": 4
+      }
+    },
+    "choices": {
+      "sexo": [
+        {
+          "choice_list_name": "sexo",
+          "data_value": 1,
+          "display": {
+            "title": {
+              "text": "Masculino"
+            }
+          },
+          "_row_num": 2
+        },
+        {
+          "choice_list_name": "sexo",
+          "data_value": 2,
+          "display": {
+            "title": {
+              "text": "Feminino"
+            }
+          },
+          "_row_num": 3
+        }
+      ],
+      "DOB_ou_idade": [
+        {
+          "choice_list_name": "DOB_ou_idade",
+          "data_value": 1,
+          "display": {
+            "title": {
+              "text": "Data de Nascimento"
+            }
+          },
+          "_row_num": 5
+        },
+        {
+          "choice_list_name": "DOB_ou_idade",
+          "data_value": 2,
+          "display": {
+            "title": {
+              "text": "Idade"
+            }
+          },
+          "_row_num": 6
+        }
+      ],
+      "yesno": [
+        {
+          "choice_list_name": "yesno",
+          "data_value": 1,
+          "display": {
+            "title": {
+              "text": "Sim"
+            }
+          },
+          "_row_num": 8
+        },
+        {
+          "choice_list_name": "yesno",
+          "data_value": 2,
+          "display": {
+            "title": {
+              "text": "Não"
+            }
+          },
+          "_row_num": 9
+        }
+      ],
+      "region": [
+        {
+          "choice_list_name": "region",
+          "data_value": "bafata",
+          "display": {
+            "title": {
+              "text": "Bafatá"
+            }
+          },
+          "_row_num": 12
+        },
+        {
+          "choice_list_name": "region",
+          "data_value": "gabu",
+          "display": {
+            "title": {
+              "text": "Gabú"
+            }
+          },
+          "_row_num": 13
+        }
+      ],
+      "cs": [
+        {
+          "choice_list_name": "cs",
+          "data_value": "bafata",
+          "display": {
+            "title": {
+              "text": "Bafatá"
+            }
+          },
+          "region": "bafata",
+          "_row_num": 15
+        },
+        {
+          "choice_list_name": "cs",
+          "data_value": "bambadinca",
+          "display": {
+            "title": {
+              "text": "Bambadinca"
+            }
+          },
+          "region": "bafata",
+          "_row_num": 16
+        },
+        {
+          "choice_list_name": "cs",
+          "data_value": "ganmamudo",
+          "display": {
+            "title": {
+              "text": "Gã-Mamudo"
+            }
+          },
+          "region": "bafata",
+          "_row_num": 17
+        },
+        {
+          "choice_list_name": "cs",
+          "data_value": "gabu",
+          "display": {
+            "title": {
+              "text": "Gabú"
+            }
+          },
+          "region": "gabu",
+          "_row_num": 18
+        },
+        {
+          "choice_list_name": "cs",
+          "data_value": "sonaco",
+          "display": {
+            "title": {
+              "text": "Sonaco"
+            }
+          },
+          "region": "gabu",
+          "_row_num": 19
+        },
+        {
+          "choice_list_name": "cs",
+          "data_value": "pitche",
+          "display": {
+            "title": {
+              "text": "Pitche"
+            }
+          },
+          "region": "gabu",
+          "_row_num": 20
+        }
+      ],
+      "plasmodium": [
+        {
+          "choice_list_name": "plasmodium",
+          "data_value": 2,
+          "display": {
+            "title": {
+              "text": "P. Malariae"
+            }
+          },
+          "_row_num": 23
+        },
+        {
+          "choice_list_name": "plasmodium",
+          "data_value": 3,
+          "display": {
+            "title": {
+              "text": "P. Ovale"
+            }
+          },
+          "_row_num": 24
+        },
+        {
+          "choice_list_name": "plasmodium",
+          "data_value": 4,
+          "display": {
+            "title": {
+              "text": "P. Vivax"
+            }
+          },
+          "_row_num": 25
+        }
+      ],
+      "resultado": [
+        {
+          "choice_list_name": "resultado",
+          "data_value": 1,
+          "display": {
+            "title": {
+              "text": "Positivo"
+            }
+          },
+          "_row_num": 28
+        },
+        {
+          "choice_list_name": "resultado",
+          "data_value": 2,
+          "display": {
+            "title": {
+              "text": "Negativo"
+            }
+          },
+          "_row_num": 29
+        }
+      ],
+      "ok": [
+        {
+          "choice_list_name": "ok",
+          "data_value": 1,
+          "display": {
+            "title": {
+              "text": "OK"
+            }
+          },
+          "_row_num": 31
+        }
+      ],
+      "outra_condicao": [
+        {
+          "choice_list_name": "outra_condicao",
+          "data_value": 1,
+          "display": {
+            "title": {
+              "text": "Febre causada por outra doença"
+            }
+          },
+          "_row_num": 34
+        },
+        {
+          "choice_list_name": "outra_condicao",
+          "data_value": 2,
+          "display": {
+            "title": {
+              "text": "doença crónica/grave subjacente"
+            }
+          },
+          "_row_num": 35
+        },
+        {
+          "choice_list_name": "outra_condicao",
+          "data_value": 3,
+          "display": {
+            "title": {
+              "text": "meducação regulas interfere ou contraindicação de QPS"
+            }
+          },
+          "_row_num": 36
+        },
+        {
+          "choice_list_name": "outra_condicao",
+          "data_value": 4,
+          "display": {
+            "title": {
+              "text": "Outra condição"
+            }
+          },
+          "_row_num": 37
+        }
+      ]
+    },
+    "table_specific_definitions": {
+      "_tokens": {}
+    },
+    "queries": {},
+    "calculates": {
+      "hoje": {
+        "calculation_name": "hoje",
+        "calculation": "adate.today()",
+        "_row_num": 2
+      },
+      "hoje_display": {
+        "calculation_name": "hoje_display",
+        "calculation": "adate.display(calculates.hoje())",
+        "_row_num": 3
+      },
+      "visita_id": {
+        "calculation_name": "visita_id",
+        "calculation": "adate.ageInDays(data('date_rastreio'))",
+        "_row_num": 4
+      },
+      "idade_mes": {
+        "calculation_name": "idade_mes",
+        "calculation": "data('DOB_ou_idade')=='1' ? adate.ageInMonths(data('dn')) : sc.getMonths(data('ano'), data('mes'))",
+        "_row_num": 5
+      },
+      "exclude": {
+        "calculation_name": "exclude",
+        "calculation": "calculates.idade_mes()<3 || calculates.idade_mes()>59",
+        "_row_num": 6
+      },
+      "texto_display": {
+        "calculation_name": "texto_display",
+        "calculation": "calculates.idade_mes()<3 ? (\"Menor que 3 meses\") : calculates.idade_mes()>59 ? (\"Maior de 59 meses\") : (\"\")",
+        "_row_num": 7
+      },
+      "date_rastreio_display": {
+        "calculation_name": "date_rastreio_display",
+        "calculation": "adate.display(data('date_rastreio'))",
+        "_row_num": 9
+      },
+      "dn_display": {
+        "calculation_name": "dn_display",
+        "calculation": "adate.display(data('dn'))",
+        "_row_num": 10
+      },
+      "febre_display": {
+        "calculation_name": "febre_display",
+        "calculation": "data('febre') == '1' ? 'SIM' : 'NAO'",
+        "_row_num": 11
+      },
+      "dn_idade_display": {
+        "calculation_name": "dn_idade_display",
+        "calculation": "data('DOB_ou_idade')=='1' ? (\"Data de nascimento é \" + calculates.dn_display() ) : (\"Tem \" +data('ano')+\" anos e \" + data('mes') + \" meses\")",
+        "_row_num": 12
+      }
+    },
+    "model": {
+      "date_rastreio": {
+        "_defn": [
+          {
+            "_row_num": 4,
+            "section_name": "model"
+          }
+        ],
+        "type": "assign",
+        "elementKey": "date_rastreio"
+      },
+      "id_rastreio": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 11,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 5,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "id_rastreio"
+      },
+      "region": {
+        "type": "string",
+        "valuesList": "region",
+        "_defn": [
+          {
+            "_row_num": 9,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 6,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "region"
+      },
+      "cs": {
+        "type": "string",
+        "valuesList": "cs",
+        "_defn": [
+          {
+            "_row_num": 10,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 7,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "cs"
+      },
+      "nome": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 14,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 8,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "nome"
+      },
+      "DOB_ou_idade": {
+        "type": "string",
+        "valuesList": "DOB_ou_idade",
+        "_defn": [
+          {
+            "_row_num": 16,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 9,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "DOB_ou_idade"
+      },
+      "dn": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 20,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 10,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "dn"
+      },
+      "ano": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 22,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 11,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "ano"
+      },
+      "mes": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 23,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 12,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "mes"
+      },
+      "febre": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 35,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 13,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "febre"
+      },
+      "temperatura": {
+        "type": "number",
+        "_defn": [
+          {
+            "_row_num": 36,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 14,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "temperatura"
+      },
+      "TDR": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 39,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 15,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "TDR"
+      },
+      "resultado_TDR": {
+        "type": "string",
+        "valuesList": "resultado",
+        "_defn": [
+          {
+            "_row_num": 43,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 16,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "resultado_TDR"
+      },
+      "via_oral": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 47,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 17,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "via_oral"
+      },
+      "desnutrido": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 48,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 18,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "desnutrido"
+      },
+      "paludismo_grave": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 49,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 19,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "paludismo_grave"
+      },
+      "outra_condicao": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 50,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 20,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "outra_condicao"
+      },
+      "especificar_condicao": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 56,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 21,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "especificar_condicao"
+      },
+      "consentimento": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 67,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 22,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "consentimento"
+      },
+      "exclusao": {
+        "type": "string",
+        "valuesList": "ok",
+        "_defn": [
+          {
+            "_row_num": 88,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 25,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "exclusao"
+      },
+      "razao": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 26,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "razao"
+      },
+      "comentario": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 96,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 27,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "comentario"
+      },
+      "id_visita": {
+        "_defn": [
+          {
+            "_row_num": 28,
+            "section_name": "model"
+          }
+        ],
+        "type": "assign",
+        "elementKey": "id_visita"
+      },
+      "tipo_condicao": {
+        "_defn": [
+          {
+            "_row_num": 54,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "outra_condicao",
+        "elementKey": "tipo_condicao"
+      }
+    },
+    "section_names": [
+      "initial",
+      "survey"
+    ],
+    "sections": {
+      "survey": {
+        "section_name": "survey",
+        "nested_sections": {},
+        "reachable_sections": {},
+        "prompts": [
+          {
+            "type": "note",
+            "name": "mostra_data",
+            "display": {
+              "prompt": {
+                "text": "Data:{{calculates.hoje_display}}"
+              }
+            },
+            "_row_num": 8,
+            "__rowNum__": 7,
+            "_token_type": "prompt",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen5",
+            "promptIdx": 0
+          },
+          {
+            "type": "select_one",
+            "values_list": "region",
+            "name": "region",
+            "display": {
+              "prompt": {
+                "text": "Região"
+              }
+            },
+            "required": true,
+            "_row_num": 9,
+            "__rowNum__": 8,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen5",
+            "promptIdx": 1
+          },
+          {
+            "type": "select_one",
+            "values_list": "cs",
+            "name": "cs",
+            "display": {
+              "prompt": {
+                "text": "Centro de Saúde"
+              }
+            },
+            "required": true,
+            "choice_filter": "choice_item.region === data('region')",
+            "_row_num": 10,
+            "__rowNum__": 9,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen5",
+            "promptIdx": 2
+          },
+          {
+            "type": "integer",
+            "name": "id_rastreio",
+            "display": {
+              "prompt": {
+                "text": "Nº de rastreio:"
+              }
+            },
+            "required": true,
+            "_row_num": 11,
+            "__rowNum__": 10,
+            "_token_type": "prompt",
+            "_type": "integer",
+            "_branch_label_enclosing_screen": "survey/_screen5",
+            "promptIdx": 3
+          },
+          {
+            "type": "text",
+            "name": "nome",
+            "display": {
+              "prompt": {
+                "text": "Nome e Apelido"
+              }
+            },
+            "required": true,
+            "_row_num": 14,
+            "__rowNum__": 13,
+            "_token_type": "prompt",
+            "_type": "text",
+            "_branch_label_enclosing_screen": "survey/_screen13",
+            "promptIdx": 4
+          },
+          {
+            "type": "select_one",
+            "values_list": "DOB_ou_idade",
+            "name": "DOB_ou_idade",
+            "display": {
+              "prompt": {
+                "text": "Idade ou data de nascimento?"
+              }
+            },
+            "required": true,
+            "_row_num": 16,
+            "__rowNum__": 15,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen13",
+            "promptIdx": 5
+          },
+          {
+            "type": "adate",
+            "name": "dn",
+            "display": {
+              "prompt": {
+                "text": "Data de Nascimento"
+              },
+              "adate": {
+                "fromYear": 2014,
+                "toYear": 2020
+              }
+            },
+            "required": "data('DOB_ou_idade')=='1'",
+            "_row_num": 20,
+            "__rowNum__": 19,
+            "_token_type": "prompt",
+            "_type": "adate",
+            "_branch_label_enclosing_screen": "survey/_screen20",
+            "promptIdx": 6
+          },
+          {
+            "type": "integer",
+            "name": "ano",
+            "display": {
+              "prompt": {
+                "text": "Idades em anos"
+              },
+              "hint": {
+                "text": "se for menos de 1 ano coloca zero"
+              }
+            },
+            "constraint": "data('ano')<5",
+            "required": "data('DOB_ou_idade')=='2'",
+            "_row_num": 22,
+            "__rowNum__": 21,
+            "_token_type": "prompt",
+            "_type": "integer",
+            "_branch_label_enclosing_screen": "survey/_screen22",
+            "promptIdx": 7
+          },
+          {
+            "type": "integer",
+            "name": "mes",
+            "display": {
+              "prompt": {
+                "text": "Idade em meses"
+              },
+              "hint": {
+                "text": "se nao souber coloca zero, se for 12 acrescenta 1 ano"
+              }
+            },
+            "constraint": "data('mes')<12",
+            "required": "data('DOB_ou_idade')=='2'",
+            "_row_num": 23,
+            "__rowNum__": 22,
+            "_token_type": "prompt",
+            "_type": "integer",
+            "_branch_label_enclosing_screen": "survey/_screen23",
+            "promptIdx": 8
+          },
+          {
+            "type": "note",
+            "name": "exclusao",
+            "display": {
+              "prompt": {
+                "text": "A crianca não pode entrar no estudo por ter  {{calculates.idade_mes}} meses que é {{calculates.texto_diplay}}"
+              }
+            },
+            "constraint": "!calculates.exclude()",
+            "required": "calculates.exclude()",
+            "_row_num": 27,
+            "__rowNum__": 26,
+            "_token_type": "prompt",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen27",
+            "promptIdx": 9
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "febre",
+            "display": {
+              "prompt": {
+                "text": "Tem Febre?"
+              }
+            },
+            "required": "!calculates.exclude()",
+            "_row_num": 35,
+            "__rowNum__": 34,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen34",
+            "promptIdx": 10
+          },
+          {
+            "type": "decimal",
+            "name": "temperatura",
+            "display": {
+              "prompt": {
+                "text": "Temperatura em ºC?"
+              },
+              "hint": {
+                "text": "se não for tomada coloca 888"
+              },
+              "constraint_message": {
+                "text": "revisa o valor introduzido, a temperatura deve ser en grau celsius e nao fahrenheit"
+              }
+            },
+            "constraint": "data('temperatura')==888 || (data('temperatura')>=34  && data('temperatura')<=43)",
+            "default": 37,
+            "_row_num": 36,
+            "__rowNum__": 35,
+            "_token_type": "prompt",
+            "_type": "decimal",
+            "_branch_label_enclosing_screen": "survey/_screen34",
+            "promptIdx": 11
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "TDR",
+            "display": {
+              "prompt": {
+                "text": "Fez TDR?"
+              },
+              "constraint_message": {
+                "text": "Só deve abrir a ficha se fez TDR"
+              }
+            },
+            "constraint": "data('TDR')=='1'",
+            "required": "!calculates.exclude()",
+            "_row_num": 39,
+            "__rowNum__": 38,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen39",
+            "promptIdx": 12
+          },
+          {
+            "type": "select_one",
+            "values_list": "resultado",
+            "name": "resultado_TDR",
+            "display": {
+              "prompt": {
+                "text": "Resultado de TDR"
+              },
+              "constraint_message": {
+                "text": "Só deve abrir a ficha se tiver TDR positivo"
+              }
+            },
+            "constraint": "data('resultado_TDR')=='1'",
+            "required": "data('TDR')=='1'",
+            "_row_num": 43,
+            "__rowNum__": 42,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen43",
+            "promptIdx": 13
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "via_oral",
+            "display": {
+              "prompt": {
+                "text": "Tem a capacidade de deglutir a medicação oral?"
+              }
+            },
+            "required": "data('resultado_TDR')=='1'",
+            "_row_num": 47,
+            "__rowNum__": 46,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen47",
+            "promptIdx": 14
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "desnutrido",
+            "display": {
+              "prompt": {
+                "text": "A criança está desnutrida?"
+              }
+            },
+            "required": "data('resultado_TDR')=='1'",
+            "_row_num": 48,
+            "__rowNum__": 47,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen48",
+            "promptIdx": 15
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "paludismo_grave",
+            "display": {
+              "prompt": {
+                "text": "A criança tem Paludismo grave?"
+              }
+            },
+            "required": "data('resultado_TDR')=='1'",
+            "_row_num": 49,
+            "__rowNum__": 48,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen49",
+            "promptIdx": 16
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "outra_condicao",
+            "display": {
+              "prompt": {
+                "text": "A criança tem outra condiação?"
+              }
+            },
+            "required": "data('resultado_TDR')=='1'",
+            "_row_num": 50,
+            "__rowNum__": 49,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen50",
+            "promptIdx": 17
+          },
+          {
+            "type": "select_one",
+            "values_list": "outra_condicao",
+            "name": "tipo_condicao",
+            "display": {
+              "prompt": {
+                "text": "Que tipo de condição?"
+              }
+            },
+            "required": "data('outra_condicao')=='1'",
+            "_row_num": 54,
+            "__rowNum__": 53,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen53",
+            "promptIdx": 18
+          },
+          {
+            "type": "text",
+            "name": "especificar_condicao",
+            "display": {
+              "prompt": {
+                "text": "Se For outra: especifique a outra condição que a criança tem?"
+              }
+            },
+            "required": "data('outra_condicao')=='1'",
+            "_row_num": 56,
+            "__rowNum__": 55,
+            "_token_type": "prompt",
+            "_type": "text",
+            "_branch_label_enclosing_screen": "survey/_screen53",
+            "promptIdx": 19
+          },
+          {
+            "type": "note",
+            "name": "nota_condicao",
+            "display": {
+              "prompt": {
+                "text": "A crinça reune todas as condições de participar no estudo"
+              }
+            },
+            "_row_num": 66,
+            "__rowNum__": 65,
+            "_token_type": "prompt",
+            "_type": "note",
+            "_branch_label_enclosing_screen": "survey/_screen65",
+            "promptIdx": 20
+          },
+          {
+            "type": "select_one",
+            "values_list": "yesno",
+            "name": "consentimento",
+            "display": {
+              "prompt": {
+                "text": "Os pais e a criança aceitaram participar no estudo?"
+              }
+            },
+            "required": "data('via_oral')=='1' && data('desnutrido')=='2' && data('paludismo_grave')=='2'",
+            "_row_num": 67,
+            "__rowNum__": 66,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen65",
+            "promptIdx": 21
+          },
+          {
+            "type": "select_one",
+            "values_list": "ok",
+            "name": "exclusao",
+            "display": {
+              "prompt": {
+                "text": "Agradeça os pais ou encarregados da criança, e exlpica com a base em algumas respostas dadas ou resultados dos analises e/ou exame fisico medico a criança não reune as condições para participar no estudo."
+              }
+            },
+            "required": "data('via_oral')=='2' || data('desnutrido')=='1' || data('paludismo_grave')=='1' || data('outra_condicao')=='1' || data('consentimento')=='2'",
+            "_row_num": 88,
+            "__rowNum__": 87,
+            "_token_type": "prompt",
+            "_type": "select_one",
+            "_branch_label_enclosing_screen": "survey/_screen88",
+            "promptIdx": 22
+          },
+          {
+            "type": "text",
+            "name": "comentario",
+            "display": {
+              "prompt": {
+                "text": "A exibição agora está completa, por favor, vá para a próxima página para finalizar suas respostas."
+              },
+              "hint": {
+                "text": "Comentario"
+              }
+            },
+            "_row_num": 96,
+            "__rowNum__": 95,
+            "_token_type": "prompt",
+            "_type": "text",
+            "_branch_label_enclosing_screen": "survey/_screen96",
+            "promptIdx": 23
+          },
+          {
+            "_token_type": "prompt",
+            "type": "contents",
+            "_type": "contents",
+            "_row_num": 97,
+            "_branch_label_enclosing_screen": "survey/_screen97",
+            "promptIdx": 24
+          }
+        ],
+        "validation_tag_map": {
+          "finalize": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            21,
+            22
+          ]
+        },
+        "operations": [
+          {
+            "clause": "begin screen",
+            "_row_num": 5,
+            "__rowNum__": 4,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 12,
+              "__rowNum__": 11,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nassign('date_rastreio', adate.today());\nassign('id_visita', adate.ageInDays(data('date_rastreio')));\nactivePromptIndicies.push(0);\nactivePromptIndicies.push(1);\nactivePromptIndicies.push(2);\nactivePromptIndicies.push(3);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 0
+          },
+          {
+            "clause": "begin screen",
+            "_row_num": 13,
+            "__rowNum__": 12,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 18,
+              "__rowNum__": 17,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(4);\nactivePromptIndicies.push(5);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 1
+          },
+          {
+            "clause": "if",
+            "condition": "data('DOB_ou_idade')=='1'",
+            "_row_num": 19,
+            "__rowNum__": 18,
+            "_token_type": "goto_label",
+            "_branch_label": "_then19",
+            "operationIdx": 2
+          },
+          {
+            "clause": "else",
+            "_token_type": "goto_label",
+            "_branch_label": "_else21",
+            "_row_num": 21,
+            "operationIdx": 3
+          },
+          {
+            "_row_num": 20,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(6);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 4
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif25",
+            "_row_num": 25,
+            "operationIdx": 5
+          },
+          {
+            "_row_num": 22,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(7);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 6
+          },
+          {
+            "_row_num": 23,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(8);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 7
+          },
+          {
+            "clause": "if",
+            "condition": "calculates.exclude()",
+            "_row_num": 26,
+            "__rowNum__": 25,
+            "_token_type": "goto_label",
+            "_branch_label": "_then26",
+            "operationIdx": 8
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_else28",
+            "_row_num": 28,
+            "operationIdx": 9
+          },
+          {
+            "_row_num": 27,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(9);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 10
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif28",
+            "_row_num": 28,
+            "operationIdx": 11
+          },
+          {
+            "clause": "goto exclusao",
+            "condition": "calculates.exclude()",
+            "_row_num": 29,
+            "__rowNum__": 28,
+            "_token_type": "goto_label",
+            "_branch_label": "exclusao",
+            "operationIdx": 12
+          },
+          {
+            "clause": "begin screen",
+            "_row_num": 34,
+            "__rowNum__": 33,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 37,
+              "__rowNum__": 36,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(10);\nactivePromptIndicies.push(11);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 13
+          },
+          {
+            "_row_num": 39,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(12);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 14
+          },
+          {
+            "clause": "goto exclusao",
+            "condition": "data('TDR')=='2'",
+            "_row_num": 41,
+            "__rowNum__": 40,
+            "_token_type": "goto_label",
+            "_branch_label": "exclusao",
+            "operationIdx": 15
+          },
+          {
+            "_row_num": 43,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(13);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 16
+          },
+          {
+            "clause": "goto exclusao",
+            "condition": "data('resultado_TDR')=='2'",
+            "_row_num": 45,
+            "__rowNum__": 44,
+            "_token_type": "goto_label",
+            "_branch_label": "exclusao",
+            "operationIdx": 17
+          },
+          {
+            "_row_num": 47,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(14);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 18
+          },
+          {
+            "_row_num": 48,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(15);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 19
+          },
+          {
+            "_row_num": 49,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(16);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 20
+          },
+          {
+            "_row_num": 50,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(17);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 21
+          },
+          {
+            "clause": "if // condicao",
+            "condition": "data('outra_condicao')=='1'",
+            "_row_num": 51,
+            "__rowNum__": 50,
+            "_token_type": "goto_label",
+            "_tag_name": "condicao",
+            "_branch_label": "_then51",
+            "operationIdx": 22
+          },
+          {
+            "clause": "end if // condicao",
+            "_token_type": "goto_label",
+            "_branch_label": "_else60",
+            "_row_num": 60,
+            "operationIdx": 23
+          },
+          {
+            "clause": "begin screen",
+            "_row_num": 53,
+            "__rowNum__": 52,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 59,
+              "__rowNum__": 58,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(18);\nif (data('tipo_condicao')=='1') {\nactivePromptIndicies.push(19);\n}\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 24
+          },
+          {
+            "clause": "end if // condicao",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif60",
+            "_row_num": 60,
+            "operationIdx": 25
+          },
+          {
+            "clause": "if",
+            "condition": "data('via_oral')=='2' || data('desnutrido')=='1' || data('paludismo_grave')=='1' || data('outra_condicao')=='1'",
+            "_row_num": 62,
+            "__rowNum__": 61,
+            "_token_type": "goto_label",
+            "_branch_label": "_then62",
+            "operationIdx": 26
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_else64",
+            "_row_num": 64,
+            "operationIdx": 27
+          },
+          {
+            "clause": "goto exclusao",
+            "_row_num": 63,
+            "__rowNum__": 62,
+            "_token_type": "goto_label",
+            "_branch_label": "exclusao",
+            "operationIdx": 28
+          },
+          {
+            "clause": "end if",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif64",
+            "_row_num": 64,
+            "operationIdx": 29
+          },
+          {
+            "clause": "begin screen",
+            "_row_num": 65,
+            "__rowNum__": 64,
+            "_token_type": "begin_screen",
+            "_end_screen_clause": {
+              "clause": "end screen",
+              "_row_num": 68,
+              "__rowNum__": 67,
+              "_token_type": "end_screen"
+            },
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(20);\nactivePromptIndicies.push(21);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 30
+          },
+          {
+            "clause": "goto exclusao",
+            "condition": "data('consentimento')=='2'",
+            "_row_num": 69,
+            "__rowNum__": 68,
+            "_token_type": "goto_label",
+            "_branch_label": "exclusao",
+            "operationIdx": 31
+          },
+          {
+            "clause": "goto ending",
+            "_row_num": 71,
+            "__rowNum__": 70,
+            "_token_type": "goto_label",
+            "_branch_label": "ending",
+            "operationIdx": 32
+          },
+          {
+            "_row_num": 88,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(22);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 33
+          },
+          {
+            "clause": "goto ending",
+            "_row_num": 89,
+            "__rowNum__": 88,
+            "_token_type": "goto_label",
+            "_branch_label": "ending",
+            "operationIdx": 34
+          },
+          {
+            "_row_num": 96,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(23);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 35
+          },
+          {
+            "_token_type": "exit_section",
+            "clause": "exit section",
+            "_row_num": 97,
+            "operationIdx": 36
+          },
+          {
+            "_row_num": 97,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(24);\n\nreturn activePromptIndicies;\n}\n",
+            "screen": {
+              "hideInBackHistory": true
+            },
+            "operationIdx": 37
+          },
+          {
+            "_token_type": "resume",
+            "clause": "resume",
+            "_row_num": 97,
+            "operationIdx": 38
+          }
+        ],
+        "branch_label_map": {
+          "_screen5": 0,
+          "_screen13": 1,
+          "_then19": 4,
+          "_screen20": 4,
+          "_else21": 6,
+          "_screen22": 6,
+          "_screen23": 7,
+          "_endif25": 8,
+          "_then26": 10,
+          "_screen27": 10,
+          "_else28": 12,
+          "_endif28": 12,
+          "_screen34": 13,
+          "_screen39": 14,
+          "_screen43": 16,
+          "_screen47": 18,
+          "_screen48": 19,
+          "_screen49": 20,
+          "_screen50": 21,
+          "_then51": 24,
+          "_screen53": 24,
+          "_else60": 26,
+          "_endif60": 26,
+          "_then62": 28,
+          "_else64": 30,
+          "_endif64": 30,
+          "_screen65": 30,
+          "exclusao": 33,
+          "_screen88": 33,
+          "ending": 35,
+          "_screen96": 35,
+          "_contents": 37,
+          "_screen97": 37
+        }
+      },
+      "initial": {
+        "section_name": "initial",
+        "nested_sections": {
+          "survey": true
+        },
+        "reachable_sections": {
+          "survey": true
+        },
+        "prompts": [
+          {
+            "_row_num": 3,
+            "type": "opening",
+            "display": {
+              "text": "Edit form"
+            },
+            "_token_type": "prompt",
+            "_type": "opening",
+            "_branch_label_enclosing_screen": "initial/_screen3",
+            "promptIdx": 0
+          },
+          {
+            "_row_num": 4,
+            "clause": "do section survey",
+            "_token_type": "prompt",
+            "_do_section_name": "survey",
+            "_type": "_section",
+            "promptIdx": 1,
+            "display": {
+              "title": {
+                "text": "Rastreio de caso"
+              }
+            },
+            "_branch_label_enclosing_screen": "survey/0"
+          },
+          {
+            "_row_num": 5,
+            "type": "finalize",
+            "display": {
+              "text": "Save form"
+            },
+            "_token_type": "prompt",
+            "_type": "finalize",
+            "_branch_label_enclosing_screen": "initial/_screen5",
+            "promptIdx": 2
+          },
+          {
+            "_row_num": 7,
+            "type": "instances",
+            "display": {
+              "text": "Saved instances"
+            },
+            "_token_type": "prompt",
+            "_type": "instances",
+            "_branch_label_enclosing_screen": "initial/_screen7",
+            "promptIdx": 3
+          },
+          {
+            "_token_type": "prompt",
+            "type": "contents",
+            "_type": "contents",
+            "_row_num": 9,
+            "_branch_label_enclosing_screen": "initial/_screen9",
+            "promptIdx": 4
+          }
+        ],
+        "validation_tag_map": {
+          "finalize": []
+        },
+        "operations": [
+          {
+            "_row_num": 2,
+            "clause": "if // start",
+            "condition": "(opendatakit.getCurrentInstanceId() != null)",
+            "_token_type": "goto_label",
+            "_tag_name": "start",
+            "_branch_label": "_then2",
+            "operationIdx": 0
+          },
+          {
+            "clause": "else // start",
+            "_token_type": "goto_label",
+            "_branch_label": "_else6",
+            "_row_num": 6,
+            "operationIdx": 1
+          },
+          {
+            "_row_num": 3,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(0);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 2
+          },
+          {
+            "_row_num": 4,
+            "clause": "do section survey",
+            "_token_type": "do_section",
+            "_do_section_name": "survey",
+            "operationIdx": 3
+          },
+          {
+            "_row_num": 5,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(2);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 4
+          },
+          {
+            "clause": "end if // start",
+            "_token_type": "goto_label",
+            "_branch_label": "_endif8",
+            "_row_num": 8,
+            "operationIdx": 5
+          },
+          {
+            "_row_num": 7,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(3);\n\nreturn activePromptIndicies;\n}\n",
+            "operationIdx": 6
+          },
+          {
+            "_token_type": "exit_section",
+            "clause": "exit section",
+            "_row_num": 9,
+            "operationIdx": 7
+          },
+          {
+            "_row_num": 9,
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(4);\n\nreturn activePromptIndicies;\n}\n",
+            "screen": {
+              "hideInBackHistory": true
+            },
+            "operationIdx": 8
+          },
+          {
+            "_token_type": "resume",
+            "clause": "resume",
+            "_row_num": 9,
+            "operationIdx": 9
+          },
+          {
+            "_token_type": "validate",
+            "clause": "validate finalize",
+            "_sweep_name": "finalize",
+            "_row_num": 9,
+            "screen": {
+              "hideInBackHistory": true
+            },
+            "operationIdx": 10
+          },
+          {
+            "_token_type": "save_and_terminate",
+            "clause": "save and terminate",
+            "calculation": true,
+            "_row_num": 9,
+            "screen": {
+              "hideInBackHistory": true
+            },
+            "operationIdx": 11
+          },
+          {
+            "_token_type": "resume",
+            "clause": "resume",
+            "_row_num": 9,
+            "operationIdx": 12
+          }
+        ],
+        "branch_label_map": {
+          "_then2": 2,
+          "_screen3": 2,
+          "_screen5": 4,
+          "_else6": 6,
+          "_screen7": 6,
+          "_endif8": 7,
+          "_contents": 8,
+          "_screen9": 8,
+          "_finalize": 10
+        }
+      }
+    },
+    "dataTableModel": {
+      "date_rastreio": {
+        "_defn": [
+          {
+            "_row_num": 4,
+            "section_name": "model"
+          }
+        ],
+        "type": "assign",
+        "elementKey": "date_rastreio",
+        "elementName": "date_rastreio",
+        "elementSet": "data",
+        "elementPath": "date_rastreio"
+      },
+      "id_rastreio": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 11,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 5,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "id_rastreio",
+        "elementName": "id_rastreio",
+        "elementSet": "data",
+        "elementPath": "id_rastreio"
+      },
+      "region": {
+        "type": "string",
+        "valuesList": "region",
+        "_defn": [
+          {
+            "_row_num": 9,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 6,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "region",
+        "elementName": "region",
+        "elementSet": "data",
+        "elementPath": "region"
+      },
+      "cs": {
+        "type": "string",
+        "valuesList": "cs",
+        "_defn": [
+          {
+            "_row_num": 10,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 7,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "cs",
+        "elementName": "cs",
+        "elementSet": "data",
+        "elementPath": "cs"
+      },
+      "nome": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 14,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 8,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "nome",
+        "elementName": "nome",
+        "elementSet": "data",
+        "elementPath": "nome"
+      },
+      "DOB_ou_idade": {
+        "type": "string",
+        "valuesList": "DOB_ou_idade",
+        "_defn": [
+          {
+            "_row_num": 16,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 9,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "DOB_ou_idade",
+        "elementName": "DOB_ou_idade",
+        "elementSet": "data",
+        "elementPath": "DOB_ou_idade"
+      },
+      "dn": {
+        "prompt_type_name": "adate",
+        "type": "string",
+        "elementType": "string",
+        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
+        "_row_num": 3,
+        "__rowNum__": 2,
+        "_defn": [
+          {
+            "_row_num": 20,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 10,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "dn",
+        "elementName": "dn",
+        "elementSet": "data",
+        "elementPath": "dn"
+      },
+      "ano": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 22,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 11,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "ano",
+        "elementName": "ano",
+        "elementSet": "data",
+        "elementPath": "ano"
+      },
+      "mes": {
+        "type": "integer",
+        "_defn": [
+          {
+            "_row_num": 23,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 12,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "mes",
+        "elementName": "mes",
+        "elementSet": "data",
+        "elementPath": "mes"
+      },
+      "febre": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 35,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 13,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "febre",
+        "elementName": "febre",
+        "elementSet": "data",
+        "elementPath": "febre"
+      },
+      "temperatura": {
+        "type": "number",
+        "_defn": [
+          {
+            "_row_num": 36,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 14,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "temperatura",
+        "elementName": "temperatura",
+        "elementSet": "data",
+        "elementPath": "temperatura"
+      },
+      "TDR": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 39,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 15,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "TDR",
+        "elementName": "TDR",
+        "elementSet": "data",
+        "elementPath": "TDR"
+      },
+      "resultado_TDR": {
+        "type": "string",
+        "valuesList": "resultado",
+        "_defn": [
+          {
+            "_row_num": 43,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 16,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "resultado_TDR",
+        "elementName": "resultado_TDR",
+        "elementSet": "data",
+        "elementPath": "resultado_TDR"
+      },
+      "via_oral": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 47,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 17,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "via_oral",
+        "elementName": "via_oral",
+        "elementSet": "data",
+        "elementPath": "via_oral"
+      },
+      "desnutrido": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 48,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 18,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "desnutrido",
+        "elementName": "desnutrido",
+        "elementSet": "data",
+        "elementPath": "desnutrido"
+      },
+      "paludismo_grave": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 49,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 19,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "paludismo_grave",
+        "elementName": "paludismo_grave",
+        "elementSet": "data",
+        "elementPath": "paludismo_grave"
+      },
+      "outra_condicao": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 50,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 20,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "outra_condicao",
+        "elementName": "outra_condicao",
+        "elementSet": "data",
+        "elementPath": "outra_condicao"
+      },
+      "especificar_condicao": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 56,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 21,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "especificar_condicao",
+        "elementName": "especificar_condicao",
+        "elementSet": "data",
+        "elementPath": "especificar_condicao"
+      },
+      "consentimento": {
+        "type": "string",
+        "valuesList": "yesno",
+        "_defn": [
+          {
+            "_row_num": 67,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 22,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "consentimento",
+        "elementName": "consentimento",
+        "elementSet": "data",
+        "elementPath": "consentimento"
+      },
+      "exclusao": {
+        "type": "string",
+        "valuesList": "ok",
+        "_defn": [
+          {
+            "_row_num": 88,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 25,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "exclusao",
+        "elementName": "exclusao",
+        "elementSet": "data",
+        "elementPath": "exclusao"
+      },
+      "razao": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 26,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "razao",
+        "elementName": "razao",
+        "elementSet": "data",
+        "elementPath": "razao"
+      },
+      "comentario": {
+        "type": "string",
+        "_defn": [
+          {
+            "_row_num": 96,
+            "section_name": "survey"
+          },
+          {
+            "_row_num": 27,
+            "section_name": "model"
+          }
+        ],
+        "elementKey": "comentario",
+        "elementName": "comentario",
+        "elementSet": "data",
+        "elementPath": "comentario"
+      },
+      "id_visita": {
+        "_defn": [
+          {
+            "_row_num": 28,
+            "section_name": "model"
+          }
+        ],
+        "type": "assign",
+        "elementKey": "id_visita",
+        "elementName": "id_visita",
+        "elementSet": "data",
+        "elementPath": "id_visita"
+      },
+      "tipo_condicao": {
+        "_defn": [
+          {
+            "_row_num": 54,
+            "section_name": "survey"
+          }
+        ],
+        "type": "string",
+        "valuesList": "outra_condicao",
+        "elementKey": "tipo_condicao",
+        "elementName": "tipo_condicao",
+        "elementSet": "data",
+        "elementPath": "tipo_condicao"
+      },
+      "_id": {
+        "type": "string",
+        "isNotNullable": true,
+        "elementKey": "_id",
+        "elementName": "_id",
+        "elementSet": "instanceMetadata",
+        "elementPath": "_id"
+      },
+      "_row_etag": {
+        "type": "string",
+        "isNotNullable": false,
+        "elementKey": "_row_etag",
+        "elementName": "_row_etag",
+        "elementSet": "instanceMetadata",
+        "elementPath": "_row_etag"
+      },
+      "_sync_state": {
+        "type": "string",
+        "isNotNullable": true,
+        "elementKey": "_sync_state",
+        "elementName": "_sync_state",
+        "elementSet": "instanceMetadata",
+        "elementPath": "_sync_state"
+      },
+      "_conflict_type": {
+        "type": "integer",
+        "isNotNullable": false,
+        "elementKey": "_conflict_type",
+        "elementName": "_conflict_type",
+        "elementSet": "instanceMetadata",
+        "elementPath": "_conflict_type"
+      },
+      "_default_access": {
+        "type": "string",
+        "isNotNullable": false,
+        "elementKey": "_default_access",
+        "elementName": "_default_access",
+        "elementSet": "instanceMetadata",
+        "elementPath": "_default_access"
+      },
+      "_form_id": {
+        "type": "string",
+        "isNotNullable": false,
+        "elementKey": "_form_id",
+        "elementName": "_form_id",
+        "elementSet": "instanceMetadata",
+        "elementPath": "_form_id"
+      },
+      "_group_modify": {
+        "type": "string",
+        "isNotNullable": false,
+        "elementKey": "_group_modify",
+        "elementName": "_group_modify",
+        "elementSet": "instanceMetadata",
+        "elementPath": "_group_modify"
+      },
+      "_group_privileged": {
+        "type": "string",
+        "isNotNullable": false,
+        "elementKey": "_group_privileged",
+        "elementName": "_group_privileged",
+        "elementSet": "instanceMetadata",
+        "elementPath": "_group_privileged"
+      },
+      "_group_read_only": {
+        "type": "string",
+        "isNotNullable": false,
+        "elementKey": "_group_read_only",
+        "elementName": "_group_read_only",
+        "elementSet": "instanceMetadata",
+        "elementPath": "_group_read_only"
+      },
+      "_locale": {
+        "type": "string",
+        "isNotNullable": false,
+        "elementKey": "_locale",
+        "elementName": "_locale",
+        "elementSet": "instanceMetadata",
+        "elementPath": "_locale"
+      },
+      "_row_owner": {
+        "type": "string",
+        "isNotNullable": false,
+        "elementKey": "_row_owner",
+        "elementName": "_row_owner",
+        "elementSet": "instanceMetadata",
+        "elementPath": "_row_owner"
+      },
+      "_savepoint_type": {
+        "type": "string",
+        "isNotNullable": false,
+        "elementKey": "_savepoint_type",
+        "elementName": "_savepoint_type",
+        "elementSet": "instanceMetadata",
+        "elementPath": "_savepoint_type"
+      },
+      "_savepoint_timestamp": {
+        "type": "string",
+        "isNotNullable": true,
+        "elementKey": "_savepoint_timestamp",
+        "elementName": "_savepoint_timestamp",
+        "elementSet": "instanceMetadata",
+        "elementPath": "_savepoint_timestamp"
+      },
+      "_savepoint_creator": {
+        "type": "string",
+        "isNotNullable": false,
+        "elementKey": "_savepoint_creator",
+        "elementName": "_savepoint_creator",
+        "elementSet": "instanceMetadata",
+        "elementPath": "_savepoint_creator"
+      }
+    },
+    "properties": [
+      {
+        "_partition": "Column",
+        "_aspect": "DOB_ou_idade",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"DOB_ou_idade\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Data de Nascimento\"}},\"_row_num\":5},{\"choice_list_name\":\"DOB_ou_idade\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Idade\"}},\"_row_num\":6}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "TDR",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "consentimento",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "cs",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"cs\",\"data_value\":\"bafata\",\"display\":{\"title\":{\"text\":\"Bafatá\"}},\"region\":\"bafata\",\"_row_num\":15},{\"choice_list_name\":\"cs\",\"data_value\":\"bambadinca\",\"display\":{\"title\":{\"text\":\"Bambadinca\"}},\"region\":\"bafata\",\"_row_num\":16},{\"choice_list_name\":\"cs\",\"data_value\":\"ganmamudo\",\"display\":{\"title\":{\"text\":\"Gã-Mamudo\"}},\"region\":\"bafata\",\"_row_num\":17},{\"choice_list_name\":\"cs\",\"data_value\":\"gabu\",\"display\":{\"title\":{\"text\":\"Gabú\"}},\"region\":\"gabu\",\"_row_num\":18},{\"choice_list_name\":\"cs\",\"data_value\":\"sonaco\",\"display\":{\"title\":{\"text\":\"Sonaco\"}},\"region\":\"gabu\",\"_row_num\":19},{\"choice_list_name\":\"cs\",\"data_value\":\"pitche\",\"display\":{\"title\":{\"text\":\"Pitche\"}},\"region\":\"gabu\",\"_row_num\":20}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "desnutrido",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "exclusao",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"ok\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"OK\"}},\"_row_num\":31}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "febre",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "outra_condicao",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "paludismo_grave",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "region",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"region\",\"data_value\":\"bafata\",\"display\":{\"title\":{\"text\":\"Bafatá\"}},\"_row_num\":12},{\"choice_list_name\":\"region\",\"data_value\":\"gabu\",\"display\":{\"title\":{\"text\":\"Gabú\"}},\"_row_num\":13}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "resultado_TDR",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"resultado\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Positivo\"}},\"_row_num\":28},{\"choice_list_name\":\"resultado\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Negativo\"}},\"_row_num\":29}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "tipo_condicao",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"outra_condicao\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Febre causada por outra doença\"}},\"_row_num\":34},{\"choice_list_name\":\"outra_condicao\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"doença crónica/grave subjacente\"}},\"_row_num\":35},{\"choice_list_name\":\"outra_condicao\",\"data_value\":3,\"display\":{\"title\":{\"text\":\"meducação regulas interfere ou contraindicação de QPS\"}},\"_row_num\":36},{\"choice_list_name\":\"outra_condicao\",\"data_value\":4,\"display\":{\"title\":{\"text\":\"Outra condição\"}},\"_row_num\":37}]"
+      },
+      {
+        "_partition": "Column",
+        "_aspect": "via_oral",
+        "_key": "displayChoicesList",
+        "_type": "object",
+        "_value": "[{\"choice_list_name\":\"yesno\",\"data_value\":1,\"display\":{\"title\":{\"text\":\"Sim\"}},\"_row_num\":8},{\"choice_list_name\":\"yesno\",\"data_value\":2,\"display\":{\"title\":{\"text\":\"Não\"}},\"_row_num\":9}]"
+      },
+      {
+        "_partition": "FormType",
+        "_aspect": "default",
+        "_key": "FormType.formType",
+        "_type": "string",
+        "_value": "SURVEY"
+      },
+      {
+        "_partition": "SurveyUtil",
+        "_aspect": "default",
+        "_key": "SurveyUtil.formId",
+        "_type": "string",
+        "_value": "rastreio"
+      },
+      {
+        "_partition": "Table",
+        "_aspect": "default",
+        "_key": "defaultViewType",
+        "_type": "string",
+        "_value": "SPREADSHEET"
+      },
+      {
+        "_partition": "Table",
+        "_aspect": "default",
+        "_key": "displayName",
+        "_type": "object",
+        "_value": "{\"text\":\"Rastreio de caso\"}"
+      }
+    ]
+  }
+}

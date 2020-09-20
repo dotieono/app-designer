@@ -1,0 +1,27 @@
+
+#content-table {
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.tab-item.active {
+    background-color:white;
+}
+.odk-formlogo {
+    width: 90vw;
+}
+
+.odk-base .select-label {
+
+    min-width: 180px;
+    margin-top: 20px;
+    margin-right:20px;
+    margin-bottom:20px;
+}
+
+
+.odk-label {
+    font-size: xx-large;
+}
+.odk-hint {
+    font-size: large;
+}

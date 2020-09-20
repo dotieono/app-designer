@@ -1,4 +1,0 @@
-table_keys=QPS, ronda, codigos
-QPS.filename=config/assets/csv/QPS.csv
-ronda.filename=config/assets/csv/ronda.csv
-codigos.filename=config/assets/csv/codigos.csv
