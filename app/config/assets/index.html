@@ -1,33 +1,36 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-   <head>
+    <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="libs/ratchet-2.0.2/css/ratchet.css" type="text/css" rel="stylesheet" />
         <link href="libs/ratchet-2.0.2/css/ratchet-theme-android.css" type="text/css" rel="stylesheet" />
-        <link href="css/tab-chooser.css" type="text/css" rel="stylesheet" />
-        <link href="css/odk-survey.css" type="text/css" rel="stylesheet" />
+        <link href="css/demo-chooser.css" type="text/css" rel="stylesheet" />
         <script type="text/javascript" src="commonDefinitions.js"></script>
         <script type="text/javascript" src="libs/jquery-3.2.1.js"></script>
         <script type="text/javascript" src="libs/jquery-migrate-3.0.0.js"></script>
         <script type="text/javascript" src="../../system/js/odkCommon.js"></script>
         <script type="text/javascript" src="../../system/js/odkData.js"></script>
         <script type="text/javascript" src="../../system/tables/js/odkTables.js"></script>
-        <script type="text/javascript" src="js/tabChooser.js"></script>
+        <script type="text/javascript" src="js/demoChooser.js"></script>
     </head>
 
-  <body id="main">
-
+    <body id="main">
         <nav class="bar bar-tab">
-          <a id="centroTab" class="tab-item active" href="#">
-            CENTRO DE SAUDE
+          <a id="psbTab" class="tab-item" href="#" style="display:none;">
+            PSB
           </a>
-          <a id="visitaTab" class="tab-item active" href="#">
-           VISITA
+          <a id="ascTab" class="tab-item active" href="#">
+            ASC
           </a>
-          <a id="labTab" class="tab-item" href="#">
-           LABORATORIO
+          <!-- <a id="plotterTab" class="tab-item" href="#">
+            Plot
           </a>
-         
+          <a id="geotaggerTab" class="tab-item" href="#">
+            Geo
+          </a> 
+          <a id="jgiTab" class="tab-item" href="#">
+            JGI
+          </a> --> 
         </nav>
 
         <table id="content-table">
@@ -40,7 +43,7 @@
             <td valign="bottom">
               <button class="btn btn-primary btn-block btn-launch" id="launch-button">
                 Entrar
-              </button><br/>
+              </button>
             </td>
           </tr>
         </table>
