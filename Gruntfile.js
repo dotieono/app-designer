@@ -178,6 +178,11 @@ module.exports = function (grunt) {
                     return 'adb shell ' + str;
                 }
             },
+            adbinstall: {
+                cmd: function(str) {
+                    return 'adb install ' + str;
+                }
+            },
 			macGenConvert: {
 				cmd: function(str, formDefFile) {
 					return 'node macGenConverter.js ' + str + ' > ' + formDefFile; 
@@ -2034,6 +2039,20 @@ var zipAllFiles = function( destZipFile, filesList, completionFn ) {
             });
 
         });
+
+        grunt.registerTask('instah',
+        'Initializes a phressh Lenovo E7 tablet',
+        function eqmInit() {
+            //grunt.task.run("exec:adbshell:am force-stop org.opendatakit.".concat(apps[i]));
+            grunt.task.run("exec:adbinstall:./Tablet_Install/ODK-X_Services_v2.1.4.apk");
+            grunt.task.run("exec:adbinstall:./Tablet_Install/ODK-X_Survey_v2.1.4.apk");
+            grunt.task.run("exec:adbinstall:./Tablet_Install/ODK-X_Tables_v2.1.4.apk");
+            grunt.task.run("exec:adbinstall:./Tablet_Install/OIFilemanager.apk");
+            //grunt.task.run('adbpush-collect');
+            //grunt.task.run('adbpush-default-app');        
+            //grunt.task.run('setup');
+            
+        });    
 
     grunt.registerTask(
         "killall",

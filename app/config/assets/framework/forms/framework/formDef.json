@@ -83,11 +83,11 @@
         "_row_num": 14
       },
       {
-        "branch_label": "dados_adicional",
+        "branch_label": "ronda",
         "_row_num": 16
       },
       {
-        "url": "'?' + odkSurvey.getHashString('QPS','dados_adicional')",
+        "url": "'?' + odkSurvey.getHashString('ronda')",
         "type": "external_link",
         "display": {
           "prompt": {
@@ -101,11 +101,11 @@
         "_row_num": 18
       },
       {
-        "branch_label": "ronda",
+        "branch_label": "codigos",
         "_row_num": 20
       },
       {
-        "url": "'?' + odkSurvey.getHashString('ronda')",
+        "url": "'?' + odkSurvey.getHashString('codigos')",
         "type": "external_link",
         "display": {
           "prompt": {
@@ -216,10 +216,10 @@
       },
       {
         "choice_list_name": "test_forms",
-        "data_value": "dados_adicional",
+        "data_value": "codigos",
         "display": {
           "title": {
-            "text": "Dados adicionais"
+            "text": "codigos"
           }
         },
         "_row_num": 5
@@ -858,10 +858,10 @@
         },
         {
           "choice_list_name": "test_forms",
-          "data_value": "dados_adicional",
+          "data_value": "codigos",
           "display": {
             "title": {
-              "text": "Dados adicionais"
+              "text": "codigos"
             }
           },
           "_row_num": 5
@@ -1555,7 +1555,7 @@
             "promptIdx": 3
           },
           {
-            "url": "'?' + odkSurvey.getHashString('QPS','dados_adicional')",
+            "url": "'?' + odkSurvey.getHashString('ronda')",
             "type": "external_link",
             "display": {
               "prompt": {
@@ -1570,7 +1570,7 @@
             "promptIdx": 4
           },
           {
-            "url": "'?' + odkSurvey.getHashString('ronda')",
+            "url": "'?' + odkSurvey.getHashString('codigos')",
             "type": "external_link",
             "display": {
               "prompt": {
@@ -1723,9 +1723,9 @@
           "_screen9": 6,
           "inscricao": 8,
           "_screen13": 8,
-          "dados_adicional": 10,
+          "ronda": 10,
           "_screen17": 10,
-          "ronda": 12,
+          "codigos": 12,
           "_screen21": 12,
           "_contents": 15,
           "_screen23": 15

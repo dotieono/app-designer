@@ -1,0 +1,367 @@
+<html>
+<!--Menu-->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="../../system/libs/bootstrap-3.3.7-dist/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+        <link href="css/odk-survey.css" type="text/css" rel="stylesheet" />
+        <link href="css/visita.css" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="commonDefinitions.js"></script>
+        <script type="text/javascript" src="libs/jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="libs/jquery-migrate-3.0.0.js"></script>
+        <script type="text/javascript" src="../../system/libs/eonasdan/moment.min.js"></script>
+        <script type="text/javascript" src="../../system/js/odkCommon.js"></script>
+        <script type="text/javascript" src="../../system/js/odkData.js"></script>
+        <script type="text/javascript" src="../../system/tables/js/odkTables.js"></script>
+        <script type="text/javascript">
+
+        // Displays homescreen
+        function display() {
+            console.log('Loading centro v. 0.43');
+            window.adateHelper = getAdateHelper();
+            var btnNew = $("#btnCreateNew");
+            var selCs = $("#selCs");
+            $("#selCs").change(function() {
+                var newVal = $(this).val();
+                if (!confirm("Tem certeza de mudar de sector para " + newVal + "?")) {
+                    $(this).val($(this).data('val')); //set back
+                    selectByText($(this).data('val'));
+                    return;                           //abort!
+                }
+                $("#theList tr:not(:first-of-type)").remove(); // clear table except header
+                $(this).data('val', newVal);
+                localStorage.setItem("Sector", newVal);
+                loadList();
+            });
+
+            btnNew.on("click", function() {
+                var selVal = $("#selCs").val();
+                createNew(selVal);
+                return false;
+            })
+
+            
+            // sync button
+            var sendData = document.createElement("button");
+            sendData.setAttribute("id", "button3");
+            sendData.innerHTML = "Enviar Dados";
+            sendData.onclick = function() {
+              odkCommon.doAction(null, "org.opendatakit.services.sync.actions.activities.SyncActivity", {"componentPackage": "org.opendatakit.services", "componentActivity": "org.opendatakit.services.sync.actions.activities.SyncActivity"});
+            }
+            document.getElementById("wrapper").appendChild(sendData);    
+
+            setTimeout(restoreState, 10);
+            setTimeout(loadList, 100);
+        }
+        
+        function loadList() {            
+            var successFn = function( result ) {
+                var persons = [];
+                for (var row = 0; row < result.getCount(); row++) {
+                    var id_formsQPS = result.getData(row,"_id"); // or _row_etag 
+                    var nome_casa = result.getData(row,"nome_casa");
+                    var nome =  result.getData(row,"nome");
+                    var sexo =  result.getData(row,"sexo");
+                    var Data_ou_idade = result.getData(row,"Data_ou_idade");
+                    var dn =  result.getData(row,"dn");
+                    var ano =  result.getData(row,"ano");
+                    var mes =  result.getData(row,"mes");
+                    var af =  result.getData(row,"af");
+                    var INC_ID =  result.getData(row,"INC_ID");
+                    var p = {
+                        id_formsQPS,
+                        nome_casa,
+                        nome,
+                        sexo,
+                        dn,
+                        ano,
+                        mes,
+                        af,
+                        INC_ID,
+                    }
+                    persons.push(p);
+                }
+                populateList(persons);
+                return;
+            }
+            var failureFn = function( errorMsg ) {
+                console.error('Failed to get persons from database: ' + errorMsg);
+                alert(errorMsg);
+            }
+
+            var selCs = $("#selCs").val();
+
+            var sql = 'SELECT _id, nome_casa, af, nome, sexo, Data_ou_idade, ano, mes, dn AS INC_ID FROM QPS WHERE id_estudo = "' + id_to_find + '" COLLATE NOCASE AND inc._savepoint_type = "COMPLETE"';
+            sql = sql + 'region = "' + getRegion(selCs) + '" COLLATE NOCASE AND ';
+            sql = sql + 'sector = "' + selCs + '" COLLATE NOCASE AND ';
+            sql = sql + 'data_inscricao = "' + todayAdate() + '" ORDER BY INC_ID, _savepoint_timestamp DESC';
+
+            //console.log(sql);
+
+            odkData.arbitraryQuery('QPS', sql, null, null, null, successFn, failureFn);
+        }
+       
+        function editInclusao(inclusionRowId) {
+            var tableId = "ronda";
+            var formId = "ronda"; 
+            odkTables.editRowWithSurvey(null, tableId, inclusionRowId, formId, null, null);
+        }
+
+        function addNewInclusao(rowId) {
+            var selCs = $("#selCs").val();
+
+            var cod = prompt("Introduza o codigo","");
+            if (!cod || cod.trim().length > 8) {
+                alert("O codigo não é valido")
+                return false;
+            }
+            cod = cod.trim().toUpperCase();
+
+            // Prepare SQL
+            var where = " WHERE sector = '" + selCs + "' COLLATE NOCASE AND codigo = '" + cod + "' COLLATE NOCASE";
+            var sql = "SELECT codigo, sector, region, usado, dia_usado FROM codigos" + where;
+            
+            // Define callback functions
+            var failureFn = function( errorMsg ) {
+                console.error('Failed to communicate from database: ' + errorMsg);
+                alert(errorMsg);
+            }
+
+            
+            var successFn = function( result ) {
+                if (1 != result.getCount()) {
+                    alert("O codigo não e valído para '" + selCs + "'")
+                    return;                    
+                }
+                var row = 0;
+                var codigo = result.getData(row,"codigo");
+                var usado = result.getData(row,"usado");
+                var dia_usado = result.getData(row,"dia_usado");
+            
+                if (usado == 1) {
+                    alert("O codigo está já usado");
+                    return;
+                }
+
+                // Mark code as used
+                var now = moment().format('YYYY-MM-DDTHH:mm');
+                var updateSql = "UPDATE codigos SET usado = 1, dia_usado = '" + now + "'" + where + " --commented out limit: ";
+
+                // Perform update (and also look up what was in inscricao)
+                odkData.arbitraryQuery('codigos', updateSql, null, null, null, function( res ) {
+                    console.log("Code " + cod + " marked as used");
+                    var rastLookup = "SELECT * FROM QPS WHERE _id = '" + rowId + "'";
+                    odkData.arbitraryQuery('QPS', rastLookup, null, null, null, function( updateResult ) {
+                        var row = 0;
+                        var nome_casa = updateResult.getData(row,"nome_casa");
+                        var nome =  updateResult.getData(row,"nome");
+                        var sexo =  updateResult.getData(row,"sexo");
+                        var Data_ou_idade = updateResult.getData(row,"Data_ou_idade");
+                        var dn =  updateResult.getData(row,"dn");
+                        var ano =  updateResult.getData(row,"ano");
+                        var mes =  updateResult.getData(row,"mes");
+                        var af =  updateResult.getData(row,"af");
+                        // Go ahead and open form
+                        var tableId = "ronda";
+                        var formId = "ronda"; 
+                        var dispatchStruct = null;
+                        var screenPath = null;
+                        var jsonMap = {
+                            inscricaoID_completo : rowId,
+                            nome : nome,
+                            Data_ou_idade : Data_ou_idade,
+                            dn : dn,
+                            ano : ano,
+                            mes : mes,
+                            nome_casa : nome_casa,
+                            sexo : sexo,
+                            id_paciente : codigo,
+                            af : af,
+                        }
+                        console.log("Sending data:");
+                        console.log(jsonMap);
+                        odkTables.addRowWithSurvey(dispatchStruct,tableId, formId, screenPath, jsonMap);
+                    }, failureFn);
+                }, failureFn);
+
+            }
+            // Perform query
+            odkData.arbitraryQuery('codigos', sql, null, null, null, successFn, failureFn);
+        }
+
+        function todayAdate() {
+            var today = new Date();
+            var day = today.getDate();
+            var mon = today.getMonth()+1;
+            var yea = today.getFullYear();
+            var aDate = 'D:' + day + ',M:' + mon + ',Y:' + yea;
+            return aDate;
+        }
+        
+        function populateList(listOfPersons) {
+            var theList = $("#theList");
+            listOfPersons.forEach(person => {
+                addPersonDiv(person);
+            });
+        }
+        function addPersonDiv(p) { 
+            var cssClass = "inc_" + (p.INC_ID && p.INC_ID.length > 5);
+            var action = (p.INC_ID && p.INC_ID.length > 5) 
+                ? "editInclusao(\"" + p.INC_ID + "\");"
+                : "addNewInclusao(\"" + p.id + "\");";
+                
+            var nome = (p.nome_casa && p.nome_casa.length) ? nome = p.nome + " (" + p.nome_casa + ")" : p.nome;        
+            $('#theList tr:last').after("<tr class='" + cssClass + "' data-id='" + p._id + "'><td>" + nome + "</td><td>" + getAgeString(p) + "</td><td><input onclick='" + action + "' type='button' value='&gt;&gt;'></input></td></tr>");
+        }
+
+        function restoreState() {
+            // Preload previous selections
+            var storedCentro = localStorage.getItem("centro");
+            if (storedCentro != '') {
+                selectByText(storedCentro);
+            }
+        }
+        function selectByText( txt ) {
+            $('#selCs option')
+            .filter(function() { return $.trim( $(this).text() ) == txt; })
+            .attr('selected',true);
+        }
+
+        function createNew(centro) {
+            var selVal = $("#selCs").val();             
+            if (selVal === '') {
+                alert('Qual centro?');
+                return false;
+            }
+            var data = {
+                cs: centro,
+                region: getRegion(centro)
+            }
+            odkTables.addRowWithSurvey(null,
+                    'QPS',
+                    'inscricao',
+                    null,
+                    data);
+            
+        }
+        function getAgeString(person) {
+            var theAdate = person.dn;
+            if (!theAdate) {
+                var res = (person.ano) ? person.ano : "0";
+                if (person.mes) res = res + ("." + person.mes);
+                return res;
+            }    
+            var months = adateHelper.ageInMonths(theAdate);
+            var anosTxt = (months >= 12) ? "" + adateHelper.ageInYears(theAdate) + " anos " : "";
+            return anosTxt + (adateHelper.ageInMonths(theAdate) % 12) + " meses";
+        }
+
+        function getRegion(cs) {
+            switch (cs) {
+                case "bolama":
+                case "ilha_galinhas":
+                case "sao_joao":
+                    return 'bolama'
+                case "SAB":
+                    return 'SAB'    
+                default:
+                    return 'bubaque'
+            }
+        }
+
+        
+/* adate helper */
+function getAdateHelper() {return {
+    getMoment: function(aDate) {
+        if (!aDate || aDate.length<4 || this.yearUnknown(aDate)) {
+            return false;
+        }
+        aDate = aDate.toUpperCase().replace('D:NS','D:15').replace('M:NS','M:5');
+        var d = moment(aDate, '\\D:DD,\\M:MM,\\Y:YYYY');
+        if (d.isValid()) {
+            return d;
+        }
+        return false;
+    },
+    hasUncertainty: function(aDate) {
+        return !aDate || aDate.toUpperCase().indexOf('NS')>-1;   
+    },
+    yearUnknown: function(aDate) {
+        return !aDate || aDate.toUpperCase().indexOf('Y:NS')>-1;
+    },
+    monthUnkown: function(aDate) {
+        return !aDate || aDate.toUpperCase().indexOf('M:NS')>-1;   
+    },
+    dayUnkown: function(aDate) {
+        return !aDate || aDate.toUpperCase().indexOf('D:NS')>-1;
+    },
+    ageIn: function(aDate, strUnit) {
+        var a = this.getMoment(aDate);
+        if (!a) {
+            return -9999;
+        }
+        return moment().diff(a,strUnit);
+    },
+    ageInYears: function(aDate) {
+        return this.ageIn(aDate, 'years');
+    },
+    ageInMonths: function(aDate) {
+        return this.ageIn(aDate, 'months');
+    },
+    ageInDays: function(aDate) {
+        return this.ageIn(aDate, 'days');
+    },
+    diffInYears: function(aDateA, aDateB) {
+        var a = this.getMoment(aDateA);
+        var b = this.getMoment(aDateB);
+        if (!a || !b) {
+            return -9999;
+        }
+        return b.diff(a,'years');
+    }
+}};
+        </script>
+    </head>
+
+    <body onload="display();">        
+        <form>
+            <div class="form-group" style="margin:20px;text-align:center;">
+                <label class="form-label" for="selCs">Sector Sanitario</label><br/>
+                <select id="selCs" class="form-control">
+                    <option></option>
+                    <option value="bolama">bolama</option>
+                    <option value="ilha_galinhas">ilha_galinhas</option>
+                    <option value="sao_joao">sao_joao</option>
+                    <option value="bubaque">gabu</option>
+                    <option value="canhabaque">sonaco</option>
+                    <option value="canogo">pitche</option>
+                    <option value="caravela">caravela</option>
+                    <option value="formosa">formosa</option>
+                    <option value="orango_grande">orango_grande</option>
+                    <option value="orangozinho">orangozinho</option>
+                    <option value="soga">soga</option>
+                    <option value="onhocomo">onhocomo</option>
+                    <option value="uno">uno</option>
+                    <option value="uracane">uracane</option>
+                    <option value="SAB">SAB</option>
+                </select>
+                <hr/>
+            </div>
+            <div class="form-group" style="margin:20px;height: 50px;">
+                <button id="btnCreateNew" class="form-control btn btn-lg btn-success" style="height:50px;width:50%;margin-right:10%;float:left;">Inscricao</button>
+                <a id="btnVisit" href="#" class="form-control btn btn-lg btn-primary" style="height:50px;width:40%;float:right;">Visita</a>
+            </div>
+            
+            <div style="margin:20px;">
+                <table id="theList" class="table">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>&nbsp;</th>
+                    </tr>                    
+                </table>
+            </div>
+        </form>
+        <br/>
+        <div id="wrapper"></div>
+    </body>
+</html>

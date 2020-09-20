@@ -1,0 +1,11 @@
+_id,_form_id,_locale,_savepoint_type,_savepoint_timestamp,_savepoint_creator,codigo,cs,dia_usado,region,usado,_default_access,_group_modify,_group_privileged,_group_read_only,_row_etag,_row_owner
+6fa3b822-5b1a-41b8-bfd5-fd48281d4ba6,,default,COMPLETE,2020-06-12T17:26:17.251000000,anonymous,MBL739,,,bolama,,FULL,,,,,
+39bee946-c670-4ce4-8094-b98923d2d39c,,default,COMPLETE,2020-06-12T17:26:17.299000000,anonymous,MBL438,,,bolama,,FULL,,,,,
+b6f24802-e833-4802-b416-5b623cf1a1bf,,default,COMPLETE,2020-06-12T17:26:17.330000000,anonymous,MBL201,,,bolama,,FULL,,,,,
+8e73e2d4-a10a-4157-917d-56f1ebbff1c5,,default,COMPLETE,2020-06-12T17:26:17.359000000,anonymous,MBL589,,,bolama,,FULL,,,,,
+4a6bf194-4a81-4def-bfd6-a7c2fe50185b,,default,COMPLETE,2020-06-12T17:26:17.391000000,anonymous,MBL419,,,bolama,,FULL,,,,,
+84e9d53e-d85a-4cd2-a358-171c08b20d82,,default,COMPLETE,2020-06-12T17:26:19.359000000,anonymous,MBL126,,,bolama,,FULL,,,,,
+b72b4a0f-baaf-412c-a572-38febdc9f68b,,default,COMPLETE,2020-06-12T17:26:19.385000000,anonymous,MBL350,,,bolama,,FULL,,,,,
+9b29f437-06d7-470d-8b97-5d2ddc525f60,,default,COMPLETE,2020-06-12T17:26:19.410000000,anonymous,MBL113,,,bolama,,FULL,,,,,
+5bc53b9e-c72e-470e-ad8f-9480914f2e37,,default,COMPLETE,2020-06-12T17:26:19.435000000,anonymous,MBL736,,,bolama,,FULL,,,,,
+db0566ba-d343-44a4-92a6-cf6970e83ff2,,default,COMPLETE,2020-06-12T17:26:19.460000000,anonymous,MBL406,,,bolama,,FULL,,,,,

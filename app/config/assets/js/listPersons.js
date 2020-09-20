@@ -28,7 +28,7 @@ function listPersons(region, sector, tabanca) {
         console.log("Found " + result.getCount() + " persons");
         var persons = [];
         for (var row = 0; row < result.getCount(); row++) {
-            var id = result.getData(row,"_id"); // or _row_etag
+            var id_formsQPS = result.getData(row,"_id"); // or _row_etag
             var id_paciente = result.getData(row,"id_paciente");
             var nome =  result.getData(row,"nome");
             var nome_casa =  result.getData(row,"nome_casa");
@@ -39,7 +39,7 @@ function listPersons(region, sector, tabanca) {
             var af =  result.getData(row,"AF");
             var numRondas = result.getData(row, 'numero_rondas')
             var p = {
-                id,
+                id_formsQPS,
                 id_paciente,
                 nome,
                 nome_casa,
@@ -59,7 +59,7 @@ function listPersons(region, sector, tabanca) {
     var failureFn = function( errorMsg ) {
         console.error('Failed to get persons from database: ' + errorMsg);
     }
-    var sql = 'SELECT count(ronda.id_paciente) as numero_rondas, QPS._id, QPS.  id_paciente, nome, nome_casa, sexo, dn, ano, mes, af'
+    var sql = 'SELECT count(ronda.id_paciente) as numero_rondas, QPS._id, QPS.  id_paciente, QPS.nome, QPS.nome_casa, QPS.sexo, QPS.dn, QPS.ano, QPS.mes, QPS.af'
     sql = sql + ' FROM QPS INNER JOIN ronda ON QPS.id_paciente = ronda.id_paciente'
     sql = sql + ' WHERE region = "' + region + '" COLLATE NOCASE AND sector = "' + sector + '" COLLATE NOCASE AND tabanca = "' + tabanca + '" COLLATE NOCASE'
     sql = sql + ' GROUP BY ronda.id_paciente ORDER BY QPS.id_paciente';
@@ -92,15 +92,37 @@ function getAgeString(person) {
 
 function addPersonDiv(p) {    
     var nome = (p.nome_casa && p.nome_casa.length) ? nome = p.nome + " (" + p.nome_casa + ")" : p.nome;        
-    $('#theList tr:last').after("<tr class='numron" + p.numRondas + "'><td>" + p.id_paciente + "</td><td>" + nome + "</td><td>" + getSexoString(p.sexo) + "</td><td>" + getAgeString(p) + "</td><td>" + p.af + "</td><td><input onclick='openPersonForm(\"" + p.id + "\")' type='button' value='&gt;&gt;'></input></td></tr>");
+    var row = "<tr class='numron" + p.numRondas + "'><td>" + p.id_paciente + "</td><td>" + nome + "</td><td>" + getSexoString(p.sexo) + "</td><td>" + getAgeString(p) + "</td><td>" + p.af + "</td><td><input type='button' value='&gt;&gt;'></input></td></tr>";
+    $('#theList tr:last').after(row);
+    $('#theList tr:last').on("click",function() { 
+        addPersonForm(p);
+        return false;
+    });
 }
 
-function openPersonForm(rowId) {
-    var tableId = "QPS";
-    var rowId = rowId;
-    var formId = "QPS"; 
-    odkTables.editRowWithSurvey(null, tableId, rowId, formId, null, null);
+function addPersonForm(person) {
+    var tableId = "ronda";
+    var formId = "ronda"; 
+    var dispatchStruct = null;
+    var screenPath = null;
+    var jsonMap = getJsonMap(person);
+    odkTables.addRowWithSurvey(dispatchStruct,tableId, formId, screenPath, jsonMap);
 }
+
+function getJsonMap(person) {
+
+    delete person.numRondas;
+    delete person.region;
+    delete person.tabanca;
+    delete person.sector;
+
+
+    console.log("Sending following data:");
+    console.log(person);      
+
+    return person;
+}
+
 
 /* adate helper */
 function getAdateHelper() {return {

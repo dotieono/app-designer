@@ -8,7 +8,7 @@
       },
       {
         "setting_name": "form_version",
-        "value": 2019090200,
+        "value": 2020081300,
         "_row_num": 3
       },
       {
@@ -38,25 +38,6 @@
         "_row_num": 4
       },
       {
-        "clause": "if",
-        "condition": "!data('mae') || !data ('chefe_af') || !data('AF')",
-        "_row_num": 6
-      },
-      {
-        "type": "linked_table",
-        "values_list": "dados_adicionais",
-        "display": {
-          "prompt": {
-            "text": "Por favor toca em editar deste ficheiro abaixo e introduza os dados que faltavam na ronda anterior.\n<h3><center><span style=\"color:blue\">EDITAR</h3></span></center>"
-          }
-        },
-        "_row_num": 7
-      },
-      {
-        "clause": "end if",
-        "_row_num": 8
-      },
-      {
         "type": "text",
         "name": "comentario",
         "display": {
@@ -64,7 +45,7 @@
             "text": "Comentario"
           }
         },
-        "_row_num": 9
+        "_row_num": 6
       }
     ],
     "choices": [
@@ -210,28 +191,16 @@
         "newRowInitialElementKeyToValueMap": "{id_paciente: data('id_paciente'), vnome: data('nome')}",
         "openRowInitialElementKeyToValueMap": "{}",
         "_row_num": 2
-      },
-      {
-        "query_name": "dados_adicionais",
-        "query_type": "linked_table",
-        "linked_form_id": "dados_adicional",
-        "linked_table_id": "QPS",
-        "selection": "id_paciente=?",
-        "selectionArgs": "[data('id_paciente')]",
-        "newRowInitialElementKeyToValueMap": "{}",
-        "openRowInitialElementKeyToValueMap": "{}",
-        "fieldName": "dados_adicionais",
-        "_row_num": 3
       }
     ],
     "model": [
       {
-        "type": "barcode",
+        "type": "string",
         "name": "id_paciente",
         "_row_num": 2
       },
       {
-        "type": "barcode",
+        "type": "string",
         "name": "sticker",
         "_row_num": 3
       },
@@ -246,7 +215,7 @@
         "_row_num": 5
       },
       {
-        "type": "adate",
+        "type": "assign",
         "name": "data_inscricao",
         "_row_num": 6
       },
@@ -354,11 +323,6 @@
         "type": "text",
         "name": "comentario_2",
         "_row_num": 29
-      },
-      {
-        "type": "text",
-        "name": "comentario_3",
-        "_row_num": 30
       }
     ],
     "prompt_types": [
@@ -402,7 +366,7 @@
       },
       "form_version": {
         "setting_name": "form_version",
-        "value": 2019090200,
+        "value": 2020081300,
         "_row_num": 3
       },
       "survey": {
@@ -602,18 +566,6 @@
         "newRowInitialElementKeyToValueMap": "{id_paciente: data('id_paciente'), vnome: data('nome')}",
         "openRowInitialElementKeyToValueMap": "{}",
         "_row_num": 2
-      },
-      "dados_adicionais": {
-        "query_name": "dados_adicionais",
-        "query_type": "linked_table",
-        "linked_form_id": "dados_adicional",
-        "linked_table_id": "QPS",
-        "selection": "id_paciente=?",
-        "selectionArgs": "[data('id_paciente')]",
-        "newRowInitialElementKeyToValueMap": "{}",
-        "openRowInitialElementKeyToValueMap": "{}",
-        "fieldName": "dados_adicionais",
-        "_row_num": 3
       }
     },
     "calculates": {},
@@ -659,18 +611,13 @@
         "elementKey": "numero_sticker"
       },
       "data_inscricao": {
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
         "_defn": [
           {
             "_row_num": 6,
             "section_name": "model"
           }
         ],
+        "type": "assign",
         "elementKey": "data_inscricao"
       },
       "nome": {
@@ -872,7 +819,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 9,
+            "_row_num": 6,
             "section_name": "survey"
           },
           {
@@ -891,16 +838,6 @@
           }
         ],
         "elementKey": "comentario_2"
-      },
-      "comentario_3": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 30,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "comentario_3"
       }
     },
     "section_names": [
@@ -929,21 +866,6 @@
             "promptIdx": 0
           },
           {
-            "type": "linked_table",
-            "values_list": "dados_adicionais",
-            "display": {
-              "prompt": {
-                "text": "Por favor toca em editar deste ficheiro abaixo e introduza os dados que faltavam na ronda anterior.\n<h3><center><span style=\"color:blue\">EDITAR</h3></span></center>"
-              }
-            },
-            "_row_num": 7,
-            "__rowNum__": 6,
-            "_token_type": "prompt",
-            "_type": "linked_table",
-            "_branch_label_enclosing_screen": "survey/_screen7",
-            "promptIdx": 1
-          },
-          {
             "type": "text",
             "name": "comentario",
             "display": {
@@ -951,20 +873,20 @@
                 "text": "Comentario"
               }
             },
-            "_row_num": 9,
-            "__rowNum__": 8,
+            "_row_num": 6,
+            "__rowNum__": 5,
             "_token_type": "prompt",
             "_type": "text",
-            "_branch_label_enclosing_screen": "survey/_screen9",
-            "promptIdx": 2
+            "_branch_label_enclosing_screen": "survey/_screen6",
+            "promptIdx": 1
           },
           {
             "_token_type": "prompt",
             "type": "contents",
             "_type": "contents",
-            "_row_num": 10,
-            "_branch_label_enclosing_screen": "survey/_screen10",
-            "promptIdx": 3
+            "_row_num": 7,
+            "_branch_label_enclosing_screen": "survey/_screen7",
+            "promptIdx": 2
           }
         ],
         "validation_tag_map": {
@@ -978,71 +900,38 @@
             "operationIdx": 0
           },
           {
-            "clause": "if",
-            "condition": "!data('mae') || !data ('chefe_af') || !data('AF')",
             "_row_num": 6,
-            "__rowNum__": 5,
-            "_token_type": "goto_label",
-            "_branch_label": "_then6",
+            "_token_type": "begin_screen",
+            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(1);\n\nreturn activePromptIndicies;\n}\n",
             "operationIdx": 1
           },
           {
-            "clause": "end if",
-            "_token_type": "goto_label",
-            "_branch_label": "_else8",
-            "_row_num": 8,
+            "_token_type": "exit_section",
+            "clause": "exit section",
+            "_row_num": 7,
             "operationIdx": 2
           },
           {
             "_row_num": 7,
             "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(1);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 3
-          },
-          {
-            "clause": "end if",
-            "_token_type": "goto_label",
-            "_branch_label": "_endif8",
-            "_row_num": 8,
-            "operationIdx": 4
-          },
-          {
-            "_row_num": 9,
-            "_token_type": "begin_screen",
             "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(2);\n\nreturn activePromptIndicies;\n}\n",
-            "operationIdx": 5
-          },
-          {
-            "_token_type": "exit_section",
-            "clause": "exit section",
-            "_row_num": 10,
-            "operationIdx": 6
-          },
-          {
-            "_row_num": 10,
-            "_token_type": "begin_screen",
-            "_screen_block": "function() {var activePromptIndicies = [];\nactivePromptIndicies.push(3);\n\nreturn activePromptIndicies;\n}\n",
             "screen": {
               "hideInBackHistory": true
             },
-            "operationIdx": 7
+            "operationIdx": 3
           },
           {
             "_token_type": "resume",
             "clause": "resume",
-            "_row_num": 10,
-            "operationIdx": 8
+            "_row_num": 7,
+            "operationIdx": 4
           }
         ],
         "branch_label_map": {
           "_screen4": 0,
-          "_then6": 3,
-          "_screen7": 3,
-          "_else8": 5,
-          "_endif8": 5,
-          "_screen9": 5,
-          "_contents": 7,
-          "_screen10": 7
+          "_screen6": 1,
+          "_contents": 3,
+          "_screen7": 3
         }
       },
       "initial": {
@@ -1277,18 +1166,13 @@
         "elementPath": "numero_sticker"
       },
       "data_inscricao": {
-        "prompt_type_name": "adate",
-        "type": "string",
-        "elementType": "string",
-        "comment": "Save only mm.dd.yyyy with support for ?? at all positions",
-        "_row_num": 3,
-        "__rowNum__": 2,
         "_defn": [
           {
             "_row_num": 6,
             "section_name": "model"
           }
         ],
+        "type": "assign",
         "elementKey": "data_inscricao",
         "elementName": "data_inscricao",
         "elementSet": "data",
@@ -1550,7 +1434,7 @@
         "type": "string",
         "_defn": [
           {
-            "_row_num": 9,
+            "_row_num": 6,
             "section_name": "survey"
           },
           {
@@ -1575,19 +1459,6 @@
         "elementName": "comentario_2",
         "elementSet": "data",
         "elementPath": "comentario_2"
-      },
-      "comentario_3": {
-        "type": "string",
-        "_defn": [
-          {
-            "_row_num": 30,
-            "section_name": "model"
-          }
-        ],
-        "elementKey": "comentario_3",
-        "elementName": "comentario_3",
-        "elementSet": "data",
-        "elementPath": "comentario_3"
       },
       "_id": {
         "type": "string",
