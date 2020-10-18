@@ -75,8 +75,8 @@ function populateList(listOfPersons) {
 }
 
 function getSexoString(sexo) {
-    if (sexo == "1" || sexo == 1) return "M";
-    if (sexo == "2" || sexo == 2) return "F";
+    if (sexo == "1" || 1) return "M";
+    if (sexo == "2" || 2) return "F";
     return "?";
 }
 
